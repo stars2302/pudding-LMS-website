@@ -162,6 +162,9 @@ body {
 }
 
 /* BUTTONS */
+.btn {
+  font-size: 20px;
+}
 
 .navy_btn:hover {
   background-color: var(--point_navy_hover);
@@ -299,7 +302,7 @@ body {
 }
 
 .input-group {
-  height: 60px;
+  height: 45px;
 }
 
 .input-group input {
