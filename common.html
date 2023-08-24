@@ -55,7 +55,14 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
+    <!-- 스포카 -->
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css">
+    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.css">
+    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css">
+    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.min.css">
     <link rel="stylesheet" href="css/common.css" />
     <title>pudding common file</title>
   </head>
@@ -63,9 +70,9 @@
     <h1>common styleguide</h1>
     <h2>Typography</h2>
 
-    <h1 class="main_tt">메인 타이틀 PUDDING 푸딩</h1>
+    <h1 class="main_tt">메인 타이틀 PUDDING 푸딩 </h1>
     <h2 class="main_stt">서브 타이틀 PUDDING 푸딩</h2>
-    <h3 class="content_tt">컨텐츠 타이틀 PUDDING 푸딩</h3>
+    <h3 class="content_tt">컨텐츠 타이틀 PUDDING 푸딩 카테고리 강의가격</h3>
     <h4 class="content_stt">서브 컨텐츠 타이틀 PUDDING 푸딩</h4>
     <h5 class="b_text01">바디 텍스트_01 PUDDING 푸딩</h5>
     <h6 class="b_text02">바디 텍스트_02 PUDDING 푸딩</h6>
@@ -429,8 +436,9 @@
       </label>
     </div>
 
-    <h2>Datepicker</h2>
-    <p>Date: <input type="text" id="datepicker" /></p>
+    <!-- Datepicker -->
+    <h2 class="demoHeaders">Datepicker</h2>
+    <div id="datepicker"></div>
 
     <h2>Pagination</h2>
     <nav aria-label="Page navigation example">
@@ -461,15 +469,16 @@
       </ul>
     </nav>
 
-    <h2>Select</h2>
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
+    <h2 class="demoHeaders mt-3">Selectmenu</h2>
+      <select id="selectmenu">
+        <option>Slower</option>
+        <option>Slow</option>
+        <option selected="selected">Medium</option>
+        <option>Fast</option>
+        <option>Faster</option>
+      </select>
 
-    <h2>Dropdown</h2>
+    <h2 class="mt-5">Dropdown</h2>
     <div class="custom-dropdown">
       <div class="selected-option">Select an option</div>
       <ul class="options-list">
@@ -605,6 +614,8 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
     <!-- tabler-icons js -->
     <script src="node_modules/@tabler/icons/dist/umd/tabler-icons.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <script src="js/common.js"></script>
   </body>
 </html>

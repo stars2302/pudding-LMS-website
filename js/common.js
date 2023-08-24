@@ -27,3 +27,5 @@ $('.delete-button').click(function (event) {
   event.stopPropagation(); // 이벤트 버블링 방지
   $(this).parent().remove();
 });
+
+$( "#selectmenu" ).selectmenu();
