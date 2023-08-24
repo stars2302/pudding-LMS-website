@@ -12,9 +12,9 @@
 *{ font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 
 :root {
-  --white_BG: #fff;
-  --gray_BG: #f8f8f8;
-  --light_blue_BG: #E8F7FF;
+  --white_bg: #fff;
+  --gray_bg: #f8f8f8;
+  --light_blue_bg: #E8F7FF;
   --dark: #1e2226;
   --point_primary_hover: #4e7cff;
   --point_primary: #5d87ff;
@@ -46,7 +46,7 @@ img, video {vertical-align: bottom;}
 
 /* layout */
 body {
-  background-color: var(--gray_BG);
+  background-color: var(--gray_bg);
 }
 
 .wrap {
@@ -92,33 +92,45 @@ body {
 
 .primary_bg {
   background-color: var(--point_primary);
-  color: var(--white_BG);
+  color: var(--white_bg);
 }
 
 .primary {
   color: var(--point_primary);
 }
-.white_BG {
-  background-color: var(--white_BG);
+.white_bg {
+  background-color: var(--white_bg);
+  color:var(--dark)
 }
 .white {
-  color: var(--white_BG);
+  color: var(--white_bg);
+  background-color: var(--dark);
+}
+.light_blue_bg{
+  background-color: var(--light_blue_bg);
+  color:var(--point_primary);
+}
+.light_blue{
+  background-color: var(--point_primary);
+  color:var(--light_blue_bg);
 }
 
 .gray_bg {
-  background-color: var(--Gray_BG);
+  background-color: var(--gray_bg);
+  color:var(--dark)
 }
 
 .gray {
-  color: var(--Gray_BG);
+  background-color: var(--dark);
+  color: var(--gray_bg);
 }
 .dark_bg {
-  background-color: var(--Dark);
-  color: var(--white_BG);
+  background-color: var(--dark);
+  color: var(--white_bg);
 }
 
 .dark {
-  color: var(--Dark);
+  color: var(--dark);
 }
 
 .blue_bg {
@@ -170,17 +182,17 @@ body {
 
 .navy_btn:hover {
   background-color: var(--point_navy_hover);
-  color: var(--white_BG);
+  color: var(--white_bg);
 }
 
 .primary_btn:hover {
   background-color: var(--point_primary_hover);
-  color: var(--white_BG);
+  color: var(--white_bg);
 }
 
 .red_btn:hover {
   background-color: var(--point_red_hover);
-  color: var(--white_BG);
+  color: var(--white_bg);
 }
 
 .form-check-input:checked {
@@ -224,7 +236,7 @@ body {
 /* ICONS */
 .icon {
   text-decoration: none;
-  color: var(--Dark);
+  color: var(--dark);
 }
 
 .icon:hover {
@@ -234,7 +246,7 @@ body {
 /* PAGINATION */
 .page-link:hover {
   background-color: var(--point_primary);
-  color: var(--white_BG);
+  color: var(--white_bg);
 }
 
 .red_bell_wrap {
@@ -262,16 +274,16 @@ body {
 
 .btn-secondary {
   border: var(--bs-border-width) solid var(--bs-border-color);
-  --bs-btn-color: var(--Dark);
+  --bs-btn-color: var(--dEark);
   --bs-btn-bg: #ffffff;
   --bs-btn-border-color: #6c757d;
 
-  --bs-btn-hover-color: var(--Dark);
+  --bs-btn-hover-color: var(--dark);
   --bs-btn-hover-bg: #ffffff;
   --bs-btn-hover-border-color: #6c757d;
 
   --bs-btn-focus-shadow-rgb: 130, 138, 145;
-  --bs-btn-active-color: var(--Dark);
+  --bs-btn-active-color: var(--dark);
   --bs-btn-active-bg: #ffffff;
   --bs-btn-active-border-color: #6c757d;
   /* --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); */
@@ -290,7 +302,7 @@ body {
 
 .custom-tooltip {
   --bs-tooltip-bg: var(--point_primary);
-  --bs-tooltip-color: var(--white_BG);
+  --bs-tooltip-color: var(--white_bg);
 }
 
 /* FORM */
@@ -323,7 +335,7 @@ body {
 .box {
   width: 250px;
   height: 160px;
-  border: 1px solid var(--Gray_BG);
+  border: 1px solid var(--gray_bg);
 }
 
 /* LOGO */
@@ -409,7 +421,7 @@ header {
   height: 100vh;
   position: fixed;
   top: 0;
-  background-color: var(--white_BG);
+  background-color: var(--white_bg);
 }
 header nav {
   flex: 1;
@@ -495,9 +507,14 @@ header .logout {
 
 .top_bar .red_bell {
   text-align: center;
-  color: var(--white_BG);
+  color: var(--white_bg);
 }
 
 .top_bar .profile img {
   width: 60px;
+}
+
+/* style padding */
+.style_pd{
+  padding:20px 0px;
 }
