@@ -13,8 +13,9 @@
 
 :root {
   --white_BG: #fff;
-  --Gray_BG: #f2f2f2;
-  --Dark: #1e2226;
+  --gray_BG: #f8f8f8;
+  --light_blue_BG: #E8F7FF;
+  --dark: #1e2226;
   --point_primary_hover: #4e7cff;
   --point_primary: #5d87ff;
   --point_red_hover: #f87d5d;
@@ -34,6 +35,7 @@
   --badge_green_BG: #a6e8dc;
   --badge_green: #229681;
   --badge_padding: 4px 8px;
+  --base_unit: 30px;
 }
 
 /* TYPOGRAPHY */
@@ -226,11 +228,11 @@
 
 .red_bell {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  top: 0px;
-  left: 14px;
+  top: 5px;
+  right: 10px;
   background-color: var(--point_red);
 }
 
