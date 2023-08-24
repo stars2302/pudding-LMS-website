@@ -298,6 +298,14 @@ body {
   box-shadow: 0px 0px 0px 4px rgba(250, 137, 107, 0.3);
 }
 
+.input-group {
+  height: 60px;
+}
+
+.input-group input {
+  font-size: 20px;
+}
+
 /* BOX SHADOW */
 .shadow_box {
   box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.25);
