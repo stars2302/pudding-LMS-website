@@ -38,32 +38,42 @@
   --base_unit: 30px;
 }
 
+/* reset */
+a {color: inherit; text-decoration: none;}
+button {background: none; border: none;}
+img, video {vertical-align: bottom;}
+.hidden {display: none;}
+
+/* layout */
+body {
+  background-color: var(--gray_BG);
+}
+
+.wrap {
+  display: flex;
+}
+
 /* TYPOGRAPHY */
 
 .main_tt {
   font-family: "Jua", sans-serif;
   font-size: 40px;
   font-weight: 500;
-  line-height: 1.6;
 }
 
 .main_stt {
-  
   font-size: 32px;
   font-weight: bold;
-  line-height: 1.6;
 }
 
 .content_tt {
   font-size: 28px;
   font-weight: bold;
-  line-height: 1.5;
 }
 
 .content_stt {
   font-size: 24px;
   font-style: 400;
-  line-height: 1.5;
 }
 
 .b_text01 {
@@ -377,4 +387,104 @@
 }
 .options-list .delete-button:hover .bin_icon {
   color: var(--point_red_hover);
+}
+
+
+/* header */
+header {
+  width: 408px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: var(--white_BG);
+}
+header nav {
+  flex: 1;
+}
+
+header nav .icon {
+  display: flex;
+  align-items: center;
+}
+
+header nav .icon i {
+  padding-right: 15px;
+  font-size: 34px;
+  line-height: 37px;
+}
+
+header .inner_header {
+  padding: 50px 0;
+  height: 100%;
+}
+
+header .inner_header ul {
+  height: 100%;
+  padding: 40px 0;
+}
+
+header .logo a {
+  width: 223px;
+  height: 76px;
+  display: inline-block;
+  background: url(images/adminLogo.png);
+  text-indent: -9999em;
+}
+
+header .profile {
+  width: 302px;
+  height: calc(var(--base_unit)*3);
+  background: var(--light_blue_BG);
+  padding: 0 40px;
+}
+
+header .profile img {
+  width: 70px;
+  height: 70px;
+}
+
+header .profile h2 {
+  color: var(--point_primary);
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+header .profile p {
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+header .logout {
+  height: calc(var(--base_unit)*1.5);
+  line-height: calc(var(--base_unit)*1.5);
+  font-weight: bold;
+  margin-top: var(--base_unit);
+  padding: 0 var(--base_unit);
+}
+
+.content_wrap {
+  flex: 1;
+  margin-left: 408px;
+  padding: 0 calc(var(--base_unit)*2);
+}
+
+.top_bar {
+  width: 100%;
+  height: calc(var(--base_unit)*4);
+}
+
+.top_bar .red_bell_wrap {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.top_bar .red_bell {
+  text-align: center;
+  color: var(--white_BG);
+}
+
+.top_bar .profile img {
+  width: 60px;
 }
