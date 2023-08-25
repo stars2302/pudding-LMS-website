@@ -243,6 +243,11 @@ body {
   color: var(--point_primary);
 }
 
+#datepicker{
+  border-radius: 6px;
+  border : 1px solid #747880;
+}
+
 /* PAGINATION */
 .page-link:hover {
   background-color: var(--point_primary);
