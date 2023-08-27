@@ -469,8 +469,9 @@ header nav .icon i {
   border-radius: 5px 0 0 5px;
 }
 
-header nav .icon span {
-  padding-right: 5px;
+.inner_header nav .icon span {
+  display: inline-block;
+  padding: 0 5px;
   border-radius: 0 5px 5px 0;
 }
 
