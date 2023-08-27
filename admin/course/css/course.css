@@ -1,52 +1,37 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-.primary_btn{
+.primary_btn {
   background-color: var(--point_primary);
 }
-p{
-  margin: 0;
-  padding: 0;
-}
-.btn{
+.btn {
   padding-left: 25px;
   padding-right: 25px;
   height: 45px;
   white-space: nowrap;
   box-sizing: border-box;
 }
-.content_wrap{
+.content_wrap {
   background-color: #F8F8F8;
 }
-/* .main_tt{
-  margin-bottom: calc(var(--base_unit)*2);
-} */
-.course_sort{
+.course_sort {
   margin-bottom: calc(var(--base_unit)*2);
 }
-.link_btn{
+.link_btn {
   display: flex;
   justify-content: flex-end;
   gap: var(--base_unit);
   margin-bottom: 25px;
 }
-.row{
+.row {
   margin-bottom: var(--base_unit);
-  /* margin-left: 0;
-  margin-right: 0; */
 }
-/* .link_btn{
 
-} */
-input[type=text], select, .btn{
+input[type=text], select, .btn {
   height: 45px;
   font-size: 16px;
 } 
 .level_price {
   gap: var(--base_unit);
 }
-.level_price label{
+.level_price label {
   font-size:20px;
   margin: 0 12px 0 3px;
 }
@@ -56,7 +41,7 @@ input[type=text], select, .btn{
   font-weight: bold;
  
 }
-.course_list span img{   
+.course_list img{   
   width: 226px;
   height: 162px;
   margin-right: 20px;
@@ -87,9 +72,7 @@ input[type=text], select, .btn{
 .course_list .primary_bg{
   margin-right: 6px;
 }
-/* .course_list .btn{
-  width: 62px;
-} */
+
 .course_list .col-md-4{
   display: flex;
   flex-direction: column;
@@ -108,6 +91,13 @@ input[type=text], select, .btn{
   vertical-align: bottom;
   margin-right: 15px;
 }
+/* .status_box{
+  position: relative;
+}*/
+.status_box .price{
+  position: absolute;
+  left: 10px;
+} 
 .price_btn_wrap{
   flex-wrap: wrap;
 }
@@ -145,7 +135,13 @@ a.btn{
 .tt_mb{
   margin-bottom: calc(var(--base_unit)* 2);
 }
-
+.base_mt{
+  margin-top: var(--base_unit);
+}
+.category_add_btns{
+  display: flex;
+  gap:var(--base_unit);
+}
 .category h3.content_tt{
   margin-bottom: var(--base_unit);
 }
@@ -161,7 +157,7 @@ a.btn{
   width: 100%;
 }
 .category_list table tr *{
-  padding: 10px;
+  padding: 5px;
 }
 .category_list table th{
   font-size: 24px;
@@ -179,33 +175,52 @@ a.btn{
 
 /*강의보기*/
 
-.course_view img{
+ol, ul {
+  padding-left: 0;
+}
+.course_view .course_list {
+  padding: 60px 30px 30px;
+  position: relative;
+}
+.course_list > div {
+  position: relative;
+}
+.course_view img {
   width: 390px;
   height: 274px;
   margin-right: var(--base_unit);
 }
-.course_view .course_list_title{
-  margin-bottom: var(--base_unit);
-}
-.course_view .course_info{
-  flex: 1;
-}
-.course_view .course_list{
-  padding: 60px 30px 30px;
-  position: relative;
-}
-.course_view .category{
+.course_view .category {
   position: absolute;
-  display: inline;
-  top:30px;
-  left: 70%;
+  /* display: inline; */
+  bottom: 100%;
+  right: 0;
 }
 .course_status {
   position: relative;
   margin-top: var(--base_unit);
 }
-.status_wrap{
+.status_wrap {
   position: absolute;
   bottom: 0;
   right: 10px;
+}
+
+
+
+/* dashboard */
+.row1{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 30px;
+}
+.test{
+  background-color: antiquewhite;
+}
+.sales{
+  background-color: antiquewhite;
+}
+.sales img{
+  width: 224px;
+  height: 131px;
 }
