@@ -200,10 +200,10 @@ body {
 }
 
 .btn-primary{
-  background-color: var(--point_primary);
+  background-color: var(--point_primary) !important;
 }
-.btn-primary{
-  background-color: var(--point_primary_hover);
+.btn-primary:hover{
+  background-color: var(--point_primary_hover) !important;
 }
 
 .btn-primary:active{
