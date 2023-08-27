@@ -487,7 +487,7 @@ header .logo a {
 header .profile {
   width: 302px;
   height: calc(var(--base_unit) * 3);
-  background: var(--light_blue_BG);
+  background: var(--light_blue_bg);
   padding: 0 40px;
 }
 
