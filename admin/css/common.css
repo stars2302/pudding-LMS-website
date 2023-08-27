@@ -230,8 +230,8 @@ body {
 /* BADGES */
 
 .badge_blue {
-  background-color: var(--badge_blue_BG);
-  color: var(--badge_blue);
+  background-color: var(--badge_blue);
+  color: var(--badge_blue_BG);
 }
 
 .badge_yellow {
