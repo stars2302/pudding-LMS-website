@@ -19,6 +19,7 @@
   --light_blue_bg: #e8f7ff;
   --dark: #1e2226;
   --point_primary_hover: #4e7cff;
+  --point_primary_focus: #7095ff;
   --point_primary: #5d87ff;
   --point_red_hover: #f87d5d;
   --point_red: #fa896b;
@@ -198,10 +199,17 @@ body {
   color: var(--white_bg);
 }
 
-.primary_btn:hover {
-  background-color: var(--point_primary_hover);
-  color: var(--white_bg);
+.btn-primary{
+  background-color: var(--point_primary) !important;
 }
+.btn-primary:hover{
+  background-color: var(--point_primary_hover) !important;
+}
+
+.btn-primary:active{
+  background-color:var(--point_primary_focus) !important;
+}
+
 
 .red_btn:hover {
   background-color: var(--point_red_hover);
@@ -222,8 +230,8 @@ body {
 /* BADGES */
 
 .badge_blue {
-  background-color: var(--badge_blue_BG);
-  color: var(--badge_blue);
+  background-color: var(--badge_blue);
+  color: var(--badge_blue_BG);
 }
 
 .badge_yellow {
@@ -263,6 +271,10 @@ body {
 }
 
 /* PAGINATION */
+.pager {
+  margin: calc(var(--base_unit)*3) 0 calc(var(--base_unit)*2);
+}
+
 .page-link:hover {
   background-color: var(--point_primary);
   color: var(--white_bg);
@@ -461,8 +473,9 @@ header nav .icon i {
   border-radius: 5px 0 0 5px;
 }
 
-header nav .icon span {
-  padding-right: 5px;
+.inner_header nav .icon span {
+  display: inline-block;
+  padding: 0 5px;
   border-radius: 0 5px 5px 0;
 }
 
