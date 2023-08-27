@@ -38,6 +38,7 @@ form {
 #username::placeholder,
 #password::placeholder {
   color: #c2c4c7;
+  text-transform: uppercase;
 }
 
 #username,
