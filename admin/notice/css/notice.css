@@ -13,3 +13,11 @@
 
 }
 
+/* 상단바 */
+.notice_top {
+  padding:20px 30px 23px 30px;
+}
+
+.notice_top_left {
+  gap:30px;
+}
