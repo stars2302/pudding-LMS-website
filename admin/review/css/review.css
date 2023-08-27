@@ -1,0 +1,14 @@
+.card_container{
+    width: 100%;
+    background-color: var(--white_bg);
+    padding: 20px 92px 76px 40px;
+    
+}
+
+.review_user{
+    margin-left:var(--base_unit);
+}
+
+.rating svg{
+	color:#ebebeb;
+}

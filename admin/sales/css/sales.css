@@ -1,3 +1,7 @@
+.sales_sort{
+  margin-top:var(--base_unit);
+}
+
 /* sales chart */
 
 .chart_container { 
