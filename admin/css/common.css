@@ -449,10 +449,21 @@ header nav .icon {
   align-items: center;
 }
 
+header nav .icon:hover > * {
+  background-color: rgba(93, 135, 255, .1);
+}
+
 header nav .icon i {
+  padding-left: 5px;
   padding-right: 15px;
   font-size: 34px;
-  line-height: 37px;
+  line-height: 42px;
+  border-radius: 5px 0 0 5px;
+}
+
+header nav .icon span {
+  padding-right: 5px;
+  border-radius: 0 5px 5px 0;
 }
 
 header .inner_header {
@@ -476,7 +487,7 @@ header .logo a {
 header .profile {
   width: 302px;
   height: calc(var(--base_unit) * 3);
-  background: var(--light_blue_BG);
+  background: var(--light_blue_bg);
   padding: 0 40px;
 }
 
