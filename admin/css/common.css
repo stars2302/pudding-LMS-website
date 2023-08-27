@@ -449,12 +449,6 @@ header nav .icon {
   align-items: center;
 }
 
-header nav .icon i {
-  padding-right: 15px;
-  font-size: 34px;
-  line-height: 37px;
-}
-
 header nav .icon:hover > * {
   background-color: rgba(93, 135, 255, .1);
 }
