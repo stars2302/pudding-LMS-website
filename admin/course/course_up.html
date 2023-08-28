@@ -61,6 +61,13 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
+      integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css" />
     <link rel="stylesheet" href="/css/jqueryui/jquery-ui.min.css" />
     <link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.css" />
@@ -70,13 +77,6 @@
 
     <link rel="stylesheet" href="/admin/css/common.css" />
     <link rel="stylesheet" href="/admin/course/css/course.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
-      integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
   </head>
   <body>
     <div class="wrap">
@@ -182,29 +182,29 @@
               <label for="formGroupExampleInput" class="form-label"
                 >카테고리</label
               >
-              <div class="col d-flex justify-content-between">
+              <div class="categorys col d-flex justify-content-between gap-3">
                 <div class="category">
-                  <select name="" id="cate1" class="selectmenu">
-                    <option value="" selected disabled>대분류</option>
-                    <option value="">대분류1</option>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>대분류</option>
+                    <option value="1" selected disabled>대분류1</option>
                   </select>
                 </div>
                 <div class="category">
-                  <select name="" id="cate2" class="selectmenu">
-                    <option value="" selected disabled>중분류</option>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>중분류</option>
+                    <option value="1" selected disabled>중분류1</option>
                   </select>
                 </div>
                 <div class="category">
-                  <select name="" id="cate3" class="selectmenu">
-                    <option value="" selected disabled>소분류</option>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>소분류</option>
+                    <option value="1" selected disabled>소분류1</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label"
-                >강의명</label
-              >
+            <div class="course_name mb-3">
+              <label for="formGroupExampleInput" class="form-label">강의명</label>
               <input
                 type="text"
                 class="form-control"
@@ -212,16 +212,14 @@
                 placeholder="강의명을 입력하세요."
               />
             </div>
-            <div class="row g-3">
+            <div class="section3 row">
               <div class="col mb-6">
-                <label for="formGroupExampleInput2" class="form-label"
-                  >강의가격</label
-                >
-                <div class="d-flex">
-                  <div class="price_select">
-                    <select name="" id="" class="selectmenu">
-                      <option value="" selected>유료</option>
-                      <option value="">무료</option>
+                <label for="formGroupExampleInput2" class="form-label">강의가격</label>
+                <div class="price_select d-flex gap-3">
+                  <div class="price_menu">
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1" selected>유료</option>
+                      <option value="1">무료</option>
                     </select>
                   </div>
                   <div class="price">
@@ -281,19 +279,19 @@
                 <label for="formGroupExampleInput2" class="form-label"
                   >수강기간</label
                 >
-                <div class="d-flex g-3">
-                  <div class="period_select">
-                    <select name="" id="" class="selectmenu">
-                      <option value="" selected>제한</option>
-                      <option value="">무제한</option>
+                <div class="period d-flex gap-3">
+                  <div class="period_select1">
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1" selected>제한</option>
+                      <option value="1">무제한</option>
                     </select>
                   </div>
-                  <div class="period">
-                    <select name="" id="" class="selectmenu">
-                      <option value="" selected>3개월</option>
-                      <option value="">6개월</option>
-                      <option value="">9개월</option>
-                      <option value="">12개월</option>
+                  <div class="period_select2">
+                    <select class="form-select" aria-label="Default select example">
+                      <option value="1" selected>3개월</option>
+                      <option value="1">6개월</option>
+                      <option value="1">9개월</option>
+                      <option value="1">12개월</option>
                     </select>
                   </div>
                 </div>

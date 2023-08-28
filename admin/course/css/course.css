@@ -1,5 +1,11 @@
+/* course_up */
+
 h1 {
   font-family: "jua";
+}
+
+select,input{
+  height: 45px;
 }
 
 .box {
@@ -22,7 +28,7 @@ h1 {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
+/* 
 .box.drag-enter {
   background: #3498db;
   color: #fff;
@@ -41,4 +47,20 @@ h1 {
 #thumbnails .thumb img {
   width: 100%;
   display: block;
+} */
+
+.category{
+  width:30%;
 }
+
+
+.section3,
+.price_select,
+.price_menu,
+.price,
+.period,
+.period_select1,
+.period_select2{
+  width:100%;
+}
+
