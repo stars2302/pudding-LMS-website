@@ -10,14 +10,28 @@
 table{
   text-align: center;
 }
-
+tbody, td, tfoot, th, thead, tr{
+  border-style: none;
+}
 table thead tr th:nth-child(2),
 table tbody tr td:nth-child(2){
   text-align: left;
+}
+table tbody .btn{
+  padding-left: 16px;
+  padding-right: 16px;
+}
+table tbody .btn span{
+  font-weight: bold;
+  color: var(--white_bg);
 }
 nav{
   padding-top: calc(var(--base_unit)*3);
 }
 nav .pagination{
   justify-content: center;
+}
+.page-link{
+  /* color: var(--font_gray); */
+  color: #6C757D;
 }
