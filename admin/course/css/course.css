@@ -4,11 +4,12 @@ h1 {
   font-family: "jua";
 }
 
-h3{
-  font-weight: 700;
+h5 {
+  font-weight: 600;
 }
 
-/* select,input{
+/* select,
+input {
   height: 45px;
 } */
 
@@ -53,28 +54,31 @@ h3{
   display: block;
 } */
 
-
-
-#ui-id-1-button,
-#ui-id-2-button,
-#ui-id-3-button{
-  width:100%;
-}
-
-/* .section3,
-.price_select,
-.price_menu,
-.price,
-.period,
-.period_select1,
-.period_select2{
-  width:100%;
-} */
-
 .price_select,
 .level_select,
 .period,
-.act{
+.act {
   width: 50%;
 }
 
+.youtube_name,
+.youtube_url {
+  width: 20%;
+}
+
+.trash_icon i {
+  font-size: 35px;
+  align-items: center;
+}
+
+.button .cancel {
+  background-color: var(--point_navy_hover);
+}
+
+.add_list {
+  text-align: center;
+}
+.add_list a {
+  color: #6f6f6f;
+  padding-top: 2px;
+}
