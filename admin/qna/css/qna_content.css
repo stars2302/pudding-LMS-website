@@ -1,3 +1,31 @@
 h2{
   padding-bottom: calc(var(--base_unit)*2);
 }
+.user{
+  height: 60px;
+  line-height: 60px;
+  padding-left: calc(var(--base_unit)*3);
+  gap: var(--base_unit);
+}
+.qna_content{
+  padding-left: calc(var(--base_unit)*6);
+}
+.qna_content p{
+  padding: var(--base_unit) 0;
+}
+.i_con{
+  padding: var(--base_unit) 0 var(--base_unit) calc(var(--base_unit)*6);
+  gap: 10px;
+}
+.i_con .sircle{
+  padding-left: 20px;
+}
+.master{
+  width: 100%;
+  height: 60px;
+}
+.master .wrap{
+  line-height: 60px;
+  padding-left: calc(var(--base_unit)*6);
+  gap: var(--base_unit);
+}
