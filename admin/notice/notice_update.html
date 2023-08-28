@@ -66,6 +66,8 @@
 <link rel="stylesheet" href="../css/jqueryui/jquery-ui.structure.min.css">
 <link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.css">
 <link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.min.css">
+<!-- summernote -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="../css/common.css" />
 <link rel="stylesheet" href="css/notice.css" />
 
@@ -131,11 +133,11 @@
       
  
       <section>
-        <h2 class="main_tt">공지사항 수정</h2>
-        <form action="notice_update_ok.html" method="post">
+        <h2 class="main_tt">공지사항 작성</h2>
+        <form action="notice_create_ok.html" method="post">
           <p>
             <label for=""><h3 class="content_tt">제목</h3></label>
-            <input type="text" id="title" name="title" class="input form-control" placeholder="" aria-label="Username" required>  
+            <input type="text" id="title" name="title" class="notice_create_input form-control" placeholder="" aria-label="Username" required>  
           </p>
           <p>
             <label for=""><h3 class="content_tt">상세내용</h3></label>
@@ -143,11 +145,11 @@
           </p>
           <p>
             <label for=""><h3 class="content_tt">파일첨부</h3></label>
-            <input type="file" id="image" name="image" class="input form-control" aria-label="Username" required>  
+            <input type="file" id="image" name="image" class="notice_create_input form-control" aria-label="Username" required>  
           </p>
-          <div class="create_btns d-flex">
+          <div class="create_btns d-flex flex-row-reverse">
+          <button href=""  class="btn navy_bg white navy_btn" >등록 취소</button>
           <button type="submit" class="btn primary_bg btn-primary">등록 완료</button>
-          <button class="btn navy_bg white navy_btn">등록 취소</button>
         </div>
       </form> 
       </section>    
@@ -176,8 +178,7 @@
   referrerpolicy="no-referrer"
 ></script>
 <!-- summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js" integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
@@ -201,7 +202,7 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 <!-- tabler-icons js -->
 <script src="node_modules/@tabler/icons/dist/umd/tabler-icons.min.js"></script>
-<script src="../js/jquery-ui.js"></script>
+
 <script src="../js/jquery-ui.min.js"></script>
 <script src="../js/common.js"></script>
 <script src="js/notice.js"></script>
