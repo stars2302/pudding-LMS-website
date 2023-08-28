@@ -23,9 +23,10 @@
   --point_primary: #5d87ff;
   --point_red_hover: #f87d5d;
   --point_red: #fa896b;
+  --point_red_focus: #ff9b81;
   --point_blue: #48befe;
   --point_yellow: #ffae1f;
-  --poing_navy_focus: #455674;
+  --point_navy_focus: #455674;
   --point_navy: #333f55;
   --point_navy_hover: #293346;
   --point_green: #14ddb9;
@@ -194,26 +195,40 @@ body {
   padding-right: 30px;
 }
 
-.navy_btn:hover {
-  background-color: var(--point_navy_hover);
-  color: var(--white_bg);
+.btn-dark {
+  background-color: var(--point_navy) !important;
+  border: none;
+}
+.btn-dark:hover {
+  background-color: var(--point_navy_hover) !important;
 }
 
-.btn-primary{
-  background-color: var(--point_primary) !important;
+.btn-dark:active {
+  background-color: var(--point_navy_focus) !important;
 }
-.btn-primary:hover{
+
+.btn-danger {
+  background-color: var(--point_red) !important;
+  border: none;
+}
+.btn-danger:hover {
+  background-color: var(--point_red_hover) !important;
+}
+
+.btn-danger:active {
+  background-color: var(--point_red_focus) !important;
+}
+
+.btn-primary {
+  background-color: var(--point_primary) !important;
+  border: none;
+}
+.btn-primary:hover {
   background-color: var(--point_primary_hover) !important;
 }
 
-.btn-primary:active{
-  background-color:var(--point_primary_focus) !important;
-}
-
-
-.red_btn:hover {
-  background-color: var(--point_red_hover);
-  color: var(--white_bg);
+.btn-primary:active {
+  background-color: var(--point_primary_focus) !important;
 }
 
 .form-check-input:checked {
@@ -272,7 +287,7 @@ body {
 
 /* PAGINATION */
 .pager {
-  margin: calc(var(--base_unit)*3) 0 calc(var(--base_unit)*2);
+  margin: calc(var(--base_unit) * 3) 0 calc(var(--base_unit) * 2);
 }
 
 .page-link:hover {
@@ -351,6 +366,11 @@ body {
 
 .input-group input {
   font-size: 20px;
+}
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
 }
 
 /* BOX SHADOW */
@@ -462,7 +482,7 @@ header nav .icon {
 }
 
 header nav .icon:hover > * {
-  background-color: rgba(93, 135, 255, .1);
+  background-color: rgba(93, 135, 255, 0.1);
 }
 
 header nav .icon i {
