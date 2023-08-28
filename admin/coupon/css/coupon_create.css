@@ -1,3 +1,7 @@
+.sub_header h2 {
+  margin-bottom: calc(var(--base_unit)*2);
+}
+
 .coupon_info {
   gap: 3%;
 }
@@ -53,7 +57,7 @@
   width: 100%;
 }
 .coupon_info .coupon_info_box .coupon_min_price {
-  width: 65%;
+  width: 63%;
 }
 
 .coupon_info .coupon_info_box .coupon_status_check {
@@ -64,4 +68,37 @@
 .coupon_info .coupon_info_box .coupon_status label {
   margin-bottom: 0;
   padding-left: 5px;
+}
+
+
+.coupon_option {
+  margin-top: calc(var(--base_unit)*1.5);
+  gap: 4%;
+}
+
+.coupon_option > div {
+  width: 48%;
+}
+
+.coupon_option .form-check {
+  gap: 15px;
+  margin-top: var(--base_unit);
+}
+
+.coupon_option label {
+  white-space: nowrap;
+}
+
+.coupon_option .form-control {
+  width: auto;
+  flex: 1;
+}
+
+.coupon_limit_date_check div:first-child {
+  height: 38px;
+}
+
+.submit_btns {
+  margin-top: calc(var(--base_unit)*2);
+  gap: var(--base_unit);
 }
