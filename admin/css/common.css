@@ -368,6 +368,11 @@ body {
   font-size: 20px;
 }
 
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
 /* BOX SHADOW */
 .shadow_box {
   box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.25);
