@@ -1,9 +1,9 @@
 .coupon_info {
-  gap: 0 var(--base_unit);
+  gap: 3%;
 }
 .coupon_info .thumbnail {
   width: 30%;
-  /* min-width: 300px; */
+  min-width: 300px;
 }
 
 .coupon_info .thumbnail .show_thumb {
@@ -28,7 +28,11 @@
 
 .coupon_info .coupon_info_box {
   flex: 1;
-  gap: calc(var(--base_unit)*1.5);
+  gap: var(--base_unit);
+}
+
+.coupon_info .coupon_info_box .input-group {
+  height: auto;
 }
 
 .coupon_info .coupon_info_box label {
@@ -41,6 +45,10 @@
   width: 100%;
 }
 
+.coupon_info .coupon_info_box .info_bottom {
+  gap: 4%;
+}
+
 .coupon_info .coupon_info_box .coupon_name {
   width: 100%;
 }
@@ -48,7 +56,12 @@
   width: 65%;
 }
 
-.coupon_info .coupon_info_box .input_group {
+.coupon_info .coupon_info_box .coupon_status_check {
   gap: var(--base_unit);
   margin-top: var(--base_unit);
+}
+
+.coupon_info .coupon_info_box .coupon_status label {
+  margin-bottom: 0;
+  padding-left: 5px;
 }

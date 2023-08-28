@@ -138,33 +138,45 @@
             <div class="show_thumb border"></div>
             <button type="button" class="btn primary_bg btn-primary thumb_btn">사진등록</button>
           </div>
-          <div class="coupon_info_box d-flex flex-wrap">
-            <div class="field coupon_name">
-              <label for="coupon_name" class="content_tt">쿠폰명</label>
-              <input type="text" name="" id="coupon_name" class="form-control"
-                placeholder="쿠폰명을 입력하세요.">
+          <div class="coupon_info_box d-flex flex-column">
+            <div class="info_top">
+              <div class="field coupon_name input-group">
+                <label for="coupon_name" class="content_tt">쿠폰명</label>
+                <input type="text" name="" id="coupon_name" class="form-control"
+                  placeholder="쿠폰명을 입력하세요.">
+              </div>
             </div>
-            <div class="field coupon_min_price">
-              <label for="coupon_limit" class="content_tt">최소사용금액</label>
-              <input type="number" name="" id="coupon_limit" class="form-control"
-                placeholder="10,000" min="10000" max="1000000" step="1000">
-            </div>
-            <div class="field">
-              <h3 class="content_tt">상태</h3>
-              <div class="input_group d-flex">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="coupon_status" id="coupon_status_1">
-                  <label class="form-check-label" for="coupon_status_1">활성화</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="coupon_status" id="coupon_status_0">
-                  <label class="form-check-label" for="coupon_status_0">비활성화</label>
+
+            <div class="info_bottom d-flex">
+              <div class="field coupon_min_price input-group">
+                <label for="coupon_limit" class="content_tt">최소사용금액</label>
+                <input type="number" name="" id="coupon_limit" class="form-control"
+                  placeholder="10,000" min="10000" max="1000000" step="1000">
+              </div>
+              <div class="field coupon_status">
+                <h3 class="content_tt">상태</h3>
+                <div class="coupon_status_check d-flex">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="coupon_status" id="coupon_status_1" checked>
+                    <label class="form-check-label b_text01" for="coupon_status_1">활성화</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="coupon_status" id="coupon_status_0">
+                    <label class="form-check-label b_text01" for="coupon_status_0">비활성화</label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </fieldset>
 
+        <fieldset class="coupon_option">
+          <legend class="hidden">쿠폰옵션</legend>
+          <div class="coupon_sale">
+
+          </div>
+          <div class="coupon_limit_date"></div>
+        </fieldset>
       </form>
     </div><!-- //content_wrap -->
   </div><!-- //wrap -->
@@ -214,6 +226,7 @@
 <script src="node_modules/@tabler/icons/dist/umd/tabler-icons.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="js/common.js"></script>
+<script src="../js/common.js"></script>
+<script src="js/coupon.js"></script>
 </body>
 </html>
