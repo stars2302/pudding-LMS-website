@@ -9,7 +9,6 @@
 
 
 .notice_body {
-  padding: 33px 56px 34px 56px;
   margin-top: 30px;
   margin-bottom: 109px;
 }
@@ -39,12 +38,16 @@
 
 /* 테이블 정렬 */
 
-.col1 {
+.col1, .col3 {
   width: 10%;
 }
 
 .col2 {
-  width: 20%;
+  width: 55%;
+}
+
+.col4, .col5 {
+  width: 12%;
 }
 
 .notice_body thead tr th:first-child,
@@ -76,9 +79,6 @@
 }
 
 
-form p {
-  margin-bottom: 45px;
-}
 
 h3 {
   padding-bottom: 30px;
@@ -89,6 +89,10 @@ h3 {
   gap:30px;
 }
 
+
+tbody {
+  border-style: none;
+}
 
 /* notice_view.css */
 
