@@ -1,0 +1,54 @@
+.coupon_info {
+  gap: 0 var(--base_unit);
+}
+.coupon_info .thumbnail {
+  width: 30%;
+  /* min-width: 300px; */
+}
+
+.coupon_info .thumbnail .show_thumb {
+  padding-top: 70%;
+  position: relative;
+}
+
+.coupon_info .thumbnail .show_thumb:before {
+  content: '이미지 등록';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.coupon_info .thumbnail .thumb_btn {
+  margin-top: var(--base_unit);
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.coupon_info .coupon_info_box {
+  flex: 1;
+  gap: calc(var(--base_unit)*1.5);
+}
+
+.coupon_info .coupon_info_box label {
+  margin-bottom: var(--base_unit);
+  line-height: 1;
+  width: 100%;
+}
+
+.coupon_info .coupon_info_box h3 {
+  width: 100%;
+}
+
+.coupon_info .coupon_info_box .coupon_name {
+  width: 100%;
+}
+.coupon_info .coupon_info_box .coupon_min_price {
+  width: 65%;
+}
+
+.coupon_info .coupon_info_box .input_group {
+  gap: var(--base_unit);
+  margin-top: var(--base_unit);
+}
