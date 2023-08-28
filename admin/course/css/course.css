@@ -207,20 +207,3 @@ ol, ul {
 }
 
 
-
-/* dashboard */
-.row1{
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 30px;
-}
-.test{
-  background-color: antiquewhite;
-}
-.sales{
-  background-color: antiquewhite;
-}
-.sales img{
-  width: 224px;
-  height: 131px;
-}
