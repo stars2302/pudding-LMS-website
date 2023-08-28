@@ -7,23 +7,38 @@
   width: 300px;
   margin: 0 var(--base_unit);
 }
+.search_button{
+  color: var(--white_bg);
+  font-weight: bold;
+}
 table{
   text-align: center;
 }
+
+/* .table>:not(caption)>*>*{
+  padding: 0px;
+} */
 tbody, td, tfoot, th, thead, tr{
   border-style: none;
+}
+table thead {
+  height: 75px;
+  line-height: 75px;
+}
+table thead tr th{
+  font-weight: bold;
 }
 table thead tr th:nth-child(2),
 table tbody tr td:nth-child(2){
   text-align: left;
 }
 table tbody .btn{
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 10px 16px;
 }
 table tbody .btn span{
   font-weight: bold;
   color: var(--white_bg);
+  display: block;
 }
 nav{
   padding-top: calc(var(--base_unit)*3);
