@@ -1,14 +1,56 @@
 .card_container{
+    position: relative;
     width: 100%;
     background-color: var(--white_bg);
-    padding: 20px 92px 76px 40px;
+    padding: 20px 92px 20px 20px;
+    margin-top: 30px;
+
     
+}
+.border{
+    border: none !important;;
+}
+
+.title_mg{
+    margin-bottom:30px;
 }
 
 .review_user{
-    margin-left:var(--base_unit);
+    margin: 0px 50px 0px 27px;
+    font-weight: 700;
+}
+
+.review_name{
+    margin:0;
+    color:var(--dark);
+}
+
+.review_content{
+    width: 92%;
+    margin-left:73px;
+    margin-top:var(--base_unit);
+   padding: 30px 26px 40px 26px;  
+    background-color:rgba(93,135,255,0.2);
+    
+}
+
+.review_del{
+    position: absolute;
+    top:17px;
+    right:25px;
+    font-size: 40px;
+}
+
+.btn{
+    font-size: 16px;
+    margin-top:15px;
 }
 
 .rating svg{
 	color:#ebebeb;
+}
+
+.userImg{
+    width: 45px;
+    height: 45px;
 }
