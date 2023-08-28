@@ -1,0 +1,3 @@
+h2{
+  padding-bottom: calc(var(--base_unit)*2);
+}

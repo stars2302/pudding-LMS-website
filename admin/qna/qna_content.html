@@ -64,7 +64,7 @@
 <link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.css">
 <link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.min.css">
 <link rel="stylesheet" href="../css/common.css" />
-<link rel="stylesheet" href="css/qna.css" />
+<link rel="stylesheet" href="css/qna_content.css" />
 </head>
 <body>
   <div class="wrap">
@@ -126,78 +126,48 @@
       </div><!-- top_bar -->
       
       <section>
-        <h2 class="main_tt">Q&amp;A 게시판</h2>
+        <h2 class="main_tt">Q&amp;A 내용</h2>
         
-        <div class="search_box shadow_box white_bg wrap align-items-center">
-          <label for="search" class="hidden">검색</label>
-          <input type="search" id="search" class="border form-control" value="" placeholder="질문을 검색해 주세요">
+        <div class="shadow_box">
+          
+          <div class="wrap">
+            <img src="" alt="사용자 이미지">
+            <div>사용자</div>
+            <div>2023-08-22</div>
+          </div>
+
+          <div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione labore esse mollitia similique architecto nihil earum dolore. Quasi, voluptate neque. Ipsum, excepturi. Magnam tempore ullam a adipisci nam, eius officiis.</p>
+            <img src="" alt="dummy image">
+          </div>
+
+          <div class="wrap">
+            <img src="image/Vest.svg" alt="Vest">
+            <p class="">25</p>
+            <img src="image/Return.svg" alt="Return">
+            <p class="">2</p>
+          </div>
+
+
+          <div class="wrap">
+            <img src="" alt="관리자 이미지">
+            <div>프바오</div>
+            <div>2023-08-22</div>
+          </div>
+
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione labore esse mollitia similique architecto nihil earum dolore. Quasi, voluptate neque. Ipsum, excepturi. Magnam tempore ullam a adipisci nam, eius officiis.</p>
+
+
+
+        </div>
+        <div class="shadow_box wrap">
+          <img src="" alt="관리자 이미지">
+          <label for="text" class="text">검색</label>
+          <input type="text" id="text" class="border form-control" value="" placeholder="Content Text">
           <button class="search_button btn navy_bg">검색</button>
         </div>
 
-        <table class="table shadow_box">
-
-          <thead>
-            <tr class="content_stt">
-              <th scope="col">처리 현황</th>
-              <th scope="col">제목</th>
-              <th scope="col">작성자</th>
-              <th scope="col">등록일</th>
-              <th scope="col">조회수</th>
-            </tr>
-          </thead>
-
-          <tbody class="b_text01">
-            <tr>
-              <th scope="row"><button class="btn navy_bg "><span class="b_text02">답변 대기</span></button></th>
-              <td>HTML은 어떤건가요?</td>
-              <td>사용자</td>
-              <td>2023-08-22</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <th scope="row"><button class="btn navy_bg"><span class="b_text02">답변 대기</span></button></th>
-              <td>HTML은 어떤건가요?</td>
-              <td>사용자</td>
-              <td>2023-08-22</td>
-              <td>2</td>
-            <tr>
-              <th scope="row"><button class="btn navy_bg"><span class="b_text02">답변 대기</span></button></th>
-              <td>HTML은 어떤건가요?</td>
-              <td>사용자</td>
-              <td>2023-08-22</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <th scope="row"><button class="btn primary_bg"><span class="b_text02">답변 완료</span></button></th>
-              <td>HTML은 어떤건가요?</td>
-              <td>사용자</td>
-              <td>2023-08-22</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <th scope="row"><button class="btn primary_bg"><span class="b_text02">답변 완료</span></button></th>
-              <td>HTML은 어떤건가요?</td>
-              <td>사용자</td>
-              <td>2023-08-22</td>
-              <td>2</td>
-            </tr>
-          </tbody>
-        </table>
-
-
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true"><img src="image/Left_one.svg" alt=""></span></a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true"><img src="image/Right_one.svg" alt=""></span></a></li>
-          </ul>
-        </nav>
-
-
+        <button class="search_button btn navy_bg">목록 보기</button>
       </section>
     </div><!-- content_wrap -->
   </div><!-- wrap -->
