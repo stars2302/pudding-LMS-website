@@ -3,14 +3,18 @@
 /* layout */
 .main_tt {
   padding-bottom  : 60px;
+  margin: 0;
 }
 
 
 .notice_body {
   padding: 33px 56px 34px 56px;
   margin-top: 30px;
-  margin-bottom: 90px;
+  margin-bottom: 109px;
+}
 
+.pagination  {
+  margin-bottom: 61px;
 }
 
 /* 상단바 */
@@ -25,3 +29,43 @@
 .notice_top_left .input {  
   padding: 11.7px 95px 12.6px 16px;  
 }
+
+
+/* 중간 리스트 */
+
+/* 테이블 정렬 */
+.notice_body colgroup col:first-child {
+  width: 9.7%;
+}
+.notice_body colgroup col:nth-of-type(2) {
+  width: 40%;
+}
+
+.notice_body thead tr th:first-child,
+.notice_body tbody tr td:first-child,
+.notice_body thead tr th:nth-of-type(3),
+.notice_body tbody tr td:nth-of-type(3),
+.notice_body thead tr th:nth-of-type(4),
+.notice_body tbody tr td:nth-of-type(4), 
+.notice_body thead tr th:nth-of-type(5),
+.notice_body tbody tr td:nth-of-type(5) {
+  text-align: center;
+}
+
+.notice_body tbody tr:first-child td {
+  padding: 25px 0 33px 0;
+}
+
+.notice_body tbody tr td {
+  padding: 33px 0;
+}
+
+.notice_body thead tr th:nth-of-type(2) {
+  padding:0;
+
+}
+
+.icon_group i {
+  font-size: 25px;
+}
+
