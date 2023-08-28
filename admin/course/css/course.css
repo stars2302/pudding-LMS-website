@@ -4,9 +4,13 @@ h1 {
   font-family: "jua";
 }
 
-select,input{
-  height: 45px;
+h3{
+  font-weight: 700;
 }
+
+/* select,input{
+  height: 45px;
+} */
 
 .box {
   width: 100%;
@@ -49,12 +53,15 @@ select,input{
   display: block;
 } */
 
-.category{
-  width:30%;
+
+
+#ui-id-1-button,
+#ui-id-2-button,
+#ui-id-3-button{
+  width:100%;
 }
 
-
-.section3,
+/* .section3,
 .price_select,
 .price_menu,
 .price,
@@ -62,5 +69,12 @@ select,input{
 .period_select1,
 .period_select2{
   width:100%;
+} */
+
+.price_select,
+.level_select,
+.period,
+.act{
+  width: 50%;
 }
 

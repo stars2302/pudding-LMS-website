@@ -2,6 +2,8 @@ $("#product_detail").summernote({
   height: 400,
 });
 
+// $(".form-select").selectmenu();
+
 var uploadFiles = [];
 var $drop = $("#drop");
 $drop
