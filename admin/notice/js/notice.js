@@ -10,3 +10,5 @@ $('.bin_icon').click(function(){
  }
 });
 
+/* notice_create.js */
+$('#summernote').summernote();
