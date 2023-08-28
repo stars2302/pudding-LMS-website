@@ -1,0 +1,18 @@
+.search_box{
+  height: 90px;
+  margin-bottom: calc(var(--base_unit)*2);
+}
+
+#search{
+  width: 300px;
+  margin: 0 var(--base_unit);
+}
+table{
+  text-align: center;
+  margin-bottom: calc(var(--base_unit)*3);
+}
+
+table thead tr th:nth-child(2),
+table tbody tr td:nth-child(2){
+  text-align: left;
+}
