@@ -70,4 +70,22 @@
   font-size: 25px;
 }
 
+/* notice_create.css */
+.note-popover {
+  display: none;
+}
 
+form p {
+  margin-bottom: 45px;
+}
+
+h3 {
+  padding-bottom: 30px;
+  margin: 0;
+}
+
+.create_btns {
+  padding-left: 80%;
+  padding-top: 60px;
+  gap:30px;
+}
