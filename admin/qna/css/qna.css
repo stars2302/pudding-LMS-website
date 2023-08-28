@@ -1,3 +1,6 @@
+h2{
+  padding-bottom: calc(var(--base_unit)*2);
+}
 .search_box{
   height: 90px;
   margin-bottom: calc(var(--base_unit)*2);
