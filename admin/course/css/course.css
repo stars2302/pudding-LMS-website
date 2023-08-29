@@ -337,3 +337,10 @@ input{
   margin-right: 15px;
 }
 
+.level_status {
+  height: 45px;
+  gap: 10px;
+}
+.level_status input {
+  margin-right: 6px;
+}
