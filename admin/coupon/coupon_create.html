@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COUPON - PUDDING</title>
+  <title>쿠폰등록 - PUDDING</title>
   <!-- reset css -->
   <link
   rel="stylesheet"
@@ -57,12 +57,12 @@
 />
 <!-- 스포카 -->
 <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css">
-<link rel="stylesheet" href="/css/jqueryui/jquery-ui.min.css">
-<link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.css">
-<link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.min.css">
-<link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css">
-<link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.min.css">
+<link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.css">
+<link rel="stylesheet" href="../css/jqueryui/jquery-ui.min.css">
+<link rel="stylesheet" href="../css/jqueryui/jquery-ui.structure.css">
+<link rel="stylesheet" href="../css/jqueryui/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.css">
+<link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.min.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="css/coupon_create.css">
 </head>
@@ -87,7 +87,7 @@
           <h2 class="content_stt">프바오</h2>
           <p>admins</p>
         </div>
-        <a href="" class="btn btn-primary  primary_btn logout b_text01">로그아웃</a>
+        <a href="" class="btn btn-primary logout b_text01">로그아웃</a>
       </div>
     </header>
   
@@ -127,7 +127,7 @@
       
       
       <div class="sub_header d-flex justify-content-between align-items-center">
-        <h2 class="main_tt">쿠폰관리</h2>
+        <h2 class="main_tt">쿠폰등록</h2>
       </div><!-- //sub_header -->
 
       <form action="" class="coupon_create_form">
@@ -138,33 +138,87 @@
             <div class="show_thumb border"></div>
             <button type="button" class="btn primary_bg btn-primary thumb_btn">사진등록</button>
           </div>
-          <div class="coupon_info_box d-flex flex-wrap">
-            <div class="field coupon_name">
-              <label for="coupon_name" class="content_tt">쿠폰명</label>
-              <input type="text" name="" id="coupon_name" class="form-control"
-                placeholder="쿠폰명을 입력하세요.">
+          <div class="coupon_info_box d-flex flex-column">
+            <div class="info_top">
+              <div class="field coupon_name input-group">
+                <label for="coupon_name" class="content_tt">쿠폰명</label>
+                <input type="text" name="" id="coupon_name" class="form-control"
+                  placeholder="쿠폰명을 입력하세요.">
+              </div>
             </div>
-            <div class="field coupon_min_price">
-              <label for="coupon_limit" class="content_tt">최소사용금액</label>
-              <input type="number" name="" id="coupon_limit" class="form-control"
-                placeholder="10,000" min="10000" max="1000000" step="1000">
-            </div>
-            <div class="field">
-              <h3 class="content_tt">상태</h3>
-              <div class="input_group d-flex">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="coupon_status" id="coupon_status_1">
-                  <label class="form-check-label" for="coupon_status_1">활성화</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="coupon_status" id="coupon_status_0">
-                  <label class="form-check-label" for="coupon_status_0">비활성화</label>
+
+            <div class="info_bottom d-flex">
+              <div class="field coupon_min_price input-group">
+                <label for="coupon_limit" class="content_tt">최소사용금액</label>
+                <input type="number" name="" id="coupon_limit" class="form-control"
+                  placeholder="10,000" min="10000" max="1000000" step="1000">
+              </div>
+              <div class="field coupon_status">
+                <h3 class="content_tt">상태</h3>
+                <div class="coupon_status_check d-flex">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="coupon_status" id="coupon_status_1" checked>
+                    <label class="form-check-label b_text01" for="coupon_status_1">활성화</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="coupon_status" id="coupon_status_0">
+                    <label class="form-check-label b_text01" for="coupon_status_0">비활성화</label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </fieldset>
 
+        <fieldset class="coupon_option d-flex">
+          <legend class="hidden">쿠폰옵션</legend>
+          <div class="coupon_sale">
+            <h3 class="content_tt">할인</h3>
+            <div class="coupon_sale_check">
+              <div class="form-check d-flex align-items-center">
+                <input class="form-check-input" type="radio" name="coupon_sale" id="coupon_sale_1" checked>
+                <label class="form-check-label b_text01" for="coupon_sale_1">할인가</label>
+                <input type="number" name="" id="coupon_limit" class="form-control input"
+                placeholder="10,000" min="10000" max="1000000" step="1000">
+              </div>
+              <div class="form-check d-flex align-items-center">
+                <input class="form-check-input" type="radio" name="coupon_sale" id="coupon_sale_0">
+                <label class="form-check-label b_text01" for="coupon_sale_0">할인율</label>
+                <input type="number" name="" id="coupon_limit" class="form-control input"
+                placeholder="10" min="5" max="100" step="5">
+              </div>
+            </div>
+          </div>
+            
+          <div class="coupon_limit_date">
+            <h3 class="content_tt">사용기한</h3>
+            <div class="coupon_limit_date_check">
+              <div class="form-check d-flex align-items-center">
+                <input class="form-check-input" type="radio" name="coupon_limit_date" id="coupon_limit_date_1" checked>
+                <label class="form-check-label b_text01" for="coupon_limit_date_1">무제한</label>
+              </div>
+              <div class="form-check d-flex align-items-center">
+                <input class="form-check-input" type="radio" name="coupon_limit_date" id="coupon_limit_date_0">
+                <label class="form-check-label b_text01" for="coupon_limit_date_0">제한</label>
+                <!-- <input type="text" name="" class="form-control input" id="datepicker" placeholder="0000-00-00" /> -->
+                <div class="col period_select2">
+                  <select class="form-select" aria-label="Default select example" disabled>
+                    <option value="1" selected>1개월</option>
+                    <option value="2">2개월</option>
+                    <option value="3">3개월</option>
+                    <option value="6">6개월</option>
+                    <option value="12">12개월</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="submit_btns d-flex justify-content-end">
+          <button class="btn btn-primary">등록 완료</button>
+          <button class="btn btn-dark" type="button">등록 취소</button>
+        </div>
       </form>
     </div><!-- //content_wrap -->
   </div><!-- //wrap -->
@@ -214,6 +268,7 @@
 <script src="node_modules/@tabler/icons/dist/umd/tabler-icons.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="js/common.js"></script>
+<script src="../js/index.js"></script>
+<script src="js/coupon.js"></script>
 </body>
 </html>
