@@ -1,0 +1,109 @@
+.card_container{
+    position: relative;
+    width: 100%;
+    background-color: var(--white_bg);
+    padding: 20px 92px 36px 20px;
+    margin: 30px 0px;
+    box-sizing: border-box;
+
+    
+}
+.border{
+    border: none !important;;
+}
+
+.title_mg{
+    margin-bottom:30px;
+}
+
+.review_user{
+    margin: 0px 25px 0px 25px;
+    font-weight: 700;
+}
+
+.review_name{
+    margin:0;
+    color:var(--dark);
+    font-size: 16px;
+}
+
+.review_content{
+    width: 90%;
+    margin-left:73px;
+    margin-top:var(--base_unit);
+    /* padding-top:30px; */
+    padding: 30px 26px 40px 26px;  
+    background-color:rgba(93,135,255,0.2);
+    box-sizing: border-box
+    
+}
+
+.review_del{
+    position: absolute;
+    top:17px;
+    right:25px;
+    font-size: 30px;
+}
+
+.btn{
+    font-size: 16px; 
+}
+
+.rating svg{
+	color:#ebebeb;
+}
+
+.userImg{
+    width: 45px;
+    height: 45px;
+}
+
+
+/* create */
+.review_c_content{
+    width: 90%;
+    margin-left:73px;
+    margin-top:var(--base_unit);
+    padding: 30px 26px 30px 26px;  
+    background-color:#e8f7ff;
+    box-sizing: border-box;
+    
+}
+
+.reply_content{
+    width: 100%;
+    margin-left: 50px;
+    padding: 10px 15px 0px 10px;
+    box-sizing: border-box; 
+    border: none !important;
+
+    
+}
+
+.reply_content_view{
+    width: 90%;
+    margin-left: 50px;
+    padding: 10px 15px 10px 10px;
+    box-sizing: border-box; 
+    border: none !important;  
+}
+.reply_btn{
+    margin-top: 15px;
+    margin-right:20px;
+}
+.reply_done{
+    margin-right:15px;
+}
+
+textarea{
+    width: 90%;
+    margin-left:15px;
+    padding: 10px;
+    border:2px solid rgba(92,135,255,0.5);
+    background-color: var(--white_bg);
+    border-radius: 5px;
+}
+
+textarea:focus{
+   outline: none;
+}
