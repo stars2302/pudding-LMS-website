@@ -1,9 +1,8 @@
-
 /* notice.css */
 
 /* layout */
 .main_tt {
-  padding-bottom  : 60px;
+  padding-bottom: 60px;
   margin: 0;
 }
 
@@ -13,21 +12,21 @@
   margin-bottom: 109px;
 }
 
-.pagination  {
+.pagination {
   margin-bottom: 61px;
 }
 
 /* 상단바 */
 .notice_top {
-  padding:20px 30px 23px 30px;
+  padding: 20px 30px 23px 30px;
 }
 
 .notice_top_left {
-  gap:30px;
+  gap: 30px;
 }
 
-.notice_top_left .input {  
-  padding: 11.7px 95px 12.6px 16px;  
+.notice_top_left .input {
+  padding: 11.7px 95px 12.6px 16px;
 }
 
 .form-control {
@@ -38,7 +37,8 @@
 
 /* 테이블 정렬 */
 
-.col1, .col3 {
+.col1,
+.col3 {
   width: 10%;
 }
 
@@ -46,7 +46,8 @@
   width: 55%;
 }
 
-.col4, .col5 {
+.col4,
+.col5 {
   width: 12%;
 }
 
@@ -55,7 +56,7 @@
 .notice_body thead tr th:nth-of-type(3),
 .notice_body tbody tr td:nth-of-type(3),
 .notice_body thead tr th:nth-of-type(4),
-.notice_body tbody tr td:nth-of-type(4), 
+.notice_body tbody tr td:nth-of-type(4),
 .notice_body thead tr th:nth-of-type(5),
 .notice_body tbody tr td:nth-of-type(5) {
   text-align: center;
@@ -74,7 +75,7 @@ tbody tr {
 }
 
 .notice_body thead tr th:nth-of-type(2) {
-  padding:0;
+  padding: 0;
 
 }
 
@@ -90,7 +91,7 @@ h3 {
 }
 
 .create_btns {
-  gap:30px;
+  gap: 30px;
 }
 
 
@@ -110,6 +111,7 @@ tbody {
 .notice_create_input {
   width: 100%;
 }
+
 /* notice_view.css */
 
 .notice_view_notice_body tbody td {
