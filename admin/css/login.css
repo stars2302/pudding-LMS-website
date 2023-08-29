@@ -35,13 +35,13 @@ form {
   padding: 30px 0px;
 }
 
-#username::placeholder,
+#userid::placeholder,
 #password::placeholder {
   color: #c2c4c7;
   text-transform: uppercase;
 }
 
-#username,
+#userid,
 #password {
   width: 100%;
   border: none;
