@@ -128,32 +128,32 @@
       <section>
         <h2 class="main_tt">Q&amp;A 내용</h2>
         
-        <div class="shadow_box">
+        <div class="shadow_box qna">
           
           <div class="wrap user">
-            <img src="" alt="사용자 이미지">
+            <img src="image/Gest_Big.png" alt="사용자 이미지">
             <div>사용자</div>
             <div>2023-08-22</div>
           </div>
 
           <div class="qna_content">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione labore esse mollitia similique architecto nihil earum dolore. Quasi, voluptate neque. Ipsum, excepturi. Magnam tempore ullam a adipisci nam, eius officiis.</p>
-            <img src="" alt="dummy image">
+            <img src="image/hq720.jpg" alt="dummy image">
           </div>
 
           <div class="wrap i_con">
               <!-- <img src="image/Vest.svg" alt="Vest"> -->
-              <i class="fa-regular fa-thumbs-up"></i>
+              <a href="" class="icon"> <i class="ti ti-arrow-back-up"></i></a>
               <p class="">25</p>           
               <!-- <img src="image/Return.svg" alt="Return"> -->
-              <div class="sircle"><i class="fa-solid fa-reply"></i></div>
+              <div class="sircle"><a href="" class="icon"><i class="ti ti-thumb-up"></i></a></div>
               <p class="">2</p>
           </div>
 
 
-          <div class="master">
+          <div class="master shadow_box">
             <div class="wrap">
-              <img src="" alt="관리자 이미지">
+              <img src="image/Master_Big.png" alt="관리자 이미지">
               <div>프바오</div>
               <div>2023-08-22</div>
             </div>
@@ -162,16 +162,21 @@
 
 
 
+         <div class="shadow_box wrap review">
+           <img src="image/Master.png" alt="관리자 이미지">
+           <label for="text" class="text"></label>
+           <input type="text" id="text" class="border form-control" value="" placeholder="Content Text">
+           <button class="btn navy_bg">등록 하기</button>
+         </div>
 
         </div>
-        <div class="shadow_box wrap">
-          <img src="" alt="관리자 이미지">
-          <label for="text" class="text">검색</label>
-          <input type="text" id="text" class="border form-control" value="" placeholder="Content Text">
-          <button class="search_button btn navy_bg">검색</button>
+        
+        
+        <div class="list position-relative">
+          <button class="list_button btn navy_bg position-absolute">목록 보기</button>
         </div>
+        
 
-        <button class="search_button btn navy_bg">목록 보기</button>
       </section>
     </div><!-- content_wrap -->
   </div><!-- wrap -->

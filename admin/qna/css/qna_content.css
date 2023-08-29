@@ -1,6 +1,9 @@
 h2{
   padding-bottom: calc(var(--base_unit)*2);
 }
+.shadow_box{
+  background-color: var(--white_bg);
+}
 .user{
   height: 60px;
   line-height: 60px;
@@ -11,7 +14,7 @@ h2{
   padding-left: calc(var(--base_unit)*6);
 }
 .qna_content p{
-  padding: var(--base_unit) 0;
+  padding: var(--base_unit) var(--base_unit) var(--base_unit) 0;
 }
 .i_con{
   padding: var(--base_unit) 0 var(--base_unit) calc(var(--base_unit)*6);
@@ -21,11 +24,36 @@ h2{
   padding-left: 20px;
 }
 .master{
-  width: 100%;
-  height: 60px;
+  background-color: var(--light_blue_bg);
+  margin: 0 calc(var(--base_unit)*3) var(--base_unit) calc(var(--base_unit)*6);
+  padding: var(--base_unit);
 }
 .master .wrap{
   line-height: 60px;
-  padding-left: calc(var(--base_unit)*6);
   gap: var(--base_unit);
+}
+.master p{
+  margin-left: calc(var(--base_unit)*4);
+  margin-right: var(--base_unit);
+}
+
+.review{
+  padding: var(--base_unit) calc(var(--base_unit)*3);
+  gap: var(--base_unit);
+}
+
+.review .btn{
+  width: 150px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.list{
+  margin-bottom: 100px;
+}
+.list_button{
+  margin-top: calc(var(--base_unit)*2);
+  right: 0;
+  width: 150px;
+  white-space: nowrap;
+  font-weight: bold;
 }
