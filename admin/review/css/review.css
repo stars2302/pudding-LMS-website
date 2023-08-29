@@ -4,6 +4,7 @@
     background-color: var(--white_bg);
     padding: 20px 92px 20px 20px;
     margin-top: 30px;
+    box-sizing: border-box;
 
     
 }
@@ -26,11 +27,13 @@
 }
 
 .review_content{
-    width: 92%;
+    width: 90%;
     margin-left:73px;
     margin-top:var(--base_unit);
-   padding: 30px 26px 40px 26px;  
+    /* padding-top:30px; */
+    padding: 30px 26px 40px 26px;  
     background-color:rgba(93,135,255,0.2);
+    box-sizing: border-box
     
 }
 
@@ -53,4 +56,35 @@
 .userImg{
     width: 45px;
     height: 45px;
+}
+
+
+/* create */
+.review_c_content{
+    width: 90%;
+    margin-left:73px;
+    margin-top:var(--base_unit);
+    padding: 30px 26px 30px 26px;  
+    background-color:#e8f7ff;
+    box-sizing: border-box;
+    
+}
+
+.reply_content{
+    width: 100%;
+    margin-left: 50px;
+    padding: 10px 15px 0px 10px;
+    box-sizing: border-box; 
+    border: none !important;
+
+    
+}
+
+.reply_done{
+    margin-right: var(--base_unit);
+}
+
+textarea{
+    width: 90%;
+    margin-left:15px;
 }
