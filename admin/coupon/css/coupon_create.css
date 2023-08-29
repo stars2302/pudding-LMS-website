@@ -100,5 +100,5 @@
 
 .submit_btns {
   margin-top: calc(var(--base_unit)*2);
-  gap: var(--base_unit);
+  gap: calc(var(--base_unit)/2);
 }

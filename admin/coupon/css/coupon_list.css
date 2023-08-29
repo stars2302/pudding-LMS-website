@@ -3,10 +3,10 @@
 }
 
 .coupon_keyword_search {
-  gap: var(--base_unit);
+  gap: calc(var(--base_unit)/2);
   flex: 1;
   justify-content: end;
-  margin-right: var(--base_unit);
+  margin-right: calc(var(--base_unit)/2);
 }
 .coupon_keyword_search .input-group {
   width: 52%;
