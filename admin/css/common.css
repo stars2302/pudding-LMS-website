@@ -303,6 +303,7 @@ body {
 
 .red_bell_wrap {
   position: relative;
+  cursor: pointer;
 }
 
 .red_bell {
