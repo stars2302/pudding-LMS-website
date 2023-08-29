@@ -1,3 +1,6 @@
+.qna{
+  padding: calc(var(--base_unit)*2);
+}
 h2{
   padding-bottom: calc(var(--base_unit)*2);
 }
@@ -10,6 +13,13 @@ h2{
   padding-left: calc(var(--base_unit)*3);
   gap: var(--base_unit);
 }
+.you{
+  font-weight: bold;
+}
+.day{
+  font-size: 16px;
+  color: grey;
+}
 .qna_content{
   padding-left: calc(var(--base_unit)*6);
 }
@@ -18,10 +28,11 @@ h2{
 }
 .i_con{
   padding: var(--base_unit) 0 var(--base_unit) calc(var(--base_unit)*6);
+  line-height: var(--base_unit);
   gap: 10px;
 }
 .i_con .sircle{
-  padding-left: 20px;
+  padding-left: 20px;  
 }
 .master{
   background-color: var(--light_blue_bg);
@@ -32,8 +43,11 @@ h2{
   line-height: 60px;
   gap: var(--base_unit);
 }
+.ti{
+  font-size: 30px;
+}
 .master p{
-  margin-left: calc(var(--base_unit)*4);
+  margin-left: calc(var(--base_unit)*3);
   margin-right: var(--base_unit);
 }
 
