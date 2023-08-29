@@ -295,6 +295,12 @@ body {
   color: var(--white_bg);
 }
 
+.page-item.active .page-link {
+  background-color: var(--point_primary) !important;
+  color: var(--white_bg) !important;
+  border-color: var(--bs-border-color) !important;
+}
+
 .red_bell_wrap {
   position: relative;
 }
