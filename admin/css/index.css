@@ -1,6 +1,9 @@
 .tt_mb{
   margin-bottom: calc(var(--base_unit)* 2);
 }
+ol, ul {
+  padding-left: 0;
+}
 .row>* {
   padding-right: 0;
   padding-left: calc(var(--bs-gutter-x) * 1);
@@ -61,14 +64,25 @@
   margin-bottom: 0;
  }
 .total_values h2 {
-  padding-left: 0;
+  padding-left: 30px;
+  text-align: left;
  }
 .total_values p{
   font-size: 20px;
   line-height: 100px;
+  padding-bottom: 30px;
  }
  .total_values .content_box .col-md-6:first-child p{
-  border-right: 1px solid #747880;
+  position: relative;
+ }
+ .total_values .content_box .col-md-6:first-child p:before {
+  content:'';
+  position: absolute;
+  top: 15px;
+  bottom: 50px;
+  right: 0;
+  width: 2px;
+  background-color: #d6d6d6;
  }
 .total_values span{
   font-size: 32px;

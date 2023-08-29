@@ -1,12 +1,16 @@
 .primary_btn {
   background-color: var(--point_primary);
 }
+p{
+  margin-bottom: 0;
+}
 .btn {
-  padding-left: 25px;
-  padding-right: 25px;
   height: 45px;
   white-space: nowrap;
   box-sizing: border-box;
+}
+.btn_g{
+  margin-right: 15px;
 }
 .content_wrap {
   background-color: #F8F8F8;
@@ -17,7 +21,7 @@
 .link_btn {
   display: flex;
   justify-content: flex-end;
-  gap: var(--base_unit);
+  gap: calc(var(--base_unit)*.5);
   margin-bottom: 25px;
 }
 .row {
@@ -29,18 +33,27 @@ input[type=text], select, .btn {
   font-size: 16px;
 } 
 .level_price {
-  gap: var(--base_unit);
+  /* gap: var(--base_unit); */
+  height: 45px;
+  display: flex;
+  align-items: center;
+
 }
 .level_price label {
   font-size:20px;
   margin: 0 12px 0 3px;
+  line-height: 45px;
+  display: inline-block;
+  vertical-align: top;
 }
 .level_price h3 {
   margin-right: calc(var(--base_unit) * 0.5);
   line-height: 45px;
   font-weight: bold;
- 
 }
+.price_check {
+  margin-left: 10px;
+} 
 .course_list img{   
   width: 226px;
   height: 162px;
@@ -52,9 +65,6 @@ input[type=text], select, .btn {
   background: #fff;
   border-radius: 12px;
   padding: 27px;
-}
-.inline{
-  display: inline;
 }
 
 .course_list_title {
@@ -97,14 +107,16 @@ input[type=text], select, .btn {
 }
 .status_box .price{
   position: absolute;
-  right: 200px;
+  left: 100px;
 } 
 .price_btn_wrap{
   flex-wrap: wrap;
 }
 .search_bar{
   flex: 1;
-  gap: var(--base_unit);
+}
+.search_bar input{
+  margin-right: 15px;
 }
 
 .duration *{
@@ -127,7 +139,7 @@ input[type=text], select, .btn {
 }
 
 a.btn{
-  line-height: 30px;
+  line-height: 35px;
 }
 /*카테고리*/
 
@@ -141,9 +153,9 @@ a.btn{
 }
 .category_add_btns{
   display: flex;
-  gap:var(--base_unit);
+  gap:calc(var(--base_unit)* .5);
 }
-.category h3.content_tt{
+.category_add h3.content_tt{
   margin-bottom: var(--base_unit);
 }
 .category_list {
@@ -193,7 +205,7 @@ ol, ul {
   height: 274px;
   margin-right: var(--base_unit);
 }
-.course_view .category {
+.course_view .view_category {
   position: absolute;
 
   bottom: 100%;
@@ -208,8 +220,16 @@ ol, ul {
   bottom: 0;
   right: 10px;
 }
+.course_view .badge{
+  font-size: 20px;
+  margin-left: 10px;
+}
 
-
+.course_view  .course_list_title {
+  display: flex;
+  align-items: center;
+  
+}
 
 
 
