@@ -20,11 +20,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- materialize css -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    /> -->
     <!--bootstrap css -->
     <link
       rel="stylesheet"
@@ -37,15 +32,6 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
-    />
-
-    <!-- fontawesome css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
     <!-- jquery ui css -->
     <link
@@ -61,12 +47,8 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.min.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.min.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.min.css" />
+
+    <link rel="stylesheet" href="css/jqueryui/jquery-ui.theme.min.css" />
     <link rel="stylesheet" href="css/common.css" />
     <title>pudding common file</title>
   </head>
@@ -104,9 +86,9 @@
     <div class="green">green</div>
 
     <h2 class="main_stt primary style_pd">Buttons</h2>
-    <button class="btn navy_bg white navy_btn">Button</button>
-    <button class="btn primary_bg btn-primary">Button</button>
-    <button class="btn red_bg white red_btn">Button</button>
+    <button class="btn btn-dark">Button</button>
+    <button class="btn btn-primary">Button</button>
+    <button class="btn btn-danger">Button</button>
 
     <div class="form-check form-switch">
       <input
@@ -119,8 +101,7 @@
         >토글라벨</label
       >
     </div>
-    <i class="fa-regular fa-pen-to-square pen_icon"></i>
-    <i class="fa-regular fa-trash-can bin_icon"></i>
+
     <i class="ti ti-edit pen_icon"></i>
     <i class="ti ti-trash bin_icon"></i>
 
@@ -151,252 +132,6 @@
       <a href="" class="icon"><i class="ti ti-coins icon_coin"></i></a>
       <a href="" class="icon"><i class="ti ti-zoom-question"></i></a>
     </div>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-bell-filled"
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z"
-        stroke-width="0"
-        fill="currentColor"
-      ></path>
-      <path
-        d="M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z"
-        stroke-width="0"
-        fill="currentColor"
-      ></path>
-    </svg>
-    <div class="red_bell_wrap">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="icon icon-tabler icon-tabler-bell-filled"
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        stroke-width="2"
-        stroke="currentColor"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path
-          d="M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z"
-          stroke-width="0"
-          fill="currentColor"
-        ></path>
-        <path
-          d="M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z"
-          stroke-width="0"
-          fill="currentColor"
-        ></path>
-      </svg>
-      <div class="red_bell"></div>
-    </div>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-coins"
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"
-      ></path>
-      <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
-      <path
-        d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"
-      ></path>
-      <path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
-      <path d="M3 11c0 .888 .772 1.45 2 2"></path>
-    </svg>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-search"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-      <path d="M21 21l-6 -6"></path>
-    </svg>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-arrow-back-up"
-      width="24"
-      height="24"
-      viewBox="0 0 28 28"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M9 14l-4 -4l4 -4"></path>
-      <path d="M5 10h11a4 4 0 1 1 0 8h-1"></path>
-    </svg>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-thumb-up"
-      width="26"
-      height="26"
-      viewBox="0 0 28 28"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3"
-      ></path>
-    </svg>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-chalkboard"
-      width="24"
-      height="24"
-      viewBox="0 0 28 28"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1"
-      ></path>
-      <path
-        d="M11 16m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
-      ></path>
-    </svg>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-ticket"
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M15 5l0 2"></path>
-      <path d="M15 11l0 2"></path>
-      <path d="M15 17l0 2"></path>
-      <path
-        d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2"
-      ></path>
-    </svg>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-brand-hipchat"
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M17.802 17.292s.077 -.055 .2 -.149c1.843 -1.425 3 -3.49 3 -5.789c0 -4.286 -4.03 -7.764 -9 -7.764c-4.97 0 -9 3.478 -9 7.764c0 4.288 4.03 7.646 9 7.646c.424 0 1.12 -.028 2.088 -.084c1.262 .82 3.104 1.493 4.716 1.493c.499 0 .734 -.41 .414 -.828c-.486 -.596 -1.156 -1.551 -1.416 -2.29z"
-      ></path>
-      <path d="M7.5 13.5c2.5 2.5 6.5 2.5 9 0"></path>
-    </svg>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-pinned-filled"
-      width="26"
-      height="28"
-      viewBox="0 0 28 28"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M16 3a1 1 0 0 1 .117 1.993l-.117 .007v4.764l1.894 3.789a1 1 0 0 1 .1 .331l.006 .116v2a1 1 0 0 1 -.883 .993l-.117 .007h-4v4a1 1 0 0 1 -1.993 .117l-.007 -.117v-4h-4a1 1 0 0 1 -.993 -.883l-.007 -.117v-2a1 1 0 0 1 .06 -.34l.046 -.107l1.894 -3.791v-4.762a1 1 0 0 1 -.117 -1.993l.117 -.007h8z"
-        stroke-width="0"
-        fill="currentColor"
-      ></path>
-    </svg>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-coins"
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z"
-      ></path>
-      <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4"></path>
-      <path
-        d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"
-      ></path>
-      <path d="M3 6v10c0 .888 .772 1.45 2 2"></path>
-      <path d="M3 11c0 .888 .772 1.45 2 2"></path>
-    </svg>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-zoom-question"
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-      <path d="M21 21l-6 -6"></path>
-      <path d="M10 13l0 .01"></path>
-      <path d="M10 10a1.5 1.5 0 1 0 -1.14 -2.474"></path>
-    </svg>
 
     <h2 class="main_stt primary style_pd">Check & Radio</h2>
     <!-- radio -->
@@ -450,32 +185,27 @@
 
     <!-- Datepicker -->
     <h2 class="demoHeaders main_stt primary style_pd">Datepicker</h2>
-    <input type="text" name="" id="datepicker">
+    <input type="text" name="" id="datepicker" />
 
     <h2 class="main_stt primary style_pd">Pagination</h2>
-    <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+    <nav
+      aria-label="Page navigation example"
+      class="d-flex justify-content-center pager"
+    >
       <ul class="pagination">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
         <li class="page-item disabled">
           <a class="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&lsaquo;</span>
           </a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
         <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">
             <span aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
       </ul>
@@ -489,46 +219,6 @@
       <option>Fast</option>
       <option>Faster</option>
     </select>
-
-    <h2 class="main_stt primary style_pd">Dropdown</h2>
-    <div class="custom-dropdown">
-      <div class="selected-option">Select an option</div>
-      <ul class="options-list">
-        <li data-value="option1">
-          <span class="option_name">Option 1 </span>
-          <span>
-            <span class="modify-button"
-              ><i class="fa-regular fa-pen-to-square pen_icon"></i
-            ></span>
-            <span class="delete-button"
-              ><i class="fa-regular fa-trash-can bin_icon"></i
-            ></span>
-          </span>
-        </li>
-        <li data-value="option1">
-          <span class="option_name">Option 2 </span>
-          <span>
-            <span class="modify-button"
-              ><i class="fa-regular fa-pen-to-square pen_icon"></i
-            ></span>
-            <span class="delete-button"
-              ><i class="fa-regular fa-trash-can bin_icon"></i
-            ></span>
-          </span>
-        </li>
-        <li data-value="option1">
-          <span class="option_name">Option 2 </span>
-          <span>
-            <span class="modify-button"
-              ><i class="fa-regular fa-pen-to-square pen_icon"></i
-            ></span>
-            <span class="delete-button"
-              ><i class="fa-regular fa-trash-can bin_icon"></i
-            ></span>
-          </span>
-        </li>
-      </ul>
-    </div>
 
     <h2 class="main_stt primary style_pd">Tooltip</h2>
     <button
@@ -599,21 +289,8 @@
     ></script>
     <!-- bootstrap js -->
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
-      integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
       integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <!-- fontawesome js  -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
-      integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
@@ -622,12 +299,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
       referrerpolicy="no-referrer"
     ></script>
-    <!-- materialize css -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
-    <!-- tabler-icons js -->
-    <script src="node_modules/@tabler/icons/dist/umd/tabler-icons.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/common.js"></script>
+
+    <script src="/admin/js/index.js"></script>
   </body>
 </html>
