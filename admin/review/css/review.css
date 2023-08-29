@@ -17,13 +17,14 @@
 }
 
 .review_user{
-    margin: 0px 50px 0px 27px;
+    margin: 0px 25px 0px 25px;
     font-weight: 700;
 }
 
 .review_name{
     margin:0;
     color:var(--dark);
+    font-size: 16px;
 }
 
 .review_content{
@@ -41,12 +42,11 @@
     position: absolute;
     top:17px;
     right:25px;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .btn{
-    font-size: 16px;
-    margin-top:15px;
+    font-size: 16px; 
 }
 
 .rating svg{
@@ -80,11 +80,30 @@
     
 }
 
+.reply_content_view{
+    width: 90%;
+    margin-left: 50px;
+    padding: 10px 15px 10px 10px;
+    box-sizing: border-box; 
+    border: none !important;  
+}
+.reply_btn{
+    margin-top: 15px;
+    margin-right:20px;
+}
 .reply_done{
-    margin-right: var(--base_unit);
+    margin-right:15px;
 }
 
 textarea{
     width: 90%;
     margin-left:15px;
+    padding: 10px;
+    border:2px solid rgba(92,135,255,0.5);
+    background-color: var(--white_bg);
+    border-radius: 5px;
+}
+
+textarea:focus{
+   outline: none;
 }
