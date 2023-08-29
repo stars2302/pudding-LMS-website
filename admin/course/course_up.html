@@ -68,13 +68,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.min.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.structure.min.css" />
-    <link rel="stylesheet" href="/css/jqueryui/jquery-ui.theme.css" />
-    <link rel="stylesheet" href="/admin/css/jqueryui/jquery-ui.theme.min.css" />
-
     <link rel="stylesheet" href="/admin/css/common.css" />
     <link rel="stylesheet" href="/admin/course/css/course.css" />
   </head>
@@ -174,37 +167,36 @@
         <!-- top_bar -->
 
         <section>
-          <div class="mb-4">
+          <div class="course_title">
             <h1>강의 등록</h1>
           </div>
           <form action="">
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label"
-                >카테고리</label
-              >
-              <div class="categorys col d-flex justify-content-between gap-3">
-                <div class="category">
+            <div class="categorywrap">
+              <label for="formGroupExampleInput" class="form-label"><h5>카테고리</h5></label>
+              <div class="categorys row">
+                <div class="category col">
                   <select class="form-select" aria-label="Default select example">
-                    <option selected>대분류</option>
-                    <option value="1" selected disabled>대분류1</option>
+                    <option disabled selected>대분류 선택</option>
+                    <option value="1">대분류1</option>
                   </select>
                 </div>
-                <div class="category">
+                <div class="category col">
                   <select class="form-select" aria-label="Default select example">
-                    <option selected>중분류</option>
-                    <option value="1" selected disabled>중분류1</option>
+                    <option disabled selected>중분류 선택</option>
+                    <option value="1">중분류1</option>
                   </select>
                 </div>
-                <div class="category">
+                <div class="category col">
                   <select class="form-select" aria-label="Default select example">
-                    <option selected>소분류</option>
-                    <option value="1" selected disabled>소분류1</option>
+                    <option disabled selected>소분류 선택</option>
+                    <option value="1">소분류1</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div class="course_name mb-3">
-              <label for="formGroupExampleInput" class="form-label">강의명</label>
+
+            <div class="course_name">
+              <label for="formGroupExampleInput" class="form-label"><h5>강의명</h5></label>
               <input
                 type="text"
                 class="form-control"
@@ -212,17 +204,17 @@
                 placeholder="강의명을 입력하세요."
               />
             </div>
-            <div class="section3 row">
-              <div class="col mb-6">
-                <label for="formGroupExampleInput2" class="form-label">강의가격</label>
-                <div class="price_select d-flex gap-3">
-                  <div class="price_menu">
-                    <select class="form-select" aria-label="Default select example">
-                      <option value="1" selected>유료</option>
-                      <option value="1">무료</option>
+
+            <div class="section3 d-flex gap-5">
+                <div class="row price_select">
+                  <label for="formGroupExampleInput2" class="form-label"><h5>강의가격</h5></label>
+                  <div class="col">
+                    <select class="form-select" id="price_menu" aria-label="Default select example">
+                      <option value="유료" selected>유료</option>
+                      <option value="무료">무료</option>
                     </select>
                   </div>
-                  <div class="price">
+                  <div class="col price">
                     <input
                       type="number"
                       class="form-control"
@@ -233,10 +225,9 @@
                     />
                   </div>
                 </div>
-              </div>
-              <div class="col mb-4">
-                <h6>난이도</h6>
-                <div class="form-check form-check-inline">
+              <div class="row level_select">
+                <label for="formGroupExampleInput2" class="form-label"><h5>난이도</h5></label>
+                <div class="col-md-2">
                   <input
                     class="form-check-input"
                     type="radio"
@@ -244,11 +235,10 @@
                     id="inlineRadio1"
                     value="option1"
                   />
-                  <label class="form-check-label" for="inlineRadio1"
-                    >초급</label
+                  <label class="form-check-label" for="inlineRadio1">초급</label
                   >
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="col-md-2">
                   <input
                     class="form-check-input"
                     type="radio"
@@ -256,11 +246,10 @@
                     id="inlineRadio2"
                     value="option2"
                   />
-                  <label class="form-check-label" for="inlineRadio2"
-                    >중급</label
+                  <label class="form-check-label" for="inlineRadio2">중급</label
                   >
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="col-md-2">
                   <input
                     class="form-check-input"
                     type="radio"
@@ -268,37 +257,34 @@
                     id="inlineRadio3"
                     value="option3"
                   />
-                  <label class="form-check-label" for="inlineRadio3"
-                    >고급</label
+                  <label class="form-check-label" for="inlineRadio3">고급</label
                   >
                 </div>
               </div>
             </div>
-            <div class="row g-3">
-              <div class="col mb-6">
-                <label for="formGroupExampleInput2" class="form-label"
-                  >수강기간</label
-                >
-                <div class="period d-flex gap-3">
-                  <div class="period_select1">
-                    <select class="form-select" aria-label="Default select example">
-                      <option value="1" selected>제한</option>
-                      <option value="1">무제한</option>
-                    </select>
-                  </div>
-                  <div class="period_select2">
-                    <select class="form-select" aria-label="Default select example">
-                      <option value="1" selected>3개월</option>
-                      <option value="1">6개월</option>
-                      <option value="1">9개월</option>
-                      <option value="1">12개월</option>
-                    </select>
-                  </div>
+
+            <div class="periodwrap d-flex gap-5">
+              <div class="row period mb-6">
+                <label for="formGroupExampleInput2" class="form-label"><h5>수강기간</h5></label>
+                <div class="col period_select1">
+                  <select class="form-select" id="limit" aria-label="Default select example">
+                    <option value="제한" selected>제한</option>
+                    <option value="무제한">무제한</option>
+                  </select>
+                </div>
+                <div class="col period_select2">
+                  <select class="form-select month" aria-label="Default select example">
+                    <option selected disabled>기간선택</option>
+                    <option>3개월</option>
+                    <option>6개월</option>
+                    <option>9개월</option>
+                    <option>12개월</option>
+                  </select>
                 </div>
               </div>
-              <div class="col mb-4">
-                <h6>난이도</h6>
-                <div class="form-check form-check-inline">
+              <div class="row act">
+                <label class="form-check-label" for="inlineRadio1"><h5>상태</h5></label>
+                <div class="col-md-2">
                   <input
                     class="form-check-input"
                     type="radio"
@@ -306,11 +292,9 @@
                     id="inlineRadio1"
                     value="option1"
                   />
-                  <label class="form-check-label" for="inlineRadio1"
-                    >활성</label
-                  >
+                  <label class="form-check-label" for="inlineRadio1" >활성</label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="col-md-2">
                   <input
                     class="form-check-input"
                     type="radio"
@@ -318,62 +302,75 @@
                     id="inlineRadio2"
                     value="option2"
                   />
-                  <label class="form-check-label" for="inlineRadio2"
-                    >비활성</label
-                  >
+                  <label class="form-check-label" for="inlineRadio2">비활성</label>
                 </div>
               </div>
-              <div class="mb-3">
-                <label class="form-check-label mb-3" for="inlineRadio2"
-                  >상세내용</label
-                >
-                <div id="product_detail"></div>
-              </div>
-              <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label"
-                  >첨부파일</label
-                >
-                <input
-                  type="file"
-                  class="form-control"
-                  id="formGroupExampleInput"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label"
-                  >추가이미지 업로드</label
-                >
-                <div id="drop" class="box mb-3">
-                  <span>이미지를 드래그해서 올려주세요</span>
-                  <div id="thumbnails" class="d-flex justify-content-start">
-                  </div>
-              </div>
-              <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label"
-                  >강의영상 업로드</label
-                >
-                <div class="d-flex justify-content-between">
-                  <div class="option_name">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="formGroupExampleInput2"
-                    />
-                  </div>
-                  <div class="option_url d-flex">
-                    <input
-                      type="url"
-                      class="form-control"
-                      id="formGroupExampleInput2"
-                    />
-                    <i class="fa-regular fa-trash-can bin_icon"></i>
-                  </div>
-                </div>
+            </div>  
+
+            <div class="content_detail">
+              <label class="form-check-label mb-3" for="inlineRadio2"><h5>상세내용</h5></label>
+              <div id="product_detail"></div>
+            </div>
+
+            <div class="file_input mt-5">
+              <label for="formGroupExampleInput" class="form-label"><h5>첨부파일</h5></label>
+              <input
+                type="file"
+                class="form-control"
+                id="formGroupExampleInput"
+              />
+            </div>
+
+            <div class="mt-5">
+              <label for="formGroupExampleInput" class="form-label"><h5>추가이미지 업로드</h5></label>
+              <div id="drop" class="box mb-3">
+                <span>이미지를 드래그해서 올려주세요</span>
+                <div id="thumbnails" class="d-flex justify-content-start"></div>
               </div>
             </div>
-            <div class="button d-flex justify-content-center mb-4">
-              <button class="btn btn-primary">등록완료</button>
-              <button class="btn btn-primary">등록취소</button>
+
+            <div class="mt-5">
+              <label for="formGroupExampleInput" class="form-label"><h5>강의영상 업로드</h5></label>
+              <div class="you_upload">
+                <div class="youtube">
+                  <div class="row justify-content-between mt-3">
+                    <div class="col-4 youtube_name">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput2"
+                        placeholder="강의명을 입력하세요"
+                      />
+                    </div>
+                    <div class="col-7 youtube_url">
+                      <input
+                        type="url"
+                        class="form-control"
+                        id="formGroupExampleInput2"
+                        placeholder="강의URL을 넣어주세요"
+                      />
+                    </div>
+                    <div class="col-1 trash_icon">
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="add_listBtn mt-5">
+                <a href="">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M3.99951 15.9977C3.99951 17.5736 4.3099 19.134 4.91296 20.5899C5.51601 22.0458 6.39993 23.3687 7.51423 24.483C8.62853 25.5973 9.9514 26.4812 11.4073 27.0843C12.8632 27.6873 14.4236 27.9977 15.9995 27.9977C17.5754 27.9977 19.1358 27.6873 20.5917 27.0843C22.0476 26.4812 23.3705 25.5973 24.4848 24.483C25.5991 23.3687 26.483 22.0458 27.0861 20.5899C27.6891 19.134 27.9995 17.5736 27.9995 15.9977C27.9995 14.4218 27.6891 12.8614 27.0861 11.4055C26.483 9.9496 25.5991 8.62673 24.4848 7.51243C23.3705 6.39813 22.0476 5.51421 20.5917 4.91116C19.1358 4.3081 17.5754 3.99771 15.9995 3.99771C14.4236 3.99771 12.8632 4.3081 11.4073 4.91116C9.9514 5.51421 8.62853 6.39813 7.51423 7.51243C6.39993 8.62673 5.51601 9.9496 4.91296 11.4055C4.3099 12.8614 3.99951 14.4218 3.99951 15.9977Z" stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.9995 15.9998H19.9995" stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.9995 12.0002V20.0002" stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  리스트 추가
+                </a>
+              </div>
+            </div>
+
+            <div class="button d-flex justify-content-center align-items-center mt-5 mb-5">
+              <button class="btn_complete btn btn-primary">등록완료</button>
+              <button class="btn btn-dark">등록취소</button>
             </div>
           </form>
         </section>
@@ -432,9 +429,10 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
     <!-- tabler-icons js -->
     <script src="node_modules/@tabler/icons/dist/umd/tabler-icons.min.js"></script>
-    <script src="/admin/js/jquery-ui.js"></script>
-    <script src="/admin/js/jquery-ui.min.js"></script>
     <script src="/admin/js/index.js"></script>
     <script src="js/course.js"></script>
+   
+
+    
   </body>
 </html>

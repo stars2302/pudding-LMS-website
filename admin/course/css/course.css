@@ -236,11 +236,29 @@ ol, ul {
 
 /* course_up */
 
+.course_title{
+  margin: 0 0 calc(var(--base_unit) * 2);
+}
+
+.categorywrap,
+.course_name,
+.section3,
+.periodwrap,
+.content_detail,
+.file_input{
+  margin-top: calc(var(--base_unit) * 1.5);
+}
+
 h1 {
   font-family: "jua";
 }
 
-select,input{
+h5 {
+  font-weight: 600;
+}
+
+select,
+input{
   height: 45px;
 }
 
@@ -264,11 +282,13 @@ select,input{
   top: 50%;
   transform: translate(-50%, -50%);
 }
-/* 
+
 .box.drag-enter {
   background: #3498db;
   color: #fff;
 }
+
+/* 
 #thumbnails {
   width: 100%;
   position: relative;
@@ -285,18 +305,35 @@ select,input{
   display: block;
 } */
 
-.category{
-  width:30%;
+.price_select,
+.level_select,
+.period,
+.act {
+  width: 50%;
+}
+
+.trash_icon i {
+  font-size: 35px;
+  align-items: center;
 }
 
 
-.section3,
-.price_select,
-.price_menu,
-.price,
-.period,
-.period_select1,
-.period_select2{
-  width:100%;
+
+.button .cancel {
+  background-color: var(--point_navy_hover);
+}
+
+.add_listBtn {
+  text-align: center;
+}
+.add_list a {
+  color: #6f6f6f;
+  padding-top: 2px;
+}
+
+
+
+.btn_complete{
+  margin-right: 15px;
 }
 
