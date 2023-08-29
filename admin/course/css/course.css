@@ -87,16 +87,17 @@ input[type=text], select, .btn {
   flex-direction: column;
   justify-content: space-between;
 }
-.course_list .price{
+/* .course_list .price{
   vertical-align: bottom;
   margin-right: 15px;
-}
-/* .status_box{
+} */
+.status_box{
   position: relative;
-}*/
+  width: 100%;
+}
 .status_box .price{
   position: absolute;
-  left: 10px;
+  right: 200px;
 } 
 .price_btn_wrap{
   flex-wrap: wrap;
@@ -152,22 +153,28 @@ a.btn{
   margin-bottom: calc(var(--base_unit)* 3);
   text-align: center;
 }
-
-.category_list table tr{
-  width: 100%;
-}
 .category_list table tr *{
   padding: 5px;
 }
-.category_list table th{
-  font-size: 24px;
- font-weight: bold;
+.category_list table thead * {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.category_list table tbody *{ 
+  padding: 5px;
+  font-size: 16px;
 }
 .category_list table td{
   width: 25%;
-  font-size: 20px;
-
 }
+.category_list table i{
+  font-size: 22px;
+}
+.modal-body label{
+  margin-bottom: 10px;
+}
+
 
 /*강의보기*/
 
@@ -188,7 +195,7 @@ ol, ul {
 }
 .course_view .category {
   position: absolute;
-  /* display: inline; */
+
   bottom: 100%;
   right: 0;
 }
