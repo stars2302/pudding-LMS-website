@@ -1,5 +1,18 @@
 /* course_up */
 
+.course_title{
+  margin: 0 0 calc(var(--base_unit) * 2);
+}
+
+.categorywrap,
+.course_name,
+.section3,
+.periodwrap,
+.content_detail,
+.file_input{
+  margin-top: calc(var(--base_unit) * 1.5);
+}
+
 h1 {
   font-family: "jua";
 }
@@ -8,10 +21,10 @@ h5 {
   font-weight: 600;
 }
 
-/* select,
-input {
+select,
+input{
   height: 45px;
-} */
+}
 
 .box {
   width: 100%;
@@ -33,11 +46,13 @@ input {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-/* 
+
 .box.drag-enter {
   background: #3498db;
   color: #fff;
 }
+
+/* 
 #thumbnails {
   width: 100%;
   position: relative;
@@ -61,24 +76,28 @@ input {
   width: 50%;
 }
 
-.youtube_name,
-.youtube_url {
-  width: 20%;
-}
-
 .trash_icon i {
   font-size: 35px;
   align-items: center;
 }
 
+
+
 .button .cancel {
   background-color: var(--point_navy_hover);
 }
 
-.add_list {
+.add_listBtn {
   text-align: center;
 }
 .add_list a {
   color: #6f6f6f;
   padding-top: 2px;
 }
+
+
+
+.btn_complete{
+  margin-right: 15px;
+}
+
