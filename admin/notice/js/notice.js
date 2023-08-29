@@ -1,10 +1,19 @@
 /* notice.js */
 
-$('.bin_icon').click(function(){
+$('.ti-trash, .btn_delete').click(function(){
   confirm('정말 삭제하시겠습니까?');
   if(result) {
     //yes
-     location.replace('index.php');
+     location.replace('notice_list.html');
+ } else {
+     history.back();
+ }
+});
+$('.btn_modify').click(function(){
+  confirm('수정하시겠습니까?');
+  if(result) {
+    //yes
+     location.replace('notice_list.html');
  } else {
      history.back();
  }

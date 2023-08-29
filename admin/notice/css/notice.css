@@ -16,6 +16,18 @@
   margin-bottom: 61px;
 }
 
+
+.btn {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;  
+}
+
+.no_mp {
+  padding: 0px !important;
+  margin: 0px !important;
+  vertical-align: middle;
+}
 /* 상단바 */
 .notice_top {
   padding: 20px 30px 23px 30px;
@@ -27,6 +39,12 @@
 
 .notice_top_left .input {
   padding: 11.7px 95px 12.6px 16px;
+  color: var(--font-gray, #747880);
+font-family: Spoqa Han Sans Neo;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 .form-control {
@@ -62,16 +80,40 @@
   text-align: center;
 }
 
+.thead_tt {
+  color: var(--text-dark, #1E2226);
+font-family: Spoqa Han Sans Neo;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%; /* 24px */
+text-transform: uppercase;
+}
+
+.notice_body thead tr th {
+  padding: 20px;
+} 
+
 tbody tr {
   border: 0px solid;
 }
 
-.notice_body tbody tr:first-child td {
-  padding: 25px 0 33px 0;
+
+td, tfoot{
+  border-color:none !important;
+  border-style: none !important;
+  border-width: medium !important;
 }
 
-.notice_body tbody tr td {
-  padding: 33px 0;
+
+.notice_body tbody tr td a {
+  color: var(--text-dark, #1E2226);
+font-family: Spoqa Han Sans Neo;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 100%; /* 16px */
+text-transform: uppercase;
 }
 
 .notice_body thead tr th:nth-of-type(2) {
@@ -99,6 +141,7 @@ tbody {
   border-style: none;
 }
 
+
 /* notice_view.css */
 
 .main_stt {
@@ -110,6 +153,7 @@ tbody {
 
 .notice_create_input {
   width: 100%;
+  height: 45px;
 }
 
 /* notice_view.css */
@@ -117,3 +161,30 @@ tbody {
 .notice_view_notice_body tbody td {
   padding: 36.73px 114px 38px 63px;
 }
+.notice_view_btns {
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.notice_view_notice_body {
+  margin-top: 30px;
+}
+
+.notice_view_notice_body .content {
+  padding: 36.73px 63px;
+}
+
+.notice_info {
+  padding: 31.61px 53px;
+  border-bottom : 1px solid rgba(116, 120, 128, .2);
+  margin: 0;
+
+}
+
+.notice_info span:nth-child(odd) {
+  padding-right:  30px;
+}
+.notice_info span:nth-child(even) {
+  padding-right:  48px;
+}
+
