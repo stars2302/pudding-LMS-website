@@ -43,4 +43,53 @@ $(".delete-button").click(function (event) {
   $(this).parent().remove();
 });
 
+$( "#selectmenu" ).selectmenu();
+
+
+
+//chart js
+const ctx = document.getElementById('monthly_chart');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['4월', '5월', '6월', '7월', '8월'],
+    datasets: [{
+      data: [12, 19, 3, 5, 2],
+      borderWidth: 1
+    }]
+  },
+  options: {
+      maintainAspectRatio :false,
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
+const pie = document.getElementById('category_chart');
+new Chart(pie, {
+  type: 'pie',
+  data: {
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: false,
+      }
+    }
+  }
+});
 $("#selectmenu").selectmenu();
