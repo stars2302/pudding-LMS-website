@@ -32,6 +32,24 @@
   margin-right: 5px;
 }
 
+.coupon_status_search button {
+  position: relative;
+}
+
+.coupon_status_search button:hover {
+  color: var(--point_primary);
+}
+
+.coupon_status_search button:hover:after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  height: 1.5px;
+  left: 2px;
+  right: 2px;
+  background-color: var(--point_primary);
+}
+
 .coupons .coupon {
   width: 49%;
   position: relative;
@@ -51,6 +69,11 @@
 .coupons .coupon h3 {
   font-weight: bold;
   margin: 15px 0;
+}
+
+.coupons .coupon h3 a:hover {
+  color: var(--point_primary);
+  border-bottom: 1px solid var(--point_primary);
 }
 
 .coupons .coupon p {
