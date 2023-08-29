@@ -72,27 +72,27 @@ body {
 
 .main_tt {
   font-family: "Jua", sans-serif;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 500;
 }
 
 .main_stt {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.content_tt {
   font-size: 28px;
   font-weight: bold;
 }
 
-.content_stt {
+.content_tt {
   font-size: 24px;
+  font-weight: bold;
+}
+
+.content_stt {
+  font-size: 20x;
   font-style: 400;
 }
 
 .b_text01 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.4;
 }
@@ -190,7 +190,8 @@ body {
 
 /* BUTTONS */
 .btn {
-  font-size: 20px;
+  font-size: 16px;
+  height: 45px;
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -367,12 +368,13 @@ body {
   box-shadow: 0px 0px 0px 4px rgba(250, 137, 107, 0.3);
 }
 
-.input-group {
+/* .input-group input {
   height: 45px;
-}
+} */
 
 .input-group input {
-  font-size: 20px;
+  height: 45px;
+  font-size: 16px;
 }
 
 .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
