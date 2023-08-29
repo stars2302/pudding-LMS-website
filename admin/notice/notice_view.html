@@ -51,7 +51,8 @@
     />
 
     <link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.min.css" />
-    <link rel="stylesheet" href="../css/common.css" />   
+    <link rel="stylesheet" href="../css/common.css" />  
+    <link rel="stylesheet" href="css/notice.css" /> 
   </head>
   <body>
     <div class="wrap">
@@ -147,8 +148,32 @@
         <!-- top_bar -->
 
         <section>
-          <h2>여기서부터 작업하세요!</h2>
-        </section>
+          <h2 class="main_tt">공지사항</h2>
+          <div class="notice_top shadow_box border d-flex justify-content-between">
+            <h2 class="main_stt">학습관리시스템(LMS) 교체 안내</h2>        
+          </div>     
+          <table class="notice_top shadow_box border d-flex justify-content-between">
+            <thead>
+              <tr>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+            <div class="d-flex flex-row-reverse">
+              <button type="submit" class="btn primary_bg btn-primary">수정</button>
+              <button class="btn red_bg white red_btn">삭제</button>
+              <button href=""  class="btn navy_bg white navy_btn">목록 보기</button>
+            </div>
+          </table>  
+        </section>    
       </div>
       <!-- content_wrap -->
     </div>

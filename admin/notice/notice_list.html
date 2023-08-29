@@ -52,6 +52,7 @@
 
     <link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.min.css" />
     <link rel="stylesheet" href="../css/common.css" />   
+    <link rel="stylesheet" href="css/notice.css" />
   </head>
   <body>
     <div class="wrap">
@@ -147,8 +148,190 @@
         <!-- top_bar -->
 
         <section>
-          <h2>여기서부터 작업하세요!</h2>
-        </section>
+          <h2 class="main_tt">공지사항</h2>
+          <div class="notice_top shadow_box border d-flex justify-content-between">
+            <div class="notice_top_left d-flex align-items-center">
+              <input type="text" class="input form-control" placeholder="공지사항을 검색하세요" aria-label="Username">
+              <button class="btn navy_bg white navy_btn">검색</button>
+            </div>
+            <div class="d-flex align-items-center">
+              <a class="btn navy_bg white navy_btn" href="notice_create.html">게시물 등록</a>
+            </div>
+          </div>     
+          <table class="notice_body table shadow_box border">
+            <colgroup>
+              <col class="col1">
+              <col class="col2">
+              <col class="col1">
+              <col class="col3">
+              <col class="col3">
+            </colgroup>
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" class="no_mp ">
+                    <h4 class="content_stt">번호</h4>
+                  </th>
+                  <th scope="col" class="no_mp content_stt">
+                    제목
+                  </th>
+                  <th scope="col" class="no_mp content_stt">일자</th>
+                  <th scope="col" class="no_mp content_stt">조회수</th>
+                  <th scope="col" class="no_mp content_stt">편집</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="no_mp">3215</td>
+                  <td class="no_mp"><a href="notice_view.html">푸딩 LMS 웹사이트 오픈</a></td>
+                  <td class="no_mp">2023-08-22</td>
+                  <td class="no_mp">5</td>
+                  <td>
+                    <div class="icon_group">
+                      <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+                      <a href=""><i class="ti ti-trash bin_icon"></i></a>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3214</td>
+                  <td class="no_mp">※ LMS 로그인 안내</td>
+                  <td class="no_mp">2023-08-22</td>
+                  <td class="no_mp">11</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3213</td>
+                  <td class="no_mp">LMS 본인인증 관련 오류 안내</td>
+                  <td class="no_mp">2023-08-22</td>
+                  <td class="no_mp">20</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3212</td>
+                  <td class="no_mp">지난 강좌 조회 방법 안내</td>
+                  <td class="no_mp">2023-08-22</td>
+                  <td class="no_mp">17</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3211</td>
+                  <td class="no_mp"> 학습관리시스템(LMS) 출석부 관련 안내</td>
+                  <td class="no_mp">2023-08-22</td>
+                  <td class="no_mp">6</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3210</td>
+                  <td class="no_mp">학습관리시스템(LMS) 학습자 매뉴얼 안내</td>
+                  <td class="no_mp">2023-08-22</td>
+                  <td class="no_mp">23</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3209</td>
+                  <td class="no_mp">Mark</td>
+                  <td class="no_mp">Otto</td>
+                  <td class="no_mp">@mdo</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3208</td>
+                  <td class="no_mp">Mark</td>
+                  <td class="no_mp">Otto</td>
+                  <td class="no_mp">@mdo</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3207</td>
+                  <td class="no_mp">Mark</td>
+                  <td class="no_mp">Otto</td>
+                  <td class="no_mp">@mdo</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+                <tr>
+                  <td class="no_mp ">3206</td>
+                  <td class="no_mp">Mark</td>
+                  <td class="no_mp">Otto</td>
+                  <td class="no_mp">@mdo</td>
+                  <td>
+                    <div class="icon_group">
+                      <i class="ti ti-edit pen_icon"></i>
+                      <i class="ti ti-trash bin_icon"></i>
+                    </div>
+                  </td>
+                </tr> 
+              </tbody>
+            </table>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <!-- <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">«</span>
+                </a>
+              </li> -->
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">‹</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">›</span>
+                </a>
+              </li>
+              <!-- <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">»</span>
+                </a>
+              </li> -->
+            </ul>
+          </nav>
+        </section>      
       </div>
       <!-- content_wrap -->
     </div>
