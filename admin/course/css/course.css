@@ -245,7 +245,9 @@ ol, ul {
 .section3,
 .periodwrap,
 .content_detail,
-.file_input{
+.file_input,
+.drag_drop,
+.upload{
   margin-top: calc(var(--base_unit) * 1.5);
 }
 
