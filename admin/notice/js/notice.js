@@ -1,8 +1,10 @@
 /* notice.js */
 
+$('[data-toggle="tooltip"]').tooltip();
+
 $('.ti-trash, .btn_delete').click(function(){
-  confirm('정말 삭제하시겠습니까?');
-  if(result) {
+  confirm('내용 삭제', '정말 삭제하시겠습니까?');  
+  if(result) {    
     //yes
      location.replace('notice_list.html');
  } else {
@@ -10,7 +12,7 @@ $('.ti-trash, .btn_delete').click(function(){
  }
 });
 $('.btn_modify').click(function(){
-  confirm('수정하시겠습니까?');
+  confirm('내용 수정','수정하시겠습니까?');
   if(result) {
     //yes
      location.replace('notice_list.html');
