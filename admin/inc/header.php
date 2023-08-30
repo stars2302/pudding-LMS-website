@@ -74,42 +74,42 @@
         <div
           class="inner_header content_tt d-flex justify-content-between align-items-center flex-column"
         >
-          <h1 class="adminlogo"><a href="#">로고</a></h1>
+          <h1 class="adminlogo"><a href="/pudding-LMS-website/admin/index.php">로고</a></h1>
           <nav>
             <ul class="d-flex justify-content-between flex-column">
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/index.php" class="icon"
                   ><i class="ti ti-home"></i><span>대시보드</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/course/course_list.php" class="icon"
                   ><i class="ti ti-chalkboard"></i><span>강의 관리</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/sales/sales.php" class="icon"
                   ><i class="ti ti-coins"></i><span>매출 관리</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/coupon/coupon_list.php" class="icon"
                   ><i class="ti ti-ticket"></i><span>쿠폰 관리</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/review/review_list.php" class="icon"
                   ><i class="ti ti-brand-hipchat"></i
                   ><span>강의평 관리</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/notice/notice.php" class="icon"
                   ><i class="ti ti-clipboard-text"></i><span>공지사항</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
                   ><i class="ti ti-zoom-question"></i><span>Q&A</span></a
                 >
               </li>

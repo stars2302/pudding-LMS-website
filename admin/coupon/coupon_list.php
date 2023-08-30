@@ -18,7 +18,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
         </div>
         <button class="btn btn-dark">검색</button>
       </form>
-      <a href="" class="btn btn-primary">쿠폰등록</a>
+      <a href="coupon_create.php" class="btn btn-primary">쿠폰등록</a>
     </div><!-- //sub_header -->
 
     <div class="coupon_filter">
