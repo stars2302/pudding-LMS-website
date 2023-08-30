@@ -3,12 +3,12 @@ h2{
 }
 .search_box{
   height: 90px;
-  margin-bottom: calc(var(--base_unit)*2);
+  margin-bottom: var(--base_unit);
 }
 
 #search{
   width: 300px;
-  margin: 0 var(--base_unit);
+  margin: 0 calc(var(--base_unit)*0.5);
 }
 .search_button{
   color: var(--white_bg);
@@ -21,6 +21,7 @@ table{
 /* .table>:not(caption)>*>*{
   padding: 0px;
 } */
+
 tbody, td, tfoot, th, thead, tr{
   border-style: none;
 }
@@ -35,14 +36,6 @@ table thead tr th:nth-child(2),
 table tbody tr td:nth-child(2){
   text-align: left;
 }
-table tbody .btn{
-  padding: 10px 16px;
-}
-table tbody .btn span{
-  font-weight: bold;
-  color: var(--white_bg);
-  display: block;
-}
 nav{
   padding-top: calc(var(--base_unit)*3);
 }
@@ -52,4 +45,80 @@ nav .pagination{
 .page-link{
   /* color: var(--font_gray); */
   color: #6C757D;
+}
+
+
+/* qna_content */
+.qna{
+  padding: calc(var(--base_unit)*2);
+}
+
+.user{
+  height: 60px;
+  line-height: 60px;
+  padding-left: calc(var(--base_unit)*3);
+  gap: calc(var(--base_unit));
+}
+.you{
+  font-weight: bold;
+}
+.day{
+  font-size: 16px;
+  color: grey;
+}
+.qna_content{
+  padding-left: calc(var(--base_unit)*6);
+}
+.qna_content p{
+  padding: var(--base_unit) var(--base_unit) var(--base_unit) 0;
+}
+.i_con{
+  padding: var(--base_unit) 0 var(--base_unit) calc(var(--base_unit)*6);
+  line-height: var(--base_unit);
+  gap: 10px;
+}
+.i_con .sircle{
+  padding-left: 20px;  
+}
+.master{
+  background-color: var(--light_blue_bg);
+  margin: 0 calc(var(--base_unit)*3) var(--base_unit) calc(var(--base_unit)*6);
+  padding: var(--base_unit);
+}
+.master .wrap{
+  line-height: 60px;
+  gap: var(--base_unit);
+}
+.master p{
+  padding-top: var(--base_unit);
+}
+.ti{
+  font-size: 30px;
+}
+.master p{
+  margin-left: calc(var(--base_unit)*3);
+  margin-right: var(--base_unit);
+}
+
+.review{
+  padding: var(--base_unit) calc(var(--base_unit)*3);
+  gap: calc(var(--base_unit)*0.5);
+}
+
+.review .btn{
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 16px;
+  height: calc(var(--base_unit)*1.5);
+}
+.list{
+  margin-bottom: 100px;
+}
+.list_button{
+  margin-top: calc(var(--base_unit)*2);
+  right: 0;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 16px;
+  height: calc(var(--base_unit)*1.5);
 }
