@@ -14,7 +14,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       <fieldset class="coupon_info d-flex">
         <legend class="hidden">쿠폰정보</legend>
         <div class="thumbnail">
-          <input type="file" class="hidden" name="cp_image" id="">
+          <input type="file" class="hidden" name="cp_image" id="thumbnail">
           <div class="show_thumb border"></div>
           <button type="button" class="btn primary_bg btn-primary thumb_btn">사진등록</button>
         </div>
