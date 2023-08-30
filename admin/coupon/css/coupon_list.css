@@ -2,6 +2,10 @@
   margin-bottom: var(--base_unit);
 }
 
+.sub_header .btn {
+  line-height: var(--base_unit);
+}
+
 .coupon_keyword_search {
   gap: calc(var(--base_unit)/2);
   flex: 1;
@@ -52,8 +56,14 @@
 
 .coupons .coupon {
   width: 49%;
+  height: calc(var(--base_unit)*7);
   position: relative;
   padding: 15px;
+}
+
+.coupons .coupon img {
+  width: 45%;
+  object-fit: cover;
 }
 
 .coupons ul {
