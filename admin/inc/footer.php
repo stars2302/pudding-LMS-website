@@ -36,6 +36,13 @@
 <!-- chart js -->
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
+  <!-- Numbers js -->
+  <script src="../js/jquery.number.min.js"></script>
+  <?php
+  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/numbers_func.php';
+  ?>
+
   <script src="/pudding-LMS-website/admin/<?php if(isset($js_route)){echo $js_route;} ?>"></script>
 
 
