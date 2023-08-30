@@ -1,4 +1,4 @@
-h2{
+section h2{
   padding-bottom: calc(var(--base_unit)*2);
 }
 .search_box{
@@ -35,9 +35,6 @@ table thead tr th{
 table thead tr th:nth-child(2),
 table tbody tr td:nth-child(2){
   text-align: left;
-}
-nav{
-  padding-top: calc(var(--base_unit)*3);
 }
 nav .pagination{
   justify-content: center;
