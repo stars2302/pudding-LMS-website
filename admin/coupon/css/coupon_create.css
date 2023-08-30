@@ -58,6 +58,7 @@
 }
 .coupon_info .coupon_info_box .coupon_min_price {
   width: 63%;
+  gap: 0 10px;
 }
 
 .coupon_info .coupon_info_box .coupon_status_check {

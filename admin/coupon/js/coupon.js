@@ -28,7 +28,7 @@ $('.coupon_sale_check').trigger('change');
 
 $('.coupon_limit_date').change(function(){
   $this = $(this);
-  if(!$(this).find('input[name="coupon_limit_date"]').prop('checked')){
+  if(!$(this).find('input[name="cp_date_type"]').prop('checked')){
     $this.find('.form-select').prop('disabled',false);
   } else{
     $this.find('.form-select').prop('disabled',true);
