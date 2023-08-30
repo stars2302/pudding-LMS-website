@@ -1,13 +1,11 @@
 <?php
- 
-  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
+$title="대시보드";
+ $css_route="css/index.css";
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
 ?>
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/index.css" />
-<?php
- include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/sidebar.php';
+   
 
-?>
         
         <section class="dashboard_wrap">
           <h2 class="main_tt dark tt_mb">대시보드</h2>
@@ -86,6 +84,6 @@
     </div><!-- wrap -->
   
 <?php
-
+$js_route = "js/index.js";
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>
