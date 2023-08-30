@@ -1,0 +1,43 @@
+.sales_sort{
+  margin-top:var(--base_unit);
+}
+
+/* sales chart */
+
+.chart_container { 
+    width: 49%;
+    height: 330px;
+    padding: 10px;
+    background-color: var(--white_bg);
+    border-radius: 5px;
+ 
+ 
+  }
+
+.chart {
+  margin: 60px 0px;
+  }
+  
+
+/* sales list */
+
+.sales_container{
+ width: 100%;
+ padding: 22px 84px;
+ background-color: var(--white_bg);
+ color:var(--dark);
+}
+
+.sales{
+  text-align: center;
+
+}
+
+.sales thead{
+  font-weight: 700;
+}
+
+.sales tbody tr td, .sales thead tr th{
+  padding:20px 0px;
+}
+

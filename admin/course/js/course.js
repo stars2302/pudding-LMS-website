@@ -31,13 +31,15 @@ $("#limit").change(function(){
 
 $(".add_listBtn a").click(function(e){
   e.preventDefault();
-  let youtube = $('.youtube').clone();
+  let youtube = $('.youtube:last').clone();
   console.log(youtube)
   $('.you_upload').append(youtube);
 })
 
 $('.you_upload').on('click','.trash_icon',function(){
-  $(this).closest('.youtube').remove();
+  if($('.youtube').length > 1){
+    $(this).closest('.youtube').remove();
+  }
 })
 
 
