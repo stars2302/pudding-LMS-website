@@ -132,8 +132,8 @@
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-bell-filled"
-              width="68"
-              height="68"
+              width="58"
+              height="58"
               viewBox="0 0 28 28"
               stroke-width="2"
               stroke="currentColor"
