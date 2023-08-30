@@ -87,8 +87,8 @@ body {
 }
 
 .content_stt {
-  font-size: 20x;
-  font-style: 400;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .b_text01 {
@@ -309,10 +309,10 @@ body {
 
 .red_bell {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  top: 5px;
+  top: 2px;
   right: 10px;
   background-color: var(--point_red);
 }
@@ -398,6 +398,7 @@ body {
 }
 
 /* LOGO */
+.adminlogo {margin-top: -10px; transform: scale(0.85);}
 .adminlogo > a {
   background-image: url("../images/adminLogo.png");
   width: 222px;
@@ -406,6 +407,7 @@ body {
   background-repeat: no-repeat;
   display: inline-block;
   text-indent: -999999em;
+  
 }
 
 .colorlogo > a {
@@ -475,7 +477,7 @@ body {
 
 /* header */
 header {
-  width: 408px;
+  width: 350px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -515,27 +517,19 @@ header .inner_header {
 
 header .inner_header ul {
   height: 100%;
-  padding: 40px 0;
-}
-
-header .logo a {
-  width: 223px;
-  height: 76px;
-  display: inline-block;
-  background: url(images/adminLogo.png);
-  text-indent: -9999em;
+  padding: var(--base_unit) 0;
 }
 
 header .profile {
-  width: 302px;
-  height: calc(var(--base_unit) * 3);
+  width: 80%;
+  height: calc(var(--base_unit) * 2.5);
   background: var(--light_blue_bg);
-  padding: 0 40px;
+  padding: 0 30px;
 }
 
 header .profile img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
 }
 
 header .profile h2 {
@@ -552,11 +546,9 @@ header .profile p {
 }
 
 header .logout {
-  height: calc(var(--base_unit) * 1.5);
-  line-height: calc(var(--base_unit) * 1.5);
-  font-weight: bold;
-  margin-top: var(--base_unit);
+  margin-top: calc(var(--base_unit)/2);
   padding: 0 var(--base_unit);
+  
 }
 
 .content_wrap {
@@ -567,7 +559,7 @@ header .logout {
 
 .top_bar {
   width: 100%;
-  height: calc(var(--base_unit) * 4);
+  height: calc(var(--base_unit) * 3.5);
 }
 
 .top_bar .red_bell_wrap {
@@ -581,7 +573,7 @@ header .logout {
 }
 
 .top_bar .profile img {
-  width: 60px;
+  width: 50px;
 }
 
 /* style padding */
