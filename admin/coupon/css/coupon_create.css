@@ -99,6 +99,6 @@
 }
 
 .submit_btns {
-  margin-top: calc(var(--base_unit)*2);
+  margin: calc(var(--base_unit)*2) 0;
   gap: calc(var(--base_unit)/2);
 }
