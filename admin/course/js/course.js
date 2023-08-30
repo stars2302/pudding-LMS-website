@@ -2,46 +2,46 @@ $("#product_detail").summernote({
   height: 400,
 });
 
+let price = $(".price input");
 
-let price = $('.price input')
-
-$("#price_menu").change(function(){
-  let option1 = $(this).val()
+$("#price_menu").change(function () {
+  let option1 = $(this).val();
   // console.log(option1)
 
-  if(option1 == '무료'){
-    price.prop('disabled',true)
-  }else{
-    price.prop('disabled',false)
+  if (option1 == "무료") {
+    price.prop("disabled", true);
+    price.val(null);
+  } else {
+    price.prop("disabled", false);
   }
 });
 
-let month = $('.month')
+let month = $("#month");
 
-$("#limit").change(function(){
-  let option2 = $(this).val()
-  console.log(option2)
+$("#limit").change(function () {
+  let option2 = $(this).val();
+  console.log(option2);
 
-  if(option2 == '무제한'){
-    month.prop('disabled',true)
-  }else{
-    month.prop('disabled',false)
+  if (option2 == "무제한") {
+    month.prop("disabled", true);
+    month.val(null);
+  } else {
+    month.prop("disabled", false);
   }
-})
+});
 
-$(".add_listBtn a").click(function(e){
+$(".add_listBtn a").click(function (e) {
   e.preventDefault();
-  let youtube = $('.youtube:last').clone();
-  console.log(youtube)
-  $('.you_upload').append(youtube);
-})
+  let youtube = $(".youtube:last").clone();
+  console.log(youtube);
+  $(".you_upload").append(youtube);
+});
 
-$('.you_upload').on('click','.trash_icon',function(){
-  if($('.youtube').length > 1){
-    $(this).closest('.youtube').remove();
+$(".you_upload").on("click", ".trash_icon", function () {
+  if ($(".youtube").length > 1) {
+    $(this).closest(".youtube").remove();
   }
-})
-
+});
 
 // var uploadFiles = [];
 // var $drop = $("#drop");
@@ -62,5 +62,5 @@ $('.you_upload').on('click','.trash_icon',function(){
 //   for (var i = 0; i < files.length; i++) {
 //     var file = files[i];
 //     attachFile(file);
-//   }    
+//   }
 // });
