@@ -122,7 +122,7 @@
             <h2 class="content_stt">프바오</h2>
             <p>admins</p>
           </div>
-          <a href="" class="btn btn-primary logout b_text01">로그아웃</a>
+          <a href="" class="logout b_text02">로그아웃</a>
         </div>
       </header>
 
@@ -153,7 +153,7 @@
                 fill="currentColor"
               ></path>
             </svg>
-            <div class="red_bell">1</div>
+            <div class="red_bell d-flex justify-content-center align-items-center">1</div>
           </div>
           <div class="profile">
             <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />

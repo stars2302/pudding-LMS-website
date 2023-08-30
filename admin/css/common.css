@@ -548,7 +548,7 @@ header .profile p {
 header .logout {
   margin-top: calc(var(--base_unit)/2);
   padding: 0 var(--base_unit);
-  
+  font-weight: bold;
 }
 
 .content_wrap {
