@@ -1,60 +1,17 @@
-section h2{
-  padding-bottom: calc(var(--base_unit)*2);
-}
-.search_box{
-  height: 90px;
-  margin-bottom: var(--base_unit);
-}
-
-#search{
-  width: 300px;
-  margin: 0 calc(var(--base_unit)*0.5);
-}
-.search_button{
-  color: var(--white_bg);
-  font-weight: bold;
-}
-table{
-  text-align: center;
-  padding-bottom: 100px;
-}
-
-table tbody tr:last-child td:last-child{
-  padding-bottom: var(--base_unit) !important;
-}
-tbody, td, tfoot, th, thead, tr{
-  border-style: none;
-}
-table thead {
-  height: 75px;
-  line-height: 75px;
-}
-table thead tr th{
-  font-weight: bold;
-}
-table thead tr th:nth-child(2),
-table tbody tr td:nth-child(2){
-  text-align: left;
-}
-nav .pagination{
-  justify-content: center;
-}
-.page-link{
-  /* color: var(--font_gray); */
-  color: #6C757D;
-}
-
-
-/* qna_content */
 .qna{
   padding: calc(var(--base_unit)*2);
 }
-
+h2{
+  padding-bottom: calc(var(--base_unit)*2);
+}
+.shadow_box{
+  background-color: var(--white_bg);
+}
 .user{
   height: 60px;
   line-height: 60px;
   padding-left: calc(var(--base_unit)*3);
-  gap: calc(var(--base_unit));
+  gap: var(--base_unit);
 }
 .you{
   font-weight: bold;
@@ -99,14 +56,13 @@ nav .pagination{
 
 .review{
   padding: var(--base_unit) calc(var(--base_unit)*3);
-  gap: calc(var(--base_unit)*0.5);
+  gap: var(--base_unit);
 }
 
 .review .btn{
+  width: 150px;
   white-space: nowrap;
   font-weight: bold;
-  font-size: 16px;
-  height: calc(var(--base_unit)*1.5);
 }
 .list{
   margin-bottom: 100px;
@@ -114,8 +70,7 @@ nav .pagination{
 .list_button{
   margin-top: calc(var(--base_unit)*2);
   right: 0;
+  width: 150px;
   white-space: nowrap;
   font-weight: bold;
-  font-size: 16px;
-  height: calc(var(--base_unit)*1.5);
 }
