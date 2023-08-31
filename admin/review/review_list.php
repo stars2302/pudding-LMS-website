@@ -5,17 +5,19 @@ $js_route = "review/js/review.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
 // $sql = "SELECT * FROM review where 1=1 order by rid desc";
-$sql = "SELECT r.*, u.username, u.userimg FROM review r
+$sql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
         JOIN users u ON r.uid = u.uid
+        JOIN courses c ON c.cid = r.cid
+
         ORDER BY r.rid DESC";
 
-
+// var_dump($sql);
 $result = $mysqli-> query($sql);
 while($rs = $result->fetch_object()){
   $rsc[]=$rs;
 }
-
 // var_dump($rsc);
+
 
 
 ?>
@@ -27,24 +29,32 @@ while($rs = $result->fetch_object()){
           foreach($rsc as $card){            
         ?>
           
-          <div class="card_container shadow_box border">
+          <div class="card_container shadow_box border" data-id="<?= $card -> rid; ?>">
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex align-items-center">
                 <img src="<?php echo $card->userimg ?>" class="userImg shodow_box" alt="프로필 이미지">
                 <h5 class="b_text01 dark review_user"><?php echo $card->username ?></h5>
-                <h5 class="b_text01 dark review_name"><span>강의명: </span>REACT 쇼핑몰 만들기</h5>
+
+            
+         
+                <h5 class="b_text01 dark review_name"><span>강의명: </span><?php echo $card->name ?></h5>
+             
+     
               </div>
+
+
               <div >
               <div class="rating" data-rate="<?php echo $card->rating; ?>">
-                        <?php
-                        for ($i = 1; $i <= 5; $i++) {
-                            if ($i <= $card->rating) {
-                                echo '<i class="fas fa-star filled"></i>';
-                            } else {
-                                echo '<i class="far fa-star"></i>';
-                            }
-                        }
-                        ?>
+
+              <?php
+                for ($i = 1; $i <= 5; $i++) {
+                    if ($i <= $card->rating) {
+                        echo '<i class="ti ti-star-filled"></i>';
+                    } else {
+                        echo '<i class="ti ti-star-filled not_star"></i>';
+                    }
+                }
+                ?>
                     </div>
               </div>
             </div>
@@ -90,21 +100,75 @@ while($rs = $result->fetch_object()){
         <!-- 페이지네이션 끝 -->
         </section>
         <script>
-        let rating = $('.rating');
+         $(document).ready(function() {
+        $(".review_del a.icon").on("click", function(e) {
+          e.preventDefault();
+          let rId = $(this).closest(".card_container").attr("data-id");
 
-rating.each(function(){
-	let score = $(this).attr('data-rate');
-	let scores = score.split('.');
-	
-	if(scores.length > 1){
-		$(this).find(`.star:lt(${scores[0]})`).css({width:'100%'});
-		$(this).find(`.star:eq(${scores[0]})`).css({width: `${scores[1]}0%`});
-	}else{
-		$(this).find(`.star:lt(${scores[0]})`).css({width:'100%'});
-	}
-	
-});
-      </script>
+          let data ={
+            rid: rId
+          }
+          
+          if (confirm("삭제하시겠습니까?")) {
+              $.ajax({
+                  type: 'POST',
+                  url: 'review_delete.php',
+                  data: data,
+                  dataType: 'json',
+                  success: function(data) {
+                      if (data.result === 'ok') {
+                          alert('리뷰가 삭제되었습니다.');
+                          cardContainer.remove(); 
+                      } else {
+                          alert('리뷰 삭제 실패');
+                      }
+                  },
+                  error: function(error) {
+                      console.log(error);
+                  }
+              });
+          } else {
+              alert("삭제를 취소했습니다.");
+          }
+      });
+  });
+
+          //   $(document).ready(function() {
+          //     $(".review_del a i").on("click",function(){
+          //   let rId = $(this).closest(".rating").attr("data-id");
+          //   console.log(rId);
+          //   if(confirm('정말 삭제하시겠습니까?')) {
+          //     let data ={
+          //       rid : rId
+          //     }
+          //     consol.log(data);
+          //     $.ajax({
+          //       async:false,
+          //       type:'post',
+          //       url:'review_delete.php',
+          //       data: data,
+          //       dataType:'json',
+          //       error:function(error){
+          //           console.log(error);
+          //       },
+          //       success:function(data){
+          //         if(data.result == 'ok'){
+          //             alert('리뷰가 삭제되었습니다.');
+          //             location.reload();
+          //         } else{
+          //             alert('리뷰삭제 실패');
+          //         }
+          //       }
+          //     });
+          //   }else{
+          //     alert("리뷰 삭제를 취소했습니다.");
+          //   }
+          // });
+          //   });
+
+         
+        </script>
+      
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
