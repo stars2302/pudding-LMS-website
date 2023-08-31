@@ -13,10 +13,14 @@ if ($mysqli->connect_error) {
   die("연결실패:" . $mysqli->connect_error);
 }
 
+//검색어 수집
+$search_con = isset($_GET['search']) ? $_GET['search'] : '';
 
 //SQL 쿼리를 통해 데이터를 조회
 $sql = "SELECT * FROM notice";
 $result = $mysqli->query($sql);
+
+
 
 //결과 확인
 if ($result) {
@@ -27,7 +31,7 @@ if ($result) {
     <h2 class="main_tt">공지사항</h2>
     <div class="notice_top shadow_box border d-flex justify-content-between">
       <form class="notice_top_left d-flex align-items-center" action="" method="get">
-        <input type="text" class="input form-control" placeholder="공지사항을 검색하세요" aria-label="Username">
+        <input type="text" name="search" size="20" class="input form-control" placeholder="공지사항을 검색하세요" aria-label="Username">
         <button class="btn btn-dark">검색</button>
       </form>
       <div class="d-flex align-items-center">
@@ -65,33 +69,30 @@ if ($result) {
         <?php while ($row = $result->fetch_assoc()) {
           // 조회수 증가 로직
           $ntid = $row["ntid"];
-          $nt_read_cnt = $row["nt_read_cnt"];
+          $nt_read_cnt = $row["nt_read_cnt"];            
 
           //해당 게시물 조회수 증가를 위해 upadte_sql만 실행
           $update_sql = "UPDATE notice SET nt_read_cnt = '{$nt_read_cnt}' + 1 WHERE ntid = '{$ntid}'";
-          $mysqli->query($update_sql);
-        ?>
-          <tr>
-            <td class="no_mp">3215</td>
-            <td class="no_mp">
-              <a href="notice_view.php"><?= $row["nt_title"] ?></a>
-            </td>
-            <td class="no_mp">
-              <?= date("Y-m-d", strtotime($row["nt_regdate"]))?>
-            </td>
-            <td class="no_mp">
-              <?= $row["nt_read_cnt"] ?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon" data-ntid="<?= $ntid; ?>"></i>
-              </div>
-            </td>
-          </tr>
-        <?php
-          // 조회수 증가 로직 추가        
-        } ?>
+          $mysqli->query($update_sql);              
+
+          // 검색어가 없거나 제목 또는 내용에 검색어가 포함된 경우만 출력
+          if (empty($search_con) || stripos($row["nt_title"], $search_con) !== false 
+          || stripos($row["nt_content"], $search_con) !== false) {   
+            echo "<tr>";
+            echo "<td class='no_mp'>{$ntid}</td>";
+            echo "<td class='no_mp'><a href='notice_view.php'>{$row["nt_title"]}</a></td>";          
+            echo "<td class='no_mp'>" . date("Y-m-d", strtotime($row["nt_regdate"])) . "</td>";
+            echo "<td class='no_mp'>{$row["nt_read_cnt"]}</td>";
+            echo "<td>";
+            echo "<div class='icon_group'>";
+            echo "<a href='notice_update.php'><i class='ti ti-edit pen_icon'></i></a>";
+            echo "<i class='ti ti-trash bin_icon' data-ntid='{$ntid}'></i>";
+            echo "</div>";
+            echo "</td>";
+            echo "</tr>";
+        }
+      }
+      ?>        
       </tbody>
     </table>
     <nav aria-label="Page navigation example">
