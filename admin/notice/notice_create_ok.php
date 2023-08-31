@@ -23,7 +23,7 @@ $sql = "INSERT INTO notice (nt_title, nt_content, nt_filename) VALUES
 if ($mysqli->query($sql) === TRUE) {
   echo "<script>
   alert('글쓰기 완료되었습니다.');
-  // location.href='notice_list.php';</script>";
+  location.href='notice_list.php';</script>";
 } else {
   echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
