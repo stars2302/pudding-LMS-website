@@ -10,11 +10,11 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       <h2 class="main_tt">쿠폰등록</h2>
     </div><!-- //sub_header -->
 
-    <form action="coupon_create_ok.php" class="coupon_create_form" method="POST">
+    <form action="coupon_create_ok.php" class="coupon_create_form" method="POST" enctype="multipart/form-data">
       <fieldset class="coupon_info d-flex">
         <legend class="hidden">쿠폰정보</legend>
         <div class="thumbnail">
-          <input type="file" class="hidden" name="cp_image" id="thumbnail">
+          <input type="file" class="hidden" name="cp_image" id="thumbnail" required>
           <div class="show_thumb border"></div>
           <button type="button" class="btn primary_bg btn-primary thumb_btn">사진등록</button>
         </div>
@@ -23,15 +23,15 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
             <div class="field coupon_name input-group">
               <label for="coupon_name" class="content_tt">쿠폰명</label>
               <input type="text" name="cp_name" id="coupon_name" class="form-control"
-                placeholder="쿠폰명을 입력하세요.">
+                placeholder="쿠폰명을 입력하세요." required>
             </div>
           </div>
 
           <div class="info_bottom d-flex">
             <div class="field coupon_min_price input-group d-flex align-items-center">
               <label for="coupon_limit" class="content_tt">최소사용금액</label>
-              <input type="number" name="cp_limit" id="coupon_limit" class="form-control"
-                placeholder="10,000" min="10000" max="1000000" step="1000">원
+              <input type="number" name="cp_limit" id="coupon_limit" class="form-control number"
+                placeholder="10,000" min="10000" max="1000000" step="1000" required>원
             </div>
             <div class="field coupon_status">
               <h3 class="content_tt">상태</h3>
@@ -41,7 +41,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
                   <label class="form-check-label b_text01" for="coupon_status_1">활성화</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="cp_status" id="coupon_status_0" value="1">
+                  <input class="form-check-input" type="radio" name="cp_status" id="coupon_status_0" value="0">
                   <label class="form-check-label b_text01" for="coupon_status_0">비활성화</label>
                 </div>
               </div>
@@ -58,13 +58,13 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
             <div class="form-check d-flex align-items-center">
               <input class="form-check-input number" type="radio" name="cp_type" id="coupon_sale_1" checked value="정액">
               <label class="form-check-label b_text01" for="coupon_sale_1">할인가</label>
-              <input type="number" name="cp_price" id="coupon_limit" class="form-control input"
+              <input type="number" name="cp_price" id="cp_price" class="form-control input number"
               placeholder="10,000" min="10000" max="1000000" step="1000">원
             </div>
             <div class="form-check d-flex align-items-center">
               <input class="form-check-input" type="radio" name="cp_type" id="coupon_sale_0" value="정률">
               <label class="form-check-label b_text01" for="coupon_sale_0">할인율</label>
-              <input type="number" name="cp_ratio" id="coupon_limit" class="form-control input"
+              <input type="number" name="cp_ratio" id="cp_ratio" class="form-control input"
               placeholder="10" min="5" max="100" step="5">%
             </div>
           </div>
@@ -95,7 +95,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       </fieldset>
 
       <div class="submit_btns d-flex justify-content-end">
-        <button class="btn btn-primary">등록 완료</button>
+        <button class="btn btn-primary coupon_submit_btn">등록 완료</button>
         <button class="btn btn-dark" type="button">등록 취소</button>
       </div>
     </form>
