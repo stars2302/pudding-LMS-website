@@ -85,7 +85,7 @@ if ($result) {
             <td>
               <div class="icon_group">
                 <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
+                <i class="ti ti-trash bin_icon" data-ntid="<?= $ntid; ?>"></i>
               </div>
             </td>
           </tr>
@@ -130,7 +130,18 @@ if ($result) {
 }
 ?>
 
-
+<script>
+  $('.').click(function(e) {
+    e.preventDefault();
+    let ntid = $(this).data('ntid'); //데이터 속성으로 ntid 로드
+    if (confirm('삭제하시겠습니까?')) {
+      console.log(ntid);
+      window.location = 'notice_delete_ok.php?ntid=' + ntid; //ntid를 GET 파라미터로 전달
+    } else {
+      alert('취소되었습니다.');
+    }
+  });
+</script>
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
 ?>
