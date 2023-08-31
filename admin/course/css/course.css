@@ -24,7 +24,7 @@ p{
   gap: calc(var(--base_unit)*.5);
   margin-bottom: 25px;
 }
-.row {
+.course_sort .row, .course_list .row, .category_add .row {
   margin-bottom: var(--base_unit);
 }
 
