@@ -15,11 +15,13 @@ if ($mysqli->connect_error) {
 
 $nt_title = $_POST["nt_title"];
 $nt_filename = $_POST["nt_filename"];
+$nt_read_cnt = $_POST["nt_read_cnt"];
 $nt_content = $_POST["nt_content"];
+$nt_regdate = date('Y-m-d');
 
-$sql = "INSERT INTO notice (nt_title, nt_content, nt_filename) VALUES 
-('{$nt_title}' ,'{$nt_content}', '{$nt_filename}')";
 
+$sql = "INSERT INTO notice (nt_title, nt_filename, nt_read_cnt,  nt_content, nt_regdate) VALUES 
+('{$nt_title}' , '{$nt_filename}','{$nt_read_cnt}','{$nt_content}', '{$nt_regdate}')";
 if ($mysqli->query($sql) === TRUE) {
   echo "<script>
   alert('글쓰기 완료되었습니다.');

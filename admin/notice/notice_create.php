@@ -16,7 +16,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <label for="">
         <h3 class="content_tt">상세내용</h3>
       </label>
-      <textarea id="summernote" name="nt_content" required></textarea>
+      <div id="summernote" name="nt_content"></div>
+      <!-- <textarea id="nt_content" name="nt_content" required></textarea> -->
     </div>
     <div class="notice_create_form_div">
       <label for="">

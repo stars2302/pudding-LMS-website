@@ -2,224 +2,134 @@
 $title = "공지사항";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php');
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+
+// 데이터베이스 연결
+$mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
+
+//연결 확인
+if ($mysqli->connect_error) {
+  die("연결실패:" . $mysqli->connect_error);
+}
+
+
+//SQL 쿼리를 통해 데이터를 조회
+$sql = "SELECT * FROM notice";
+$result = $mysqli->query($sql);
+
+//결과 확인
+if ($result) {
+  //루프 내용을 실행
 ?>
 
-<section>
-  <h2 class="main_tt">공지사항</h2>
-  <div class="notice_top shadow_box border d-flex justify-content-between">
-    <form class="notice_top_left d-flex align-items-center" action="" method="get">
-      <input type="text" class="input form-control" placeholder="공지사항을 검색하세요" aria-label="Username">
-      <button class="btn btn-dark">검색</button>
-    </form>
-    <div class="d-flex align-items-center">
-      <a class="btn btn-dark" href="notice_create.php">게시물 등록</a>
+  <section>
+    <h2 class="main_tt">공지사항</h2>
+    <div class="notice_top shadow_box border d-flex justify-content-between">
+      <form class="notice_top_left d-flex align-items-center" action="" method="get">
+        <input type="text" class="input form-control" placeholder="공지사항을 검색하세요" aria-label="Username">
+        <button class="btn btn-dark">검색</button>
+      </form>
+      <div class="d-flex align-items-center">
+        <a class="btn btn-dark" href="notice_create.php">게시물 등록</a>
+      </div>
     </div>
-  </div>
-  <table class="notice_body table shadow_box border">
-    <colgroup>
-      <col class="col1">
-      <col class="col2">
-      <col class="col1">
-      <col class="col3">
-      <col class="col3">
-    </colgroup>
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col" class="">
-          <span>번호</span>
-        </th>
-        <th scope="col" class="no_mp ">
-          <span>제목</span>
-        </th>
-        <th scope="col" class="no_mp ">
-          <span>일자</span>
-        </th>
-        <th scope="col" class="no_mp ">
-          <span>조회수</span>
-        </th>
-        <th scope="col" class="no_mp ">
-          <span>편집</span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="no_mp">3215</td>
-        <td class="no_mp">
-          <a href="notice_view.php">푸딩 LMS 웹사이트 오픈</a>
-        </td>
-        <td class="no_mp">
-          2023-08-22
-        </td>
-        <td class="no_mp">
-          5
-        </td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3214</td>
-        <td class="no_mp">
-          <a href="notice_view.php">※ LMS 로그인 안내</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">11</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3213</td>
-        <td class="no_mp">
-          <a href="notice_view.php">LMS 본인인증 관련 오류 안내</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">20</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3212</td>
-        <td class="no_mp">
-          <a href="notice_view.php">지난 강좌 조회 방법 안내</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">17</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3211</td>
-        <td class="no_mp">
-          <a href="notice_view.php">학습관리시스템(LMS) 출석부 관련 안내</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">6</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3210</td>
-        <td class="no_mp">
-          <a href="notice_view.php">학습관리시스템(LMS) 학습자 매뉴얼 안내</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">23</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3209</td>
-        <td class="no_mp">
-          <a href="notice_view.php">학습관리시스템(LMS) 강사 매뉴얼 안내</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">6</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3208</td>
-        <td class="no_mp">
-          <a href="notice_view.php">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">6</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3207</td>
-        <td class="no_mp">
-          <a href="notice_view.php">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">6</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="no_mp ">3206</td>
-        <td class="no_mp">
-          <a href="notice_view.php">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
-        </td>
-        <td class="no_mp">2023-08-22</td>
-        <td class="no_mp">6</td>
-        <td>
-          <div class="icon_group">
-            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <!-- <li class="page-item disabled">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li> -->
-      <li class="page-item disabled">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">‹</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">4</a></li>
-      <li class="page-item"><a class="page-link" href="#">5</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">›</span>
-        </a>
-      </li>
-      <!-- <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li> -->
-    </ul>
-  </nav>
-</section>
+    <table class="notice_body table shadow_box border">
+      <colgroup>
+        <col class="col1">
+        <col class="col2">
+        <col class="col1">
+        <col class="col3">
+        <col class="col3">
+      </colgroup>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="">
+            <span>번호</span>
+          </th>
+          <th scope="col" class="no_mp ">
+            <span>제목</span>
+          </th>
+          <th scope="col" class="no_mp ">
+            <span>일자</span>
+          </th>
+          <th scope="col" class="no_mp ">
+            <span>조회수</span>
+          </th>
+          <th scope="col" class="no_mp ">
+            <span>편집</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php while ($row = $result->fetch_assoc()) {
+          // 조회수 증가 로직
+          $ntid = $row["ntid"];
+          $nt_read_cnt = $row["nt_read_cnt"];
+
+          //해당 게시물 조회수 증가를 위해 upadte_sql만 실행
+          $update_sql = "UPDATE notice SET nt_read_cnt + 1 WHERE ntid = '{$ntid}'";
+          $mysqli->query($update_sql);
+        ?>
+          <tr>
+            <td class="no_mp">3215</td>
+            <td class="no_mp">
+              <a href="notice_view.php"><?= $row["nt_title"] ?></a>
+            </td>
+            <td class="no_mp">
+              <?= $row["nt_regdate"] ?>
+            </td>
+            <td class="no_mp">
+              <?= $row["nt_read_cnt"] ?>
+            </td>
+            <td>
+              <div class="icon_group">
+                <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
+                <i class="ti ti-trash bin_icon"></i>
+              </div>
+            </td>
+          </tr>
+        <?php
+          // 조회수 증가 로직 추가        
+        } ?>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">«</span>
+          </a>
+        </li>
+        <li class="page-item disabled">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">‹</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">›</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">»</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+<?php
+} else {
+  echo "데이터조회 실패 " . $mysqli->error;
+}
+?>
+
 
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
