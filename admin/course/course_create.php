@@ -9,7 +9,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
   <div class="course_title tt_mb">
     <h1>강의 등록</h1>
   </div>
-  <form action="course_ok.php">
+  <form action="course_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
     <div class="categorywrap">
       <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
