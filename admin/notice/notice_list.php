@@ -68,7 +68,7 @@ if ($result) {
           $nt_read_cnt = $row["nt_read_cnt"];
 
           //해당 게시물 조회수 증가를 위해 upadte_sql만 실행
-          $update_sql = "UPDATE notice SET nt_read_cnt + 1 WHERE ntid = '{$ntid}'";
+          $update_sql = "UPDATE notice SET nt_read_cnt = '{$nt_read_cnt}' + 1 WHERE ntid = '{$ntid}'";
           $mysqli->query($update_sql);
         ?>
           <tr>
