@@ -1,0 +1,209 @@
+/* notice.css */
+
+/* layout */
+.main_tt {
+  padding-bottom: 60px;
+  margin: 0;
+}
+
+
+.notice_body {
+  margin-top: 30px;
+  margin-bottom: 90px;
+
+}
+
+.pagination {
+  margin-bottom: 61px;
+}
+
+
+.btn {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;  
+}
+
+.no_mp {
+  padding: 0px !important;
+  margin: 0px !important;
+  vertical-align: middle;
+}
+/* 상단바 */
+.notice_top {
+  padding: 20px 30px 23px 30px;
+}
+
+.notice_top_left {
+  gap: 30px;
+}
+
+.notice_top_left .input {
+  padding: 11.7px 95px 12.6px 16px;
+  color: var(--font-gray, #747880);
+font-family: Spoqa Han Sans Neo;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.form-control {
+  width: auto;
+}
+
+/* 중간 리스트 */
+
+/* 테이블 정렬 */
+
+.col1,
+.col3 {
+  width: 10%;
+}
+
+.col2 {
+  width: 55%;
+}
+
+.col4,
+.col5 {
+  width: 12%;
+}
+
+.notice_body thead tr th:first-child,
+.notice_body tbody tr td:first-child,
+.notice_body thead tr th:nth-of-type(3),
+.notice_body tbody tr td:nth-of-type(3),
+.notice_body thead tr th:nth-of-type(4),
+.notice_body tbody tr td:nth-of-type(4),
+.notice_body thead tr th:nth-of-type(5),
+.notice_body tbody tr td:nth-of-type(5) {
+  text-align: center;
+}
+
+.notice_body thead tr th {  
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.thead_tt {
+  color: var(--text-dark, #1E2226);
+font-family: Spoqa Han Sans Neo;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%; /* 24px */
+text-transform: uppercase;
+}
+
+.notice_body thead tr th {
+  padding: 20px;
+} 
+
+tbody tr {
+  border: 0px solid;
+}
+
+
+td, tfoot{
+  border-color:none !important;
+  border-style: none !important;
+  border-width: medium !important;
+}
+
+
+.notice_body tbody tr td a {
+  color: var(--text-dark, #1E2226);
+font-family: Spoqa Han Sans Neo;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 100%; /* 16px */
+text-transform: uppercase;
+}
+
+.notice_body thead tr th:nth-of-type(2) {
+  padding: 0;
+
+}
+
+.notice_body tbody tr td {
+  padding:20px;
+}
+
+
+.icon_group i {
+  font-size: 25px;
+}
+
+
+
+h3 {
+  padding-bottom: 30px;
+  margin: 0;
+}
+
+.create_btns {
+  gap: 15px;
+}
+
+
+tbody {
+  border-style: none;
+}
+
+
+/* notice_view.css */
+
+.main_stt {
+  margin: 0;
+  padding: 0;
+}
+
+.notice_view_notice_body h5 {
+  padding: 30px 63px 0;
+}
+
+/* notice_create.css */
+
+.notice_create_form_div  {
+  margin-bottom: 30px;
+}
+.notice_create_input {
+  width: 100%;
+}
+
+.create_btns {
+  margin-top: 60px;
+}
+
+/* notice_view.css */
+
+.notice_view_notice_body tbody td {
+  padding: 36.73px 114px 38px 63px;
+}
+.notice_view_btns {
+  gap: 15px;
+  margin-top: 60px;
+}
+
+.notice_view_notice_body .content {
+  padding: 36.73px 63px;
+}
+
+.notice_info {
+  padding: 0px 53px 26px 0px;
+  border-bottom : 1px solid rgba(116, 120, 128, .2);
+  margin: 0;
+
+}
+
+.notice_info span:nth-child(odd) {
+  padding-right:  10px;
+  font-weight: bold;
+}
+.notice_info span:nth-child(even) {
+  padding-right:  20px;
+}
+
