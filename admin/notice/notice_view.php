@@ -38,7 +38,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
     <div class="notice_view_btns d-flex justify-content-end">
       <a class="btn_modify btn btn-primary">수정</a>
       <button class="btn_delete btn btn-danger">삭제</button>
-      <a href="notice_list.html" class="btn_cancel btn btn-dark">목록 보기</a>
+      <a href="notice_list.php" class="btn_cancel btn btn-dark">목록 보기</a>
     </div>
   </div>
 </section>

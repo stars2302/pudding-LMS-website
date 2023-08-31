@@ -13,7 +13,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <button class="btn btn-dark">검색</button>
     </form>
     <div class="d-flex align-items-center">
-      <a class="btn btn-dark" href="notice_create.html">게시물 등록</a>
+      <a class="btn btn-dark" href="notice_create.php">게시물 등록</a>
     </div>
   </div>
   <table class="notice_body table shadow_box border">
@@ -47,7 +47,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp">3215</td>
         <td class="no_mp">
-          <a href="notice_view.html">푸딩 LMS 웹사이트 오픈</a>
+          <a href="notice_view.php">푸딩 LMS 웹사이트 오픈</a>
         </td>
         <td class="no_mp">
           2023-08-22
@@ -57,7 +57,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
         </td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -65,13 +65,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3214</td>
         <td class="no_mp">
-          <a href="notice_view.html">※ LMS 로그인 안내</a>
+          <a href="notice_view.php">※ LMS 로그인 안내</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">11</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -79,13 +79,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3213</td>
         <td class="no_mp">
-          <a href="notice_view.html">LMS 본인인증 관련 오류 안내</a>
+          <a href="notice_view.php">LMS 본인인증 관련 오류 안내</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">20</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -93,13 +93,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3212</td>
         <td class="no_mp">
-          <a href="notice_view.html">지난 강좌 조회 방법 안내</a>
+          <a href="notice_view.php">지난 강좌 조회 방법 안내</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">17</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -107,13 +107,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3211</td>
         <td class="no_mp">
-          <a href="notice_view.html">학습관리시스템(LMS) 출석부 관련 안내</a>
+          <a href="notice_view.php">학습관리시스템(LMS) 출석부 관련 안내</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">6</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -121,13 +121,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3210</td>
         <td class="no_mp">
-          <a href="notice_view.html">학습관리시스템(LMS) 학습자 매뉴얼 안내</a>
+          <a href="notice_view.php">학습관리시스템(LMS) 학습자 매뉴얼 안내</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">23</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -135,13 +135,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3209</td>
         <td class="no_mp">
-          <a href="notice_view.html">학습관리시스템(LMS) 강사 매뉴얼 안내</a>
+          <a href="notice_view.php">학습관리시스템(LMS) 강사 매뉴얼 안내</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">6</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -149,13 +149,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3208</td>
         <td class="no_mp">
-          <a href="notice_view.html">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
+          <a href="notice_view.php">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">6</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -163,13 +163,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3207</td>
         <td class="no_mp">
-          <a href="notice_view.html">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
+          <a href="notice_view.php">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">6</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
@@ -177,13 +177,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       <tr>
         <td class="no_mp ">3206</td>
         <td class="no_mp">
-          <a href="notice_view.html">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
+          <a href="notice_view.php">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>
         </td>
         <td class="no_mp">2023-08-22</td>
         <td class="no_mp">6</td>
         <td>
           <div class="icon_group">
-            <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
+            <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
             <i class="ti ti-trash bin_icon"></i>
           </div>
         </td>
