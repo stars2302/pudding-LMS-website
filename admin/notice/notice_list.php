@@ -20,7 +20,21 @@ $search_con = isset($_GET['search']) ? $_GET['search'] : '';
 $sql = "SELECT * FROM notice";
 $result = $mysqli->query($sql);
 
+//페이지 수 계산
+$page_limit = 10; // 페이지당 표시할 공지사항 수
+$total_rows = $result -> num_rows; //총 데이터 수
+$total_pages  = ceil($total_rows / $page_limit); //총 페이지 수
 
+
+if(isset($_GET['page'])) {
+  $current_page = $_GET['page'];  
+} else {
+  $current_page = 1;
+}
+
+$offset = ($current_page - 1) * $page_limit;
+$pagesql= "SELECT * FROM notice LIMIT $offset, $page_limit";
+$pageresult = $mysqli -> query($pagesql);
 
 //결과 확인
 if ($result) {
@@ -95,15 +109,16 @@ if ($result) {
       ?>        
       </tbody>
     </table>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">«</span>
-          </a>
-        </li>
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
+    <?php
+    echo "<nav aria-label='Page navigation example'>";
+    echo "<ul class='pagination justify-content-center'>";
+    echo "<li class='page-item".($current_page == 1 ? 'disabled' : ''). "'>";
+    echo "<a class='page-link' href='?page=1'>&laquo;</a>";
+    echo "</li>";
+
+    for ($i = 1; $i <= $total_pages; $i++) {
+      echo "<li class="page-item" .($i == $current_page ? 'active' : '')."'>";
+      echo "<a class="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">‹</span>
           </a>
         </li>
