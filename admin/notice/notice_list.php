@@ -77,7 +77,7 @@ if ($result) {
               <a href="notice_view.php"><?= $row["nt_title"] ?></a>
             </td>
             <td class="no_mp">
-              <?= $row["nt_regdate"] ?>
+              <?= date("Y-m-d", strtotime($row["nt_regdate"]))?>
             </td>
             <td class="no_mp">
               <?= $row["nt_read_cnt"] ?>

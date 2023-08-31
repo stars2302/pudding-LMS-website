@@ -17,7 +17,7 @@ $nt_title = $_POST["nt_title"];
 $nt_filename = $_POST["nt_filename"];
 $nt_read_cnt = $_POST["nt_read_cnt"];
 $nt_content = $_POST["nt_content"];
-$nt_regdate = date('Y-m-d');
+$nt_regdate = date('YYYY-mm-dd');
 
 
 $sql = "INSERT INTO notice (nt_title, nt_filename, nt_read_cnt,  nt_content, nt_regdate) VALUES 
