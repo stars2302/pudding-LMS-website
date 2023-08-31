@@ -1,12 +1,13 @@
-/* notice.js */
 
+/* notice.js */
+$(document).ready(function(){
 $('[data-toggle="tooltip"]').tooltip();
 
-$('.ti-trash, .btn_delete').click(function(){
-  confirm('내용 삭제', '정말 삭제하시겠습니까?');  
+$('.ti-trash, .btn_delete').click(function(){    
+  let result = confirm('정말 삭제하시겠습니까?');
   if(result) {    
     //yes
-     location.replace('notice_list.html');
+     location.replace('../notice/notice_list.php');
  } else {
      history.back();
  }
@@ -15,7 +16,7 @@ $('.btn_modify').click(function(){
   confirm('내용 수정','수정하시겠습니까?');
   if(result) {
     //yes
-     location.replace('notice_list.html');
+     location.replace('notice_list.php');
  } else {
      history.back();
  }
@@ -48,4 +49,5 @@ $('#summernote').summernote({
           RealTimeImageUpdate(files, this);
       }
   }
+})
 });

@@ -2,7 +2,7 @@
 $title = "공지사항";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php');
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
 // 데이터베이스 연결
@@ -131,12 +131,22 @@ if ($result) {
 ?>
 
 <script>
-  $('.').click(function(e) {
+  $('.bin_icon').click(function(e) {
     e.preventDefault();
     let ntid = $(this).data('ntid'); //데이터 속성으로 ntid 로드
-    if (confirm('삭제하시겠습니까?')) {
-      console.log(ntid);
-      window.location = 'notice_delete_ok.php?ntid=' + ntid; //ntid를 GET 파라미터로 전달
+    if (confirm('삭제하시겠습니까?')) {      
+      $.ajax({
+        type: 'POST',
+        url: 'notice_delete_ok.php',
+        data: { ntid: ntid },
+        success: function(response) {
+          alert(response);
+          location:reload();
+        },
+        error: function(){
+          alert('삭제 실패');
+        } 
+      });
     } else {
       alert('취소되었습니다.');
     }

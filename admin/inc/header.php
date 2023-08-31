@@ -9,6 +9,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php if(isset($title)){echo $title;} else { echo 'home';}; ?> - PUDDING</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- reset css -->
     <link
       rel="stylesheet"
