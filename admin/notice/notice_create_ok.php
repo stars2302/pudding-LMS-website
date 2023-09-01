@@ -1,5 +1,5 @@
 <?php
-$title = "공지사항 수정";
+$title = "공지사항 등록";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
 require_once($_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php');
@@ -17,7 +17,7 @@ $nt_title = $_POST["nt_title"];
 $nt_filename = $_POST["nt_filename"];
 $nt_read_cnt = $_POST["nt_read_cnt"];
 $nt_content = $_POST["nt_content"];
-$nt_regdate = date('YYYY-mm-dd');
+$nt_regdate = date('Y-m-d');
 
 
 $sql = "INSERT INTO notice (nt_title, nt_filename, nt_read_cnt,  nt_content, nt_regdate) VALUES 

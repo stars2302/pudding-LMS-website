@@ -12,20 +12,20 @@ $ntid = $_GET['ntid'];
 $sql_update = "UPDATE notice SET nt_read_cnt  = nt_read_cnt + 1 where ntid='{$ntid}'";
 $result_update = $mysqli->query($sql_update);
 
-//게시물 조회하기
-$sql_select = "SELECT notice.ntid, nt_title, nt_filename, nt_read_cnt, nt_content, nt_regdate
-FROM notice
-JOIN users
-ON notice.ntid = users.uid
-WHERE notice.ntid = '{$ntid}'";
+//게시물 조회하기 noticever
+// $sql_select = "SELECT notice.ntid, nt_title, nt_filename, nt_read_cnt, nt_content, nt_regdate
+// FROM notice
+// LEFT JOIN users
+// ON notice.ntid = users.uid
+// WHERE notice.ntid = '{$ntid}'";
+
+//게시물 조회하기 usersver
+$sql_select =
+  "SELECT * FROM notice WHERE ntid = '{$ntid}'";
+
 $result_select = $mysqli->query($sql_select);
+$row = $result_select->fetch_object();
 
-
-if ($result_select) {
-  $row = $result_select->fetch_assoc();  //$row배열에서 필요 정보를 사용
-} else {
-  echo "게시물 조회 실패 " . $mysqli->error;
-}
 
 
 ?>
@@ -35,19 +35,18 @@ if ($result_select) {
     <h2 class="main_tt">공지사항</h2>
     <!-- 글 제목 -->
     <div class="notice_view_notice_body shadow_box border justify-content-between">
-      <h5 class="main_stt thead_tt"><?php echo $row["nt_title"] ?></h5>
+      <h5 class="main_stt thead_tt"><?php echo $row->nt_title ?></h5>
       <p class="notice_info d-flex justify-content-end align-items-center">
         <span class="b_text02">작성자</span>
-        <span class="b_text02"><?php echo $row["username"] ?> </span>
+        <span class="b_text02"><?php echo $row->userid ?> </span>
         <span class="b_text02">작성일</span>
-        <span class="b_text02"><?php echo $row["regdate"] ?> </span>
-        <span class="b_text02">2023-08-18</span>
+        <span class="b_text02"><?php echo $row->nt_regdate ?> </span>
         <span class="b_text02">조회수</span>
-        <span class="b_text02"><?php echo $row["nt_read_cnt"] ?></span>
+        <span class="b_text02"><?php echo $row->nt_read_cnt ?></span>
       </p>
       <div class="content">
         <!-- 본문 -->
-        <?php echo $row["nt_content"] ?>
+        <?php echo $row->nt_content ?>
         <!-- <p>
           동영상 업로드 및 변환 복구 작업이 완료되어 정상적으로 이용이 가능합니다.
           <br>

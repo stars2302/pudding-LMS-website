@@ -5,6 +5,8 @@ $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
+unset($_SESSION['viewed_notices']);
+
 // 데이터베이스 연결
 $mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
 
@@ -16,11 +18,63 @@ if ($mysqli->connect_error) {
 //검색어 수집
 $search_con = isset($_GET['search']) ? $_GET['search'] : '';
 
-//SQL 쿼리를 통해 데이터를 조회
-$sql = "SELECT * FROM notice";
+//한 페이지 당 표시할 항목 수
+$items_per_page = 10;
+//페이지 네이션 갯수
+$block_ct = 5;
+
+//전체글 개수 확인 
+$pagesql = "SELECT COUNT(*) AS cnt FROM notice";
+$page_result = $mysqli->query($pagesql);
+$page_row = $page_result->fetch_assoc();
+$row_num = $page_row['cnt']; //글의 총 갯수
+
+//전체 페이지 수 계산
+$total_pages = ceil($row_num / $items_per_page);
+
+
+//현재 페이지 번호 가져오기
+$current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+//이전페이지 및 다음 페이지 링크
+$prev_page = ($current_page > 1) ? $current_page - 1 : 1;
+$next_page = ($current_page <  $total_pages) ? $current_page + 1 : $total_pages;
+
+//페이지네이션 갯수 설정
+$start_page = max($current_page - floor($block_ct / 2), 1);
+$end_page = min($start_page + $block_ct - 1, $total_pages);
+
+//이전 페이지 링크 생성
+$prev_link = ($current_page > 1) ? "?page={$prev_page}" : "#";
+
+
+//다음 페이지 링크 생성
+$next_link = ($current_page < $total_pages) ? "?page={$next_page}" : "#";
+
+//페이지 번호 반복문
+echo "<ul class='pagination justify-content-center>";
+if ($start_page > 1) {
+  //처음 페이지로 가는 링크
+  echo "<li class='page-item'><a class='page-link' href='?page1'>처음</a></li>";
+}
+for ($i = $start_page; $i <= $end_page; $i++) {
+  $active_class = ($i == $current_page) ? 'active' : '';
+  echo "<li class='page-item {$active_class}'><a class='pag-link' href='?page={$i}'>{$i}</a></li>";
+}
+
+if ($end_page < $total_pages) {
+  //마지막 페이지로 가는 링크
+  echo "<li class='page-item'><a class='page-link' href='?page={$total_pages}'마지막</a></li>";
+}
+echo "</ul>";
+
+//SQL 쿼리를 통해 데이터를 조회 (페이징 적용)
+$start_item = ($current_page - 1) * $items_per_page;
+$sql = "SELECT * FROM notice order by ntid desc";
+
+
+
 $result = $mysqli->query($sql);
-
-
 
 //결과 확인
 if ($result) {
@@ -72,71 +126,78 @@ if ($result) {
           $ntid = $row["ntid"];
           $nt_read_cnt = $row["nt_read_cnt"];
 
+          //이미 조회한 공지사항인지 확인
+          $viewed_notices = isset($_SESSION['viewed_notices']) ? $_SESSION['viewed_notices'] : [];
 
-          // 검색어가 없거나 제목 또는 내용에 검색어가 포함된 경우만 출력
-          if (
-            empty($search_con) ||
-            stripos($row["nt_title"], $search_con) !== false ||
-            stripos($row["nt_content"], $search_con) !== false
-          ) {
+          if (!in_array($ntid, $viewed_notices)) {
+            //조회한 공지사항을 세션에 저장
+            $_SESSION['viewed_notices'][] = $ntid;
 
-            //조회수 증가를 위한 업데이트 쿼리 실행
-            $update_sql = "UPDATE notice SET nt_read_cnt = '{$nt_read_cnt}' + 1 WHERE ntid = '{$ntid}'";
-            $mysqli->query($update_sql);
+            //검색어가 없거나 제목 또는 내용에 검색어가 포함된 경우만 출력
+            if (
+              empty($search_con) ||
+              stripos($row["nt_title"], $search_con) !== false ||
+              stripos($row["nt_content"], $search_con) !== false
+            ) {
 
-            echo "<tr>";
-            echo "<td class='no_mp'>{$ntid}</td>";
-            // 공지사항 제목을 검색 링크로 변경
-            echo "<td class='no_mp'><a href='notice_view.php?ntid={$ntid}'>{$row["nt_title"]}</a></td>";
-            echo "<td class='no_mp'>" . date("Y-m-d", strtotime($row["nt_regdate"])) . "</td>";
-            echo "<td class='no_mp'>{$nt_read_cnt}</td>";
-            echo "<td>";
-            echo "<div class='icon_group'>";
-            echo "<a href='notice_update.php'><i class='ti ti-edit pen_icon'></i></a>";
-            echo "<i class='ti ti-trash bin_icon' data-ntid='{$ntid}'></i>";
-            echo "</div>";
-            echo "</td>";
-            echo "</tr>";
+              echo "<tr>";
+              echo "<td class='no_mp'>{$ntid}</td>";
+              // 공지사항 제목을 검색 링크로 변경
+              echo "<td class='no_mp'><a href='notice_view.php?ntid={$ntid}'>{$row["nt_title"]}</a></td>";
+              echo "<td class='no_mp'>" . date("Y-m-d", strtotime($row["nt_regdate"])) . "</td>";
+              echo "<td class='no_mp'>{$nt_read_cnt}</td>";
+              echo "<td>";
+              echo "<div class='icon_group'>";
+              echo "<a href='notice_update.php?ntid={$ntid}'><i class='ti ti-edit pen_icon'></i></a>";
+              echo "<i class='ti ti-trash bin_icon' data-ntid='{$ntid}'></i>";
+              echo "</div>";
+              echo "</td>";
+              echo "</tr>";
+            }
           }
         }
+
+
         ?>
       </tbody>
     </table>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">«</span>
-          </a>
-        </li>
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">‹</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">›</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">»</span>
-          </a>
-        </li>
-      </ul>
+    <!-- 페이지네이션 -->
+    <?php
+    echo "<nav aria-label='Page navigation example'>";
+    echo "<ul class='pagination justify-content-center'>";
+    if ($start_page > 1) {
+      echo "<li class='page-item {$active_class}'><a class='page-link' href='?page={$page}'>{$i}</a></li>";
+    }
+    for ($i = $start_page; $i <= $end_page; $i++) {
+      $active_class = ($i == $current_page) ? 'active' : '';
+      echo "<li class='page-item {$active_class}'><a class='page-link' hreg='?page={$i}'>{$i}</a></li>";
+    }
+    if ($end_page < $total_pages) {
+      echo "<li class='page-item'><a class='page-link' href='?page={$total_pages}'>마지막</a></li>";
+    }
+    //다음 페이지 링크
+    echo "<li class='class-item'><a class='page-link' href='{$next_link}'>다음</a></li>";
+    echo "</ul>";
+    echo "</nav>";
+    ?>
+    </ul>
     </nav>
   </section>
 <?php
 } else {
   echo "데이터조회 실패 " . $mysqli->error;
+
+
+  //페이지네이션 변수 설정
+  $prev_page = $current_page - 1;
+  $next_page = $current_page + 1;
+
+  //이전 페이지 및 다음 페이지 링크
+  $prev_link = ($prev_page >= 1) ? "?page={$prev_page}" : "#";
+  $next = ($next_page <= $total_pages) ? "?page={$next_page}" : "#";
 }
 ?>
+
 
 <script>
   $('.bin_icon').click(function(e) {

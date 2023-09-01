@@ -52,18 +52,18 @@ $('#summernote').summernote({
 })
 
 //검색 버튼 클릭 시 실행할 js 함수를 작성한다.
-$('#searchButton').click(function(){
-  let searchText = $('#searchInput').val().toLowerCase();  
-  $('.notice_body tbody tr').each(function(){
-    let title = $(this).find("td:nth-child(2) a").text().toLowerCase();
-    let content = $(this).find("td:nth-child(2) a").attr("href").toLowerCase();
-    if(title.includes(searchText) || content.includes(searchText)) {
-      $(this).show();
-    } else {
-      $(this).hide();
-    }
-  });
-});
+// $('#searchButton').click(function(){
+//   let searchText = $('#searchInput').val().toLowerCase();  
+//   $('.notice_body tbody tr').each(function(){
+//     let title = $(this).find("td:nth-child(2) a").text().toLowerCase();
+//     let content = $(this).find("td:nth-child(2) a").attr("href").toLowerCase();
+//     if(title.includes(searchText) || content.includes(searchText)) {
+//       $(this).show();
+//     } else {
+//       $(this).hide();
+//     }
+//   });
+// });
 
 
 
