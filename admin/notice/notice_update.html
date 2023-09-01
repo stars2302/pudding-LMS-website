@@ -1,14 +1,9 @@
-<?php
-  session_start(); 
-  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php if(isset($title)){echo $title;} else { echo 'home';}; ?> - PUDDING</title>
+    <title>PUDDING</title>
     <!-- reset css -->
     <link
       rel="stylesheet"
@@ -48,14 +43,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- summernote css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
-      integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <!-- 스포카 -->
     <link
       href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
@@ -63,18 +50,10 @@
       type="text/css"
     />
 
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/jqueryui/jquery-ui.theme.min.css" />
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/common.css" />
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/<?php if(isset($css_route)){echo $css_route;} else { echo 'css/index.css';}; ?>" />
-        
-    <!-- jquery js-->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    </head>
+    <link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />   
+    <link rel="stylesheet" href="css/notice.css" />
+  </head>
   <body>
     <div class="wrap">
       <header>
@@ -105,7 +84,7 @@
                 >
               </li>
               <li>
-                <a href="review_list.php" class="icon"
+                <a href="" class="icon"
                   ><i class="ti ti-brand-hipchat"></i
                   ><span>강의평 관리</span></a
                 >
@@ -125,11 +104,11 @@
           <div
             class="profile d-flex justify-content-between align-items-center border"
           >
-            <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
+            <img src="../images/profile_img.png" alt="" />
             <h2 class="content_stt">프바오</h2>
             <p>admins</p>
           </div>
-          <a href="" class="logout b_text02">로그아웃</a>
+          <a href="" class="btn btn-primary logout b_text01">로그아웃</a>
         </div>
       </header>
 
@@ -160,9 +139,73 @@
                 fill="currentColor"
               ></path>
             </svg>
-            <div class="red_bell d-flex justify-content-center align-items-center">1</div>
+            <div class="red_bell">1</div>
           </div>
           <div class="profile">
-            <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
+            <img src="../images/profile_img.png" alt="" />
           </div>
         </div>
+        <!-- top_bar -->
+        <section>
+          <h2 class="main_tt">공지사항 수정</h2>
+          <form class="notice_create_form" action="notice_create_ok.html" method="post">
+            <div class="notice_create_form_div">
+              <h3 class="content_tt"><label for="">제목</label></h3>
+              <input type="text" id="title" name="title" class="notice_create_input form-control" placeholder="" aria-label="Username" required>  
+            </div>
+            <div class="notice_create_form_div">
+              <label for=""><h3 class="content_tt">상세내용</h3></label>
+              <textarea id="summernote" name="editordata" required></textarea>
+            </div>
+            <div class="notice_create_form_div">
+              <label for=""><h3 class="content_tt">파일첨부</h3></label>
+              <input type="file" id="image" name="image" class="notice_create_input form-control" aria-label="Username" required>  
+            </div>
+            <div class="create_btns d-flex justify-content-end">
+              <a class="btn btn-primary">수정 완료</a>     
+              <a href="notice_list.html" class="btn_cancel btn btn-dark">수정 취소</a>
+          </div>
+        </form> 
+        </section>    
+      </div>
+      <!-- content_wrap -->
+    </div>
+    <!-- wrap -->
+
+    <!-- jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- jqueryui js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+      integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- bootstrap js -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+      integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- include summernote css/js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js" integrity="sha512-6rE6Bx6fCBpRXG/FWpQmvguMWDLWMQjPycXMr35Zx/HRD9nwySZswkkLksgyQcvrpYMx0FELLJVBvWFtubZhDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!-- modernizr js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="../js/index.js"></script>
+    <script src="js/notice.js"></script>
+  </body>
+</html>
