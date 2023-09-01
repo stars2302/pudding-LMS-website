@@ -3,6 +3,31 @@ $title = "공지사항 게시물";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+
+
+$ntid = $_GET['ntid'];
+
+//조회수 증가시키기
+
+$sql_update = "UPDATE notice SET nt_read_cnt  = nt_read_cnt + 1 where ntid='{$ntid}'";
+$result_update = $mysqli->query($sql_update);
+
+//게시물 조회하기
+$sql_select = "SELECT notice.ntid, nt_title, nt_filename, nt_read_cnt, nt_content, nt_regdate
+FROM notice
+JOIN users
+ON notice.ntid = users.uid
+WHERE notice.ntid = '{$ntid}'";
+$result_select = $mysqli->query($sql_select);
+
+
+if ($result_select) {
+  $row = $result_select->fetch_assoc();  //$row배열에서 필요 정보를 사용
+} else {
+  echo "게시물 조회 실패 " . $mysqli->error;
+}
+
+
 ?>
 
 <section>
@@ -10,18 +35,20 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
     <h2 class="main_tt">공지사항</h2>
     <!-- 글 제목 -->
     <div class="notice_view_notice_body shadow_box border justify-content-between">
-      <h5 class="main_stt thead_tt">학습관리시스템(LMS) 교체 안내</h5>
+      <h5 class="main_stt thead_tt"><?php echo $row["nt_title"] ?></h5>
       <p class="notice_info d-flex justify-content-end align-items-center">
         <span class="b_text02">작성자</span>
-        <span class="b_text02">운영자</span>
+        <span class="b_text02"><?php echo $row["username"] ?> </span>
         <span class="b_text02">작성일</span>
+        <span class="b_text02"><?php echo $row["regdate"] ?> </span>
         <span class="b_text02">2023-08-18</span>
         <span class="b_text02">조회수</span>
-        <span class="b_text02">215415</span>
+        <span class="b_text02"><?php echo $row["nt_read_cnt"] ?></span>
       </p>
       <div class="content">
         <!-- 본문 -->
-        <p>
+        <?php echo $row["nt_content"] ?>
+        <!-- <p>
           동영상 업로드 및 변환 복구 작업이 완료되어 정상적으로 이용이 가능합니다.
           <br>
           금일 많은 대학의 개강으로 인해 15시 30분경 타 대학뿐만 아니라 우리 대학에서도 학습관리시스템(LMS) 동영상 클라우드 서비스
@@ -33,14 +60,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
           이용에 불편을 드린 점 양해 부탁드립니다.
           감사합니다.
         </p>
+      </div> -->
+      </div>
+      <div class="notice_view_btns d-flex justify-content-end">
+        <a class="btn_modify btn btn-primary">수정</a>
+        <button class="btn_delete btn btn-danger">삭제</button>
+        <a href="notice_list.php" class="btn_cancel btn btn-dark">목록 보기</a>
       </div>
     </div>
-    <div class="notice_view_btns d-flex justify-content-end">
-      <a class="btn_modify btn btn-primary">수정</a>
-      <button class="btn_delete btn btn-danger">삭제</button>
-      <a href="notice_list.php" class="btn_cancel btn btn-dark">목록 보기</a>
-    </div>
-  </div>
 </section>
 
 <?php

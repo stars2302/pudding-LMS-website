@@ -150,7 +150,6 @@ if ($result) {
           ntid: ntid
         },
         success: function(response) {
-          alert(response);
           location.reload();
         },
         error: function() {
