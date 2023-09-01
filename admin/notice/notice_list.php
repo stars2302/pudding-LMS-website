@@ -2,7 +2,7 @@
 $title = "공지사항";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
-include_once($_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php');
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
 // 데이터베이스 연결
@@ -22,19 +22,19 @@ $result = $mysqli->query($sql);
 
 //페이지 수 계산
 $page_limit = 10; // 페이지당 표시할 공지사항 수
-$total_rows = $result -> num_rows; //총 데이터 수
+$total_rows = $result->num_rows; //총 데이터 수
 $total_pages  = ceil($total_rows / $page_limit); //총 페이지 수
 
 
-if(isset($_GET['page'])) {
-  $current_page = $_GET['page'];  
+if (isset($_GET['page'])) {
+  $current_page = $_GET['page'];
 } else {
   $current_page = 1;
 }
 
 $offset = ($current_page - 1) * $page_limit;
-$pagesql= "SELECT * FROM notice LIMIT $offset, $page_limit";
-$pageresult = $mysqli -> query($pagesql);
+$pagesql = "SELECT * FROM notice LIMIT $offset, $page_limit";
+$pageresult = $mysqli->query($pagesql);
 
 //결과 확인
 if ($result) {
@@ -83,18 +83,20 @@ if ($result) {
         <?php while ($row = $result->fetch_assoc()) {
           // 조회수 증가 로직
           $ntid = $row["ntid"];
-          $nt_read_cnt = $row["nt_read_cnt"];            
+          $nt_read_cnt = $row["nt_read_cnt"];
 
           //해당 게시물 조회수 증가를 위해 upadte_sql만 실행
           $update_sql = "UPDATE notice SET nt_read_cnt = '{$nt_read_cnt}' + 1 WHERE ntid = '{$ntid}'";
-          $mysqli->query($update_sql);              
+          $mysqli->query($update_sql);
 
           // 검색어가 없거나 제목 또는 내용에 검색어가 포함된 경우만 출력
-          if (empty($search_con) || stripos($row["nt_title"], $search_con) !== false 
-          || stripos($row["nt_content"], $search_con) !== false) {   
+          if (
+            empty($search_con) || stripos($row["nt_title"], $search_con) !== false
+            || stripos($row["nt_content"], $search_con) !== false
+          ) {
             echo "<tr>";
             echo "<td class='no_mp'>{$ntid}</td>";
-            echo "<td class='no_mp'><a href='notice_view.php'>{$row["nt_title"]}</a></td>";          
+            echo "<td class='no_mp'><a href='notice_view.php'>{$row["nt_title"]}</a></td>";
             echo "<td class='no_mp'>" . date("Y-m-d", strtotime($row["nt_regdate"])) . "</td>";
             echo "<td class='no_mp'>{$row["nt_read_cnt"]}</td>";
             echo "<td>";
@@ -104,41 +106,28 @@ if ($result) {
             echo "</div>";
             echo "</td>";
             echo "</tr>";
+          }
         }
-      }
-      ?>        
+        ?>
       </tbody>
     </table>
     <?php
     echo "<nav aria-label='Page navigation example'>";
     echo "<ul class='pagination justify-content-center'>";
-    echo "<li class='page-item".($current_page == 1 ? 'disabled' : ''). "'>";
-    echo "<a class='page-link' href='?page=1'>&laquo;</a>";
+    echo "<li class='page-item" . ($current_page == 1 ? 'disabled' : '') . "'>";
+    echo "<a class='page-link' href='?page=" . ($current_page - 1) . "'aria-label='Previous'>";
+    echo "<span aria-hidden='true'>$laquo;</span>";
+    echo  "</a>";
     echo "</li>";
 
     for ($i = 1; $i <= $total_pages; $i++) {
-      echo "<li class="page-item" .($i == $current_page ? 'active' : '')."'>";
-      echo "<a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">‹</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">›</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">»</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+      echo "<li class='page-item" . ($i == $current_page ? 'active' : '') . "'>";
+      echo "<a class='page-link' href='?page={$i}'>{&i}</a>";
+      echo "</li>";
+    }
+    echo "</ul>";
+    echo "</nav>";
+    ?>
   </section>
 <?php
 } else {
@@ -150,18 +139,20 @@ if ($result) {
   $('.bin_icon').click(function(e) {
     e.preventDefault();
     let ntid = $(this).data('ntid'); //데이터 속성으로 ntid 로드
-    if (confirm('삭제하시겠습니까?')) {      
+    if (confirm('삭제하시겠습니까?')) {
       $.ajax({
         type: 'POST',
         url: 'notice_delete_ok.php',
-        data: { ntid: ntid },
+        data: {
+          ntid: ntid
+        },
         success: function(response) {
           alert(response);
-          location:reload();
+          location.reload();
         },
-        error: function(){
+        error: function() {
           alert('삭제 실패');
-        } 
+        }
       });
     } else {
       alert('취소되었습니다.');

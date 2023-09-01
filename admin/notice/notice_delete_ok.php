@@ -2,7 +2,7 @@
 $title = "공지사항 게시물";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
-include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 
 
 // 데이터베이스 연결
@@ -22,24 +22,24 @@ $stmt->bind_param("s", $ntid); // 위 sql문장의 ?처리된 부분을 패러�
 // POST 데이터로 전달된 ntid 값 받기
 if (isset($_POST['ntid'])) {
   $ntid = $_POST['ntid'];
-  if($stmt -> execute()){
-    ?>    
+  if ($stmt->execute()) {
+?>
     <script>
-    alert("글 삭제 완료되었습니다.");
+      alert("글 삭제 완료되었습니다.");
     </script>
-    <?php    
+  <?php
   } else {
-    ?>
+  ?>
     <script>
-    alert("글 삭제 실패: <?php echo $stmt -> error; ?>");
-    </script>    
-    <?php
+      alert("글 삭제 실패: <?php echo $stmt->error; ?>");
+    </script>
+<?php
   }
 } else {
   echo "ntid가 전달되지않았습니다.";
 }
 
-$stmt ->close();
+$stmt->close();
 $mysqli->close();
 
 
