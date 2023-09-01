@@ -3,6 +3,88 @@ $title = "강의 관리";
 $css_route = "course/css/course.css";
 $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+// name
+// cate
+// content
+// thumbnail
+// price
+// ismain
+// isnew
+// isbest
+// isrecom
+// userid
+// reg_date
+// due_status
+// price_status
+// c_total_cnt
+// courselist
+// rate
+// rid
+
+$name = $_GET['name'] ?? '';
+$cate = $_GET['cate'] ?? '';
+$content = $_GET['content'] ?? '';
+$thumbnail = $_GET['thumbnail'] ?? '';
+$price = $_GET['price'] ?? '';
+$isnew = $_GET['isnew'] ?? '';
+$ismain = $_GET['ismain'] ?? '';
+$isbest = $_GET['isbest'] ?? '';
+$isrecom = $_GET['isrecom'] ?? '';
+$userid = $_GET['userid'] ?? '';
+$due_status = $_GET['due_status'] ?? '';
+$price_status = $_GET['price_status'] ?? '';
+$sale_end_date = $_GET['sale_end_date'] ?? '';
+$c_total_cnt = $_GET['c_total_cnt'] ?? '';
+$courselist = $_GET['courselist'] ?? '';
+$rate = $_GET['rate'] ?? '';
+$rid = $_GET['rid'] ?? '';
+
+$search_where = '';
+
+// $cates = $cates1.$cate2.$cate3;
+
+if ($cate) {
+  $search_where .= " and cate like '{$cate}%'";
+}
+if ($ismain) {
+  $search_where .= " and ismain = 1";
+}
+if ($isnew) {
+  $search_where .= " and isnew = 1";
+}
+if ($isbest) {
+  $search_where .= " and isbest = 1";
+}
+if ($isrecom) {
+  $search_where .= " and isrecom = 1";
+}
+if ($sale_end_date) {
+  $search_where .= " and sale_end_date >= '$sale_end_date'";
+  //판매 종료일이 지나지 않은 상품 조회
+}
+// if($search_keyword){
+//   $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
+//   //제목과 내용에 키워드가 포함된 상품 조회
+// }
+
+
+$sql = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
+//$sql = $sql.$search_where;
+
+$sql .= $search_where;
+$order = " ORDER BY cid DESC"; //최근순 정렬
+//$limit = " limit $statLimit, $endLimit";
+
+// $query = $sql.$order.$limit; //쿼리 문장 조합
+$query = $sql . $order;
+//var_dump($query);
+
+$result = $mysqli->query($query);
+
+while ($rs = $result->fetch_object()) {
+  $rsc[] = $rs;
+}
+
 ?>
 
 <section>
@@ -17,8 +99,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
         <select class="form-select" aria-label="Default select example" id="cate1">
           <option selected disabled>대분류</option>
           <!-- 추후 value 넣기  -->
-          <option value="">프로그래밍</option>
-          <option value="">UI/UX</option>
+          <?php
+          foreach ($cate1 as $c) {
+            ?>
+            <option value="<?php echo $c->cid ?>"><?php echo $c->name ?></option>
+          <?php } ?>
+          <!-- <option value="">프로그래밍</option>
+          <option value="">UI/UX</option> -->
         </select>
       </div>
       <div class="col-md-4">
@@ -78,16 +165,20 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 
   <!-- 리스트 -->
   <ul>
+  <?php
+    if(isset($rsc)){
+      foreach($rsc as $item){            
+  ?>
     <li class="course_list row shadow_box">
       <div class="col-md-8 d-flex">
-        <img src="/admin/images/course/thumnail.png" alt="강의 썸네일 이미지" class="border">
+        <img src="<?= $item->thumbnail ?>" alt="강의 썸네일 이미지" class="border">
         <div class="course_info">
           <div>
-            <h3 class="course_list_title b_text01">[Javascript] 입문 기초 문법
+            <h3 class="course_list_title b_text01"><?= $item->name ?>
               <span class="badge rounded-pill blue_bg b-pd">프론트엔드</span>
               <span class="badge rounded-pill green_bg b-pd">초급</span>
             </h3>
-            <p>웹개발자가 기본으로 갖춰야할 자바스크립트 지식, 자바스크립트 문법과 웹 동작 원리를 배워 혼자서도 이것저것 만들어낼 수 있는 진짜 개발자가 되어보세요.
+            <p><?= $item->content ?>
             </p>
           </div>
           <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span>3개월</span></p>
@@ -105,7 +196,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
         </nav>
 
         <div class="d-flex align-items-end status_box">
-          <span class="price content_stt">89,000원</span>
+          <span class="price content_stt"><?= $item->price ?></span>
           <span class="d-flex flex-column align-items-end status_wrap">
             <select class="form-select" aria-label="Default select example" id="selectmenu">
               <option selected disabled>상태</option>
@@ -126,6 +217,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       </div>
 
     </li>
+    <?php
+    } }          
+  ?>
   </ul>
   <!-- pagination -->
   <nav aria-label="Page navigation example" class="d-flex justify-content-center">

@@ -5,6 +5,17 @@ $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 //include_once $_SERVER['DOCUMENT_ROOT'].'/abcmall/admin/inc/admin_check.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
+
+
+$cates1 = $_GET['cate1'] ?? '';
+
+$sql = "SELECT * FROM category WHERE step=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
+$result = $mysqli->query($sql);
+while ($rs = $result->fetch_object()) {
+  $rsc[] = $rs;
+}
+//var_dump($rsc);
+
 ?>
 
 <!-- cateid, pcode, name, step -->
@@ -35,7 +46,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
           </h1>
         </div>
         <div class="modal-body">
-          <label for="code1">카테고리명</label>
+          <label for="name1">카테고리명</label>
           <input type="text" class="form-control" name="name1" id="name1" placeholder="대분류명을 입력하세요.">
         </div>
         <div class="modal-footer">
@@ -60,23 +71,23 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
         </div>
         <div class="modal-body">
           <div class="row">
-             <?php
+            <?php
 
             $query = "SELECT * FROM category WHERE step=1";
-            $result = $mysqli->query($query); 
-            
+            $result = $mysqli->query($query);
+
             while ($rs = $result->fetch_object()) {
               $cate2[] = $rs;
             }
-            ?> 
+            ?>
             <div class="col-md-12">
-              <select class="form-select" aria-label="Default select example" id="pcode2">
+              <select class="form-select " aria-label="Default select example" id="pcode2">
                 <option selected disabled>대분류를 선택해주세요.</option>
                 <?php
                 foreach ($cate2 as $p) {
-                  ?> 
+                  ?>
                   <option value="<?= $p->cateid ?>"><?= $p->name ?></option>
-                  <?php } ?>
+                <?php } ?>
               </select>
             </div>
           </div>
@@ -137,10 +148,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
   </div>
   <div class="category_list">
     <h3 class="content_tt">카테고리 리스트</h3>
-    <form action="">
+    <form action="" id="search_form">
       <div class="row">
         <div class="col-md-4">
-          <select class="form-select" aria-label="Default select example" id="cate1">
+          <select class="form-select cate_select" aria-label="Default select example" id="cate1">
             <option selected disabled>대분류</option>
             <?php
             foreach ($cate1 as $c) {
@@ -150,16 +161,17 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
           </select>
         </div>
         <div class="col-md-4">
-          <select class="form-select" aria-label="Default select example" id="cate2">
+          <select class="form-select cate_select" aria-label="Default select example" id="cate2">
             <option selected disabled>중분류</option>
           </select>
         </div>
         <div class="col-md-4">
-          <select class="form-select" aria-label="Default select example" id="cate3">
+          <select class="form-select cate_select" aria-label="Default select example" id="cate3">
             <option selected disabled>소분류</option>
           </select>
         </div>
       </div>
+      <button type="button" class="btn btn-primary search_btn">조회</button>
     </form>
     <table class="table shadow_box border">
       <thead>
@@ -171,29 +183,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
         </tr>
       </thead>
       <tbody>
-        <?php 
-        foreach ($cate1 as $c) {
-        ?>
         <tr>
-          <td><?= $c -> name?></td>
-          <td>
-            <?php 
-              if(isset($c -> pcode) && ($c -> step) == 2){ 
-                  echo $c -> name;
-                }
-              
-              
-            ?>
-          </td>
-          <td>Otto</td>
-          <td>
-            <div>
-              <a href="category_ok.php"><i class="ti ti-edit pen_icon"></i></a>
-              <a href="category_delete.php"><i class="ti ti-trash bin_icon"></i></a>
-            </div>
-          </td>
+          <td class="big_cate"></td>
+         
+
         </tr>
-        <?php } ?>
       </tbody>
     </table>
 
@@ -221,8 +215,107 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
 </div><!-- wrap -->
 
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
+<script src="/pudding-LMS-website/admin/course/js/makeoption2.js"></script>
+
 
 <script>
+
+
+  let catename1 = '';
+
+  $('.search_btn').click(function () {
+    view_category();
+  });
+
+  function view_category() {
+    let cate1 = $('#cate1').val();
+    let cate2 = $('#cate2').val();
+
+    let data = {
+      cate1: cate1,
+      cate2: cate2,
+    };
+
+    console.log(data);
+
+    $.ajax({
+      type: 'post',
+      data: data,
+      url: "view_category.php",
+      dataType: 'json',
+      success: function (return_data) {
+        catename1 = return_data.catename
+
+        if (return_data.catename && return_data.result) {
+          makeTr(return_data.catename, return_data.result);
+        } else if (return_data.result == 'fail') {
+          alert('조회 결과 없습니다.');
+        }
+      },
+      error: function (error) {
+        console.log('Error:', error);
+      }
+    });
+  }
+  function makeTr(name, data) {
+    let trHTML1 = '';
+    let trHTML2 = '';
+
+    let cateTitle = name;
+    let cateTitle2 = data;
+    //cateTitle2 = data;
+
+
+    // console.log('catename1...', catename1);
+    
+    console.log('살려줘', cateTitle, cateTitle2)
+    data.forEach(function (item) {
+      console.log('item',item)
+      if (item.step == 1) {
+        catename1 = catename1;
+      }
+      if (item.step == 2) {
+        // cateTitle = name;
+        cateTitle = item.name;
+      }
+      if (item.step == 3) {
+        // cateTitle2 = data;
+        // for (let i = 0; i <= data.length; i++) {
+        //   cateTitle2 = data[2].name;
+        // }
+        cateTitle2 = item;
+        for (let i = 0; i <= item.length; i++) {
+          cateTitle2 = item[i].name;
+        }
+        // console.log('cateTitle2', cateTitle2);
+        // console.log('cateTitle2', typeof (cateTitle2));
+      }
+
+      trHTML1 += `
+            <td class="cate_name">${catename1}</td>`;
+
+      trHTML2 += `
+            <td class="cate_name">${cateTitle}</td>
+            <td>${cateTitle2}</td>
+            <td>
+                <div>
+                    <a href="category_delete.php"><i class="ti ti-trash bin_icon"></i></a>
+                </div>
+            </td>`;
+    });
+
+    // Use the append method to add rows to the table instead of setting its text
+    $('table tbody tr .big_cate').append(trHTML1);
+    $('table tbody tr').prepend(trHTML2);
+  }
+
+  ///console.log(return_data)
+  //console.log(return_data.catename);
+
+
+
+
+
 
   let categorySubmitBtn = $('.modal button[type="submit"]');
 
@@ -239,16 +332,16 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
     save_category(step);
   });
   function save_category(step) {
-   
+
     let name = $(`#name${step}`).val();
     let pcode = $(`#pcode${step}`).val();
     console.log(name, pcode)
-    
+
     if (step > 1 && !pcode) {
       alert('대분류를 먼저 선택하세요');
       return; //아무것도 반환하지 않고 종료
     }
-  
+
     if (!name) {
       alert('카테고리명을 입력하세요');
       return;
