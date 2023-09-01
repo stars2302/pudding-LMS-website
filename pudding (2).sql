@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 23-09-01 10:48
+-- 생성 시간: 23-09-01 15:05
 -- 서버 버전: 10.4.28-MariaDB
 -- PHP 버전: 8.2.4
 
@@ -166,41 +166,55 @@ CREATE TABLE `notice` (
 --
 
 INSERT INTO `notice` (`ntid`, `nt_title`, `nt_filename`, `nt_read_cnt`, `nt_content`, `nt_regdate`, `userid`) VALUES
-(30, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 155, '', '0000-00-00 00:00:00', ''),
-(31, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 88, 'ㄴㅇㄹ', NULL, ''),
-(32, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(33, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 87, 'ㄴㅇㄹ', NULL, ''),
-(34, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(35, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(36, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(37, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(38, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(39, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(40, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(41, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(42, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(43, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(44, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(45, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(46, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(47, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(48, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(49, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(50, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(51, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(52, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(53, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(54, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(55, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(56, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(57, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(58, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(59, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(60, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
-(61, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
-(62, 'fas', 'Sub_cabi_04.png', 19, '', '2023-09-01 00:00:00', ''),
-(63, '무ㅠ야호', 'tim-swaan-eOpewngf68w-unsplash.jpg', 1, '', '2023-09-01 00:00:00', ''),
-(64, 'ㄻㄴㅇㄹㅇㄴㅁ', 'Sub_cabi_01.png', 1, '', '2023-09-01 00:00:00', '');
+(68, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(69, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(70, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(71, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(72, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(73, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(75, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(76, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(77, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(78, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(79, 'dsf', 'sfd', 2, 'saf', NULL, ''),
+(80, 'dsf', 'sfd', 3, 'saf', NULL, ''),
+(81, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(82, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(83, 'dsf', 'sfd', 10, 'saf', NULL, ''),
+(84, 'dsf', 'sfd', 12, 'saf', NULL, ''),
+(85, '', 'sfd', 0, '', NULL, ''),
+(110, 'ㄹㄴㅇㅁ', 'Sub_ride_03.png', 1, '', '2023-09-01 00:00:00', ''),
+(111, 'ㄴㅇㄹㄹㄴㅇ', 'Sub_ride_01.png', 0, '', '2023-09-01 00:00:00', ''),
+(112, '', NULL, 0, '', NULL, ''),
+(113, '', NULL, 0, '', NULL, ''),
+(114, '', NULL, 0, '', NULL, ''),
+(115, '', NULL, 0, '', NULL, ''),
+(116, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(117, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(118, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(119, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(120, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(121, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(122, '', NULL, 0, '', NULL, ''),
+(123, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(124, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(125, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(126, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(127, 'dsf', 'sfd', 2, 'saf', NULL, ''),
+(128, 'dsf', 'sfd', 3, 'saf', NULL, ''),
+(129, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(130, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(131, 'dsf', 'sfd', 10, 'saf', NULL, ''),
+(132, 'dsf', 'sfd', 16, 'saf', NULL, ''),
+(133, '', 'sfd', 0, '', NULL, ''),
+(134, '', NULL, 0, '', NULL, ''),
+(135, '', NULL, 0, '', NULL, ''),
+(136, '', '', 0, '', NULL, ''),
+(164, 'ㄹㄴㅇㅇ', 'Sub_ride_01.png', 19, '', '2023-09-01 00:00:00', ''),
+(165, 'SF', 'inflearn_dashboard_강의관리_01.png', 3, '', '2023-09-01 00:00:00', ''),
+(166, 'ㄹㄴㄹㅇ', '', 3, '', '2023-09-01 00:00:00', ''),
+(167, 'fsdf', '', 2, '', '2023-09-01 00:00:00', ''),
+(168, 'ㄹㄴㅁㅇㄹㄴㅇㅁ', '', 1, '', '2023-09-01 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -393,7 +407,7 @@ ALTER TABLE `lecture`
 -- 테이블의 AUTO_INCREMENT `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `ntid` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `ntid` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- 테이블의 AUTO_INCREMENT `payments`
