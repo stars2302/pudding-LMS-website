@@ -116,9 +116,7 @@ if ($result) {
     echo "<ul class='pagination justify-content-center'>";
     echo "<li class='page-item" . ($current_page == 1 ? 'disabled' : '') . "'>";
     echo "<a class='page-link' href='?page=" . ($current_page - 1) . "'aria-label='Previous'>";
-    echo "<span aria-hidden='true'>$laquo;</span>";
     echo  "</a>";
-    echo "</li>";
 
     for ($i = 1; $i <= $total_pages; $i++) {
       echo "<li class='page-item" . ($i == $current_page ? 'active' : '') . "'>";
