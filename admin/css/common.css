@@ -243,6 +243,10 @@ body {
   cursor: pointer;
 }
 
+.bin_icon:hover {
+  color: red;
+}
+
 /* BADGES */
 
 .badge_blue {
