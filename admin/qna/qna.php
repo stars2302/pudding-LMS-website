@@ -1,12 +1,21 @@
 <?php
-$title = "공지사항";
+$title = "Q&A";
 $css_route = "qna/css/qna.css";
-$js_route = "qna/js/qna.js";
+$js_route = "js/qna.js";
+
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
+$pagenationTarget = 'qna';
+include_once $_SERVER['DOCUMENT_ROOT'].'/abcmall/admin/inc/pagenation.php';
+
 ?>
 
+<?php
+
+$search = isset($_GET['search']) ? $_GET['search'] : ''; //search
+
+?>
 
 
 <section>
