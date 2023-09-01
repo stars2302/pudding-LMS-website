@@ -51,18 +51,28 @@ $('#summernote').summernote({
   }
 })
 
-// 검색 버튼 클릭 시 실행할 js 함수를 작성한다. 이 함수는 검색어를 가져와서 각 테이블 각 행을 순회하며 검색어와 일치하는 행만 보여준다.
+//검색 버튼 클릭 시 실행할 js 함수를 작성한다.
 $('#searchButton').click(function(){
-  let searchText = $('#searchInput').val().toLowerCase();
-
+  let searchText = $('#searchInput').val().toLowerCase();  
   $('.notice_body tbody tr').each(function(){
     let title = $(this).find("td:nth-child(2) a").text().toLowerCase();
     let content = $(this).find("td:nth-child(2) a").attr("href").toLowerCase();
-    if (title, includes(searchText) || content.includes(searchText)) {
+    if(title.includes(searchText) || content.includes(searchText)) {
       $(this).show();
     } else {
-      $(this).hide();    
+      $(this).hide();
     }
-    });
   });
 });
+
+
+
+  //취소 버튼 클릭 시 입력 필드 초기화
+  $('.btn_cancel').click(function(){
+    // $('#notice_create_form input[type="text"], #notice_create_form textarea').val('');
+    $('#notice_create_form')[0].reset();
+    $('#summernote').summernote('reset');
+  });
+
+});
+

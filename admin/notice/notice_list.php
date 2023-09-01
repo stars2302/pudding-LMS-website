@@ -20,27 +20,8 @@ $search_con = isset($_GET['search']) ? $_GET['search'] : '';
 $sql = "SELECT * FROM notice";
 $result = $mysqli->query($sql);
 
-<<<<<<< HEAD
-//페이지 수 계산
-$page_limit = 10; // 페이지당 표시할 공지사항 수
-$total_rows = $result->num_rows; //총 데이터 수
-$total_pages  = ceil($total_rows / $page_limit); //총 페이지 수
 
 
-if (isset($_GET['page'])) {
-  $current_page = $_GET['page'];
-} else {
-  $current_page = 1;
-}
-
-$offset = ($current_page - 1) * $page_limit;
-$pagesql = "SELECT * FROM notice LIMIT $offset, $page_limit";
-$pageresult = $mysqli->query($pagesql);
-
-=======
-
-
->>>>>>> parent of 047f58e ([FIX] 공지사항 페이지네이션 작성중)
 //결과 확인
 if ($result) {
   //루프 내용을 실행
@@ -85,25 +66,30 @@ if ($result) {
         </tr>
       </thead>
       <tbody>
-        <?php while ($row = $result->fetch_assoc()) {
+        <?php
+        while ($row = $result->fetch_assoc()) {
           // 조회수 증가 로직
           $ntid = $row["ntid"];
           $nt_read_cnt = $row["nt_read_cnt"];
 
-          //해당 게시물 조회수 증가를 위해 upadte_sql만 실행
-          $update_sql = "UPDATE notice SET nt_read_cnt = '{$nt_read_cnt}' + 1 WHERE ntid = '{$ntid}'";
-          $mysqli->query($update_sql);
 
           // 검색어가 없거나 제목 또는 내용에 검색어가 포함된 경우만 출력
           if (
-            empty($search_con) || stripos($row["nt_title"], $search_con) !== false
-            || stripos($row["nt_content"], $search_con) !== false
+            empty($search_con) ||
+            stripos($row["nt_title"], $search_con) !== false ||
+            stripos($row["nt_content"], $search_con) !== false
           ) {
+
+            //조회수 증가를 위한 업데이트 쿼리 실행
+            $update_sql = "UPDATE notice SET nt_read_cnt = '{$nt_read_cnt}' + 1 WHERE ntid = '{$ntid}'";
+            $mysqli->query($update_sql);
+
             echo "<tr>";
             echo "<td class='no_mp'>{$ntid}</td>";
-            echo "<td class='no_mp'><a href='notice_view.php'>{$row["nt_title"]}</a></td>";
+            // 공지사항 제목을 검색 링크로 변경
+            echo "<td class='no_mp'><a href='notice_view.php?ntid={$ntid}'>{$row["nt_title"]}</a></td>";
             echo "<td class='no_mp'>" . date("Y-m-d", strtotime($row["nt_regdate"])) . "</td>";
-            echo "<td class='no_mp'>{$row["nt_read_cnt"]}</td>";
+            echo "<td class='no_mp'>{$nt_read_cnt}</td>";
             echo "<td>";
             echo "<div class='icon_group'>";
             echo "<a href='notice_update.php'><i class='ti ti-edit pen_icon'></i></a>";
@@ -116,23 +102,6 @@ if ($result) {
         ?>
       </tbody>
     </table>
-<<<<<<< HEAD
-    <?php
-    echo "<nav aria-label='Page navigation example'>";
-    echo "<ul class='pagination justify-content-center'>";
-    echo "<li class='page-item" . ($current_page == 1 ? 'disabled' : '') . "'>";
-    echo "<a class='page-link' href='?page=" . ($current_page - 1) . "'aria-label='Previous'>";
-    echo  "</a>";
-
-    for ($i = 1; $i <= $total_pages; $i++) {
-      echo "<li class='page-item" . ($i == $current_page ? 'active' : '') . "'>";
-      echo "<a class='page-link' href='?page={$i}'>{&i}</a>";
-      echo "</li>";
-    }
-    echo "</ul>";
-    echo "</nav>";
-    ?>
-=======
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         <li class="page-item disabled">
@@ -162,7 +131,6 @@ if ($result) {
         </li>
       </ul>
     </nav>
->>>>>>> parent of 047f58e ([FIX] 공지사항 페이지네이션 작성중)
   </section>
 <?php
 } else {
