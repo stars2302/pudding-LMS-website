@@ -86,11 +86,11 @@ $card = $result->fetch_assoc();
                     <h5 class="b_text02 dark review_name"><?= $rp["r_regdate"]; ?></h5>
                 </div>
                 <div class="b_text02 reply_content_view border">
-                    <p name="reply_create" id="reply_create"><?= $rp["r_content"]; ?></p>
+                    <p name="r_content" id="reply_create"><?= $rp["r_content"]; ?></p>
                 </div>
 
                 <div class="d-flex flex-row justify-content-end reply_btn">
-                    <a href="" class="btn btn-primary b_text01 reply_done">수정</a>
+                <a href="review_update.php?rid=<?= $rp["rid"]; ?>&uid=<?= $uid ?>&cid=<?= $cid ?>" class="btn btn-primary b_text01 reply_done">수정</a>
                     <button class="btn btn-danger b_text01 reply" data-rid="<?= $rp["rid"]; ?>">삭제</button>
                 </div>
             </div>
