@@ -50,12 +50,12 @@
 }
 
 .r_btn{
-    line-height: 30px !important;
+    /* line-height: 30px !important; */
     margin-right:15px;
 }
 
 .r_btn_v{
-    line-height: 30px !important;
+    /* line-height: 30px !important; */
 }
 
 i.ti.ti-star-filled:before{
@@ -108,7 +108,7 @@ i.ti.ti-star-filled.not_star:before{
     line-height: 33px;
 }
 .reply_btn{
-    width: 96%;
+    width: 98.5%;
     margin-top: 15px;
  
 }
@@ -140,5 +140,5 @@ textarea:focus{
 
 /* view */
 .list_btn{
-  margin-right:-20px;
+  /* margin-right:-20px; */
 }

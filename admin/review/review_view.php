@@ -62,10 +62,7 @@ $card = $result->fetch_assoc();
               <p><?= $card["regdate"]; ?></p>
            
             </div>
-            <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
-              <a href="review_list.php" class="btn btn-dark b_text01 list_btn">목록보기</a>
-
-            </div>
+          
             <!-- <div class="review_del">
               <a href="" class="icon"> <i class="ti ti-trash bin_icon"></i></a>
             </div> -->
@@ -101,7 +98,10 @@ $card = $result->fetch_assoc();
     }
     ?>
           <!-- 카드 끝 -->
-         
+          <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
+              <a href="review_list.php" class="btn btn-dark b_text01 list_btn">목록보기</a>
+
+            </div>
         </section>
       </div>
       <!-- content_wrap -->
