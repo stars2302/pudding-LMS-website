@@ -1,11 +1,8 @@
 <?php
-  session_start(); 
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 $mysqli->autocommit(FALSE);
 try{
-  $cp_imageSRC = $_FILES['cp_image']['name'];
-  $cp_imagefile = '/pudding-LMS-website/admin/coupon/images/';
-  $cp_image = $cp_imagefile.$cp_imageSRC;
+  $cp_image = $_POST['imgSRC'];
   $cp_name = $_POST['cp_name'];
   $cp_limit = $_POST['cp_limit']??'';
   $cp_status = $_POST['cp_status'];
@@ -13,12 +10,14 @@ try{
   $cp_ratio = $_POST['cp_ratio']??'';
   $cp_price = $_POST['cp_price']??'';
   $cp_date = $_POST['cp_date']??'';
+  // var_dump($cp_staturs);
   // var_dump($cp_image);
 
   $sql = "INSERT into coupons 
   (cp_name, cp_image, cp_type, cp_price, cp_limit, cp_ratio, cp_status, cp_date) values 
   ('{$cp_name}','{$cp_image}','{$cp_type}','{$cp_price}','{$cp_limit}','{$cp_ratio}','{$cp_status}','{$cp_date}')";
   $result = $mysqli -> query($sql);
+  var_dump($sql);
 
 
   if(isset($result)){
