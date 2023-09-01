@@ -2,13 +2,32 @@
 $('.thumb_btn').click(function(){
   //create 사진등록 button click하면 숨어있던 input[type="file"]실행
   $('.thumbnail .hidden').trigger('click');
+
+  let prevImg = $(this).siblings('.show_thumb').find('img').attr('src');
+  console.log(prevImg);
+  let data = {
+    prevImg : prevImg
+  }
+  console.log(data);
+  $.ajax({
+    async : false, 
+    type: 'post',     
+    data: data, 
+    url: "image_del.php", 
+    dataType: 'json', //결과 json 객체형식
+    error: function(error){
+      console.log('Error:', error);
+    },
+    success: function(return_data){
+      console.log(return_data);
+    }
+  });//ajax
 });
 
 $('#thumbnail').change(function(){
-  console.log($(this).val());
   let file = $(this).prop('files');
-  console.log(file);
-
+  setTimeout(function(){
+    
     let formData = new FormData(); //페이지 전환없이 이페이지 바로 이미지 등록
     formData.append('savefile', file[0]); //<input type="file" name="cp_image" value="파일명">
     $.ajax({
@@ -20,7 +39,7 @@ $('#thumbnail').change(function(){
       dataType: 'json',
       type: 'POST',
       error: function (error) {
-        console.log('error:', error)
+        console.log('error:', error);
       },
       success: function (return_data) {
         if(return_data.result == 'image'){
@@ -34,11 +53,14 @@ $('#thumbnail').change(function(){
           return;
         } else{
           $('.show_thumb').html(`<img src="${return_data.src}" alt="">`);
+          $('#imgSRC').val(return_data.src);
         }
       }
-
     });//ajax
+  },100);
 });
+
+
 
 //쿠폰등록 이미지 validate
 $('.coupon_submit_btn').click(function(){
@@ -72,4 +94,43 @@ $('.coupon_limit_date').change(function(){
   } else{
     $this.find('.form-select').prop('disabled',true);
   }
+});
+
+//coupon_list toggle click
+$('.cp_status_toggle').change(function(){
+  let $this = $(this);
+
+  //check 되면 1, 아니면 0을 value로 넘기기
+  if($this.find('input').prop('checked')){
+    $this.val(1);
+  } else{
+    $this.val(0);
+  }
+
+  //input의 value와 부모의 cpid를 받아오기
+  let cp_status = $(this).val();
+  let cpid = $(this).parent().attr('data-cpid');
+  let data = {
+    cp_status : cp_status,
+    cpid : cpid
+  }
+  $.ajax({
+    async : false, 
+    type: 'post',     
+    data: data, 
+    url: "coupon_status_change.php", 
+    dataType: 'json', //결과 json 객체형식
+    error: function(error){
+      console.log('Error:', error);
+    },
+    success: function(return_data){
+      console.log(return_data.result);
+      if(return_data.result == '1'){
+        alert('변경되었습니다.');
+        location.reload();//새로고침
+      } else{
+        alert('변경에 실패되었습니다.');
+      }
+    }
+  });//ajax
 });
