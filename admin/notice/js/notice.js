@@ -3,15 +3,7 @@
 $(document).ready(function(){
 $('[data-toggle="tooltip"]').tooltip();
 
-// $('.ti-trash, .btn_delete').click(function(){    
-//   let result = confirm('정말 삭제하시겠습니까?');
-//   if(result) {    
-//     //yes
-//      location.replace('../notice/notice_list.php');
-//  } else {
-//      history.back();
-//  }
-// });
+
 $('.btn_modify').click(function(){
   confirm('내용 수정','수정하시겠습니까?');
   if(result) {

@@ -15,7 +15,12 @@ if ($mysqli->connect_error) {
 }
 
 //수정할 게시물의 id(ntid)를 로드
-$ntid = $_GET['ntid'];
+$ntid = isset($_GET['ntid']) ? $_GET['ntid'] : null;
+
+if ($ntid === null) {
+  echo "게시물 ID가 전달되지않았습니다.";
+  exit;
+}
 
 //게시물 조회 쿼리
 $sql = "SELECT * FROM notice WHERE ntid = $ntid";

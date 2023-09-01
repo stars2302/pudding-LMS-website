@@ -58,12 +58,34 @@ $row = $result_select->fetch_object();
       </div>
       <div class="notice_view_btns d-flex justify-content-end">
         <a href="notice_update.php" class="btn_modify btn btn-primary">수정</a>
-        <button class="btn_delete btn btn-danger">삭제</button>
+        <a href="notice_delete_ok.php" class="btn_delete btn btn-danger" data-ntid='{$ntid}'>삭제</a>
         <a href="notice_list.php" class="btn_cancel btn btn-dark">목록 보기</a>
       </div>
     </div>
 </section>
-
+<script>
+  $('.btn_delete').click(function(e) {
+    e.preventDefault();
+    let ntid = $(this).data('ntid'); //데이터 속성으로 ntid 로드
+    if (confirm('삭제하시겠습니까?')) {
+      $.ajax({
+        type: 'POST',
+        url: 'notice_delete_ok.php',
+        data: {
+          ntid: ntid
+        },
+        success: function(response) {
+          location.reload();
+        },
+        error: function() {
+          alert('삭제 실패');
+        }
+      });
+    } else {
+      alert('취소되었습니다.');
+    }
+  });
+</script>
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
 ?>
