@@ -49,6 +49,15 @@
     font-size: 16px; 
 }
 
+.r_btn{
+    line-height: 30px !important;
+    margin-right:15px;
+}
+
+.r_btn_v{
+    line-height: 30px !important;
+}
+
 i.ti.ti-star-filled:before{
 	color:var(--point_yellow);
     margin-left:0.1rem;
@@ -94,9 +103,23 @@ i.ti.ti-star-filled.not_star:before{
     box-sizing: border-box; 
     border: none !important;  
 }
+
+.reply{
+    line-height: 33px;
+}
 .reply_btn{
+    width: 96%;
     margin-top: 15px;
-    margin-right:20px;
+ 
+}
+
+.reply_btn a{
+    line-height: 30px !important;
+}
+
+.reply_btn_create{
+    margin-top: 15px;
+    margin-right:53px !important;
 }
 .reply_done{
     margin-right:15px;
@@ -113,4 +136,9 @@ textarea{
 
 textarea:focus{
    outline: none;
+}
+
+/* view */
+.list_btn{
+  margin-right:-20px;
 }

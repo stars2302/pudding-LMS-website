@@ -67,8 +67,10 @@ while($rs = $result->fetch_object()){
             <div class="review_del">
               <a href="" class="icon"> <i class="ti ti-trash bin_icon"></i></a>
             </div>
-            <div class="d-flex flex-row justify-content-end reply_btn">
-              <button class="btn btn-dark b_text01">댓글 달기</button>
+            <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
+              <a href="review_create.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 r_btn">댓글 달기</a>
+              <a href="review_view.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 r_btn_v">댓글 보기</a>
+
             </div>
           </div>
           <?php } ?>   
@@ -118,7 +120,7 @@ while($rs = $result->fetch_object()){
                   success: function(data) {
                       if (data.result === 'ok') {
                           alert('리뷰가 삭제되었습니다.');
-                          cardContainer.remove(); 
+                          // cardContainer.remove(); 
                       } else {
                           alert('리뷰 삭제 실패');
                       }

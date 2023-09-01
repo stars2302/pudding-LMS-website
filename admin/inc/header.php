@@ -104,7 +104,7 @@
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="review_list.php" class="icon"
                   ><i class="ti ti-brand-hipchat"></i
                   ><span>강의평 관리</span></a
                 >
