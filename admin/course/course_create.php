@@ -10,6 +10,8 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
     <h1>강의 등록</h1>
   </div>
   <form action="course_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
+    <input type="hidden" name="image_table_id" id="image_table_id" value="">
+    <input type="hidden" name="content" id="content" value="">
     <div class="categorywrap">
       <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
@@ -44,26 +46,26 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
           <label for="price" class="form-label content_tt c_mb">강의가격</label>
           <div class="col">
             <select class="form-select" name="price" id="price_menu" aria-label="Default select example">
-              <option value="유료" selected>유료</option>
-              <option value="무료">무료</option>
+              <option name="price" value="유료" selected>유료</option>
+              <option name="price" value="무료">무료</option>
             </select>
           </div>
-          <div class="col price">
-            <input type="number" class="form-control" id="price" min="10000" max="1000000" step="10000" placeholder="금액"/>
+          <div class="col price_status">
+            <input type="number" class="form-control" name="price_status" id="price_status" min="10000" max="1000000" step="10000" value="0" placeholder="금액"/>
           </div>
         </div>
         <div class="row level level_status">
           <label class="form-label content_tt c_mb">난이도</label>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="low" value="1"/>
+            <input class="form-check-input" type="radio" name="level" id="low" value="초급"/>
             <label class="form-check-label" for="low">초급</label>
           </div>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="middle" value="2"/>
+            <input class="form-check-input" type="radio" name="level" id="middle" value="중급"/>
             <label class="form-check-label" for="middle">중급</label>
           </div>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="high" value="3"/>
+            <input class="form-check-input" type="radio" name="level" id="high" value="고급"/>
             <label class="form-check-label" for="high">고급</label>
           </div>
         </div>
@@ -73,29 +75,29 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       <div class="row period mb-6">
         <label class="form-label content_tt c_mb">수강기간</label>
         <div class="col period_select1">
-          <select class="form-select" name="limit" id="limit" aria-label="Default select example">
-            <option value="제한" selected>제한</option>
-            <option value="무제한">무제한</option>
+          <select class="form-select" name="due" id="due" aria-label="Default select example">
+            <option name="due" value="제한" selected>제한</option>
+            <option name="due" value="무제한">무제한</option>
           </select>
         </div>
         <div class="col period_select2">
-          <select class="form-select" name="month" id="month" aria-label="Default select examh5le">
+          <select class="form-select" name="due_status" id="due_status" aria-label="Default select examh5le">
             <option value="" selected disabled>기간선택</option>
-            <option value="3개월">3개월</option>
-            <option value="6개월">6개월</option>
-            <option value="9개월">9개월</option>
-            <option value="12개월">12개월</option>
+            <option name="due_status" value="3개월">3개월</option>
+            <option name="due_status" value="6개월">6개월</option>
+            <option name="due_status" value="9개월">9개월</option>
+            <option name="due_status" value="12개월">12개월</option>
           </select>
         </div>
       </div>
       <div class="row act">
         <label class="form-check-label content_tt c_mb">상태</label>
         <div class="col-2 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="act_status" id="active" value="활성"/>
+          <input class="form-check-input" type="radio" name="act" id="active" value="활성"/>
           <label class="form-check-label" for="active">활성</label>
         </div>
         <div class="col-2 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="act_status" id="inactive" value="비활성"/>
+          <input class="form-check-input" type="radio" name="act" id="inactive" value="비활성"/>
           <label class="form-check-label" for="inactive">비활성</label>
         </div>
       </div>
@@ -107,8 +109,8 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
     </div>
 
     <div class="file_input c_mt">
-      <label for="file" class="form-label content_tt c_mb">첨부파일</label>
-      <input type="file" class="form-control" name="file" id="file"/>
+      <label for="thumbnail" class="form-label content_tt c_mb">첨부파일</label>
+      <input type="file" class="form-control" name="thumbnail" id="thumbnail"/>
     </div>
 
     <div class="drag_drop c_mt">

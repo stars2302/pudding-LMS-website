@@ -273,7 +273,17 @@ input {
   color: #fff;
 }
 
-/* 
+/* 추가이미지 크기 주석처리된 부분 */
+#imageArea { 
+  margin-top: 10px;
+}
+#imageArea img{
+  width: 150px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* 드래그앤 드랍부분 */
 #thumbnails {
   width: 100%;
   position: relative;
@@ -281,14 +291,15 @@ input {
   padding: 20px;
   gap: 10px;
 }
-#thumbnails .thumb,
-.coupon_thumb img {
+
+/*추가이미지 삭제 버튼 부분 */
+#thumbnails .thumb{
   width: 150px;
 }
 #thumbnails .thumb img {
   width: 100%;
   display: block;
-} */
+}
 
 .price_select,
 .level_select,
