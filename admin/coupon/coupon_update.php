@@ -14,12 +14,13 @@ $coupon = $result -> fetch_object();
       <h2 class="main_tt">쿠폰수정</h2>
     </div><!-- //sub_header -->
 
-    <form action="" class="coupon_create_form" method="POST" enctype="multipart/form-data">
-      <input type="hidden" nema="cpid" value="<?= $cpid ?>">
+    <form action="coupon_update_ok.php?cpid=<?= $cpid ?>" class="coupon_create_form" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="cpid" value="<?= $coupon->cpid ?>">
       <fieldset class="coupon_info d-flex">
         <legend class="hidden">쿠폰정보</legend>
         <div class="thumbnail">
-          <input type="file" class="hidden" name="cp_image" id="thumbnail" required>
+          <input type="hidden" id="imgSRC" name="imgSRC" val="">
+          <input type="file" class="hidden" name="cp_image" id="thumbnail">
           <div class="show_thumb border">
             <img src="<?= $coupon->cp_image?>" alt="<?= $coupon->cp_name?>">
           </div>
@@ -44,11 +45,11 @@ $coupon = $result -> fetch_object();
               <h3 class="content_tt">상태</h3>
               <div class="coupon_status_check d-flex">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="cp_status" id="coupon_status_1" <?php if($coupon->cp_status == 1){echo 'checked';}  ?>>
+                  <input class="form-check-input" type="radio" name="cp_status" id="coupon_status_1" value="1" <?php if($coupon->cp_status == 1){echo 'checked';}  ?>>
                   <label class="form-check-label b_text01" for="coupon_status_1">활성화</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="cp_status" id="coupon_status_0" <?php if($coupon->cp_status == 0){echo 'checked';}  ?>>
+                  <input class="form-check-input" type="radio" name="cp_status" id="coupon_status_0" value="0" <?php if($coupon->cp_status == 0){echo 'checked';}  ?>>
                   <label class="form-check-label b_text01" for="coupon_status_0">비활성화</label>
                 </div>
               </div>
