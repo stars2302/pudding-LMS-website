@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 23-08-29 14:18
+-- 생성 시간: 23-09-01 10:48
 -- 서버 버전: 10.4.28-MariaDB
 -- PHP 버전: 8.2.4
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `password` varchar(200) NOT NULL,
   `regdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 테이블의 덤프 데이터 `admin`
+--
+
+INSERT INTO `admin` (`idx`, `userid`, `email`, `username`, `password`, `regdate`) VALUES
+(3, 'admin', 'admin@pudding.com', '프바오', '33275a8aa48ea918bd53a9181aa975f15ab0d0645398f5918a006d08675c1cb27d5c645dbd084eee56e675e25ba4019f2ecea37ca9e2995b49fcb12c096a032e', '2023-09-01 12:41:58');
 
 -- --------------------------------------------------------
 
@@ -149,8 +156,51 @@ CREATE TABLE `notice` (
   `nt_title` varchar(100) NOT NULL,
   `nt_filename` varchar(100) DEFAULT NULL,
   `nt_read_cnt` int(4) NOT NULL,
-  `nt_content` text NOT NULL
+  `nt_content` text NOT NULL,
+  `nt_regdate` datetime DEFAULT NULL,
+  `userid` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 테이블의 덤프 데이터 `notice`
+--
+
+INSERT INTO `notice` (`ntid`, `nt_title`, `nt_filename`, `nt_read_cnt`, `nt_content`, `nt_regdate`, `userid`) VALUES
+(30, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 155, '', '0000-00-00 00:00:00', ''),
+(31, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 88, 'ㄴㅇㄹ', NULL, ''),
+(32, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(33, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 87, 'ㄴㅇㄹ', NULL, ''),
+(34, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(35, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(36, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(37, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(38, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(39, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(40, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(41, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(42, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(43, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(44, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(45, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(46, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(47, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(48, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(49, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(50, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(51, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(52, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(53, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(54, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(55, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(56, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(57, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(58, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(59, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(60, 'sdfa', 'v2osk-1Z2niiBPg5A-unsplash (1).jpg', 141, '', '0000-00-00 00:00:00', ''),
+(61, 'ㅁㄴㄹㄹㄴㅇ', 'ㄴㅁㄹㅇ', 86, 'ㄴㅇㄹ', NULL, ''),
+(62, 'fas', 'Sub_cabi_04.png', 19, '', '2023-09-01 00:00:00', ''),
+(63, '무ㅠ야호', 'tim-swaan-eOpewngf68w-unsplash.jpg', 1, '', '2023-09-01 00:00:00', ''),
+(64, 'ㄻㄴㅇㄹㅇㄴㅁ', 'Sub_cabi_01.png', 1, '', '2023-09-01 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -301,7 +351,7 @@ ALTER TABLE `users`
 -- 테이블의 AUTO_INCREMENT `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 테이블의 AUTO_INCREMENT `category`
@@ -343,7 +393,7 @@ ALTER TABLE `lecture`
 -- 테이블의 AUTO_INCREMENT `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `ntid` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `ntid` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- 테이블의 AUTO_INCREMENT `payments`
