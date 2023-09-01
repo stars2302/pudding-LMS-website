@@ -20,6 +20,7 @@ $search_con = isset($_GET['search']) ? $_GET['search'] : '';
 $sql = "SELECT * FROM notice";
 $result = $mysqli->query($sql);
 
+<<<<<<< HEAD
 //페이지 수 계산
 $page_limit = 10; // 페이지당 표시할 공지사항 수
 $total_rows = $result->num_rows; //총 데이터 수
@@ -36,6 +37,10 @@ $offset = ($current_page - 1) * $page_limit;
 $pagesql = "SELECT * FROM notice LIMIT $offset, $page_limit";
 $pageresult = $mysqli->query($pagesql);
 
+=======
+
+
+>>>>>>> parent of 047f58e ([FIX] 공지사항 페이지네이션 작성중)
 //결과 확인
 if ($result) {
   //루프 내용을 실행
@@ -111,6 +116,7 @@ if ($result) {
         ?>
       </tbody>
     </table>
+<<<<<<< HEAD
     <?php
     echo "<nav aria-label='Page navigation example'>";
     echo "<ul class='pagination justify-content-center'>";
@@ -126,6 +132,37 @@ if ($result) {
     echo "</ul>";
     echo "</nav>";
     ?>
+=======
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">«</span>
+          </a>
+        </li>
+        <li class="page-item disabled">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">‹</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">›</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">»</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+>>>>>>> parent of 047f58e ([FIX] 공지사항 페이지네이션 작성중)
   </section>
 <?php
 } else {
