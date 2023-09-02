@@ -26,8 +26,12 @@ while($rs = $result->fetch_object()){
           <h2 class="main_tt dark title-mg">수강평 관리</h2>
 
           <?php
-          foreach($rsc as $card){            
-        ?>
+      foreach ($rsc as $card) {
+        // 리뷰댓글 개수 조회
+        $replyCntSql = "SELECT COUNT(*) AS reply_cnt FROM review_reply WHERE rid = {$card->rid}";
+        $replyCntResult = $mysqli->query($replyCntSql);
+        $replyCnt = $replyCntResult->fetch_object()->reply_cnt;
+    ?>
           
           <div class="card_container shadow_box border" data-id="<?= $card -> rid; ?>">
             <div class="d-flex justify-content-between align-items-center">
@@ -68,9 +72,11 @@ while($rs = $result->fetch_object()){
               <a href="" class="icon"> <i class="ti ti-trash bin_icon"></i></a>
             </div>
             <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
-              <a href="review_create.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-primary b_text01 r_btn">댓글 달기</a>
-              <a href="review_view.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 r_btn_v">댓글 보기</a>
-  
+            <?php if ($replyCnt > 0) { ?>
+                    <a href="review_view.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 r_btn_v">댓글 보기</a>
+                <?php } else { ?>
+                    <a href="review_create.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-primary b_text01 r_btn">댓글 달기</a>
+                <?php } ?>
             </div>
           </div>
           <?php } ?>   
