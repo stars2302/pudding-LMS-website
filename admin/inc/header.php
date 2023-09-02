@@ -105,7 +105,7 @@
                 >
               </li>
               <li>
-                <a href="review_list.php" class="icon"
+                <a href="/pudding-LMS-website/admin/review/review_list.php" class="icon"
                   ><i class="ti ti-brand-hipchat"></i
                   ><span>강의평 관리</span></a
                 >
@@ -129,7 +129,7 @@
             <h2 class="content_stt">프바오</h2>
             <p>admins</p>
           </div>
-          <a href="" class="logout b_text02">로그아웃</a>
+          <a href="/pudding-LMS-website/admin/logout.php" class="logout b_text02">로그아웃</a>
         </div>
       </header>
 
