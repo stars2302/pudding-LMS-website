@@ -1,10 +1,4 @@
-<?php
 
-$title = "Q&A";
-$css_route = "qna/css/qna.css";
-$js_route = "js/qna.js";
-
-?>
 <?php
 $title = "Q&A";
 $css_route = "qna/css/qna.css";
@@ -101,15 +95,18 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/qna_pag
 
 
         <!-- commentWrite -->
-        <form method="post" class="commentForm">
-        <input type="hidden" name="post_id" value="1">
-        <input type="hidden" name="parent_comment_id" value="0">
-        <input type="hidden" name="depth" value="0">
-        <textarea name="comment"></textarea>
-        <button type="submit">댓글 작성</button>
+        <form method="post" class="commentForm wrap">
+          <input type="hidden" name="post_id" value="1">
+          <input type="hidden" name="parent_comment_id" value="0">
+          <input type="hidden" name="depth" value="0">
+          <textarea name="comment" class="border form-control textgo" placeholder="Content Text"></textarea>
+        <button type="submit" class="btn btn-dark b_text01 text_btn">댓글 작성</button>
         </form>
         <!-- /commentWrite -->
      
+        <div class="list position-relative">
+          <button class="list_button btn btn-dark b_text01 position-absolute ">목록 보기</button>
+        </div>
       </section>
     </div><!-- content_wrap -->
   </div><!-- wrap -->

@@ -74,8 +74,8 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
           $sql = "SELECT * FROM qna ORDER BY pid DESC LIMIT 0, 10";
           // var_dump($sql);
           //$conn에 정보로 db에 접속하고 sql 문장 실행
-          $result = $mysqli->query($sql);
-          var_dump($sql);
+          // $result = $mysqli->query($sql);
+          // var_dump($sql);
           
           
           // $result = $mysqli->query($sql)

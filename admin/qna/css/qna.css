@@ -119,3 +119,7 @@ nav .pagination{
   font-size: 16px;
   height: calc(var(--base_unit)*1.5);
 }
+
+.textarea{
+  height: 45px;
+}
