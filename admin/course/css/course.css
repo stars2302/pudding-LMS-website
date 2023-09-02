@@ -274,10 +274,10 @@ input {
 }
 
 /* 추가이미지 크기 주석처리된 부분 */
-#imageArea { 
+#imageArea {
   margin-top: 10px;
 }
-#imageArea img{
+#imageArea img {
   width: 150px;
   display: block;
   margin-bottom: 10px;
@@ -293,7 +293,7 @@ input {
 }
 
 /*추가이미지 삭제 버튼 부분 */
-#thumbnails .thumb{
+#thumbnails .thumb {
   width: 150px;
 }
 #thumbnails .thumb img {

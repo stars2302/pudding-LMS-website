@@ -1,6 +1,13 @@
 <?php
+  session_start(); 
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
+  //관리자 검사
+  if(!isset($_SESSION['AUID'])){
+    $return_data = array("result"=>"member"); 
+    echo json_encode($return_data);
+    exit;
+  }
   //파일 사이즈 검사
   if($_FILES['savefile']['size']> 10240000){
     $return_data = array("result"=>'size'); 
@@ -21,7 +28,7 @@
   $savefile = $newfilename.".".$ext; //20238171184015.jpg
 
   if(move_uploaded_file($_FILES['savefile']['tmp_name'], $save_dir.$savefile)){
-    $sql = "INSERT INTO course_image_table (userid, filename) VALUES ('{$savefile}')";
+    $sql = "INSERT INTO course_image_table (userid, filename) VALUES ('{$_SESSION['AUID']}', '{$savefile}')";
     $result = $mysqli-> query($sql);
     $imgid = $mysqli -> insert_id; 
 

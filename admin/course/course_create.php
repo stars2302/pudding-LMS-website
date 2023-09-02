@@ -1,8 +1,9 @@
 <?php
-$title="대시보드";
+ $title="대시보드";
  $css_route="course/css/course.css";
  $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
+//include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
 ?>
 
 <section>
@@ -109,17 +110,16 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
     </div>
 
     <div class="file_input c_mt">
-      <label for="thumbnail" class="form-label content_tt c_mb">첨부파일</label>
+      <label for="thumbnail" class="form-label content_tt c_mb">썸네일</label>
       <input type="file" class="form-control" name="thumbnail" id="thumbnail"/>
     </div>
 
-    <div class="drag_drop c_mt">
-      <h3 class="content_tt c_mb">추가이미지 업로드</h3>
+
+      <h3 class="content_tt c_mt c_mb">추가이미지 업로드</h3>
       <div id="drop" class="box">
         <span>이미지를 드래그해서 올려주세요</span>
         <div id="thumbnails" class="d-flex justify-content-start"></div>
       </div>
-    </div>
 
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
