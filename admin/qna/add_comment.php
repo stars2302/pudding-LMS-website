@@ -1,5 +1,6 @@
 <?php
-include 'dbconn.php';
+// include 'dbconn.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/qna_page.php';
 
 $post_id = $_POST['post_id'];
 $parent_comment_id = $_POST['parent_comment_id'];

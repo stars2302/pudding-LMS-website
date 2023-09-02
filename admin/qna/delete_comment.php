@@ -1,5 +1,6 @@
 <?php
-include 'dbconn.php';
+// include 'dbconn.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/qna_page.php';
 
 $comment_id = $_POST['comment_id'];
 
@@ -13,7 +14,7 @@ $row = $result->fetch_assoc();
 
 if ($row['cnt'] > 0) {
     // 대댓글이 있으면 삭제하지 않음
-    echo "<script>alert('이 댓글과 관련된 댓글이 존재하므로 삭제 할 수 없습니다.');</script>";
+    echo "<script>alert('이 댓글과 관련된 댓글이 존재해서 삭제 할 수 없습니다.');</script>";
     echo "<script>window.location.href='qna_content.php';</script>"; 
 } else {
     // 대댓글이 없으면 삭제
