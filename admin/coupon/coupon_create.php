@@ -60,7 +60,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
               <input class="form-check-input number" type="radio" name="cp_type" id="coupon_sale_1" checked value="정액">
               <label class="form-check-label b_text01" for="coupon_sale_1">할인가</label>
               <input type="number" name="cp_price" id="cp_price" class="form-control input number"
-              placeholder="10,000" min="10000" max="1000000" step="1000">원
+              placeholder="1,000" min="1000" max="1000000" step="1000">원
             </div>
             <div class="form-check d-flex align-items-center">
               <input class="form-check-input" type="radio" name="cp_type" id="coupon_sale_0" value="정률">
