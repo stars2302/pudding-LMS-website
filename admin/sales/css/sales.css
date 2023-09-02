@@ -41,3 +41,15 @@
   padding:20px 0px;
 }
 
+.sales .col1 , .sales .col3{
+   width: 15%;
+}
+
+.sales .col2{
+  width: 45%;
+}
+
+
+.sales .col4{
+  width: 25%;
+}

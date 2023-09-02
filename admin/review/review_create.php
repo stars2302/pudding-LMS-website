@@ -57,7 +57,7 @@ $card = $result->fetch_assoc();
     
       <div class="b_text02 review_content border">
         <p><?= $card["content"]; ?></p>
-        <p><?= $card["regdate"]; ?>></p>
+        <p><?= $card["regdate"]; ?></p>
       </div>
 
       <div class="review_del">

@@ -73,9 +73,9 @@ while($rs = $result->fetch_object()){
             </div>
             <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
             <?php if ($replyCnt > 0) { ?>
-                    <a href="review_view.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 r_btn_v">댓글 보기</a>
+                    <a href="review_view.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 ">댓글 보기</a>
                 <?php } else { ?>
-                    <a href="review_create.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-primary b_text01 r_btn">댓글 달기</a>
+                    <a href="review_create.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-primary b_text01 ">댓글 달기</a>
                 <?php } ?>
             </div>
           </div>
@@ -84,27 +84,27 @@ while($rs = $result->fetch_object()){
         
           <!-- 페이지네이션 -->
           <nav
-          aria-label="Page navigation example"
-          class="d-flex justify-content-center pager"
-        >
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&lsaquo;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&rsaquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      aria-label="Page navigation example"
+      class="d-flex justify-content-center pager"
+    >
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&lsaquo;</span>
+          </a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&rsaquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
         <!-- 페이지네이션 끝 -->
         </section>
         <script>
@@ -141,38 +141,7 @@ while($rs = $result->fetch_object()){
       });
   });
 
-          //   $(document).ready(function() {
-          //     $(".review_del a i").on("click",function(){
-          //   let rId = $(this).closest(".rating").attr("data-id");
-          //   console.log(rId);
-          //   if(confirm('정말 삭제하시겠습니까?')) {
-          //     let data ={
-          //       rid : rId
-          //     }
-          //     consol.log(data);
-          //     $.ajax({
-          //       async:false,
-          //       type:'post',
-          //       url:'review_delete.php',
-          //       data: data,
-          //       dataType:'json',
-          //       error:function(error){
-          //           console.log(error);
-          //       },
-          //       success:function(data){
-          //         if(data.result == 'ok'){
-          //             alert('리뷰가 삭제되었습니다.');
-          //             location.reload();
-          //         } else{
-          //             alert('리뷰삭제 실패');
-          //         }
-          //       }
-          //     });
-          //   }else{
-          //     alert("리뷰 삭제를 취소했습니다.");
-          //   }
-          // });
-          //   });
+   
 
          
         </script>

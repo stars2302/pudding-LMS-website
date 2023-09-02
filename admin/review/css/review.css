@@ -31,7 +31,6 @@
     width: 90%;
     margin-left:73px;
     margin-top:var(--base_unit);
-    /* padding-top:30px; */
     padding: 30px 26px 40px 26px;  
     background-color:rgba(93,135,255,0.2);
     box-sizing: border-box
@@ -49,14 +48,6 @@
     font-size: 16px; 
 }
 
-.r_btn{
-    /* line-height: 30px !important; */
-    margin-right:15px;
-}
-
-.r_btn_v{
-    /* line-height: 30px !important; */
-}
 
 i.ti.ti-star-filled:before{
 	color:var(--point_yellow);
@@ -138,7 +129,3 @@ textarea:focus{
    outline: none;
 }
 
-/* view */
-.list_btn{
-  /* margin-right:-20px; */
-}
