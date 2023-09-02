@@ -77,20 +77,19 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
           // while($row = mysqli_fetch_array($result, MYSQLI_ASSOC);){
  
           ?>
+
+
+          
           
             <tr>
-              <th><?= $row['dix']; ?></th>
-              <td><?= $row['q_title']; ?></td>
-              <td><?= $row['q_regdate']; ?></td>
-              <td><?= $row['uid']; ?></td>
-              <td><?= $row['dix']; ?></td>
+              <th></th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
           
-            <?php
-        
-            // }
-
-            ?>
+       
             
           
             <tr>
