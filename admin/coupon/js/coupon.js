@@ -1,8 +1,10 @@
-
+//coupon_create / coupon_update 사진등록 버튼 클릭하면~
 $('.thumb_btn').click(function(){
   //create 사진등록 button click하면 숨어있던 input[type="file"]실행
   $('.thumbnail .hidden').trigger('click');
 
+
+  //사진등록 이전에 있던 사진 images폴더에서 삭제
   let prevImg = $(this).siblings('.show_thumb').find('img').attr('src');
   console.log(prevImg);
   let data = {
@@ -24,6 +26,8 @@ $('.thumb_btn').click(function(){
   });//ajax
 });
 
+
+//coupon_create / coupon_update 사진등록 input의 내용이 바뀌면~
 $('#thumbnail').change(function(){
   let file = $(this).prop('files');
   setTimeout(function(){
@@ -62,7 +66,7 @@ $('#thumbnail').change(function(){
 
 
 
-//쿠폰등록 이미지 validate
+// coupon_create / coupon_update 쿠폰등록 이미지 validate
 $('.coupon_submit_btn').click(function(){
   console.log($('#thumbnail').val());
   if(!$('#thumbnail').val()){
@@ -73,7 +77,7 @@ $('.coupon_submit_btn').click(function(){
 
 
 
-//create radio change event
+// coupon_create / coupon_update radio change event
 $('.coupon_sale_check').change(function(){
   let $this = $(this);
   // inputDisable($this);
@@ -96,7 +100,10 @@ $('.coupon_limit_date').change(function(){
   }
 });
 
-//coupon_list toggle click
+
+
+
+//coupon_list 활성/비활성 toggle change
 $('.cp_status_toggle').change(function(){
   let $this = $(this);
 
@@ -134,3 +141,10 @@ $('.cp_status_toggle').change(function(){
     }
   });//ajax
 });
+
+
+//coupon_list filter
+$('.coupon_filter').change(function(){
+  $(this).find('button').trigger('click');
+});
+

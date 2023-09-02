@@ -16,6 +16,9 @@
   width: 52%;
 }
 
+.coupon_filter label {
+  cursor: pointer;
+}
 .coupon_status_search {
   border-top: 1px solid;
   border-bottom: 1px solid;
@@ -36,15 +39,15 @@
   margin-right: 5px;
 }
 
-.coupon_status_search button {
+.coupon_status_search label {
   position: relative;
 }
 
-.coupon_status_search button:hover {
+.coupon_status_search label:hover {
   color: var(--point_primary);
 }
 
-.coupon_status_search button:hover:after {
+.coupon_status_search label:hover:after {
   content: '';
   position: absolute;
   bottom: 8px;

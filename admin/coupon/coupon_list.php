@@ -4,18 +4,53 @@ $css_route="coupon/css/coupon_list.css";
 $js_route = "coupon/js/coupon.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
+
+//전체 / 활성 / 비활성 쿠폰개수(고정)
+$allsql = "SELECT * from coupons where 1=1";
+$allrc = $mysqli -> query($allsql);
+while($rs = $allrc -> fetch_object()){
+  $allrsc[] = $rs;
+}
+
+if(isset($allrsc)){
+  $coupon_ing = 0;
+  $coupon_end = 0;
+  for($i = 0; $i<count($allrsc); $i++){
+    if($allrsc[$i]->cp_status == 1) {
+      $coupon_ing++;
+    }
+    if($allrsc[$i]->cp_status == 0) {
+      $coupon_end++;
+    }
+  }
+}
+
+
+//필터되어 나타날 쿠폰
 $sql = "SELECT * from coupons where 1=1";
 $order = ' order by cpid desc';
 $sc_where = '';
 
 
-$cp_filter = $_GET['cp_status']??'';
+//쿠폰 활성/비활성 filter 조건
+$cp_filter = $_GET['coupon_filter']??'';
 var_dump($cp_filter);
 if($cp_filter == '-1' || $cp_filter == ''){
   $sc_where .= '';
 } else{
   $sc_where .= " and cp_status='{$cp_filter}'";
 }
+
+
+
+//검색어
+$cp_search = $_GET['search']??'';
+var_dump($cp_search);
+
+
+
+
+//최종 query문, 실행
 $sqlrc = $sql.$sc_where.$order;
 var_dump($sqlrc);
 $result = $mysqli -> query($sqlrc);
@@ -23,16 +58,6 @@ while($rs = $result -> fetch_object()){
   $rsc[] = $rs;
 }
 
-$coupon_ing = 0;
-$coupon_end = 0;
-for($i = 0; $i<count($rsc); $i++){
-  if($rsc[$i]->cp_status == 1) {
-    $coupon_ing++;
-  }
-  if($rsc[$i]->cp_status == 0) {
-    $coupon_end++;
-  }
-}
 ?>
 
     <div class="sub_header d-flex justify-content-between align-items-center">
@@ -44,30 +69,35 @@ for($i = 0; $i<count($rsc); $i++){
             class="form-control"
             placeholder="쿠폰명을 입력하세요."
             aria-label="쿠폰명을 입력하세요."
+            name="search"
           />
         </div>
         <button class="btn btn-dark">검색</button>
       </form>
       <a href="coupon_create.php" class="btn btn-primary">쿠폰등록</a>
     </div><!-- //sub_header -->
-
-    <div class="coupon_filter">
+  
+    <form action="" class="coupon_filter">
       <h2 class="hidden">클릭하여 진행중 또는 종료된 쿠폰을 확인하세요.</h2>
       <div class="coupon_status_search d-flex justify-content-betweenn white_bg align-items-center">
         <div class="filter_1">
           <h3 class="b_text01">총 쿠폰 개수</h3>
-          <a href="/pudding-LMS-website/admin/coupon/coupon_list.php?cp_status=<?php echo '-1'?>" class="b_text02"><em class="main_tt"><?= count($rsc) ?></em>개</a>
+          <label for="all" class="b_text02"><em class="main_tt"><?php if(isset($allrsc)){echo count($allrsc);} else{echo '0';} ?></em>개</label>
+          <input type="radio" value="-1" class="hidden" id="all" name="coupon_filter">
         </div>
         <div class="filter_2">
           <h3 class="b_text01">활성화 쿠폰 개수</h3>
-          <a href="/pudding-LMS-website/admin/coupon/coupon_list.php?cp_status=<?php echo '1'?>" class="b_text02"><em class="main_tt"><?= $coupon_ing ?></em>개</a>
+          <label for="ing" class="b_text02"><em class="main_tt"><?php if(isset($allrsc)){echo $coupon_ing;} else{echo '0';} ?></em>개</label>
+          <input type="radio" value="1" class="hidden" id="ing" name="coupon_filter">
         </div>
         <div class="filter_3">
           <h3 class="b_text01">비활성화 쿠폰 개수</h3>
-          <a href="/pudding-LMS-website/admin/coupon/coupon_list.php?cp_status=<?php echo '0'?>" class="b_text02"><em class="main_tt"><?= $coupon_end ?></em>개</a>
+          <label for="end" class="b_text02"><em class="main_tt"><?php if(isset($allrsc)){echo $coupon_end;} else{echo '0';} ?></em>개</label>
+          <input type="radio" value="0" class="hidden" id="end" name="coupon_filter">
         </div>
       </div>
-    </div><!-- coupon_filter -->
+      <button class="hidden">필터실행</button>
+    </form><!-- coupon_filter -->
 
     <div class="coupons">
       <h2 class="hidden">쿠폰리스트</h2>
@@ -146,12 +176,6 @@ for($i = 0; $i<count($rsc); $i++){
     </nav>
   </div><!-- //content_wrap -->
 </div><!-- //wrap -->
-<script>
-  $('.number').change(function(){
-      $(this).number( true );
-    });
-    $('.number').number(true);
-</script>
 
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
