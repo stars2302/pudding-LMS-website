@@ -34,7 +34,7 @@ $(".selected-option").click(function () {
   //   'border-bottom-right-radius': '0px;'})
 });
 
-alert("hello");
+
 $(".options-list li").click(function () {
   var selectedValue = $(this).data("value");
   $(".selected-option").text($(this).text());
@@ -48,9 +48,6 @@ $(".delete-button").click(function (event) {
 
 $( "#selectmenu" ).selectmenu();
 
-$(".content_box").click(function(){
-  alert("heelodsldsjflij");
-})
 
 
 
