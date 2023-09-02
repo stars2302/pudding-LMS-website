@@ -39,7 +39,7 @@ $total_block = ceil($total_page/$block_ct);//총32, 2
 if ($mysqli->connect_error) {
   die("연결 실패" . $mysqli->connect_error);
 }
-?>
+?> 
 
 
 <?php
@@ -47,7 +47,7 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
 ?>
 
 <section>
-        <h2 class="main_tt">Q&amp;A 게시판</h2>
+        <h2 class="main_tt"><?= $title ?> 게시판</h2>
         
         <div class="search_box shadow_box white_bg wrap align-items-center">
           <label for="search" class="hidden">검색</label>
@@ -71,15 +71,18 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
            
           <?php
           
-          $sql = "SELECT * FROM qna order by pid desc limit 0, 10";
+          $sql = "SELECT * FROM qna ORDER BY pid DESC LIMIT 0, 10";
+          // var_dump($sql);
+          //$conn에 정보로 db에 접속하고 sql 문장 실행
+          $result = $mysqli->query($sql);
+          var_dump($sql);
+          
+          
           // $result = $mysqli->query($sql)
 
           // while($row = mysqli_fetch_array($result, MYSQLI_ASSOC);){
  
           ?>
-
-
-          
           
             <tr>
               <th></th>
@@ -89,8 +92,10 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
               <td></td>
             </tr>
           
-       
-            
+            <?php
+
+
+            ?>          
           
             <tr>
               <th scope="row">답변대기</th>
