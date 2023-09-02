@@ -7,7 +7,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 
 <section>
   <div class="course_title tt_mb">
-    <h1>강의 등록</h1>
+    <h1>강의 수정</h1>
   </div>
   <form action="">
     <div class="categorywrap">
