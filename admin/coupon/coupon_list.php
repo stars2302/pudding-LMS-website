@@ -4,13 +4,35 @@ $css_route="coupon/css/coupon_list.css";
 $js_route = "coupon/js/coupon.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
-$sql = "SELECT * from coupons order by cpid desc";
-$result = $mysqli -> query($sql);
+$sql = "SELECT * from coupons where 1=1";
+$order = ' order by cpid desc';
+$sc_where = '';
+
+
+$cp_filter = $_GET['cp_status']??'';
+var_dump($cp_filter);
+if($cp_filter == '-1' || $cp_filter == ''){
+  $sc_where .= '';
+} else{
+  $sc_where .= " and cp_status='{$cp_filter}'";
+}
+$sqlrc = $sql.$sc_where.$order;
+var_dump($sqlrc);
+$result = $mysqli -> query($sqlrc);
 while($rs = $result -> fetch_object()){
   $rsc[] = $rs;
 }
 
-// var_dump($rsc);
+$coupon_ing = 0;
+$coupon_end = 0;
+for($i = 0; $i<count($rsc); $i++){
+  if($rsc[$i]->cp_status == 1) {
+    $coupon_ing++;
+  }
+  if($rsc[$i]->cp_status == 0) {
+    $coupon_end++;
+  }
+}
 ?>
 
     <div class="sub_header d-flex justify-content-between align-items-center">
@@ -31,21 +53,20 @@ while($rs = $result -> fetch_object()){
 
     <div class="coupon_filter">
       <h2 class="hidden">클릭하여 진행중 또는 종료된 쿠폰을 확인하세요.</h2>
-      <form action="" class="coupon_status_search d-flex justify-content-betweenn white_bg align-items-center" method="POST">
-        <input type="hidden" name="filter" value="" id="coupon_filter_val">
+      <div class="coupon_status_search d-flex justify-content-betweenn white_bg align-items-center">
         <div class="filter_1">
           <h3 class="b_text01">총 쿠폰 개수</h3>
-          <button class="b_text02"><em class="main_tt">10</em>개</button>
+          <a href="/pudding-LMS-website/admin/coupon/coupon_list.php?cp_status=<?php echo '-1'?>" class="b_text02"><em class="main_tt"><?= count($rsc) ?></em>개</a>
         </div>
         <div class="filter_2">
           <h3 class="b_text01">활성화 쿠폰 개수</h3>
-          <button class="b_text02"><em class="main_tt">6</em>개</button>
+          <a href="/pudding-LMS-website/admin/coupon/coupon_list.php?cp_status=<?php echo '1'?>" class="b_text02"><em class="main_tt"><?= $coupon_ing ?></em>개</a>
         </div>
         <div class="filter_3">
           <h3 class="b_text01">비활성화 쿠폰 개수</h3>
-          <button class="b_text02"><em class="main_tt">4</em>개</button>
+          <a href="/pudding-LMS-website/admin/coupon/coupon_list.php?cp_status=<?php echo '0'?>" class="b_text02"><em class="main_tt"><?= $coupon_end ?></em>개</a>
         </div>
-      </form>
+      </div>
     </div><!-- coupon_filter -->
 
     <div class="coupons">
@@ -125,6 +146,12 @@ while($rs = $result -> fetch_object()){
     </nav>
   </div><!-- //content_wrap -->
 </div><!-- //wrap -->
+<script>
+  $('.number').change(function(){
+      $(this).number( true );
+    });
+    $('.number').number(true);
+</script>
 
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
