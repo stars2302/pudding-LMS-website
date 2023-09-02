@@ -5,6 +5,13 @@ $js_route = "coupon/js/coupon.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
 
+//pagenation
+$pagenationTarget = 'coupons'; //pagenation 테이블 명
+$pageContentcount = 6; //페이지 당 보여줄 list 개수
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount";
+
+
 //전체 / 활성 / 비활성 쿠폰개수(고정)
 $allsql = "SELECT * from coupons where 1=1";
 $allrc = $mysqli -> query($allsql);
@@ -43,15 +50,18 @@ if($cp_filter == '-1' || $cp_filter == ''){
 
 
 
-//검색어
+//검색어(필터 상관없이 전체쿠폰에서 검색)
 $cp_search = $_GET['search']??'';
 var_dump($cp_search);
-
+if($cp_search){
+  $sc_where = " and cp_name like '%{$cp_search}%'";
+  //제목과 내용에 키워드가 포함된 상품 조회
+}
 
 
 
 //최종 query문, 실행
-$sqlrc = $sql.$sc_where.$order;
+$sqlrc = $sql.$sc_where.$order.$limit;
 var_dump($sqlrc);
 $result = $mysqli -> query($sqlrc);
 while($rs = $result -> fetch_object()){
@@ -117,15 +127,15 @@ while($rs = $result -> fetch_object()){
               echo '<span class="badge rounded-pill badge_red b-pd">비활성화</span>';
             }
             ?>
-            <h3 class="b_text01"><?= $coupon->cp_name ?></h3>
+            <h3 class="b_text01" title="<?= $coupon->cp_name ?>"><?= $coupon->cp_name ?></h3>
             <p>사용기한 : <?php if($coupon->cp_date == ''){echo '무제한';}else{echo $coupon->cp_date.'개월';} ?></p>
-            <p>최소사용금액 : <?= $coupon->cp_limit ?>원</p>
-            <p class="number"><?php if($coupon->cp_type == '정액'){echo '할인액';}else{echo '할인율';} ?> : <?php if($coupon->cp_type == '정액'){echo $coupon->cp_price.'원';}else{echo $coupon->cp_ratio.'%';} ?></p>
+            <p>최소사용금액 : <span class="number"><?= $coupon->cp_limit ?></span>원</p>
+            <p><?php if($coupon->cp_type == '정액'){echo '할인액';}else{echo '할인율';} ?> : <span class="number"><?php if($coupon->cp_type == '정액'){echo $coupon->cp_price;}else{echo $coupon->cp_ratio.'%';} ?></span>원</p>
           </div>
 
           <div class="icons">
             <a href="/pudding-LMS-website/admin/coupon/coupon_update.php?cpid=<?= $coupon->cpid ?>"><i class="ti ti-edit pen_icon"></i></a>
-            <i class="ti ti-trash bin_icon"></i>
+            <a href=""></a><i class="ti ti-trash bin_icon"></i>
           </div>
 
           <div class="form-check form-switch cp_status_toggle">
@@ -157,21 +167,59 @@ while($rs = $result -> fetch_object()){
 
     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination">
+        <!--
         <li class="page-item disabled">
           <a class="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&lsaquo;</span>
           </a>
         </li>
+
         <li class="page-item active"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">4</a></li>
         <li class="page-item"><a class="page-link" href="#">5</a></li>
+
         <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">
             <span aria-hidden="true">&rsaquo;</span>
           </a>
         </li>
+        -->
+
+        <?php
+          // if($pageNumber>0  ){
+          //   // $prev = ($block_num - 2) * $block_ct + 1;
+          //   $prev = $pageNumber-1;
+          //   echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          // } else{
+          //   echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          // }
+          
+          if($pageNumber == 1){
+            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          } else{
+            $prev = $pageNumber-1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          }
+          for($i=$block_start;$i<=$block_end;$i++){
+            if($pageNumber == $i){
+                echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\">$i</a></li>";
+            }else{
+                echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\">$i</a></li>";
+            }
+          }
+          if($pageNumber<$total_page){
+            $next = $pageNumber +1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+            // if($total_block > $block_num){
+            //     $next = $block_num * $block_ct + 1;
+            // }
+          } else{
+            echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+
+          }
+        ?>
       </ul>
     </nav>
   </div><!-- //content_wrap -->
