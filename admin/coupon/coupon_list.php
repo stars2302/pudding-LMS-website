@@ -167,41 +167,16 @@ while($rs = $result -> fetch_object()){
 
     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination">
-        <!--
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&lsaquo;</span>
-          </a>
-        </li>
-
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        -->
-
         <?php
-          // if($pageNumber>0  ){
-          //   // $prev = ($block_num - 2) * $block_ct + 1;
-          //   $prev = $pageNumber-1;
-          //   echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
-          // } else{
-          //   echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
-          // }
-          
-          if($pageNumber == 1){
-            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
-          } else{
-            $prev = $pageNumber-1;
+          if($pageNumber>1 && $block_num > 1 ){
+            //이전버튼 활성화
+            $prev = ($block_num - 2) * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          } else{
+            //이전버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
           }
+
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
                 echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\">$i</a></li>";
@@ -209,12 +184,9 @@ while($rs = $result -> fetch_object()){
                 echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\">$i</a></li>";
             }
           }
-          if($pageNumber<$total_page){
-            $next = $pageNumber +1;
+          if($pageNumber<$total_page && $block_num < $total_block){
+            $next = $block_num * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
-            // if($total_block > $block_num){
-            //     $next = $block_num * $block_ct + 1;
-            // }
           } else{
             echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
 
