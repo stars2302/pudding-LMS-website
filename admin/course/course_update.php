@@ -1,15 +1,34 @@
 <?php
-$title="대시보드";
+  session_start();
+  if(!$_SESSION['AUID']){
+    echo "<script>
+            alert('접근 권한이 없습니다');
+            history.back();
+        </script>";
+  };
+
+ $title="강의 수정";
  $css_route="course/css/course.css";
  $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
+
+$cid = $_GET['cid'];
+$sql = "SELECT * FROM courses WHERE cid={$cid}"
+$result = $mysqli -> query($sql);
+
+$rs = $result -> fetch_object();
+var_dump($result);
+
 ?>
 
 <section>
   <div class="course_title tt_mb">
     <h1>강의 수정</h1>
   </div>
-  <form action="course_ok.php">
+  <form action="update_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
+    <input type="hidden" name="image_table_id" id="image_table_id" value="">
+    <input type="hidden" name="content" id="content" value="">
     <div class="categorywrap">
       <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
@@ -36,7 +55,12 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 
     <div class="course_name c_mt">
       <label for="name" class="form-label content_tt c_mb">강의명</label>
-      <input type="text" class="form-control" name="name" id="name" placeholder="강의명을 입력하세요." required/>
+      <input type="text" 
+      class="form-control" 
+      name="name" id="name" 
+      placeholder="강의명을 입력하세요." 
+      required
+      value="<?= $rs->name; ?>"/>
     </div>
 
     <div class="section3 d-flex gap-5 c_mt">
@@ -44,26 +68,50 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
           <label for="price" class="form-label content_tt c_mb">강의가격</label>
           <div class="col">
             <select class="form-select" name="price" id="price_menu" aria-label="Default select example">
-              <option value="유료" selected>유료</option>
-              <option value="무료">무료</option>
+              <option name="price" value="유료" <?php if($row->price == "유료") echo 'selected' ?>>유료</option>
+              <option name="price" value="무료" <?php if($row->price == "무료") echo 'selected' ?>>무료</option>
             </select>
           </div>
-          <div class="col price">
-            <input type="number" class="form-control" id="price" min="10000" max="1000000" step="10000" placeholder="금액"/>
+          <div class="col price_status">
+            <input 
+            type="number" 
+            class="form-control" 
+            name="price_status" 
+            id="price_status" 
+            min="10000" 
+            max="1000000" 
+            step="10000" 
+            value="<?= $rs->price_status; ?>"
+            placeholder="금액"/>
           </div>
         </div>
         <div class="row level level_status">
           <label class="form-label content_tt c_mb">난이도</label>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="low" value="1"/>
+            <input 
+            class="form-check-input" 
+            type="radio" 
+            name="level" 
+            id="low" 
+            value="초급" <?php if($row->level == "초급") echo 'checked' ?>/>
             <label class="form-check-label" for="low">초급</label>
           </div>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="middle" value="2"/>
+            <input 
+            class="form-check-input" 
+            type="radio" 
+            name="level" 
+            id="middle" 
+            value="중급" <?php if($row->level == "중급") echo 'checked' ?>/>
             <label class="form-check-label" for="middle">중급</label>
           </div>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="high" value="3"/>
+            <input 
+            class="form-check-input" 
+            type="radio" 
+            name="level" 
+            id="high" 
+            value="고급" <?php if($row->level == "고급") echo 'checked' ?>/>
             <label class="form-check-label" for="high">고급</label>
           </div>
         </div>
@@ -73,29 +121,29 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       <div class="row period mb-6">
         <label class="form-label content_tt c_mb">수강기간</label>
         <div class="col period_select1">
-          <select class="form-select" name="limit" id="limit" aria-label="Default select example">
-            <option value="제한" selected>제한</option>
-            <option value="무제한">무제한</option>
+          <select class="form-select" name="due" id="due" aria-label="Default select example">
+            <option name="due" value="제한" <?php if($row->due == "제한") echo 'selected' ?>>제한</option>
+            <option name="due" value="무제한" <?php if($row->due == "무제한") echo 'selected' ?>>무제한</option>
           </select>
         </div>
         <div class="col period_select2">
-          <select class="form-select" name="month" id="month" aria-label="Default select examh5le">
+          <select class="form-select" name="due_status" id="due_status" aria-label="Default select examh5le">
             <option value="" selected disabled>기간선택</option>
-            <option value="3개월">3개월</option>
-            <option value="6개월">6개월</option>
-            <option value="9개월">9개월</option>
-            <option value="12개월">12개월</option>
+            <option name="due_status" value="3개월" <?php if($row->due_status == "3개월") echo 'selected' ?>>3개월</option>
+            <option name="due_status" value="6개월" <?php if($row->due_status == "6개월") echo 'selected' ?>>6개월</option>
+            <option name="due_status" value="9개월" <?php if($row->due_status == "9개월") echo 'selected' ?>>9개월</option>
+            <option name="due_status" value="12개월" <?php if($row->due_status == "12개월") echo 'selected' ?>>12개월</option>
           </select>
         </div>
       </div>
       <div class="row act">
         <label class="form-check-label content_tt c_mb">상태</label>
         <div class="col-2 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="act_status" id="active" value="활성"/>
+          <input class="form-check-input" type="radio" name="act" id="active" value="활성" <?php if($row->act == "활성") echo 'checked' ?>/>
           <label class="form-check-label" for="active">활성</label>
         </div>
         <div class="col-2 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="act_status" id="inactive" value="비활성"/>
+          <input class="form-check-input" type="radio" name="act" id="inactive" value="비활성" <?php if($row->act == "비활성") echo 'checked' ?>/>
           <label class="form-check-label" for="inactive">비활성</label>
         </div>
       </div>
@@ -107,17 +155,16 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
     </div>
 
     <div class="file_input c_mt">
-      <label for="file" class="form-label content_tt c_mb">첨부파일</label>
-      <input type="file" class="form-control" name="file" id="file"/>
+      <label for="thumbnail" class="form-label content_tt c_mb">썸네일</label>
+      <input type="file" class="form-control" name="thumbnail" id="thumbnail"/>
     </div>
 
-    <div class="drag_drop c_mt">
-      <h3 class="content_tt c_mb">추가이미지 업로드</h3>
+
+      <h3 class="content_tt c_mt c_mb">추가이미지 업로드</h3>
       <div id="drop" class="box">
         <span>이미지를 드래그해서 올려주세요</span>
         <div id="thumbnails" class="d-flex justify-content-start"></div>
       </div>
-    </div>
 
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
@@ -148,8 +195,8 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       </div>
     </div>
     <div class="c_button d-flex justify-content-center align-items-center">
-      <button class="btn_complete btn btn-primary">등록완료</button>
-      <button class="btn btn-dark">등록취소</button>
+      <button class="btn_complete btn btn-primary">수정완료</button>
+      <button class="btn btn-dark">수정취소</button>
     </div>
   </form>
 </section>

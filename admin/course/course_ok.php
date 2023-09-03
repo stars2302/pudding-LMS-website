@@ -26,6 +26,7 @@
     $image_table_id = $_POST['image_table_id'];
     $image_table_id = rtrim($image_table_id, ',');//최우측 콤마 제거
 
+
     // 참고 유미네 https://github.com/HyeonJinSon/FastCode
     //파일업로드
     if($_FILES['thumbnail']['name']){
@@ -62,13 +63,14 @@
         }
     }
 
-    $sql = "INSERT INTO courses (name, price, price_status, level, due,due_status, act, content, thumbnail, image_table_id) 
-    VALUES ('{$name}','{$price}','{$price_status}','{$level}','{$due}','{$due_status}','{$act}','{$content}','{$thumbnail}','{$image_table_id}')";
+    $sql = "INSERT INTO courses (name, price, price_status, level, due,due_status, act, content, thumbnail, image_table_id, video_table_id) 
+    VALUES ('{$name}','{$price}','{$price_status}','{$level}','{$due}','{$due_status}','{$act}','{$content}','{$thumbnail}','{$image_table_id}','{$video_table_id}')";
 
     // var_dump($sql)
 
     $result = $mysqli->query($sql);
     $cid = $mysqli -> insert_id; //입력된 값의 pk가져오는 명령어
+
 
     if($result){
 

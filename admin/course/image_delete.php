@@ -3,7 +3,6 @@
 
   include_once $_SERVER['DOCUMENT_ROOT'].'/abcmall/admin/inc/dbcon.php';
 
-  //관리자 검사
   if(!isset($_SESSION['AUID'])){
     $return_data = array("result"=>"member"); 
     echo json_encode($return_data);
@@ -11,7 +10,6 @@
   }
 
   $imgid = $_POST['imgid'];
-  // $sql = "DELETE FROM product_image_table where imgid={$imgid}";
   $sql = "SELECT * FROM course_image_table where imgid={$imgid}";
   $result = $mysqli -> query($sql);
   $rs =  $result->fetch_object();
