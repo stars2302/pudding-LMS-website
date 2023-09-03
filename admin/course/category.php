@@ -9,12 +9,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
 
 $cates1 = $_GET['cate1'] ?? '';
 
-$sql = "SELECT * FROM category WHERE step=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
+$sql = "SELECT * FROM category WHERE step=1"; 
 $result = $mysqli->query($sql);
 while ($rs = $result->fetch_object()) {
   $rsc[] = $rs;
 }
-//var_dump($rsc);
 
 ?>
 
@@ -156,7 +155,7 @@ while ($rs = $result->fetch_object()) {
             <?php
             foreach ($cate1 as $c) {
               ?>
-              <option value="<?= $c->cateid ?>"><?= $c->name; ?></option>
+              <option value="<?= $c->cateid ?>" data-cate="<?= $c->name; ?>"><?= $c->name; ?></option>
             <?php } ?>
           </select>
         </div>
@@ -223,20 +222,19 @@ while ($rs = $result->fetch_object()) {
 
   let catename1 = '';
 
+  //조회 버튼 클릭시, 할일
   $('.search_btn').click(function () {
     view_category();
   });
 
+  //view_category 함수
   function view_category() {
     let cate1 = $('#cate1').val();
     let cate2 = $('#cate2').val();
-
     let data = {
       cate1: cate1,
       cate2: cate2,
     };
-
-    console.log(data);
 
     $.ajax({
       type: 'post',
@@ -245,7 +243,6 @@ while ($rs = $result->fetch_object()) {
       dataType: 'json',
       success: function (return_data) {
         catename1 = return_data.catename
-
         if (return_data.catename && return_data.result) {
           makeTr(return_data.catename, return_data.result);
         } else if (return_data.result == 'fail') {
@@ -257,79 +254,40 @@ while ($rs = $result->fetch_object()) {
       }
     });
   }
+
+  //makeTr 함수
   function makeTr(name, data) {
-    // let trHTML1 = '';
-    // let trHTML2 = '';
     let trHTML = '';
+    let selectedCate = $('#cate1').find("option:selected");
+    let cateTitle1 = selectedCate.data("cate");
+    let cateTitle2 = name;
+    let cateTitleArr = []
 
-    let cateTitle = name;
-    let cateTitle2 = data;
-    //cateTitle2 = data;
-
-
-    // console.log('catename1...', catename1);
-    
-    console.log('살려줘', cateTitle, cateTitle2)
     data.forEach(function (item) {
-      console.log('item',item)
-      if (item.step == 1) {
-        catename1 = catename1;
-      }
+      // if (item.step == 1) {
+      //  // catename1 = catename1;
+      //   // catename1 = catete;
+      // }
       if (item.step == 2) {
-        // cateTitle = name;
-        cateTitle = item.name;
+        cateTitle2 = item.name;
       }
       if (item.step == 3) {
-        // cateTitle2 = data;
-        // for (let i = 0; i <= data.length; i++) {
-        //   cateTitle2 = data[2].name;
-        // }
-        cateTitle2 = item;
-        for (let i = 0; i <= item.length; i++) {
-          cateTitle2 = item[i].name;
-        }
-        // console.log('cateTitle2', cateTitle2);
-        // console.log('cateTitle2', typeof (cateTitle2));
+        cateTitleArr = item.name;
       }
 
-      // trHTML1 += `
-      //       <td class="cate_name">${catename1}</td>`;
-
-      // trHTML2 += `
-      //       <td class="cate_name">${cateTitle}</td>
-      //       <td>${cateTitle2}</td>
-      //       <td>
-      //           <div>
-      //               <a href="category_delete.php"><i class="ti ti-trash bin_icon"></i></a>
-      //           </div>
-      //       </td>`;
-
-
-      
-            trHTML += `<tr>
-                          <td class="cate_name">${catename1}</td>
-                          <td class="cate_name">${cateTitle}</td>
-                          <td>${cateTitle2}</td>
-                          <td>
-                              <div>
-                                  
-                                  <a href="category_delete.php"><i class="ti ti-trash bin_icon"></i></a>
-                              </div>
-                          </td>
-                      </tr>`;
-   
-
+      trHTML += `<tr>
+                    <td class="cate_name cate_name1" date-catename =${cateTitle1}>${cateTitle1}</td>
+                    <td class="cate_name cate_name2" date-catename =${cateTitle2}>${cateTitle2}</td>
+                    <td class="cate_name3" date-catename =${cateTitleArr}>${cateTitleArr}</td>
+                    <td>
+                        <div>
+                            <button type="button" class="cate_delete"><i class="ti ti-trash bin_icon"></i></button>
+                        </div>
+                    </td>
+                </tr>`;
     });
-
-    // $('table tbody tr .big_cate').empty().append(trHTML1);
-    // $('table tbody tr').empty().append(trHTML2);
     $('table tbody').empty().append(trHTML);
   }
-
-  ///console.log(return_data)
-  //console.log(return_data.catename);
-
-
 
 
 
@@ -394,6 +352,27 @@ while ($rs = $result->fetch_object()) {
       }
     });//ajax
   }
+
+
+
+
+
+
+    // $('.cate_delete').click(function() {
+    //     let trElement = $(this).closest('tr');
+        
+    //     let cateName1 = trElement.find('.cate_name1').text();
+    //     let cateName2 = trElement.find('.cate_name2').text();
+    //     let cateName3 = trElement.find('.cate_name3').text();
+
+    //     console.log('Category 1:', cateName1);
+    //     console.log('Category 2:', cateName2);
+    //     console.log('Category 3:', cateName3);
+        
+
+    // });
+
+
 
 
 </script>

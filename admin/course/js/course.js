@@ -65,30 +65,15 @@ $('.you_upload').on('click','.trash_icon',function(){
 //   }    
 // });
 
+
+
+// 강의 가격 천단위 표기
+
 // let priceList = $('.price');
 
 // priceList.each(function() {
-
-//     let str_price = $(this).text();
-//     let course_price = ($.number(str_price));
-//     console.log('course_price',course_price)
-//     console.log('str_price',str_price)
-
-//    $(this).text(course_price+' 원');
+//   let str_price = $(this).text();
+//   let course_price = ($.number(str_price));
+//   $(this).text(course_price+' 원');
 // });
 
-
-//   let priceList = $('.price');
-
-    
-// priceList.each(function() {
-
-//     let str_price = $(this).text();
-//     let course_price = ($.number(str_price));
-//     console.log('course_price',course_price)
-//     console.log('str_price',str_price)
-
-//    $(this).text(course_price+' 원');
-// });
-
-alert('작동');

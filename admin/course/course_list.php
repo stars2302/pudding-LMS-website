@@ -246,7 +246,6 @@ while ($rs = $result->fetch_object()) {
 </div><!-- content_wrap -->
 </div><!-- wrap -->
 <script>
-  /* 유림 */
   //강의 가격 천단위, 변환
 
   // let str_price = $('.price').text();
@@ -255,19 +254,14 @@ while ($rs = $result->fetch_object()) {
 
 
 
-//   let priceList = $('.price');
+  let priceList = $('.price');
 
-    
-// priceList.each(function() {
+  priceList.each(function() {
+    let str_price = $(this).text();
+    let course_price = ($.number(str_price));
+    $(this).text(course_price+' 원');
+  });
 
-//     let str_price = $(this).text();
-//     let course_price = ($.number(str_price));
-//     console.log('course_price',course_price)
-//     console.log('str_price',str_price)
-
-//    $(this).text(course_price+' 원');
-// });
-  /* 유림 */
 </script>
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';

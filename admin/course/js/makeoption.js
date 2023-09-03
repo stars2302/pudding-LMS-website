@@ -20,8 +20,6 @@ $('#pcode2_1').on('change',function(){
 
 function makeOption(evt, step, category, target){
   let cate = evt.val();
-  //console.log(cate);
-
   let data = { 
     cate : cate,  //부모 분류의 cid
     step: step,
@@ -35,7 +33,6 @@ function makeOption(evt, step, category, target){
     url: "print_option.php", 
     dataType: 'html', //success성공후 printOption.php가 반환하는 데이터의 형식  <option></option>
     success: function(result){
-      console.log(result);
       target.html(result);
     }
   });//ajax
