@@ -4,6 +4,9 @@ $css_route = "course/css/course.css";
 $js_route = "course/js/course.js";
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
+
+
 // name
 // cate
 // content
@@ -70,6 +73,8 @@ if ($sale_end_date) {
 // }
 
 
+
+
 $sql = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
 //$sql = $sql.$search_where;
 
@@ -79,7 +84,7 @@ $order = " ORDER BY cid DESC"; //최근순 정렬
 
 // $query = $sql.$order.$limit; //쿼리 문장 조합
 $query = $sql . $order;
-//var_dump($query);
+
 
 $result = $mysqli->query($query);
 
@@ -100,32 +105,21 @@ while ($rs = $result->fetch_object()) {
       <div class="col-md-4">
         <select class="form-select" aria-label="Default select example" id="cate1">
           <option selected disabled>대분류</option>
-          <!-- 추후 value 넣기  -->
           <?php
-          foreach ($cate1 as $c) {
-            ?>
-            <option value="<?php echo $c->cid ?>"><?php echo $c->name ?></option>
+            foreach ($cate1 as $c) {
+          ?>
+          <option value="<?= $c->cateid ?>" data-cate="<?= $c->name; ?>"><?= $c->name; ?></option>
           <?php } ?>
-          <!-- <option value="">프로그래밍</option>
-          <option value="">UI/UX</option> -->
         </select>
       </div>
       <div class="col-md-4">
         <select class="form-select" aria-label="Default select example" id="cate2">
           <option selected disabled>중분류</option>
-          <!-- 추후 value 넣기  -->
-          <option value="">프론트엔드</option>
-          <option value="">백엔드</option>
-          <option value="">기타</option>
         </select>
       </div>
       <div class="col-md-4">
         <select class="form-select" aria-label="Default select example" id="cate3">
           <option selected disabled>소분류</option>
-          <!-- 추후 value 넣기  -->
-          <option value="">HTML</option>
-          <option value="">CSS</option>
-          <option value="">Javacript</option>
         </select>
       </div>
     </div>
@@ -139,7 +133,6 @@ while ($rs = $result->fetch_object()) {
         <span>
           <input type="checkbox" name="level" id="Intermediate" value="Intermediate" class="form-check-input">
           <label for="Intermediate">중급</label>
-          <!-- id="flexCheckDefault" -->
         </span>
         <span>
           <input type="checkbox" name="level" id="Advanced" value="Advanced" class="form-check-input">
@@ -247,15 +240,11 @@ while ($rs = $result->fetch_object()) {
 
 </div><!-- content_wrap -->
 </div><!-- wrap -->
+
+<script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
+
 <script>
   //강의 가격 천단위, 변환
-
-  // let str_price = $('.price').text();
-  // let course_price = ($.number(str_price));
-  // $('.price').text(course_price+' 원');
-
-
-
   let priceList = $('.price');
 
   priceList.each(function() {
