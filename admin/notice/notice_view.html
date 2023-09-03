@@ -1,14 +1,9 @@
-<?php
-  session_start(); 
-  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php if(isset($title)){echo $title;} else { echo 'home';}; ?> - PUDDING</title>
+    <title>PUDDING</title>
     <!-- reset css -->
     <link
       rel="stylesheet"
@@ -48,14 +43,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- summernote css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
-      integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <!-- 스포카 -->
     <link
       href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
@@ -63,18 +50,10 @@
       type="text/css"
     />
 
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/jqueryui/jquery-ui.theme.min.css" />
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/common.css" />
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/<?php if(isset($css_route)){echo $css_route;} else { echo 'css/index.css';}; ?>" />
-        
-    <!-- jquery js-->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    </head>
+    <link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />  
+    <link rel="stylesheet" href="css/notice.css" /> 
+  </head>
   <body>
     <div class="wrap">
       <header>
@@ -90,7 +69,7 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/course/course_list.php" class="icon"
+                <a href="" class="icon"
                   ><i class="ti ti-chalkboard"></i><span>강의 관리</span></a
                 >
               </li>
@@ -125,11 +104,11 @@
           <div
             class="profile d-flex justify-content-between align-items-center border"
           >
-            <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
+            <img src="../images/profile_img.png" alt="" />
             <h2 class="content_stt">프바오</h2>
             <p>admins</p>
           </div>
-          <a href="" class="logout b_text02">로그아웃</a>
+          <a href="" class="btn btn-primary logout b_text01">로그아웃</a>
         </div>
       </header>
 
@@ -160,9 +139,85 @@
                 fill="currentColor"
               ></path>
             </svg>
-            <div class="red_bell d-flex justify-content-center align-items-center">1</div>
+            <div class="red_bell">1</div>
           </div>
           <div class="profile">
-            <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
+            <img src="../images/profile_img.png" alt="" />
           </div>
         </div>
+        <!-- top_bar -->
+        <section>
+          <div class="view_box">
+            <h2 class="main_tt">공지사항</h2>
+              <!-- 글 제목 -->
+            <div class="notice_view_notice_body shadow_box border justify-content-between">
+              <h5 class="main_stt thead_tt">학습관리시스템(LMS) 교체 안내</h5>
+              <p class="notice_info d-flex justify-content-end align-items-center">
+                <span class="b_text02">작성자</span>
+                <span class="b_text02">운영자</span>
+                <span class="b_text02">작성일</span>
+                <span class="b_text02">2023-08-18</span>
+                <span class="b_text02">조회수</span>
+                <span class="b_text02">215415</span>
+              </p>
+            <div class="content">
+                <!-- 본문 -->
+                <p>
+                  동영상 업로드 및 변환 복구 작업이 완료되어 정상적으로 이용이 가능합니다.
+                  <br>
+                  금일 많은 대학의 개강으로 인해 15시 30분경 타 대학뿐만 아니라 우리 대학에서도 학습관리시스템(LMS) 동영상 클라우드 서비스 
+                  이용량의 증가로 동영상 변환에 장애가 발생하였습니다.
+                  시스템 담당 업체에서 서버 증설 작업을 진행하였으나 동영상 업로드 후 변환 시간에는 다소 지연되고 있으며, 점차 변환 가동률을 높여 
+                  복구 작업을 진행하고 있습니다.
+                  <br>
+                  변환 후 동영상 재생은 정상적으로 진행되며 현재 동영상 업로드를 진행하시는 교수님들께서는 참고해 주시기 바랍니다.
+                  이용에 불편을 드린 점 양해 부탁드립니다.
+                  감사합니다.
+                </p>
+            </div>
+          </div>   
+          <div class="notice_view_btns d-flex justify-content-end">
+            <a class="btn_modify btn btn-primary">수정</a>
+            <button class="btn_delete btn btn-danger">삭제</button>     
+            <a href="notice_list.html" class="btn_cancel btn btn-dark">목록 보기</a>
+          </div>
+          </div>
+        </section>    
+      </div>
+      <!-- content_wrap -->
+    </div>
+    <!-- wrap -->
+
+    <!-- jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- jqueryui js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+      integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- bootstrap js -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+      integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- modernizr js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="../js/index.js"></script>
+    <script src="js/notice.js"></script>
+  </body>
+</html>

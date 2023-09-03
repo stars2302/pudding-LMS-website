@@ -19,7 +19,7 @@
 
     echo "<script>
       alert('관리자님 반갑습니다');
-      location.href = '/pudding-LMS-website/admin/index.php';
+       location.href = '/pudding-LMS-website/admin/index.php';
     </script>";
   } else{
     echo "<script>
