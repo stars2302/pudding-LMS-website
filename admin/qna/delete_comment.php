@@ -14,11 +14,11 @@ $row = $result->fetch_assoc();
 $response = [];
 
 if ($row['cnt'] > 0) {
-    // 대댓글이 있으면 삭제하지 않음
+    // 댓글에 또 댓글 있으면 삭제하지 않음
     $response['status'] = 'error';
     $response['message'] = '이 댓글과 관련된 댓글이 존재하므로 삭제 할 수 없습니다.';
 } else {
-    // 대댓글이 없으면 삭제
+    // 댓글이 더 없으면 삭제
     $sql = "DELETE FROM qna_comments WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('i', $comment_id);

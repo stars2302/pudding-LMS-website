@@ -1,170 +1,22 @@
 <?php
+$title = "Q&A";
+$css_route = "qna/css/qna.css";
+$js_route = "qna/js/qna.js";
+
+
 $qid = $_GET['qid'];
-include_once $_SERVER['DOCUMENT_ROOT'] . '/admin/qna/qna_get.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/qna_get.php';
+
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PUDDING</title>
-  <!-- reset css -->
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-  integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<!-- normalize css -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-  integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<!-- materialize css -->
-<!-- <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-/> -->
-<!--bootstrap css -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
-  integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<!-- tabler-icons  -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
-/>
-
-<!-- fontawesome css -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<!-- jquery ui css -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/black-tie/jquery-ui.min.css"
-  integrity="sha512-+Z63RrG0zPf5kR9rHp9NlTMM29nxf02r1tkbfwTRGaHir2Bsh4u8A79PiUKkJq5V5QdugkL+KPfISvl67adC+Q=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<!-- 스포카 -->
-<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.css">
-<link rel="stylesheet" href="../css/jqueryui/jquery-ui.min.css">
-<link rel="stylesheet" href="../css/jqueryui/jquery-ui.structure.css">
-<link rel="stylesheet" href="../css/jqueryui/jquery-ui.structure.min.css">
-<link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.css">
-<link rel="stylesheet" href="../css/jqueryui/jquery-ui.theme.min.css">
-<link rel="stylesheet" href="../css/common.css" />
-<link rel="stylesheet" href="css/qna.css" />
-</head>
-<body>
-<style>
-.ml-auto {
-	margin-left: auto !important;
-}
-.ml-cutstom {
-	margin-left: 90px !important;
-}
-.mr-2, .mx-2 {
-    margin-right: 0.5rem!important;
-}
-.mr-3, .mx-3 {
-    margin-right: 1rem!important;
-}
-.form-control {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-</style>
-
-  <div class="wrap">
-    <header>
-      <div class="inner_header content_tt d-flex justify-content-between align-items-center flex-column">
-        <h1 class="adminlogo"><a href="#">로고</a></h1>
-        <nav>
-          <ul class="d-flex justify-content-between flex-column">
-            <li><a href="" class="icon"><i class="ti ti-home"></i><span>대시보드</span></a></li>
-            <li><a href="" class="icon"><i class="ti ti-chalkboard"></i><span>강의 관리</span></a></li>
-            <li><a href="" class="icon"><i class="ti ti-coins"></i><span>매출 관리</span></a></li>
-            <li><a href="" class="icon"><i class="ti ti-ticket"></i><span>쿠폰 관리</span></a></li>
-            <li><a href="" class="icon"><i class="ti ti-brand-hipchat"></i><span>강의평 관리</span></a></li>
-            <li><a href="" class="icon"><i class="ti ti-clipboard-text"></i><span>공지사항</span></a></li>
-            <li><a href="" class="icon"><i class="ti ti-zoom-question"></i><span>Q&A</span></a></li>
-          </ul>
-        </nav>
-        <div class="profile d-flex justify-content-between align-items-center border">
-          <img src="../images/profile_img.png" alt="">
-          <h2 class="content_stt">프바오</h2>
-          <p>admins</p>
-        </div>
-        <a href="" class="btn btn-primary  primary_btn logout b_text01">로그아웃</a>
-      </div>
-    </header>
-  
-    <div class="content_wrap">
-      <div class="top_bar d-flex justify-content-end align-items-center">
-        <div class="red_bell_wrap">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-bell-filled"
-            width="68"
-            height="68"
-            viewBox="0 0 28 28"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z"
-              stroke-width="0"
-              fill="currentColor"
-            ></path>
-            <path
-              d="M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z"
-              stroke-width="0"
-              fill="currentColor"
-            ></path>
-          </svg>
-          <div class="red_bell">1</div>
-        </div>
-        <div class="profile">
-          <img src="images/profile_img.png" alt="">
-        </div>
-      </div><!-- top_bar -->
-      
-      <section style="margin-bottom:100px;">
+      <section>
         <h2 class="main_tt">Q&amp;A 내용</h2>
         
         <div class="shadow_box border">
-			<div class="qna">
+			<div class="shadow_box border qna">
 				<!-- 제목 -->          
 				<h2><?php echo $row['q_title']; ?></h2>
 
@@ -178,7 +30,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/admin/qna/qna_get.php';
 				<!-- 작성 내용 -->
 				<div class="qna_content">
 					<p class="b_text02 "><?php echo $row['q_content']; ?></p>
-					<img src="image/hq720.jpg" alt="dummy image">
+					<!-- <img src="image/hq720.jpg" alt="dummy image"> -->
 				</div>
 
 
@@ -253,85 +105,44 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/admin/qna/qna_get.php';
 				</div><!-- .commentList -->
 			</div>
 
-			<div style="border-top:1px solid #eee;padding:20px 60px 0">
+			<div>
 				<!-- commentWrite -->
-				<form method="post" class="commentForm d-flex flex-row justify-content-start align-items-center add-comment-section mt-4 mb-4">
-				<input type="hidden" name="post_id" value="<?php echo $qid ?>">
-				<input type="hidden" name="parent_comment_id" value="0">
-				<input type="hidden" name="depth" value="0">
-				<img class="img-fluid img-responsive rounded-circle mr-2" src='image/Master_Big.png' alt='관리자 이미지'>
-				<textarea name="comment" class="form-control mr-3" placeholder="Add comment" rows="10" style="height:45px; line-height:30px;"></textarea>
-				<button type="submit" class="btn btn-dark" style="width:160px">댓글 등록</button>
+				<form method="post" class="commentForm d-flex justify-content-start align-items-center ">
+				  <input type="hidden" name="post_id" value="<?php echo $qid ?>">
+          <input type="hidden" name="parent_comment_id" value="0">
+          <input type="hidden" name="depth" value="0">
+          <img class="img-fluid img-responsive rounded-circle mr-2" src='image/Master_Big.png' alt='관리자 이미지'>
+          
+            <textarea name="comment" class="form-control" placeholder="Add comment" rows="10"></textarea>
+          
+          <button type="submit" class="btn btn-dark">댓글 등록</button>
 				</form>
 
 				<!-- /commentWrite -->
 			</div>
 
-			<div class="d-flex justify-content-center" style="padding:50px 0;">
+			<div class="d-flex justify-content-center" >
 				<!-- 답변 상태 토글 버튼 -->
 				<form action="qna_content.php" method="GET">
 					<input type="hidden" name="qid" value="<?php echo $qid; ?>">
 					<input type="hidden" name="toggle" value="<?php echo $row['q_state'] == 0 ? '1' : '0'; ?>">
 					
-						<?php echo $row['q_state'] == 0 ? '<button type="submit" class="btn btn-primary" style="width:160px">답변 완료</button>' : '<button type="submit" class="btn btn-warning" style="width:160px">답변 대기</button>'; ?>
-					
+					<div class="order">
+					  	<?php echo $row['q_state'] == 0 ? '<button type="submit" class="btn btn-primary">답변 완료</button>' : '<button type="submit" class="btn btn-warning">답변 대기</button>'; ?>
+  					
+              <button type="button" class="btn btn-dark" onclick="window.location.href='qna.php'">목록 보기</button>
+					</div>
 				</form>
 			</div>
 
         </div>
-		<div class="float-end my-4">
-			<button type="button" class="btn btn-dark" onclick="window.location.href='qna.php'">목록 보기</button>
-		</div>
+		
+
       </section>
     </div><!-- content_wrap -->
   </div><!-- wrap -->
 
-  <!-- jquery -->
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-  integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<!-- jqueryui js -->
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
-  integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<!-- bootstrap js -->
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
-  integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
-  integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<!-- fontawesome js  -->
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
-  integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<!-- modernizr js -->
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
-  referrerpolicy="no-referrer"
-></script>
-<!-- materialize css -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
-<!-- tabler-icons js -->
-<script src="node_modules/@tabler/icons/dist/umd/tabler-icons.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/common.js"></script>
+  
 <script>
 
 // 댓글과 답글 작성 처리
@@ -361,9 +172,9 @@ $(document).on('submit', '.commentForm', function(e) {
 		const new_id = parsedData.new_id;
                 const new_depth = parsedData.depth;
                 const marginLeftValue = 180 + (new_depth * 20);
-				const created_at = parsedData.created_at;
+			        	const created_at = parsedData.created_at;
                 const newCommentHtml = `
-                <div class='master shadow_box border' style='margin-left:${marginLeftValue}px'>
+                <div class='master shadow_box border'>
 					<div class='wrap' data-id='${new_id}'>
 						<img src='image/Master_Big.png' alt='관리자 이미지'>
 						<div class='you content_stt primary'>프바오</div>
@@ -377,7 +188,7 @@ $(document).on('submit', '.commentForm', function(e) {
 									<path d='M16 5l3 3'></path>
 								</svg>
 							</button>
-							<button class='saveButton' data-id='${new_id}' style='display:none'>저장</button>						
+							<button class='saveButton' data-id='${new_id}' >저장</button>						
 							<div data-comment-id='${new_id}'>
 								<button title='삭제' type='button' class='deleteButton'>
 									<svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-trash' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.25' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
@@ -441,6 +252,13 @@ $(document).on('click', '.replyButton', function() {
   $(this).hide(); // "댓글 달기" 버튼을 숨깁니다.
 });
 
+function setGap() {
+  var elements = document.querySelectorAll('.gap-container');
+
+  elements.forEach(function (element) {
+    element.style.gap = '30px';
+  });
+}
 
 // "작성 취소" 버튼 클릭 시 이벤트
 $(document).on('click', '.cancelReply', function() {

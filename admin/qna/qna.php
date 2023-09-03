@@ -23,11 +23,21 @@ $total_posts = $row[0];
 $total_pages = ceil($total_posts / $per_page);
 
 // 시작 게시물
-$start = ($current_page - 1) * $per_page;
+$start = ($current_page - 1) * $per_page; // (1-1)*10 = 0, (2-1)*10 = 10
 
 // 게시물 가져오기
 $sql = "SELECT * FROM qna LIMIT $start, $per_page";
 $result = $mysqli->query($sql);
+
+
+$block_ct = 5; // 페이지 버튼 5개
+$block_num = ceil($per_page/$block_ct);//pageNumber 1,  9/5 1.2 2
+$block_start = (($block_num -1)*$block_ct) + 1;//page6 start 6
+$block_end = $block_start + $block_ct -1; //start 1, end 5
+
+$total_page = ceil($per_page/$block_ct); //총52, 52/5
+if($block_end > $total_page) $block_end = $total_page;
+$total_block = ceil($total_page/$block_ct);//총32, 2
 
 ?>
 
@@ -48,7 +58,7 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
 }
 
 .completed {
-  color: blue !important;
+  color: var(--point_primary) !important;
 }
 </style>
 <section>
