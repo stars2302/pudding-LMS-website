@@ -1,6 +1,5 @@
 <?php
-// include 'dbconn.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/qna_page.php';
+include 'dbconn.php';
 
 $comment_id = $_POST['comment_id'];
 
@@ -12,10 +11,12 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 
+$response = [];
+
 if ($row['cnt'] > 0) {
     // 대댓글이 있으면 삭제하지 않음
-    echo "<script>alert('이 댓글과 관련된 댓글이 존재해서 삭제 할 수 없습니다.');</script>";
-    echo "<script>window.location.href='qna_content.php';</script>"; 
+    $response['status'] = 'error';
+    $response['message'] = '이 댓글과 관련된 댓글이 존재하므로 삭제 할 수 없습니다.';
 } else {
     // 대댓글이 없으면 삭제
     $sql = "DELETE FROM qna_comments WHERE id = ?";
@@ -24,9 +25,12 @@ if ($row['cnt'] > 0) {
     $result = $stmt->execute();
 
     if ($result) {
-        header("Location: qna_content.php");
+        $response['status'] = 'success';
     } else {
-        echo "댓글 삭제 실패: " . $mysqli->error;
+        $response['status'] = 'error';
+        $response['message'] = '댓글 삭제 실패: ' . $mysqli->error;
     }
 }
+
+echo json_encode($response);
 ?>
