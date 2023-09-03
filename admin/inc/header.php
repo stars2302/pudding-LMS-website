@@ -74,6 +74,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- Number js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/df-number-format/2.1.6/jquery.number.min.js"></script>
+
+
     </head>
   <body>
     <div class="wrap">
@@ -90,7 +94,7 @@
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/course/course_list.php" class="icon"
                   ><i class="ti ti-chalkboard"></i><span>강의 관리</span></a
                 >
               </li>

@@ -42,16 +42,19 @@ select,
   align-items: center;
 }
 .level_price label {
-  font-size: 20px;
+  font-size: 16px;
   margin: 0 12px 0 3px;
   line-height: 45px;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: text-bottom;
+  margin-left: 8px;
 }
 .level_price h3 {
   margin-right: calc(var(--base_unit) * 0.5);
-  line-height: 45px;
+  /* line-height: 110px; */
   font-weight: bold;
+  vertical-align: bottom;
+  margin-bottom: 0;
 }
 .price_check {
   margin-left: 10px;
@@ -102,6 +105,10 @@ select,
   vertical-align: bottom;
   margin-right: 15px;
 } */
+.level_price span {
+  display: flex;
+  align-items: center;
+}
 .status_box {
   position: relative;
   width: 100%;
@@ -160,14 +167,19 @@ a.btn {
 .category_list {
   margin-top: calc(var(--base_unit) * 1.5);
 }
+.category_list form {
+  margin-bottom: calc(var(--base_unit) * 1);
+}
 .category_list table {
   margin-bottom: calc(var(--base_unit) * 3);
   text-align: center;
+  border-radius: 10px;
 }
 .category_list table tr * {
   padding: 5px;
 }
 .category_list table thead * {
+  margin-top: 30px;
   padding: 10px;
   font-size: 20px;
   font-weight: bold;
