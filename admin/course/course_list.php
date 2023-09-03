@@ -2,6 +2,7 @@
 $title = "강의 관리";
 $css_route = "course/css/course.css";
 $js_route = "course/js/course.js";
+
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 // name
 // cate
@@ -174,7 +175,7 @@ while ($rs = $result->fetch_object()) {
         <img src="<?= $item->thumbnail ?>" alt="강의 썸네일 이미지" class="border">
         <div class="course_info">
           <div>
-            <h3 class="course_list_title b_text01"><?= $item->name ?>
+            <h3 class="course_list_title b_text01"><a href="course_view.php?cid=<?= $item->cid ?>"><?= $item->name ?></a>
               <span class="badge rounded-pill blue_bg b-pd">프론트엔드</span>
               <span class="badge rounded-pill green_bg b-pd">초급</span>
             </h3>
@@ -244,7 +245,30 @@ while ($rs = $result->fetch_object()) {
 
 </div><!-- content_wrap -->
 </div><!-- wrap -->
+<script>
+  /* 유림 */
+  //강의 가격 천단위, 변환
 
+  // let str_price = $('.price').text();
+  // let course_price = ($.number(str_price));
+  // $('.price').text(course_price+' 원');
+
+
+
+//   let priceList = $('.price');
+
+    
+// priceList.each(function() {
+
+//     let str_price = $(this).text();
+//     let course_price = ($.number(str_price));
+//     console.log('course_price',course_price)
+//     console.log('str_price',str_price)
+
+//    $(this).text(course_price+' 원');
+// });
+  /* 유림 */
+</script>
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
 ?>

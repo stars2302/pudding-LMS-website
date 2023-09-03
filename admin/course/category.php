@@ -184,7 +184,7 @@ while ($rs = $result->fetch_object()) {
       </thead>
       <tbody>
         <tr>
-          <td class="big_cate"></td>
+          <!-- <td class="big_cate"></td> -->
          
 
         </tr>
@@ -258,8 +258,9 @@ while ($rs = $result->fetch_object()) {
     });
   }
   function makeTr(name, data) {
-    let trHTML1 = '';
-    let trHTML2 = '';
+    // let trHTML1 = '';
+    // let trHTML2 = '';
+    let trHTML = '';
 
     let cateTitle = name;
     let cateTitle2 = data;
@@ -291,22 +292,38 @@ while ($rs = $result->fetch_object()) {
         // console.log('cateTitle2', typeof (cateTitle2));
       }
 
-      trHTML1 += `
-            <td class="cate_name">${catename1}</td>`;
+      // trHTML1 += `
+      //       <td class="cate_name">${catename1}</td>`;
 
-      trHTML2 += `
-            <td class="cate_name">${cateTitle}</td>
-            <td>${cateTitle2}</td>
-            <td>
-                <div>
-                    <a href="category_delete.php"><i class="ti ti-trash bin_icon"></i></a>
-                </div>
-            </td>`;
+      // trHTML2 += `
+      //       <td class="cate_name">${cateTitle}</td>
+      //       <td>${cateTitle2}</td>
+      //       <td>
+      //           <div>
+      //               <a href="category_delete.php"><i class="ti ti-trash bin_icon"></i></a>
+      //           </div>
+      //       </td>`;
+
+
+      
+            trHTML += `<tr>
+                          <td class="cate_name">${catename1}</td>
+                          <td class="cate_name">${cateTitle}</td>
+                          <td>${cateTitle2}</td>
+                          <td>
+                              <div>
+                                  
+                                  <a href="category_delete.php"><i class="ti ti-trash bin_icon"></i></a>
+                              </div>
+                          </td>
+                      </tr>`;
+   
+
     });
 
-    // Use the append method to add rows to the table instead of setting its text
-    $('table tbody tr .big_cate').append(trHTML1);
-    $('table tbody tr').prepend(trHTML2);
+    // $('table tbody tr .big_cate').empty().append(trHTML1);
+    // $('table tbody tr').empty().append(trHTML2);
+    $('table tbody').empty().append(trHTML);
   }
 
   ///console.log(return_data)
