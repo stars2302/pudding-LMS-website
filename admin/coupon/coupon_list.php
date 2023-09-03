@@ -5,11 +5,6 @@ $js_route = "coupon/js/coupon.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
 
-//pagenation
-$pagenationTarget = 'coupons'; //pagenation 테이블 명
-$pageContentcount = 6; //페이지 당 보여줄 list 개수
-include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
-$limit = " limit $startLimit, $pageCount";
 
 
 //전체 / 활성 / 비활성 쿠폰개수(고정)
@@ -41,32 +36,61 @@ $sc_where = '';
 
 //쿠폰 활성/비활성 filter 조건
 $cp_filter = $_GET['coupon_filter']??'';
-var_dump($cp_filter);
+$filter_where = '';
+// var_dump($cp_filter);
 if($cp_filter == '-1' || $cp_filter == ''){
+  $filter_where .= " 1=1";
   $sc_where .= '';
 } else{
-  $sc_where .= " and cp_status='{$cp_filter}'";
+  $filter_where .= " cp_status='{$cp_filter}'";
+  $sc_where .= ' and'.$filter_where;
 }
 
+// var_dump($filter_where);
 
-
+$search_where = '';
 //검색어(필터 상관없이 전체쿠폰에서 검색)
 $cp_search = $_GET['search']??'';
-var_dump($cp_search);
+// var_dump($cp_search);
 if($cp_search){
-  $sc_where = " and cp_name like '%{$cp_search}%'";
+  $search_where .= " cp_name like '%{$cp_search}%'";
+  $sc_where = ' and'.$search_where;
   //제목과 내용에 키워드가 포함된 상품 조회
+} else{
+  $search_where = '';
 }
+// var_dump($search_where);
+
+//pagenation
+if(isset($cp_filter)){
+  $pagerwhere = $filter_where;
+} else if(isset($cp_search)){
+  $pagerwhere = $search_where;
+} else{
+  $pagerwhere = ' 1=1';
+}
+$pagenationTarget = 'coupons'; //pagenation 테이블 명
+$pageContentcount = 6; //페이지 당 보여줄 list 개수
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount";
+
 
 
 
 //최종 query문, 실행
 $sqlrc = $sql.$sc_where.$order.$limit;
-var_dump($sqlrc);
+// var_dump($sqlrc);
 $result = $mysqli -> query($sqlrc);
 while($rs = $result -> fetch_object()){
   $rsc[] = $rs;
 }
+
+
+
+//필터랑 페이지네이션 동시에 안됨
+//필터하면 필터된 페이지 개수 어쩌구..
+
+
 
 ?>
 
@@ -166,7 +190,7 @@ while($rs = $result -> fetch_object()){
     </div>
 
     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
-      <ul class="pagination">
+      <ul class="pagination coupon_pager">
         <?php
           if($pageNumber>1 && $block_num > 1 ){
             //이전버튼 활성화
@@ -179,9 +203,9 @@ while($rs = $result -> fetch_object()){
 
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
-                echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\">$i</a></li>";
+                echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }else{
-                echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\">$i</a></li>";
+                echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
           if($pageNumber<$total_page && $block_num < $total_block){
