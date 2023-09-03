@@ -127,10 +127,10 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
         <div class="youtube c_mb">
           <div class="row justify-content-between">
             <div class="col-4 youtube_name">
-              <input type="text" class="form-control" name="youtube_name" id="youtube_name" placeholder="강의명을 입력하세요"/>
+              <input type="text" class="form-control" name="youtube_name[]" id="youtube_name" placeholder="강의명을 입력하세요"/>
             </div>
             <div class="col-7 youtube_url">
-              <input type="url" class="form-control" name="youtube_url" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
+              <input type="url" class="form-control" name="youtube_url[]" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
             </div>
             <div class="col-1 trash_icon">
               <i class="ti ti-trash bin_icon"></i>

@@ -207,7 +207,7 @@ while ($rs = $result->fetch_object()) {
               <option value="0" <?php if($item->act==0) {echo "selected"; } ?>>비활성화</option>
             </select>
             <span class="price_btn_wrap">
-              <a href="course_up.php" class="btn btn-primary btn_g">수정</a>
+              <a href="course_update.php?cid=<?= $item->cid ?>" class="btn btn-primary btn_g">수정</a>
               <button class="btn btn-danger">삭제</button>
             </span>
           </span>

@@ -10,30 +10,21 @@
   //   </script>";
   // }
 
-  $mysqli->autocommit(FALSE);
-  try{
-
+    $cid = $_POST['cid'];
     $name = $_POST['name'];
     $price = $_POST['price'];
     $price_status = $_POST['price_status']??0;
-    $level = $_POST['level']??0;
+    $level = $_POST['level'];
     $due = $_POST['due'];
     $due_status = $_POST['due_status']??0;
-    $act = $_POST['act']??0;
+    $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
+    $thumbnail = $_FILES['thumbnail'];
 
-    $image_table_id = $_POST['image_table_id']??0;
     $image_table_id = $_POST['image_table_id'];
     $image_table_id = rtrim($image_table_id, ',');//최우측 콤마 제거
 
-    $youtube_name = $_POST['youtube_name']??0;
-    $youtube_name = $_POST['youtube_name'];
 
-    $youtube_url = $_POST['youtube_url']??0;
-    $youtube_url = $_POST['youtube_url'];
-
-    // 참고 유미네 https://github.com/HyeonJinSon/FastCode
-    //파일업로드
     if($_FILES['thumbnail']['name']){
 
         if($_FILES['thumbnail']['size']> 10240000){
@@ -68,50 +59,25 @@
         }
     }
 
-// // course_url_table에 youtube_name, youtube_url을 가지고 인서트
-//     $sql = "INSERT INTO course_url_table (youtube_name, youtube_url) values ('${youtube_name}', '${youtube_url}');"
-//     $result = $mysqli-> query($sql);
-// // 인서트 된 값의 yuid array를 가져옴
-//     $yuid = $mysqli -> insert_id;
-// // yuid를 ','로 연결해서 $video_table_id 에 넣어줌
-//     $video_table_id = array("result"=>'success', 'imgid'=> $imgid, 'savefile'=> $savefile); 
-//     echo($video_table_id);
+    $sql = "UPDATE courses 
+    SET name='{$name}', price='{$price}', price_status='{$price_status}', level='{$level}', due='{$due}',due_status='{$due_status}', act='{$act}', 
+    content='{$content}', thumbnail='{$thumbnail}', image_table_id ='{$image_table_id}'  WHERE cid ='{$cid}'";
 
-    $sql = "INSERT INTO courses (name, price, price_status, level, due,due_status, act, content, thumbnail, image_table_id, video_table_id) 
-    VALUES ('{$name}','{$price}','{$price_status}','{$level}','{$due}','{$due_status}','{$act}','{$content}','{$thumbnail}','{$image_table_id}','{$video_table_id}')";
-
-    // var_dump($sql)
-
-    $result = $mysqli->query($sql);
-    $cid = $mysqli -> insert_id; //입력된 값의 pk가져오는 명령어
-
-
+    $result = $mysqli -> query($sql);
+ 
     if($result){
-
-      if($image_table_id){ //상품등록되면 업데이트
+      if($image_table_id){
         $updatesql = "UPDATE course_image_table set cid={$cid} where imgid in ({$image_table_id})";
         $result = $mysqli -> query($updatesql);
+
+      echo "<script> alert('강의 수정 완료!');
+      location.href = 'course_list.php';</script>";
       }
 
-      if($video_table_id){ 
-        $upsql = "UPDATE course_url_table set cid={$cid} where yuid in ({$video_table_id})";
-        $result = $mysqli -> query($upsql);
-      }
-
-      $mysqli->commit();
-
-      echo "<script>
-      alert('강의 등록 완료!');
-      //location.href='course_create.php';</script>";
+     
+    }else{
+      echo "<script> alert('강의 수정 실패.');
+      location.href = 'course_update.php';</script>";
     }
-  } catch(Exception $e) { 
-    $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
-    echo "<script>
-    alert('강의 등록 실패');
-    history.back();
-    </script>";
-    exit;
-  }
 
-  
 ?>

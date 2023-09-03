@@ -350,3 +350,12 @@ input {
 .c_button {
   margin-bottom: calc(var(--base_unit) * 2.5);
 }
+
+.file_input > img {
+  width: 150px;
+  margin-top: 10px;
+}
+
+.product_options > img {
+  width: 150px;
+}

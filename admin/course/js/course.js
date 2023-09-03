@@ -146,7 +146,7 @@ $(function () {
     $.ajax({
       async: false,
       type: "post",
-      url: "course_delete.php",
+      url: "course_image_delete.php",
       data: data,
       dataType: "json",
       error: function (error) {
