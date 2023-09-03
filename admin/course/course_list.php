@@ -34,6 +34,7 @@ $isrecom = $_GET['isrecom'] ?? '';
 $userid = $_GET['userid'] ?? '';
 $due_status = $_GET['due_status'] ?? '';
 $price_status = $_GET['price_status'] ?? '';
+$act = $_GET['act'] ?? '';
 $sale_end_date = $_GET['sale_end_date'] ?? '';
 $c_total_cnt = $_GET['c_total_cnt'] ?? '';
 $courselist = $_GET['courselist'] ?? '';
@@ -199,11 +200,11 @@ while ($rs = $result->fetch_object()) {
         <div class="d-flex align-items-end status_box">
           <span class="price content_stt"><?= $item->price ?></span>
           <span class="d-flex flex-column align-items-end status_wrap">
-            <select class="form-select" aria-label="Default select example" id="selectmenu">
+            <select name="status[<?=$item->cid ?>]" id="status[<?= $item->cid ?>]"  class="form-select" aria-label="Default select example" id="selectmenu">
               <option selected disabled>상태</option>
               <!-- 추후 value 넣기  -->
-              <option value="">활성화</option>
-              <option value="">비활성화</option>
+              <option value="1"  <?php if($item->act==1) {echo "selected"; } ?>>활성화</option>
+              <option value="0" <?php if($item->act==0) {echo "selected"; } ?>>비활성화</option>
             </select>
             <span class="price_btn_wrap">
               <a href="course_up.php" class="btn btn-primary btn_g">수정</a>
@@ -222,6 +223,7 @@ while ($rs = $result->fetch_object()) {
     } }          
   ?>
   </ul>
+  <a href="" class="btn btn-primary btn_g">일괄수정</a>
   <!-- pagination -->
   <nav aria-label="Page navigation example" class="d-flex justify-content-center">
     <ul class="pagination">
