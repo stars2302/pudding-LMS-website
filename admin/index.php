@@ -3,6 +3,42 @@ $title="대시보드";
  $css_route="css/index.css";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
+
+// 현재월, 전월 
+$current_month = date('Y-m');
+$last_month = date('Y-m', strtotime('-1 month'));
+$last_month2 = date('Y-m', strtotime('-2 months'));
+var_dump($last_month2);
+
+// 현재 월과 전 월 sql
+$current_month_sales_query = "SELECT SUM(total_price) AS current_month_sales FROM payments WHERE DATE_FORMAT(regdate, '%Y-%m') = '$current_month'";
+$last_month_sales_query = "SELECT SUM(total_price) AS last_month_sales FROM payments WHERE DATE_FORMAT(regdate, '%Y-%m') = '$last_month'";
+$last_month2_sales_query = "SELECT SUM(total_price) AS last_month_sales2 FROM payments WHERE DATE_FORMAT(regdate, '%Y-%m') = '$last_month2'";
+
+
+$current_month_result = $mysqli->query($current_month_sales_query);
+$last_month_result = $mysqli->query($last_month_sales_query);
+$last_month2_result = $mysqli->query($last_month2_sales_query);
+
+
+$current_month_sales = $current_month_result->fetch_assoc();
+$last_month_sales = $last_month_result->fetch_assoc();
+$last_month2_sales = $last_month2_result ->fetch_assoc();
+
+// var_dump($last_month2_sales);
+
+//json 형식으로 바꾸기
+$sales_data = array(
+    'current_month_sales' => $current_month_sales['current_month_sales'],
+    'last_month_sales' => $last_month_sales['last_month_sales'],
+    'last_month2_sales' => $last_month2_sales['last_month_sales2'],
+);
+$sales_data_json = json_encode($sales_data);
+
+var_dump($sales_data_json);
+
+
+
 ?>
    
 
@@ -82,6 +118,45 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 
       </div><!-- content_wrap -->
     </div><!-- wrap -->
+
+<script>
+
+//차트1 시작  
+var salesData = <?php echo $sales_data_json; ?>;
+
+var ctx = document.getElementById('monthly_chart').getContext('2d');
+var lineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['7월','8월', '9월'],
+        datasets: [{
+            label: '월별 매출',
+            data: [  salesData.last_month2_sales, salesData.last_month_sales, salesData.current_month_sales],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 99, 132, 1)'
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+//차트 1끝
+
+</script>
   
 <?php
 $js_route = "js/index.js";

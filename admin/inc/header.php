@@ -92,7 +92,7 @@
           <nav>
             <ul class="d-flex justify-content-between flex-column">
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/index.php" class="icon"
                   ><i class="ti ti-home"></i><span>대시보드</span></a
                 >
               </li>
