@@ -13,7 +13,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 ?>
 
       <section>
-        <h2 class="main_tt">Q&amp;A 내용</h2>
+        <h2 class="main_tt"><?= $title ?> 내용</h2>
         
         <div class="shadow_box border">
 			<div class="shadow_box border qna">
@@ -84,7 +84,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 							echo "<p class='b_text02 commentContent' style='margin-left:0 !important; padding-right: 0 !important;' data-id='" . $row['id'] . "'>";
 							echo htmlspecialchars($row['comment']);
 							echo "</p>";
-							echo "<textarea class='editComment form-control mt-2' data-id='" . $row['id'] . "' style='display:none'>" . htmlspecialchars($row['comment']) . "</textarea>";
+							echo "<textarea class='editComment form-control' data-id='" . $row['id'] . "' style='display:none'>" . htmlspecialchars($row['comment']) . "</textarea>";
 							echo "</div>";
 														
 							// 댓글 달기 버튼
@@ -105,37 +105,45 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 				</div><!-- .commentList -->
 			</div>
 
+
 			<div>
 				<!-- commentWrite -->
-				<form method="post" class="commentForm d-flex justify-content-start align-items-center ">
+				<form method="post" class="commentForm shadow_box border wrap justify-content-start align-items-center review">
 				  <input type="hidden" name="post_id" value="<?php echo $qid ?>">
           <input type="hidden" name="parent_comment_id" value="0">
           <input type="hidden" name="depth" value="0">
           <img class="img-fluid img-responsive rounded-circle mr-2" src='image/Master_Big.png' alt='관리자 이미지'>
           
-            <textarea name="comment" class="form-control" placeholder="Add comment" rows="10"></textarea>
+            <textarea name="comment" class="form-control border form-control" placeholder="Add comment" ></textarea>
           
-          <button type="submit" class="btn btn-dark">댓글 등록</button>
+          <button type="submit" class="btn btn-dark b_text01">댓글 등록</button>
 				</form>
 
 				<!-- /commentWrite -->
+
+
 			</div>
 
-			<div class="d-flex justify-content-center" >
-				<!-- 답변 상태 토글 버튼 -->
-				<form action="qna_content.php" method="GET">
-					<input type="hidden" name="qid" value="<?php echo $qid; ?>">
-					<input type="hidden" name="toggle" value="<?php echo $row['q_state'] == 0 ? '1' : '0'; ?>">
-					
-					<div class="order">
-					  	<?php echo $row['q_state'] == 0 ? '<button type="submit" class="btn btn-primary">답변 완료</button>' : '<button type="submit" class="btn btn-warning">답변 대기</button>'; ?>
-  					
-              <button type="button" class="btn btn-dark" onclick="window.location.href='qna.php'">목록 보기</button>
-					</div>
-				</form>
-			</div>
-
+    </div>
+    
+    <div class="wrap justify-content-end list_up">
+      <!-- 답변 상태 토글 버튼 -->
+      <form action="qna_content.php" method="GET">
+        <input type="hidden" name="qid" value="<?php echo $qid; ?>">
+        <input type="hidden" name="toggle" value="<?php echo $row['q_state'] == 0 ? '1' : '0'; ?>">
+        
+        <div class="order">
+  
+            <?php echo $row['q_state'] == 0 ? '<button type="submit" class="btn btn-primary">답변 완료</button>' : 
+            '<button type="submit" class="btn btn-warning">답변 대기</button>'; ?>
+          
+            <button type="button" class="btn btn-dark" onclick="window.location.href='qna.php'">목록 보기</button>
+  
         </div>
+      </form>
+
+
+  </div>
 		
 
       </section>
@@ -205,7 +213,7 @@ $(document).on('submit', '.commentForm', function(e) {
 					</div>
 					<div class='' style='padding-left:90px;'>
 					<p class='b_text02' style='margin-left:0 !important; padding-right: 0 !important;'>${comment}</p>
-						<textarea class='editComment form-control mt-2' data-id='${new_id}' style='display:none'>${comment}</textarea>
+						<textarea class='editComment form-control' data-id='${new_id}'>${comment}</textarea>
 					</div>											
 					<button class='replyButton text-secondary mt-2' data-id='${new_id}' data-depth='${new_depth}'>
 						<svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-message' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.25' stroke='#6c757d' fill='none' stroke-linecap='round' stroke-linejoin='round'>
@@ -253,12 +261,22 @@ $(document).on('click', '.replyButton', function() {
 });
 
 function setGap() {
-  var elements = document.querySelectorAll('.gap-container');
+  let elements = document.querySelectorAll('.commentForm');
 
   elements.forEach(function (element) {
-    element.style.gap = '30px';
+    element.style.gap = '15px';
   });
 }
+// window.addEventListener('load', setGap);
+
+// function setBtn() {
+//   let btns = document.querySelectorAll('.list_up');
+
+//   btns.forEach(function (btns) {
+//     btns.style.paddingTop = '1px';
+//   });
+// }
+// window.addEventListener('load', setBtn);
 
 // "작성 취소" 버튼 클릭 시 이벤트
 $(document).on('click', '.cancelReply', function() {

@@ -54,7 +54,7 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
 ?>
 <style>
 .waiting {
-  color: grey !important;
+  color: var(--dark) !important;
 }
 
 .completed {
@@ -62,7 +62,7 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
 }
 </style>
 <section>
-        <h2 class="main_tt">Q&amp;A 게시판</h2>
+        <h2 class="main_tt"><?= $title ?> 게시판</h2>
         
         <div class="search_box shadow_box white_bg wrap align-items-center">
           <label for="search" class="hidden">검색</label>
