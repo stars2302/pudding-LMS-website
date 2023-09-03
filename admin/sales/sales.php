@@ -4,16 +4,46 @@ $css_route="sales/css/sales.css";
 $js_route = "sales/js/sales.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
-$sql ="SELECT p.*, c.name,c.price, u.username  FROM payments p
-JOIN users u ON u.uid = p.uid
-JOIN courses c ON c.cid = p.cid
-ORDER BY p.payid DESC";
+// $sql ="SELECT p.*, c.name,c.price_status, u.username  FROM payments p
+// JOIN users u ON u.uid = p.uid
+// JOIN courses c ON c.cid = p.cid
+// ORDER BY p.payid DESC";
 
-$result = $mysqli-> query($sql);
-while($rs = $result->fetch_object()){
-  $rsc[]=$rs;
-}
+// $result = $mysqli-> query($sql);
+// while($rs = $result->fetch_object()){
+//   $rsc[]=$rs;
+// }
 // var_dump($rsc);
+
+
+// 현재월, 전월 
+$current_month = date('Y-m');
+$last_month = date('Y-m', strtotime('-1 month'));
+
+// 현재 월과 전 월 데이터를 가져오는 SQL 쿼리 작성
+$current_month_sales_query = "SELECT SUM(total_price) AS current_month_sales FROM payments WHERE DATE_FORMAT(regdate, '%Y-%m') = '$current_month'";
+$last_month_sales_query = "SELECT SUM(total_price) AS last_month_sales FROM payments WHERE DATE_FORMAT(regdate, '%Y-%m') = '$last_month'";
+
+$current_month_result = $mysqli->query($current_month_sales_query);
+$last_month_result = $mysqli->query($last_month_sales_query);
+
+// 데이터를 배열로 추출
+$current_month_sales = $current_month_result->fetch_assoc();
+$last_month_sales = $last_month_result->fetch_assoc();
+
+var_dump($current_month_sales);
+
+// JavaScript로 데이터를 전달하기 위한 JSON 형식으로 데이터 구성
+$sales_data = array(
+    'current_month_sales' => $current_month_sales['current_month_sales'],
+    'last_month_sales' => $last_month_sales['last_month_sales']
+);
+$sales_data_json = json_encode($sales_data);
+
+var_dump($sales_data_json);
+
+
+
 ?>
 <!-- top_bar -->
       
@@ -91,7 +121,7 @@ while($rs = $result->fetch_object()){
                 <tr>
                   <td scope="row"><?php echo $list->username; ?></td>
                   <td><?php echo $list->name; ?></td>
-                  <td><?php echo $list->price; ?> 원</td>
+                  <td><?php echo $list->price_status; ?> 원</td>
                   <td><?php echo $list->buy_date; ?></td>
                 </tr>
                 <?php
@@ -129,7 +159,39 @@ while($rs = $result->fetch_object()){
       </section>
     </div><!-- content_wrap -->
   </div><!-- wrap -->
+<script>
+  
+var salesData = <?php echo $sales_data_json; ?>;
 
+var ctx = document.getElementById('line-chart').getContext('2d');
+var lineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['전 월', '현재 월'],
+        datasets: [{
+            label: '월별 매출',
+            data: [ salesData.last_month_sales, salesData.current_month_sales],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+</script>
 
 <?php
 

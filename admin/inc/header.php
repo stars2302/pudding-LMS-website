@@ -74,6 +74,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- chart js -->
+    
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
     </head>
   <body>
     <div class="wrap">
