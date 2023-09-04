@@ -64,3 +64,16 @@ $('.you_upload').on('click','.trash_icon',function(){
 //     attachFile(file);
 //   }    
 // });
+
+
+
+// 강의 가격 천단위 표기
+
+// let priceList = $('.price');
+
+// priceList.each(function() {
+//   let str_price = $(this).text();
+//   let course_price = ($.number(str_price));
+//   $(this).text(course_price+' 원');
+// });
+

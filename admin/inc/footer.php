@@ -1,11 +1,3 @@
-
-    <!-- jquery -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
     <!-- jqueryui js -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
@@ -14,7 +6,6 @@
       referrerpolicy="no-referrer"
     ></script>
     <!-- bootstrap js -->
-
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
       integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
@@ -36,6 +27,11 @@
 <!-- chart js -->
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
+  <!-- Numbers js -->
+  <script src="../js/jquery.number.min.js"></script>
+  <script src="/pudding-LMS-website/admin/js/numbers_func.js"></script>
+
   <script src="/pudding-LMS-website/admin/<?php if(isset($js_route)){echo $js_route;} ?>"></script>
 
 
