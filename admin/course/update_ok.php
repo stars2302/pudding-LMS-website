@@ -59,14 +59,36 @@
         }
     }
 
+    if($_FILES['thumbnail']['name']){
     $sql = "UPDATE courses 
-    SET name='{$name}', price='{$price}', price_status='{$price_status}', level='{$level}', due='{$due}',due_status='{$due_status}', act='{$act}', 
-    content='{$content}', thumbnail='{$thumbnail}', video_table_id ='{$video_table_id}'  WHERE cid ='{$cid}'";
+            SET name='{$name}', 
+                price='{$price}', 
+                price_status='{$price_status}', 
+                level='{$level}', 
+                due='{$due}',
+                due_status='{$due_status}', 
+                act='{$act}', 
+                content='{$content}', 
+                thumbnail = '{$thumbnail}',
+                video_table_id ='{$video_table_id}'  
+            WHERE cid ='{$cid}'";
+    }else{
+    $sql = "UPDATE courses 
+            SET name='{$name}', 
+                price='{$price}', 
+                price_status='{$price_status}', 
+                level='{$level}', 
+                due='{$due}',
+                due_status='{$due_status}', 
+                act='{$act}', 
+                content='{$content}', 
+                video_table_id ='{$video_table_id}'  
+            WHERE cid ='{$cid}'";
+    }
 
     $result = $mysqli -> query($sql);
 
-
- 
+    
     if($result){
 
       echo "<script> alert('강의 수정 완료!');

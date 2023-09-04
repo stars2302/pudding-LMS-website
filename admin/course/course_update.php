@@ -168,14 +168,13 @@ while($is = $result -> fetch_object()){
       id="thumbnail"
       alt="">
       <img src="<?= $rs->thumbnail?>" alt="">
-      
     </div>
 
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
 
       <div class="you_upload">
-        <div class="youtube">
+        <div class="youtube1">
           <div class="row">
             <div class="col-2 youtube_thumb">
               <P>강의썸네일</P>
@@ -192,10 +191,11 @@ while($is = $result -> fetch_object()){
           if(isset($addImgs)){
           foreach($addImgs as $ai){
         ?>  
-        <div class="youtube c_mb mt-3">
+        <div class="youtube2 c_mb mt-3">
           <div class="row justify-content-between">
             <div class="col-2 youtube_thumb">
-              <input type="file" class="form-control" name="youtube_thumb[]" value="<?= $ai -> youtube_thumb?>"/>
+              <input type="file" class="form-control" name="youtube_thumb[]"/>
+              <img src="<?= $ai -> youtube_thumb?>" alt="">
             </div>
             <div class="col-3 youtube_name">
               <input type="text" class="form-control" name="youtube_name[]" value="<?= $ai -> youtube_name?>"/>
@@ -229,6 +229,7 @@ while($is = $result -> fetch_object()){
       <button class="btn btn-dark">수정취소</button>
     </div>
   </form>
+
 </section>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';

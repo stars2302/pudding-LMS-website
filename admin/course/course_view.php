@@ -88,13 +88,7 @@ while($is = $result -> fetch_object()){
     </div>
     <div class="course_status d-flex justify-content-between">
       <div class="d-flex flex-column align-items-end status_wrap">
-        <select class="form-select" aria-label="Default select example" id="selectmenu">
-          <option selected disabled>상태</option>
-          <!-- 추후 value 넣기  -->
-          <option value="활성" <?php if($rs->act == "활성") echo 'selected' ?>>활성화</option>
-          <option value="비활성" <?php if($rs->act == "비활성") echo 'selected' ?>>비활성화</option>
-        </select>
-        <span class="price_btn_wrap">
+        <span class="price_btn_wrap mb-3">
           <a href="course_update.php?cid=<?=$cid;?>" class="btn btn-primary btn_g">수정</a>
           <a href="course_delete.php?cid=<?=$cid;?>" class="btn btn-danger">삭제</a>
         </span>
