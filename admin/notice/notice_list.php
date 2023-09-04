@@ -5,7 +5,13 @@ $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
-  <section>
+$mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
+
+
+$sql = "SELECT * from notice order by ntid desc limit 0, 10";
+$result = $mysqli -> query($sql);
+?>
+<section>
     <h2 class="main_tt">공지사항</h2>
     <div class="notice_top shadow_box border d-flex justify-content-between">
       <form class="notice_top_left d-flex align-items-center" action="" method="get">
@@ -13,7 +19,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
         <button class="btn btn-dark" id="searchInput">검색</button>              
       </form>
       <div class="d-flex align-items-center">
-        <a class="btn btn-dark" href="notice_create.html">게시물 등록</a>              
+        <a class="btn btn-dark" href="notice_create.php">게시물 등록</a>              
       </div>
     </div>     
     <table class="notice_body table shadow_box border">
@@ -44,16 +50,24 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
           </tr>
         </thead>
         <tbody>
+          <?php
+          while($row = $result->fetch_array(MYSQLI_ASSOC)){
+            $title = $row['nt_title'];             
+          ?>
           <tr>
-            <td class="no_mp">3215</td>
             <td class="no_mp">
-              <a href="notice_view.html">푸딩 LMS 웹사이트 오픈</a>
+            <?= $row['ntid'];?>
             </td>
             <td class="no_mp">
-              2023-08-22
+              <a href="notice_view.php?ntid=<?= $row['ntid']; ?>">
+                <?= $row['nt_title'];?>
+              </a>
             </td>
             <td class="no_mp">
-              5
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
             </td>
             <td>
               <div class="icon_group">
@@ -61,135 +75,189 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
                 <i class="ti ti-trash bin_icon"></i>
               </div>
             </td>
-          </tr> 
+          </tr>
           <tr>
-            <td class="no_mp ">3214</td>
             <td class="no_mp">
-              <a href="notice_view.html">※ LMS 로그인 안내</a>                    
+            <?= $row['ntid'];?>
             </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">11</td>
+            <td class="no_mp">
+              <a href="notice_view.php">
+                <?= $row['nt_title'];?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
+            </td>
+            <td>
+              <div class="icon_group">
+                <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
+                <i class="ti ti-trash bin_icon"></i>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="no_mp">
+            <?= $row['ntid'];?>
+            </td>
+            <td class="no_mp">
+              <a href="notice_view.php">
+                <?= $row['nt_title'];?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
+            </td>
+            <td>
+              <div class="icon_group">
+                <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
+                <i class="ti ti-trash bin_icon"></i>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="no_mp">
+            <?= $row['ntid'];?>
+            </td>
+            <td class="no_mp">
+              <a href="notice_view.php">
+                <?= $row['nt_title'];?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
+            </td>
             <td>
               <div class="icon_group">
                 <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
                 <i class="ti ti-trash bin_icon"></i>
               </div>
             </td>
-          </tr> 
+          </tr>
           <tr>
-            <td class="no_mp ">3213</td>
             <td class="no_mp">
-              <a href="notice_view.html">LMS 본인인증 관련 오류 안내</a>                
+            <?= $row['ntid'];?>
             </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">20</td>
+            <td class="no_mp">
+              <a href="notice_view.php">
+                <?= $row['nt_title'];?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
+            </td>
             <td>
               <div class="icon_group">
                 <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
                 <i class="ti ti-trash bin_icon"></i>
               </div>
             </td>
-          </tr> 
+          </tr>
           <tr>
-            <td class="no_mp ">3212</td>
             <td class="no_mp">
-              <a href="notice_view.html">지난 강좌 조회 방법 안내</a>                
+            <?= $row['ntid'];?>
             </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">17</td>
+            <td class="no_mp">
+              <a href="notice_view.php">
+                <?= $row['nt_title'];?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
+            </td>
             <td>
               <div class="icon_group">
                 <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
                 <i class="ti ti-trash bin_icon"></i>
               </div>
             </td>
-          </tr> 
+          </tr>
           <tr>
-            <td class="no_mp ">3211</td>
             <td class="no_mp">
-              <a href="notice_view.html">학습관리시스템(LMS) 출석부 관련 안내</a>                
+            <?= $row['ntid'];?>
             </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">6</td>
+            <td class="no_mp">
+              <a href="notice_view.php">
+                <?= $row['nt_title'];?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
+            </td>
             <td>
               <div class="icon_group">
                 <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
                 <i class="ti ti-trash bin_icon"></i>
               </div>
             </td>
-          </tr> 
+          </tr>
           <tr>
-            <td class="no_mp ">3210</td>
             <td class="no_mp">
-              <a href="notice_view.html">학습관리시스템(LMS) 학습자 매뉴얼 안내</a>                
+            <?= $row['ntid'];?>
             </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">23</td>
+            <td class="no_mp">
+              <a href="notice_view.php">
+                <?= $row['nt_title'];?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
+            </td>
             <td>
               <div class="icon_group">
                 <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
                 <i class="ti ti-trash bin_icon"></i>
               </div>
             </td>
-          </tr> 
+          </tr>
           <tr>
-            <td class="no_mp ">3209</td>
             <td class="no_mp">
-              <a href="notice_view.html">학습관리시스템(LMS) 강사 매뉴얼 안내</a>                
+            <?= $row['ntid'];?>
             </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">6</td>
+            <td class="no_mp">
+              <a href="notice_view.php">
+                <?= $row['nt_title'];?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= $row['nt_regdate'];?>
+            </td>
+            <td class="no_mp">
+            <?= $row['nt_read_cnt'];?>
+            </td>
             <td>
               <div class="icon_group">
                 <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
                 <i class="ti ti-trash bin_icon"></i>
               </div>
             </td>
-          </tr> 
-          <tr>
-            <td class="no_mp ">3208</td>
-            <td class="no_mp">
-              <a href="notice_view.html">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>                
-            </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">6</td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr> 
-          <tr>
-            <td class="no_mp ">3207</td>
-            <td class="no_mp">
-              <a href="notice_view.html">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>                
-            </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">6</td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr> 
-          <tr>
-            <td class="no_mp ">3206</td>
-            <td class="no_mp">
-              <a href="notice_view.html">교수학습지원센터 대학생활 유형검사 참여 이벤트</a>                
-            </td>
-            <td class="no_mp">2023-08-22</td>
-            <td class="no_mp">6</td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr> 
+          </tr>
+          <?php
+          }
+          ?>  
         </tbody>
       </table>
+  
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         <!-- <li class="page-item disabled">
@@ -219,7 +287,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
         </li> -->
       </ul>
     </nav>
-  </section>      
+  </section>  
 </div>
 <!-- content_wrap -->
 </div>
