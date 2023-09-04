@@ -34,7 +34,7 @@ $result = $mysqli-> query($sqlrc);
 while($rs = $result->fetch_object()){
   $rsc[]=$rs;
 }
- var_dump($rsc);
+//  var_dump($rsc);
 
 
 

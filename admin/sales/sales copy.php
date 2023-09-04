@@ -1,4 +1,5 @@
 <?php
+
 $title="월별매출통계 관리";
 $css_route="sales/css/sales.css";
 // $js_route = "sales/js/sales.js";
@@ -6,42 +7,33 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 
-// 월 옵션 생성 
-$months = [
-  '01' => '1월',
-  '02' => '2월',
-  '03' => '3월',
-  '04' => '4월',
-  '05' => '5월',
-  '06' => '6월',
-  '07' => '7월',
-  '08' => '8월',
-  '09' => '9월',
-  '10' => '10월',
-  '11' => '11월',
-  '12' => '12월',
-];
+$cate3 = $_GET['cate3'] ?? '';
 
-// 선택된 월 (기본값은 현재 월)
-$selected_month = date('m');
+// var_dump($cates1, $cate2, $cate3);
 
-if (isset($_POST['month'])) {
-  // 폼에서 선택된 월을 처리
-  $selected_month = $_POST['month'];
+if (isset($_GET['cate3'])) {
+  // 선택한 소분류 값
+  $selected_cate3 = $_GET['cate3'];
+  var_dump($selected_cate3);
 
-  // SQL 쿼리 - 선택된 월에 해당하는 payments 데이터 검색
-  $sql = "SELECT * FROM payments where  DATE_FORMAT(buy_date, '%m') = '$selected_month' ORDER BY payid ";
-      
+  // SQL 쿼리 - 선택한 소분류와 catename이 같은 payments 데이터 검색
+  $sql = "SELECT * FROM payments where 1=1";
 
-  $result = $mysqli->query($sql);
-  $rsc = array();
-  
-  while ($rs = $result->fetch_object()) {
-      $rsc[] = $rs;
-  }
+$result = $mysqli->query($sql);
+$rsc = array();
+
+while ($rs = $result->fetch_object()) {
+    $rsc[] = $rs;
+}
+
+// 데이터를 JSON 형식으로 반환
+echo json_encode(array('result' => 'success', 'data' => $rsc));
+} else {
+$rsc = [];
 }
 
 // var_dump($rsc);
+
 
 ?>
 <!-- top_bar -->
@@ -49,20 +41,38 @@ if (isset($_POST['month'])) {
       <section>
         <h2 class="main_tt dark">월별매출통계</h2>
     
-        <form action="" id="search_form" method="POST">
-        <div class="row">
-            <div class="col-md-2">
-                <select class="form-select cate_select" aria-label="Default select example" id="month" name="month">
-                    <?php
-                    foreach ($months as $key => $value) {
-                        $selected = ($key == $selected_month) ? 'selected' : '';
-                        echo "<option value='$key' $selected>$value</option>";
-                    }
-                    ?>
-                </select>
-            </div>
+       <form action="" id="search_form" method="GET">
+      <div class="row">
+        <div class="col-md-4">
+          <select class="form-select cate_select" aria-label="Default select example" id="cate1">
+            <option selected disabled>대분류</option>
+            <?php
+            foreach ($cate1 as $c) {
+              ?>
+              <option value="<?= $c->cateid ?>" data-cate="<?= $c->name; ?>"><?= $c->name; ?></option>
+            <?php } ?>
+          </select>
         </div>
-        <button type="submit" class="btn btn-primary search_btn">조회</button>
+        <div class="col-md-4">
+          <select class="form-select cate_select" aria-label="Default select example" id="cate2">
+            <option selected disabled>중분류</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select class="form-select cate_select" name="cate3" aria-label="Default select example" id="cate3">
+            <option selected disabled>소분류</option>
+      
+          <?php
+          var_dump($cate3);
+            foreach ($rsc as $c) {
+              
+            ?>
+          <option value="<?= $c->catename; ?>"><?= $c->catename; ?></option>
+          <?php } ?>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary search_btn">조회</button>
     </form>
           <div class="d-flex justify-content-between chart">
             <div class="chart_container shadow_box">
@@ -137,7 +147,9 @@ if (isset($_POST['month'])) {
 <script>
 
 
-
+// ("#submit btn").click(function(){
+  
+// })
 
 
 
