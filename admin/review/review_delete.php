@@ -4,7 +4,6 @@
 
   $rid = $_POST['rid'];
  
-
   $sql = "DELETE from review where rid={$rid}";
 
   $result = $mysqli -> query($sql);

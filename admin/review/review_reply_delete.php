@@ -2,11 +2,8 @@
   session_start();
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
-
-
   $rid = $_POST['rid'];
  
-
   $sql = "DELETE from review_reply where rid={$rid}";
 
   $result = $mysqli -> query($sql);

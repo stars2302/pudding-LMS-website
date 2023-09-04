@@ -19,11 +19,6 @@ $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
 // var_dump($card);
 
-//댓글 받기
-// $rsql = "SELECT * FROM review_reply where rid={$rid}";
-// $rresult = $mysqli->query($rsql);
-// $rp = $rresult->fetch_assoc();
-// var_dump($rp);
 
 
 
@@ -52,23 +47,16 @@ $card = $result->fetch_assoc();
                   }
                   ?>
                 </div>
-             
-           
             </div>
             <div class=" b_text02 review_content border">
-        
-
               <p><?= $card["content"]; ?></p>
               <p><?= $card["regdate"]; ?></p>
-           
             </div>
-          
             <!-- <div class="review_del">
               <a href="" class="icon"> <i class="ti ti-trash bin_icon"></i></a>
             </div> -->
             
             <?php
-
     // 댓글 받기
     $rsql = "SELECT * FROM review_reply where rid={$rid}";
     $rresult = $mysqli->query($rsql);

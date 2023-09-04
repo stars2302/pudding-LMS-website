@@ -19,9 +19,6 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 
 
-
-
-// $sql = "SELECT * FROM review where 1=1 order by rid desc";
 $sql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
         JOIN users u ON r.uid = u.uid
         JOIN courses c ON c.cid = r.cid
@@ -32,6 +29,7 @@ $sql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
 $sqlrc = $sql.$limit; //필터 없
 
 // var_dump($sql);
+
 $result = $mysqli-> query($sqlrc);
 while($rs = $result->fetch_object()){
   $rsc[]=$rs;

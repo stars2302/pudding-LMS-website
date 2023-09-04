@@ -19,27 +19,15 @@ $card = $result->fetch_assoc();
 // var_dump($card);
 
 ?>
-  <section>
-  
-    <h2 class="main_tt dark title-mg">수강평 댓글 등록</h2>
-
-   
-    
+<section>
+  <h2 class="main_tt dark title-mg">수강평 댓글 등록</h2>
     <div class="card_container shadow_box border" data-id="<?= $card["rid"]; ?>">
       <div class="d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
           <img src="<?= $card["userimg"]; ?>" class="userImg shodow_box" alt="프로필 이미지">
           <h5 class="b_text01 dark review_user"><?= $card["username"]; ?></h5>
-
-      
-    
           <h5 class="b_text01 dark review_name"><span>강의명: </span><?= $card["name"]; ?></h5>
-        
-
         </div>
-
-
-      
         <div class="rating" data-rate="<?= $card["rating"]; ?>">
 
         <?php
@@ -54,16 +42,13 @@ $card = $result->fetch_assoc();
         </div>
         
       </div>
-    
       <div class="b_text02 review_content border">
         <p><?= $card["content"]; ?></p>
         <p><?= $card["regdate"]; ?></p>
       </div>
-
       <div class="review_del">
         <a href="" class="icon"> <i class="ti ti-trash bin_icon"></i></a>
       </div>
-
        <div class="b_text02 review_c_content border">
               <div class="d-flex align-items-center">
                 <img src="../images/profile_img.png" class="userImg shodow_box" alt="프로필 이미지">
@@ -85,30 +70,26 @@ $card = $result->fetch_assoc();
               </form>
             </div>
     </div>
-    
     <!-- 카드 끝 -->
   
     <!-- 페이지네이션 -->
-    <nav
-    aria-label="Page navigation example"
-    class="d-flex justify-content-center pager"
-  >
-    <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&lsaquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">4</a></li>
-      <li class="page-item"><a class="page-link" href="#">5</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&rsaquo;</span>
-        </a>
-      </li>
+<nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&lsaquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&rsaquo;</span>
+      </a>
+    </li>
     </ul>
   </nav>
   <!-- 페이지네이션 끝 -->
