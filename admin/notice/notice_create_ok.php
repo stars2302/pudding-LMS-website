@@ -56,13 +56,6 @@ if (move_uploaded_file($_FILES['nt_filename']['tmp_name'], $save_dir . $thumbnai
       </script>";
 }
 
-
-
-
-
-
-
-
 $sql = "INSERT INTO notice (nt_title, nt_filename, nt_content, nt_regdate) VALUES 
 ('{$nt_title}' , '{$upload_option_image}','{$nt_content}', '{$nt_regdate}')";
 
