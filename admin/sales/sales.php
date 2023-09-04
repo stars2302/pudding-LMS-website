@@ -9,13 +9,9 @@ $cates1 = $_GET['cate1'] ?? '';
 $cate2 = $_GET['cate2'] ?? '';
 $cate3 = $_GET['cate3'] ?? '';
 
-$sql = "SELECT DISTINCT c.*, co.name ,p.name, p.total_price , p.userid,p.buy_date
+$sql = "SELECT DISTINCT co.name ,p.name, p.total_price , p.userid,p.buy_date
         FROM payments p
-        LEFT JOIN category c ON c.cateid = p.cateid
-        LEFT JOIN courses co ON co.name = p.name
-      
-        -- GROUP BY c.cateid, c.name
-        ORDER BY c.cateid;";
+        LEFT JOIN courses co ON co.name = p.name";
 $result = $mysqli->query($sql);
 while ($rs = $result->fetch_object()) { 
     $rsc[] = $rs;
