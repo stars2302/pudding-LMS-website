@@ -61,38 +61,44 @@ if($cp_search){
 }
 var_dump($search_where);
 
-//pagenation
+
+
+
+//----------------------------------------------pagenation 시작
+//pagenation 필터 조건문 (필터 없으면 필요없음)
 if($cp_filter !== '' && $search_where === ''){
   $pagerwhere = $filter_where;
-  echo '바보';
 } else if($cp_search !== '' && $cp_filter === ''){
   $pagerwhere = $search_where;
-  echo '멍청이';
 } else{
   $pagerwhere = ' 1=1';
-  echo '똥개';
 }
-var_dump($pagerwhere);
+// var_dump($pagerwhere);
+
+
+//필터 없으면 여기서부터 복사! *******
 $pagenationTarget = 'coupons'; //pagenation 테이블 명
 $pageContentcount = 6; //페이지 당 보여줄 list 개수
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
-$limit = " limit $startLimit, $pageCount";
-
-
+$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
 
 
 //최종 query문, 실행
-$sqlrc = $sql.$sc_where.$order.$limit;
+$sqlrc = $sql.$sc_where.$order.$limit; //필터 있
+// $sqlrc = $sql.$limit; //필터 없
+//----------------------------------------------pagenation 끝
+
+
+
+
+
+
 // var_dump($sqlrc);
 $result = $mysqli -> query($sqlrc);
 while($rs = $result -> fetch_object()){
   $rsc[] = $rs;
 }
 
-
-
-//필터랑 페이지네이션 동시에 안됨
-//필터하면 필터된 페이지 개수 어쩌구..
 
 
 
@@ -192,7 +198,9 @@ while($rs = $result -> fetch_object()){
         ?>
       </ul>
     </div>
+    
 
+    <!-- ***------------------------- pagination - 시작 -------------------------*** -->
     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination coupon_pager">
         <?php
@@ -205,23 +213,35 @@ while($rs = $result -> fetch_object()){
             echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
           }
 
+
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
+                //필터 있
                 echo "<li class=\"page-item active\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                // echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }else{
+                //필터 있
                 echo "<li class=\"page-item\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                // echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
+
+
           if($pageNumber<$total_page && $block_num < $total_block){
+            //다음버튼 활성화
             $next = $block_num * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
           } else{
+            //다음버튼 비활성화
             echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
 
           }
         ?>
       </ul>
     </nav>
+    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
   </div><!-- //content_wrap -->
 </div><!-- //wrap -->
 
