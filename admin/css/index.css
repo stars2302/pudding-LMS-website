@@ -57,6 +57,14 @@ ol, ul {
 .sales_lank p {
   font-size: 16px;
  }
+
+.total_values .content_box > div {
+  text-align: center;
+}
+
+.total_values .content_box h2 {
+  padding-left: 0;
+}
 .total_values .content_box {
   height: 180px;
  }
@@ -87,6 +95,10 @@ ol, ul {
 .total_values span{
   font-size: 32px;
   font-weight: bold;
+ }
+
+ .total_values .people {
+  font-size: unset;
  }
 .total_values .col-md-6{
   text-align: center;
