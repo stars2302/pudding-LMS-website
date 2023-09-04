@@ -85,7 +85,7 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 //최종 query문, 실행
 $sqlrc = $sql.$sc_where.$order.$limit; //필터 있
-// $sqlrc = $sql.$limit; //필터 없
+//$sqlrc = $sql.$limit; //필터 없
 //----------------------------------------------pagenation 끝
 
 

@@ -24,9 +24,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
       referrerpolicy="no-referrer"
     ></script>
-<!-- chart js -->
-    
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
 
   <!-- Numbers js -->
   <script src="../js/jquery.number.min.js"></script>

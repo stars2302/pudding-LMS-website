@@ -4,6 +4,23 @@ $css_route="review/css/review.css";
 $js_route = "review/js/review.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
+
+//필터 없으면 여기서부터 복사! *******
+$pagenationTarget = 'review'; //pagenation 테이블 명
+$pageContentcount = 3; //페이지 당 보여줄 list 개수
+
+//필터 없는 경우 조건 복사해야됨!
+if(!isset($pagerwhere)){
+  $pagerwhere = ' 1=1';
+}
+ 
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
+
+
+
+
+
 // $sql = "SELECT * FROM review where 1=1 order by rid desc";
 $sql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
         JOIN users u ON r.uid = u.uid
@@ -11,12 +28,16 @@ $sql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
 
         ORDER BY r.rid DESC";
 
+//최종 query문, 실행
+$sqlrc = $sql.$limit; //필터 없
+
 // var_dump($sql);
-$result = $mysqli-> query($sql);
+$result = $mysqli-> query($sqlrc);
 while($rs = $result->fetch_object()){
   $rsc[]=$rs;
 }
-// var_dump($rsc);
+ var_dump($rsc);
+
 
 
 
@@ -82,30 +103,48 @@ while($rs = $result->fetch_object()){
           <?php } ?>   
           <!-- 카드 끝 -->
         
-          <!-- 페이지네이션 -->
-          <nav
-      aria-label="Page navigation example"
-      class="d-flex justify-content-center pager"
-    >
-      <ul class="pagination">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&lsaquo;</span>
-          </a>
-        </li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
+         <!-- ***------------------------- pagination - 시작 -------------------------*** -->
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+      <ul class="pagination coupon_pager">
+        <?php
+          if($pageNumber>1 && $block_num > 1 ){
+            //이전버튼 활성화
+            $prev = ($block_num - 2) * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          } else{
+            //이전버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          }
+
+
+          for($i=$block_start;$i<=$block_end;$i++){
+            if($pageNumber == $i){
+                //필터 있
+                //echo "<li class=\"page-item active\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                 echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }else{
+                //필터 있
+                //echo "<li class=\"page-item\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                 echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }
+          }
+
+
+          if($pageNumber<$total_page && $block_num < $total_block){
+            //다음버튼 활성화
+            $next = $block_num * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+          } else{
+            //다음버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+
+          }
+        ?>
       </ul>
     </nav>
-        <!-- 페이지네이션 끝 -->
+    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
         </section>
         <script>
          $(document).ready(function() {
