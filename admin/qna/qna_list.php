@@ -17,7 +17,6 @@ $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $per_page = 10;
 
 // 총 게시물 수
-// <ㅁ>
   $sql = "SELECT COUNT(*) FROM qna";
   $result = $mysqli->query($sql);
   $row = $result->fetch_array();
@@ -30,9 +29,7 @@ $per_page = 10;
   // 시작 게시물
   // (1-1)*10 = 0, (2-1)*10 = 10 아래꺼 설명
   // $start = ($current_page - 1) * $per_page;
-  
-  // 게시물 가져오기
-  // </ㅁ>
+
   
 //필터 없으면 여기서부터 복사! *******
 $pagenationTarget = 'qna'; //pagenation 테이블 명

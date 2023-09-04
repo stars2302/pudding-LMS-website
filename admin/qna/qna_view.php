@@ -5,6 +5,7 @@ $js_route = "qna/js/qna.js";
 
 
 $qid = $_GET['qid'];
+
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/qna_get.php';
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
@@ -23,7 +24,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 				<!-- 작성자 정보 -->
 				<div class="wrap user">
 					<img src="image/Gest_Big.png" alt="사용자 이미지">
-					<div class="you content_stt">사용자</div>
+					<div class="you content_stt"><?php echo $row['uid']; ?></div>
 					<div class="day"><?php echo $row['q_regdate']; ?></div>
 				</div>
 
