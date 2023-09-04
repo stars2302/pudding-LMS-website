@@ -105,7 +105,7 @@ $coupon = $result -> fetch_object();
 
       <div class="submit_btns d-flex justify-content-end">
         <button class="btn btn-primary">수정 완료</button>
-        <a href="/pudding-LMS-website/admin/coupon/coupon_list.php" class="btn btn-dark d-flex align-items-center coupon_cancel " type="button">수정 취소</a>
+        <button class="btn btn-dark coupon_cancel" type="button">수정 취소</button>
       </div>
     </form>
   </div><!-- //content_wrap -->

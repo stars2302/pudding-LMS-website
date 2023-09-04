@@ -4,26 +4,7 @@ $('.thumb_btn').click(function(){
   $('.thumbnail .hidden').trigger('click');
 
 
-  //사진등록 이전에 있던 사진 images폴더에서 삭제
-  let prevImg = $(this).siblings('.show_thumb').find('img').attr('src');
-  console.log(prevImg);
-  let data = {
-    prevImg : prevImg
-  }
-  console.log(data);
-  $.ajax({
-    async : false, 
-    type: 'post',     
-    data: data, 
-    url: "image_del.php", 
-    dataType: 'json', //결과 json 객체형식
-    error: function(error){
-      console.log('Error:', error);
-    },
-    success: function(return_data){
-      console.log(return_data);
-    }
-  });//ajax
+  
 });
 
 
@@ -61,6 +42,27 @@ $('#thumbnail').change(function(){
         }
       }
     });//ajax
+
+    //사진등록 이전에 있던 사진 images폴더에서 삭제
+  let prevImg = $(this).siblings('.show_thumb').find('img').attr('src');
+  console.log(prevImg);
+  let data = {
+    prevImg : prevImg
+  }
+  console.log(data);
+  $.ajax({
+    async : false, 
+    type: 'post',     
+    data: data, 
+    url: "image_del.php", 
+    dataType: 'json', //결과 json 객체형식
+    error: function(error){
+      console.log('Error:', error);
+    },
+    success: function(return_data){
+      console.log(return_data);
+    }
+  });//ajax
   },100);
 });
 
@@ -101,6 +103,8 @@ $('.coupon_limit_date').change(function(){
 });
 
 
+
+// coupon_create / coupon_update 취소버튼 클릭
 $('.coupon_cancel').click(function(){
   alert('취소되었습니다.');
   location.href = "/pudding-LMS-website/admin/coupon/coupon_list.php";
@@ -152,4 +156,20 @@ $('.cp_status_toggle').change(function(){
 //coupon_list filter
 $('.coupon_filter').change(function(){
   $(this).find('button').trigger('click');
+});
+
+
+//coupon_list 쿠폰 삭제 버튼 클릭
+$('.icons .del_btn').click(function(e){
+  let prt = $(this).closest('.coupon').attr('data-cpid');
+  console.log(prt);
+  e.preventDefault();
+
+
+  if(confirm('정말로 삭제하시겠습니까?')){
+    location.href = '/pudding-LMS-website/admin/coupon/coupon_delete_ok.php?cpid='+prt;
+  } else {
+    alert('취소되었습니다.');
+    location.href = '/pudding-LMS-website/admin/coupon/coupon_list.php';
+  }
 });

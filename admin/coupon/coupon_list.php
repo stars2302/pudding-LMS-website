@@ -163,7 +163,7 @@ while($rs = $result -> fetch_object()){
 
           <div class="icons">
             <a href="/pudding-LMS-website/admin/coupon/coupon_update.php?cpid=<?= $coupon->cpid ?>"><i class="ti ti-edit pen_icon"></i></a>
-            <a href=""></a><i class="ti ti-trash bin_icon"></i>
+            <a href="/pudding-LMS-website/admin/coupon/coupon_delete_ok.php?cpid=<?= $coupon->cpid ?>" class="del_btn"><i class="ti ti-trash bin_icon"></i></a>
           </div>
 
           <div class="form-check form-switch cp_status_toggle">
