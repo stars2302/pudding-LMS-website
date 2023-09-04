@@ -14,11 +14,38 @@ if ($mysqli->connect_error) {
 }
 
 $nt_title = $_POST["nt_title"];
-$nt_filename = $_POST["nt_filename"];
+
 $nt_read_cnt = $_POST["nt_read_cnt"];
 $nt_content = $_POST["nt_content"];
 $nt_regdate = date('Y-m-d');
 $nt_file_name = $_POST['nt_file_name'];
+
+if ($_FILES['nt_filename']['name']) {
+  //파일 사이즈 검사
+  if ($_FILES['nt_filename']['size'] > 10240000) {
+    echo "<script>
+      alert('10MB이하만 첨부할 수 있습니다.');
+      history.back();
+    </script>";
+    exit;
+  }
+}
+
+
+//파일업로드 
+$save_dir = $_SERVER['DOCUMNET_ROOT'] . "../images/notice/";
+$org_name = $_FILES['nt_filename']['name']; //파일명 할당
+$temp_path = pathinfo($nt_file_name, PATHINFO_EXTENSION); //jpg
+$upload_path = "../images/notice/" . $org_name; //파일 경로
+$newfilename = date("YmdHis") . substr(rand(), 0, 6);
+$thumbnail = $newfilename . "." . $ext;
+
+$file_type = $_FILES['nt_filename']['type'];
+if (strpos($file_type, 'image') != '') {
+  $is_img = 1;
+} else {
+  $is_img = 0;
+}
 
 
 

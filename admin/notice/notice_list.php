@@ -5,7 +5,10 @@ $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
+//unset()함수를 사용하여 세션 변수를 삭제한다.
 unset($_SESSION['viewed_notices']);
+/*사용자가 공지사항을 읽을 때 세션에 저장된 공지사항 정보를 초기화하고 다시 읽을 때 새로운 공지사항을 읽는 데 사용될 수 있습니다. 
+이를 통해 사용자가 이미 읽은 공지사항을 추적하고 필요에 따라 재설정할 수 있습니다.*/
 
 // 데이터베이스 연결
 $mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
@@ -25,6 +28,12 @@ $pagesql = "SELECT COUNT(*) AS cnt FROM notice";
 $page_result = $mysqli->query($pagesql);
 $page_row = $page_result->fetch_assoc();
 $row_num = $page_row['cnt']; //글의 총 갯수
+
+/* notice 테이블에서 모든 레코드 수를 세어 총 게시물 수를 계산한다.
+$pagesql의 쿼리를 실행한 결과를 저장하고
+$page_result의 첫번째 행을 가져와 연관배열 형식으로 $page_row에 저장한다
+$page_row 배열에서 cnt키에 해당하는 값을 가져와 $row_num 변수에 저장한다
+이것은 총 게시물 수를 나타낸다 */
 
 //전체 페이지 수 계산
 $total_pages = ceil($row_num / $items_per_page);
@@ -142,7 +151,7 @@ if ($result) {
   echo "<nav aria-label='Page navigation example'>";
   echo "<ul class='pagination justify-content-center'>";
   if ($current_page > 1) {
-    echo "<li class='page-item'><a class='page-link' href='?page=1'>처음</a></li>";
+    // echo "<li class='page-item'><a class='page-link' href='?page=1'>처음</a></li>";
     echo "<li class='page-item'><a class='page-link' href='{$prev_link}'>이전</a></li>";
   }
   for ($i = $start_page; $i <= $end_page; $i++) {
@@ -153,7 +162,7 @@ if ($result) {
   }
   if ($end_page < $total_pages) {
     echo "<li class='page-item'><a class='page-link'href='{$next_link}'>다음</a></li>";
-    echo "<li class='page-item'><a class='page-link'href='?page={$total_pages}'>끝</a></li>";
+    // echo "<li class='page-item'><a class='page-link'href='?page={$total_pages}'>끝</a></li>";
   }
   echo "</ul>";
   echo "</nav>";

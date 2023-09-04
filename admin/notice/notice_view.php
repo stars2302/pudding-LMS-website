@@ -39,11 +39,10 @@ $row = $result_select->fetch_object();
       </p>
       <div class="content">
         <!-- 본문 -->
-        <?php
-        $content = $row->nt_content;
+        <img src="<?= $row["file"] ?>" alt="">
 
-        //이미지 태그와 텍스트를 그대로 출력
-        echo $content;
+        <?php
+        $file_name = str_replace("../images/notice/", "", $row["file"]);
         ?>
       </div>
       <div class="notice_view_btns d-flex justify-content-end">
