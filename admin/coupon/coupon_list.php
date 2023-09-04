@@ -37,7 +37,7 @@ $sc_where = '';
 //쿠폰 활성/비활성 filter 조건
 $cp_filter = $_GET['coupon_filter']??'';
 $filter_where = '';
-// var_dump($cp_filter);
+var_dump($cp_filter);
 if($cp_filter == '-1' || $cp_filter == ''){
   $filter_where .= " 1=1";
   $sc_where .= '';
@@ -51,7 +51,7 @@ if($cp_filter == '-1' || $cp_filter == ''){
 $search_where = '';
 //검색어(필터 상관없이 전체쿠폰에서 검색)
 $cp_search = $_GET['search']??'';
-// var_dump($cp_search);
+var_dump($cp_search);
 if($cp_search){
   $search_where .= " cp_name like '%{$cp_search}%'";
   $sc_where = ' and'.$search_where;
@@ -59,16 +59,20 @@ if($cp_search){
 } else{
   $search_where = '';
 }
-// var_dump($search_where);
+var_dump($search_where);
 
 //pagenation
-if(isset($cp_filter)){
+if($cp_filter !== '' && $search_where === ''){
   $pagerwhere = $filter_where;
-} else if(isset($cp_search)){
+  echo '바보';
+} else if($cp_search !== '' && $cp_filter === ''){
   $pagerwhere = $search_where;
+  echo '멍청이';
 } else{
   $pagerwhere = ' 1=1';
+  echo '똥개';
 }
+var_dump($pagerwhere);
 $pagenationTarget = 'coupons'; //pagenation 테이블 명
 $pageContentcount = 6; //페이지 당 보여줄 list 개수
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
@@ -203,9 +207,9 @@ while($rs = $result -> fetch_object()){
 
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
-                echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                echo "<li class=\"page-item active\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }else{
-                echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                echo "<li class=\"page-item\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
           if($pageNumber<$total_page && $block_num < $total_block){
