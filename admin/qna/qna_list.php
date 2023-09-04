@@ -17,34 +17,23 @@ $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $per_page = 10;
 
 // 총 게시물 수
-$sql = "SELECT COUNT(*) FROM qna";
-$result = $mysqli->query($sql);
-$row = $result->fetch_array();
-$total_posts = $row[0];
-
-// 총 페이지 수
-$total_pages = ceil($total_posts / $per_page);
-$list_Five = 5;
-
-// 시작 게시물
-$start = ($current_page - 1) * $per_page; // (1-1)*10 = 0, (2-1)*10 = 10
-
-// 게시물 가져오기
-$sql = "SELECT * FROM qna LIMIT $start, $per_page";
-$result = $mysqli->query($sql);
-
-//----------------------------------------------pagenation 시작
-//pagenation 필터 조건문 (필터 없으면 필요없음)
-// if($cp_filter !== '' && $search_where === ''){
-//   $pagerwhere = $filter_where;
-// } else if($cp_search !== '' && $cp_filter === ''){
-//   $pagerwhere = $search_where;
-// } else{
-//   $pagerwhere = ' 1=1';
-// }
-// var_dump($pagerwhere);
-
-
+// <ㅁ>
+  $sql = "SELECT COUNT(*) FROM qna";
+  $result = $mysqli->query($sql);
+  $row = $result->fetch_array();
+  $total_posts = $row[0];
+  
+  // 총 페이지 수
+  // $total_pages = ceil($total_posts / $per_page);
+  // $list_Five = 5;
+  
+  // 시작 게시물
+  // (1-1)*10 = 0, (2-1)*10 = 10 아래꺼 설명
+  // $start = ($current_page - 1) * $per_page;
+  
+  // 게시물 가져오기
+  // </ㅁ>
+  
 //필터 없으면 여기서부터 복사! *******
 $pagenationTarget = 'qna'; //pagenation 테이블 명
 $pageContentcount = 10; //페이지 당 보여줄 list 개수
@@ -58,9 +47,11 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 //최종 query문, 실행
 // $sqlrc = $sql.$sc_where.$order.$limit; //필터 있
+$sql = "SELECT * FROM qna";
 $sqlrc = $sql.$limit; //필터 없
 //----------------------------------------------pagenation 끝
 
+$result = $mysqli->query($sqlrc);
 ?>
 
 <?php
