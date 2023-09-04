@@ -97,7 +97,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 
       <div class="submit_btns d-flex justify-content-end">
         <button class="btn btn-primary coupon_submit_btn">등록 완료</button>
-        <button class="btn btn-dark" type="button">등록 취소</button>
+        <button class="btn btn-dark coupon_cancel" type="button">등록 취소</button>
       </div>
     </form>
   </div><!-- //content_wrap -->

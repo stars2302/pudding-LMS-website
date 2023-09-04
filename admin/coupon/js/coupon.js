@@ -101,6 +101,12 @@ $('.coupon_limit_date').change(function(){
 });
 
 
+$('.coupon_cancel').click(function(){
+  alert('취소되었습니다.');
+  location.href = "/pudding-LMS-website/admin/coupon/coupon_list.php";
+});
+
+
 
 
 //coupon_list 활성/비활성 toggle change
@@ -147,4 +153,3 @@ $('.cp_status_toggle').change(function(){
 $('.coupon_filter').change(function(){
   $(this).find('button').trigger('click');
 });
-
