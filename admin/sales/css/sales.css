@@ -1,3 +1,7 @@
+h2{
+  
+}
+
 .sales_sort{
   margin-top:var(--base_unit);
 }
@@ -52,4 +56,21 @@
 
 .sales .col4{
   width: 25%;
+}
+
+.row{
+  width: 20%;
+}
+.row div{
+  width: 60% ;
+}
+
+form{
+  display: flex;
+  justify-content: flex-end;
+  gap:15px;
+}
+
+.cate_select{
+  height: 45px;
 }
