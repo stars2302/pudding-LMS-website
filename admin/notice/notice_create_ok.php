@@ -51,6 +51,18 @@ if (strpos($file_type, 'image') != '') {
 
 $sql = "INSERT INTO notice (nt_title, nt_filename, nt_read_cnt,  nt_content, nt_regdate) VALUES 
 ('{$nt_title}' , '{$nt_filename}','{$nt_read_cnt}','{$nt_content}', '{$nt_regdate}')";
+
+
+$result = $mysqli -> query (sql);
+$pid = $mysqli -> insert_id;
+
+if ($result) {
+  if($nt_file_name) {
+    $updatesql = "UPDATE notice set ntid={$ntid} where ntid"
+  }
+}
+
+
 if ($mysqli->query($sql) === TRUE) {
   echo "<script>
   alert('글쓰기 완료되었습니다.');
