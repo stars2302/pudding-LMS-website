@@ -12,14 +12,14 @@
 
     $cid = $_POST['cid'];
     $name = $_POST['name'];
-    $price = $_POST['price'];
-    $price_status = $_POST['price_status']??0;
+    $price_status = $_POST['price_status'];
+    $price = $_POST['price']??0;
     $level = $_POST['level'];
-    $due = $_POST['due'];
-    $due_status = $_POST['due_status']??0;
+    $due_status = $_POST['due_status'];
+    $due = $_POST['due']??0;
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
-    $thumbnail = $_POST['thumbnail'];
+    $thumbnail = $_FILES['thumbnail'];
 
     $video_table_id = $_POST['file_table_id']??0;
     $video_table_id = rtrim($video_table_id, ',');//최우측 콤마 제거

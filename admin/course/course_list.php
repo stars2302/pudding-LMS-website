@@ -33,12 +33,13 @@ $isbest = $_GET['isbest'] ?? '';
 $isrecom = $_GET['isrecom'] ?? '';
 $userid = $_GET['userid'] ?? '';
 $due_status = $_GET['due_status'] ?? '';
-$due = $_GET['due'] ?? '';
 $price_status = $_GET['price_status'] ?? '';
 $act = $_GET['act'] ?? '';
 $sale_end_date = $_GET['sale_end_date'] ?? '';
 $c_total_cnt = $_GET['c_total_cnt'] ?? '';
 $courselist = $_GET['courselist'] ?? '';
+$rate = $_GET['rate'] ?? '';
+$rid = $_GET['rid'] ?? '';
 
 $search_where = '';
 
@@ -67,6 +68,7 @@ if ($sale_end_date) {
 //   $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
 //   //제목과 내용에 키워드가 포함된 상품 조회
 // }
+
 
 
 $sql = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
@@ -170,19 +172,19 @@ while ($rs = $result->fetch_object()) {
     if(isset($rsc)){
       foreach($rsc as $item){            
   ?>
-    <li class="course_list row shadow_box">
+    <li class="course_list row shadow_box mt-3">
       <div class="col-md-8 d-flex">
         <img src="<?= $item->thumbnail ?>" alt="강의 썸네일 이미지" class="border">
         <div class="course_info">
           <div>
             <h3 class="course_list_title b_text01"><a href="course_view.php?cid=<?= $item->cid ?>"><?= $item->name ?></a>
               <span class="badge rounded-pill blue_bg b-pd">프론트엔드</span>
-              <span class="badge rounded-pill green_bg b-pd">초급</span>
+              <span class="badge rounded-pill green_bg b-pd"><?=$item->level ?></span>
             </h3>
             <p><?= $item->content ?>
             </p>
           </div>
-          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?= $item->due ?></span></p>
+          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?=$item->due ?></span></p>
         </div>
       </div>
       <div class="col-md-4">
@@ -206,8 +208,8 @@ while ($rs = $result->fetch_object()) {
               <option value="0" <?php if($item->act=="비활성") {echo "selected"; } ?>>비활성화</option>
             </select>
             <span class="price_btn_wrap">
-              <a href="course_update.php?cid=<?= $item->cid ?>" class="btn btn-primary btn_g">수정</a>
-              <button class="btn btn-danger">삭제</button>
+              <a href="course_update.php?cid=<?=$item->cid ?>" class="btn btn-primary btn_g">수정</a>
+              <a href="course_delete.php?cid=<?=$item->cid ?>" class="btn btn-danger btn_g">삭제</a>
             </span>
           </span>
         </div>

@@ -71,17 +71,12 @@
 
     if($result){
 
-      if($video_table_id){
-        $updatesql = "UPDATE course set cid={$cid} where lid in ({$video_table_id})";
-        $result = $mysqli -> query($updatesql);
-      }
-
       if($youtube_name){
 
         $youtube_thumb = $_FILES['youtube_thumb']; //강의섬네일
         $youtube_url = $_REQUEST['youtube_url']; //강의url
         // var_dump($youtube_url);
-        print_r($youtube_thumb);
+        // print_r($youtube_thumb);
 
         for($i = 0;$i<count($youtube_url) ; $i++){
 
@@ -119,17 +114,21 @@
 
             $sql1 = "INSERT INTO lecture (cid,youtube_thumb, youtube_name, youtube_url) VALUES ('{$cid}','{$upload_youtube_thumb[$i]}','{$youtube_name[$i]}', '{$youtube_url[$i]}')";
 
-
-
-
             $result2 = $mysqli-> query($sql1);
+            //$lid = $mysqli -> insert_id;
+
+              // if($result2){
+              //   $updatesql = "UPDATE courses set video_table_id='{$video_table_id}' where lid in cid={$cid}";
+
+              //   $result = $mysqli -> query($updatesql);
+              // }
 
           }
         }
 
       echo "<script>
       alert('강의 등록 완료!');
-      //location.href='course_list.php';</script>";
+      location.href='course_list.php';</script>";
       }
     //   }catch(Exception $e){
     //   $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.

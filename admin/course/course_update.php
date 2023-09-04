@@ -17,6 +17,7 @@ $sql = "SELECT * FROM courses WHERE cid={$cid}";
 $result = $mysqli -> query($sql);
 $rs = $result -> fetch_object();
 
+
 $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
 $result = $mysqli -> query($imgsql);
 
@@ -164,33 +165,53 @@ while($is = $result -> fetch_object()){
       type="file" 
       class="form-control" 
       name="thumbnail" 
-      id="thumbnail">
-      <img src="<?= $rs -> thumbnail?>" alt="">
+      id="thumbnail"
+      alt="">
+      <img src="<?= $rs->thumbnail?>" alt="">
+      
     </div>
 
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
+
       <div class="you_upload">
-        <div class="youtube c_mb">
-          <div class="row justify-content-between">
-            
-          <div class="col-2 youtube_thumb">
-              <label for="youtube_thumb" class="form-label">강의 썸네일</label>
-              <input type="file" class="form-control" name="youtube_thumb" id="youtube_name"/>
+        <div class="youtube">
+          <div class="row">
+            <div class="col-2 youtube_thumb">
+              <P>강의썸네일</P>
             </div>
             <div class="col-3 youtube_name">
-              <label for="youtube_name" class="form-label">강의명</label>
-              <input type="text" class="form-control" name="youtube_name" id="youtube_name" placeholder="강의명을 입력하세요"/>
+              <P>강의명</P>
             </div>
             <div class="col-6 youtube_url">
-              <label for="youtube_url" class="form-label">강의URL</label>
-              <input type="url" class="form-control" name="youtube_url" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
+              <P>강의url</P>
+            </div>
+          </div>
+        </div>
+        <?php
+          if(isset($addImgs)){
+          foreach($addImgs as $ai){
+        ?>  
+        <div class="youtube c_mb mt-3">
+          <div class="row justify-content-between">
+            <div class="col-2 youtube_thumb">
+              <input type="file" class="form-control" name="youtube_thumb[]" value="<?= $ai -> youtube_thumb?>"/>
+            </div>
+            <div class="col-3 youtube_name">
+              <input type="text" class="form-control" name="youtube_name[]" value="<?= $ai -> youtube_name?>"/>
+            </div>
+            <div class="col-6 youtube_url">
+              <input type="url" class="form-control" name="youtube_url[]" value="<?= $ai -> youtube_url?>"/>
             </div>
             <div class="col-1 trash_icon">
               <i class="ti ti-trash bin_icon"></i>
             </div>
           </div>
         </div>
+        <?php
+            }
+          }
+          ?>
       </div>
       <div class="add_listBtn">
         <a href="">

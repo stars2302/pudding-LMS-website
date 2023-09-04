@@ -11,7 +11,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
     <h1>강의 등록</h1>
   </div>
   <form action="course_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
-    <input type="hidden" name="image_table_id" id="image_table_id" value="">
+    <input type="hidden" name="video_table_id" id="video_table_id" value="">
     <input type="hidden" name="content" id="content" value="">
     <div class="categorywrap">
       <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
@@ -117,18 +117,28 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
       <div class="you_upload">
+        <div class="youtube">
+          <div class="row">
+            <div class="col-2 youtube_thumb">
+              <P>강의썸네일</P>
+            </div>
+            <div class="col-3 youtube_name">
+              <P>강의명</P>
+            </div>
+            <div class="col-6 youtube_url">
+              <P>강의url</P>
+            </div>
+          </div>
+        </div>
         <div class="youtube c_mb">
           <div class="row justify-content-between">
             <div class="col-2 youtube_thumb">
-              <label for="youtube_thumb" class="form-label">강의 썸네일</label>
               <input type="file" class="form-control" name="youtube_thumb[]" id="youtube_thumb"/>
             </div>
             <div class="col-3 youtube_name">
-              <label for="youtube_name" class="form-label">강의명</label>
               <input type="text" class="form-control" name="youtube_name[]" id="youtube_name" placeholder="강의명을 입력하세요"/>
             </div>
             <div class="col-6 youtube_url">
-              <label for="youtube_url" class="form-label">강의URL</label>
               <input type="url" class="form-control" name="youtube_url[]" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
             </div>
             <div class="col-1 trash_icon">
