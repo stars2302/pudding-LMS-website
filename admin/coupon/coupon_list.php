@@ -37,7 +37,7 @@ $sc_where = '';
 //쿠폰 활성/비활성 filter 조건
 $cp_filter = $_GET['coupon_filter']??'';
 $filter_where = '';
-var_dump($cp_filter);
+// var_dump($cp_filter);
 if($cp_filter == '-1' || $cp_filter == ''){
   $filter_where .= " 1=1";
   $sc_where .= '';
@@ -51,7 +51,7 @@ if($cp_filter == '-1' || $cp_filter == ''){
 $search_where = '';
 //검색어(필터 상관없이 전체쿠폰에서 검색)
 $cp_search = $_GET['search']??'';
-var_dump($cp_search);
+// var_dump($cp_search);
 if($cp_search){
   $search_where .= " cp_name like '%{$cp_search}%'";
   $sc_where = ' and'.$search_where;
@@ -59,7 +59,7 @@ if($cp_search){
 } else{
   $search_where = '';
 }
-var_dump($search_where);
+// var_dump($search_where);
 
 
 

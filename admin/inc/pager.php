@@ -5,13 +5,13 @@
   // $firstPageNumber = $_GET['firstPageNumber'] ?? 0 ;
 
   //전체 게시물 수 구하기  
-  var_dump($pagerwhere);
+  // var_dump($pagerwhere);
   $pagesql = "SELECT COUNT(*) as cnt from $pagenationTarget where $pagerwhere";//where $pagerwhere : 조건이 필요할 경우..
-  echo $pagesql;
+  // echo $pagesql;
   $page_result = $mysqli->query($pagesql);
   $page_row = $page_result->fetch_object();
   $row_num = $page_row->cnt; //전체 게시물 수
-  echo $row_num;
+  // echo $row_num;
 
   $block_ct = 5; // 1,2,3,4,5  / 5,6,7,8,9 
   $block_num = ceil($pageNumber/$block_ct);//pageNumber 1,  9/5 1.2 2
