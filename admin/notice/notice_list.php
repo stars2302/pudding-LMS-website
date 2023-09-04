@@ -48,6 +48,22 @@ $prev_link = ($current_page > 1) ? "?page={$prev_page}" : "#";
 //다음 페이지 링크 생성
 $next_link = ($current_page < $total_pages) ? "?page={$next_page}" : "#";
 
+//페이지 번호 반복문
+echo "<ul class='pagination justify-content-center>";
+if ($start_page > 1) {
+  //처음 페이지로 가는 링크
+  echo "<li class='page-item'><a class='page-link' href='?page1'>처음</a></li>";
+}
+for ($i = $start_page; $i <= $end_page; $i++) {
+  $active_class = ($i == $current_page) ? 'active' : '';
+  echo "<li class='page-item {$active_class}'><a class='pag-link' href='?page={$i}'>{$i}</a></li>";
+}
+
+if ($end_page < $total_pages) {
+  //마지막 페이지로 가는 링크
+  echo "<li class='page-item'><a class='page-link' href='?page={$total_pages}'마지막</a></li>";
+}
+echo "</ul>";
 
 //SQL 쿼리를 통해 데이터를 조회 (페이징 적용)
 $start_item = ($current_page - 1) * $items_per_page;
@@ -134,9 +150,12 @@ if ($result) {
             }
           }
         }
+
+
         ?>
       </tbody>
     </table>
+<<<<<<< HEAD
     <!-- 페이지네이션 출력 -->
   <?php
   echo "<nav aria-label='Page navigation example'>";
@@ -157,6 +176,31 @@ if ($result) {
   }
   echo "</ul>";
   echo "</nav>";
+=======
+    <!-- 페이지네이션 -->
+    <?php
+    echo "<nav aria-label='Page navigation example'>";
+    echo "<ul class='pagination justify-content-center'>";
+    if ($start_page > 1) {
+      echo "<li class='page-item {$active_class}'><a class='page-link' href='?page={$page}'>{$i}</a></li>";
+    }
+    for ($i = $start_page; $i <= $end_page; $i++) {
+      $active_class = ($i == $current_page) ? 'active' : '';
+      echo "<li class='page-item {$active_class}'><a class='page-link' hreg='?page={$i}'>{$i}</a></li>";
+    }
+    if ($end_page < $total_pages) {
+      echo "<li class='page-item'><a class='page-link' href='?page={$total_pages}'>마지막</a></li>";
+    }
+    //다음 페이지 링크
+    echo "<li class='class-item'><a class='page-link' href='{$next_link}'>다음</a></li>";
+    echo "</ul>";
+    echo "</nav>";
+    ?>
+    </ul>
+    </nav>
+  </section>
+<?php
+>>>>>>> parent of 477874b ([FIX] 공지사항 페이지네이션까지 완료)
 } else {
   echo "데이터조회 실패 " . $mysqli->error;
 

@@ -2,8 +2,8 @@
 $title = "공지사항 수정";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
-include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+<<<<<<< HEAD
 
 
 // 데이터베이스 연결
@@ -65,21 +65,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $update_sql = "UPDATE notice set nt_title = '$nt_title', 
 nt_content = '$nt_content', nt_filename='$nt_filename' WHERE ntid = $ntid";
 if ($mysqli->query($update_sql) === TRUE)
+=======
+>>>>>>> parent of 477874b ([FIX] 공지사항 페이지네이션까지 완료)
 ?>
+
 <section>
   <h2 class="main_tt">공지사항 수정</h2>
-  <!-- 수정폼 -->
-  <form class="notice_create_form" id="notice_create_form" action="notice_update_ok.php" method="post">
+  <form class="notice_create_form" id="notice_create_form" action="notice_create_ok.php" method="post">
     <div class="notice_create_form_div">
-      <input type="hidden" name="ntid" value="<?php echo $ntid; ?>">
       <h3 class="content_tt"><label for="nt_title">제목</label></h3>
-      <input type="text" id="nt_title" name="nt_title" class="notice_create_input form-control" value="<?php echo $nt_title; ?>" placeholder="" aria-label="Username" required>
+      <input type="text" id="nt_title" name="nt_title" class="notice_create_input form-control" placeholder="" aria-label="Username" required>
     </div>
     <div class="notice_create_form_div">
       <label for="nt_content">
         <h3 class="content_tt">상세내용</h3>
       </label>
-      <div id="summernote" name="nt_content"><?php echo $nt_content; ?></div>
+      <div id="summernote" name="nt_content"></div>
       <!-- <textarea id="nt_content" name="nt_content" required></textarea> -->
     </div>
     <div class="notice_create_form_div">
@@ -94,6 +95,7 @@ if ($mysqli->query($update_sql) === TRUE)
     </div>
   </form>
 </section>
+
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
 ?>

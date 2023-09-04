@@ -12,6 +12,13 @@ $ntid = $_GET['ntid'];
 $sql_update = "UPDATE notice SET nt_read_cnt  = nt_read_cnt + 1 where ntid='{$ntid}'";
 $result_update = $mysqli->query($sql_update);
 
+//게시물 조회하기 noticever
+// $sql_select = "SELECT notice.ntid, nt_title, nt_filename, nt_read_cnt, nt_content, nt_regdate
+// FROM notice
+// LEFT JOIN users
+// ON notice.ntid = users.uid
+// WHERE notice.ntid = '{$ntid}'";
+
 //게시물 조회하기 usersver
 $sql_select =
   "SELECT * FROM notice WHERE ntid = '{$ntid}'";
@@ -39,6 +46,7 @@ $row = $result_select->fetch_object();
       </p>
       <div class="content">
         <!-- 본문 -->
+<<<<<<< HEAD
         <?php
         $content = $row->nt_content;
 
@@ -49,6 +57,26 @@ $row = $result_select->fetch_object();
       <div class="notice_view_btns d-flex justify-content-end">
         <a href="notice_update.php" class="btn_modify btn btn-primary">수정</a>
         <a href="notice_delete_ok.php" class="btn_delete btn btn-danger" data-ntid="<?php echo $ntid ?>">삭제</a>
+=======
+        <?php echo $row->nt_content ?>
+        <!-- <p>
+          동영상 업로드 및 변환 복구 작업이 완료되어 정상적으로 이용이 가능합니다.
+          <br>
+          금일 많은 대학의 개강으로 인해 15시 30분경 타 대학뿐만 아니라 우리 대학에서도 학습관리시스템(LMS) 동영상 클라우드 서비스
+          이용량의 증가로 동영상 변환에 장애가 발생하였습니다.
+          시스템 담당 업체에서 서버 증설 작업을 진행하였으나 동영상 업로드 후 변환 시간에는 다소 지연되고 있으며, 점차 변환 가동률을 높여
+          복구 작업을 진행하고 있습니다.
+          <br>
+          변환 후 동영상 재생은 정상적으로 진행되며 현재 동영상 업로드를 진행하시는 교수님들께서는 참고해 주시기 바랍니다.
+          이용에 불편을 드린 점 양해 부탁드립니다.
+          감사합니다.
+        </p>
+      </div> -->
+      </div>
+      <div class="notice_view_btns d-flex justify-content-end">
+        <a class="btn_modify btn btn-primary">수정</a>
+        <button class="btn_delete btn btn-danger">삭제</button>
+>>>>>>> parent of 477874b ([FIX] 공지사항 페이지네이션까지 완료)
         <a href="notice_list.php" class="btn_cancel btn btn-dark">목록 보기</a>
       </div>
     </div>
