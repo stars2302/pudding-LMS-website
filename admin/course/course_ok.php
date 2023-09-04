@@ -10,6 +10,14 @@
   //   </script>";
   // }
 
+  $mysqli->autocommit(FALSE);//커밋이 안되도록 지정, 일단 바로 저장하지 못하도록
+  try{
+
+    $cate1 =  $_POST['cate1']??'' ;
+    $cate2 =  $_POST['cate2']??'' ;
+    $cate3 =  $_POST['cate3']??'' ;
+
+    $cate = $cate1.'/'.$cate2.'/'.$cate3;
     $name = $_POST['name'];
     $price_status = $_POST['price_status'];
     $price = $_POST['price']??0;
@@ -61,8 +69,8 @@
         }
     }
 
-    $sql = "INSERT INTO courses (name, price_status,price, level, due_status, due, act, content, thumbnail, video_table_id) 
-    VALUES ('{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}','{$video_table_id}')";
+    $sql = "INSERT INTO courses (cate, name, price_status,price, level, due_status, due, act, content, thumbnail, video_table_id) 
+    VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}','{$video_table_id}')";
 
     // var_dump($sql)
 
@@ -111,31 +119,24 @@
                 history.back();            
               </script>";
             }
-
-            $sql1 = "INSERT INTO lecture (cid,youtube_thumb, youtube_name, youtube_url) VALUES ('{$cid}','{$upload_youtube_thumb[$i]}','{$youtube_name[$i]}', '{$youtube_url[$i]}')";
-
-            $result2 = $mysqli-> query($sql1);
-            //$lid = $mysqli -> insert_id;
-
-              // if($result2){
-              //   $updatesql = "UPDATE courses set video_table_id='{$video_table_id}' where lid in cid={$cid}";
-
-              //   $result = $mysqli -> query($updatesql);
-              // }
-
           }
-        }
+          $sql1 = "INSERT INTO lecture (cid,youtube_thumb, youtube_name, youtube_url) VALUES ('{$cid}','{$upload_youtube_thumb[$i]}','{$youtube_name[$i]}', '{$youtube_url[$i]}')";
+          $result2 = $mysqli-> query($sql1);
+          }
+      }
+
+      $mysqli->commit();//디비에 커밋한다.
 
       echo "<script>
       alert('강의 등록 완료!');
       location.href='course_list.php';</script>";
       }
-    //   }catch(Exception $e){
-    //   $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
-    //   echo "<script>
-    //   alert('강의 등록 실패');
-    //   history.back();
-    //   </script>";
-    //   exit;
+    } catch(Exception $e){
+      $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
+      echo "<script>
+      alert('강의 등록 실패');
+      history.back();
+      </script>";
+      exit;
     }
 ?>

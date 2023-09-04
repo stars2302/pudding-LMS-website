@@ -65,6 +65,11 @@ $(function () {
     let content = encodeURIComponent(markupStr);
     $("#content").val(content);
 
+    // if (!$("#cate1").val()) {
+    //   alert("대분류를 선택해주세요");
+    //   return false;
+    // }
+
     if ($("#product_detail").summernote("isEmpty")) {
       alert("상세설명을 입력하세요");
       return false;

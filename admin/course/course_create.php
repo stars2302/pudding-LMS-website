@@ -3,8 +3,10 @@
  $css_route="course/css/course.css";
  $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
-//include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
 ?>
+
+
 
 <section>
   <div class="course_title tt_mb">
@@ -17,21 +19,23 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
             <option disabled selected>대분류 선택</option>
-            <option value="1">대분류1</option>
+            <?php
+              foreach($cate1 as $c){            
+            ?>
+              <option value="<?php echo $c->cid ?>"><?php echo $c->name ?></option>
+            <?php } ?>
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="cate2" name="cate2">
             <option disabled selected>중분류 선택</option>
-            <option value="1">중분류1</option>
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" name="catename" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="cate3" name="cate3">
             <option disabled selected>소분류 선택</option>
-            <option value="1">소분류1</option>
           </select>
         </div>
       </div>

@@ -22,7 +22,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 // rate
 // rid
 
-$name = $_GET['name'] ?? '';
+
 $cate = $_GET['cate'] ?? '';
 $content = $_GET['content'] ?? '';
 $thumbnail = $_GET['thumbnail'] ?? '';
@@ -220,7 +220,7 @@ while ($rs = $result->fetch_object()) {
     } }          
   ?>
   </ul>
-  <a href="" class="btn btn-primary btn_g">일괄수정</a>
+  <a href="clist_update.php" class="btn btn-primary btn_g">일괄수정</a>
   <!-- pagination -->
   <nav aria-label="Page navigation example" class="d-flex justify-content-center">
     <ul class="pagination">
