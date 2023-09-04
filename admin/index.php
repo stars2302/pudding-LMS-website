@@ -30,6 +30,22 @@ $newusercount = $newurc->fetch_object();
 
 //"SELECT * FROM payments where  DATE_FORMAT(buy_date, '%m') = '$selected_month' ORDER BY payid ";
 
+//월별 매출
+// 선택한 월에 해당하는 데이터를 가져오는 SQL 쿼리 작성
+$monthsql = "SELECT p.catename, c.name,c.thumbnail, SUM(p.total_price) AS total_price_sum
+        FROM payments p
+        INNER JOIN courses c ON p.cid = c.cid
+        WHERE DATE_FORMAT(p.buy_date, '%m') = DATE_FORMAT(NOW(), '%m')
+        GROUP BY p.catename
+        ORDER BY total_price_sum DESC
+        limit 0,3;";
+$result = $mysqli->query($monthsql);
+while($rs = $result -> fetch_object()){
+  $monthlate[] = $rs;
+}
+
+// var_dump($monthlate);
+
 ?>
    
 
@@ -40,7 +56,26 @@ $newusercount = $newurc->fetch_object();
             <div class="col-md-8 content_box sales border shadow">
               <h2 class="primary_bg"><i class="ti ti-chalkboard"></i><span><?= date('n') ?></span>월 매출 베스트 강좌 순위</h2>
                 <ul class="sales_lank d-flex gap-4 justify-content-center align-content-center">
+                  <?php
+                  if(isset($monthlate)){
+                    $i = 1;
+                    foreach($monthlate as $late){
+                      $colorarr = ['red_bg','blue_bg','green_bg'];
+                  ?>
                   <li>
+                    <div class="d-flex flex-column">
+                      <img src="<?= $late->thumbnail ?>" alt="<?= $late->name ?>">
+                      <span class="badge rounded-pill <?= $colorarr[$i-1] ?> b-pd"><?= $i ?>위</span>
+                      <h3><?= $late->name ?></h3>
+                      <p>매출액 : <span class="number"><?= $late->total_price_sum ?></span>원</p>
+                    </div>
+                  </li>
+                  <?php
+                    $i+=1;
+                    }
+                  }
+                  ?>
+                  <!-- <li>
                     <div class="d-flex flex-column">
                       <img src="/pudding-LMS-website/admin/images/course/thumbnail_7.png" alt="강의 이미지">
                       <span class="badge rounded-pill red_bg b-pd">1위</span>
@@ -63,7 +98,7 @@ $newusercount = $newurc->fetch_object();
                       <h3>UX/UI 마스터</h3>
                       <p>매출액 : <span class="number">3,000,000</span>원</p>
                     </div>
-                  </li>
+                  </li> -->
                 </ul>
             </div>
             <div class="col-md-4 total_values">
