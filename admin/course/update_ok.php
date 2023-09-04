@@ -19,11 +19,11 @@
     $due_status = $_POST['due_status']??0;
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
-    $thumbnail = $_FILES['thumbnail'];
+    $thumbnail = $_POST['thumbnail'];
 
-    $image_table_id = $_POST['image_table_id'];
-    $image_table_id = rtrim($image_table_id, ',');//최우측 콤마 제거
-
+    $video_table_id = $_POST['file_table_id']??0;
+    $video_table_id = rtrim($video_table_id, ',');//최우측 콤마 제거
+    $youtube_name = $_FILES['youtube_name']?? '';
 
     if($_FILES['thumbnail']['name']){
 
@@ -61,21 +61,17 @@
 
     $sql = "UPDATE courses 
     SET name='{$name}', price='{$price}', price_status='{$price_status}', level='{$level}', due='{$due}',due_status='{$due_status}', act='{$act}', 
-    content='{$content}', thumbnail='{$thumbnail}', image_table_id ='{$image_table_id}'  WHERE cid ='{$cid}'";
+    content='{$content}', thumbnail='{$thumbnail}', video_table_id ='{$video_table_id}'  WHERE cid ='{$cid}'";
 
     $result = $mysqli -> query($sql);
+
+
  
     if($result){
-      if($image_table_id){
-        $updatesql = "UPDATE course_image_table set cid={$cid} where imgid in ({$image_table_id})";
-        $result = $mysqli -> query($updatesql);
 
       echo "<script> alert('강의 수정 완료!');
       location.href = 'course_list.php';</script>";
-      }
-
-     
-    }else{
+      }else{
       echo "<script> alert('강의 수정 실패.');
       location.href = 'course_update.php';</script>";
     }

@@ -29,7 +29,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" name="catename" aria-label="Default select example">
             <option disabled selected>소분류 선택</option>
             <option value="1">소분류1</option>
           </select>
@@ -44,15 +44,15 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 
     <div class="section3 d-flex gap-5 c_mt">
         <div class="row price_select">
-          <label for="price" class="form-label content_tt c_mb">강의가격</label>
+          <label for="price_status" class="form-label content_tt c_mb">강의가격</label>
           <div class="col">
-            <select class="form-select" name="price" id="price_menu" aria-label="Default select example">
+            <select class="form-select" name="price_status" id="price_menu" aria-label="Default select example">
               <option name="price" value="유료" selected>유료</option>
               <option name="price" value="무료">무료</option>
             </select>
           </div>
-          <div class="col price_status">
-            <input type="number" class="form-control" name="price_status" id="price_status" min="10000" max="1000000" step="10000" value="0" placeholder="금액"/>
+          <div class="col price">
+            <input type="number" class="form-control" name="price" id="price" min="10000" max="1000000" step="10000" value="0" placeholder="금액"/>
           </div>
         </div>
         <div class="row level level_status">
@@ -76,18 +76,18 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       <div class="row period mb-6">
         <label class="form-label content_tt c_mb">수강기간</label>
         <div class="col period_select1">
-          <select class="form-select" name="due" id="due" aria-label="Default select example">
-            <option name="due" value="제한" selected>제한</option>
-            <option name="due" value="무제한">무제한</option>
+          <select class="form-select" name="due_status" id="due_status" aria-label="Default select example">
+            <option value="제한" selected>제한</option>
+            <option value="무제한">무제한</option>
           </select>
         </div>
         <div class="col period_select2">
-          <select class="form-select" name="due_status" id="due_status" aria-label="Default select examh5le">
+          <select class="form-select" name="due" id="due" aria-label="Default select examh5le">
             <option value="" selected disabled>기간선택</option>
-            <option name="due_status" value="3개월">3개월</option>
-            <option name="due_status" value="6개월">6개월</option>
-            <option name="due_status" value="9개월">9개월</option>
-            <option name="due_status" value="12개월">12개월</option>
+            <option value="3개월">3개월</option>
+            <option value="6개월">6개월</option>
+            <option value="9개월">9개월</option>
+            <option value="12개월">12개월</option>
           </select>
         </div>
       </div>
@@ -114,22 +114,21 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
       <input type="file" class="form-control" name="thumbnail" id="thumbnail"/>
     </div>
 
-
-      <h3 class="content_tt c_mt c_mb">추가이미지 업로드</h3>
-      <div id="drop" class="box">
-        <span>이미지를 드래그해서 올려주세요</span>
-        <div id="thumbnails" class="d-flex justify-content-start"></div>
-      </div>
-
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
       <div class="you_upload">
         <div class="youtube c_mb">
           <div class="row justify-content-between">
-            <div class="col-4 youtube_name">
+            <div class="col-2 youtube_thumb">
+              <label for="youtube_thumb" class="form-label">강의 썸네일</label>
+              <input type="file" class="form-control" name="youtube_thumb[]" id="youtube_thumb"/>
+            </div>
+            <div class="col-3 youtube_name">
+              <label for="youtube_name" class="form-label">강의명</label>
               <input type="text" class="form-control" name="youtube_name[]" id="youtube_name" placeholder="강의명을 입력하세요"/>
             </div>
-            <div class="col-7 youtube_url">
+            <div class="col-6 youtube_url">
+              <label for="youtube_url" class="form-label">강의URL</label>
               <input type="url" class="form-control" name="youtube_url[]" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
             </div>
             <div class="col-1 trash_icon">

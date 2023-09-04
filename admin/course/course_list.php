@@ -33,13 +33,12 @@ $isbest = $_GET['isbest'] ?? '';
 $isrecom = $_GET['isrecom'] ?? '';
 $userid = $_GET['userid'] ?? '';
 $due_status = $_GET['due_status'] ?? '';
+$due = $_GET['due'] ?? '';
 $price_status = $_GET['price_status'] ?? '';
 $act = $_GET['act'] ?? '';
 $sale_end_date = $_GET['sale_end_date'] ?? '';
 $c_total_cnt = $_GET['c_total_cnt'] ?? '';
 $courselist = $_GET['courselist'] ?? '';
-$rate = $_GET['rate'] ?? '';
-$rid = $_GET['rid'] ?? '';
 
 $search_where = '';
 
@@ -183,7 +182,7 @@ while ($rs = $result->fetch_object()) {
             <p><?= $item->content ?>
             </p>
           </div>
-          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span>3개월</span></p>
+          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?= $item->due ?></span></p>
         </div>
       </div>
       <div class="col-md-4">
@@ -203,8 +202,8 @@ while ($rs = $result->fetch_object()) {
             <select name="status[<?=$item->cid ?>]" id="status[<?= $item->cid ?>]"  class="form-select" aria-label="Default select example" id="selectmenu">
               <option selected disabled>상태</option>
               <!-- 추후 value 넣기  -->
-              <option value="1"  <?php if($item->act==1) {echo "selected"; } ?>>활성화</option>
-              <option value="0" <?php if($item->act==0) {echo "selected"; } ?>>비활성화</option>
+              <option value="1"  <?php if($item->act=="활성") {echo "selected"; } ?>>활성화</option>
+              <option value="0" <?php if($item->act=="비활성") {echo "selected"; } ?>>비활성화</option>
             </select>
             <span class="price_btn_wrap">
               <a href="course_update.php?cid=<?= $item->cid ?>" class="btn btn-primary btn_g">수정</a>
@@ -212,10 +211,6 @@ while ($rs = $result->fetch_object()) {
             </span>
           </span>
         </div>
-
-
-
-
       </div>
 
     </li>

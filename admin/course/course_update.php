@@ -17,7 +17,7 @@ $sql = "SELECT * FROM courses WHERE cid={$cid}";
 $result = $mysqli -> query($sql);
 $rs = $result -> fetch_object();
 
-$imgsql = "SELECT * FROM course_image_table WHERE cid={$cid}";
+$imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
 $result = $mysqli -> query($imgsql);
 
 while($is = $result -> fetch_object()){
@@ -69,23 +69,23 @@ while($is = $result -> fetch_object()){
 
     <div class="section3 d-flex gap-5 c_mt">
         <div class="row price_select">
-          <label for="price" class="form-label content_tt c_mb">강의가격</label>
+          <label for="price_status" class="form-label content_tt c_mb">강의가격</label>
           <div class="col">
-            <select class="form-select" name="price" id="price_menu" aria-label="Default select example">
-              <option name="price" value="유료" <?php if($rs->price == "유료") echo 'selected' ?>>유료</option>
-              <option name="price" value="무료" <?php if($rs->price == "무료") echo 'selected' ?>>무료</option>
+            <select class="form-select" name="price_status" id="price_status" aria-label="Default select example">
+              <option value="유료" <?php if($rs->price_status == "유료") echo 'selected' ?>>유료</option>
+              <option value="무료" <?php if($rs->price_status == "무료") echo 'selected' ?>>무료</option>
             </select>
           </div>
-          <div class="col price_status">
+          <div class="col price">
             <input 
             type="number" 
             class="form-control" 
-            name="price_status" 
-            id="price_status" 
+            name="price" 
+            id="price" 
             min="10000" 
             max="1000000" 
             step="10000" 
-            value="<?= $rs->price_status; ?>"
+            value="<?= $rs->price; ?>"
             placeholder="금액"/>
           </div>
         </div>
@@ -125,18 +125,18 @@ while($is = $result -> fetch_object()){
       <div class="row period mb-6">
         <label class="form-label content_tt c_mb">수강기간</label>
         <div class="col period_select1">
-          <select class="form-select" name="due" id="due" aria-label="Default select example">
-            <option name="due" value="제한" <?php if($rs->due == "제한") echo 'selected' ?>>제한</option>
-            <option name="due" value="무제한" <?php if($rs->due == "무제한") echo 'selected' ?>>무제한</option>
+          <select class="form-select" name="due_status" id="due_status" aria-label="Default select example">
+            <option value="제한" <?php if($rs->due_status == "제한") echo 'selected' ?>>제한</option>
+            <option value="무제한" <?php if($rs->due_status == "무제한") echo 'selected' ?>>무제한</option>
           </select>
         </div>
         <div class="col period_select2">
-          <select class="form-select" name="due_status" id="due_status" aria-label="Default select examh5le">
+          <select class="form-select" name="due" id="due" aria-label="Default select examh5le">
             <option value="" selected disabled>기간선택</option>
-            <option value="3개월" <?php if($rs->due_status == "3개월") echo 'selected' ?>>3개월</option>
-            <option value="6개월" <?php if($rs->due_status == "6개월") echo 'selected' ?>>6개월</option>
-            <option value="9개월" <?php if($rs->due_status == "9개월") echo 'selected' ?>>9개월</option>
-            <option value="12개월" <?php if($rs->due_status == "12개월") echo 'selected' ?>>12개월</option>
+            <option value="3개월" <?php if($rs->due == "3개월") echo 'selected' ?>>3개월</option>
+            <option value="6개월" <?php if($rs->due == "6개월") echo 'selected' ?>>6개월</option>
+            <option value="9개월" <?php if($rs->due == "9개월") echo 'selected' ?>>9개월</option>
+            <option value="12개월" <?php if($rs->due == "12개월") echo 'selected' ?>>12개월</option>
           </select>
         </div>
       </div>
@@ -168,34 +168,22 @@ while($is = $result -> fetch_object()){
       <img src="<?= $rs -> thumbnail?>" alt="">
     </div>
 
-
-      <h3 class="content_tt c_mt c_mb">추가이미지 업로드</h3>
-      <div id="drop" class="box">
-        <span>이미지를 드래그해서 올려주세요</span>
-        <div id="thumbnails" class="d-flex justify-content-start">
-          <?php
-            if(isset($addImgs)){
-              foreach($addImgs as $ai){
-          ?>             
-            <div class="product_options">
-              <img src="/pudding-LMS-website/admin/images/course/<?= $ai-> filename;?>" alt="">
-            </div>
-          <?php      
-            }
-          }
-          ?>      
-        </div>
-      </div>
-
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
       <div class="you_upload">
         <div class="youtube c_mb">
           <div class="row justify-content-between">
-            <div class="col-4 youtube_name">
+            
+          <div class="col-2 youtube_thumb">
+              <label for="youtube_thumb" class="form-label">강의 썸네일</label>
+              <input type="file" class="form-control" name="youtube_thumb" id="youtube_name"/>
+            </div>
+            <div class="col-3 youtube_name">
+              <label for="youtube_name" class="form-label">강의명</label>
               <input type="text" class="form-control" name="youtube_name" id="youtube_name" placeholder="강의명을 입력하세요"/>
             </div>
-            <div class="col-7 youtube_url">
+            <div class="col-6 youtube_url">
+              <label for="youtube_url" class="form-label">강의URL</label>
               <input type="url" class="form-control" name="youtube_url" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
             </div>
             <div class="col-1 trash_icon">
