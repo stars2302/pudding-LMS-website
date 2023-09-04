@@ -295,8 +295,8 @@ $(document).on('click', '.cancelReply', function() {
 
 // 수정 버튼 이벤트
 $(document).on('click', '.editButton', function() {
-  var id = $(this).data('id');
-  var commentContent = $('.commentContent[data-id="' + id + '"]').text();
+  let id = $(this).data('id');
+  let commentContent = $('.commentContent[data-id="' + id + '"]').text();
   $('.editComment[data-id="' + id + '"]').val(commentContent).show();
   $('.saveButton[data-id="' + id + '"]').show(); // 저장 버튼 출력
   $('.editButton[data-id="' + id + '"]').hide(); // 수정 버튼 숨김
@@ -305,8 +305,8 @@ $(document).on('click', '.editButton', function() {
 
 // 저장 버튼 이벤트
 $(document).on('click', '.saveButton', function() {
-  var id = $(this).data('id');
-  var updatedComment = $('.editComment[data-id="' + id + '"]').val();
+  let id = $(this).data('id');
+  let updatedComment = $('.editComment[data-id="' + id + '"]').val();
   
   $.ajax({
 		//test
@@ -334,8 +334,8 @@ $(document).on('click', '.saveButton', function() {
 $(document).on('click', '.deleteButton', function(e) {
   e.preventDefault();
   
-  var commentId = $(this).parent().data('comment-id'); // data-comment-id값
-  var self = this; // this값 임시 변수에 저장
+  let commentId = $(this).parent().data('comment-id'); // data-comment-id값
+  let self = this; // this값 임시 변수에 저장
   
   $.ajax({
     url: 'qna_delete_ok.php',
@@ -344,7 +344,7 @@ $(document).on('click', '.deleteButton', function(e) {
       comment_id: commentId
     },
     success: function(data) {
-      var parsedData = JSON.parse(data);
+      let parsedData = JSON.parse(data);
       if (parsedData.status === 'success') {
         // 삭제 성공, 해당 댓글을 DOM에서 제거
         $(self).closest('.master.shadow_box.border').remove();

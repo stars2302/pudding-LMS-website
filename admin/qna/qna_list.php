@@ -33,15 +33,32 @@ $start = ($current_page - 1) * $per_page; // (1-1)*10 = 0, (2-1)*10 = 10
 $sql = "SELECT * FROM qna LIMIT $start, $per_page";
 $result = $mysqli->query($sql);
 
+//----------------------------------------------pagenation 시작
+//pagenation 필터 조건문 (필터 없으면 필요없음)
+// if($cp_filter !== '' && $search_where === ''){
+//   $pagerwhere = $filter_where;
+// } else if($cp_search !== '' && $cp_filter === ''){
+//   $pagerwhere = $search_where;
+// } else{
+//   $pagerwhere = ' 1=1';
+// }
+// var_dump($pagerwhere);
 
-$block_ct = 5; // 페이지 버튼 5개
-$block_num = ceil($per_page/$block_ct);//pageNumber 1,  9/5 1.2 2
-$block_start = (($block_num -1)*$block_ct) + 1;//page6 start 6
-$block_end = $block_start + $block_ct -1; //start 1, end 5
 
-$total_page = ceil($per_page/$block_ct); //총52, 52/5
-if($block_end > $total_page) $block_end = $total_page;
-$total_block = ceil($total_page/$block_ct);//총32, 2
+//필터 없으면 여기서부터 복사! *******
+$pagenationTarget = 'qna'; //pagenation 테이블 명
+$pageContentcount = 10; //페이지 당 보여줄 list 개수
+if(!isset($pagerwhere)){
+  $pagerwhere = ' 1=1';
+}
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
+
+
+//최종 query문, 실행
+// $sqlrc = $sql.$sc_where.$order.$limit; //필터 있
+$sqlrc = $sql.$limit; //필터 없
+//----------------------------------------------pagenation 끝
 
 ?>
 
@@ -102,29 +119,51 @@ if ($mysqli->connect_error) {
         </tbody>
         </table>
 
-        <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
-          <ul class="pagination">
-            <?php if ($current_page > 1): ?>
-              <li class="page-item">
-                <a class="page-link" href="?page=<?php echo $current_page - 1; ?>" aria-label="Previous">
-                  <span aria-hidden="true">&lsaquo;</span>
-                </a>
-              </li>
-            <?php endif; ?>
-            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-              <li class="page-item <?php echo $i == $current_page ? 'active' : ''; ?>">
-                <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-              </li>
-            <?php endfor; ?>
-            <?php if ($current_page < $total_pages): ?>
-              <li class="page-item">
-                <a class="page-link" href="?page=<?php echo $current_page + 1; ?>" aria-label="Next">
-                  <span aria-hidden="true">&rsaquo;</span>
-                </a>
-              </li>
-            <?php endif; ?>
-          </ul>
-        </nav>
+ <!-- ***------------------------- pagination - 시작 -------------------------*** -->
+ <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+      <ul class="pagination">
+        <?php
+          if($pageNumber>1 && $block_num > 1 ){
+            //이전버튼 활성화
+            $prev = ($block_num - 2) * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          } else{
+            //이전버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          }
+
+
+          for($i=$block_start;$i<=$block_end;$i++){
+            if($pageNumber == $i){
+                //필터 있
+                // echo "<li class=\"page-item active\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }else{
+                //필터 있
+                // echo "<li class=\"page-item\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }
+          }
+
+
+          if($pageNumber<$total_page && $block_num < $total_block){
+            //다음버튼 활성화
+            $next = $block_num * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+          } else{
+            //다음버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+
+          }
+        ?>
+      </ul>
+    </nav>
+    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
+    
+
+
       </section>
 
 <?php
