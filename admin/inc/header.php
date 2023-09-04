@@ -88,7 +88,7 @@
         <div
           class="inner_header content_tt d-flex justify-content-between align-items-center flex-column"
         >
-          <h1 class="adminlogo"><a href="#">로고</a></h1>
+          <h1 class="adminlogo"><a href="/pudding-LMS-website/admin/index.php">로고</a></h1>
           <nav>
             <ul class="d-flex justify-content-between flex-column">
               <li>
@@ -107,7 +107,7 @@
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/coupon/coupon_list.php" class="icon"
                   ><i class="ti ti-ticket"></i><span>쿠폰 관리</span></a
                 >
               </li>
@@ -118,12 +118,12 @@
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/notice/notice.php" class="icon"
                   ><i class="ti ti-clipboard-text"></i><span>공지사항</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
                   ><i class="ti ti-zoom-question"></i><span>Q&A</span></a
                 >
               </li>
@@ -146,8 +146,8 @@
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-bell-filled"
-              width="68"
-              height="68"
+              width="58"
+              height="58"
               viewBox="0 0 28 28"
               stroke-width="2"
               stroke="currentColor"
