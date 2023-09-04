@@ -31,19 +31,17 @@ $row = $result_select->fetch_object();
       <h5 class="main_stt thead_tt"><?php echo $row->nt_title ?></h5>
       <p class="notice_info d-flex justify-content-end align-items-center">
         <span class="b_text02">작성자</span>
-        <span class="b_text02"><?php echo $row->userid ?> </span>
+        <span class="b_text02"><?php echo $row->userid; ?> </span>
         <span class="b_text02">작성일</span>
-        <span class="b_text02"><?php echo $row->nt_regdate ?> </span>
+        <span class="b_text02"><?php echo $row->nt_regdate; ?> </span>
         <span class="b_text02">조회수</span>
-        <span class="b_text02"><?php echo $row->nt_read_cnt ?></span>
+        <span class="b_text02"><?php echo $row->nt_read_cnt; ?></span>
       </p>
       <div class="content">
         <!-- 본문 -->
-        <img src="<?= $row["file"] ?>" alt="">
+        <img src="<?= $row->nt_filename; ?>" alt="">
+        <?= $row->nt_content; ?>
 
-        <?php
-        $file_name = str_replace("../images/notice/", "", $row["file"]);
-        ?>
       </div>
       <div class="notice_view_btns d-flex justify-content-end">
         <a href="notice_update.php" class="btn_modify btn btn-primary">수정</a>
