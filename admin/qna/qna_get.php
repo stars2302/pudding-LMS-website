@@ -1,5 +1,5 @@
 <?php
-include 'dbconn.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 
 // 조회수 증가
 $sql = "UPDATE qna SET q_hit = q_hit + 1 WHERE qid = ?";

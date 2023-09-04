@@ -1,5 +1,5 @@
 <?php
-include 'dbconn.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 
 $comment_id = $_POST['comment_id'];
 $comment = $_POST['comment'];

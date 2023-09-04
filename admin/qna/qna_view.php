@@ -128,7 +128,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
     
     <div class="wrap justify-content-end list_up">
       <!-- 답변 상태 토글 버튼 -->
-      <form action="qna_content.php" method="GET">
+      <form action="qna_view.php" method="GET">
         <input type="hidden" name="qid" value="<?php echo $qid; ?>">
         <input type="hidden" name="toggle" value="<?php echo $row['q_state'] == 0 ? '1' : '0'; ?>">
         
@@ -137,7 +137,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
             <?php echo $row['q_state'] == 0 ? '<button type="submit" class="btn btn-primary">답변 완료</button>' : 
             '<button type="submit" class="btn btn-warning">답변 대기</button>'; ?>
           
-            <button type="button" class="btn btn-dark" onclick="window.location.href='qna.php'">목록 보기</button>
+            <button type="button" class="btn btn-dark" onclick="window.location.href='qna_list.php'">목록 보기</button>
   
         </div>
       </form>
@@ -267,6 +267,14 @@ function setGap() {
     element.style.gap = '15px';
   });
 }
+
+function setHidden() {
+  let hidden = document.querySelectorAll('.editComment');
+
+  hidden.forEach(function (hidden) {
+    hidden.style.display = 'none';
+  });
+}
 // window.addEventListener('load', setGap);
 
 // function setBtn() {
@@ -303,7 +311,9 @@ $(document).on('click', '.saveButton', function() {
   var updatedComment = $('.editComment[data-id="' + id + '"]').val();
   
   $.ajax({
-    url: 'edit_comment_ajax.php',
+		//test
+    // url: 'include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/edit_comment_ajax.php';', 
+    url: 'qna_reply_update_ok_ajax.php',
     type: 'POST',
     data: {
       comment_id: id,
@@ -330,7 +340,7 @@ $(document).on('click', '.deleteButton', function(e) {
   var self = this; // this값 임시 변수에 저장
   
   $.ajax({
-    url: 'delete_comment.php',
+    url: 'qna_delete_ok.php',
     type: 'POST',
     data: {
       comment_id: commentId

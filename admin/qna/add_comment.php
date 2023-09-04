@@ -1,5 +1,5 @@
 <?php
-include 'dbconn.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 
 $post_id = $_POST['post_id'];
 $parent_comment_id = $_POST['parent_comment_id'];
@@ -13,7 +13,7 @@ $stmt->bind_param('iiiss', $post_id, $parent_comment_id, $depth, $user_id, $comm
 $result = $stmt->execute();
 
 if ($result) {
-    header("Location: qna_content.php");
+    header("Location: qna_view.php");
 } else {
   echo "댓글 작성 실패: " . $mysqli->error;
 }

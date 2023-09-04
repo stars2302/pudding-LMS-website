@@ -21,6 +21,7 @@ $total_posts = $row[0];
 
 // 총 페이지 수
 $total_pages = ceil($total_posts / $per_page);
+$list_Five = 5;
 
 // 시작 게시물
 $start = ($current_page - 1) * $per_page; // (1-1)*10 = 0, (2-1)*10 = 10
@@ -90,7 +91,7 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
                 <?php echo $row['q_state'] == 0 ? '답변대기' : '답변완료'; ?>
             </th>
             <!-- 게시물 제목 -->
-            <td><a href="qna_content.php?qid=<?php echo $row['qid']; ?>"><?php echo $row['q_title']; ?></a></td>
+            <td><a href="qna_view.php?qid=<?php echo $row['qid']; ?>"><?php echo $row['q_title']; ?></a></td>
             <!-- 작성자 -->            
             <td><?php echo $row['uid']; ?></td>
             <!-- 작성시간 -->
@@ -101,6 +102,7 @@ $search = isset($_GET['search']) ? $_GET['search'] : ''; //search
         <?php endwhile; ?>  
         </tbody>
         </table>
+
         <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
           <ul class="pagination">
             <?php if ($current_page > 1): ?>

@@ -1,5 +1,5 @@
 <?php
-include 'dbconn.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $post_id = $_POST['post_id'];
