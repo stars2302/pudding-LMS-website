@@ -96,9 +96,7 @@ nav .pagination{
   line-height: var(--base_unit);
   gap: 10px;
 }
-.i_con .sircle{
-  padding-left: 20px;  
-}
+
 .master{
   background-color: var(--light_blue_bg);
   margin: 0 calc(var(--base_unit)*3) var(--base_unit) calc(var(--base_unit)*6);

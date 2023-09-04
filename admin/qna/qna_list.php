@@ -6,6 +6,9 @@ $js_route = "qna/js/qna.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
+//search
+$search_list = isset($_GET['search']) ? $_GET['search'] : '';
+
 
 // 현재 페이지 번호
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -49,10 +52,6 @@ if ($mysqli->connect_error) {
 }
 ?>
 
-
-<?php
-$search = isset($_GET['search']) ? $_GET['search'] : ''; //search
-?>
 <style>
 .waiting {
   color: var(--dark) !important;

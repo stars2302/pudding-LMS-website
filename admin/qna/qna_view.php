@@ -68,13 +68,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 							// htmlspecialchars ::  PHP에서 제공하는 함수. 주로 사용자가 입력한 데이터를 HTML 문서에 바로 출력할 때 사용
 							// 사용자 입력이 애플리케이션을 해칠 수 있는 코드를 포함하고 있더라도, 그런 코드가 실행되지 않도록 방지
 							echo "<div class='btn-group-wrap d-flex ml-auto'>";
-							echo "<button title='수정' class='editButton' data-id='" . $row['id'] . "'><svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-edit' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.25' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1'></path><path d='M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z'></path><path d='M16 5l3 3'></path></svg></button>";							
+							echo "<button title='수정' class='editButton' data-id='" . $row['id'] . "'><i class='ti ti-edit pen_icon'></i></button>";							
 							echo "<button class='saveButton' data-id='" . $row['id'] . "' style='display:none'>저장</button>";							
 							// 댓글 삭제 버튼
 							echo "<div data-comment-id='" . $row['id'] . "'>";
-							echo "<button title='삭제' type='button' class='deleteButton'><svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-trash' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.25' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M4 7l16 0'></path>
-							<path d='M10 11l0 6'></path><path d='M14 11l0 6'></path><path d='M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12'></path>
-							<path d='M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3'></path></svg></button>";
+							echo "<button title='삭제' type='button' class='deleteButton'><i class='ti ti-trash bin_icon'></i></button>";
 							echo "</div>";
 							echo "</div>";
 							echo "</div>";
@@ -88,7 +86,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 							echo "</div>";
 														
 							// 댓글 달기 버튼
-							echo "<button class='replyButton text-secondary mt-2' data-id='" . $row['id'] . "' data-depth='" . ($depth + 1) . "'><svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-message' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.25' stroke='#6c757d' fill='none' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M8 9h8'></path><path d='M8 13h6'></path><path d='M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z'></path></svg><span class='pl-1'>댓글 달기</span></button>";
+							echo "<button class='replyButton text-secondary mt-2' data-id='" . $row['id'] . "' data-depth='" . ($depth + 1) . "'><i class='ti ti-brand-hipchat'></i><span class='pl-1'>댓글 달기</span></button>";
 							echo "</div>";
 							
 							// 댓글의 뎁스가 2보다 작은 경우, 대댓글을 재귀적으로 가져옴
