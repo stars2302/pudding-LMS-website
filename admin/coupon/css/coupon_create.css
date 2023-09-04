@@ -13,6 +13,14 @@
 .coupon_info .thumbnail .show_thumb {
   padding-top: 70%;
   position: relative;
+  overflow: hidden;
+}
+
+.coupon_info .thumbnail .show_thumb img {
+  position: absolute;
+  right: 0; bottom: 0; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
 }
 
 .coupon_info .thumbnail .show_thumb:before {
@@ -58,6 +66,7 @@
 }
 .coupon_info .coupon_info_box .coupon_min_price {
   width: 63%;
+  gap: 0 10px;
 }
 
 .coupon_info .coupon_info_box .coupon_status_check {
@@ -99,6 +108,6 @@
 }
 
 .submit_btns {
-  margin-top: calc(var(--base_unit)*2);
+  margin: calc(var(--base_unit)*2) 0;
   gap: calc(var(--base_unit)/2);
 }
