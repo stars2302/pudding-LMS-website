@@ -48,6 +48,7 @@ $result = $mysqli->query($sql);
 //필터 없으면 여기서부터 복사! *******
 $pagenationTarget = 'qna'; //pagenation 테이블 명
 $pageContentcount = 10; //페이지 당 보여줄 list 개수
+
 if(!isset($pagerwhere)){
   $pagerwhere = ' 1=1';
 }

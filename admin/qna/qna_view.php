@@ -37,8 +37,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 				<!-- 추천 / 조회수 -->
 				<div class="wrap i_con">
 					<!-- <img src="image/Vest.svg" alt="Vest"> -->
-					<a href="" class="icon"><i class="ti ti-thumb-up"></i></a>
-					<p class="">25</p>           
+					<!-- <a href="" class="icon"><i class="ti ti-thumb-up"></i></a>
+					<p class="">25</p>            -->
 					<!-- <img src="image/Return.svg" alt="Return"> -->
 					<div class="sircle"><a href="" class="icon"> <i class="ti ti-arrow-back-up"></i></a></div>
 					<p class=""><?php echo $comment_count ?></p>
