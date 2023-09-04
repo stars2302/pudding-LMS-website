@@ -14,38 +14,34 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php
 
      
       if($cateName1){
-        $search_where .= " and name like '{$cateName1}%'";
+        $search_where .= " and name like '%{$cateName1}%'";
       }
       if($cateName2){
-        $search_where .= " and name like '{$cateName2}%'";
+        $search_where .= " and name like '%{$cateName2}%'";
       }
       if($cateName3){
-        $search_where .= " and name like '{$cateName3}%'";
+        $search_where .= " and name like '%{$cateName3}%'";
       }
   
-      // Perform the deletion using an appropriate SQL query based on your database structure
-      // Replace 'your_table_name' with your actual table name
-
       // $sql = "DELETE * FROM category WHERE
       //         name = '$cateName1' AND
       //         name = '$cateName2' AND
       //         name = '$cateName3'";
+
+      //sql로 phpmyadmin 삭제시 삭제가 되지만 사이트에서는 안됨
       $sql = "DELETE FROM category where cateid={$cateid} ";
       $sql .= $search_where;
       echo $sql;
       if ($mysqli->query($sql)) {
-          // Deletion was successful
           $response = array("result" => "success");
       } else {
-          // Deletion failed
           $response = array("result" => "fail");
       }
   
-      // Return a JSON response
+
       echo json_encode($response);
   //} 
   // else {
-  //     // Invalid request method
   //     echo json_encode(array("result" => "fail"));
   // }
 

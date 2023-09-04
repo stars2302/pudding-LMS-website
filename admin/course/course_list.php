@@ -30,6 +30,8 @@ $cate = $_GET['cate'] ?? '';
 $content = $_GET['content'] ?? '';
 $thumbnail = $_GET['thumbnail'] ?? '';
 $price = $_GET['price'] ?? '';
+$due = $_GET['due'] ?? '';
+$level = $_GET['level'] ?? '';
 $isnew = $_GET['isnew'] ?? '';
 $ismain = $_GET['ismain'] ?? '';
 $isbest = $_GET['isbest'] ?? '';
@@ -38,35 +40,26 @@ $userid = $_GET['userid'] ?? '';
 $due_status = $_GET['due_status'] ?? '';
 $price_status = $_GET['price_status'] ?? '';
 $act = $_GET['act'] ?? '';
-$sale_end_date = $_GET['sale_end_date'] ?? '';
-$c_total_cnt = $_GET['c_total_cnt'] ?? '';
-$courselist = $_GET['courselist'] ?? '';
-$rate = $_GET['rate'] ?? '';
-$rid = $_GET['rid'] ?? '';
+
+
 
 $search_where = '';
 
-// $cates = $cates1.$cate2.$cate3;
 
 if ($cate) {
   $search_where .= " and cate like '{$cate}%'";
 }
-if ($ismain) {
-  $search_where .= " and ismain = 1";
+if ($level) {
+  $search_where .= " and level like '{$level}%'";
 }
-if ($isnew) {
-  $search_where .= " and isnew = 1";
+if ($price_status) {
+  $search_where .= " and price_status like '{$price_status}%'";
 }
-if ($isbest) {
-  $search_where .= " and isbest = 1";
+if ($name) {
+  $search_where .= " and price_status like '{$name}%'";
 }
-if ($isrecom) {
-  $search_where .= " and isrecom = 1";
-}
-if ($sale_end_date) {
-  $search_where .= " and sale_end_date >= '$sale_end_date'";
-  //판매 종료일이 지나지 않은 상품 조회
-}
+
+
 // if($search_keyword){
 //   $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
 //   //제목과 내용에 키워드가 포함된 상품 조회
@@ -74,23 +67,53 @@ if ($sale_end_date) {
 
 
 
-
+//킵
 $sql = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
-//$sql = $sql.$search_where;
-
 $sql .= $search_where;
 $order = " ORDER BY cid DESC"; //최근순 정렬
 //$limit = " limit $statLimit, $endLimit";
 
 // $query = $sql.$order.$limit; //쿼리 문장 조합
-$query = $sql . $order;
-
+$query = $sql.$order;
 
 $result = $mysqli->query($query);
 
 while ($rs = $result->fetch_object()) {
   $rsc[] = $rs;
 }
+//킵
+
+//킵2 cht
+// $cate = $_GET['cate'] ?? '';
+
+// $sql = "SELECT * FROM courses where 1=1"; // and color name=value and color name=value and color name=value
+// $sql .= $search_where;
+// $order = "ORDER BY cid DESC";
+//킵2 cht
+//  $cid = $_POST['cid'] ?? '';
+//  //$cate = $_GET['cate'] ?? '';
+
+// $catesql = "SELECT * FROM courses where cid = {$cid}"; 
+// $cateresult = $mysqli->query($catesql);
+
+// $crsc = []; 
+
+// while ($caters = $cateresult->fetch_object()) {
+//     $crsc[] = $caters;
+// }
+// echo  $crsc;
+
+// foreach ($crsc as $course) {
+//     $parts = explode('/', $course->cate);
+
+//     foreach ($parts as $part) {
+//         echo $part . '<br>';
+//     }
+// }
+
+
+
+
 
 ?>
 
@@ -170,13 +193,24 @@ while ($rs = $result->fetch_object()) {
         <div class="course_info">
           <div>
             <h3 class="course_list_title b_text01"><a href="course_view.php?cid=<?= $item->cid ?>"><?= $item->name ?></a>
-              <span class="badge rounded-pill blue_bg b-pd">프론트엔드</span>
-              <span class="badge rounded-pill green_bg b-pd">초급</span>
+              <span class="badge rounded-pill blue_bg b-pd">
+              <?php 
+              //뱃지 키워드 
+              if(isset($item->cate)){
+              $categoryText = $item->cate;
+              $parts = explode('/', $categoryText); // Split the string by '/'
+              $lastPart = end($parts); // Get the last element in the array
+              
+              echo $lastPart; // Output: "javascript"
+              }
+              ?>
+              </span>
+              <span class="badge level_badge rounded-pill b-pd"><?= $item->level ?></span>
             </h3>
             <p><?= $item->content ?>
             </p>
           </div>
-          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span>3개월</span></p>
+          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?= $item->due_status ?></span></p>
         </div>
       </div>
       <div class="col-md-4">
@@ -191,13 +225,13 @@ while ($rs = $result->fetch_object()) {
         </nav>
 
         <div class="d-flex align-items-end status_box">
-          <span class="price content_stt"><?= $item->price ?></span>
+          <span class="price content_stt"><?= $item->price_status ?></span>
           <span class="d-flex flex-column align-items-end status_wrap">
             <select name="status[<?=$item->cid ?>]" id="status[<?= $item->cid ?>]"  class="form-select" aria-label="Default select example" id="selectmenu">
               <option selected disabled>상태</option>
               <!-- 추후 value 넣기  -->
-              <option value="1"  <?php if($item->act==1) {echo "selected"; } ?>>활성화</option>
-              <option value="0" <?php if($item->act==0) {echo "selected"; } ?>>비활성화</option>
+              <option value=""  <?php if($item->act=="활성") {echo "selected"; } ?>>활성</option>
+              <option value="" <?php if($item->act=="비활성") {echo "selected"; } ?>>비활성</option>
             </select>
             <span class="price_btn_wrap">
               <a href="course_up.php" class="btn btn-primary btn_g">수정</a>
@@ -244,6 +278,29 @@ while ($rs = $result->fetch_object()) {
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 
 <script>
+
+
+$('input[type="checkbox"]').click(function(){
+      let $this = $(this);
+      if($this.prop('checked')){//체크해서 활성되면
+        $this.val('1');
+      } else{
+        $this.val('0');
+      }
+    });
+
+
+  let levelBadge = $('.level_badge');
+
+ if(levelBadge.text()==='초급'){
+  levelBadge.css({background:'#ffd180'})
+ } else if(levelBadge.text()==='중급'){
+  levelBadge.css({background:'#14ddb9'})
+ } else{
+  levelBadge.css({background:'#ffb39f'})
+ }
+console.log(levelBadge.text());
+
   //강의 가격 천단위, 변환
   let priceList = $('.price');
 
@@ -252,6 +309,8 @@ while ($rs = $result->fetch_object()) {
     let course_price = ($.number(str_price));
     $(this).text(course_price+' 원');
   });
+
+  // green_bg
 
 </script>
 <?php

@@ -1,4 +1,12 @@
 <?php
+// session_start();
+// if(!$_SESSION['AUID']){
+//   echo "<script>
+//           alert('접근 권한이 없습니다');
+//           history.back();
+//       </script>";
+// };
+
 $title = "카테고리";
 $css_route = "course/css/course.css";
 $js_route = "course/js/course.js";
@@ -25,8 +33,6 @@ $result2 = $mysqli->query($sql2);
 $rs2 = $result -> fetch_object();
 
 ?>
-
-<!-- cateid, pcode, name, step -->
 
 <section class="category_add">
   <h2 class="main_tt dark tt_mb">카테고리 관리</h2>
@@ -68,6 +74,7 @@ $rs2 = $result -> fetch_object();
       </div>
     </div>
   </div>
+
   <!-- Modal 2-->
   <div class="modal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -80,21 +87,19 @@ $rs2 = $result -> fetch_object();
         <div class="modal-body">
           <div class="row">
             <?php
-
-            $query = "SELECT * FROM category WHERE step=1";
-            $result = $mysqli->query($query);
-
-            while ($rs = $result->fetch_object()) {
-              $cate2[] = $rs;
-            }
+              $query = "SELECT * FROM category WHERE step=1";
+              $result = $mysqli->query($query);
+              while ($rs = $result->fetch_object()) {
+                $cate2[] = $rs;
+              }
             ?>
             <div class="col-md-12">
               <select class="form-select " aria-label="Default select example" id="pcode2">
                 <option selected disabled>대분류를 선택해주세요.</option>
                 <?php
-                foreach ($cate2 as $p) {
-                  ?>
-                  <option value="<?= $p->cateid ?>"><?= $p->name ?></option>
+                 foreach ($cate2 as $p) {
+                ?>
+                <option value="<?= $p->cateid ?>"><?= $p->name ?></option>
                 <?php } ?>
               </select>
             </div>
@@ -113,6 +118,7 @@ $rs2 = $result -> fetch_object();
       </div>
     </div>
   </div>
+
   <!-- Modal 3-->
   <div class="modal fade" id="cate3Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -128,9 +134,9 @@ $rs2 = $result -> fetch_object();
               <select class="form-select" aria-label="Default select example" id="pcode2_1">
                 <option selected disabled>대분류</option>
                 <?php
-                foreach ($cate1 as $c) {
-                  ?>
-                  <option value="<?= $c->cateid ?>"><?= $c->name ?></option>
+                  foreach ($cate1 as $c) {
+                ?>
+                <option value="<?= $c->cateid ?>"><?= $c->name ?></option>
                 <?php } ?>
               </select>
             </div>
@@ -154,6 +160,7 @@ $rs2 = $result -> fetch_object();
       </div>
     </div>
   </div>
+  <!-- 카테고리 리스트 -->
   <div class="category_list">
     <h3 class="content_tt">카테고리 리스트</h3>
     <form action="" id="search_form" method="POST">
@@ -192,9 +199,7 @@ $rs2 = $result -> fetch_object();
       </thead>
       <tbody>
         <tr>
-          <!-- <td class="big_cate"></td> -->
-         
-
+        <!-- 조회된 리스트 tr 생성  -->
         </tr>
       </tbody>
     </table>
@@ -223,14 +228,43 @@ $rs2 = $result -> fetch_object();
 </div><!-- wrap -->
 
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
-<script src="/pudding-LMS-website/admin/course/js/makeoption2.js"></script>
+<!-- <script src="/pudding-LMS-website/admin/course/js/makeoption2.js"></script> -->
 
 
 <script>
 
 
-  let catename1 = '';
+//페이지 로드되면 대분류
 
+   // Get the selected text of each option in the #cate1 select element
+   var cate1OptionsText = $('#cate1 option').map(function() {
+    return $(this).text();
+  }).get();
+
+  // Create the HTML for the first row of the table
+  var trHTML1 = '';
+  for (var i = 0; i < cate1OptionsText.length; i++) {
+    trHTML1 += `<tr>
+                    <td class="cate_name cate_name1" date-catename =${cateTitle1} date-cateid =${cateId3}>${cate1OptionsText[i]}</td>
+                    <td class="cate_name cate_name2" date-catename =${cateTitle2} date-cateid =${cateId3}> </td>
+                    <td class="cate_name3" date-catename =${cateTitleArr} date-cateid=${cateId3}> </td>
+                    <td>
+                        <div>
+                            <div class="cate_delete"><i class="ti ti-trash bin_icon"></i></div>
+                        </div>
+                    </td>
+                </tr>`;
+  }
+  
+
+  // Append the HTML to the table tbody
+  $('table tbody').append(trHTML1);
+//페이지 로드되면 대분류 end
+
+
+view_category(1);
+  let catename1 = '';
+  let cateid = '';
   //조회 버튼 클릭시, 할일
   $('.search_btn').click(function () {
     view_category();
@@ -238,11 +272,11 @@ $rs2 = $result -> fetch_object();
 
   //view_category 함수
   function view_category() {
-    let cate1 = $('#cate1').val();
-    let cate2 = $('#cate2').val();
+    let step = $('#cate1').val();
+    let name = $('#cate2').val();
     let data = {
-      cate1: cate1,
-      cate2: cate2,
+      step:step,
+      name:name
     };
 
     $.ajax({
@@ -251,6 +285,8 @@ $rs2 = $result -> fetch_object();
       url: "view_category.php",
       dataType: 'json',
       success: function (return_data) {
+        cateid = return_data.result;
+        console.log('cateid',cateid)
         catename1 = return_data.catename
         if (return_data.catename && return_data.result) {
           makeTr(return_data.catename, return_data.result);
@@ -263,37 +299,33 @@ $rs2 = $result -> fetch_object();
       }
     });
   }
-
+//console.log('cateid',cateid)
   //makeTr 함수
-  function makeTr(name, data) {
+  function makeTr(step, data) {
     let trHTML = '';
-    let selectedCate = $('#cate1').find("option:selected");
-    let cateTitle1 = selectedCate.data("cate");
-    let cateTitle2 = name;
-    let cateTitleArr = []
-    let cateId2 = name;
-    let cateId3 = name;
+    //let selectedCate = $('#cate1').find("option:selected");
+    // let cateTitle1 = selectedCate.data("cate");
+    // let cateTitle2 = name;
+    // let cateTitleArr = []
+    // let cateId2 = name;
+    // let cateId3 = name;
 
     data.forEach(function (item) {
-      console.log('item.',item)
-      // if (item.step == 1) {
-      //  // catename1 = catename1;
-      //   // catename1 = catete;
-      // }
       if (item.step == 2) {
-        cateId2 = item.cateId;
+        cateId2 = item.cateid;
         cateTitle2 = item.name;
       }
       if (item.step == 3) {
-        cateId3 = item.cateId;
+        cateId3 = item.cateid;
         cateTitleArr = item.name;
+        console.log(cateId3,'cateId3')
         
       }
 
       trHTML += `<tr>
-                    <td class="cate_name cate_name1" date-catename =${cateTitle1} date-cateid ="<?php if(isset($rs2)){echo $rs2;} ?>">${cateTitle1}</td>
-                    <td class="cate_name cate_name2" date-catename =${cateTitle2} date-cateid ="<?php if(isset($rs2)){echo $rs2;} ?>">${cateTitle2}</td>
-                    <td class="cate_name3" date-catename =${cateTitleArr} date-cateid ="<?php if(isset($rs2)){echo $rs2;} ?>">${cateTitleArr}</td>
+                    <td class="cate_name cate_name1" date-catename =${cateTitle1} date-cateid =${cateId3}>${cateTitle1}</td>
+                    <td class="cate_name cate_name2" date-catename =${cateTitle2} date-cateid =${cateId3}>${cateTitle2}</td>
+                    <td class="cate_name3" date-catename =${cateTitleArr} date-cateid=${cateId3}>${cateTitleArr}</td>
                     <td>
                         <div>
                             <div class="cate_delete"><i class="ti ti-trash bin_icon"></i></div>
@@ -354,13 +386,13 @@ $rs2 = $result -> fetch_object();
       },
       success: function (return_data) {
         console.log(return_data.result);
-
+            
         if (return_data.result == 1) {
-          alert('등록성공');
-          // location.reload();//새로고침
+          alert('카테고리가 등록되었습니다');
+          //location.reload();
         } else if (return_data.result == -1) {
           alert('코드나 분류명이 이미 사용중입니다.');
-          // location.reload();//새로고침
+          //location.reload();
         } else {
           alert('등록실패');
         }
@@ -376,6 +408,7 @@ $rs2 = $result -> fetch_object();
     $('tbody').on('click','.cate_delete',function(){
         let trElement = $(this).closest('tr');
 
+       // let cateid = trElement.find('.cate_name1').text();
         let cateName1 = trElement.find('.cate_name1').text();
         let cateName2 = trElement.find('.cate_name2').text();
         let cateName3 = trElement.find('.cate_name3').text();

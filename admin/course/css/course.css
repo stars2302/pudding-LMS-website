@@ -67,6 +67,7 @@ input[type=text], select, .btn {
   background: #fff;
   border-radius: 12px;
   padding: 27px;
+  margin-bottom: 27px;
 }
 
 .course_list_title {
