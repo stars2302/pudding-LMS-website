@@ -29,14 +29,14 @@ try{
     <script>
       alert('쿠폰수정성공!');
       location.href = '/pudding-LMS-website/admin/coupon/coupon_list.php';
-    </script>
-    ";
-  }
-
-} catch(Exception $e){
-  $mysqli->rollback();
-  echo "
-  <script>
+      </script>
+      ";
+    }
+    
+  } catch(Exception $e){
+    $mysqli->rollback();
+    echo "
+    <script>
     alert('쿠폰수정실패!');
   </script>
   ";
