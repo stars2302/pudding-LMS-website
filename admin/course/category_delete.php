@@ -1,49 +1,88 @@
+
+
 <?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 
-include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
+if (isset($_POST['cateid']) && !empty($_POST['cateid'])) {
+if (isset($_POST['cateid'])) {
+    $cateid = $_POST['cateid'];
+
+    // Use prepared statement to prevent SQL injection
+    $query = "DELETE FROM category WHERE cateid = {$cateid} ";
+    //$query = "DELETE FROM category WHERE `category`.`cateid` = {$cateid}";
+    
+    $result = $mysqli->query($query);
+
+    if ($result) {
+      $retun_data = array("result" => 'success');
+      echo json_encode($retun_data);
+    } else {
+      $retun_data = array("result" => 'error');
+      echo json_encode($retun_data);
+    }
+  }
+}
+
+// if (isset($_POST['cateid'])) {
+//   $cateid = $_POST['cateid'];
+
+//   // Use prepared statement to prevent SQL injection
+//   //$query = "DELETE FROM category WHERE cateid = ?";
+//   $query = "DELETE FROM category WHERE `category`.`cateid` = {$cateid}";
   
-  //if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-      $cateid = $_POST['cateid'];
-      $cateName1 = $_POST["cateName1"] ?? '';
-      $cateName2 = $_POST["cateName2"] ?? '';
-      $cateName3 = $_POST["cateName3"] ?? '';
-
-      $search_where = '';
-
-     
-      if($cateName1){
-        $search_where .= " and name like '%{$cateName1}%'";
-      }
-      if($cateName2){
-        $search_where .= " and name like '%{$cateName2}%'";
-      }
-      if($cateName3){
-        $search_where .= " and name like '%{$cateName3}%'";
-      }
+//   // Prepare the statement
+//   $stmt = $mysqli->prepare($query);
   
-      // $sql = "DELETE * FROM category WHERE
-      //         name = '$cateName1' AND
-      //         name = '$cateName2' AND
-      //         name = '$cateName3'";
+//   if ($stmt) {
+//       // Bind the parameter
+//       $stmt->bind_param("i", $cateid);
+      
+//       // Execute the statement
+//       if ($stmt->execute()) {
+//           $return_data = array("result" => 'success');
+//           echo json_encode($return_data);
+//       } else {
+//           // $return_data = array("result" => 'error');
+//           $return_data = array("result" => 'error', "message" => $stmt->error); // Include an error message for debugging
+//           echo json_encode($return_data);
+//       }
+      
+//       // Close the statement
+//       $stmt->close();
+//   } else {
+//       $return_data = array("result" => 'error');
+//       echo json_encode($return_data);
+//   }
+// }
 
-      //sql로 phpmyadmin 삭제시 삭제가 되지만 사이트에서는 안됨
-      $sql = "DELETE FROM category where cateid={$cateid} ";
-      $sql .= $search_where;
-      echo $sql;
-      if ($mysqli->query($sql)) {
-          $response = array("result" => "success");
-      } else {
-          $response = array("result" => "fail");
-      }
+
+
+
+
+
+
+
+	// if ($result) {
+	// 	echo "1";
+	// } else {
+	// 	echo "error";
+	// }
+
+    // $stmt->bind_param("i", $cateid);
+
+//     if ($stmt->execute()) {
+//       $response = array("result" => "success");
+//   } else {
+//       $response = array("result" => "fail", "error" => $stmt->error); // Add error information
+//   }
   
 
-      echo json_encode($response);
-  //} 
-  // else {
-  //     echo json_encode(array("result" => "fail"));
-  // }
+//     $stmt->close();
+//     $mysqli->close();
+// } else {
+//     $response = array("result" => "fail");
+// }
 
-  
-  ?>
+//echo json_encode($response);
+?>

@@ -68,18 +68,18 @@ if ($name) {
 
 
 //킵
-$sql = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
-$sql .= $search_where;
+$sql2 = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
+$sql2 .= $search_where;
 $order = " ORDER BY cid DESC"; //최근순 정렬
 //$limit = " limit $statLimit, $endLimit";
 
 // $query = $sql.$order.$limit; //쿼리 문장 조합
-$query = $sql.$order;
+$query2 = $sql2.$order;
 
-$result = $mysqli->query($query);
+$result2 = $mysqli->query($query2);
 
-while ($rs = $result->fetch_object()) {
-  $rsc[] = $rs;
+while ($rs2 = $result2->fetch_object()) {
+  $rsc2[] = $rs2;
 }
 //킵
 
@@ -184,8 +184,14 @@ while ($rs = $result->fetch_object()) {
   <!-- 리스트 -->
   <ul>
   <?php
-    if(isset($rsc)){
-      foreach($rsc as $item){            
+    if(isset($rsc2)){
+      foreach($rsc2 as $item){  
+        $cateString = $item->cate;
+        $parts = explode('/', $cateString);
+
+        $big_cate = $parts[0];
+        $md_cate = $parts[1];
+        $sm_cate = $parts[2];
   ?>
     <li class="course_list row shadow_box">
       <div class="col-md-8 d-flex">
@@ -205,12 +211,26 @@ while ($rs = $result->fetch_object()) {
               }
               ?>
               </span>
-              <span class="badge level_badge rounded-pill b-pd"><?= $item->level ?></span>
+              <span class="badge level_badge rounded-pill b-pd
+                <?php 
+                //  뱃지컬러
+                  $levelBadge = $item->level;
+                  if($levelBadge === '초급'){
+                    echo 'yellow_bg';
+                  } else if($levelBadge === '중급'){
+                    echo 'green_bg';
+                  } else{
+                    echo 'red_bg';
+                  }
+                ?>
+              ">
+                <?= $item->level ?>
+              </span>
             </h3>
             <p><?= $item->content ?>
             </p>
           </div>
-          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?= $item->due_status ?></span></p>
+          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?php if($item->due == ''){echo '무제한';} else{echo $item->due;}; ?></span></p>
         </div>
       </div>
       <div class="col-md-4">
@@ -218,14 +238,15 @@ while ($rs = $result->fetch_object()) {
           style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
           aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">프로그래밍</a></li>
-            <li class="breadcrumb-item active" aria-current="page">프론트엔드</li>
-            <li class="breadcrumb-item active" aria-current="page">Javascript</li>
+            <li class="breadcrumb-item"><a href="#"><?= $big_cate ?></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $md_cate ?></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $sm_cate ?></li>
+           
           </ol>
         </nav>
 
         <div class="d-flex align-items-end status_box">
-          <span class="price content_stt"><?= $item->price_status ?></span>
+          <span class="price content_stt"><?= $item->price ?></span>
           <span class="d-flex flex-column align-items-end status_wrap">
             <select name="status[<?=$item->cid ?>]" id="status[<?= $item->cid ?>]"  class="form-select" aria-label="Default select example" id="selectmenu">
               <option selected disabled>상태</option>
@@ -280,6 +301,8 @@ while ($rs = $result->fetch_object()) {
 <script>
 
 
+
+
 $('input[type="checkbox"]').click(function(){
       let $this = $(this);
       if($this.prop('checked')){//체크해서 활성되면
@@ -290,16 +313,7 @@ $('input[type="checkbox"]').click(function(){
     });
 
 
-  let levelBadge = $('.level_badge');
 
- if(levelBadge.text()==='초급'){
-  levelBadge.css({background:'#ffd180'})
- } else if(levelBadge.text()==='중급'){
-  levelBadge.css({background:'#14ddb9'})
- } else{
-  levelBadge.css({background:'#ffb39f'})
- }
-console.log(levelBadge.text());
 
   //강의 가격 천단위, 변환
   let priceList = $('.price');
