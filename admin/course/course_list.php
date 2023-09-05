@@ -10,9 +10,7 @@ $cates1 = $_GET['cate1'] ?? '';
 $cate2 = $_GET['cate2'] ?? '';
 $cate3 = $_GET['cate3'] ?? '';
 $level = $_GET['level'];
-$due_status = $_GET['due_status'];
-$due_status = $_GET['due_status'];
-
+$price_status = $_GET['price_status'];
 
 $search_where = '';
 
@@ -21,28 +19,16 @@ $cates = $cates1.$cate2.$cate3;
 if ($cate) {
   $search_where .= " and cate like '{$cate}%'";
 }
-if ($ismain) {
-  $search_where .= " and ismain = 1";
+if ($level) {
+  $search_where .= " and level = 1";
 }
-if ($isnew) {
-  $search_where .= " and isnew = 1";
-}
-if ($isbest) {
-  $search_where .= " and isbest = 1";
-}
-if ($isrecom) {
-  $search_where .= " and isrecom = 1";
-}
-if ($sale_end_date) {
-  $search_where .= " and sale_end_date >= '$sale_end_date'";
-  //판매 종료일이 지나지 않은 상품 조회
+if ($price_status) {
+  $search_where .= " and level = 1";
 }
 if($search_keyword){
   $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
   //제목과 내용에 키워드가 포함된 상품 조회
 }
-
-
 
 $sql = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
 //$sql = $sql.$search_where;
@@ -77,7 +63,7 @@ while ($rs = $result->fetch_object()) {
           <!-- 추후 value 넣기  -->
           <?php
           foreach ($cate1 as $c) {
-            ?>
+          ?>
             <option value="<?php echo $c->cid ?>"><?php echo $c->name ?></option>
           <?php } ?>
           <!-- <option value="">프로그래밍</option>
