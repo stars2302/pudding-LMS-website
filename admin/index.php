@@ -38,11 +38,11 @@ $sales_data_json = json_encode($sales_data);
 
 // var_dump($sales_data_json);
 
-// $sql ="SELECT * FROM notice order by ntid desc limit 0,4";
-// $result = $mysqli-> query($sql);
-// while($rs = $result->fetch_object()){
-//   $rscn[]=$rs;
-// }
+$sql ="SELECT * FROM notice order by ntid desc limit 0,6";
+$result = $mysqli-> query($sql);
+while($rs = $result->fetch_object()){
+  $rscn[]=$rs;
+}
 
 // var_dump($rscn);
 
@@ -153,28 +153,28 @@ while($rs = $result -> fetch_object()){
               <div class="content_box border shadow notice">
                 <h2 class="yellow_bg white"><i class="ti ti-category"></i>공지사항(최근순)</h2>
                 <?php
-                /*
+             
                 if(isset($rscn)){
                   foreach($rscn as $nlist){
-                */
+            
                 ?>
                 
                 <div class="noti_con">
-                  <!-- <p><a href="/pudding-LMS-website/admin/notice/notice_list.php?ntid=<?php echo $nlist->ntid ?>"><?php echo $nlist->nt_title ?></a></p> -->
+                  <p title="<?php echo $nlist->nt_title ?>"><a href="/pudding-LMS-website/admin/notice/notice_list.php?ntid=<?php echo $nlist->ntid ?>"><?php echo $nlist->nt_title ?></a></p>
 
                   <!-- layout을 위한 임시코드 -->
+                  <!-- <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
                   <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
                   <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
                   <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
                   <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
-                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
-                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
+                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p> -->
                 </div>
                 <?php
-                /*
+              
                   }
                 }
-                */
+              
                 ?>
             </div>
            </div>
