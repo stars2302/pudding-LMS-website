@@ -24,7 +24,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
             <?php
               foreach($cate1 as $c){            
             ?>
-              <option value="<?php echo $c->cateid ?>"><?php echo $c->name ?></option>
+              <option value="<?php echo $c->cateid ?>" data-name="<?php echo $c->name ?>"><?php echo $c->name ?></option>
             <?php } ?>
           </select>
         </div>

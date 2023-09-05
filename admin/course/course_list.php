@@ -37,18 +37,18 @@ $cates = $cates1 . $cate2 . $cate3;
 $levels = $level1 . $level1 . $level1;
 $price_statuss = $price_status1 . $price_status2;
 
-// if ($cates) {
-//   $search_where .= " and cate like '%{$cates}%'";
-// }
-// if ($levels) {
-//   $search_where .= " and level like '%{$levels}%'";
-// }
-// if ($price_statuss) {
-//   $search_where .= " and price_status like '%{$price_statuss}%'";
-// }
-// if ($name) {
-//   $search_where .= " and name like '%{$name}%'";
-// }
+if ($cates) {
+  $search_where .= " and cate like '%{$cates}%'";
+}
+if ($levels) {
+  $search_where .= " and level like '%{$levels}%'";
+}
+if ($price_statuss) {
+  $search_where .= " and price_status like '%{$price_statuss}%'";
+}
+if ($name) {
+  $search_where .= " and name like '%{$name}%'";
+}
 
 
 
