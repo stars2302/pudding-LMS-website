@@ -160,3 +160,10 @@ nav .pagination{
 .replyButton{
   gap: 15px;
 }
+.order{
+  display: flex;
+  gap: calc(var(--base_unit)*0.5);
+}
+.order .btn{
+  margin-top: 60px;
+}

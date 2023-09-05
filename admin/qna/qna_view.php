@@ -127,20 +127,20 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
     
     <div class="wrap justify-content-end list_up">
       <!-- 답변 상태 토글 버튼 -->
-      <form action="qna_view.php" method="GET">
-        <input type="hidden" name="qid" value="<?php echo $qid; ?>">
-        <input type="hidden" name="toggle" value="<?php echo $row['q_state'] == 0 ? '1' : '0'; ?>">
-        
+   
         <div class="order">  
           
         <?php
 
       if ($row['q_state'] === 0) {
-          echo '<button type="submit" class="btn btn-primary" onclick="reloadPage()">답변 완료</button>';
+        echo '<a href="qna_change.php?qid=' . $qid . '&state=1" class="btn btn-primary">답변 완료</a>';
       } else {
-          echo '<button type="submit" class="btn btn-warning" onclick="reloadPage()">답변 대기</button>';
+        echo '<a href="qna_change.php?qid=' . $qid . '&state=0" class="btn btn-warning">답변 대기</a>';
       }
+
       ?>
+
+  
 
 
             <button type="button" class="btn btn-dark" onclick="window.location.href='qna_list.php'">목록 보기</button>
@@ -375,18 +375,10 @@ $(document).on('click', '.deleteButton', function(e) {
   });
 });
 
-document.querySelector('.btn.btn-primary').addEventListener('click', function() {
-    location.reload(); // 페이지 새로 고침
-});
 
-document.querySelector('.btn.btn-warning').addEventListener('click', function() {
-    location.reload(); // 페이지 새로 고침
-});
-
-document.querySelector('.btn.btn-dark').addEventListener('click', function() {
-    window.location.href = 'qna_list.php'; // 다른 페이지로 이동
-});
-
+function reloadPage(){
+  location.reload();
+};
 </script>
 </body>
 </html>
