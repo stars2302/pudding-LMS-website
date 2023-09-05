@@ -9,7 +9,9 @@ try{
   $rsc = $cresult -> fetch_object();
 
   $cp_image = $_POST['imgSRC'];
+  //넘어온 img값이 빈값이면
   if($cp_image == ''){
+    //기존 이미지로 업데이트
     $cp_image = $rsc->cp_image;
   }
   $cp_name = $_POST['cp_name'];

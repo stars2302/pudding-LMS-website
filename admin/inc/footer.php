@@ -27,7 +27,7 @@
 
 
   <!-- Numbers js -->
-  <script src="../js/jquery.number.min.js"></script>
+  <script src="/pudding-LMS-website/admin/js/jquery.number.min.js"></script>
   <script src="/pudding-LMS-website/admin/js/numbers_func.js"></script>
 
   <script src="/pudding-LMS-website/admin/<?php if(isset($js_route)){echo $js_route;} ?>"></script>
