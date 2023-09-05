@@ -2,6 +2,9 @@
 
 /* layout */
 /* notice_view.php */
+.content p {
+  padding-top: 20px !important;
+}
 
 .content a {
   text-decoration: underline !important;
