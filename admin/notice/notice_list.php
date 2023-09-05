@@ -4,18 +4,34 @@ $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
-
-$mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
-
+/* 필요 파일 및 라이브러리를 포함하고 초기설정*/
 
 $sql = "SELECT * from notice order by ntid desc limit 0, 10";
 $result = $mysqli -> query($sql);
+while($rs = $result -> fetch_object()){
+  $rsc[] = $rs;
+}
+
+/* 파라미터 로드 */
+$nt_title = $_GET['nt_title'] ?? '';
+$nt_content = $_POST['nt_content'];
+$search_where = '';
+if($nt_title){
+  $search_where .= " and (name like '%{$nt_title}%' or 
+  content like '%{$nt_content}%')";
+  //제목과 내용에 키워드가 포함된 상품 조회
+}
+
+$sql2 = "SELECT * from notice where 1=1" ; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
+
+
 ?>
 <section>
     <h2 class="main_tt">공지사항</h2>
     <div class="notice_top shadow_box border d-flex justify-content-between">
       <form class="notice_top_left d-flex align-items-center" action="" method="get">
-        <input type="text" class="input form-control" id="searchInput" placeholder="공지사항을 검색하세요" aria-label="Search">
+        <input type="text" class="input form-control" id="searchInput" placeholder="공지사항을 검색하세요" aria-label="Search"
+         name="nt_title">
         <button class="btn btn-dark" id="searchInput">검색</button>              
       </form>
       <div class="d-flex align-items-center">
@@ -49,212 +65,37 @@ $result = $mysqli -> query($sql);
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody>          
           <?php
-          while($row = $result->fetch_array(MYSQLI_ASSOC)){
-            $title = $row['nt_title'];             
-          ?>
+            if(isset($rsc)){
+              foreach($rsc as $item){            
+            ?>
           <tr>
             <td class="no_mp">
-            <?= $row['ntid'];?>
+            <?= $item -> ntid;?>
             </td>
             <td class="no_mp">
-              <a href="notice_view.php?ntid=<?= $row['ntid']; ?>">
-                <?= $row['nt_title'];?>
+              <a href="notice_view.php?ntid=<?=$item -> ntid;?>">
+                <?= $item -> nt_title; ?>
               </a>
             </td>
             <td class="no_mp">
-              <?= $row['nt_regdate'];?>
+              <?= $item -> nt_regdate;?>
             </td>
             <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
+            <?= $item -> nt_read_cnt;;?>
             </td>
             <td>
               <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
+                <a href="notice_update.php?ntid=<?=$item -> ntid;?>"><i class="ti ti-edit pen_icon"></i></a>
+                <a href="notice_delete_ok.php?ntid=<?=$item -> ntid;?>"><i class="ti ti-trash bin_icon"></i></a>
               </div>
             </td>
-          </tr>
-          <tr>
-            <td class="no_mp">
-            <?= $row['ntid'];?>
-            </td>
-            <td class="no_mp">
-              <a href="notice_view.php">
-                <?= $row['nt_title'];?>
-              </a>
-            </td>
-            <td class="no_mp">
-              <?= $row['nt_regdate'];?>
-            </td>
-            <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="no_mp">
-            <?= $row['ntid'];?>
-            </td>
-            <td class="no_mp">
-              <a href="notice_view.php">
-                <?= $row['nt_title'];?>
-              </a>
-            </td>
-            <td class="no_mp">
-              <?= $row['nt_regdate'];?>
-            </td>
-            <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.php"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="no_mp">
-            <?= $row['ntid'];?>
-            </td>
-            <td class="no_mp">
-              <a href="notice_view.php">
-                <?= $row['nt_title'];?>
-              </a>
-            </td>
-            <td class="no_mp">
-              <?= $row['nt_regdate'];?>
-            </td>
-            <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="no_mp">
-            <?= $row['ntid'];?>
-            </td>
-            <td class="no_mp">
-              <a href="notice_view.php">
-                <?= $row['nt_title'];?>
-              </a>
-            </td>
-            <td class="no_mp">
-              <?= $row['nt_regdate'];?>
-            </td>
-            <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="no_mp">
-            <?= $row['ntid'];?>
-            </td>
-            <td class="no_mp">
-              <a href="notice_view.php">
-                <?= $row['nt_title'];?>
-              </a>
-            </td>
-            <td class="no_mp">
-              <?= $row['nt_regdate'];?>
-            </td>
-            <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="no_mp">
-            <?= $row['ntid'];?>
-            </td>
-            <td class="no_mp">
-              <a href="notice_view.php">
-                <?= $row['nt_title'];?>
-              </a>
-            </td>
-            <td class="no_mp">
-              <?= $row['nt_regdate'];?>
-            </td>
-            <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="no_mp">
-            <?= $row['ntid'];?>
-            </td>
-            <td class="no_mp">
-              <a href="notice_view.php">
-                <?= $row['nt_title'];?>
-              </a>
-            </td>
-            <td class="no_mp">
-              <?= $row['nt_regdate'];?>
-            </td>
-            <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="no_mp">
-            <?= $row['ntid'];?>
-            </td>
-            <td class="no_mp">
-              <a href="notice_view.php">
-                <?= $row['nt_title'];?>
-              </a>
-            </td>
-            <td class="no_mp">
-              <?= $row['nt_regdate'];?>
-            </td>
-            <td class="no_mp">
-            <?= $row['nt_read_cnt'];?>
-            </td>
-            <td>
-              <div class="icon_group">
-                <a href="notice_update.html"><i class="ti ti-edit pen_icon"></i></a>
-                <i class="ti ti-trash bin_icon"></i>
-              </div>
-            </td>
-          </tr>
+          </tr>                 
           <?php
           }
-          ?>  
+        }
+          ?> 
         </tbody>
       </table>
   
