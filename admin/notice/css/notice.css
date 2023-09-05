@@ -1,6 +1,11 @@
 /* notice.css */
 
 /* layout */
+/* notice_view.php */
+
+.content a {
+  text-decoration: underline !important;
+}
 .main_tt {
   padding-bottom: 60px;
   margin: 0;

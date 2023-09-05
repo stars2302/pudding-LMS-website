@@ -5,24 +5,28 @@ $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 /* 필요 파일 및 라이브러리를 포함하고 초기설정*/
+/* 파라미터 로드 */
+$search_where = '';
 
-$sql = "SELECT * from notice order by ntid desc limit 0, 10";
+if(isset($_GET['keyword'])) {
+  $keyword = $_GET['keyword'];
+  $search_where = " and (nt_title like '%{$keyword}%' or 
+  nt_content like '%{$keyword}%')";
+    //제목과 내용에 키워드가 포함된 상품 조회
+}
+
+$sql = "SELECT * from notice   where 1=1";
+$sql.= $search_where;
+$sql.= " order by ntid desc limit 0, 10";
+
+
 $result = $mysqli -> query($sql);
 while($rs = $result -> fetch_object()){
   $rsc[] = $rs;
-}
+  
+} 
 
-/* 파라미터 로드 */
-$nt_title = $_GET['nt_title'] ?? '';
-$nt_content = $_POST['nt_content'];
-$search_where = '';
-if($nt_title){
-  $search_where .= " and (name like '%{$nt_title}%' or 
-  content like '%{$nt_content}%')";
-  //제목과 내용에 키워드가 포함된 상품 조회
-}
 
-$sql2 = "SELECT * from notice where 1=1" ; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
 
 
 ?>
@@ -31,7 +35,7 @@ $sql2 = "SELECT * from notice where 1=1" ; // and 컬러명=값 and 컬러명=�
     <div class="notice_top shadow_box border d-flex justify-content-between">
       <form class="notice_top_left d-flex align-items-center" action="" method="get">
         <input type="text" class="input form-control" id="searchInput" placeholder="공지사항을 검색하세요" aria-label="Search"
-         name="nt_title">
+         name="keyword">
         <button class="btn btn-dark" id="searchInput">검색</button>              
       </form>
       <div class="d-flex align-items-center">
@@ -94,8 +98,11 @@ $sql2 = "SELECT * from notice where 1=1" ; // and 컬러명=값 and 컬러명=�
           </tr>                 
           <?php
           }
-        }
-          ?> 
+        } else {
+          ?>
+            <tr><td colspan="5">검색 결과가 없습니다</td></tr>
+          <?php
+        } ?>
         </tbody>
       </table>
   

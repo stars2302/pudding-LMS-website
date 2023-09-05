@@ -29,10 +29,23 @@ $sqlarr = $result -> fetch_object();
     <label for="image"><h3 class="content_tt">파일첨부</h3></label>
     <input type="file" id="image" name="nt_filename" class="notice_create_input form-control" aria-label="Username" 
     value="<?= $sqlarr -> nt_filename; ?>">
+    <?php
+                if($sqlarr['filetype']==0) {
+              ?>
+                <a href="<?= $sqlarr['nt_filename'] ?>"><?= $sqlarr['nt_filename'] ?></a>
+              <?php
+                } else {
+                ?>                 
+              <img src="<?= $sqlarr['nt_filename'] ?>">             
+              <?php
+                }
+              ?> 
+              <?= $sqlarr['nt_content'] ?>
+
   </div>
   <div class="create_btns d-flex justify-content-end">
     <button class="btn btn-primary">수정 완료</button>     
-    <a href="notice_list.php" class="btn_cancel btn btn-dark">수정 취소</a>
+    <a class="btn_cancel btn btn-dark">수정 취소</a>
 </div>
 </form> 
 </section>    

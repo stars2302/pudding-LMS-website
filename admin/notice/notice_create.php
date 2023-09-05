@@ -24,24 +24,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
     <input type="file" id="image" name="nt_filename" class="notice_create_input form-control" aria-label="Username">  
   </div>
   <div class="create_btns d-flex justify-content-end">
-    <button type="submit" href="notice_create_ok.php" class="btn btn-primary">등록 완료</button>     
+    <button type="submit" class="btn btn-primary">등록 완료</button>     
     <a href="notice_list.php" class="btn_cancel btn btn-dark">등록 취소</a>
 </div>
 </form> 
 </section>
-<script>
-  $('.#upfile').change(function(){
-    files.forEach((file)=>{
-      attachFile(file);
-    });  
-  }); //upfile 클릭 할일
-
-  function attachFile(){
-    let formData = new FormData (); //페이지 전환없이 이페이지 바로 이미지 등록
-    formData.append('savefile',file) //<input type ="file" name="savefile" value="파일명"
-    
-  }
-</script>
 
 
 <?php

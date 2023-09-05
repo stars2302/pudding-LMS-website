@@ -7,7 +7,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 
 /* GET파라미터로 게시물 고유식별자 'ntid'가져오기 */
 $ntid = $_GET['ntid'];
-$nt_filename = $_FILES["nt_filename"]["name"] ?? '';
 
 
 
@@ -23,6 +22,7 @@ $result2 = $mysqli->query($sql2);
 $sqlarr = $result2 -> fetch_assoc();
 
 $hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
+
 
 
 ?>
@@ -41,67 +41,26 @@ $hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
                 <span class="b_text02"> <?= $sqlarr['nt_read_cnt'] ?></span>
               </p>
             <div class="content">
-              <!-- 본문 -->              
-              <?= $sqlarr['nt_filename'] ?>
+              <!-- 본문 -->    
+              <?php
+                if($sqlarr['filetype']==0) {
+              ?>
+                <a href="<?= $sqlarr['nt_filename'] ?>"><?= $sqlarr['nt_filename'] ?></a>
+              <?php
+                } else {
+                ?>                 
+              <img src="<?= $sqlarr['nt_filename'] ?>">             
+              <?php
+                }
+              ?> 
               <?= $sqlarr['nt_content'] ?>
             </div>
           </div>   
           <div class="notice_view_btns d-flex justify-content-end">
             <a href="notice_update.php?ntid=<?= $ntid; ?>" class="btn_modify btn btn-primary">수정</a>
             <a href="notice_delete_ok.php?ntid=<?= $ntid; ?>" class="btn_delete btn btn-danger">삭제</button>     
-            <a href="notice_list.php?ntid=<?= $ntid; ?>" class="btn_cancel btn btn-dark">목록 보기</a>
+            <a href="notice_list.php" class="btn_cancel btn btn-dark">목록 보기</a>
           </div>
           </div>
         </section> 
 
-
-        <!-- <script>
-        function attachFile(file) {
-        console.log(file);
-        let formData = new FormData(); //페이지 전환없이 이페이지 바로 이미지 등록
-        formData.append('savefile', file) //<input type="file" name="savefile" value="파일명">
-        console.log(formData);
-        $.ajax({
-        url: 'product_save_image.php',
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: 'json',
-        type: 'POST',
-        error: function (error) {
-          console.log('error:', error)
-        },
-        success: function (return_data) {
-        console.log(return_data);
-        if (return_data.result == 'member') {
-          alert('로그인을 하십시오.');
-          return;
-        } else if (return_data.result == 'image') {
-          alert('이미지파일만 첨부할 수 있습니다.');
-          return;
-        } else if (return_data.result == 'size') {
-          alert('10메가 이하만 첨부할 수 있습니다.');
-          return;
-        } else if (return_data.result == 'error') {
-          alert('관리자에게 문의하세요');
-          return;
-        } else {
-          //첨부이미지 테이블에 저장하면 할일
-          let imgid = $('#file_table_id').val() + return_data.imgid + ',';
-          $('#file_table_id').val(imgid);
-          let html = `
-              <div class="thumb" id="f_${return_data.imgid}" data-imgid="${return_data.imgid}">
-                <img src="/abcmall/pdata/${return_data.savefile}" alt="">
-                <button type="button" class="btn btn-warning">삭제</button>
-             </div>
-          `;
-          $('#thumbnails').append(html);
-        }
-      }
-
-    });
-  }
-
-
-          </script> -->
