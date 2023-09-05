@@ -24,6 +24,7 @@ $months = [
 
 // 선택된 월 (기본값은 현재 월)
 $selected_month = date('m');
+$rsc = [];
 
 if (isset($_POST['month'])) {
   // 폼에서 선택된 월을 처리
@@ -34,7 +35,8 @@ if (isset($_POST['month'])) {
       
 
   $result = $mysqli->query($sql);
-  $rsc = array();
+  // $rsc = array();
+  $rsc = [];
   
   while ($rs = $result->fetch_object()) {
       $rsc[] = $rs;
@@ -80,6 +82,23 @@ while ($row = $resultTopBuyers->fetch_assoc()) {
     ];
 }
 
+function getMonthlyData($selected_month) {
+  global $mysqli; // 데이터베이스 연결 객체를 함수 내에서 사용할 수 있게 함
+
+  $rsc = []; // 결과에 넣을 배열 초기화
+
+  //선택된 월에 해당하는 payments 데이터 검색
+  $sql = "SELECT * FROM payments where  DATE_FORMAT(buy_date, '%m') = '$selected_month' ORDER BY payid ";
+
+  $result = $mysqli->query($sql);
+  
+  while ($rs = $result->fetch_object()) {
+      $rsc[] = $rs;
+  }
+
+  return $rsc; 
+}
+
 ?>
 <!-- top_bar -->
       
@@ -101,15 +120,29 @@ while ($row = $resultTopBuyers->fetch_assoc()) {
         </div>
         <button type="submit" class="btn btn-primary search_btn">조회</button>
     </form>
-          <div class="d-flex justify-content-between chart">
-            <div class="chart_container shadow_box">
-              <canvas id="pie_chart"></canvas>
-             
+    <!-- 데이터 조회 및 차트 부분 -->
+<?php
 
+if (isset($_POST['month']) || empty($_POST)) {
+    // 폼에서 선택된 월을 처리하거나 페이지를 처음 로드할 때
+    // 선택된 월 또는 기본 월에 해당하는 데이터를 조회
+    $rsc = getMonthlyData($selected_month);
+}
+?>
+          <div class="d-flex justify-content-between chart">
+            <div class="chart_box shadow_box">
+              <h5>가장 많이 구입한 userid</h5>
+              <div class="chart_container">
+              <canvas id="pie_chart"></canvas>
             </div>
-            <div class="chart_container shadow_box">
-              <canvas id="bar_chart"></canvas>
+          </div>
+          <div class="chart_box shadow_box">
+          <h5>선택한 달의 소분류별 매출 순위</h5>
+            <div class="chart_container">
+              <canvas id="bar_chart" style="height:80%"></canvas>
             </div>
+          </div>
+          
           </div>
           <div class="d-flex flex-column align-items-center">
           <div class="sales_container shadow_box border">
@@ -124,7 +157,7 @@ while ($row = $resultTopBuyers->fetch_assoc()) {
               </thead>
               <tbody>
                 <?php
-                if(isset($rsc)){
+                if(!empty($rsc)){
                   foreach($rsc as $list){
 
             
@@ -235,6 +268,7 @@ var pieChart = new Chart(ctxPie, {
     options: {
         responsive: true,
         maintainAspectRatio: false,
+        height:200,
     }
 });
 

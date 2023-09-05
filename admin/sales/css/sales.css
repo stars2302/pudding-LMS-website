@@ -1,15 +1,21 @@
-h2{
-  
-}
 
 .sales_sort{
   margin-top:var(--base_unit);
 }
 
 /* sales chart */
+.chart_box{
+  width: 49%;
+  background: var(--white_bg);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
 
+.chart_box h5{
+  margin: 10px;
+}
 .chart_container { 
-    width: 49%;
+    width: 100%;
     height: 330px;
     padding: 10px;
     background-color: var(--white_bg);
@@ -74,3 +80,4 @@ form{
 .cate_select{
   height: 45px;
 }
+
