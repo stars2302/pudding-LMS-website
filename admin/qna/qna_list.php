@@ -17,7 +17,7 @@ $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $per_page = 10;
 
 // 총 게시물 수
-  $sql = "SELECT COUNT(*) FROM qna";
+  $sql = "SELECT COUNT(*) FROM qna;";
   $result = $mysqli->query($sql);
   $row = $result->fetch_array();
   $total_posts = $row[0];
@@ -44,7 +44,7 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 //최종 query문, 실행
 // $sqlrc = $sql.$sc_where.$order.$limit; //필터 있
-$sql = "SELECT * FROM qna";
+$sql = "SELECT * FROM qna order by qid desc";
 $sqlrc = $sql.$limit; //필터 없
 //----------------------------------------------pagenation 끝
 

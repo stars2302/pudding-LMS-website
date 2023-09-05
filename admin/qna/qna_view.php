@@ -200,7 +200,7 @@ $(document).on('submit', '.commentForm', function(e) {
 					</div>
 					<div class='' style='padding-left:90px;'>
 					<p class='b_text02' style='margin-left:0 !important; padding-right: 0 !important;'>${comment}</p>
-						<textarea class='editComment form-control' data-id='${new_id}'>${comment}</textarea>
+          
 					</div>											
 					<button class='replyButton text-secondary mt-2' data-id='${new_id}' data-depth='${new_depth}'>
 						<svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-message' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.25' stroke='#6c757d' fill='none' stroke-linecap='round' stroke-linejoin='round'>
