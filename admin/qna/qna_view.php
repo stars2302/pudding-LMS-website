@@ -326,7 +326,32 @@ $(document).on('click', '.deleteButton', function(e) {
   let commentId = $(this).parent().data('comment-id'); // data-comment-id값
   let self = this; // this값 임시 변수에 저장
 
-    
+          
+          if (confirm("삭제하시겠습니까?")) {
+            alert("삭제 완료");
+            
+            
+          } else {
+            $.ajax({
+                  type: 'POST',
+                  data: data,
+                  dataType: 'json',
+                  success: function(data) {
+                      if (data.result === 'ok') {
+                          alert('댓글 삭제 취소');
+                          location.href="/pudding-LMS-website/admin/qna/qna_view.php"
+                      } else {
+                          alert('댓글 삭제 실패');
+                      }
+                  },
+                  error: function(error) {
+                      console.log(error);
+                  }
+              });
+          }
+       
+
+
   $.ajax({
     url: 'qna_delete_ok.php',
     type: 'POST',
