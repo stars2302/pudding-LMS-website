@@ -22,9 +22,9 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
           <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
             <option disabled selected>대분류 선택</option>
             <?php
-            foreach ($cate1 as $c) {
-              ?>
-              <option value="<?= $c->cateid ?>" data-cate="<?= $c->name; ?>"><?= $c->name; ?></option>
+              foreach($cate1 as $c){            
+            ?>
+              <option value="<?php echo $c->cateid ?>"><?php echo $c->name ?></option>
             <?php } ?>
           </select>
         </div>
@@ -170,7 +170,6 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
   </form>
 </section>
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
-
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>
