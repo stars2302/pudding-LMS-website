@@ -25,47 +25,47 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
 // rate
 // rid
 
-$name = $_GET['name'] ?? '';
-$cate1 = $_GET['cate1'] ?? '';
-$cate2 = $_GET['cate2'] ?? '';
-$cate3 = $_GET['cate3'] ?? '';
-$price_status1 = $_GET['price_status1'] ?? '';
-$price_status2 = $_GET['price_status2'] ?? '';
-$level1 = $_GET['level1'] ?? '';
-$level2 = $_GET['level2'] ?? '';
-$level3 = $_GET['level3'] ?? '';
-$act = $_GET['act'] ?? '';
+// $name = $_GET['name'] ?? '';
+// $cate1 = $_GET['cate1'] ?? '';
+// $cate2 = $_GET['cate2'] ?? '';
+// $cate3 = $_GET['cate3'] ?? '';
+// $price_status1 = $_GET['price_status1'] ?? '';
+// $price_status2 = $_GET['price_status2'] ?? '';
+// $level1 = $_GET['level1'] ?? '';
+// $level2 = $_GET['level2'] ?? '';
+// $level3 = $_GET['level3'] ?? '';
+// $act = $_GET['act'] ?? '';
 
-$content = $_GET['content'] ?? '';
-$thumbnail = $_GET['thumbnail'] ?? '';
+// $content = $_GET['content'] ?? '';
+// $thumbnail = $_GET['thumbnail'] ?? '';
 
-$due = $_GET['due'] ?? '';
-
-
-$userid = $_GET['userid'] ?? '';
-$due_status = $_GET['due_status'] ?? '';
+// $due = $_GET['due'] ?? '';
 
 
+// $userid = $_GET['userid'] ?? '';
+// $due_status = $_GET['due_status'] ?? '';
 
 
 
-$search_where = '';
-$cates = $cate1.$cate2.$cate3;
-$levels = $level1.$level1.$level1;
-$price_statuss = $price_status1.$price_status2;
 
-if ($cates) {
-  $search_where .= " and cate like '%{$cates}%'";
-}
-if ($levels) {
-  $search_where .= " and level like '%{$levels}%'";
-}
-if ($price_statuss) {
-  $search_where .= " and price_status like '%{$price_statuss}%'";
-}
-if ($name) {
-  $search_where .= " and name like '%{$name}%'";
-}
+
+// $search_where = '';
+// $cates = $cate1.$cate2.$cate3;
+// $levels = $level1.$level1.$level1;
+// $price_statuss = $price_status1.$price_status2;
+
+// if ($cates) {
+//   $search_where .= " and cate like '%{$cates}%'";
+// }
+// if ($levels) {
+//   $search_where .= " and level like '%{$levels}%'";
+// }
+// if ($price_statuss) {
+//   $search_where .= " and price_status like '%{$price_statuss}%'";
+// }
+// if ($name) {
+//   $search_where .= " and name like '%{$name}%'";
+// }
 
 
 
@@ -272,9 +272,9 @@ while ($rs2 = $result2->fetch_object()) {
               </nav>
 
               <div class="d-flex align-items-end status_box">
-                <span class="price content_stt">
-                  <?= $item->price ?>
-                </span>
+                  <span class="col price content_stt number">
+                    <?= $item->price?> 
+                  </span>
                 <span class="d-flex flex-column align-items-end status_wrap">
                   <select name="act[<?= $item->cid ?>]" id="act[<?= $item->cid ?>]" class="form-select"
                     aria-label="Default select example" id="selectmenu">
@@ -336,9 +336,6 @@ while ($rs2 = $result2->fetch_object()) {
 
 <script>
 
-
-
-
   $('input[type="checkbox"]').click(function () {
     let $this = $(this);
     if ($this.prop('checked')) {//체크해서 활성되면
@@ -347,9 +344,6 @@ while ($rs2 = $result2->fetch_object()) {
       $this.val('0');
     }
   });
-
-
-
 
   //강의 가격 천단위, 변환
   let priceList = $('.price');

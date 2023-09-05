@@ -32,4 +32,3 @@ function makeOption(evt, step, category, target){
     }
   });//ajax
 }
-
