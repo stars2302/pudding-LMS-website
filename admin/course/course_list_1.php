@@ -4,46 +4,19 @@ $css_route = "course/css/course.css";
 $js_route = "course/js/course.js";
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
-// name
-// cate
-// content
-// thumbnail
-// price
-// ismain
-// isnew
-// isbest
-// isrecom
-// userid
-// reg_date
-// due_status
-// price_status
-// c_total_cnt
-// courselist
-// rate
-// rid
+include_once $_SERVER['DOCUMENT_ROOT'].'/abcmall/admin/inc/category_func.php';
 
+$cates1 = $_GET['cate1'] ?? '';
+$cate2 = $_GET['cate2'] ?? '';
+$cate3 = $_GET['cate3'] ?? '';
+$level = $_GET['level'];
+$due_status = $_GET['due_status'];
+$due_status = $_GET['due_status'];
 
-$cate = $_GET['cate'] ?? '';
-$content = $_GET['content'] ?? '';
-$thumbnail = $_GET['thumbnail'] ?? '';
-$price = $_GET['price'] ?? '';
-$isnew = $_GET['isnew'] ?? '';
-$ismain = $_GET['ismain'] ?? '';
-$isbest = $_GET['isbest'] ?? '';
-$isrecom = $_GET['isrecom'] ?? '';
-$userid = $_GET['userid'] ?? '';
-$due_status = $_GET['due_status'] ?? '';
-$price_status = $_GET['price_status'] ?? '';
-$act = $_GET['act'] ?? '';
-$sale_end_date = $_GET['sale_end_date'] ?? '';
-$c_total_cnt = $_GET['c_total_cnt'] ?? '';
-$courselist = $_GET['courselist'] ?? '';
-$rate = $_GET['rate'] ?? '';
-$rid = $_GET['rid'] ?? '';
 
 $search_where = '';
 
-// $cates = $cates1.$cate2.$cate3;
+$cates = $cates1.$cate2.$cate3;
 
 if ($cate) {
   $search_where .= " and cate like '{$cate}%'";
@@ -64,10 +37,10 @@ if ($sale_end_date) {
   $search_where .= " and sale_end_date >= '$sale_end_date'";
   //판매 종료일이 지나지 않은 상품 조회
 }
-// if($search_keyword){
-//   $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
-//   //제목과 내용에 키워드가 포함된 상품 조회
-// }
+if($search_keyword){
+  $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
+  //제목과 내용에 키워드가 포함된 상품 조회
+}
 
 
 

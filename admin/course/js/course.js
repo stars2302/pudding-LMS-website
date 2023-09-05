@@ -25,7 +25,7 @@ $(function () {
 
     if (option2 == "무제한") {
       month.prop("disabled", true);
-      month.val(null);
+      month.val('무제한');
     } else {
       month.prop("disabled", false);
     }

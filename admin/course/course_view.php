@@ -11,8 +11,6 @@ $sql = "SELECT * FROM courses where cid={$cid}";
 $result = $mysqli -> query($sql);
 $rs = $result -> fetch_object();
 
-
-
 // lid
 // cid
 // name
@@ -25,11 +23,6 @@ $rs = $result -> fetch_object();
 // JOIN lecture l
 // on c.cid = l.cid 
 // where c.status = 2 and uc.status = 1 and uc.userid = '{$_SESSION['UID']}' and uc.use_max_date >= now() ";
-$lsql = "SELECT * FROM lecture where cid={$cid}";
-$lresult = $mysqli->query($lsql);
-while($lrs = $lresult -> fetch_object()){
-  $lecArr[] = $lrs;
-}
 
 $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
 $result = $mysqli -> query($imgsql);

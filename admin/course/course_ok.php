@@ -23,15 +23,10 @@
     $price = $_POST['price']??0;
     $level = $_POST['level']??0;
     $due_status = $_POST['due_status'];
-    $due = $_POST['due']??0;
-    $act = $_POST['act']??0;
+    $due = $_POST['due']??'무제한';
+    $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
-
-    $video_table_id = $_POST['file_table_id']??0;
-    $video_table_id = rtrim($video_table_id, ',');//최우측 콤마 제거
     $youtube_name = $_POST['youtube_name']?? '';
-
-
 
     // 참고 유미네 https://github.com/HyeonJinSon/FastCode
     //파일업로드
@@ -123,6 +118,7 @@
           $sql1 = "INSERT INTO lecture (cid,youtube_thumb, youtube_name, youtube_url) VALUES ('{$cid}','{$upload_youtube_thumb[$i]}','{$youtube_name[$i]}', '{$youtube_url[$i]}')";
           $result2 = $mysqli-> query($sql1);
           }
+
       }
 
       $mysqli->commit();//디비에 커밋한다.

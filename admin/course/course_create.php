@@ -88,6 +88,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
         <div class="col period_select2">
           <select class="form-select" name="due" id="due" aria-label="Default select examh5le">
             <option value="" selected disabled>기간선택</option>
+            <option value="무제한">무제한</option>
             <option value="3개월">3개월</option>
             <option value="6개월">6개월</option>
             <option value="9개월">9개월</option>

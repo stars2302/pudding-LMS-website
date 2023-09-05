@@ -24,7 +24,14 @@ $result = $mysqli -> query($imgsql);
 
 while($is = $result -> fetch_object()){
   $addImgs[]=$is;
+
+  var_dump($addImgs);
 }
+// while($is = $result -> fetch_object()){
+//   $addImgs["youtube_thumb"]=$is;
+
+//   var_dump($addImgs);
+// }
 ?>
 
 <section>
@@ -84,7 +91,7 @@ while($is = $result -> fetch_object()){
             class="form-control" 
             name="price" 
             id="price" 
-            min="10000" 
+            min="0" 
             max="1000000" 
             step="10000" 
             value="<?= $rs->price; ?>"
@@ -135,6 +142,7 @@ while($is = $result -> fetch_object()){
         <div class="col period_select2">
           <select class="form-select" name="due" id="due" aria-label="Default select examh5le">
             <option value="" selected disabled>기간선택</option>
+            <option value="무제한" <?php if($rs->due == "무제한") echo 'selected' ?>>무제한</option>
             <option value="3개월" <?php if($rs->due == "3개월") echo 'selected' ?>>3개월</option>
             <option value="6개월" <?php if($rs->due == "6개월") echo 'selected' ?>>6개월</option>
             <option value="9개월" <?php if($rs->due == "9개월") echo 'selected' ?>>9개월</option>
@@ -177,13 +185,13 @@ while($is = $result -> fetch_object()){
       <div class="you_upload">
         <div class="youtube1">
           <div class="row">
-            <div class="col-2 youtube_thumb">
+            <div class="col-2">
               <P>강의썸네일</P>
             </div>
-            <div class="col-3 youtube_name">
+            <div class="col-3">
               <P>강의명</P>
             </div>
-            <div class="col-6 youtube_url">
+            <div class="col-6">
               <P>강의url</P>
             </div>
           </div>
@@ -195,7 +203,7 @@ while($is = $result -> fetch_object()){
         <div class="youtube2 c_mb mt-3">
           <div class="row justify-content-between">
             <div class="col-2 youtube_thumb">
-              <input type="file" class="form-control" name="youtube_thumb[]"/>
+              <input type="file" class="form-control" name="youtube_thumb[]" value="<?= $ai -> youtube_thumb?>"/>
               <img src="<?= $ai -> youtube_thumb?>" alt="">
             </div>
             <div class="col-3 youtube_name">
@@ -227,7 +235,7 @@ while($is = $result -> fetch_object()){
     </div>
     <div class="c_button d-flex justify-content-center align-items-center">
       <button class="btn_complete btn btn-primary">수정완료</button>
-      <button class="btn btn-dark">수정취소</button>
+      <a href="course_list.php" class="btn btn-dark">수정취소</a>
     </div>
   </form>
 
