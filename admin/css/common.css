@@ -243,6 +243,10 @@ body {
   cursor: pointer;
 }
 
+.bin_icon:hover {
+  color: red;
+}
+
 /* BADGES */
 
 .badge_blue {
@@ -375,6 +379,10 @@ body {
 .input-group input {
   height: 45px;
   font-size: 16px;
+}
+
+input.form-control::placeholder {
+  color: rgba(0,0,0,.4);
 }
 
 .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {

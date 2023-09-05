@@ -74,8 +74,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <!-- Number js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/df-number-format/2.1.6/jquery.number.min.js"></script>
+    <!-- chart js -->
+    
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+  
 
 
     </head>
@@ -85,11 +87,11 @@
         <div
           class="inner_header content_tt d-flex justify-content-between align-items-center flex-column"
         >
-          <h1 class="adminlogo"><a href="#">로고</a></h1>
+          <h1 class="adminlogo"><a href="/pudding-LMS-website/admin/index.php">로고</a></h1>
           <nav>
             <ul class="d-flex justify-content-between flex-column">
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/index.php" class="icon"
                   ><i class="ti ti-home"></i><span>대시보드</span></a
                 >
               </li>
@@ -99,28 +101,28 @@
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/sales/sales.php" class="icon"
                   ><i class="ti ti-coins"></i><span>매출 관리</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/coupon/coupon_list.php" class="icon"
                   ><i class="ti ti-ticket"></i><span>쿠폰 관리</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/review/review_list.php" class="icon"
                   ><i class="ti ti-brand-hipchat"></i
                   ><span>강의평 관리</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/notice/notice.php" class="icon"
                   ><i class="ti ti-clipboard-text"></i><span>공지사항</span></a
                 >
               </li>
               <li>
-                <a href="" class="icon"
+                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
                   ><i class="ti ti-zoom-question"></i><span>Q&A</span></a
                 >
               </li>
@@ -133,7 +135,7 @@
             <h2 class="content_stt">프바오</h2>
             <p>admins</p>
           </div>
-          <a href="" class="logout b_text02">로그아웃</a>
+          <a href="/pudding-LMS-website/admin/logout.php" class="logout b_text02">로그아웃</a>
         </div>
       </header>
 
@@ -143,8 +145,8 @@
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-bell-filled"
-              width="68"
-              height="68"
+              width="58"
+              height="58"
               viewBox="0 0 28 28"
               stroke-width="2"
               stroke="currentColor"
