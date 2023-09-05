@@ -92,7 +92,7 @@ nav .pagination{
   padding: var(--base_unit) var(--base_unit) var(--base_unit) 0;
 }
 .i_con{
-  padding: var(--base_unit) 0 var(--base_unit) calc(var(--base_unit)*6);
+  padding: 0 0 var(--base_unit) calc(var(--base_unit)*6);
   line-height: var(--base_unit);
   gap: 10px;
 }
