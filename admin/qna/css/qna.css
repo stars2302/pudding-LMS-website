@@ -156,3 +156,7 @@ nav .pagination{
 .list_up form{
   margin-top: 100px;
 }
+
+.replyButton{
+  gap: 15px;
+}

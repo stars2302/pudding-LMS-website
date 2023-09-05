@@ -70,7 +70,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 							// 사용자 입력이 애플리케이션을 해칠 수 있는 코드를 포함하고 있더라도, 그런 코드가 실행되지 않도록 방지
 							echo "<div class='btn-group-wrap d-flex ml-auto'>";
 							echo "<button title='수정' class='editButton' data-id='" . $row['id'] . "'><i class='ti ti-edit pen_icon'></i></button>";							
-							echo "<button class='saveButton green' data-id='" . $row['id'] . "' style='display:none'><i class='ti ti-edit pen_icon'></i></button>";							
+							echo "<button class='saveButton yellow' data-id='" . $row['id'] . "' style='display:none'><i class='ti ti-device-floppy'></i></button>";							
 							// 댓글 삭제 버튼
 							echo "<div data-comment-id='" . $row['id'] . "'>";
 							echo "<button title='삭제' type='button' class='deleteButton'><i class='ti ti-trash bin_icon'></i></button>";
@@ -87,7 +87,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 							echo "</div>";
 														
 							// 댓글 달기 버튼
-							echo "<button class='replyButton text-secondary mt-2' data-id='" . $row['id'] . "' data-depth='" . ($depth + 1) . "'><i class='ti ti-brand-hipchat'></i><span class='pl-1'>댓글 달기</span></button>";
+							echo "<button class='replyButton text-secondary d-flex align-items-center' data-id='" . $row['id'] . "' data-depth='" . ($depth + 1) . "'><i class='ti ti-brand-hipchat'></i><span class='pl-1'>댓글 달기</span></button>";
 							echo "</div>";
 							
 							// 댓글의 뎁스가 2보다 작은 경우, 대댓글을 재귀적으로 가져옴
@@ -131,16 +131,24 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
         <input type="hidden" name="qid" value="<?php echo $qid; ?>">
         <input type="hidden" name="toggle" value="<?php echo $row['q_state'] == 0 ? '1' : '0'; ?>">
         
-        <div class="order">
-  
-            <?php echo $row['q_state'] == 0 ? '<button type="submit" class="btn btn-primary">답변 완료</button>' : 
-            '<button type="submit" class="btn btn-warning">답변 대기</button>'; ?>
+        <div class="order">  
           
+        <?php
+
+      if ($row['q_state'] === 0) {
+          echo '<button type="submit" class="btn btn-primary" onclick="reloadPage()">답변 완료</button>';
+      } else {
+          echo '<button type="submit" class="btn btn-warning" onclick="reloadPage()">답변 대기</button>';
+      }
+      ?>
+
+
             <button type="button" class="btn btn-dark" onclick="window.location.href='qna_list.php'">목록 보기</button>
   
         </div>
       </form>
 
+   
 
   </div>
 		
@@ -202,7 +210,7 @@ $(document).on('submit', '.commentForm', function(e) {
 					<p class='b_text02' style='margin-left:0 !important; padding-right: 0 !important;'>${comment}</p>
 
 					</div>											
-					<button class='replyButton text-secondary mt-2' data-id='${new_id}' data-depth='${new_depth}'>
+					<button class='replyButton text-secondary' data-id='${new_id}' data-depth='${new_depth}'>
 						<svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-message' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.25' stroke='#6c757d' fill='none' stroke-linecap='round' stroke-linejoin='round'>
 							<path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M8 9h8'></path><path d='M8 13h6'></path>
 							<path d='M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z'></path>
@@ -238,7 +246,7 @@ $(document).on('click', '.replyButton', function() {
       <input type="hidden" name="parent_comment_id" value="${commentId}">
       <input type="hidden" name="depth" value="${depth}">
       <textarea name="comment" class="form-control"></textarea>
-      <button type="submit">댓글 작성</button>
+      <button type="submit" class="">댓글 작성</button>
       <button type="button" class="cancelReply">작성 취소</button>
     </form>
   `;
@@ -262,18 +270,15 @@ function setHidden() {
     hidden.style.display = 'none';
   });
 }
-// window.addEventListener('load', setGap);
 
-// function setBtn() {
-//   let btns = document.querySelectorAll('.list_up');
+function reviewGap() {
+  let regap = document.querySelectorAll('.ti-brand-hipchat');
 
-//   btns.forEach(function (btns) {
-//     btns.style.paddingTop = '1px';
-//   });
-// }
-// window.addEventListener('load', setBtn);
+  regap.forEach(function (regap) {
+    element.style.padding = '15px';
+  });
+}
 
-// "작성 취소" 버튼 클릭 시 이벤트
 $(document).on('click', '.cancelReply', function() {
   const $form = $(this).closest('form');
   const parent_comment_id = $form.find('input[name="parent_comment_id"]').val();
