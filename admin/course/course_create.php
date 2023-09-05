@@ -169,6 +169,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
     </div>
   </form>
 </section>
+<script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
