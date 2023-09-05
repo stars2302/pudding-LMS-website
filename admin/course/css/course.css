@@ -36,9 +36,11 @@ select,
   font-size: 16px;
 }
 .level_price {
-  /* gap: var(--base_unit); */
   height: 45px;
   display: flex;
+  align-items: center;
+}
+.level_price div{
   align-items: center;
 }
 .level_price label {
@@ -49,12 +51,16 @@ select,
   vertical-align: text-bottom;
   margin-left: 8px;
 }
-.level_price h3 {
+.level_price h3{
   margin-right: calc(var(--base_unit) * 0.5);
-  /* line-height: 110px; */
+}
+.level_price h3.b_text01 {
+  margin-right: calc(var(--base_unit) * 0.5);
+  margin-block-start: 0;
+  margin-block-end: 0;
   font-weight: bold;
   vertical-align: bottom;
-  margin-bottom: 0;
+  display: inline-block;
 }
 .price_check {
   margin-left: 10px;
@@ -102,10 +108,9 @@ select,
   flex-direction: column;
   justify-content: space-between;
 }
-/* .course_list .price{
-  vertical-align: bottom;
-  margin-right: 15px;
-} */
+.course_list select{
+  margin-bottom: 5px;
+}
 .level_price span {
   display: flex;
   align-items: center;
@@ -116,7 +121,12 @@ select,
 }
 .status_box .price {
   position: absolute;
-  left: 100px;
+  right: 220px;
+  width: 200px;
+  text-align: right;
+}
+.course_list .price{
+  font-weight: bold;
 }
 .price_btn_wrap {
   flex-wrap: wrap;
@@ -126,9 +136,6 @@ select,
 }
 .search_bar input {
   margin-right: 15px;
-}
-.price{
-  text-align: right;
 }
 .duration *{
   margin-right: calc(var(--base_unit)*.5);
@@ -148,11 +155,13 @@ select,
 }
 
 a.btn {
-  line-height: 35px;
+  line-height: 32px;
 }
 /*카테고리*/
 
-
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  border-color: #cdcdcd;
+}
 .tt_mb {
   margin-bottom: calc(var(--base_unit) * 2);
 }
@@ -263,7 +272,6 @@ ul {
 }
 .course_view .view_category {
   position: absolute;
-
   bottom: 100%;
   right: 0;
 }
@@ -279,6 +287,14 @@ ul {
 .course_view .badge {
   font-size: 20px;
   margin-left: 10px;
+}
+.course_view, .course_list_wrap, .category_add{
+  position: relative;
+  margin-bottom: 60px;
+}
+.course_view .back_btn, .course_list_wrap .all_modify_btn, .category_add .back_btn{
+  position: absolute;
+  right: 0;
 }
 
 .course_view .course_list_title {
