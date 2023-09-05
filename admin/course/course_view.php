@@ -84,7 +84,7 @@ while($lrs = $lresult -> fetch_object()){
           <p class="base_mt"><?= $rs->content; ?></p>
         </div>
         <div>
-          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?php if($rs->due == ''){echo '무제한';}; ?></span></p>
+          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span></p>
           <p class="price content_stt"><?= $rs->price; ?></p>
         </div>
       </div>

@@ -51,7 +51,7 @@ while ($rs = $result->fetch_object()) {
   </div>
 
   <!-- Modal 1 -->
-  <div class="modal fade" id="cate1Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal cmodal fade" id="cate1Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -76,7 +76,7 @@ while ($rs = $result->fetch_object()) {
   </div>
 
   <!-- Modal 2-->
-  <div class="modal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal cmodal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -120,7 +120,7 @@ while ($rs = $result->fetch_object()) {
   </div>
 
   <!-- Modal 3-->
-  <div class="modal fade" id="cate3Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal cmodal fade" id="cate3Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -176,11 +176,10 @@ while ($rs = $result->fetch_object()) {
               ?>
               <li class="list-group-item big d-flex justify-content-between align-items-center" value="<?= $c->cateid ?>"
                 data-cate="<?= $c->cateid ?>">
-                <span class="cate_size">
-                  <?= $c->name; ?>
-                </span>
+                <span class="cate_size"><?= $c->name; ?></span>
                 <div class="cate_edit_btns d-flex gap-2">
-                  <a href="#"><i class="ti ti-edit pen_icon"></i></a>
+                  <a href="category_update.php?cateid=<?= $c->cateid ?>" data-bs-toggle="modal"
+                    data-bs-target="#cateModifyModal1"><i class=" ti ti-edit pen_icon"></i></a>
                   <a href="#"><i class="ti ti-trash bin_icon"></i></a>
                 </div>
               </li>
@@ -209,6 +208,87 @@ while ($rs = $result->fetch_object()) {
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- 대분류수정 Modal -->
+  <div class="modal fade" id="cateModifyModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            카테고리 수정
+          </h1>
+        </div>
+        <form class="modal-body" action="category_update.php" method="POST">
+          <input type="hidden" name="cateid" class="catename" value="">
+          <label for="name1">카테고리명</label>
+          <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="1" data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
+            수정
+          </button>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+            취소
+          </button>
+        </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- 중분류수정 Modal -->
+  <div class="modal fade" id="cateModifyModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            카테고리 수정
+          </h1>
+        </div>
+        <form class="modal-body" action="category_update.php?cateid=<?= $c->cateid ?>" method="POST">
+        <input type="hidden" name="cateid" value="">
+          <label for="name1">카테고리명</label>
+          <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
+          <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="2" data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
+            수정
+          </button>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+            취소
+          </button>
+        </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- 소분류수정 Modal -->
+  <div class="modal fade" id="cateModifyModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            카테고리 수정
+          </h1>
+        </div>
+        <form class="modal-body" action="category_update.php?cateid=<<?= $c->cateid ?>" method="POST">
+        <input type="hidden" name="cateid" value="">
+          <label for="name1">카테고리명</label>
+          <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
+          <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="3" data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
+            수정
+          </button>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+            취소
+          </button>
+        </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 </div><!-- content_wrap -->
@@ -219,11 +299,12 @@ while ($rs = $result->fetch_object()) {
 
 
 <script>
+
+  // 카테고리 등록
   let catename1 = '';
   let cateid = '';
 
-
-  let categorySubmitBtn = $('.modal button[type="submit"]');
+  let categorySubmitBtn = $('.cmodal button[type="submit"]');
 
   $('#pcode2').change(function () {
     $('#code2').val($(this).val());
@@ -242,14 +323,11 @@ while ($rs = $result->fetch_object()) {
 
     let name = $(`#name${step}`).val();
     let pcode = $(`#pcode${step}`).val();
-    // let modalCloseBtn = $(`#cate${step}Modal .btn-close`);
-    console.log(name, pcode)
 
     if (step > 1 && !pcode) {
       alert('대분류를 먼저 선택하세요');
       return; //아무것도 반환하지 않고 종료
     }
-
     if (!name) {
       alert('카테고리명을 입력하세요');
       return;
@@ -286,10 +364,10 @@ while ($rs = $result->fetch_object()) {
     });//ajax
   }
 
-  //삭제
+  // 카테고리 삭제
   $('.dropdown-menu').on('click', '.bin_icon', function () {
     let trElement = $(this).closest('li');
-    let cateid = trElement.attr('data-cate'); // Use 'cateid' instead of 'data-cate'
+    let cateid = trElement.attr('data-cate');
     let cateName = trElement.find('span').text();
 
     let data = {
@@ -320,42 +398,50 @@ while ($rs = $result->fetch_object()) {
   });
 
 
-   //수정
-   $('.dropdown-menu').on('click', '.pen_icon', function () {
-    let trElement = $(this).closest('li');
-    let cateid = trElement.attr('data-cate'); // Use 'cateid' instead of 'data-cate'
-    let cateName = trElement.find('span').text();
+  // 카테고리 수정
 
-    let data = {
-      cateid: cateid
-    }
-    // console.log(data)
-    if (confirm(`해당 카테고리를 수정할까요?:\n카테고리명: ${cateName}`)) {
-      $.ajax({
-        type: 'post',
-        data: data,
-        url: "category_update.php",
-        dataType: 'json',
-        success: function (return_data) {
-          if (return_data.result === 'success') {
-            console.log('retun_data', return_data)
-            trElement.remove();
-            alert('카테고리가 수정되었습니다.');
-          } else {
-            alert('카테고리 수정에 실패하였습니다.');
-          }
-        },
-        error: function (error) {
-          console.log('Error:', error);
-          alert('카테고리 수정중에 오류가 발생했습니다.');
-        }
-      });
-    }
+  //리스트 내 수정버튼 클릭 시 할일
+  $('.dropdown-menu').on('click', '.pen_icon', function () {
+    let trElement = $(this).closest('li');
+    let cateid = trElement.attr('data-cate');
+    let cateName = trElement.find('.cate_size').text();
+    $('.modal').find('.modal_cate_name').val(cateName);
+    $('.catename').val(cateid);
   });
 
 
+ 
 
-
+  // $('.cate_modify').on('click', function () {
+  //   let cateid = $(this).attr('data-cateid');
+  //   // e.preventDefault();
+  //   let data = {
+  //     cateid: cateid
+  //   }
+  //   console.log(data);
+  //   // console.log(data)
+  //   // if (confirm(`해당 카테고리를 수정할까요?:\n카테고리명: ${cateName}`)) {
+  //     $.ajax({
+  //       type: 'post',
+  //       data: data,
+  //       url: "category_update.php",
+  //       dataType: 'json',
+  //       success: function (return_data) {
+  //         if (return_data.result === 'success') {
+  //           console.log('retun_data', return_data);
+  //           $("#cateModifyModal").modal("hide");
+  //           alert('카테고리가 수정되었습니다.');
+  //         } else {
+  //           alert('카테고리 수정에 실패하였습니다.');
+  //         }
+  //       },
+  //       error: function (error) {
+  //         console.log('Error:', error);
+  //         alert('카테고리 수정중에 오류가 발생했습니다.');
+  //       }
+  //     });
+  //   })
+  // // });
 
 
 

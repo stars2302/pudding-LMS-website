@@ -26,38 +26,49 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
 // rid
 
 $name = $_GET['name'] ?? '';
-$cate = $_GET['cate'] ?? '';
+$cate1 = $_GET['cate1'] ?? '';
+$cate2 = $_GET['cate2'] ?? '';
+$cate3 = $_GET['cate3'] ?? '';
+$price_status1 = $_GET['price_status1'] ?? '';
+$price_status2 = $_GET['price_status2'] ?? '';
+$level1 = $_GET['level1'] ?? '';
+$level2 = $_GET['level2'] ?? '';
+$level3 = $_GET['level3'] ?? '';
+$act = $_GET['act'] ?? '';
+
 $content = $_GET['content'] ?? '';
 $thumbnail = $_GET['thumbnail'] ?? '';
-$price = $_GET['price'] ?? '';
+
 $due = $_GET['due'] ?? '';
-$level = $_GET['level'] ?? '';
-$isnew = $_GET['isnew'] ?? '';
-$ismain = $_GET['ismain'] ?? '';
-$isbest = $_GET['isbest'] ?? '';
-$isrecom = $_GET['isrecom'] ?? '';
+
+
 $userid = $_GET['userid'] ?? '';
 $due_status = $_GET['due_status'] ?? '';
-$price_status = $_GET['price_status'] ?? '';
-$act = $_GET['act'] ?? '';
+
+
 
 
 
 $search_where = '';
+$cates = $cate1.$cate2.$cate3;
+$levels = $level1.$level1.$level1;
+$price_statuss = $price_status1.$price_status2;
 
-
-if ($cate) {
-  $search_where .= " and cate like '{$cate}%'";
+if ($cates) {
+  $search_where .= " and cate like '%{$cates}%'";
 }
-if ($level) {
-  $search_where .= " and level like '{$level}%'";
+if ($levels) {
+  $search_where .= " and level like '%{$levels}%'";
 }
-if ($price_status) {
-  $search_where .= " and price_status like '{$price_status}%'";
+if ($price_statuss) {
+  $search_where .= " and price_status like '%{$price_statuss}%'";
 }
 if ($name) {
-  $search_where .= " and price_status like '{$name}%'";
+  $search_where .= " and name like '%{$name}%'";
 }
+
+
+
 
 
 // if($search_keyword){
@@ -67,14 +78,14 @@ if ($name) {
 
 
 
-//킵
 $sql2 = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
 $sql2 .= $search_where;
+//var_dump($sql2);
 $order = " ORDER BY cid DESC"; //최근순 정렬
 //$limit = " limit $statLimit, $endLimit";
 
 // $query = $sql.$order.$limit; //쿼리 문장 조합
-$query2 = $sql2.$order;
+$query2 = $sql2 . $order;
 
 $result2 = $mysqli->query($query2);
 
@@ -114,7 +125,6 @@ while ($rs2 = $result2->fetch_object()) {
 
 
 
-
 ?>
 
 <section>
@@ -126,22 +136,22 @@ while ($rs2 = $result2->fetch_object()) {
   <form action="" class="course_sort">
     <div class="row">
       <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example" id="cate1">
+        <select class="form-select" aria-label="Default select example" id="cate1" name="cate1">
           <option selected disabled>대분류</option>
           <?php
-            foreach ($cate1 as $c) {
-          ?>
-          <option value="<?= $c->cateid ?>" data-cate="<?= $c->name; ?>"><?= $c->name; ?></option>
+          foreach ($cate1 as $c) {
+            ?>
+            <option value="<?= $c->cateid ?>" data-cate="<?= $c->name; ?>"><?= $c->name; ?></option>
           <?php } ?>
         </select>
       </div>
       <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example" id="cate2">
+        <select class="form-select" aria-label="Default select example" id="cate2" name="cate2">
           <option selected disabled>중분류</option>
         </select>
       </div>
       <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example" id="cate3">
+        <select class="form-select" aria-label="Default select example" id="cate3" name="cate3">
           <option selected disabled>소분류</option>
         </select>
       </div>
@@ -150,128 +160,154 @@ while ($rs2 = $result2->fetch_object()) {
       <div class="d-flex flex-row">
         <h3 class="b_text01">난이도</h3>
         <span>
-          <input type="checkbox" name="level" id="basic" value="basic" class="form-check-input">
+          <input type="checkbox" name="level1" id="basic" value="초급" class="form-check-input">
           <label for="basic">초급</label>
         </span>
         <span>
-          <input type="checkbox" name="level" id="Intermediate" value="Intermediate" class="form-check-input">
+          <input type="checkbox" name="level2" id="Intermediate" value="중급" class="form-check-input">
           <label for="Intermediate">중급</label>
         </span>
         <span>
-          <input type="checkbox" name="level" id="Advanced" value="Advanced" class="form-check-input">
+          <input type="checkbox" name="level3" id="Advanced" value="고급" class="form-check-input">
           <label for="Advanced">고급</label>
         </span>
       </div>
       <div class="d-flex flex-row price_check">
         <h3 class="b_text01">가격</h3>
         <span>
-          <input type="checkbox" name="price" id="pay" value="pay" class="form-check-input">
+          <input type="checkbox" name="price1" id="pay" value="유료" class="form-check-input">
           <label for="pay">유료</label>
         </span>
         <span>
-          <input type="checkbox" name="price" id="free" value="free" class="form-check-input">
+          <input type="checkbox" name="price2" id="free" value="무료" class="form-check-input">
           <label for="free">무료</label>
         </span>
       </div>
       <div class="d-flex search_bar">
         <label for="search" class="hidden"></label>
-        <input type="text" id="search" class="form-control" placeholder="강의명으로 검색하세요" aria-label="Username">
+        <input type="text" name="name" id="search" class="form-control" placeholder="강의명으로 검색하세요" aria-label="Username">
         <button class="btn btn-primary">검색</button>
       </div>
     </div>
   </form>
 
   <!-- 리스트 -->
-  <ul>
-  <?php
-    if(isset($rsc2)){
-      foreach($rsc2 as $item){  
-        $cateString = $item->cate;
-        $parts = explode('/', $cateString);
+  <form action="clist_update.php" method="POST">
+    <ul>
+      <?php
+      if (isset($rsc2)) {
+        foreach ($rsc2 as $item) {
+          $cateString = $item->cate;
+          $parts = explode('/', $cateString);
 
-        $big_cate = $parts[0];
-        $md_cate = $parts[1];
-        $sm_cate = $parts[2];
-  ?>
-    <li class="course_list row shadow_box">
-      <div class="col-md-8 d-flex">
-        <img src="<?= $item->thumbnail ?>" alt="강의 썸네일 이미지" class="border">
-        <div class="course_info">
-          <div>
-            <h3 class="course_list_title b_text01"><a href="course_view.php?cid=<?= $item->cid ?>"><?= $item->name ?></a>
-              <span class="badge rounded-pill blue_bg b-pd">
-              <?php 
-              //뱃지 키워드 
-              if(isset($item->cate)){
-              $categoryText = $item->cate;
-              $parts = explode('/', $categoryText); // Split the string by '/'
-              $lastPart = end($parts); // Get the last element in the array
-              
-              echo $lastPart; // Output: "javascript"
-              }
-              ?>
-              </span>
-              <span class="badge level_badge rounded-pill b-pd
-                <?php 
+          $big_cate = $parts[0];
+          $md_cate = $parts[1];
+          $sm_cate = $parts[2];
+          ?>
+          <li class="course_list row shadow_box">
+          <input type="hidden" name="cid[]" value="<?php echo $item->cid ?>"> 
+            <div class="col-md-8 d-flex">
+              <img src="<?= $item->thumbnail ?>" alt="강의 썸네일 이미지" class="border">
+              <div class="course_info">
+                <div>
+                  <h3 class="course_list_title b_text01"><a href="course_view.php?cid=<?= $item->cid ?>"><?= $item->name ?></a>
+                    <span class="badge rounded-pill blue_bg b-pd">
+                      <?php
+                      //뱃지 키워드 
+                      if (isset($item->cate)) {
+                        $categoryText = $item->cate;
+                        $parts = explode('/', $categoryText); // Split the string by '/'
+                        $lastPart = end($parts); // Get the last element in the array
+                  
+                        echo $lastPart; // Output: "javascript"
+                      }
+                      ?>
+                    </span>
+                    <span class="badge level_badge rounded-pill b-pd
+                <?php
                 //  뱃지컬러
-                  $levelBadge = $item->level;
-                  if($levelBadge === '초급'){
-                    echo 'yellow_bg';
-                  } else if($levelBadge === '중급'){
-                    echo 'green_bg';
-                  } else{
-                    echo 'red_bg';
-                  }
+                $levelBadge = $item->level;
+                if ($levelBadge === '초급') {
+                  echo 'yellow_bg';
+                } else if ($levelBadge === '중급') {
+                  echo 'green_bg';
+                } else {
+                  echo 'red_bg';
+                }
                 ?>
               ">
-                <?= $item->level ?>
-              </span>
-            </h3>
-            <p><?= $item->content ?>
-            </p>
-          </div>
-          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?php if($item->due == ''){echo '무제한';} else{echo $item->due;}; ?></span></p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <nav
-          style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
-          aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><?= $big_cate ?></a></li>
-            <li class="breadcrumb-item active" aria-current="page"><?= $md_cate ?></li>
-            <li class="breadcrumb-item active" aria-current="page"><?= $sm_cate ?></li>
-           
-          </ol>
-        </nav>
+                      <?= $item->level ?>
+                    </span>
+                  </h3>
+                  <p>
+                    <?= $item->content ?>
+                  </p>
+                </div>
+                <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span>
+                    <?php if ($item->due == '') {
+                      echo '무제한';
+                    } else {
+                      echo $item->due;
+                    }
+                    ; ?>
+                  </span></p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <nav
+                style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+                aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">
+                      <?= $big_cate ?>
+                    </a></li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <?= $md_cate ?>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <?= $sm_cate ?>
+                  </li>
 
-        <div class="d-flex align-items-end status_box">
-          <span class="price content_stt"><?= $item->price ?></span>
-          <span class="d-flex flex-column align-items-end status_wrap">
-            <select name="status[<?=$item->cid ?>]" id="status[<?= $item->cid ?>]"  class="form-select" aria-label="Default select example" id="selectmenu">
-              <option selected disabled>상태</option>
-              <!-- 추후 value 넣기  -->
-              <option value=""  <?php if($item->act=="활성") {echo "selected"; } ?>>활성</option>
-              <option value="" <?php if($item->act=="비활성") {echo "selected"; } ?>>비활성</option>
-            </select>
-            <span class="price_btn_wrap">
-              <a href="course_up.php" class="btn btn-primary btn_g">수정</a>
-              <button class="btn btn-danger">삭제</button>
-            </span>
-          </span>
-        </div>
+                </ol>
+              </nav>
 
+              <div class="d-flex align-items-end status_box">
+                <span class="price content_stt">
+                  <?= $item->price ?>
+                </span>
+                <span class="d-flex flex-column align-items-end status_wrap">
+                  <select name="act[<?= $item->cid ?>]" id="act[<?= $item->cid ?>]" class="form-select"
+                    aria-label="Default select example" id="selectmenu">
+                    <option selected disabled>상태</option>
+                    <!-- 추후 value 넣기  -->
+                    <option value="활성" <?php if ($item->act == "활성") {
+                      echo "selected";
+                    } ?>>활성</option>
+                    <option value="비활성" <?php if ($item->act == "비활성") {
+                      echo "selected";
+                    } ?>>비활성</option>
+                  </select>
+                  <span class="price_btn_wrap">
+                    <a href="course_up.php" class="btn btn-primary btn_g">수정</a>
+                    <button class="btn btn-danger">삭제</button>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </li>
+          <?php
+        }
+      } else {
+        ?>
+        <p colspan="10"> 검색 결과 없습니다 </p>
+        <?php
+      }
+      ?>
+    </ul>
+    <button class="btn btn-primary btn_g">일괄수정</button>
+  </form>
+ 
 
-
-
-      </div>
-
-    </li>
-    <?php
-    } }          
-  ?>
-  </ul>
-  <a href="" class="btn btn-primary btn_g">일괄수정</a>
   <!-- pagination -->
   <nav aria-label="Page navigation example" class="d-flex justify-content-center">
     <ul class="pagination">
@@ -303,14 +339,14 @@ while ($rs2 = $result2->fetch_object()) {
 
 
 
-$('input[type="checkbox"]').click(function(){
-      let $this = $(this);
-      if($this.prop('checked')){//체크해서 활성되면
-        $this.val('1');
-      } else{
-        $this.val('0');
-      }
-    });
+  $('input[type="checkbox"]').click(function () {
+    let $this = $(this);
+    if ($this.prop('checked')) {//체크해서 활성되면
+      $this.val('1');
+    } else {
+      $this.val('0');
+    }
+  });
 
 
 
@@ -318,10 +354,10 @@ $('input[type="checkbox"]').click(function(){
   //강의 가격 천단위, 변환
   let priceList = $('.price');
 
-  priceList.each(function() {
+  priceList.each(function () {
     let str_price = $(this).text();
     let course_price = ($.number(str_price));
-    $(this).text(course_price+' 원');
+    $(this).text(course_price + ' 원');
   });
 
   // green_bg
