@@ -31,7 +31,6 @@
     width: 90%;
     margin-left:73px;
     margin-top:var(--base_unit);
-    /* padding-top:30px; */
     padding: 30px 26px 40px 26px;  
     background-color:rgba(93,135,255,0.2);
     box-sizing: border-box
@@ -49,13 +48,21 @@
     font-size: 16px; 
 }
 
-.rating svg{
-	color:#ebebeb;
+
+i.ti.ti-star-filled:before{
+	color:var(--point_yellow);
+    margin-left:0.1rem;
+}
+
+i.ti.ti-star-filled.not_star:before{
+	color:var(--gray_bg);
+    margin-left:0.1rem;
 }
 
 .userImg{
     width: 45px;
     height: 45px;
+    border-radius: 50%;
 }
 
 
@@ -87,9 +94,23 @@
     box-sizing: border-box; 
     border: none !important;  
 }
+
+.reply{
+    line-height: 33px;
+}
 .reply_btn{
+    width: 98.5%;
     margin-top: 15px;
-    margin-right:20px;
+ 
+}
+
+.reply_btn a{
+    line-height: 30px !important;
+}
+
+.reply_btn_create{
+    margin-top: 15px;
+    margin-right:53px !important;
 }
 .reply_done{
     margin-right:15px;
@@ -107,3 +128,4 @@ textarea{
 textarea:focus{
    outline: none;
 }
+

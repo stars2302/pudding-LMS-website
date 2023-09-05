@@ -1,13 +1,13 @@
 <?php
-// if(isset($_SESSION['AUID'])){
-//   if($_SESSION['AUID'] == 'admin'){
-//     echo "<script>
-//       alert('이미 로그인 하셨습니다.');
-//       location.href = '/abcmall/admin/index.php';
-//     </script>";
-//   }
-// }
-
+session_start();
+if(isset($_SESSION['AUID'])){
+  if($_SESSION['AUID'] == 'admin'){
+    echo "<script>
+      alert('이미 로그인 하셨습니다.');
+      location.href = '/pudding-LMS-website/admin/index.php';
+    </script>";
+  }
+}
 ?>
 
 <!DOCTYPE html>
