@@ -6,6 +6,8 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 
+
+
 // 월 옵션 생성 
 $months = [
   '01' => '1월',
@@ -22,28 +24,66 @@ $months = [
   '12' => '12월',
 ];
 
-// 선택된 월 (기본값은 현재 월)
-$selected_month = date('m');
-$rsc = [];
 
-if (isset($_POST['month'])) {
+
+// 선택된 월 (기본값은 현재 월)
+$selected_month = isset($_GET['month']) ? $_GET['month'] : date('m');
+
+$rsc = [];
+$sales_page;
+if (isset($_GET['month'])) {
   // 폼에서 선택된 월을 처리
-  $selected_month = $_POST['month'];
+  $selected_month = $_GET['month'];
 
   // SQL 쿼리 - 선택된 월에 해당하는 payments 데이터 검색
-  $sql = "SELECT * FROM payments where  DATE_FORMAT(buy_date, '%m') = '$selected_month' ORDER BY payid ";
+  $sql = "SELECT COUNT(*) as count FROM payments WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month'";
+
       
 
-  $result = $mysqli->query($sql);
+  $result = $mysqli->query($sql); //필터 없
+
   // $rsc = array();
   $rsc = [];
   
   while ($rs = $result->fetch_object()) {
       $rsc[] = $rs;
+
   }
+  $sales_page = $rsc[0]->count;
+  var_dump($sales_page);
 }
 
+
 // var_dump($rsc);
+
+
+//----------------------------------------------pagenation 시작
+
+$sql = "SELECT payid, userid, name, total_price, buy_date FROM payments WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month'";
+
+//필터 없으면 여기서부터 복사! *******
+$pagenationTarget = 'payments'; //pagenation 테이블 명
+$pageContentcount = 6; //페이지 당 보여줄 list 개수
+
+//필터 없는 경우 조건 복사해야됨!
+if (!isset($pagerwhere)) {
+  $pagerwhere = ' DATE_FORMAT(buy_date, \'%m\') = \'' . $selected_month . '\'';
+}
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
+
+$sqlrc = $sql . $limit; //필터 없
+$result = $mysqli->query($sqlrc); //필터 없
+
+$rscc = [];
+
+while ($rs = $result->fetch_object()) {
+    $rscc[] = $rs;
+}
+var_dump($rscc);
+
+
+//----------------------------------------------pagenation 끝
 
 //bar_chart
 // 선택한 월에 해당하는 데이터를 가져오는 SQL 쿼리 작성
@@ -82,10 +122,11 @@ while ($row = $resultTopBuyers->fetch_assoc()) {
     ];
 }
 
+
 function getMonthlyData($selected_month) {
   global $mysqli; // 데이터베이스 연결 객체를 함수 내에서 사용할 수 있게 함
 
-  $rsc = []; // 결과에 넣을 배열 초기화
+  $rsc = []; // 결과 데이터를 저장할 배열 초기화
 
   //선택된 월에 해당하는 payments 데이터 검색
   $sql = "SELECT * FROM payments where  DATE_FORMAT(buy_date, '%m') = '$selected_month' ORDER BY payid ";
@@ -105,7 +146,7 @@ function getMonthlyData($selected_month) {
       <section>
         <h2 class="main_tt dark">월별매출통계</h2>
     
-        <form action="" id="search_form" method="POST">
+        <form action="" id="search_form" >
         <div >
             <div class>
                 <select class="form-select cate_select" aria-label="Default select example" id="month" name="month">
@@ -123,7 +164,7 @@ function getMonthlyData($selected_month) {
     <!-- 데이터 조회 및 차트 부분 -->
 <?php
 
-if (isset($_POST['month']) || empty($_POST)) {
+if (isset($_GET['month']) || empty($_GET)) {
     // 폼에서 선택된 월을 처리하거나 페이지를 처음 로드할 때
     // 선택된 월 또는 기본 월에 해당하는 데이터를 조회
     $rsc = getMonthlyData($selected_month);
@@ -157,8 +198,8 @@ if (isset($_POST['month']) || empty($_POST)) {
               </thead>
               <tbody>
                 <?php
-                if(!empty($rsc)){
-                  foreach($rsc as $list){
+                if(!empty($rscc)){
+                  foreach($rscc as $list){
 
             
                 ?>
@@ -177,28 +218,48 @@ if (isset($_POST['month']) || empty($_POST)) {
             </table>
             
           </div>
-          <nav
-      aria-label="Page navigation example"
-      class="d-flex justify-content-center pager"
-    >
-      <ul class="pagination">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&lsaquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
+        <!-- ***------------------------- pagination - 시작 -------------------------*** -->
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+      <ul class="pagination coupon_pager">
+        <?php
+          if($pageNumber>1 && $block_num > 1 ){
+            //이전버튼 활성화
+            $prev = ($block_num - 2) * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          } else{
+            //이전버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          }
+
+
+          for($i=$block_start;$i<=$block_end;$i++){
+            if($pageNumber == $i){
+                //필터 있
+                echo "<li class=\"page-item active\"><a href=\"?month=$selected_month&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                 //echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }else{
+                //필터 있
+                echo "<li class=\"page-item\"><a href=\"?month=$selected_month&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                 //echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }
+          }
+
+
+          if($pageNumber<$total_page && $block_num < $total_block){
+            //다음버튼 활성화
+            $next = $block_num * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+          } else{
+            //다음버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+
+          }
+        ?>
       </ul>
     </nav>
+    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
         </div>
       </section>
     </div><!-- content_wrap -->
