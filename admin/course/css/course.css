@@ -1,7 +1,7 @@
 .primary_btn {
   background-color: var(--point_primary);
 }
-p{
+p {
   margin-bottom: 0;
 }
 .btn {
@@ -9,34 +9,37 @@ p{
   white-space: nowrap;
   box-sizing: border-box;
 }
-.btn_g{
+.btn_g {
   margin-right: 15px;
 }
 .content_wrap {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 .course_sort {
-  margin-bottom: calc(var(--base_unit)*2);
+  margin-bottom: calc(var(--base_unit) * 2);
 }
 .link_btn {
   display: flex;
   justify-content: flex-end;
-  gap: calc(var(--base_unit)*.5);
+  gap: calc(var(--base_unit) * 0.5);
   margin-bottom: 25px;
 }
-.course_sort .row, .course_list .row, .category_add .row {
+.course_sort .row,
+.course_list .row,
+.category_add .row {
   margin-bottom: var(--base_unit);
 }
-input[type=text], select, .btn {
+input[type="text"],
+select,
+.btn {
   height: 45px;
   font-size: 16px;
-} 
+}
 .level_price {
   /* gap: var(--base_unit); */
   height: 45px;
   display: flex;
   align-items: center;
-
 }
 .level_price label {
   font-size: 16px;
@@ -55,8 +58,8 @@ input[type=text], select, .btn {
 }
 .price_check {
   margin-left: 10px;
-} 
-.course_list img{   
+}
+.course_list img {
   width: 226px;
   height: 162px;
   margin-right: 20px;
@@ -73,28 +76,27 @@ input[type=text], select, .btn {
   margin-bottom: calc(var(--base_unit) * 0.5);
 }
 .duration {
-  color:#505050;
+  color: #505050;
   font-style: 13px;
-
 }
 .course_list .ui-selectmenu-button.ui-button {
   width: 134px;
   margin-bottom: 10px;
 }
-.course_list .primary_bg{
+.course_list .primary_bg {
   margin-right: 6px;
 }
 
-.course_list .col-md-4{
+.course_list .col-md-4 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: end;
 }
-.breadcrumb-item{
+.breadcrumb-item {
   font-size: 14px;
 }
-.course_info{
+.course_info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -103,79 +105,77 @@ input[type=text], select, .btn {
   vertical-align: bottom;
   margin-right: 15px;
 } */
-.level_price span{
+.level_price span {
   display: flex;
   align-items: center;
 }
-.status_box{
+.status_box {
   position: relative;
   width: 100%;
 }
-.status_box .price{
+.status_box .price {
   position: absolute;
   left: 100px;
-} 
-.price_btn_wrap{
+}
+.price_btn_wrap {
   flex-wrap: wrap;
 }
-.search_bar{
+.search_bar {
   flex: 1;
 }
-.search_bar input{
+.search_bar input {
   margin-right: 15px;
 }
 
-.duration *{
-  margin-right: calc(var(--base_unit)*.5);
+.duration * {
+  margin-right: calc(var(--base_unit) * 0.5);
 }
-.duration i{
-  margin-right: calc(var(--base_unit)*.2);
+.duration i {
+  margin-right: calc(var(--base_unit) * 0.2);
 }
 
-
-
-.status_wrap{
+.status_wrap {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--base_unit)*.3);
+  gap: calc(var(--base_unit) * 0.3);
 }
 
-.status_wrap select{
+.status_wrap select {
   width: 100%;
 }
 
-a.btn{
+a.btn {
   line-height: 35px;
 }
 /*카테고리*/
 
 /* 타이틀 밑 60px */
 
-.tt_mb{
-  margin-bottom: calc(var(--base_unit)* 2);
+.tt_mb {
+  margin-bottom: calc(var(--base_unit) * 2);
 }
-.base_mt{
+.base_mt {
   margin-top: var(--base_unit);
 }
-.category_add_btns{
+.category_add_btns {
   display: flex;
-  gap:calc(var(--base_unit)* .5);
+  gap: calc(var(--base_unit) * 0.5);
 }
-.category_add h3.content_tt{
+.category_add h3.content_tt {
   margin-bottom: var(--base_unit);
 }
-.category_list{
-  margin-top: calc(var(--base_unit)* 1.5);
+.category_list {
+  margin-top: calc(var(--base_unit) * 1.5);
 }
-.category_list form{
-  margin-bottom: calc(var(--base_unit)* 1);
+.category_list form {
+  margin-bottom: calc(var(--base_unit) * 1);
 }
-.category_list table{
-  margin-bottom: calc(var(--base_unit)* 3);
+.category_list table {
+  margin-bottom: calc(var(--base_unit) * 3);
   text-align: center;
   border-radius: 10px;
 }
-.category_list table tr *{
+.category_list table tr * {
   padding: 5px;
 }
 .category_list table thead * {
@@ -184,24 +184,24 @@ a.btn{
   font-size: 20px;
   font-weight: bold;
 }
-.category_list table tbody *{ 
+.category_list table tbody * {
   padding: 5px;
   font-size: 16px;
 }
-.category_list table td{
+.category_list table td {
   width: 25%;
 }
-.category_list table i{
+.category_list table i {
   font-size: 22px;
 }
-.modal-body label{
+.modal-body label {
   margin-bottom: 10px;
 }
 
-
 /*강의보기*/
 
-ol, ul {
+ol,
+ul {
   padding-left: 0;
 }
 .course_view .course_list {
@@ -231,78 +231,33 @@ ol, ul {
   bottom: 0;
   right: 10px;
 }
-.course_view .badge{
+.course_view .badge {
   font-size: 20px;
   margin-left: 10px;
 }
 
-.course_view  .course_list_title {
+.course_view .course_list_title {
   display: flex;
   align-items: center;
-  
 }
 
+/* 강의등록/강의수정 */
 
-
-
-/* course_up */
-
-h1 {font-family: "jua";}
-
-.c_mt{
-  margin-top: calc(var(--base_unit)* 1.5);
+h1 {
+  font-family: "jua";
 }
-.c_mb{
+
+.c_mt {
+  margin-top: calc(var(--base_unit) * 1.5);
+}
+.c_mb {
   margin-bottom: calc(var(--base_unit));
 }
 
 select,
-input{
+input {
   height: 45px;
 }
-
-.box {
-  width: 100%;
-  height: 300px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  color: #ccc;
-  position: relative;
-  border-radius: 6px;
-  border: solid 1px #dee2e6;
-}
-.box span {
-  font-size: 1.5em;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.box.drag-enter {
-  background: #3498db;
-  color: #fff;
-}
-
-/* 
-#thumbnails {
-  width: 100%;
-  position: relative;
-  z-index: 10;
-  padding: 20px;
-  gap: 10px;
-}
-#thumbnails .thumb,
-.coupon_thumb img {
-  width: 150px;
-}
-#thumbnails .thumb img {
-  width: 100%;
-  display: block;
-} */
 
 .price_select,
 .level_select,
@@ -322,14 +277,14 @@ input{
 
 .add_listBtn {
   text-align: center;
-  margin: calc(var(--base_unit)* 2) 0 calc(var(--base_unit)* 2.5) ;
+  margin: calc(var(--base_unit) * 2) 0 calc(var(--base_unit) * 2.5);
 }
 .add_list a {
   color: #6f6f6f;
   padding-top: 2px;
 }
 
-.btn_complete{
+.btn_complete {
   margin-right: 15px;
 }
 
@@ -337,9 +292,49 @@ input{
   height: 45px;
   gap: 10px;
 }
-.level_status input {
-  margin-right: 6px;
+
+.c_button {
+  margin-bottom: calc(var(--base_unit) * 2.5);
 }
-.c_button{
-  margin-bottom:calc(var(--base_unit)* 2.5) ;
+
+.file_input > img {
+  width: 150px;
+  margin-top: 10px;
+}
+
+.product_options > img {
+  width: 150px;
+}
+
+.youtube p{
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.course_info > h3{
+  width: 100%;
+}
+
+.youtube_link > div{
+  text-align: center;
+  align-items: center;
+}
+
+.youtube_link > div div{
+  padding-top: 50px;
+}
+
+.youtube_thumb img{
+  width:150px;
+  height: 90px;
+  object-fit:contain;
+  margin-right: 0;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 6px;
+}
+
+.youtube_url a{
+  color: blue;
+  border-bottom: 1px solid blue;
 }
