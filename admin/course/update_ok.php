@@ -109,78 +109,78 @@
 
     // if($result){
 
-      if(isset($youtube_name)){
+      // if(isset($youtube_name)){
 
-        $youtube_thumb = $_REQUEST['youtube_thumb']; //강의섬네일
-        $youtube_url = $_REQUEST['youtube_url']; //강의url
-        var_dump($youtube_thumb);
-        // print_r($youtube_thumb);
+      //   $youtube_thumb = $_REQUEST['youtube_thumb']; //강의섬네일
+      //   $youtube_url = $_REQUEST['youtube_url']; //강의url
+      //   var_dump($youtube_thumb);
+      //   // print_r($youtube_thumb);
 
-        for($i = 0;$i<count($youtube_url) ; $i++){
+      //   for($i = 0;$i<count($youtube_url) ; $i++){
 
-          if(isset($_FILES['youtube_thumb'])){
-            if($_FILES['youtube_thumb']['size'][$i]> 10240000){
-              echo "<script>
-                alert('10MB 이하만 첨부할 수 있습니다.');    
-                history.back();      
-              </script>";
-              exit;
-            }
+      //     if(isset($_FILES['youtube_thumb'])){
+      //       if($_FILES['youtube_thumb']['size'][$i]> 10240000){
+      //         echo "<script>
+      //           alert('10MB 이하만 첨부할 수 있습니다.');    
+      //           history.back();      
+      //         </script>";
+      //         exit;
+      //       }
         
-            if(strpos($_FILES['youtube_thumb']['type'][$i], 'image') === false){
-              echo "<script>
-                alert('이미지만 첨부할 수 있습니다.');    
-               // history.back();            
-              </script>";
-              exit;
-            }
+      //       if(strpos($_FILES['youtube_thumb']['type'][$i], 'image') === false){
+      //         echo "<script>
+      //           alert('이미지만 첨부할 수 있습니다.');    
+      //          // history.back();            
+      //         </script>";
+      //         exit;
+      //       }
         
-            $save_dir = $_SERVER['DOCUMENT_ROOT']."/pudding-LMS-website/admin/images/course/";
-            $filename = $_FILES['youtube_thumb']['name'][$i]; //insta.jpg
-            $ext = pathinfo($filename, PATHINFO_EXTENSION); //jpg
-            $newfilename = date("YmdHis").substr(rand(), 0,6); //20238171184015
-            $youtube_thumb = $newfilename.".".$ext; //20238171184015.jpg
+      //       $save_dir = $_SERVER['DOCUMENT_ROOT']."/pudding-LMS-website/admin/images/course/";
+      //       $filename = $_FILES['youtube_thumb']['name'][$i]; //insta.jpg
+      //       $ext = pathinfo($filename, PATHINFO_EXTENSION); //jpg
+      //       $newfilename = date("YmdHis").substr(rand(), 0,6); //20238171184015
+      //       $youtube_thumb = $newfilename.".".$ext; //20238171184015.jpg
         
-            if(move_uploaded_file($_FILES['youtube_thumb']['tmp_name'][$i], $save_dir.$youtube_thumb)){  
-              $upload_youtube_thumb[] = "/pudding-LMS-website/admin/images/course/".$youtube_thumb;
-            } else{
-              echo "<script>
-                alert('이미지등록 실패!');    
-                history.back();            
-              </script>";
-            }
-          }
-        }
-      }
-      $youtube_url = $_POST['youtube_url'];
-      for($i = 0; $i<count($youtube_url); $i++){
-        if(($_FILES['youtube_thumb']['name'])){
-          $sql1 = "UPDATE lecture
-                  SET youtube_thumb = '{$youtube_thumb[$i]}',
-                      youtube_name = '{$youtube_name[$i]}',
-                      youtube_url = '{$youtube_url[$i]}'
-                  WHERE cid ='{$cid}'";
-          }else{
-          $sql1 = "UPDATE lecture
-                  SET youtube_name = '{$youtube_name[$i]}',
-                      youtube_url = '{$youtube_url[$i]}'  
-                  WHERE cid ='{$cid}'";
-        }
-      }
-      $result2 = $mysqli-> query($sql1);
+      //       if(move_uploaded_file($_FILES['youtube_thumb']['tmp_name'][$i], $save_dir.$youtube_thumb)){  
+      //         $upload_youtube_thumb[] = "/pudding-LMS-website/admin/images/course/".$youtube_thumb;
+      //       } else{
+      //         echo "<script>
+      //           alert('이미지등록 실패!');    
+      //           history.back();            
+      //         </script>";
+      //       }
+      //     }
+      //   }
+      // }
+      // $youtube_url = $_POST['youtube_url'];
+      // for($i = 0; $i<count($youtube_url); $i++){
+      //   if(($_FILES['youtube_thumb']['name'])){
+      //     $sql1 = "UPDATE lecture
+      //             SET youtube_thumb = '{$youtube_thumb[$i]}',
+      //                 youtube_name = '{$youtube_name[$i]}',
+      //                 youtube_url = '{$youtube_url[$i]}'
+      //             WHERE cid ='{$cid}'";
+      //     }else{
+      //     $sql1 = "UPDATE lecture
+      //             SET youtube_name = '{$youtube_name[$i]}',
+      //                 youtube_url = '{$youtube_url[$i]}'  
+      //             WHERE cid ='{$cid}'";
+      //   }
+      // }
+      // $result2 = $mysqli-> query($sql1);
 
       $mysqli->commit();//디비에 커밋한다.
 
       echo "<script>
       alert('강의 수정 완료!');
-      //location.href='course_list.php';</script>";
+      location.href='course_list.php';</script>";
       }
     // } 
     catch(Exception $e){
       $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
       echo "<script>
       alert('강의 수정 실패');
-      //history.back();
+      history.back();
       </script>";
       exit;
     }

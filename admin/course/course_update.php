@@ -17,6 +17,7 @@ $cid = $_GET['cid'];
 $sql = "SELECT * FROM courses WHERE cid={$cid}";
 $result = $mysqli -> query($sql);
 $rs = $result -> fetch_object();
+// var_dump($rs);
 
 
 $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
@@ -25,7 +26,7 @@ $result = $mysqli -> query($imgsql);
 while($is = $result -> fetch_object()){
   $addImgs[]=$is;
 
-  var_dump($addImgs);
+  // var_dump($addImgs);
 }
 // while($is = $result -> fetch_object()){
 //   $addImgs["youtube_thumb"]=$is;
@@ -46,21 +47,32 @@ while($is = $result -> fetch_object()){
       <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
-            <option disabled selected>대분류 선택</option>
-            <option value="<?= $rs->cate; ?>">대분류1</option>
+          <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
+          <?php
+                 $cateString = $rs->cate;
+                 $parts = explode('/', $cateString);
+         
+                 $big_cate = $parts[0];
+                 $md_cate = $parts[1];
+                 $sm_cate = $parts[2];
+            ?>  
+          <option disabled selected><?php echo $big_cate ?></option>
+            
+            <?php
+              foreach($cate1 as $c){            
+            ?>
+              <option value="<?php echo $c->cateid ?>" data-name="<?php echo $c->name ?>"><?php echo $c->name ?></option>
+            <?php } ?>
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
-            <option disabled selected>중분류 선택</option>
-            <option value="<?= $rs->cate; ?>">중분류1</option>
+          <select class="form-select" aria-label="Default select example" id="cate2" name="cate2">
+            <option disabled selected><?php echo $md_cate ?></option>
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
-            <option disabled selected>소분류 선택</option>
-            <option value="<?= $rs->cate; ?>">소분류1</option>
+          <select class="form-select" aria-label="Default select example" id="cate3" name="cate3">
+            <option disabled selected><?php echo $sm_cate ?></option>
           </select>
         </div>
       </div>
@@ -238,8 +250,8 @@ while($is = $result -> fetch_object()){
       <a href="course_list.php" class="btn btn-dark">수정취소</a>
     </div>
   </form>
-
 </section>
+<script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>

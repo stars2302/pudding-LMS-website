@@ -90,7 +90,7 @@ while($is = $result -> fetch_object()){
     <div class="course_status d-flex justify-content-between">
       <div class="d-flex flex-column align-items-end status_wrap">
         <span class="price_btn_wrap">
-          <a href="" class="btn btn-primary btn_g">수정</a>
+          <a href="course_update.php?cid=<?=$rs->cid ?>" class="btn btn-primary btn_g">수정</a>
           <button class="btn btn-danger">삭제</button>
         </span>
       </div>

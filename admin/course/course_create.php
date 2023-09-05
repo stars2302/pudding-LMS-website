@@ -1,12 +1,10 @@
 <?php
- $title="대시보드";
+ $title="강의 등록";
  $css_route="course/css/course.css";
  $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
 ?>
-
-
 
 <section>
   <div class="course_title tt_mb">

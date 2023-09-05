@@ -29,9 +29,6 @@ $act = $_GET['act'] ?? '';
 // $due_status = $_GET['due_status'] ?? '';
 
 
-
-
-
 $search_where = '';
 $cates = $cates1 . $cate2 . $cate3;
 $levels = $level1 . $level1 . $level1;
@@ -75,8 +72,6 @@ $result2 = $mysqli->query($query2);
 while ($rs2 = $result2->fetch_object()) {
   $rsc2[] = $rs2;
 }
-
-
 
 ?>
 
@@ -242,7 +237,7 @@ while ($rs2 = $result2->fetch_object()) {
                     } ?>>비활성</option>
                   </select>
                   <span class="price_btn_wrap">
-                    <a href="course_up.php" class="btn btn-primary btn_g">수정</a>
+                    <a href="course_update.php?cid=<?= $item->cid ?>" class="btn btn-primary btn_g">수정</a>
                     <button class="btn btn-danger">삭제</button>
                   </span>
                 </span>

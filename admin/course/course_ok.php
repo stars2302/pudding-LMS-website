@@ -33,11 +33,6 @@
     $rs33 = $result33->fetch_object();
     $cate3 =  $rs33->name;
 
-    var_dump($cate1);
-    var_dump($cate2);
-    var_dump($cate3);
-
-
     $cate = $cate1.'/'.$cate2.'/'.$cate3;
     $name = $_POST['name'];
     $price_status = $_POST['price_status'];
@@ -87,8 +82,8 @@
         }
     }
 
-    $sql = "INSERT INTO courses (cate, name, price_status,price, level, due_status, due, act, content, thumbnail, video_table_id) 
-    VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}','{$video_table_id}')";
+    $sql = "INSERT INTO courses (cate, name, price_status,price, level, due_status, due, act, content, thumbnail) 
+    VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}')";
 
     // var_dump($sql)
 
@@ -148,13 +143,13 @@
 
       echo "<script>
       alert('강의 등록 완료!');
-      //location.href='course_list.php';</script>";
+      location.href='course_list.php';</script>";
       }
     } catch(Exception $e){
       $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
       echo "<script>
       alert('강의 등록 실패');
-     // history.back();
+      history.back();
       </script>";
       exit;
     }
