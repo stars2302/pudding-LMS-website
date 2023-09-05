@@ -126,16 +126,14 @@
                   ><i class="ti ti-zoom-question"></i><span>Q&A</span></a
                 >
               </li>
+              <li>
+                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
+                  ><i class="ti ti-user-edit"></i><span>회원 관리</span></a
+                >
+              </li>
             </ul>
           </nav>
-          <div
-            class="profile d-flex justify-content-between align-items-center border"
-          >
-            <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
-            <h2 class="content_stt">프바오</h2>
-            <p>admins</p>
-          </div>
-          <a href="/pudding-LMS-website/admin/logout.php" class="logout b_text02">로그아웃</a>
+          <a href="/pudding-LMS-website/admin/logout.php" class="logout b_text02 btn btn-primary" style="line-height:45px">로그아웃</a>
         </div>
       </header>
 
@@ -168,7 +166,8 @@
             </svg>
             <div class="red_bell d-flex justify-content-center align-items-center">1</div>
           </div>
-          <div class="profile">
+          <div class="profile d-flex align-items-center">
             <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
+            <h2 class="b_text02 bold">프바오<span>admins</span></h2>
           </div>
         </div>

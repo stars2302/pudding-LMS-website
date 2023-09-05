@@ -9,7 +9,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 $current_month = date('Y-m');
 $last_month = date('Y-m', strtotime('-1 month'));
 $last_month2 = date('Y-m', strtotime('-2 months'));
-var_dump($last_month2);
+// var_dump($last_month2);
 
 // 현재 월과 전 월 sql
 $current_month_sales_query = "SELECT SUM(total_price) AS current_month_sales FROM payments WHERE DATE_FORMAT(regdate, '%Y-%m') = '$current_month'";
@@ -38,13 +38,13 @@ $sales_data_json = json_encode($sales_data);
 
 // var_dump($sales_data_json);
 
-$sql ="SELECT * FROM notice order by ntid desc limit 0,4";
-$result = $mysqli-> query($sql);
-while($rs = $result->fetch_object()){
-  $rscn[]=$rs;
-}
+// $sql ="SELECT * FROM notice order by ntid desc limit 0,4";
+// $result = $mysqli-> query($sql);
+// while($rs = $result->fetch_object()){
+//   $rscn[]=$rs;
+// }
 
-var_dump($rscn);
+// var_dump($rscn);
 
 //총 수강생 수
 $userc = "SELECT COUNT(*) as cnt FROM users";
@@ -120,7 +120,7 @@ while($rs = $result -> fetch_object()){
                 </ul>
             </div>
             <div class="col-md-4 total_values">
-              <div class="content_box border shadow d-flex ">
+              <div class="content_box border shadow d-flex">
                 <div class="col-md-6" >
                   <h2 class="blue_bg white"><i class="ti ti-users"></i>총 수강생</h2>
                   <p><span><?= $usercount->cnt ?></span>명</p>
@@ -143,27 +143,38 @@ while($rs = $result -> fetch_object()){
             </div>
           </div>
           <div class="row">
-              <div class="col-md-8 content_box border shadow">
+              <div class="col-md-8 content_box border shadow chart">
                 <h2 class="red_bg white"><i class="ti ti-coins icon_coin"></i>월별 수익 현황</h2>
                 <div class="monthly_wrap">
                   <canvas id="monthly_chart" ></canvas>
                 </div>  
               </div>
             <div class="col-md-4">
-              <div class="content_box border shadow">
+              <div class="content_box border shadow notice">
                 <h2 class="yellow_bg white"><i class="ti ti-category"></i>공지사항(최근순)</h2>
                 <?php
+                /*
                 if(isset($rscn)){
                   foreach($rscn as $nlist){
-                
+                */
                 ?>
                 
-                <div class="">
-                  <p><a href="/pudding-LMS-website/admin/notice/notice_list.php?ntid=<?php echo $nlist->ntid ?>"><?php echo $nlist->nt_title ?></a></p>
+                <div class="noti_con">
+                  <!-- <p><a href="/pudding-LMS-website/admin/notice/notice_list.php?ntid=<?php echo $nlist->ntid ?>"><?php echo $nlist->nt_title ?></a></p> -->
+
+                  <!-- layout을 위한 임시코드 -->
+                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
+                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
+                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
+                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
+                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
+                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
                 </div>
                 <?php
+                /*
                   }
                 }
+                */
                 ?>
             </div>
            </div>

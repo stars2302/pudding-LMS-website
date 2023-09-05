@@ -114,3 +114,36 @@ ol, ul {
 .category_wrap canvas{
   margin: 0 auto;
 }
+
+.chart,.notice {
+  height: 400px;
+}
+
+.noti_con {
+  padding: 10px var(--base_unit);
+}
+
+.noti_con p {
+  padding: 5px 0;
+  position: relative;
+
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.noti_con p:hover {
+  color: var(--point_primary_hover);
+  text-decoration: underline;
+}
+
+/* .noti_con p:hover:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 1.5px;
+  background-color: var(--point_primary_hover);
+} */
