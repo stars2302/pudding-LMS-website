@@ -11,8 +11,6 @@ $sql = "SELECT * FROM courses where cid={$cid}";
 $result = $mysqli -> query($sql);
 $rs = $result -> fetch_object();
 
-
-
 // lid
 // cid
 // name
@@ -25,10 +23,12 @@ $rs = $result -> fetch_object();
 // JOIN lecture l
 // on c.cid = l.cid 
 // where c.status = 2 and uc.status = 1 and uc.userid = '{$_SESSION['UID']}' and uc.use_max_date >= now() ";
-$lsql = "SELECT * FROM lecture where cid={$cid}";
-$lresult = $mysqli->query($lsql);
-while($lrs = $lresult -> fetch_object()){
-  $lecArr[] = $lrs;
+
+$imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
+$result = $mysqli -> query($imgsql);
+
+while($is = $result -> fetch_object()){
+  $addImgs[]=$is;
 }
 
 // $sql2 = "SELECT * FROM product_options where cid={$cid}";
@@ -47,9 +47,7 @@ while($lrs = $lresult -> fetch_object()){
 //   $addImgs[]=$rs3;
 // }
 
-
 ?>
-
 
 <section class="course_view">
   <h2 class="main_tt dark tt_mb">강의 보기</h2>
@@ -90,19 +88,6 @@ while($lrs = $lresult -> fetch_object()){
       </div>
     </div>
     <div class="course_status d-flex justify-content-between">
-      <ul>
-        <?php 
-        if(isset($lecArr)){
-          foreach($lecArr as $lec){
-        ?>
-        <li>
-          <i class="ti ti-circle-chevron-right"></i>
-          <a href="<?= $lec -> link; ?>" target="_blank"><?= $lec -> name; ?></a>
-        </li>
-        <?php 
-          }
-        } ?>
-      </ul>
       <div class="d-flex flex-column align-items-end status_wrap">
         <span class="price_btn_wrap">
           <a href="" class="btn btn-primary btn_g">수정</a>
@@ -110,6 +95,43 @@ while($lrs = $lresult -> fetch_object()){
         </span>
       </div>
     </div>
+    <hr>
+    <div class="you_upload mt-5">
+        <div class="youtube">
+          <div class="row justify-content-center">
+            <div class="col-3 youtube_thumb">
+              <P>강의썸네일</P>
+            </div>
+            <div class="col-3 youtube_name">
+              <P>강의명</P>
+            </div>
+            <div class="col-6 youtube_url">
+              <P>강의url</P>
+            </div>
+          </div>
+        </div>
+        <div class="youtube_link c_mb">
+          <div class="row justify-content-center">
+            <?php
+              if(isset($addImgs)){
+              foreach($addImgs as $ai){
+            ?>  
+            <div class="col-3 youtube_thumb">
+              <img src="<?= $ai -> youtube_thumb?>" alt="섬네일">
+            </div>
+            <div class="col-3 youtube_name">
+              <span><?= $ai -> youtube_name?></span>
+            </div>
+            <div class="col-6 youtube_url">
+              <a href="<?= $ai -> youtube_url?>">강의영상 바로가기</a>
+            </div>
+            <?php
+                }
+              }
+              ?>
+          </div>
+        </div>
+      </div>
   </div>
   <a href="course_list.php" class="btn btn-dark base_mt">돌아가기</a>
 
