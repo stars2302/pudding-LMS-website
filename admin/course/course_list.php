@@ -4,29 +4,12 @@ $css_route = "course/css/course.css";
 $js_route = "course/js/course.js";
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+//include_once $_SERVER['DOCUMENT_ROOT'].'/abcmall/admin/inc/admin_check.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 
-// name
-// cate
-// content
-// thumbnail
-// price
-// ismain
-// isnew
-// isbest
-// isrecom
-// userid
-// reg_date
-// due_status
-// price_status
-// c_total_cnt
-// courselist
-// rate
-// rid
-
 $name = $_GET['name'] ?? '';
-$cate1 = $_GET['cate1'] ?? '';
+$cates1 = $_GET['cate1'] ?? '';
 $cate2 = $_GET['cate2'] ?? '';
 $cate3 = $_GET['cate3'] ?? '';
 $price_status1 = $_GET['price_status1'] ?? '';
@@ -50,9 +33,9 @@ $due_status = $_GET['due_status'] ?? '';
 
 
 $search_where = '';
-$cates = $cate1.$cate2.$cate3;
-$levels = $level1.$level1.$level1;
-$price_statuss = $price_status1.$price_status2;
+$cates = $cates1 . $cate2 . $cate3;
+$levels = $level1 . $level1 . $level1;
+$price_statuss = $price_status1 . $price_status2;
 
 if ($cates) {
   $search_where .= " and cate like '%{$cates}%'";
@@ -71,10 +54,10 @@ if ($name) {
 
 
 
-// if($search_keyword){
-//   $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
-//   //제목과 내용에 키워드가 포함된 상품 조회
-// }
+// // if($search_keyword){
+// //   $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
+// //   //제목과 내용에 키워드가 포함된 상품 조회
+// // }
 
 
 
@@ -92,36 +75,6 @@ $result2 = $mysqli->query($query2);
 while ($rs2 = $result2->fetch_object()) {
   $rsc2[] = $rs2;
 }
-//킵
-
-//킵2 cht
-// $cate = $_GET['cate'] ?? '';
-
-// $sql = "SELECT * FROM courses where 1=1"; // and color name=value and color name=value and color name=value
-// $sql .= $search_where;
-// $order = "ORDER BY cid DESC";
-//킵2 cht
-//  $cid = $_POST['cid'] ?? '';
-//  //$cate = $_GET['cate'] ?? '';
-
-// $catesql = "SELECT * FROM courses where cid = {$cid}"; 
-// $cateresult = $mysqli->query($catesql);
-
-// $crsc = []; 
-
-// while ($caters = $cateresult->fetch_object()) {
-//     $crsc[] = $caters;
-// }
-// echo  $crsc;
-
-// foreach ($crsc as $course) {
-//     $parts = explode('/', $course->cate);
-
-//     foreach ($parts as $part) {
-//         echo $part . '<br>';
-//     }
-// }
-
 
 
 
@@ -138,10 +91,11 @@ while ($rs2 = $result2->fetch_object()) {
       <div class="col-md-4">
         <select class="form-select" aria-label="Default select example" id="cate1" name="cate1">
           <option selected disabled>대분류</option>
+
           <?php
           foreach ($cate1 as $c) {
             ?>
-            <option value="<?= $c->cateid ?>" data-cate="<?= $c->name; ?>"><?= $c->name; ?></option>
+            <option value="<?php echo $c->cateid ?>" data-cate="<?= $c->name; ?>"><?php echo $c->name ?></option>
           <?php } ?>
         </select>
       </div>
@@ -205,7 +159,7 @@ while ($rs2 = $result2->fetch_object()) {
           $sm_cate = $parts[2];
           ?>
           <li class="course_list row shadow_box">
-          <input type="hidden" name="cid[]" value="<?php echo $item->cid ?>"> 
+            <input type="hidden" name="cid[]" value="<?php echo $item->cid ?>">
             <div class="col-md-8 d-flex">
               <img src="<?= $item->thumbnail ?>" alt="강의 썸네일 이미지" class="border">
               <div class="course_info">
@@ -306,7 +260,7 @@ while ($rs2 = $result2->fetch_object()) {
     </ul>
     <button class="btn btn-primary btn_g">일괄수정</button>
   </form>
- 
+
 
   <!-- pagination -->
   <nav aria-label="Page navigation example" class="d-flex justify-content-center">
@@ -332,7 +286,7 @@ while ($rs2 = $result2->fetch_object()) {
 </div><!-- content_wrap -->
 </div><!-- wrap -->
 
-<script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
+<script src="js/makeoption.js"></script>
 
 <script>
 

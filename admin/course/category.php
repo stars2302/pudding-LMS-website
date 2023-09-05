@@ -15,7 +15,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 
-// $cates1 = $_GET['cate1'] ?? '';
+$cates1 = $_GET['cate1'] ?? '';
 
 $sql = "SELECT * FROM category WHERE step=1";
 $result = $mysqli->query($sql);
