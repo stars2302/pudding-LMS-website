@@ -528,31 +528,6 @@ header .inner_header ul {
   padding: var(--base_unit) 0;
 }
 
-header .profile {
-  width: 80%;
-  height: calc(var(--base_unit) * 2.5);
-  background: var(--light_blue_bg);
-  padding: 0 30px;
-}
-
-header .profile img {
-  width: 60px;
-  height: 60px;
-}
-
-header .profile h2 {
-  color: var(--point_primary);
-  font-weight: bold;
-  margin-bottom: 0;
-}
-
-header .profile p {
-  color: var(--dark);
-  font-size: 14px;
-  font-weight: 400;
-  margin-bottom: 0;
-}
-
 header .logout {
   margin-top: calc(var(--base_unit)/2);
   padding: 0 var(--base_unit);
@@ -561,7 +536,7 @@ header .logout {
 
 .content_wrap {
   flex: 1;
-  margin-left: 408px;
+  margin-left: 350px;
   padding: 0 calc(var(--base_unit) * 2);
 }
 
@@ -578,6 +553,17 @@ header .logout {
 .top_bar .red_bell {
   text-align: center;
   color: var(--white_bg);
+}
+
+.top_bar .profile h2 {
+  margin-bottom: 0;
+  margin-left: calc(var(--base_unit)/2);
+  font-weight: bold;
+}
+
+.top_bar .profile span {
+  font-weight: lighter;
+  padding-left: 10px;
 }
 
 .top_bar .profile img {
