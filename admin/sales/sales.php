@@ -50,7 +50,7 @@ if (isset($_GET['month'])) {
 
   }
   $sales_page = $rsc[0]->count;
-  var_dump($sales_page);
+  // var_dump($sales_page);
 }
 
 

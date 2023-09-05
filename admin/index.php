@@ -35,8 +35,15 @@ $sales_data = array(
 );
 $sales_data_json = json_encode($sales_data);
 
-var_dump($sales_data_json);
+// var_dump($sales_data_json);
 
+$sql ="SELECT * FROM notice order by ntid desc limit 0,4";
+$result = $mysqli-> query($sql);
+while($rs = $result->fetch_object()){
+  $rscn[]=$rs;
+}
+
+var_dump($rscn);
 
 
 ?>
@@ -107,10 +114,20 @@ var_dump($sales_data_json);
               </div>
             <div class="col-md-4">
               <div class="content_box border shadow">
-                <h2 class="yellow_bg white"><i class="ti ti-category"></i>카테고리 비율</h2>
-                <div class="category_wrap">
-                  <canvas id="category_chart" ></canvas>
+                <h2 class="yellow_bg white"><i class="ti ti-category"></i>공지사항(최근순)</h2>
+                <?php
+                if(isset($rscn)){
+                  foreach($rscn as $nlist){
+                
+                ?>
+                
+                <div class="">
+                  <p><a href="/pudding-LMS-website/admin/notice/notice_list.php?ntid=<?php echo $nlist->ntid ?>"><?php echo $nlist->nt_title ?></a></p>
                 </div>
+                <?php
+                  }
+                }
+                ?>
             </div>
            </div>
           </div>
