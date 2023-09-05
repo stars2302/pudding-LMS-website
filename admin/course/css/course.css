@@ -152,7 +152,6 @@ a.btn {
 }
 /*카테고리*/
 
-/* 타이틀 밑 60px */
 
 .tt_mb {
   margin-bottom: calc(var(--base_unit) * 2);
