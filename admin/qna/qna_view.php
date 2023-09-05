@@ -70,7 +70,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 							// 사용자 입력이 애플리케이션을 해칠 수 있는 코드를 포함하고 있더라도, 그런 코드가 실행되지 않도록 방지
 							echo "<div class='btn-group-wrap d-flex ml-auto'>";
 							echo "<button title='수정' class='editButton' data-id='" . $row['id'] . "'><i class='ti ti-edit pen_icon'></i></button>";							
-							echo "<button class='saveButton' data-id='" . $row['id'] . "' style='display:none'><i class='ti ti-edit pen_icon'></i></button>";							
+							echo "<button class='saveButton green' data-id='" . $row['id'] . "' style='display:none'><i class='ti ti-edit pen_icon'></i></button>";							
 							// 댓글 삭제 버튼
 							echo "<div data-comment-id='" . $row['id'] . "'>";
 							echo "<button title='삭제' type='button' class='deleteButton'><i class='ti ti-trash bin_icon'></i></button>";
