@@ -212,3 +212,8 @@ tbody {
   padding-right:  20px;
 }
 
+
+
+.content img {
+  width: 50% !important;
+}
