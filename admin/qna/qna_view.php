@@ -70,7 +70,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 							// 사용자 입력이 애플리케이션을 해칠 수 있는 코드를 포함하고 있더라도, 그런 코드가 실행되지 않도록 방지
 							echo "<div class='btn-group-wrap d-flex ml-auto'>";
 							echo "<button title='수정' class='editButton' data-id='" . $row['id'] . "'><i class='ti ti-edit pen_icon'></i></button>";							
-							echo "<button class='saveButton' data-id='" . $row['id'] . "' style='display:none'>저장</button>";							
+							echo "<button class='saveButton' data-id='" . $row['id'] . "' style='display:none'><i class='ti ti-edit pen_icon'></i></button>";							
 							// 댓글 삭제 버튼
 							echo "<div data-comment-id='" . $row['id'] . "'>";
 							echo "<button title='삭제' type='button' class='deleteButton'><i class='ti ti-trash bin_icon'></i></button>";
@@ -190,7 +190,7 @@ $(document).on('submit', '.commentForm', function(e) {
 							<button class='editButton' data-id='${new_id}' title='수정'>
 							<i class="ti ti-edit pen_icon"></i>
 							</button>
-							<button class='saveButton' data-id='${new_id}' >저장</button>						
+							<button class='saveButton' data-id='${new_id}' ><i class='ti ti-edit pen_icon'></i></button>						
 							<div data-comment-id='${new_id}'>
 								<button title='삭제' type='button' class='deleteButton'>
 								<i class="ti ti-trash bin_icon"></i>
@@ -200,7 +200,7 @@ $(document).on('submit', '.commentForm', function(e) {
 					</div>
 					<div class='' style='padding-left:90px;'>
 					<p class='b_text02' style='margin-left:0 !important; padding-right: 0 !important;'>${comment}</p>
-          
+
 					</div>											
 					<button class='replyButton text-secondary mt-2' data-id='${new_id}' data-depth='${new_depth}'>
 						<svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-message' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.25' stroke='#6c757d' fill='none' stroke-linecap='round' stroke-linejoin='round'>
@@ -325,7 +325,14 @@ $(document).on('click', '.deleteButton', function(e) {
   
   let commentId = $(this).parent().data('comment-id'); // data-comment-id값
   let self = this; // this값 임시 변수에 저장
-  
+
+  if(confirm('삭제하시겠습니까?')){
+        window.location = 'qna_delete.php?idx=<?= $uid; ?>';
+      }else{
+        alert('취소되었습니다.');
+      }
+    });
+
   $.ajax({
     url: 'qna_delete_ok.php',
     type: 'POST',
@@ -342,6 +349,18 @@ $(document).on('click', '.deleteButton', function(e) {
       }
     }
   });
+});
+
+document.querySelector('.btn.btn-primary').addEventListener('click', function() {
+    location.reload(); // 페이지 새로 고침
+});
+
+document.querySelector('.btn.btn-warning').addEventListener('click', function() {
+    location.reload(); // 페이지 새로 고침
+});
+
+document.querySelector('.btn.btn-dark').addEventListener('click', function() {
+    window.location.href = 'qna_list.php'; // 다른 페이지로 이동
 });
 
 </script>

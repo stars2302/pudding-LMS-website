@@ -13,6 +13,8 @@ $row = $result->fetch_assoc();
 
 $response = [];
 
+
+//댓글 + 댓글 삭제 
 if ($row['cnt'] > 0) {
     // 댓글에 또 댓글 있으면 삭제하지 않음
     $response['status'] = 'error';
@@ -31,6 +33,7 @@ if ($row['cnt'] > 0) {
         $response['message'] = '댓글 삭제 실패: ' . $mysqli->error;
     }
 }
+
 
 echo json_encode($response);
 ?>

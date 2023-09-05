@@ -85,6 +85,7 @@ if ($mysqli->connect_error) {
               <th scope="col">작성자</th>
               <th scope="col">등록일</th>
               <th scope="col">조회수</th>
+              
             </tr>
           </thead>
 
