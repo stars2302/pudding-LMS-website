@@ -334,8 +334,7 @@ $(document).on('click', '.deleteButton', function(e) {
           
           if (confirm("삭제하시겠습니까?")) {
             alert("삭제 완료");
-            
-            
+
           } else {
             $.ajax({
                   type: 'POST',
