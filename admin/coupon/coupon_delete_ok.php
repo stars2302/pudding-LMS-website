@@ -1,7 +1,6 @@
 <?php
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
   $cpid = $_GET['cpid'];
-  var_dump($cpid);
   
   $sql = "DELETE from coupons where cpid=$cpid";
   $result = $mysqli -> query($sql);

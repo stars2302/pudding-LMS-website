@@ -2,19 +2,16 @@
 $('.thumb_btn').click(function(){
   //create 사진등록 button click하면 숨어있던 input[type="file"]실행
   $('.thumbnail .hidden').trigger('click');
-
-
-  
 });
 
 
 //coupon_create / coupon_update 사진등록 input의 내용이 바뀌면~
 $('#thumbnail').change(function(){
   let file = $(this).prop('files');
-  setTimeout(function(){
     
     let formData = new FormData(); //페이지 전환없이 이페이지 바로 이미지 등록
     formData.append('savefile', file[0]); //<input type="file" name="cp_image" value="파일명">
+    //ajax 활용해 이미지 폴더에 추가. 이미지 이름 변환. validate
     $.ajax({
       url: 'coupon_image_save.php',
       data: formData,
@@ -36,20 +33,25 @@ $('#thumbnail').change(function(){
         } else if(return_data.result == 'error'){
           alert('관리자에게 문의하세요');
           return;
+        
+        //오류없이 등록되면!
         } else{
+          //이미지 출력
           $('.show_thumb').html(`<img src="${return_data.src}" alt="">`);
+          //숨겨진 input에 value로 이미지경로 넣어주기
           $('#imgSRC').val(return_data.src);
         }
       }
     });//ajax
 
-    //사진등록 이전에 있던 사진 images폴더에서 삭제
+  
+  //사진변경 시 이전에 있던 사진 images폴더에서 삭제
+  //기존 이미지 경로담기
   let prevImg = $(this).siblings('.show_thumb').find('img').attr('src');
-  console.log(prevImg);
   let data = {
     prevImg : prevImg
   }
-  console.log(data);
+  //해당 경로값을 보내 unlink
   $.ajax({
     async : false, 
     type: 'post',     
@@ -63,14 +65,13 @@ $('#thumbnail').change(function(){
       console.log(return_data);
     }
   });//ajax
-  },100);
+  
 });
 
 
 
 // coupon_create / coupon_update 쿠폰등록 이미지 validate
 $('.coupon_submit_btn').click(function(){
-  console.log($('#thumbnail').val());
   if(!$('#thumbnail').val()){
     alert('쿠폰 이미지를 등록해주세요');
   }
@@ -79,10 +80,9 @@ $('.coupon_submit_btn').click(function(){
 
 
 
-// coupon_create / coupon_update radio change event
+// coupon_create / coupon_update radio type input 체크 바꾸면
 $('.coupon_sale_check').change(function(){
   let $this = $(this);
-  // inputDisable($this);
   if($this.find('input[type="radio"]').filter(':checked')){
     $this.parent().find('.input').prop('disabled',true);
     $this.parent().find('.input').prop('required',false);
@@ -131,6 +131,7 @@ $('.cp_status_toggle').change(function(){
     cp_status : cp_status,
     cpid : cpid
   }
+  //cpid에 해당하는 쿠폰의 value에 따라 활성/비활성 update
   $.ajax({
     async : false, 
     type: 'post',     
@@ -154,6 +155,7 @@ $('.cp_status_toggle').change(function(){
 
 
 //coupon_list filter
+//filter radio 버튼들의 값이 바뀌면 submit버튼 trigger
 $('.coupon_filter').change(function(){
   $(this).find('button').trigger('click');
 });
@@ -162,14 +164,15 @@ $('.coupon_filter').change(function(){
 //coupon_list 쿠폰 삭제 버튼 클릭
 $('.icons .del_btn').click(function(e){
   let prt = $(this).closest('.coupon').attr('data-cpid');
-  console.log(prt);
   e.preventDefault();
 
 
   if(confirm('정말로 삭제하시겠습니까?')){
+    //coupon_delete_ok로 이동
     location.href = '/pudding-LMS-website/admin/coupon/coupon_delete_ok.php?cpid='+prt;
   } else {
     alert('취소되었습니다.');
+    //coupon_list로 이동
     location.href = '/pudding-LMS-website/admin/coupon/coupon_list.php';
   }
 });

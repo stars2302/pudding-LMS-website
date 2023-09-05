@@ -76,8 +76,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <!-- Number js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/df-number-format/2.1.6/jquery.number.min.js"></script>
+    <!-- chart js -->
+    
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+  
 
 
     </head>
@@ -135,7 +137,7 @@
             <h2 class="content_stt">프바오</h2>
             <p>admins</p>
           </div>
-          <a href="" class="logout b_text02">로그아웃</a>
+          <a href="/pudding-LMS-website/admin/logout.php" class="logout b_text02">로그아웃</a>
         </div>
       </header>
 

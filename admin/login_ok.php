@@ -11,14 +11,16 @@
   $rs = $result->fetch_object();
 
   if($rs){
-    $sql = "select * from admin where idx = {$rs->idx}";
-    $result = $mysqli->query($sql);
+    // $sql = "select * from admin where idx = {$rs->idx}";
+    // $sql = "UPDATE cart SET userid='{$userid}' where ssid='".session_id()."'";    
+    // $result = $mysqli->query($sql);
     $_SESSION['AUID'] = $rs->userid;
     $_SESSION['AUNAME'] = $rs->username;
 
 
     echo "<script>
-      alert('관리자님 반갑습니다');
+      // alert('관리자님 반갑습니다');
+      alert('$rs->username 님 반갑습니다');
        location.href = '/pudding-LMS-website/admin/index.php';
     </script>";
   } else{

@@ -14,6 +14,7 @@ while($rs = $allrc -> fetch_object()){
   $allrsc[] = $rs;
 }
 
+//활성, 비활성 쿠폰개수
 if(isset($allrsc)){
   $coupon_ing = 0;
   $coupon_end = 0;
@@ -29,37 +30,41 @@ if(isset($allrsc)){
 
 
 //필터되어 나타날 쿠폰
+//기본은 모두 나타나도록!
 $sql = "SELECT * from coupons where 1=1";
 $order = ' order by cpid desc';
-$sc_where = '';
+$sc_where = '';//필터, 검색 조건담을 변수
 
 
-//쿠폰 활성/비활성 filter 조건
+//1. 쿠폰 활성/비활성 filter 조건
 $cp_filter = $_GET['coupon_filter']??'';
 $filter_where = '';
-var_dump($cp_filter);
+
+//필터가 빈값이거나 모든쿠폰을 선택하면
 if($cp_filter == '-1' || $cp_filter == ''){
+  //모든 쿠폰 보여주도록
   $filter_where .= " 1=1";
   $sc_where .= '';
+
+//$cp_filter == 0 || $cp_filter == 1 (활성,비활성쿠폰)
 } else{
+  //해당하는 타입의 쿠폰 보여주도록
   $filter_where .= " cp_status='{$cp_filter}'";
   $sc_where .= ' and'.$filter_where;
 }
 
-// var_dump($filter_where);
 
+//2. 검색어(전체쿠폰에서 검색)필터 조건
 $search_where = '';
-//검색어(필터 상관없이 전체쿠폰에서 검색)
 $cp_search = $_GET['search']??'';
-var_dump($cp_search);
+
+//검색어가 있으면 쿠폰 이름에서 찾아서 적용
 if($cp_search){
   $search_where .= " cp_name like '%{$cp_search}%'";
   $sc_where = ' and'.$search_where;
-  //제목과 내용에 키워드가 포함된 상품 조회
 } else{
   $search_where = '';
 }
-var_dump($search_where);
 
 
 
@@ -73,7 +78,6 @@ if($cp_filter !== '' && $search_where === ''){
 } else{
   $pagerwhere = ' 1=1';
 }
-// var_dump($pagerwhere);
 
 
 //필터 없으면 여기서부터 복사! *******
@@ -85,7 +89,7 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 //최종 query문, 실행
 $sqlrc = $sql.$sc_where.$order.$limit; //필터 있
-// $sqlrc = $sql.$limit; //필터 없
+//$sqlrc = $sql.$limit; //필터 없
 //----------------------------------------------pagenation 끝
 
 
@@ -93,7 +97,6 @@ $sqlrc = $sql.$sc_where.$order.$limit; //필터 있
 
 
 
-// var_dump($sqlrc);
 $result = $mysqli -> query($sqlrc);
 while($rs = $result -> fetch_object()){
   $rsc[] = $rs;
@@ -164,7 +167,10 @@ while($rs = $result -> fetch_object()){
             <h3 class="b_text01" title="<?= $coupon->cp_name ?>"><?= $coupon->cp_name ?></h3>
             <p>사용기한 : <?php if($coupon->cp_date == ''){echo '무제한';}else{echo $coupon->cp_date.'개월';} ?></p>
             <p>최소사용금액 : <span class="number"><?= $coupon->cp_limit ?></span>원</p>
-            <p><?php if($coupon->cp_type == '정액'){echo '할인액';}else{echo '할인율';} ?> : <span class="number"><?php if($coupon->cp_type == '정액'){echo $coupon->cp_price;}else{echo $coupon->cp_ratio.'%';} ?></span>원</p>
+            <p>
+              <?php if($coupon->cp_type == '정액'){echo '할인액';}else{echo '할인율';} ?> : 
+              <span class="number"><?php if($coupon->cp_type == '정액'){echo $coupon->cp_price;}else{echo $coupon->cp_ratio;} ?></span><span><?php if($coupon->cp_type == '정액'){echo '원';}else{echo '%';} ?></span>
+            </p>
           </div>
 
           <div class="icons">
