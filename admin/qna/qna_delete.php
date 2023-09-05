@@ -1,17 +1,27 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
+  include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 
-$comment_id = $_POST['comment_id'];
-$comment = $_POST['comment'];
+  $row = $_GET['id'];
+  $sql = "DELETE FROM qna_comments WHERE id='{$row}'";
 
-$sql = "UPDATE qna_comments SET comment = ? WHERE id = ?";
-$stmt = $mysqli->prepare($sql);
-$stmt->bind_param('si', $comment, $comment_id);
-$result = $stmt->execute();
+  if ($conn->query($sql) === TRUE) {
+      echo "<script>
+      alert('글삭제 완료되었습니다.');
+      location.href='../index.php';</script>";
+  } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+  }
 
-if ($result) {
-  header("Location: qna_view.php");
-} else {
-  echo "댓글 수정 실패: " . $mysqli->error;
-}
 ?>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -60,7 +60,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 						// 댓글을 순회하면서 HTML을 생성
 						while($row = $result->fetch_assoc()) {
 							// 댓글의 뎁스에 따라 margin-left를 설정
-							echo "<div class='master shadow_box border' style='margin-left:" . (180 + ($depth * 20)) . "px'>";
+							echo "<div class='master shadow_box border' style='margin-left:" . (180 + ($depth * 30)) . "px'>";
 							echo "<div class='wrap' class='comment-item' data-id='" . $row['id'] . "'>";
 							echo "<img src='image/Master_Big.png' alt='관리자 이미지'>";
 							echo "<div class='you content_stt primary'>프바오</div>";
@@ -326,13 +326,7 @@ $(document).on('click', '.deleteButton', function(e) {
   let commentId = $(this).parent().data('comment-id'); // data-comment-id값
   let self = this; // this값 임시 변수에 저장
 
-  if(confirm('삭제하시겠습니까?')){
-        window.location = 'qna_delete.php?idx=<?= $uid; ?>';
-      }else{
-        alert('취소되었습니다.');
-      }
-    });
-
+    
   $.ajax({
     url: 'qna_delete_ok.php',
     type: 'POST',
