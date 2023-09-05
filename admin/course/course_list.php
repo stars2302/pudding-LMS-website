@@ -48,7 +48,7 @@ $due_status = $_GET['due_status'] ?? '';
 
 
 
-
+//주석
 $search_where = '';
 $cates = $cate1.$cate2.$cate3;
 $levels = $level1.$level1.$level1;
