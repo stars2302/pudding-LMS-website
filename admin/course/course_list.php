@@ -238,7 +238,7 @@ while ($rs2 = $result2->fetch_object()) {
                   </select>
                   <span class="price_btn_wrap">
                     <a href="course_update.php?cid=<?= $item->cid ?>" class="btn btn-primary btn_g">수정</a>
-                    <button class="btn btn-danger">삭제</button>
+                    <a href="course_delete.php?cid=<?= $item->cid ?>" class="btn btn-danger">삭제</a>
                   </span>
                 </span>
               </div>

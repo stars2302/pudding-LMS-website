@@ -25,7 +25,7 @@ $(function () {
 
     if (option2 == "무제한") {
       month.prop("disabled", true);
-      month.val('무제한');
+      month.val("무제한");
     } else {
       month.prop("disabled", false);
     }
@@ -35,7 +35,7 @@ $(function () {
     e.preventDefault();
     // let youtube = $(".youtube:last").clone();
     let youtube =
-      '<div class="youtube2 c_mb mt-3"><div class="row justify-content-between">' +
+      '<div class="youtube c_mb mt-3"><div class="row justify-content-between">' +
       '<div class="col-2 youtube_thumb"><input type="file" class="form-control" name="youtube_thumb[]"/>' +
       "</div>" +
       '<div class="col-3 youtube_name">' +
@@ -54,7 +54,7 @@ $(function () {
     $(".you_upload").append(youtube);
   });
 
-  $(".you_upload").on("click", ".trash_icon", function () {
+  $(".you_upload").on("click", ".bin_icon", function () {
     if ($(".youtube").length > 1) {
       $(this).closest(".youtube").remove();
     }

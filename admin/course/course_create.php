@@ -120,7 +120,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
       <div class="you_upload">
-        <div class="youtube">
+        <div class="you_upload_content">
           <div class="row">
             <div class="col-2 youtube_thumb">
               <P>강의썸네일</P>

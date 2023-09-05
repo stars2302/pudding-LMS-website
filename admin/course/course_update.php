@@ -188,14 +188,14 @@ while($is = $result -> fetch_object()){
       name="thumbnail" 
       id="thumbnail"
       alt="">
-      <img src="<?= $rs->thumbnail?>" alt="">
+      <img src="" alt="">
     </div>
 
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
 
       <div class="you_upload">
-        <div class="youtube1">
+        <div class="you_upload_content">
           <div class="row">
             <div class="col-2">
               <P>강의썸네일</P>
@@ -212,10 +212,10 @@ while($is = $result -> fetch_object()){
           if(isset($addImgs)){
           foreach($addImgs as $ai){
         ?>  
-        <div class="youtube2 c_mb mt-3">
+        <div class="youtube c_mb mt-3">
           <div class="row justify-content-between">
             <div class="col-2 youtube_thumb">
-              <input type="file" class="form-control" name="youtube_thumb[]" value="<?= $ai -> youtube_thumb?>"/>
+              <input type="file" class="form-control" name="youtube_thumb[]"/>
               <img src="<?= $ai -> youtube_thumb?>" alt="">
             </div>
             <div class="col-3 youtube_name">
@@ -251,6 +251,39 @@ while($is = $result -> fetch_object()){
     </div>
   </form>
 </section>
+<script>
+  $(function(){
+    $(".add_listBtn a").click(function (e) {
+    e.preventDefault();
+    // let youtube = $(".youtube:last").clone();
+    let youtube =
+      '<div class="youtube c_mb mt-3"><div class="row justify-content-between">' +
+      '<div class="col-2 youtube_thumb"><input type="file" class="form-control" name="youtube_thumb[]"/>' +
+      "</div>" +
+      '<div class="col-3 youtube_name">' +
+      '<input type="text" class="form-control" name="youtube_name[]" placeholder="강의명을 입력하세요."/>' +
+      "</div>" +
+      '<div class="col-6 youtube_url">' +
+      '<input type="url" class="form-control" name="youtube_url[]" placeholder="강의URL을 넣어주세요."/>' +
+      "</div>" +
+      '<div class="col-1 trash_icon">' +
+      '<i class="ti ti-trash bin_icon"></i>' +
+      "</div>" +
+      "</div>" +
+      "</div>";
+    //youtube.find("input").val("");
+    //youtube.find("img").attr("src", "");
+    $(".you_upload").append(youtube);
+  });
+
+  $(".you_upload").on("click", ".bin_icon", function () {
+    if ($(".youtube").length > 1) {
+      $(this).closest(".youtube").remove();
+    }
+  });
+  })
+</script>
+
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';

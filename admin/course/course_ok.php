@@ -133,7 +133,7 @@
               </script>";
             }
           }
-          $sql1 = "INSERT INTO lecture (cid,youtube_thumb, youtube_name, youtube_url) VALUES ('{$cid}','{$upload_youtube_thumb[$i]}','{$youtube_name[$i]}', '{$youtube_url[$i]}')";
+          $sql1 = "INSERT INTO lecture (cid, l_idx, youtube_thumb, youtube_name, youtube_url) VALUES ({$cid}, {$i}, '{$upload_youtube_thumb[$i]}', '{$youtube_name[$i]}', '{$youtube_url[$i]}')";
           $result2 = $mysqli-> query($sql1);
           }
 
