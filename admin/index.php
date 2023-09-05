@@ -162,13 +162,6 @@ while($rs = $result -> fetch_object()){
                 <div class="noti_con">
                   <p title="<?php echo $nlist->nt_title ?>"><a href="/pudding-LMS-website/admin/notice/notice_list.php?ntid=<?php echo $nlist->ntid ?>"><?php echo $nlist->nt_title ?></a></p>
 
-                  <!-- layout을 위한 임시코드 -->
-                  <!-- <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
-                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
-                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
-                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
-                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p>
-                  <p title="[알림] 서비스 업데이트 및 중요 변경 사항 안내"><a href="#">[알림] 서비스 업데이트 및 중요 변경 사항 안내</a></p> -->
                 </div>
                 <?php
               

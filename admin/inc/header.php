@@ -127,7 +127,7 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
+                <a href="/pudding-LMS-website/admin/users/users.php" class="icon"
                   ><i class="ti ti-user-edit"></i><span>회원 관리</span></a
                 >
               </li>

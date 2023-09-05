@@ -63,7 +63,7 @@ $sql = "SELECT payid, userid, name, total_price, buy_date FROM payments WHERE DA
 
 //필터 없으면 여기서부터 복사! *******
 $pagenationTarget = 'payments'; //pagenation 테이블 명
-$pageContentcount = 6; //페이지 당 보여줄 list 개수
+$pageContentcount = 10; //페이지 당 보여줄 list 개수
 
 //필터 없는 경우 조건 복사해야됨!
 if (!isset($pagerwhere)) {
@@ -80,7 +80,7 @@ $rscc = [];
 while ($rs = $result->fetch_object()) {
     $rscc[] = $rs;
 }
-var_dump($rscc);
+// var_dump($rscc);
 
 
 //----------------------------------------------pagenation 끝
