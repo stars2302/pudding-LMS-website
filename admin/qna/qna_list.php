@@ -21,14 +21,6 @@ $per_page = 10;
   $result = $mysqli->query($sql);
   $row = $result->fetch_array();
   $total_posts = $row[0];
-  
-  // 총 페이지 수
-  // $total_pages = ceil($total_posts / $per_page);
-  // $list_Five = 5;
-  
-  // 시작 게시물
-  // (1-1)*10 = 0, (2-1)*10 = 10 아래꺼 설명
-  // $start = ($current_page - 1) * $per_page;
 
   
 //필터 없으면 여기서부터 복사! *******
