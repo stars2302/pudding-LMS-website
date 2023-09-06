@@ -187,15 +187,35 @@ if ($name) {
   $search_where .= " and name like '%{$name}%'";
 }
 
+$sqlct = "SELECT COUNT(*) as count FROM courses where 1=1".$search_where;
+$sqlctrc = $mysqli->query($sqlct);
+while ($rs = $sqlctrc->fetch_object()) {
+  $sqlctArr[] = $rs;
+}
+$sales_page = $sqlctArr[0]->count;
+
+//필터 없으면 여기서부터 복사! *******
+$pagenationTarget = 'coupons'; //pagenation 테이블 명
+$pageContentcount = 6; //페이지 당 보여줄 list 개수
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
+
+
+//최종 query문, 실행
+
+//$sqlrc = $sql.$limit; //필터 없
+//----------------------------------------------pagenation 끝
+
 
 $sql2 = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
 $sql2 .= $search_where;
 var_dump($sql2);
 $order = " ORDER BY cid DESC"; //최근순 정렬
+$query2 = $sql2.$order.$limit; //필터 있
 //$limit = " limit $statLimit, $endLimit";
 
 // $query = $sql.$order.$limit; //쿼리 문장 조합
-$query2 = $sql2 . $order;
+// $query2 = $sql2 . $order;
 
 $result2 = $mysqli->query($query2);
 
