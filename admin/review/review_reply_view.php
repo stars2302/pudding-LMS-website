@@ -75,7 +75,7 @@ $card = $result->fetch_assoc();
                 </div>
 
                 <div class="d-flex flex-row justify-content-end reply_btn">
-                <a href="review_update.php?rid=<?= $rp["rid"]; ?>&uid=<?= $uid ?>&cid=<?= $cid ?>" class="btn btn-primary b_text01 reply_done">수정</a>
+                <a href="review_reply_update.php?rid=<?= $rp["rid"]; ?>&uid=<?= $uid ?>&cid=<?= $cid ?>" class="btn btn-primary b_text01 reply_done">수정</a>
                     <button class="btn btn-danger b_text01 reply" data-rid="<?= $rp["rid"]; ?>">삭제</button>
                 </div>
             </div>
@@ -111,7 +111,7 @@ $card = $result->fetch_assoc();
           if (confirm("삭제하시겠습니까?")) {
               $.ajax({
                   type: 'POST',
-                  url: 'review_reply_delete.php',
+                  url: 'review_reply_delete_ok.php',
                   data: data,
                   dataType: 'json',
                   success: function(data) {

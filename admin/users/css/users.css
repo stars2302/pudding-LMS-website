@@ -1,0 +1,48 @@
+
+.users_container{
+    width: 100%;
+    padding: 22px 84px;
+    background-color: var(--white_bg);
+    color:var(--dark);
+   }
+   
+
+.users{
+    text-align: center;
+  
+  }
+
+  
+.users thead{
+    font-weight: 700;
+  }
+  
+  .users tbody tr td, .users thead tr th{
+    padding:20px 0px;
+  }
+  
+  .users .col1 , .users .col3{
+     width: 15%;
+  }
+  
+  .users .col2{
+    width: 45%;
+  }
+  
+  
+  .users .col4{
+    width: 25%;
+  }
+
+/* 검색바 */
+.username_keyword_search{
+  gap: calc(var(--base_unit)/2);
+  flex: 1;
+  justify-content: end;
+  margin-right: calc(var(--base_unit)/2);
+  margin-bottom:var(--base_unit);
+}
+
+.username_keyword_search .input-group {
+  width: 50%;
+}

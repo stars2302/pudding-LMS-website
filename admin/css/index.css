@@ -73,7 +73,6 @@ ol, ul {
  }
 .total_values h2 {
   padding-left: 30px;
-  text-align: left;
  }
 .total_values p{
   font-size: 20px;
@@ -126,7 +125,7 @@ ol, ul {
 .noti_con p {
   padding: 5px 0;
   position: relative;
-
+  margin-bottom: 0;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -138,12 +137,3 @@ ol, ul {
   text-decoration: underline;
 }
 
-/* .noti_con p:hover:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  height: 1.5px;
-  background-color: var(--point_primary_hover);
-} */

@@ -92,9 +92,9 @@ while($rs = $result->fetch_object()){
             </div>
             <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
             <?php if ($replyCnt > 0) { ?>
-                    <a href="review_view.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 ">댓글 보기</a>
+                    <a href="review_reply_view.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 ">댓글 보기</a>
                 <?php } else { ?>
-                    <a href="review_create.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-primary b_text01 ">댓글 달기</a>
+                    <a href="review_reply_create.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-primary b_text01 ">댓글 달기</a>
                 <?php } ?>
             </div>
           </div>
@@ -157,7 +157,7 @@ while($rs = $result->fetch_object()){
           if (confirm("삭제하시겠습니까?")) {
               $.ajax({
                   type: 'POST',
-                  url: 'review_delete.php',
+                  url: 'review_delete_ok.php',
                   data: data,
                   dataType: 'json',
                   success: function(data) {
