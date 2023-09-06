@@ -59,7 +59,7 @@ if (isset($_GET['month'])) {
 
 //----------------------------------------------pagenation 시작
 
-$sql = "SELECT payid, userid, name, total_price, buy_date FROM payments WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month'";
+$sql = "SELECT payid, userid, name, total_price, buy_date FROM payments WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month' order by regdate desc";
 
 //필터 없으면 여기서부터 복사! *******
 $pagenationTarget = 'payments'; //pagenation 테이블 명
