@@ -4,208 +4,170 @@ $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+/* 필요 파일 및 라이브러리를 포함하고 초기설정*/
+/* 파라미터 로드 */
+$search_where = '';
 
-unset($_SESSION['viewed_notices']);
 
-// 데이터베이스 연결
-$mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
+$search_keyword = $_GET['keyword']??'';
+$sales_page='';//조건에맞는 page 수
+if(isset($_GET['keyword'])) {
+  //제목과 내용에 키워드가 포함된 상품 조회
+  $keyword = $_GET['keyword'];
+  $search_where = " and (nt_title like '%{$keyword}%' or 
+  nt_content like '%{$keyword}%')";
 
-//연결 확인
-if ($mysqli->connect_error) {
-  die("연결실패:" . $mysqli->connect_error);
+  //조건에맞는 page 수
+  $sqlaa = "SELECT COUNT(*) as count FROM notice WHERE (nt_title like '%{$keyword}%' or nt_content like '%{$keyword}%')";
+  $result = $mysqli->query($sqlaa);
+  while ($rs = $result->fetch_object()) {
+    $rscaa[] = $rs;
+  }
+  $sales_page = $rscaa[0]->count;
+}
+var_dump($sales_page);
+
+$sql = "SELECT * from notice where 1=1";
+// $sql.= $search_where;
+$order = " order by ntid desc";
+
+//필터 없는 경우 조건 복사해야됨!
+if(!isset($pagerwhere)){
+  $pagerwhere = ' 1=1';
 }
 
-//검색어 수집
-$search_con = isset($_GET['search']) ? $_GET['search'] : '';
-
-//한 페이지 당 표시할 항목 수
-$items_per_page = 10;
-//페이지 네이션 갯수
-$block_ct = 5;
-
-//전체글 개수 확인 
-$pagesql = "SELECT COUNT(*) AS cnt FROM notice";
-$page_result = $mysqli->query($pagesql);
-$page_row = $page_result->fetch_assoc();
-$row_num = $page_row['cnt']; //글의 총 갯수
-
-//전체 페이지 수 계산
-$total_pages = ceil($row_num / $items_per_page);
+//필터 없으면 여기서부터 복사! *******
+$pagenationTarget = 'notice'; //pagenation 테이블 명
+$pageContentcount = 10; //페이지 당 보여줄 list 개수
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
 
 
-//현재 페이지 번호 가져오기
-$current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-
-//이전페이지 및 다음 페이지 링크
-$prev_page = ($current_page > 1) ? $current_page - 1 : 1;
-$next_page = ($current_page <  $total_pages) ? $current_page + 1 : $total_pages;
-
-//페이지네이션 갯수 설정
-$start_page = max($current_page - floor($block_ct / 2), 1);
-$end_page = min($start_page + $block_ct - 1, $total_pages);
-
-//이전 페이지 링크 생성
-$prev_link = ($current_page > 1) ? "?page={$prev_page}" : "#";
+//최종 query문, 실행
+$sqlrc = $sql.$search_where.$order.$limit; //필터 있
+//$sqlrc = $sql.$limit; //필터 없
 
 
-//다음 페이지 링크 생성
-$next_link = ($current_page < $total_pages) ? "?page={$next_page}" : "#";
+$result = $mysqli -> query($sqlrc);
+while($rs = $result -> fetch_object()){
+  $rsc[] = $rs;
 
-
-//SQL 쿼리를 통해 데이터를 조회 (페이징 적용)
-$start_item = ($current_page - 1) * $items_per_page;
-$sql = "SELECT * FROM notice order by ntid desc";
-
-
-
-$result = $mysqli->query($sql);
-
-//결과 확인
-if ($result) {
-  //루프 내용을 실행
+} 
 ?>
-
-  <section>
+<section>
     <h2 class="main_tt">공지사항</h2>
     <div class="notice_top shadow_box border d-flex justify-content-between">
       <form class="notice_top_left d-flex align-items-center" action="" method="get">
-        <input type="text" name="search" size="20" class="input form-control" placeholder="공지사항을 검색하세요" aria-label="Username">
-        <button class="btn btn-dark">검색</button>
+      <input type="text" class="input form-control" id="searchInput" placeholder="제목 + 내용 검색" aria-label="Search"
+         name="keyword">
+        <button class="btn btn-dark" id="searchInput">검색</button>              
       </form>
       <div class="d-flex align-items-center">
-        <a class="btn btn-dark" href="notice_create.php">게시물 등록</a>
+        <a class="btn btn-dark" href="notice_create.php">게시물 등록</a>              
       </div>
-    </div>
+    </div>     
     <table class="notice_body table shadow_box border">
-      <colgroup>
-        <col class="col1">
-        <col class="col2">
-        <col class="col1">
-        <col class="col3">
-        <col class="col3">
+      <colgroup>  
+      <col class="col2">
+      <col class="col3">
+        <col class="col4">
+        <col class="col5">
       </colgroup>
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col" class="">
-            <span>번호</span>
-          </th>
+        <thead class="thead-dark">
+          <tr>
           <th scope="col" class="no_mp ">
-            <span>제목</span>
-          </th>
-          <th scope="col" class="no_mp ">
-            <span>일자</span>
-          </th>
-          <th scope="col" class="no_mp ">
-            <span>조회수</span>
-          </th>
-          <th scope="col" class="no_mp ">
-            <span>편집</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
+              <span>제목</span>
+            </th>
+            <th scope="col" class="no_mp ">
+              <span>일자</span>
+            </th>
+            <th scope="col" class="no_mp ">
+              <span>조회수</span>
+            </th>
+            <th scope="col" class="no_mp ">
+              <span>편집</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>          
+          <?php
+            if(isset($rsc)){
+              foreach($rsc as $item){            
+            ?>
+            <tr data-prt="<?=$item -> ntid;?>" class="prt">
+            <td class="no_mp title">
+              <a href="notice_view.php?ntid=<?=$item -> ntid;?>">
+                <?= $item -> nt_title; ?>
+              </a>
+            </td>
+            <td class="no_mp">
+              <?= date('Y-m-d', strtotime($item -> nt_regdate)) ;?>
+            </td>
+            <td class="no_mp">
+            <?= $item -> nt_read_cnt;?>
+            </td>
+            <td>
+              <div class="icon_group">
+                <a href="notice_update.php?ntid=<?=$item -> ntid;?>"><i class="ti ti-edit pen_icon"></i></a>
+                <a href="#"></a><i class="ti ti-trash bin_icon del_btn"></i></a>
+              </div>
+            </td>
+          </tr>                 
+          <?php
+          }
+        } else {
+          ?>
+            <tr><td colspan="5">검색 결과가 없습니다</td></tr>
+          <?php
+        } ?>
+        </tbody>
+      </table>
+ <!-- ***------------------------- pagination - 시작 -------------------------*** -->
+ <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+      <ul class="pagination coupon_pager">
         <?php
-        while ($row = $result->fetch_assoc()) {
-          // 조회수 증가 로직
-          $ntid = $row["ntid"];
-          $nt_read_cnt = $row["nt_read_cnt"];
+          if($pageNumber>1 && $block_num > 1 ){
+            //이전버튼 활성화
+            $prev = ($block_num - 2) * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          } else{
+            //이전버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          }
 
-          //이미 조회한 공지사항인지 확인
-          $viewed_notices = isset($_SESSION['viewed_notices']) ? $_SESSION['viewed_notices'] : [];
 
-          if (!in_array($ntid, $viewed_notices)) {
-            //조회한 공지사항을 세션에 저장
-            $_SESSION['viewed_notices'][] = $ntid;
-
-            //검색어가 없거나 제목 또는 내용에 검색어가 포함된 경우만 출력
-            if (
-              empty($search_con) ||
-              stripos($row["nt_title"], $search_con) !== false ||
-              stripos($row["nt_content"], $search_con) !== false
-            ) {
-
-              echo "<tr>";
-              echo "<td class='no_mp'>{$ntid}</td>";
-              // 공지사항 제목을 검색 링크로 변경
-              echo "<td class='no_mp'><a href='notice_view.php?ntid={$ntid}'>{$row["nt_title"]}</a></td>";
-              echo "<td class='no_mp'>" . date("Y-m-d", strtotime($row["nt_regdate"])) . "</td>";
-              echo "<td class='no_mp'>{$nt_read_cnt}</td>";
-              echo "<td>";
-              echo "<div class='icon_group'>";
-              echo "<a href='notice_update.php?ntid={$ntid}'><i class='ti ti-edit pen_icon'></i></a>";
-              echo "<i class='ti ti-trash bin_icon' data-ntid='{$ntid}'></i>";
-              echo "</div>";
-              echo "</td>";
-              echo "</tr>";
+          for($i=$block_start;$i<=$block_end;$i++){
+            if($pageNumber == $i){
+                //필터 있
+                echo "<li class=\"page-item active\"><a href=\"?keyword=$search_keyword&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                // echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }else{
+                //필터 있
+                echo "<li class=\"page-item\"><a href=\"?keyword=$search_keyword&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                // echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
-        }
+
+
+          if($pageNumber<$total_page && $block_num < $total_block){
+            //다음버튼 활성화
+            $next = $block_num * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+          } else{
+            //다음버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+
+          }
         ?>
-      </tbody>
-    </table>
-    <!-- 페이지네이션 -->
-    <?php
-    echo "<nav aria-label='Page navigation example'>";
-    echo "<ul class='pagination justify-content-center'>";
-    if ($current_page > 1) {
-      echo "<li class='page-item'><a class='page-link' href='?page=1'>처음</a></li>";
-      echo "<li class='page-item'><a class='page-link' href='{$prev_link}'>이전</a></li>";
-    }
-    for ($i = $start_page; $i <= $end_page; $i++) {
-      $active_class = ($i == $current_page) ? 'active' : '';
-      echo "<li class='page-item 
-      {$active_class}'><a class='page-link' 
-      href='?page={$i}'>{$i}</a></li>";
-    }
-    if ($end_page < $total_pages) {
-      echo "<li class='page-item'><a class='page-link'href='{$next_link}'>다음</a></li>";
-      echo "<li class='page-item'><a class='page-link'href='?page={$total_pages}'>끝</a></li>";
-    }
-    echo "</ul>";
-    echo "</nav>";
-    ?>
-    </ul>
+      </ul>
     </nav>
-  </section>
-<?php
-} else {
-  echo "데이터조회 실패 " . $mysqli->error;
-
-
-  //페이지네이션 변수 설정
-  $prev_page = $current_page - 1;
-  $next_page = $current_page + 1;
-
-  //이전 페이지 및 다음 페이지 링크
-  $prev_link = ($prev_page >= 1) ? "?page={$prev_page}" : "#";
-  $next = ($next_page <= $total_pages) ? "?page={$next_page}" : "#";
-}
-?>
-
-
-<script>
-  $('.bin_icon').click(function(e) {
-    e.preventDefault();
-    let ntid = $(this).data('ntid'); //데이터 속성으로 ntid 로드
-    if (confirm('삭제하시겠습니까?')) {
-      $.ajax({
-        type: 'POST',
-        url: 'notice_delete_ok.php',
-        data: {
-          ntid: ntid
-        },
-        success: function(response) {
-          location.reload();
-        },
-        error: function() {
-          alert('삭제 실패');
-        }
-      });
-    } else {
-      alert('취소되었습니다.');
-    }
-  });
-</script>
+    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
+  </section>  
+</div>
+<!-- content_wrap -->
+</div>
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
 ?>

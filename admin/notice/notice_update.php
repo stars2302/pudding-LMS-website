@@ -3,12 +3,10 @@ $title = "공지사항 등록";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
-
 $ntid =$_GET['ntid'];
 $sql = "SELECT * FROM notice WHERE ntid='{$ntid}'";
 $result = $mysqli->query($sql);
 $sqlarr = $result -> fetch_object();
-
 ?>
 <section>
 <h2 class="main_tt">공지사항 수정</h2>
@@ -27,7 +25,7 @@ $sqlarr = $result -> fetch_object();
     </textarea>
   </div>  
   <div class="notice_create_form_div">
-    <label for="image"><h3 class="content_tt">파일첨부</h3></label>
+  <label for="image"><h3 class="content_tt">파일첨부</h3></label>
     <input type="file" id="image" name="nt_filename" class="notice_create_input form-control" aria-label="Username" 
     value="">    
   </div>

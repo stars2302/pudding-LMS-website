@@ -1,13 +1,10 @@
 <?php
 session_start();
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
-
   $ntid = $_POST['ntid'];
    $nt_regdate = date('Y-m-d');
    $nt_title = $_POST["nt_title"];
    $nt_content = $_POST["nt_content"];
-
-
    $sql = "SELECT nt_filename FROM notice WHERE ntid='{$ntid}'";
    $result = $mysqli->query($sql);
    $sqlarr = $result -> fetch_object();
@@ -36,7 +33,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
     $ext = pathinfo($filename, PATHINFO_EXTENSION); //jpg    
     $newfilename = date("YmdHis") . substr(rand(), 0, 6); //20238171184015
     $thumbnail = $newfilename . "." . $ext; //20238171184015.jpg
-    
+
+
     
     if (move_uploaded_file($_FILES['nt_filename']['tmp_name'], $save_dir . $thumbnail)) {
         $nt_filename = "/pudding-LMS-website/admin/images/notice/". $thumbnail;
@@ -48,6 +46,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
         exit;
     }
     }     
+
+
 
 
   //update 테이블명 set 컬럼명1='수정된 값', 컬럼명2='수정된 값' where 조건;
@@ -62,13 +62,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
       nt_filename='{$nt_filename}', 
       nt_regdate='{$nt_regdate}' 
       WHERE ntid='{$ntid}'";
-
-
   $result = $mysqli -> query($sql);
-
   if ($result === TRUE) {    
       echo "<script>
       alert('글수정 완료되었습니다.');
+
       location.replace('notice_list.php');
       </script>";          
   }  else {
@@ -76,4 +74,3 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
   }
 $mysqli->close();
 ?>
-
