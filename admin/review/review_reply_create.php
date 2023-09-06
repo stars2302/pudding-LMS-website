@@ -55,7 +55,7 @@ $card = $result->fetch_assoc();
                 <h5 class="b_text01 primary review_user">프바오</h5>
                 <!-- <h5 class="b_text02 dark review_name">2023-08-21</h5> -->
               </div>
-              <form class="b_text02 reply_content border" action="review_create_ok.php?rid=<?=$rid?>" method="POST" >
+              <form class="b_text02 reply_content border" action="review_reply_create_ok.php?rid=<?=$rid?>" method="POST" >
               <input type="hidden" name="cid" value="<?=$cid?>">
               <input type="hidden" name="uid" value="<?=$uid?>">
                 <!-- <p>PHP를 배우기 위해서 급하게 들은 강의였는데, 생각보다 너무 친절하게 많은 예시를 들어 설명해주셔서

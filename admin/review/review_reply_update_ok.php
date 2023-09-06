@@ -14,8 +14,8 @@ $sql = "UPDATE review_reply SET r_content='{$content}',r_regdate='{$date}' WHERE
 // Check connection
 if ($mysqli->query($sql) === TRUE) {
     echo "<script>
-    alert('글쓰기 완료되었습니다.');
-    location.href='/pudding-LMS-website/admin/review/review_view.php?rid={$rid}&uid={$uid}&cid={$cid}';</script>";
+    alert('댓글쓰기 수정완료되었습니다.');
+    location.href='/pudding-LMS-website/admin/review/review_reply_view.php?rid={$rid}&uid={$uid}&cid={$cid}';</script>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

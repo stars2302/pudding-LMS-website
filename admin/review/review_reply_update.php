@@ -61,7 +61,7 @@ $rp = $rresult->fetch_assoc();
       <!-- <div class="review_del">
         <a href="" class="icon"> <i class="ti ti-trash bin_icon"></i></a>
       </div> -->
-      <form class="b_text02 review_c_content border" action="review_update_ok.php?rid=<?= $rp["rid"]; ?>" method="POST">
+      <form class="b_text02 review_c_content border" action="review_reply_update_ok.php?rid=<?= $rp["rid"]; ?>" method="POST">
         <input type="hidden" name="cid" value="<?= $card["cid"]; ?>">
         <input type="hidden" name="uid" value="<?= $card["uid"]; ?>">
         <div class="d-flex align-items-center">
@@ -76,7 +76,7 @@ $rp = $rresult->fetch_assoc();
     
         <div class="d-flex flex-row justify-content-end reply_btn">
           <button  class="btn btn-primary b_text01 reply_done">수정 완료</button>
-          <a href="review_view.php?rid=<?= $rp["rid"]; ?>&uid=<?= $card["uid"]; ?>&cid=<?= $card["cid"]; ?>" class="btn btn-dark b_text01 reply">수정 취소</a>
+          <a href="review_reply_view.php?rid=<?= $rp["rid"]; ?>&uid=<?= $card["uid"]; ?>&cid=<?= $card["cid"]; ?>" class="btn btn-dark b_text01 reply">수정 취소</a>
         </div>
       </form>
     
