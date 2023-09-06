@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 23-08-29 14:18
+-- 생성 시간: 23-09-01 15:05
 -- 서버 버전: 10.4.28-MariaDB
 -- PHP 버전: 8.2.4
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `password` varchar(200) NOT NULL,
   `regdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 테이블의 덤프 데이터 `admin`
+--
+
+INSERT INTO `admin` (`idx`, `userid`, `email`, `username`, `password`, `regdate`) VALUES
+(3, 'admin', 'admin@pudding.com', '프바오', '33275a8aa48ea918bd53a9181aa975f15ab0d0645398f5918a006d08675c1cb27d5c645dbd084eee56e675e25ba4019f2ecea37ca9e2995b49fcb12c096a032e', '2023-09-01 12:41:58');
 
 -- --------------------------------------------------------
 
@@ -149,8 +156,65 @@ CREATE TABLE `notice` (
   `nt_title` varchar(100) NOT NULL,
   `nt_filename` varchar(100) DEFAULT NULL,
   `nt_read_cnt` int(4) NOT NULL,
-  `nt_content` text NOT NULL
+  `nt_content` text NOT NULL,
+  `nt_regdate` datetime DEFAULT NULL,
+  `userid` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 테이블의 덤프 데이터 `notice`
+--
+
+INSERT INTO `notice` (`ntid`, `nt_title`, `nt_filename`, `nt_read_cnt`, `nt_content`, `nt_regdate`, `userid`) VALUES
+(68, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(69, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(70, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(71, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(72, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(73, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(75, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(76, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(77, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(78, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(79, 'dsf', 'sfd', 2, 'saf', NULL, ''),
+(80, 'dsf', 'sfd', 3, 'saf', NULL, ''),
+(81, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(82, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(83, 'dsf', 'sfd', 10, 'saf', NULL, ''),
+(84, 'dsf', 'sfd', 12, 'saf', NULL, ''),
+(85, '', 'sfd', 0, '', NULL, ''),
+(110, 'ㄹㄴㅇㅁ', 'Sub_ride_03.png', 1, '', '2023-09-01 00:00:00', ''),
+(111, 'ㄴㅇㄹㄹㄴㅇ', 'Sub_ride_01.png', 0, '', '2023-09-01 00:00:00', ''),
+(112, '', NULL, 0, '', NULL, ''),
+(113, '', NULL, 0, '', NULL, ''),
+(114, '', NULL, 0, '', NULL, ''),
+(115, '', NULL, 0, '', NULL, ''),
+(116, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(117, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(118, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(119, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(120, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(121, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(122, '', NULL, 0, '', NULL, ''),
+(123, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(124, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(125, 'dsf', 'sfd', 0, 'saf', NULL, ''),
+(126, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(127, 'dsf', 'sfd', 2, 'saf', NULL, ''),
+(128, 'dsf', 'sfd', 3, 'saf', NULL, ''),
+(129, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(130, 'dsf', 'sfd', 1, 'saf', NULL, ''),
+(131, 'dsf', 'sfd', 10, 'saf', NULL, ''),
+(132, 'dsf', 'sfd', 16, 'saf', NULL, ''),
+(133, '', 'sfd', 0, '', NULL, ''),
+(134, '', NULL, 0, '', NULL, ''),
+(135, '', NULL, 0, '', NULL, ''),
+(136, '', '', 0, '', NULL, ''),
+(164, 'ㄹㄴㅇㅇ', 'Sub_ride_01.png', 19, '', '2023-09-01 00:00:00', ''),
+(165, 'SF', 'inflearn_dashboard_강의관리_01.png', 3, '', '2023-09-01 00:00:00', ''),
+(166, 'ㄹㄴㄹㅇ', '', 3, '', '2023-09-01 00:00:00', ''),
+(167, 'fsdf', '', 2, '', '2023-09-01 00:00:00', ''),
+(168, 'ㄹㄴㅁㅇㄹㄴㅇㅁ', '', 1, '', '2023-09-01 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -301,7 +365,7 @@ ALTER TABLE `users`
 -- 테이블의 AUTO_INCREMENT `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 테이블의 AUTO_INCREMENT `category`
@@ -343,7 +407,7 @@ ALTER TABLE `lecture`
 -- 테이블의 AUTO_INCREMENT `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `ntid` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `ntid` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- 테이블의 AUTO_INCREMENT `payments`

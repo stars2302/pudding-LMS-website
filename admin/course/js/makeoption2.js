@@ -1,86 +1,47 @@
-// echo "<script>location.href='URL 또는 경로'</script>";
+$("#cate1").on("click", "li", function () {
+  console.log($(this));
+  makeOption2($(this), 2, $("#cate2"));
 
-$('#cate1').on('change',function(){
-  categoryList();
-
-
+  //카테고리 재선택시, 중/소 분류 초기화
+  $(".big_cate button").text($(this).find("span").text());
+  $("#cate1").on("click", "li", function () {
+    $(".md_cate button").text("중분류");
+    $(".sm_cate button").text("소분류");
+  });
 }); //cate1 change
 
-$('#cate2').on('change',function(){
-  categoryList();
 
+$("#cate2").on("click", "li", function () {
+  makeOption2($(this), 3, $("#cate3"));
+  $(".md_cate button").text($(this).find("span").text());
 }); //cate2 change
 
-$('#pcode2_1').on('change',function(){
-  categoryList();
 
-}); //Modal3 select change
+$("#cate3").on("click", "li", function () {
+  $(".sm_cate button").text($(this).find("span").text());
+}); //cate3 change
 
-
-
-function categoryList(evt, step, category, target){
-  let cate = evt.val();
-
-  let data = { 
-    cate : cate,  //부모 분류의 cid
+function makeOption2(evt, step, target) {
+  let cate = evt.attr("data-cate");
+  let data = {
+    cate: cate, //부모 분류의 cid
     step: step,
-    category: category
-  }
+  };
+  console.log(data);
 
   $.ajax({
-    async : false, //sucess의 결과 나오면 이후 작업 수행
-    type: 'POST', //변수명cate1의 값을 전달할 방식 post      
+    async: false, //sucess의 결과 나오면 이후 작업 수행
+    type: "POST", //변수명cate1의 값을 전달할 방식 post
     data: data, //data객체의 값을 data property 할당
-    url: "print_option.php", 
-    dataType: 'html', //success성공후 printOption.php가 반환하는 데이터의 형식  <option></option>
-    success: function(result){
-      console.log(result);
+    url: "print_option2.php",
+    dataType: "html", //success성공후 printOption.php가 반환하는 데이터의 형식  <option></option>
+    error: function (error) {
+      console.log(error);
+    },
+    success: function (result) {
+      //console.log(target)
       target.html(result);
-    }
-  });//ajax
+    },
+  }); //ajax
 }
 
-
-  // AJAX 요청 또는 페이지 리로딩을 통해 선택한 값 서버로 전송
-  // 아래 예시는 페이지 리로딩을 통해 GET 요청 전송
-let selectedOption = '';
-let selectedOption2 = '';
-
-/*
-function categoryList() {
-  var selectedOption = $('#cate1').val();
-  var table = $('.cate_name');
-
-  window.location.href = "category.php?cate1=" + selectedOption;
-}
-function categoryList2() {
-  var selectedOption2 = $('#cate2').val();
-  var table = $('.cate_name');
-
-  window.location.href = "category.php?cate1=" + selectedOption + "?cate2=" + selectedOption2;
-}
-*/
-
-
-function categoryList(evt, step, category, target){
-  let cate = evt.val();
-  //console.log(cate);
-
-  let data = { 
-    cate : cate,  //부모 분류의 cid
-    step: step,
-    category: category
-  }
-
-  $.ajax({
-    async : false, //sucess의 결과 나오면 이후 작업 수행
-    type: 'POST', //변수명cate1의 값을 전달할 방식 post      
-    data: data, //data객체의 값을 data property 할당
-    url: "print_option.php", 
-    dataType: 'html', //success성공후 printOption.php가 반환하는 데이터의 형식  <option></option>
-    success: function(result){
-      console.log(result);
-      target.html(result);
-    }
-  });//ajax
-}

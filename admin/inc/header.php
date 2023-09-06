@@ -4,11 +4,33 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-16x16.png">
+    <link rel="manifest" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
     <title><?php if(isset($title)){echo $title;} else { echo 'home';}; ?> - PUDDING</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- reset css -->
     <link
       rel="stylesheet"
@@ -101,7 +123,7 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/sales/sales.php" class="icon"
+                <a href="/pudding-LMS-website/admin/sales/sales_list.php" class="icon"
                   ><i class="ti ti-coins"></i><span>매출 관리</span></a
                 >
               </li>
@@ -117,25 +139,23 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/notice/notice.php" class="icon"
+                <a href="/pudding-LMS-website/admin/notice/notice_list.php" class="icon"
                   ><i class="ti ti-clipboard-text"></i><span>공지사항</span></a
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
+                <a href="/pudding-LMS-website/admin/qna/qna_list.php" class="icon"
                   ><i class="ti ti-zoom-question"></i><span>Q&A</span></a
+                >
+              </li>
+              <li>
+                <a href="/pudding-LMS-website/admin/users/users_list.php" class="icon"
+                  ><i class="ti ti-user-edit"></i><span>회원 관리</span></a
                 >
               </li>
             </ul>
           </nav>
-          <div
-            class="profile d-flex justify-content-between align-items-center border"
-          >
-            <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
-            <h2 class="content_stt">프바오</h2>
-            <p>admins</p>
-          </div>
-          <a href="/pudding-LMS-website/admin/logout.php" class="logout b_text02">로그아웃</a>
+          <a href="/pudding-LMS-website/admin/logout.php" class="logout b_text02 btn btn-primary" style="line-height:45px">로그아웃</a>
         </div>
       </header>
 
@@ -168,7 +188,8 @@
             </svg>
             <div class="red_bell d-flex justify-content-center align-items-center">1</div>
           </div>
-          <div class="profile">
+          <div class="profile d-flex align-items-center">
             <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
+            <h2 class="b_text02 bold">프바오<span>admins</span></h2>
           </div>
         </div>

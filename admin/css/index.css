@@ -73,7 +73,6 @@ ol, ul {
  }
 .total_values h2 {
   padding-left: 30px;
-  text-align: left;
  }
 .total_values p{
   font-size: 20px;
@@ -114,3 +113,29 @@ ol, ul {
 .category_wrap canvas{
   margin: 0 auto;
 }
+
+.chart,.notice {
+  height: 400px;
+}
+
+.noti_con {
+  padding: 10px var(--base_unit);
+}
+
+.noti_con p {
+  padding: 5px 0;
+  position: relative;
+  margin-bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.noti_con p:hover {
+  color: var(--point_primary_hover);
+  text-decoration: underline;
+}
+
+
+

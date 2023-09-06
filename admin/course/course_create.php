@@ -1,134 +1,150 @@
 <?php
-$title="대시보드";
+ $title="대시보드";
  $css_route="course/css/course.css";
  $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
 ?>
+
+
 
 <section>
   <div class="course_title tt_mb">
     <h1>강의 등록</h1>
   </div>
-  <form action="">
+  <form action="course_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
+    <input type="hidden" name="video_table_id" id="video_table_id" value="">
+    <input type="hidden" name="content" id="content" value="">
     <div class="categorywrap">
       <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
             <option disabled selected>대분류 선택</option>
-            <option value="1">대분류1</option>
+            <?php
+              foreach($cate1 as $c){            
+            ?>
+              <option value="<?php echo $c->cateid ?>"><?php echo $c->name ?></option>
+            <?php } ?>
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="cate2" name="cate2">
             <option disabled selected>중분류 선택</option>
-            <option value="1">중분류1</option>
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="cate3" name="cate3">
             <option disabled selected>소분류 선택</option>
-            <option value="1">소분류1</option>
           </select>
         </div>
       </div>
     </div>
 
     <div class="course_name c_mt">
-      <label for="formGroupExampleInput" class="form-label content_tt c_mb">강의명</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="강의명을 입력하세요."/>
+      <label for="name" class="form-label content_tt c_mb">강의명</label>
+      <input type="text" class="form-control" name="name" id="name" placeholder="강의명을 입력하세요." required/>
     </div>
 
     <div class="section3 d-flex gap-5 c_mt">
         <div class="row price_select">
-          <label for="formGroupExampleInput2" class="form-label content_tt c_mb">강의가격</label>
+          <label for="price_status" class="form-label content_tt c_mb">강의가격</label>
           <div class="col">
-            <select class="form-select" id="price_menu" aria-label="Default select example">
-              <option value="유료" selected>유료</option>
-              <option value="무료">무료</option>
+            <select class="form-select" name="price_status" id="price_menu" aria-label="Default select example">
+              <option name="price" value="유료" selected>유료</option>
+              <option name="price" value="무료">무료</option>
             </select>
           </div>
           <div class="col price">
-            <input type="number" class="form-control" id="formGroupExampleInput2" min="10000" max="1000000" step="10000"/>
+            <input type="number" class="form-control" name="price" id="price" min="10000" max="1000000" step="10000" value="0" placeholder="금액"/>
           </div>
         </div>
-        <div class="row level_select level_status">
-          <label for="formGroupExampleInput2" class="form-label content_tt c_mb">난이도</label>
-          <div class="col-md-2">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-            <label class="form-check-label" for="inlineRadio1">초급</label>
+        <div class="row level level_status">
+          <label class="form-label content_tt c_mb">난이도</label>
+          <div class="col">
+            <input class="form-check-input" type="radio" name="level" id="low" value="초급"/>
+            <label class="form-check-label" for="low">초급</label>
           </div>
-          <div class="col-md-2">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-            <label class="form-check-label" for="inlineRadio2">중급</label>
+          <div class="col">
+            <input class="form-check-input" type="radio" name="level" id="middle" value="중급"/>
+            <label class="form-check-label" for="middle">중급</label>
           </div>
-          <div class="col-md-2">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"/>
-            <label class="form-check-label" for="inlineRadio3">고급</label>
+          <div class="col">
+            <input class="form-check-input" type="radio" name="level" id="high" value="고급"/>
+            <label class="form-check-label" for="high">고급</label>
           </div>
         </div>
     </div>
 
     <div class="periodwrap d-flex gap-5 c_mt">
       <div class="row period mb-6">
-        <label for="formGroupExampleInput2" class="form-label content_tt c_mb">수강기간</label>
+        <label class="form-label content_tt c_mb">수강기간</label>
         <div class="col period_select1">
-          <select class="form-select" id="limit" aria-label="Default select example">
+          <select class="form-select" name="due_status" id="due_status" aria-label="Default select example">
             <option value="제한" selected>제한</option>
             <option value="무제한">무제한</option>
           </select>
         </div>
-        <div class="col h5eriod_select2">
-          <select class="form-select month" aria-label="Default select examh5le">
-            <oh5tion selected disabled>기간선택</oh5tion>
-            <option>3개월</option>
-            <option>6개월</option>
-            <option>9개월</option>
-            <option>12개월</option>
+        <div class="col period_select2">
+          <select class="form-select" name="due" id="due" aria-label="Default select examh5le">
+            <option value="" selected disabled>기간선택</option>
+            <option value="무제한">무제한</option>
+            <option value="3개월">3개월</option>
+            <option value="6개월">6개월</option>
+            <option value="9개월">9개월</option>
+            <option value="12개월">12개월</option>
           </select>
         </div>
       </div>
       <div class="row act">
-        <label for="inlineRadio1" class="form-check-label content_tt c_mb">상태</label>
-        <div class="col-md-3 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-          <label class="form-check-label" for="inlineRadio1">활성</label>
+        <label class="form-check-label content_tt c_mb">상태</label>
+        <div class="col-2 d-flex align-items-center level_status">
+          <input class="form-check-input" type="radio" name="act" id="active" value="활성"/>
+          <label class="form-check-label" for="active">활성</label>
         </div>
-        <div class="col-md-3 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-          <label class="form-check-label" for="inlineRadio2">비활성</label>
+        <div class="col-2 d-flex align-items-center level_status">
+          <input class="form-check-input" type="radio" name="act" id="inactive" value="비활성"/>
+          <label class="form-check-label" for="inactive">비활성</label>
         </div>
       </div>
     </div>  
 
     <div class="content_detail c_mt">
-      <label class="form-check-label content_tt c_mb" for="inlineRadio2">상세내용</label>
+      <h3 class="content_tt c_mb">상세내용</h3>
       <div id="product_detail"></div>
     </div>
 
     <div class="file_input c_mt">
-      <label for="formGroupExampleInput" class="form-label content_tt c_mb">첨부파일</label>
-      <input type="file" class="form-control" id="formGroupExampleInput"/>
-    </div>
-
-    <div class="drag_drop c_mt">
-      <label for="formGroupExampleInput" class="form-label content_tt c_mb">추가이미지 업로드</label>
-      <div id="drop" class="box">
-        <span>이미지를 드래그해서 올려주세요</span>
-        <div id="thumbnails" class="d-flex justify-content-start"></div>
-      </div>
+      <label for="thumbnail" class="form-label content_tt c_mb">썸네일</label>
+      <input type="file" class="form-control" name="thumbnail" id="thumbnail"/>
     </div>
 
     <div class="upload c_mt">
-      <label for="formGroupExampleInput" class="form-label content_tt c_mb">강의영상 업로드</label>
+      <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
       <div class="you_upload">
+        <div class="youtube">
+          <div class="row">
+            <div class="col-2 youtube_thumb">
+              <P>강의썸네일</P>
+            </div>
+            <div class="col-3 youtube_name">
+              <P>강의명</P>
+            </div>
+            <div class="col-6 youtube_url">
+              <P>강의url</P>
+            </div>
+          </div>
+        </div>
         <div class="youtube c_mb">
           <div class="row justify-content-between">
-            <div class="col-4 youtube_name">
-              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="강의명을 입력하세요"/>
+            <div class="col-2 youtube_thumb">
+              <input type="file" class="form-control" name="youtube_thumb[]" id="youtube_thumb"/>
             </div>
-            <div class="col-7 youtube_url">
-              <input type="url" class="form-control" id="formGroupExampleInput2" placeholder="강의URL을 넣어주세요"/>
+            <div class="col-3 youtube_name">
+              <input type="text" class="form-control" name="youtube_name[]" id="youtube_name" placeholder="강의명을 입력하세요"/>
+            </div>
+            <div class="col-6 youtube_url">
+              <input type="url" class="form-control" name="youtube_url[]" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
             </div>
             <div class="col-1 trash_icon">
               <i class="ti ti-trash bin_icon"></i>
@@ -153,7 +169,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
     </div>
   </form>
 </section>
-
+<script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>
