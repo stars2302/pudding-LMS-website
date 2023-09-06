@@ -101,7 +101,7 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/sales/sales.php" class="icon"
+                <a href="/pudding-LMS-website/admin/sales/sales_list.php" class="icon"
                   ><i class="ti ti-coins"></i><span>매출 관리</span></a
                 >
               </li>
