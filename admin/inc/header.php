@@ -4,7 +4,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -127,7 +127,7 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/users/users.php" class="icon"
+                <a href="/pudding-LMS-website/admin/users/users_list.php" class="icon"
                   ><i class="ti ti-user-edit"></i><span>회원 관리</span></a
                 >
               </li>

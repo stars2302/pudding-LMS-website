@@ -12,22 +12,16 @@ $search_where = '';
 $user_search = $_GET['search'] ?? '';
 
 // 검색어가 있으면 유저이름에서 찾아서 적용
-if ($user_search) {
+if ($user_search !=="") {
     $search_where .= " username LIKE '%{$user_search}%'";
     $sc_where = ' AND' . $search_where;
 } else {
-    $search_where = '';
+    $search_where = ' 1=1';
 }
 
 $pagerwhere = $search_where;
 
 //----------------------------------------------pagenation 시작
-// pagenation 필터 조건문 (필터 없으면 필요없음)
-if ($search_where === '') {
-    $pagerwhere = $search_where;
-} else {
-    $pagerwhere = ' 1=1';
-}
 
 // 필터 없으면 여기서부터 복사!
 $pagenationTarget = 'users'; // pagenation 테이블 명
@@ -38,11 +32,10 @@ $pageCount = $pageContentcount;
 $startLimit = ($pageNumber - 1) * $pageCount;
 
 // 전체 게시물 수 구하기
-$pagesql = "SELECT COUNT(*) as cnt FROM $pagenationTarget";
+$pagesql = "SELECT COUNT(*) as cnt FROM $pagenationTarget where $pagerwhere";
 $page_result = $mysqli->query($pagesql);
 $page_row = $page_result->fetch_object();
 $row_num = intval($page_row->cnt);
-
 
 $block_ct = 5;
 $total_page = (ceil($row_num / $pageCount));
