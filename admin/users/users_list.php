@@ -115,8 +115,12 @@ while ($rs = $result->fetch_object()) {
                 </tr>
                 <?php
                       }
-                    }
-                ?>
+                    }else {
+                      ?>
+                        <tr><td colspan="4">검색 결과가 없습니다</td></tr>
+                      <?php
+                    } ?>
+                
                 
               </tbody>
             </table>
