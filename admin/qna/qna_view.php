@@ -173,7 +173,7 @@ $(document).on('submit', '.commentForm', function(e) {
   
   // 기존의 댓글 작성 로직과 동일하게 동작
   $.ajax({
-    url: 'qna_create_ajax.php',
+    url: 'qna_create_ok.php',
     type: 'POST',
     data: {
       post_id: post_id,
