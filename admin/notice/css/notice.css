@@ -14,6 +14,10 @@
   margin: 0;
 }
 
+a.btn {
+  line-height: var(--base_unit);
+}
+
 
 .notice_body {
   margin-top: 30px;
@@ -32,11 +36,6 @@
   font-weight: 600;  
 }
 
-.no_mp {
-  padding: 0px !important;
-  margin: 0px !important;
-  vertical-align: middle;
-}
 /* 상단바 */
 .notice_top {
   padding: 20px 30px 23px 30px;
@@ -63,30 +62,29 @@ line-height: normal;
 /* 중간 리스트 */
 
 /* 테이블 정렬 */
-
-.col1,
-.col3 {
-  width: 10%;
-}
-
 .col2 {
-  width: 55%;
+  width: 64%;
 }
 
+.col3,
 .col4,
 .col5 {
-  width: 12%;
+  width: 12.5%;
 }
 
-.notice_body thead tr th:first-child,
-.notice_body tbody tr td:first-child,
-.notice_body thead tr th:nth-of-type(3),
-.notice_body tbody tr td:nth-of-type(3),
-.notice_body thead tr th:nth-of-type(4),
-.notice_body tbody tr td:nth-of-type(4),
-.notice_body thead tr th:nth-of-type(5),
-.notice_body tbody tr td:nth-of-type(5) {
+.notice_body thead *,
+.notice_body tbody * {
   text-align: center;
+}
+
+.notice_body tbody .title a:hover {
+  color: var(--point_primary);
+  text-decoration: underline;
+}
+
+.notice_body thead th:first-of-type,
+.notice_body tbody td:first-of-type {
+  text-align: left;
 }
 
 .notice_body thead tr th {  
@@ -183,7 +181,7 @@ tbody {
 }
 
 .create_btns {
-  margin-top: 60px;
+  margin: 60px 0;
 }
 
 /* notice_view.css */

@@ -12,6 +12,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
    $result = $mysqli->query($sql);
    $sqlarr = $result -> fetch_object();
 
+
    if ($_FILES['nt_filename']['name']) {
       if(isset($sqlarr->nt_filename)) {
         unlink($_SERVER['DOCUMENT_ROOT'] .$sqlarr->nt_filename);
@@ -36,7 +37,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
     $newfilename = date("YmdHis") . substr(rand(), 0, 6); //20238171184015
     $thumbnail = $newfilename . "." . $ext; //20238171184015.jpg
     
-
+    
     if (move_uploaded_file($_FILES['nt_filename']['tmp_name'], $save_dir . $thumbnail)) {
         $nt_filename = "/pudding-LMS-website/admin/images/notice/". $thumbnail;
     } else {
@@ -48,10 +49,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
     }
     }     
 
-   
-
 
   //update 테이블명 set 컬럼명1='수정된 값', 컬럼명2='수정된 값' where 조건;
+  if(!isset($nt_filename)){
+    $nt_filename = $sqlarr->nt_filename;
+  }
 
 
       $sql ="UPDATE notice SET 
@@ -67,7 +69,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
   if ($result === TRUE) {    
       echo "<script>
       alert('글수정 완료되었습니다.');
-      location.replace('notice_list.php');</script>";          
+      location.replace('notice_list.php');
+      </script>";          
   }  else {
     echo "Error:".$sql . "<br>" . $mysqli -> error;  
   }

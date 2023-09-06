@@ -27,9 +27,6 @@ $sqlarr = $result -> fetch_object();
     </textarea>
   </div>  
   <div class="notice_create_form_div">
-    <div>
-      <?= $sqlarr -> nt_filename; ?>
-    </div>
     <label for="image"><h3 class="content_tt">파일첨부</h3></label>
     <input type="file" id="image" name="nt_filename" class="notice_create_input form-control" aria-label="Username" 
     value="">    

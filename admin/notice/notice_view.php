@@ -33,8 +33,6 @@ $hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
             <div class="notice_view_notice_body shadow_box border justify-content-between">
               <h5 class="main_stt thead_tt"> <?= $sqlarr['nt_title'];?></h5>
               <p class="notice_info d-flex justify-content-end align-items-center">
-                <span class="b_text02">작성자</span>
-                <span class="b_text02"> <?= $sqlarr['userid']?></span>
                 <span class="b_text02">작성일</span>
                 <span class="b_text02"> <?= $sqlarr['nt_regdate']?></span>
                 <span class="b_text02">조회수</span>
@@ -56,11 +54,14 @@ $hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
               <?= $sqlarr['nt_content'] ?>
             </div>
           </div>   
-          <div class="notice_view_btns d-flex justify-content-end">
+          <div class="notice_view_btns d-flex justify-content-end prt" data-prt="<?= $sqlarr['ntid'] ?>">
             <a href="notice_update.php?ntid=<?= $ntid; ?>" class="btn_modify btn btn-primary">수정</a>
-            <a href="notice_delete_ok.php?ntid=<?= $ntid; ?>" class="btn_delete btn btn-danger">삭제</button>     
+            <a href="#" class="btn_delete btn btn-danger del_btn">삭제</button>     
             <a href="notice_list.php" class="btn_cancel btn btn-dark">목록 보기</a>
           </div>
           </div>
         </section> 
 
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
+?>

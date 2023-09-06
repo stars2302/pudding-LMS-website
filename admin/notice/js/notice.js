@@ -4,15 +4,15 @@ $(document).ready(function(){
 $('[data-toggle="tooltip"]').tooltip();
 
 
-$('.btn_modify').click(function(){
-  confirm('내용 수정','수정하시겠습니까?');
-  if(result) {
-    //yes
-     location.replace('notice_list.php');
- } else {
-     history.back();
- }
-});
+// $('.btn_modify').click(function(){
+//   confirm('내용 수정','수정하시겠습니까?');
+//   if(result) {
+//     //yes
+//      location.replace('notice_list.php');
+//  } else {
+//      history.back();
+//  }
+// });
 
 /* notice_create.js */
 $('#summernote').summernote({
@@ -66,5 +66,19 @@ $('#summernote').summernote({
     $('#summernote').summernote('reset');
   });
 
+
+  //notice 게시물 삭제 버튼 클릭
+  $(".del_btn").click(function(e){
+    e.preventDefault();
+    let prt = $(this).closest('.prt').attr('data-prt');
+    console.log(prt);
+    if(confirm('글을 삭제하시겠습니까?')){
+      location.href = '/pudding-LMS-website/admin/notice/notice_delete_ok.php?ntid='+prt;
+    } else {
+      alert('취소되었습니다.');
+      //coupon_list로 이동
+      location.href = '/pudding-LMS-website/admin/notice/notice_list.php';
+    }
+  });
 });
 

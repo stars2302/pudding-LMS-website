@@ -1,7 +1,4 @@
 <?php
-$title = "공지사항 게시물";
-$css_route = "notice/css/notice.css";
-$js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 /* 페이지 타이틀 및 CSS/JS 경로 설정 & 데이터 베이스 연결*/
 
@@ -14,10 +11,11 @@ $sql = "DELETE FROM notice WHERE ntid='{$ntid}'";
 /* 쿼리 실행 및 결과 처리 (confirm함수로 예/아니오)*/
 if ($mysqli->query($sql) === TRUE) {
   echo "<script>
-  if(!confirm('글삭제 하시겠습니까?'));
-  location.href='notice_list.php';</script>";
+  alert('삭제되었습니다.');
+  location.href = '/pudding-LMS-website/admin/notice/notice_list.php';
+  </script>";
 } else {
-      echo "Error: " . $sql . "<br>" . $mysqli->error;
+  echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
 
 ?>
