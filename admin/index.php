@@ -124,7 +124,7 @@ while($rs = $result -> fetch_object()){
                     <div class="d-flex flex-column">
                       <img src="<?= $late->thumbnail ?>" alt="<?= $late->name ?>">
                       <span class="badge rounded-pill <?= $colorarr[$i-1] ?> b-pd"><?= $i ?>위</span>
-                      <h3><?= $late->name ?></h3>
+                      <h3><a href="/pudding-LMS-website/admin/sales/sales_list.php" class="link"><?= $late->name ?></a></h3>
                       <p>매출액 : <span class="number"><?= $late->total_price_sum ?></span>원</p>
                     </div>
                   </li>
@@ -139,21 +139,21 @@ while($rs = $result -> fetch_object()){
               <div class="content_box border shadow d-flex">
                 <div class="col-md-6" >
                   <h2 class="blue_bg white"><i class="ti ti-users"></i>총 수강생</h2>
-                  <p><span><?= $usercount->cnt ?></span>명</p>
+                  <p><a href="/pudding-LMS-website/admin/users/users_list.php" class="link"><span><?= $usercount->cnt ?></span></a>명</p>
                 </div>
                 <div class="col-md-6">
                   <h2 class="blue_bg white"><i class="ti ti-users-plus"></i><span class="people"><?= date('n') ?></span>월 신규</h2>
-                  <p><span><?= $newusercount->cnt ?></span>명</p>
+                  <p><a href="/pudding-LMS-website/admin/users/users_list.php" class="link"><span><?= $newusercount->cnt ?></span></a>명</p>
                 </div>
               </div>
               <div class="content_box border shadow d-flex ">
                 <div class="col-md-6">
                   <h2 class="blue_bg white"><i class="ti ti-ticket"></i>활성화 쿠폰</h2>
-                  <p><span><?= $couponcount->cnt ?></span>개</p>
+                  <p><a href="/pudding-LMS-website/admin/coupon/coupon_list.php" class="link"><span><?= $couponcount->cnt ?></span></a>개</p>
                 </div>
                 <div class="col-md-6">
                   <h2 class="blue_bg white"><i class="ti ti-device-desktop"></i>총 강의</h2>
-                  <p><span><?= $coursecount->cnt ?></span>개</p>
+                  <p><a href="/pudding-LMS-website/admin/course/course_list.php" class="link"><span><?= $coursecount->cnt ?></span></a>개</p>
                 </div>
               </div>
             </div>
