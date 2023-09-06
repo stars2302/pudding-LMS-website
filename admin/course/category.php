@@ -15,7 +15,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 
-$cates1 = $_GET['cate1'] ?? '';
+// $cates1 = $_GET['cate1'] ?? '';
 
 $sql = "SELECT * FROM category WHERE step=1";
 $result = $mysqli->query($sql);
@@ -51,11 +51,11 @@ while ($rs = $result->fetch_object()) {
   </div>
 
   <!-- Modal 1 -->
-  <div class="modal cmodal fade" id="cate1Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal cmodal fade" id="cate1Modal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">
+          <h1 class="modal-title fs-5" id="exampleModalLabel1">
             대분류 등록
           </h1>
         </div>
@@ -76,11 +76,11 @@ while ($rs = $result->fetch_object()) {
   </div>
 
   <!-- Modal 2-->
-  <div class="modal cmodal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal cmodal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel2 aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">
+          <h1 class="modal-title fs-5" id="exampleModalLabel2">
             중분류 등록
           </h1>
         </div>
@@ -120,11 +120,11 @@ while ($rs = $result->fetch_object()) {
   </div>
 
   <!-- Modal 3-->
-  <div class="modal cmodal fade" id="cate3Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal cmodal fade" id="cate3Modal" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">
+          <h1 class="modal-title fs-5" id="exampleModalLabel3">
             소분류 등록
           </h1>
         </div>
@@ -211,11 +211,11 @@ while ($rs = $result->fetch_object()) {
   </div>
 
   <!-- 대분류수정 Modal -->
-  <div class="modal fade" id="cateModifyModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="cateModifyModal1" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">
+          <h1 class="modal-title fs-5" id="exampleModalLabel4">
             카테고리 수정
           </h1>
         </div>
@@ -224,71 +224,73 @@ while ($rs = $result->fetch_object()) {
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">
-          <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="1" data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
-            수정
-          </button>
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
-            취소
-          </button>
-        </div>
+            <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="1"
+              data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
+              수정
+            </button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+              취소
+            </button>
+          </div>
 
         </form>
       </div>
     </div>
   </div>
   <!-- 중분류수정 Modal -->
-  <div class="modal fade" id="cateModifyModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="cateModifyModal2" tabindex="-1" aria-labelledby="exampleModalLabel5" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">
+          <h1 class="modal-title fs-5" id="exampleModalLabel5">
             카테고리 수정
           </h1>
         </div>
         <form class="modal-body" action="category_update.php?cateid=<?= $c->cateid ?>" method="POST">
-        <input type="hidden" name="cateid" value="">
+          <input type="hidden" name="cateid" value="">
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">
-        <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="2" data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
-            수정
-          </button>
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
-            취소
-          </button>
-        </div>
+            <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="2"
+              data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
+              수정
+            </button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+              취소
+            </button>
+          </div>
 
         </form>
       </div>
     </div>
   </div>
   <!-- 소분류수정 Modal -->
-  <div class="modal fade" id="cateModifyModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="cateModifyModal3" tabindex="-1" aria-labelledby="exampleModalLabel6" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">
+          <h1 class="modal-title fs-5" id="exampleModalLabel6">
             카테고리 수정
           </h1>
         </div>
         <form class="modal-body" action="category_update.php?cateid=<<?= $c->cateid ?>" method="POST">
-        <input type="hidden" name="cateid" value="">
+          <input type="hidden" name="cateid" value="">
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">
-        <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="3" data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
-            수정
-          </button>
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
-            취소
-          </button>
-        </div>
-
+            <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="3"
+              data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
+              수정
+            </button>
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+              취소
+            </button>
+          </div>
         </form>
       </div>
     </div>
   </div>
-
+  <a href="course_list.php" class="btn btn-dark base_mt back_btn">돌아가기</a>
 </section>
 
 </div><!-- content_wrap -->
@@ -410,7 +412,7 @@ while ($rs = $result->fetch_object()) {
   });
 
 
- 
+
 
   // $('.cate_modify').on('click', function () {
   //   let cateid = $(this).attr('data-cateid');
