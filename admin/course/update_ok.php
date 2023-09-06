@@ -2,21 +2,22 @@
   session_start();
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
-  if(!isset($_SESSION['AUID'])){
-    echo "<script>
-    alert('권한이 없습니다');
-    history.back();
-    </script>";
-  }
+  // if(!isset($_SESSION['AUID'])){
+  //   echo "<script>
+  //   alert('권한이 없습니다');
+  //   history.back();
+  //   </script>";
+  // }
 
   $mysqli->autocommit(FALSE);//커밋이 안되도록 지정, 일단 바로 저장하지 못하도록
   try{
-
+    
     $cate1 =  $_POST['cate1']??'' ;
     $cate2 =  $_POST['cate2']??'' ;
     $cate3 =  $_POST['cate3']??'' ;
-    $cid = $_POST['cid'];
+
     $cate = $cate1.'/'.$cate2.'/'.$cate3;
+    $cid = $_POST['cid'];
     $name = $_POST['name'];
     $price_status = $_POST['price_status'];
     $price = $_POST['price']??0;
@@ -66,7 +67,8 @@
     if(($_FILES['thumbnail']['name'])){
 
       $sql = "UPDATE courses
-              SET name='{$name}', 
+              SET cate='{cate}',
+                  name='{$name}', 
                   price='{$price}', 
                   price_status='{$price_status}', 
                   level='{$level}',
@@ -78,7 +80,8 @@
               WHERE cid = {$cid}";
       }else{
       $sql = "UPDATE courses
-              SET name='{$name}', 
+              SET cate='{cate}',
+                  name='{$name}', 
                   price='{$price}', 
                   price_status='{$price_status}', 
                   level='{$level}', 
