@@ -24,7 +24,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
             <?php
               foreach($cate1 as $c){            
             ?>
-              <option value="<?php echo $c->cid ?>"><?php echo $c->name ?></option>
+              <option value="<?php echo $c->cateid ?>"><?php echo $c->name ?></option>
             <?php } ?>
           </select>
         </div>
@@ -169,7 +169,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
     </div>
   </form>
 </section>
-
+<script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>

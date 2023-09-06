@@ -11,7 +11,7 @@
  $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
-// include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
 
 $cid = $_GET['cid'];
 $sql = "SELECT * FROM courses WHERE cid={$cid}";
@@ -48,19 +48,19 @@ while($is = $result -> fetch_object()){
         <div class="category col">
           <select class="form-select" aria-label="Default select example">
             <option disabled selected>대분류 선택</option>
-            <option value="1">대분류1</option>
+            <option value="<?= $rs->cate; ?>">대분류1</option>
           </select>
         </div>
         <div class="category col">
           <select class="form-select" aria-label="Default select example">
             <option disabled selected>중분류 선택</option>
-            <option value="1">중분류1</option>
+            <option value="<?= $rs->cate; ?>">중분류1</option>
           </select>
         </div>
         <div class="category col">
           <select class="form-select" aria-label="Default select example">
             <option disabled selected>소분류 선택</option>
-            <option value="1">소분류1</option>
+            <option value="<?= $rs->cate; ?>">소분류1</option>
           </select>
         </div>
       </div>

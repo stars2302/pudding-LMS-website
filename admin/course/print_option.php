@@ -10,7 +10,7 @@ $query = "SELECT * FROM category WHERE step=".$step." and pcode='".$cate."'";
 $result = $mysqli->query($query); //쿼리실행결과를 $result 할당
 
 while ($rs = $result->fetch_object()) {
-  $html .= "<option value=\"".$rs->cateid."\">".$rs->name."</option>";
+ $html .= "<option value=\"".$rs->cateid."\">".$rs->name." </option>";
 }
 echo $html;
 ?>

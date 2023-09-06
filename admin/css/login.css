@@ -6,33 +6,26 @@ main {
   margin: 0;
 }
 .loginlogo > a {
-  background-image: url("../images/Logo.png");
-  width: 222px;
-  height: 76px;
-  background-size: 222px;
+  background-image: url("../images/adminLogo_2.png");
+  width: 368px;
+  height: 176px;
   background-repeat: no-repeat;
   display: inline-block;
   text-indent: -999999em;
+  transform: scale(0.95);
 }
 
 .login_box {
   text-align: center;
   width: 606px;
-  /* height: 76px; */
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.loginpage_logo > a {
-  width: 356px;
-  height: 121px;
-  background-size: 356px;
-}
-
 form {
-  padding: 30px 0px;
+  padding: 20px 0px;
 }
 
 #userid::placeholder,
@@ -62,3 +55,46 @@ main label {
 .base_mg_top {
   margin-top: var(--base_unit);
 }
+
+
+/* popup */
+.popup {
+  font-size: 14px;
+  line-height: 23px;
+  border-color: var(--point_red);
+  margin: 45px calc(var(--base_unit)*2) 0;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.popup p {
+  margin: 0;
+}
+
+.popup dd {
+  margin: 0;
+}
+
+.popup .bold,
+.popup #daycheck:checked + label {
+  font-weight: bold;
+}
+
+.popup .figma,
+.popup .git {
+  text-decoration: underline;
+  color: var(--point_primary);
+}
+
+
+.popup hr {
+  margin: 7px 0;
+}
+
+.popup #close {
+  padding: 5px 20px;
+  background-color: var(--point_red);
+  color: #fff;
+}
+.popup #close:hover {background-color: var(--point_red_hover);}
+.popup #close:active {background-color: var(--point_red_focus);}

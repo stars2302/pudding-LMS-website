@@ -525,7 +525,7 @@ header .inner_header {
 
 header .inner_header ul {
   height: 100%;
-  padding: var(--base_unit) 0;
+  padding: calc(var(--base_unit)*2) 0;
 }
 
 header .logout {

@@ -57,10 +57,18 @@ while($is = $result -> fetch_object()){
         <nav
           style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
           aria-label="breadcrumb">
-          <ol class="breadcrumb mt-5">
-            <li class="breadcrumb-item"><a href="#">프로그래밍</a></li>
-            <li class="breadcrumb-item active" aria-current="page">프론트엔드</li>
-            <li class="breadcrumb-item active" aria-current="page">Javascript</li>
+          <ol class="breadcrumb">
+          <?php
+                 $cateString = $rs->cate;
+                 $parts = explode('/', $cateString);
+         
+                 $big_cate = $parts[0];
+                 $md_cate = $parts[1];
+                 $sm_cate = $parts[2];
+            ?>
+            <li class="breadcrumb-item"><a href="#"><?= $big_cate ?></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $md_cate ?></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $sm_cate ?></li>
           </ol>
         </nav>
       </div>
@@ -74,16 +82,16 @@ while($is = $result -> fetch_object()){
           <p class="base_mt"><?= $rs->content; ?></p>
         </div>
         <div>
-          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?= $rs->due; ?></span></p>
+          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span></p>
           <p class="price content_stt"><?= $rs->price; ?></p>
         </div>
       </div>
     </div>
     <div class="course_status d-flex justify-content-between">
       <div class="d-flex flex-column align-items-end status_wrap">
-        <span class="price_btn_wrap mb-3">
-          <a href="course_update.php?cid=<?=$cid;?>" class="btn btn-primary btn_g">수정</a>
-          <a href="course_delete.php?cid=<?=$cid;?>" class="btn btn-danger">삭제</a>
+        <span class="price_btn_wrap">
+          <a href="" class="btn btn-primary btn_g">수정</a>
+          <button class="btn btn-danger">삭제</button>
         </span>
       </div>
     </div>

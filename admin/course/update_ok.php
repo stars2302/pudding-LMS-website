@@ -29,8 +29,8 @@
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
 
-    $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
-    $result = $mysqli -> query($imgsql);
+    // $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
+    // $result = $mysqli -> query($imgsql);
     
     // while($is = $result -> fetch_object()){
     //   $addImgs[]=$is;
@@ -152,32 +152,34 @@
           }
         }
       }
-      
-      if(($_FILES['youtube_thumb']['name'])){
-        $sql1 = "UPDATE lecture
-                SET youtube_thumb = '{$youtube_thumb}',
-                    youtube_name = '{$youtube_name}',
-                    youtube_url = '{$youtube_url}'
-                WHERE cid ='{$cid}'";
-        }else{
-        $sql1 = "UPDATE lecture
-                SET youtube_name = '{$youtube_name}',
-                    youtube_url = '{$youtube_url}'  
-                WHERE cid ='{$cid}'";
+      $youtube_url = $_POST['youtube_url'];
+      for($i = 0; $i<count($youtube_url); $i++){
+        if(($_FILES['youtube_thumb']['name'])){
+          $sql1 = "UPDATE lecture
+                  SET youtube_thumb = '{$youtube_thumb[$i]}',
+                      youtube_name = '{$youtube_name[$i]}',
+                      youtube_url = '{$youtube_url[$i]}'
+                  WHERE cid ='{$cid}'";
+          }else{
+          $sql1 = "UPDATE lecture
+                  SET youtube_name = '{$youtube_name[$i]}',
+                      youtube_url = '{$youtube_url[$i]}'  
+                  WHERE cid ='{$cid}'";
+        }
       }
       $result2 = $mysqli-> query($sql1);
 
       $mysqli->commit();//디비에 커밋한다.
 
       echo "<script>
-      alert('강의 등록 완료!');
+      alert('강의 수정 완료!');
       //location.href='course_list.php';</script>";
       }
     // } 
     catch(Exception $e){
       $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
       echo "<script>
-      alert('강의 등록 실패');
+      alert('강의 수정 실패');
       //history.back();
       </script>";
       exit;
