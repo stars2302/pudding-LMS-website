@@ -46,7 +46,7 @@
       '<div class="col-1 trash_icon">'+
       '<i class="ti ti-trash bin_icon"></i>'+
       '</div>'+
-      "</div>" +
+      "</div>"+
       "</div>";
     //youtube.find("input").val("");
     //youtube.find("img").attr("src", "");

@@ -15,9 +15,7 @@
     $cate1 =  $_POST['cate1']??'' ;
     $cate2 =  $_POST['cate2']??'' ;
     $cate3 =  $_POST['cate3']??'' ;
-
     $cid = $_POST['cid'];
-
     $cate = $cate1.'/'.$cate2.'/'.$cate3;
     $name = $_POST['name'];
     $price_status = $_POST['price_status'];
@@ -138,7 +136,6 @@
       }
 
       // $youtube_url = $_POST['youtube_url'];
-
 
       for($i = 0; $i<count($youtube_url); $i++){
 

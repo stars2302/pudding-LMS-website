@@ -105,7 +105,7 @@ while ($is = $result->fetch_object()) {
         </div>
         <div>
           <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span></p>
-          <span class="price content_stt number"><?= $rs->price; ?></span>
+          <span class="price main_stt number"><?= $rs->price; ?></span>
           <span>원</span>
         </div>
       </div>
@@ -118,47 +118,48 @@ while ($is = $result->fetch_object()) {
         </span>
       </div>
     </div>
-    <hr>
-    <div class="you_upload mt-5">
-      <div class="youtube">
+    <div class="you_upload mt-3">
+      <div class="youtube_v">
         <div class="row justify-content-center">
           <div class="col-3 youtube_thumb">
             <P>강의썸네일</P>
           </div>
-          <div class="col-3 youtube_name">
+          <div class="col-6 youtube_name">
             <P>강의명</P>
           </div>
-          <div class="col-6 youtube_url">
+          <div class="col-3 youtube_url">
             <P>강의url</P>
           </div>
         </div>
       </div>
       <div class="youtube_link c_mb">
-        <div class="row justify-content-center">
           <?php
           if (isset($addImgs)) {
             foreach ($addImgs as $ai) {
               ?>
+        <div class="youtube_con row justify-content-center">
               <div class="col-3 youtube_thumb">
                 <img src="<?= $ai->youtube_thumb ?>" alt="썸네일">
               </div>
-              <div class="col-3 youtube_name">
+              <div class="col-6 youtube_name">
                 <span>
                   <?= $ai->youtube_name ?>
                 </span>
               </div>
-              <div class="col-6 youtube_url">
+              <div class="col-3 youtube_url">
                 <a href="<?= $ai->youtube_url ?>">강의영상 바로가기</a>
               </div>
+        </div>
               <?php
             }
           }
           ?>
-        </div>
       </div>
     </div>
   </div>
-  <a href="course_list.php" class="btn btn-dark base_mt back_btn">돌아가기</a>
+  <div class="c_button">
+    <a href="course_list.php" class="btn btn-dark base_mt back_btn">돌아가기</a>
+  </div>
 </section>
 </div><!-- content_wrap -->
 </div><!-- wrap -->
