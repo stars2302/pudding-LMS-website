@@ -8,186 +8,123 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 
-//체크박스 선택후 버튼 누르면 할일 꼭 하기
-//확인바람
-
-
 $name = $_GET['name'] ?? '';
 $level1 = $_GET['level1'] ?? '';
 $level2 = $_GET['level2'] ?? '';
 $level3 = $_GET['level3'] ?? '';
 $act = $_GET['act'] ?? '';
+$price_status = $_GET['price_status']??'';
+$cates11 = $_GET['cate1']??'';
+$cate21 = $_GET['cate2']??'';
+$cate31 = $_GET['cate3']??'';
+$cates1 = $_GET['cate1']??'';
+$cate2 = $_GET['cate2']??'';
+$cate3 = $_GET['cate3']??'';
+
 
 $search_where = '';
 
 //카테고리 조회
 if (isset($_GET['cate1'])) {
-  $cates1 = $_GET['cate1'];
-  $query11 = "SELECT name FROM category WHERE cateid='" . $cates1 . " '";
-  $result11 = $mysqli->query($query11);
-  $rs11 = $result11->fetch_object();
-  $cates1 = $rs11->name;
+  if($_GET['cate1'] !== ''){
+    // $cates1 = $_GET['cate1']??'';
+    $query11 = "SELECT name FROM category WHERE cateid='" . $cates1 . " '";
+    $result11 = $mysqli->query($query11);
+    $rs11 = $result11->fetch_object();
+    $cates1 = $rs11->name;
+  }
+  
 } else {
   $cates1 = '';
 }
 if (isset($_GET['cate2'])) {
-  $cate2 = $_GET['cate2'];
+  if($_GET['cate2'] !== ''){
+  // $cate2 = $_GET['cate2']??'';
   $query22 = "SELECT name FROM category WHERE cateid='" . $cate2 . " '";
   $result22 = $mysqli->query($query22);
   $rs22 = $result22->fetch_object();
   $cate2 = $rs22->name;
   $cate2 = "/" . $cate2;
+  }
 } else {
   $cate2 = '';
 }
 if (isset($_GET['cate3'])) {
-  $cate3 = $_GET['cate3'];
+  if($_GET['cate3'] !== ''){
+  // $cate3 = $_GET['cate3']??'';
   $query33 = "SELECT name FROM category WHERE cateid='" . $cate3 . " '";
   $result33 = $mysqli->query($query33);
   $rs33 = $result33->fetch_object();
   $cate3 = $rs33->name;
   $cate3 = "/" . $cate3;
+  }
 } else {
   $cate3 = '';
 }
 
-
 //난이도 조회
-// if (isset($_GET['level1'])) {
-//   $level1 = $_GET['level1'];
-//   //$search_where .= " and level like '%{$level1}%'";
-//   $search_where .= " and level like '%{$level1}%'";
-// } else {
-//   $level1 = '';
-// }
-// if (isset($_GET['level2'])) {
-//   $level2 = $_GET['level2'];
-//   $search_where .= " and level like '%{$level2}%'";
-//  //$search_where .= " OR level like '%{$level2}%'";
-// } else {
-//   $level2 = '';
-// }
-// if (isset($_GET['level3'])) {
-//   $level3 = $_GET['level3'];
-//   $search_where .= " and level like '%{$level3}%'";
-//   //$search_where .= " OR level like '%{$level3}%'";
-// } else {
-//   $level3 = '';
-// }
-
-
 if (isset($_GET['level1'])) {
-  $level1 = $_GET['level1'];
+  $level1 = $_GET['level1']??'';
   $search_where .= " and level LIKE '%{$level1}%'";
   if (isset($_GET['level2'])) {
-    $level2 = $_GET['level2'];
+    $level2 = $_GET['level2']??'';
     $search_where .= " or level LIKE '%{$level2}%'";
     if (isset($_GET['level3'])) {
-      $level3 = $_GET['level3'];
+      $level3 = $_GET['level3']??'';
       $search_where .= " or level LIKE '%{$level3}%'";
-    } else{
-      $search_where ;
+    } else {
+      $search_where;
     }
-  } else{
+  } else {
     if (isset($_GET['level3'])) {
-      $level3 = $_GET['level3'];
+      $level3 = $_GET['level3']??'';
       $search_where .= " or level LIKE '%{$level3}%'";
-    } else{
-      $search_where ;
+    } else {
+      $search_where;
     }
   }
 } else {
   $level1 = '';
-  // $search_where .= " and level LIKE '%{$level1}%'";
   if (isset($_GET['level2'])) {
     $level2 = $_GET['level2'];
     $search_where .= " and level LIKE '%{$level2}%'";
     if (isset($_GET['level3'])) {
       $level3 = $_GET['level3'];
       $search_where .= " or level LIKE '%{$level3}%'";
-    }else{
+    } else {
       $search_where .= " and level LIKE '%{$level2}%'";
     }
-  }else{
-    if(isset($_GET['level3'])) {
+  } else {
+    if (isset($_GET['level3'])) {
       $level3 = $_GET['level3'];
       $search_where .= " and level LIKE '%{$level3}%'";
     }
   }
 }
 
-// if (isset($_GET['level2'])) {
-//   $level2 = $_GET['level2'];
-//   if (isset($_GET['level2']) && isset($_GET['level1'])) {
-//     $level2 = $_GET['level2'];
-//     // $search_where .= " OR";
-//     $search_where .= " or level LIKE '%{$level2}%'";
-//     if (!isset($_GET['level1'])) {
-//       $level2 = $_GET['level2'];
-//       $search_where .= " and level LIKE '%{$level2}%'";
-//     }
-//   }
-// } else {
-//   $level2 = '';
-// }
-// if (isset($_GET['level3'])) {
-//   $level3 = $_GET['level3'];
-//   if (isset($_GET['level3']) && ((isset($_GET['level1']) || isset($_GET['level2'])))) {
-//     $search_where .= " or level LIKE '%{$level3}%'";
-//     if (isset($_GET['level3']) && (!isset($_GET['level1']) && !isset($_GET['level2']))) {
-//       $level3 = $_GET['level3'];
-//       $search_where .= " and level LIKE '%{$level3}%'";
-//     }
-//   }
-// } else {
-//   $level3 = '';
-// }
-
-
-
-
 
 //가격 조회
-// if (isset($_GET['price_status'])) {
-//   $price_status1 = $_GET['price1'];
-//   $search_where .= " and price_status like '%{$price_status1}%'";
-// } else {
-//   $price_status1 = '';
-// }
-// if (isset($_GET['price2'])) {
-//   $price_status2 = $_GET['price2'];
-//   $search_where .= " and price_status like '%{$price_status2}%'";
-// } else {
-//   $price_status2 = '';
-// }
 if (isset($_GET['price_status'])) {
-  $price_status = $_GET['price_status'];
+  $price_status = $_GET['price_status']??'';
   $search_where .= " and price_status like '%{$price_status}%'";
-} 
+}
 
-// $search_where = '';
+
 $cates = $cates1 . $cate2 . $cate3;
-// $levels = $level1 . $level2 . $level3;
-
-
-
-
 if ($cates) {
   $search_where .= " and cate like '%{$cates}%'";
 }
-
-// if ($levels) {
-//   $search_where .= " and level like '%{$levels}%'";
-
-// }
-
 
 //강의명검색
 if ($name) {
   $search_where .= " and name like '%{$name}%'";
 }
 
-$sqlct = "SELECT COUNT(*) as count FROM courses where 1=1".$search_where;
+if(!isset($pagerwhere)){
+  $pagerwhere = " 1=1";
+}
+
+$sqlct = "SELECT COUNT(*) as count FROM courses where 1=1" . $search_where;
 $sqlctrc = $mysqli->query($sqlct);
 while ($rs = $sqlctrc->fetch_object()) {
   $sqlctArr[] = $rs;
@@ -197,7 +134,7 @@ $sales_page = $sqlctArr[0]->count;
 //필터 없으면 여기서부터 복사! *******
 $pagenationTarget = 'coupons'; //pagenation 테이블 명
 $pageContentcount = 6; //페이지 당 보여줄 list 개수
-include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/pager.php';
 $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
 
 
@@ -210,7 +147,7 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 $sql2 = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
 $sql2 .= $search_where;
 $order = " ORDER BY cid DESC"; //최근순 정렬
-$query2 = $sql2.$order.$limit; //필터 있
+$query2 = $sql2 . $order . $limit; //필터 있
 //$limit = " limit $statLimit, $endLimit";
 
 // $query = $sql.$order.$limit; //쿼리 문장 조합
@@ -404,38 +341,54 @@ while ($rs2 = $result2->fetch_object()) {
     <button class="btn btn-primary btn_g all_modify_btn">변경 일괄 수정</button>
   </form>
 
-  <!-- pagination -->
-  <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-    <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&lsaquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&rsaquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+   <!-- ***------------------------- pagination - 시작 -------------------------*** -->
+   <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+      <ul class="pagination coupon_pager">
+        <?php
+          if($pageNumber>1 && $block_num > 1 ){
+            //이전버튼 활성화
+            $prev = ($block_num - 2) * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          } else{
+            //이전버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          }
+
+
+          for($i=$block_start;$i<=$block_end;$i++){
+            if($pageNumber == $i){
+                //필터 있
+                echo "<li class=\"page-item active\"><a href=\"?cate1=$cates11&cate2=$cate21&cate3=$cate31&level1=$level1&price_status=$price_status&name=$name&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                // echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }else{
+                //필터 있
+                echo "<li class=\"page-item\"><a href=\"?cate1=$cates11&cate2=$cate21&cate3=$cate31&level1=$level1&price_status=$price_status&name=$name&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                //필터 없
+                // echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }
+          }
+
+
+          if($pageNumber<$total_page && $block_num < $total_block){
+            //다음버튼 활성화
+            $next = $block_num * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+          } else{
+            //다음버튼 비활성화
+            echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+
+          }
+        ?>
+      </ul>
+    </nav>
+    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
 </section>
 </div><!-- content_wrap -->
 </div><!-- wrap -->
 
 <script src="js/makeoption.js"></script>
 <script>
-  // $('input[type="checkbox"]').click(function () {
-  //   let $this = $(this);
-  //   if ($this.prop('checked')) {//체크해서 활성되면
-  //     $this.val('1');
-  //   } else {
-  //     $this.val('0');
-  //   }
-  // });
 
   //강의 가격 천단위, 변환
   let priceList = $('.price');
