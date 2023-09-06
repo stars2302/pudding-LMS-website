@@ -15,23 +15,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 
-// $cates1 = $_GET['cate1'] ?? '';
 
 $sql = "SELECT * FROM category WHERE step=1";
 $result = $mysqli->query($sql);
 while ($rs = $result->fetch_object()) {
   $rsc[] = $rs;
 }
-var_dump($rsc);
-
-// $name = $_POST['name'] ?? '';
-// $sql2 = "SELECT cateid FROM category WHERE name= '{$name}'"; 
-// $result2 = $mysqli->query($sql2);
-// // while ($rs2 = $result->fetch_object()) {
-// //   $rsc2[] = $rs2;
-// // }
-// $rs2 = $result -> fetch_object();
-
 ?>
 
 <section class="category_add">
@@ -76,7 +65,7 @@ var_dump($rsc);
   </div>
 
   <!-- Modal 2-->
-  <div class="modal cmodal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel2 aria-hidden="true">
+  <div class="modal cmodal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel2 aria-hidden=" true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -176,7 +165,9 @@ var_dump($rsc);
               ?>
               <li class="list-group-item big d-flex justify-content-between align-items-center" value="<?= $c->cateid ?>"
                 data-cate="<?= $c->cateid ?>">
-                <span class="cate_size"><?= $c->name; ?></span>
+                <span class="cate_size">
+                  <?= $c->name; ?>
+                </span>
                 <div class="cate_edit_btns d-flex gap-2">
                   <a href="category_update.php?cateid=<?= $c->cateid ?>" data-bs-toggle="modal"
                     data-bs-target="#cateModifyModal1"><i class=" ti ti-edit pen_icon"></i></a>
@@ -220,7 +211,7 @@ var_dump($rsc);
           </h1>
         </div>
         <form class="modal-body" action="category_update.php" method="POST">
-          <input type="hidden" name="cateid" class="catename" value="<?=$c->cateid ;?>">
+          <input type="hidden" name="cateid" class="catename" value="<?= $c->cateid; ?>">
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">
@@ -247,7 +238,7 @@ var_dump($rsc);
           </h1>
         </div>
         <form class="modal-body" action="category_update.php?cateid=<?= $c->cateid; ?>" method="POST">
-        <input type="hidden" name="cateid" class="catename" value="<?=$c->cateid ;?>">
+          <input type="hidden" name="cateid" class="catename" value="<?= $c->cateid; ?>">
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">
@@ -274,7 +265,7 @@ var_dump($rsc);
           </h1>
         </div>
         <form class="modal-body" action="category_update.php?cateid=<<?= $c->cateid ?>" method="POST">
-        <input type="hidden" name="cateid" class="catename" value="<?=$c->cateid ;?>">
+          <input type="hidden" name="cateid" class="catename" value="<?= $c->cateid; ?>">
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">
@@ -387,6 +378,7 @@ var_dump($rsc);
             console.log('retun_data', return_data)
             trElement.remove();
             alert('카테고리가 삭제되었습니다.');
+            location.reload();
           } else {
             alert('카테고리 삭제에 실패하였습니다.');
           }
@@ -410,41 +402,6 @@ var_dump($rsc);
     $('.modal').find('.modal_cate_name').val(cateName);
     $('.catename').val(cateid);
   });
-
-
-
-
-  // $('.cate_modify').on('click', function () {
-  //   let cateid = $(this).attr('data-cateid');
-  //   // e.preventDefault();
-  //   let data = {
-  //     cateid: cateid
-  //   }
-  //   console.log(data);
-  //   // console.log(data)
-  //   // if (confirm(`해당 카테고리를 수정할까요?:\n카테고리명: ${cateName}`)) {
-  //     $.ajax({
-  //       type: 'post',
-  //       data: data,
-  //       url: "category_update.php",
-  //       dataType: 'json',
-  //       success: function (return_data) {
-  //         if (return_data.result === 'success') {
-  //           console.log('retun_data', return_data);
-  //           $("#cateModifyModal").modal("hide");
-  //           alert('카테고리가 수정되었습니다.');
-  //         } else {
-  //           alert('카테고리 수정에 실패하였습니다.');
-  //         }
-  //       },
-  //       error: function (error) {
-  //         console.log('Error:', error);
-  //         alert('카테고리 수정중에 오류가 발생했습니다.');
-  //       }
-  //     });
-  //   })
-  // // });
-
 
 
 
