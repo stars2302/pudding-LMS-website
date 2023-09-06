@@ -97,7 +97,7 @@ while ($rs = $result->fetch_object()) {
                   <th scope="col" class="col1">회원ID</th>
                   <th scope="col" class="col2">회원이름</th>
                   <th scope="col" class="col3">회원메일</th>
-                  <th scope="col" class="col4">가입일</th>
+                  <th scope="col" class="col4">가입날짜</th>
                 </tr>
               </thead>
               <tbody>

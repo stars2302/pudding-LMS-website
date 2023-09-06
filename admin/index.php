@@ -52,7 +52,7 @@ $sales_data = array(
 );
 $sales_data_json = json_encode($sales_data);
 
-var_dump($sales_data_json);
+// var_dump($sales_data_json);
 
 $sql ="SELECT * FROM notice order by ntid desc limit 0,6";
 $result = $mysqli-> query($sql);
