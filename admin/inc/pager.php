@@ -11,12 +11,11 @@
   $page_result = $mysqli->query($pagesql);
   $page_row = $page_result->fetch_object();
   $row_num = $page_row->cnt; //전체 게시물 수
-  if(!isset($sales_page)){
+  if(!isset($sales_page) || $sales_page === ''){
     $sales_page = $row_num;
   }
   $row_num = $sales_page;
   // echo $row_num;
-
   $block_ct = 5; // 1,2,3,4,5  / 5,6,7,8,9 
   $block_num = ceil($pageNumber/$block_ct);//pageNumber 1,  9/5 1.2 2
   $block_start = (($block_num -1)*$block_ct) + 1;//page6 start 6
