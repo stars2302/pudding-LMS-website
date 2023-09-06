@@ -134,7 +134,7 @@ $js_route = "js/login.js";
           <a href="#">PUDDING</a>
         </h1>
         <form action="login_ok.php" method="POST">
-          <h2 class="content_tt">Admin</h2>
+          <h2 class="hidden">Admin Login</h2>
           <div
             class="input-group d-flex align-items-center base_mg_top shadow_box"
           >
