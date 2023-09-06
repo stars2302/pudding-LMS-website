@@ -137,5 +137,8 @@ ol, ul {
   text-decoration: underline;
 }
 
-
+.link:hover {
+  color: var(--point_primary);
+  text-decoration: underline;
+}
 
