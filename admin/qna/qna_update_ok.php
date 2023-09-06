@@ -12,7 +12,7 @@ $row = $result->fetch_assoc();
 
 if ($row) {
 ?>
-  <form action="qna_reply_update_ok_ajax.php" method="post">
+  <form action="qna_reply_update_ok.php" method="post">
     <input type="hidden" name="comment_id" value="<?php echo $row['id']; ?>">
     <textarea name="comment"><?php echo htmlspecialchars($row['comment']); ?></textarea>
     <button type="submit">댓글 수정</button>

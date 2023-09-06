@@ -165,5 +165,7 @@ nav .pagination{
   gap: calc(var(--base_unit)*0.5);
 }
 .order .btn{
-  margin-top: 60px;
+  margin-top: calc(var(--base_unit)*2);
+  margin-bottom: var(--base_unit);
+  line-height: var(--base_unit);
 }

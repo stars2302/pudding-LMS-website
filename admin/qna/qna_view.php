@@ -133,9 +133,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
         <?php
 
       if ($row['q_state'] === 0) {
-        echo '<a href="qna_change.php?qid=' . $qid . '&state=1" class="btn btn-primary">답변 완료</a>';
+        echo '<a href="qna_change_ok.php?qid=' . $qid . '&state=1" class="btn btn-primary" >답변 완료</a>';
       } else {
-        echo '<a href="qna_change.php?qid=' . $qid . '&state=0" class="btn btn-warning">답변 대기</a>';
+        echo '<a href="qna_change_ok.php?qid=' . $qid . '&state=0" class="btn btn-warning" >답변 대기</a>';
       }
 
       ?>
@@ -173,7 +173,7 @@ $(document).on('submit', '.commentForm', function(e) {
   
   // 기존의 댓글 작성 로직과 동일하게 동작
   $.ajax({
-    url: 'add_comment_ajax.php',
+    url: 'qna_create_ajax.php',
     type: 'POST',
     data: {
       post_id: post_id,
@@ -305,7 +305,7 @@ $(document).on('click', '.saveButton', function() {
   $.ajax({
 		//test
     // url: 'include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/edit_comment_ajax.php';', 
-    url: 'qna_reply_update_ok_ajax.php',
+    url: 'qna_reply_update_ok.php',
     type: 'POST',
     data: {
       comment_id: id,
