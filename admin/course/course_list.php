@@ -9,43 +9,180 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
 
 
 //체크박스 선택후 버튼 누르면 할일 꼭 하기
+//확인바람
+
 
 $name = $_GET['name'] ?? '';
-$cates1 = $_GET['cate1'] ?? '';
-$cate2 = $_GET['cate2'] ?? '';
-$cate3 = $_GET['cate3'] ?? '';
-$price_status1 = $_GET['price_status1'] ?? '';
-$price_status2 = $_GET['price_status2'] ?? '';
 $level1 = $_GET['level1'] ?? '';
 $level2 = $_GET['level2'] ?? '';
 $level3 = $_GET['level3'] ?? '';
 $act = $_GET['act'] ?? '';
 
-// $content = $_GET['content'] ?? '';
-// $thumbnail = $_GET['thumbnail'] ?? '';
-
-// $due = $_GET['due'] ?? '';
-
-
-// $userid = $_GET['userid'] ?? '';
-// $due_status = $_GET['due_status'] ?? '';
-
-
-
 $search_where = '';
+
+//카테고리 조회
+if (isset($_GET['cate1'])) {
+  $cates1 = $_GET['cate1'];
+  $query11 = "SELECT name FROM category WHERE cateid='" . $cates1 . " '";
+  $result11 = $mysqli->query($query11);
+  $rs11 = $result11->fetch_object();
+  $cates1 = $rs11->name;
+} else {
+  $cates1 = '';
+}
+if (isset($_GET['cate2'])) {
+  $cate2 = $_GET['cate2'];
+  $query22 = "SELECT name FROM category WHERE cateid='" . $cate2 . " '";
+  $result22 = $mysqli->query($query22);
+  $rs22 = $result22->fetch_object();
+  $cate2 = $rs22->name;
+  $cate2 = "/" . $cate2;
+} else {
+  $cate2 = '';
+}
+if (isset($_GET['cate3'])) {
+  $cate3 = $_GET['cate3'];
+  $query33 = "SELECT name FROM category WHERE cateid='" . $cate3 . " '";
+  $result33 = $mysqli->query($query33);
+  $rs33 = $result33->fetch_object();
+  $cate3 = $rs33->name;
+  $cate3 = "/" . $cate3;
+} else {
+  $cate3 = '';
+}
+
+
+//난이도 조회
+// if (isset($_GET['level1'])) {
+//   $level1 = $_GET['level1'];
+//   //$search_where .= " and level like '%{$level1}%'";
+//   $search_where .= " and level like '%{$level1}%'";
+// } else {
+//   $level1 = '';
+// }
+// if (isset($_GET['level2'])) {
+//   $level2 = $_GET['level2'];
+//   $search_where .= " and level like '%{$level2}%'";
+//  //$search_where .= " OR level like '%{$level2}%'";
+// } else {
+//   $level2 = '';
+// }
+// if (isset($_GET['level3'])) {
+//   $level3 = $_GET['level3'];
+//   $search_where .= " and level like '%{$level3}%'";
+//   //$search_where .= " OR level like '%{$level3}%'";
+// } else {
+//   $level3 = '';
+// }
+
+
+if (isset($_GET['level1'])) {
+  $level1 = $_GET['level1'];
+  $search_where .= " and level LIKE '%{$level1}%'";
+  if (isset($_GET['level2'])) {
+    $level2 = $_GET['level2'];
+    $search_where .= " or level LIKE '%{$level2}%'";
+    if (isset($_GET['level3'])) {
+      $level3 = $_GET['level3'];
+      $search_where .= " or level LIKE '%{$level3}%'";
+    } else{
+      $search_where ;
+    }
+  } else{
+    if (isset($_GET['level3'])) {
+      $level3 = $_GET['level3'];
+      $search_where .= " or level LIKE '%{$level3}%'";
+    } else{
+      $search_where ;
+    }
+  }
+} else {
+  $level1 = '';
+  // $search_where .= " and level LIKE '%{$level1}%'";
+  if (isset($_GET['level2'])) {
+    $level2 = $_GET['level2'];
+    $search_where .= " and level LIKE '%{$level2}%'";
+    if (isset($_GET['level3'])) {
+      $level3 = $_GET['level3'];
+      $search_where .= " or level LIKE '%{$level3}%'";
+    }else{
+      $search_where .= " and level LIKE '%{$level2}%'";
+    }
+  }else{
+    if(isset($_GET['level3'])) {
+      $level3 = $_GET['level3'];
+      $search_where .= " and level LIKE '%{$level3}%'";
+    }
+  }
+}
+
+// if (isset($_GET['level2'])) {
+//   $level2 = $_GET['level2'];
+//   if (isset($_GET['level2']) && isset($_GET['level1'])) {
+//     $level2 = $_GET['level2'];
+//     // $search_where .= " OR";
+//     $search_where .= " or level LIKE '%{$level2}%'";
+//     if (!isset($_GET['level1'])) {
+//       $level2 = $_GET['level2'];
+//       $search_where .= " and level LIKE '%{$level2}%'";
+//     }
+//   }
+// } else {
+//   $level2 = '';
+// }
+// if (isset($_GET['level3'])) {
+//   $level3 = $_GET['level3'];
+//   if (isset($_GET['level3']) && ((isset($_GET['level1']) || isset($_GET['level2'])))) {
+//     $search_where .= " or level LIKE '%{$level3}%'";
+//     if (isset($_GET['level3']) && (!isset($_GET['level1']) && !isset($_GET['level2']))) {
+//       $level3 = $_GET['level3'];
+//       $search_where .= " and level LIKE '%{$level3}%'";
+//     }
+//   }
+// } else {
+//   $level3 = '';
+// }
+
+
+
+
+
+//가격 조회
+// if (isset($_GET['price_status'])) {
+//   $price_status1 = $_GET['price1'];
+//   $search_where .= " and price_status like '%{$price_status1}%'";
+// } else {
+//   $price_status1 = '';
+// }
+// if (isset($_GET['price2'])) {
+//   $price_status2 = $_GET['price2'];
+//   $search_where .= " and price_status like '%{$price_status2}%'";
+// } else {
+//   $price_status2 = '';
+// }
+if (isset($_GET['price_status'])) {
+  $price_status = $_GET['price_status'];
+  $search_where .= " and price_status like '%{$price_status}%'";
+} 
+
+// $search_where = '';
 $cates = $cates1 . $cate2 . $cate3;
-$levels = $level1 . $level1 . $level1;
-$price_statuss = $price_status1 . $price_status2;
+// $levels = $level1 . $level2 . $level3;
+
+
+
 
 if ($cates) {
   $search_where .= " and cate like '%{$cates}%'";
 }
-if ($levels) {
-  $search_where .= " and level like '%{$levels}%'";
-}
-if ($price_statuss) {
-  $search_where .= " and price_status like '%{$price_statuss}%'";
-}
+
+// if ($levels) {
+//   $search_where .= " and level like '%{$levels}%'";
+
+// }
+
+
+//강의명검색
 if ($name) {
   $search_where .= " and name like '%{$name}%'";
 }
@@ -53,7 +190,7 @@ if ($name) {
 
 $sql2 = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
 $sql2 .= $search_where;
-//var_dump($sql2);
+var_dump($sql2);
 $order = " ORDER BY cid DESC"; //최근순 정렬
 //$limit = " limit $statLimit, $endLimit";
 
@@ -65,8 +202,6 @@ $result2 = $mysqli->query($query2);
 while ($rs2 = $result2->fetch_object()) {
   $rsc2[] = $rs2;
 }
-
-
 
 ?>
 
@@ -119,11 +254,11 @@ while ($rs2 = $result2->fetch_object()) {
       <div class="d-flex flex-row price_check">
         <h3 class="b_text01">가격</h3>
         <span>
-          <input type="checkbox" name="price1" id="pay" value="유료" class="form-check-input">
+          <input type="radio" name="price_status" id="pay" value="유료" class="form-check-input">
           <label for="pay">유료</label>
         </span>
         <span>
-          <input type="checkbox" name="price2" id="free" value="무료" class="form-check-input">
+          <input type="radio" name="price_status" id="free" value="무료" class="form-check-input">
           <label for="free">무료</label>
         </span>
       </div>
@@ -274,14 +409,14 @@ while ($rs2 = $result2->fetch_object()) {
 
 <script src="js/makeoption.js"></script>
 <script>
-  $('input[type="checkbox"]').click(function () {
-    let $this = $(this);
-    if ($this.prop('checked')) {//체크해서 활성되면
-      $this.val('1');
-    } else {
-      $this.val('0');
-    }
-  });
+  // $('input[type="checkbox"]').click(function () {
+  //   let $this = $(this);
+  //   if ($this.prop('checked')) {//체크해서 활성되면
+  //     $this.val('1');
+  //   } else {
+  //     $this.val('0');
+  //   }
+  // });
 
   //강의 가격 천단위, 변환
   let priceList = $('.price');

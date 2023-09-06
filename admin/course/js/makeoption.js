@@ -19,7 +19,7 @@ function makeOption(evt, step, category, target){
     step: step,
     category: category
   }
-
+console.log(data);
   $.ajax({
     async : false, //sucess의 결과 나오면 이후 작업 수행
     type: 'POST', //변수명cate1의 값을 전달할 방식 post      

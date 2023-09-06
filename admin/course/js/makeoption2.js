@@ -1,6 +1,6 @@
 $("#cate1").on("click", "li", function () {
   console.log($(this));
-  makeOption($(this), 2, $("#cate2"));
+  makeOption2($(this), 2, $("#cate2"));
 
   //카테고리 재선택시, 중/소 분류 초기화
   $(".big_cate button").text($(this).find("span").text());
@@ -12,7 +12,7 @@ $("#cate1").on("click", "li", function () {
 
 
 $("#cate2").on("click", "li", function () {
-  makeOption($(this), 3, $("#cate3"));
+  makeOption2($(this), 3, $("#cate3"));
   $(".md_cate button").text($(this).find("span").text());
 }); //cate2 change
 
@@ -21,7 +21,7 @@ $("#cate3").on("click", "li", function () {
   $(".sm_cate button").text($(this).find("span").text());
 }); //cate3 change
 
-function makeOption(evt, step, target) {
+function makeOption2(evt, step, target) {
   let cate = evt.attr("data-cate");
   let data = {
     cate: cate, //부모 분류의 cid
