@@ -62,3 +62,46 @@ main label {
 .base_mg_top {
   margin-top: var(--base_unit);
 }
+
+
+/* popup */
+.popup {
+  font-size: 14px;
+  line-height: 23px;
+  border-color: var(--point_red);
+  margin: 45px calc(var(--base_unit)*2) 0;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.popup p {
+  margin: 0;
+}
+
+.popup dd {
+  margin: 0;
+}
+
+.popup .bold,
+.popup #daycheck:checked + label {
+  font-weight: bold;
+}
+
+.popup .figma,
+.popup .git {
+  text-decoration: underline;
+  color: var(--point_primary);
+}
+
+
+.popup hr {
+  margin: 7px 0;
+}
+
+.popup #close {
+  padding: 5px 20px;
+  background-color: var(--point_red);
+  color: #fff;
+}
+.popup #close:hover {background-color: var(--point_red_hover);}
+.popup #close:active {background-color: var(--point_red_focus);}
