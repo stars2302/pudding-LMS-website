@@ -4,7 +4,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,6 +29,8 @@
 
 
     <title><?php if(isset($title)){echo $title;} else { echo 'home';}; ?> - PUDDING</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- reset css -->
     <link
       rel="stylesheet"
@@ -121,7 +123,7 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/sales/sales.php" class="icon"
+                <a href="/pudding-LMS-website/admin/sales/sales_list.php" class="icon"
                   ><i class="ti ti-coins"></i><span>매출 관리</span></a
                 >
               </li>
@@ -137,17 +139,17 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/notice/notice.php" class="icon"
+                <a href="/pudding-LMS-website/admin/notice/notice_list.php" class="icon"
                   ><i class="ti ti-clipboard-text"></i><span>공지사항</span></a
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
+                <a href="/pudding-LMS-website/admin/qna/qna_list.php" class="icon"
                   ><i class="ti ti-zoom-question"></i><span>Q&A</span></a
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
+                <a href="/pudding-LMS-website/admin/users/users_list.php" class="icon"
                   ><i class="ti ti-user-edit"></i><span>회원 관리</span></a
                 >
               </li>

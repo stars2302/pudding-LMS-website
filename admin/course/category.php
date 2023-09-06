@@ -22,7 +22,7 @@ $result = $mysqli->query($sql);
 while ($rs = $result->fetch_object()) {
   $rsc[] = $rs;
 }
-
+var_dump($rsc);
 
 // $name = $_POST['name'] ?? '';
 // $sql2 = "SELECT cateid FROM category WHERE name= '{$name}'"; 
@@ -220,7 +220,7 @@ while ($rs = $result->fetch_object()) {
           </h1>
         </div>
         <form class="modal-body" action="category_update.php" method="POST">
-          <input type="hidden" name="cateid" class="catename" value="">
+          <input type="hidden" name="cateid" class="catename" value="<?=$c->cateid ;?>">
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">
@@ -246,8 +246,8 @@ while ($rs = $result->fetch_object()) {
             카테고리 수정
           </h1>
         </div>
-        <form class="modal-body" action="category_update.php?cateid=<?= $c->cateid ?>" method="POST">
-          <input type="hidden" name="cateid" value="">
+        <form class="modal-body" action="category_update.php?cateid=<?= $c->cateid; ?>" method="POST">
+        <input type="hidden" name="cateid" class="catename" value="<?=$c->cateid ;?>">
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">
@@ -274,7 +274,7 @@ while ($rs = $result->fetch_object()) {
           </h1>
         </div>
         <form class="modal-body" action="category_update.php?cateid=<<?= $c->cateid ?>" method="POST">
-          <input type="hidden" name="cateid" value="">
+        <input type="hidden" name="cateid" class="catename" value="<?=$c->cateid ;?>">
           <label for="name1">카테고리명</label>
           <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
           <div class="modal-footer">

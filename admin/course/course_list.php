@@ -209,7 +209,6 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 $sql2 = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
 $sql2 .= $search_where;
-var_dump($sql2);
 $order = " ORDER BY cid DESC"; //최근순 정렬
 $query2 = $sql2.$order.$limit; //필터 있
 //$limit = " limit $statLimit, $endLimit";
