@@ -352,7 +352,8 @@ input {
   width: 150px;
 }
 
-.you_upload_content p {
+.you_upload_content p,
+.youtube p{
   text-align: center;
   margin-bottom: 10px;
   font-weight: 600;
@@ -384,3 +385,7 @@ input {
   color: blue;
   border-bottom: 1px solid blue;
 }
+
+/* .bin_icon input{
+  opacity: 0;
+} */

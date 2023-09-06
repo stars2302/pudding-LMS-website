@@ -56,12 +56,11 @@ while($is = $result -> fetch_object()){
                  $md_cate = $parts[1];
                  $sm_cate = $parts[2];
             ?>  
-          <option disabled selected><?php echo $big_cate ?></option>
-            
-            <?php
-              foreach($cate1 as $c){            
+           <?php
+              foreach($cate1 as $c){      
+                if($big_cate == $c->name) {$selected='selected';}else{$selected='';};     
             ?>
-              <option value="<?php echo $c->cateid ?>" data-name="<?php echo $c->name ?>"><?php echo $c->name ?></option>
+             <option value="<?php echo $c->cateid ?>" <?= $selected; ?> data-name="<?php echo $c->name ?>"><?php echo $c->name ?></option>
             <?php } ?>
           </select>
         </div>
@@ -188,7 +187,7 @@ while($is = $result -> fetch_object()){
       name="thumbnail" 
       id="thumbnail"
       alt="">
-      <img src="" alt="">
+      <img src="<?= $rs->thumbnail; ?>" alt="">
     </div>
 
     <div class="upload c_mt">
@@ -209,6 +208,7 @@ while($is = $result -> fetch_object()){
           </div>
         </div>
         <?php
+          $i = 1;
           if(isset($addImgs)){
           foreach($addImgs as $ai){
         ?>  
@@ -225,11 +225,13 @@ while($is = $result -> fetch_object()){
               <input type="url" class="form-control" name="youtube_url[]" value="<?= $ai -> youtube_url?>"/>
             </div>
             <div class="col-1 trash_icon">
-              <i class="ti ti-trash bin_icon"></i>
+              <label for="delete-youtube<?= $i; ?>"><i class="ti ti-trash bin_icon"></i></label>
+              <input type="checkbox" class="delete-youtube hidden" id="delete-youtube<?= $i; ?>" name="delete_youtube[]" value="<?= $ai->l_idx ?>" />
             </div>
           </div>
         </div>
         <?php
+        $i++;
             }
           }
           ?>
@@ -251,39 +253,6 @@ while($is = $result -> fetch_object()){
     </div>
   </form>
 </section>
-<script>
-  $(function(){
-    $(".add_listBtn a").click(function (e) {
-    e.preventDefault();
-    // let youtube = $(".youtube:last").clone();
-    let youtube =
-      '<div class="youtube c_mb mt-3"><div class="row justify-content-between">' +
-      '<div class="col-2 youtube_thumb"><input type="file" class="form-control" name="youtube_thumb[]"/>' +
-      "</div>" +
-      '<div class="col-3 youtube_name">' +
-      '<input type="text" class="form-control" name="youtube_name[]" placeholder="강의명을 입력하세요."/>' +
-      "</div>" +
-      '<div class="col-6 youtube_url">' +
-      '<input type="url" class="form-control" name="youtube_url[]" placeholder="강의URL을 넣어주세요."/>' +
-      "</div>" +
-      '<div class="col-1 trash_icon">' +
-      '<i class="ti ti-trash bin_icon"></i>' +
-      "</div>" +
-      "</div>" +
-      "</div>";
-    //youtube.find("input").val("");
-    //youtube.find("img").attr("src", "");
-    $(".you_upload").append(youtube);
-  });
-
-  $(".you_upload").on("click", ".bin_icon", function () {
-    if ($(".youtube").length > 1) {
-      $(this).closest(".youtube").remove();
-    }
-  });
-  })
-</script>
-
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';

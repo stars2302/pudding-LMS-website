@@ -242,7 +242,6 @@ while($rs = $result -> fetch_object()){
           } else{
             //다음버튼 비활성화
             echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
-
           }
         ?>
       </ul>

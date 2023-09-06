@@ -29,7 +29,7 @@
     $content = rawurldecode($_POST['content']);
     $youtube_name = $_POST['youtube_name'];
     $thumbnail = $_FILES['thumbnail'];
-    var_dump($_FILES['thumbnail']);
+    // var_dump($_FILES['thumbnail']);
 
     if($_FILES['thumbnail']['name']){
 
@@ -101,7 +101,7 @@
         for($i = 0;$i<count($youtube_url) ; $i++){
 
           // if($_FILES['youtube_thumb']['name'][$i]){
-          if(!empty($youtube_name[$i]) && !empty($youtube_url[$i])){
+          if(!empty($youtube_thumb[$i]) && !empty($youtube_name[$i]) && !empty($youtube_url[$i])){
 
             if($_FILES['youtube_thumb']['size'][$i]> 10240000){
               echo "<script>
@@ -157,6 +157,13 @@
                   AND l_idx = {$i}";
         }
         $result2 = $mysqli-> query($sql1);
+      }
+      if (isset($_POST['delete_youtube'])) {
+        $deleteYouTubeIndexes = $_POST['delete_youtube'];
+        foreach ($deleteYouTubeIndexes as $deleteIdx) {
+        $deleteSql = "DELETE FROM lecture WHERE cid = {$cid} AND l_idx = {$deleteIdx}";
+        $deleteResult = $mysqli->query($deleteSql);
+        }
       }
 
       $mysqli->commit();//디비에 커밋한다.
