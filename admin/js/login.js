@@ -4,11 +4,11 @@ var popup_closeBtn = popup.find("#close");
 var popup_input = popup.find("#daycheck");
 
 popup.find('.figma').click(function() {
-  window.open('https://www.figma.com/file/SBpYD7PNfQY7D8PyVIq3Kk/%EA%B8%B0%ED%9A%8D?type=design&node-id=99%3A489&mode=design&t=TDF13rdFH2Kk27vs-1', '_blank');
+  window.open('https://www.figma.com/file/a1PVKp4FPIF5xlhCMeSyKu/%ED%94%84%EB%B0%94%EC%98%A4%F0%9F%90%BC?type=design&node-id=5%3A3&mode=design&t=KIOWU1f445XnXfBK-1', '_blank');
 });
 
 popup.find('.git').click(function() {
-  window.open('https://github.com/hoon95/last_child', '_blank');
+  window.open('https://github.com/hazel305/pudding-LMS-website', '_blank');
 });
 
 //쿠키 있는지 확인해서 popup 보일지 결정

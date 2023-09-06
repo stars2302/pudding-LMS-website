@@ -91,9 +91,9 @@ $js_route = "js/login.js";
 
       <div class="info">
         <p><span>제작기간</span> : 2023. 08. 14 - 08. 10</p>
-        <p><span>특징</span> : html, css, jQuery, <span class="bold">bootstrap, php, sql</span></p>
+        <p><span>특징</span> : html, css, jQuery, <span class="bold">bootstrap, php, mySql</span></p>
         <p>초보 관리자도 사용할 수 있도록 깔끔하고 직관적인 UI를 활용한 <span class="bold">LMS 관리자 사이트</span></p>
-        <p><span>기획</span> : <a href="https://www.figma.com/file/SBpYD7PNfQY7D8PyVIq3Kk/%EA%B8%B0%ED%9A%8D?type=design&node-id=99%3A489&mode=design&t=TDF13rdFH2Kk27vs-1" target="_blank" class="figma"><span>기획/디자인 자료</span><i class="ti ti-brand-figma"></i></a>  |  <span>코드</span> : <a href="https://github.com/hoon95/last_child" target="_blank" class="git"><span>깃허브</span><i class="ti ti-brand-github"></i></a></p>
+        <p><span>기획</span> : <a href="#" target="_blank" class="figma"><span>기획/디자인 자료</span><i class="ti ti-brand-figma"></i></a>  |  <span>코드</span> : <a href="#" target="_blank" class="git"><span>깃허브</span><i class="ti ti-brand-github"></i></a></p>
         <p><span>구현 완료 페이지</span> : 모든 페이지 조회, 수정, 삭제, 로그인, 로그아웃</p>
       </div>
 
