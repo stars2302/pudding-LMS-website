@@ -8,6 +8,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 
+//체크박스 선택후 버튼 누르면 할일 꼭 하기
+
 $name = $_GET['name'] ?? '';
 $cates1 = $_GET['cate1'] ?? '';
 $cate2 = $_GET['cate2'] ?? '';
@@ -19,16 +21,14 @@ $level2 = $_GET['level2'] ?? '';
 $level3 = $_GET['level3'] ?? '';
 $act = $_GET['act'] ?? '';
 
-$content = $_GET['content'] ?? '';
-$thumbnail = $_GET['thumbnail'] ?? '';
+// $content = $_GET['content'] ?? '';
+// $thumbnail = $_GET['thumbnail'] ?? '';
 
-$due = $_GET['due'] ?? '';
-
-
-$userid = $_GET['userid'] ?? '';
-$due_status = $_GET['due_status'] ?? '';
+// $due = $_GET['due'] ?? '';
 
 
+// $userid = $_GET['userid'] ?? '';
+// $due_status = $_GET['due_status'] ?? '';
 
 
 
@@ -49,16 +49,6 @@ if ($price_statuss) {
 if ($name) {
   $search_where .= " and name like '%{$name}%'";
 }
-
-
-
-
-
-// // if($search_keyword){
-// //   $search_where .= " and (name like '%{$search_keyword}%' or content like '%{$search_keyword}%')";
-// //   //제목과 내용에 키워드가 포함된 상품 조회
-// // }
-
 
 
 $sql2 = "SELECT * FROM courses where 1=1"; // and 컬러명=값 and 컬러명=값 and 컬러명=값 
@@ -146,7 +136,7 @@ while ($rs2 = $result2->fetch_object()) {
   </form>
 
   <!-- 리스트 -->
-  <form action="clist_update.php" method="POST">
+  <form action="clist_save.php" method="POST" class="course_list_wrap">
     <ul>
       <?php
       if (isset($rsc2)) {
@@ -170,16 +160,16 @@ while ($rs2 = $result2->fetch_object()) {
                       //뱃지 키워드 
                       if (isset($item->cate)) {
                         $categoryText = $item->cate;
-                        $parts = explode('/', $categoryText); // Split the string by '/'
-                        $lastPart = end($parts); // Get the last element in the array
-                  
-                        echo $lastPart; // Output: "javascript"
+                        $parts = explode('/', $categoryText);
+                        $lastPart = end($parts);
+
+                        echo $lastPart;
                       }
                       ?>
                     </span>
                     <span class="badge level_badge rounded-pill b-pd
                 <?php
-                //  뱃지컬러
+                // 뱃지컬러
                 $levelBadge = $item->level;
                 if ($levelBadge === '초급') {
                   echo 'yellow_bg';
@@ -227,13 +217,12 @@ while ($rs2 = $result2->fetch_object()) {
 
               <div class="d-flex align-items-end status_box">
                 <span class="price content_stt">
-                  <?= $item->price ?>
+                  <?= $item->price ?><span> 원</span>
                 </span>
                 <span class="d-flex flex-column align-items-end status_wrap">
                   <select name="act[<?= $item->cid ?>]" id="act[<?= $item->cid ?>]" class="form-select"
                     aria-label="Default select example" id="selectmenu">
                     <option selected disabled>상태</option>
-                    <!-- 추후 value 넣기  -->
                     <option value="활성" <?php if ($item->act == "활성") {
                       echo "selected";
                     } ?>>활성</option>
@@ -242,7 +231,7 @@ while ($rs2 = $result2->fetch_object()) {
                     } ?>>비활성</option>
                   </select>
                   <span class="price_btn_wrap">
-                    <a href="course_up.php" class="btn btn-primary btn_g">수정</a>
+                    <a href="course_update.php?cid=<?= $item->cid ?>" class="btn btn-primary btn_g">수정</a>
                     <button class="btn btn-danger">삭제</button>
                   </span>
                 </span>
@@ -253,14 +242,13 @@ while ($rs2 = $result2->fetch_object()) {
         }
       } else {
         ?>
-        <p colspan="10"> 검색 결과 없습니다 </p>
+        <p colspan="10"> 검색 결과가 없습니다. </p>
         <?php
       }
       ?>
     </ul>
-    <button class="btn btn-primary btn_g">일괄수정</button>
+    <button class="btn btn-primary btn_g all_modify_btn">변경 일괄 수정</button>
   </form>
-
 
   <!-- pagination -->
   <nav aria-label="Page navigation example" class="d-flex justify-content-center">
@@ -281,18 +269,11 @@ while ($rs2 = $result2->fetch_object()) {
     </ul>
   </nav>
 </section>
-
-
 </div><!-- content_wrap -->
 </div><!-- wrap -->
 
 <script src="js/makeoption.js"></script>
-
 <script>
-
-
-
-
   $('input[type="checkbox"]').click(function () {
     let $this = $(this);
     if ($this.prop('checked')) {//체크해서 활성되면
@@ -302,9 +283,6 @@ while ($rs2 = $result2->fetch_object()) {
     }
   });
 
-
-
-
   //강의 가격 천단위, 변환
   let priceList = $('.price');
 
@@ -313,8 +291,6 @@ while ($rs2 = $result2->fetch_object()) {
     let course_price = ($.number(str_price));
     $(this).text(course_price + ' 원');
   });
-
-  // green_bg
 
 </script>
 <?php

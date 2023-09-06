@@ -1,6 +1,5 @@
 $('#cate1').on('change',function(){
   makeOption($(this),2,'중분류', $('#cate2'));
-  
 }); //cate1 change
 
 $('#cate2').on('change',function(){
