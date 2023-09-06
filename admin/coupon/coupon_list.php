@@ -167,7 +167,10 @@ while($rs = $result -> fetch_object()){
             <h3 class="b_text01" title="<?= $coupon->cp_name ?>"><?= $coupon->cp_name ?></h3>
             <p>사용기한 : <?php if($coupon->cp_date == ''){echo '무제한';}else{echo $coupon->cp_date.'개월';} ?></p>
             <p>최소사용금액 : <span class="number"><?= $coupon->cp_limit ?></span>원</p>
-            <p><?php if($coupon->cp_type == '정액'){echo '할인액';}else{echo '할인율';} ?> : <span class="number"><?php if($coupon->cp_type == '정액'){echo $coupon->cp_price;}else{echo $coupon->cp_ratio.'%';} ?></span>원</p>
+            <p>
+              <?php if($coupon->cp_type == '정액'){echo '할인액';}else{echo '할인율';} ?> : 
+              <span class="number"><?php if($coupon->cp_type == '정액'){echo $coupon->cp_price;}else{echo $coupon->cp_ratio;} ?></span><span><?php if($coupon->cp_type == '정액'){echo '원';}else{echo '%';} ?></span>
+            </p>
           </div>
 
           <div class="icons">
