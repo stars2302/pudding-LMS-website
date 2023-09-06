@@ -104,25 +104,17 @@ while ($is = $result->fetch_object()) {
           </p>
         </div>
         <div>
-          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span>
-              <?php if ($rs->due == '') {
-                echo '무제한';
-              } else {
-                echo $rs->due;
-              }
-              ; ?>
-            </span></p>
-          <p class="price content_stt">
-            <?= $rs->price; ?><span>원</span>
-          </p>
+          <p class="duration"><i class="ti ti-calendar-event"></i><span>수강기간</span><span><?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span></p>
+          <span class="price content_stt number"><?= $rs->price; ?></span>
+          <span>원</span>
         </div>
       </div>
     </div>
     <div class="course_status d-flex justify-content-between">
       <div class="d-flex flex-column align-items-end status_wrap">
-        <span class="price_btn_wrap">
-          <a href="course_update.php?cid=<?= $rs->cid ?>" class="btn btn-primary btn_g">수정</a>
-          <button class="btn btn-danger">삭제</button>
+        <span class="price_btn_wrap mb-3">
+          <a href="course_update.php?cid=<?=$rs->cid ?>" class="btn btn-primary btn_g">수정</a>
+          <a href="course_delete.php?cid=<?=$rs->cid ?>" class="del_btn btn btn-danger btn_g">삭제</a>
         </span>
       </div>
     </div>

@@ -31,4 +31,3 @@ console.log(data);
     }
   });//ajax
 }
-

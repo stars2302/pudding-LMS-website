@@ -16,6 +16,22 @@
     $cate1 =  $_POST['cate1']??'' ;
     $cate2 =  $_POST['cate2']??'' ;
     $cate3 =  $_POST['cate3']??'' ;
+  
+
+    $query11 = "SELECT name FROM category WHERE cateid='".$cate1." '";
+    $result11 = $mysqli->query($query11); //쿼리실행결과를 $result 할당
+    $rs11 = $result11->fetch_object();
+    $cate1 =  $rs11-> name;
+
+    $query22 = "SELECT name FROM category WHERE cateid='".$cate2." '";
+    $result22 = $mysqli->query($query22); //쿼리실행결과를 $result 할당
+    $rs22 = $result22->fetch_object();
+    $cate2 =  $rs22->name;
+
+    $query33 = "SELECT name FROM category WHERE cateid='".$cate3." '";
+    $result33 = $mysqli->query($query33); //쿼리실행결과를 $result 할당
+    $rs33 = $result33->fetch_object();
+    $cate3 =  $rs33->name;
 
     $cate = $cate1.'/'.$cate2.'/'.$cate3;
     $name = $_POST['name'];
@@ -27,6 +43,8 @@
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
     $youtube_name = $_POST['youtube_name']?? '';
+
+    
 
     // 참고 유미네 https://github.com/HyeonJinSon/FastCode
     //파일업로드
@@ -64,8 +82,8 @@
         }
     }
 
-    $sql = "INSERT INTO courses (cate, name, price_status,price, level, due_status, due, act, content, thumbnail, video_table_id) 
-    VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}','{$video_table_id}')";
+    $sql = "INSERT INTO courses (cate, name, price_status,price, level, due_status, due, act, content, thumbnail) 
+    VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}')";
 
     // var_dump($sql)
 
@@ -115,7 +133,7 @@
               </script>";
             }
           }
-          $sql1 = "INSERT INTO lecture (cid,youtube_thumb, youtube_name, youtube_url) VALUES ('{$cid}','{$upload_youtube_thumb[$i]}','{$youtube_name[$i]}', '{$youtube_url[$i]}')";
+          $sql1 = "INSERT INTO lecture (cid, l_idx, youtube_thumb, youtube_name, youtube_url) VALUES ({$cid}, {$i}, '{$upload_youtube_thumb[$i]}', '{$youtube_name[$i]}', '{$youtube_url[$i]}')";
           $result2 = $mysqli-> query($sql1);
           }
 

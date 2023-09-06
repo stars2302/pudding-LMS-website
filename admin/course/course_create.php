@@ -1,12 +1,10 @@
 <?php
- $title="대시보드";
+ $title="강의 등록";
  $css_route="course/css/course.css";
  $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
 ?>
-
-
 
 <section>
   <div class="course_title tt_mb">
@@ -24,7 +22,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
             <?php
               foreach($cate1 as $c){            
             ?>
-              <option value="<?php echo $c->cateid ?>"><?php echo $c->name ?></option>
+              <option value="<?php echo $c->cateid ?>" data-name="<?php echo $c->name ?>"><?php echo $c->name ?></option>
             <?php } ?>
           </select>
         </div>
@@ -122,7 +120,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
       <div class="you_upload">
-        <div class="youtube">
+        <div class="you_upload_content">
           <div class="row">
             <div class="col-2 youtube_thumb">
               <P>강의썸네일</P>

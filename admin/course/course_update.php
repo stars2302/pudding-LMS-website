@@ -17,6 +17,7 @@ $cid = $_GET['cid'];
 $sql = "SELECT * FROM courses WHERE cid={$cid}";
 $result = $mysqli -> query($sql);
 $rs = $result -> fetch_object();
+// var_dump($rs);
 
 
 $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
@@ -25,7 +26,7 @@ $result = $mysqli -> query($imgsql);
 while($is = $result -> fetch_object()){
   $addImgs[]=$is;
 
-  var_dump($addImgs);
+  // var_dump($addImgs);
 }
 // while($is = $result -> fetch_object()){
 //   $addImgs["youtube_thumb"]=$is;
@@ -46,21 +47,31 @@ while($is = $result -> fetch_object()){
       <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
-            <option disabled selected>대분류 선택</option>
-            <option value="<?= $rs->cate; ?>">대분류1</option>
+          <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
+          <?php
+                 $cateString = $rs->cate;
+                 $parts = explode('/', $cateString);
+         
+                 $big_cate = $parts[0];
+                 $md_cate = $parts[1];
+                 $sm_cate = $parts[2];
+            ?>  
+           <?php
+              foreach($cate1 as $c){      
+                if($big_cate == $c->name) {$selected='selected';}else{$selected='';};     
+            ?>
+             <option value="<?php echo $c->cateid ?>" <?= $selected; ?> data-name="<?php echo $c->name ?>"><?php echo $c->name ?></option>
+            <?php } ?>
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
-            <option disabled selected>중분류 선택</option>
-            <option value="<?= $rs->cate; ?>">중분류1</option>
+          <select class="form-select" aria-label="Default select example" id="cate2" name="cate2">
+            <option disabled selected><?php echo $md_cate ?></option>
           </select>
         </div>
         <div class="category col">
-          <select class="form-select" aria-label="Default select example">
-            <option disabled selected>소분류 선택</option>
-            <option value="<?= $rs->cate; ?>">소분류1</option>
+          <select class="form-select" aria-label="Default select example" id="cate3" name="cate3">
+            <option disabled selected><?php echo $sm_cate ?></option>
           </select>
         </div>
       </div>
@@ -176,14 +187,14 @@ while($is = $result -> fetch_object()){
       name="thumbnail" 
       id="thumbnail"
       alt="">
-      <img src="<?= $rs->thumbnail?>" alt="">
+      <img src="<?= $rs->thumbnail; ?>" alt="">
     </div>
 
     <div class="upload c_mt">
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
 
       <div class="you_upload">
-        <div class="youtube1">
+        <div class="you_upload_content">
           <div class="row">
             <div class="col-2">
               <P>강의썸네일</P>
@@ -197,13 +208,14 @@ while($is = $result -> fetch_object()){
           </div>
         </div>
         <?php
+          $i = 1;
           if(isset($addImgs)){
           foreach($addImgs as $ai){
         ?>  
-        <div class="youtube2 c_mb mt-3">
+        <div class="youtube c_mb mt-3">
           <div class="row justify-content-between">
             <div class="col-2 youtube_thumb">
-              <input type="file" class="form-control" name="youtube_thumb[]" value="<?= $ai -> youtube_thumb?>"/>
+              <input type="file" class="form-control" name="youtube_thumb[]"/>
               <img src="<?= $ai -> youtube_thumb?>" alt="">
             </div>
             <div class="col-3 youtube_name">
@@ -213,11 +225,13 @@ while($is = $result -> fetch_object()){
               <input type="url" class="form-control" name="youtube_url[]" value="<?= $ai -> youtube_url?>"/>
             </div>
             <div class="col-1 trash_icon">
-              <i class="ti ti-trash bin_icon"></i>
+              <label for="delete-youtube<?= $i; ?>"><i class="ti ti-trash bin_icon"></i></label>
+              <input type="checkbox" class="delete-youtube hidden" id="delete-youtube<?= $i; ?>" name="delete_youtube[]" value="<?= $ai->l_idx ?>" />
             </div>
           </div>
         </div>
         <?php
+        $i++;
             }
           }
           ?>
@@ -238,8 +252,8 @@ while($is = $result -> fetch_object()){
       <a href="course_list.php" class="btn btn-dark">수정취소</a>
     </div>
   </form>
-
 </section>
+<script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>

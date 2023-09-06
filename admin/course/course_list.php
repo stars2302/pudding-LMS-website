@@ -323,7 +323,7 @@ while ($rs2 = $result2->fetch_object()) {
                   </select>
                   <span class="price_btn_wrap">
                     <a href="course_update.php?cid=<?= $item->cid ?>" class="btn btn-primary btn_g">수정</a>
-                    <button class="btn btn-danger">삭제</button>
+                    <a href="course_delete.php?cid=<?= $item->cid ?>" class="btn btn-danger">삭제</a>
                   </span>
                 </span>
               </div>
@@ -389,8 +389,7 @@ while ($rs2 = $result2->fetch_object()) {
 
 <script src="js/makeoption.js"></script>
 <script>
-
-  //강의 가격 천단위, 변환
+ //강의 가격 천단위, 변환
   let priceList = $('.price');
 
   priceList.each(function () {
