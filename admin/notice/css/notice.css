@@ -194,7 +194,9 @@ tbody {
 .notice_view_btns {
   gap: 15px;
   margin-top: 60px;
+  margin-bottom: 30px !important;
 }
+
 
 .notice_view_notice_body .content {
   padding: 36.73px 63px;
