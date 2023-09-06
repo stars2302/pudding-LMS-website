@@ -1,3 +1,24 @@
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: .15s ease-in-out .15s ease-in-out;
+}
+
+.qna,
+.review{
+  background: white;
+}
 section h2{
   padding-bottom: calc(var(--base_unit)*2);
 }
@@ -48,6 +69,7 @@ nav .pagination{
 /* qna_content */
 .qna{
   padding: calc(var(--base_unit)*2);
+  background: var(--white_bg);
 }
 
 .user{
@@ -70,13 +92,11 @@ nav .pagination{
   padding: var(--base_unit) var(--base_unit) var(--base_unit) 0;
 }
 .i_con{
-  padding: var(--base_unit) 0 var(--base_unit) calc(var(--base_unit)*6);
+  padding: 0 0 var(--base_unit) calc(var(--base_unit)*6);
   line-height: var(--base_unit);
   gap: 10px;
 }
-.i_con .sircle{
-  padding-left: 20px;  
-}
+
 .master{
   background-color: var(--light_blue_bg);
   margin: 0 calc(var(--base_unit)*3) var(--base_unit) calc(var(--base_unit)*6);
@@ -104,7 +124,6 @@ nav .pagination{
 
 .review .btn{
   white-space: nowrap;
-  font-weight: bold;
   font-size: 16px;
   height: calc(var(--base_unit)*1.5);
 }
@@ -118,4 +137,35 @@ nav .pagination{
   font-weight: bold;
   font-size: 16px;
   height: calc(var(--base_unit)*1.5);
+}
+
+
+/*  */
+
+.saveButton{
+  display: none;
+}
+.waiting {
+  color: grey !important;
+}
+
+.completed {
+  color: blue !important;
+}
+
+.list_up form{
+  margin-top: 100px;
+}
+
+.replyButton{
+  gap: 15px;
+}
+.order{
+  display: flex;
+  gap: calc(var(--base_unit)*0.5);
+}
+.order .btn{
+  margin-top: calc(var(--base_unit)*2);
+  margin-bottom: var(--base_unit);
+  line-height: var(--base_unit);
 }
