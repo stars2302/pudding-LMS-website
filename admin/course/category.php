@@ -165,9 +165,7 @@ while ($rs = $result->fetch_object()) {
               ?>
               <li class="list-group-item big d-flex justify-content-between align-items-center" value="<?= $c->cateid ?>"
                 data-cate="<?= $c->cateid ?>">
-                <span class="cate_size">
-                  <?= $c->name; ?>
-                </span>
+                <span class="cate_size"><?= $c->name; ?></span>
                 <div class="cate_edit_btns d-flex gap-2">
                   <a href="category_update.php?cateid=<?= $c->cateid ?>" data-bs-toggle="modal"
                     data-bs-target="#cateModifyModal1"><i class=" ti ti-edit pen_icon"></i></a>
