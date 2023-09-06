@@ -103,7 +103,7 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/sales/sales.php" class="icon"
+                <a href="/pudding-LMS-website/admin/sales/sales_list.php" class="icon"
                   ><i class="ti ti-coins"></i><span>매출 관리</span></a
                 >
               </li>
@@ -119,17 +119,17 @@
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/notice/notice.php" class="icon"
+                <a href="/pudding-LMS-website/admin/notice/notice_list.php" class="icon"
                   ><i class="ti ti-clipboard-text"></i><span>공지사항</span></a
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
+                <a href="/pudding-LMS-website/admin/qna/qna_list.php" class="icon"
                   ><i class="ti ti-zoom-question"></i><span>Q&A</span></a
                 >
               </li>
               <li>
-                <a href="/pudding-LMS-website/admin/qna/qna.php" class="icon"
+                <a href="/pudding-LMS-website/admin/users/users_list.php" class="icon"
                   ><i class="ti ti-user-edit"></i><span>회원 관리</span></a
                 >
               </li>
