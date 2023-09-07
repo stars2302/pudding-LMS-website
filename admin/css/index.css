@@ -21,7 +21,7 @@ ol, ul {
   width: 28%;
 }
 .sales img {
-  width: 224px;
+  width: 100%;
   height: 150px;
   border-radius: 5px;
   object-fit: cover;
@@ -114,12 +114,9 @@ ol, ul {
   height: 330px;
   padding: 30px;
 }
-.category_wrap canvas{
-  margin: 0 auto;
-}
 
 .chart,.notice {
-  height: 400px;
+  height: 410px;
 }
 
 .noti_con {
