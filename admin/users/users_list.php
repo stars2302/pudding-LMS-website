@@ -111,7 +111,7 @@ while ($rs = $result->fetch_object()) {
                   <td scope="row"><?php echo $list->userid; ?></td>
                   <td><?php echo $list->username; ?></td>
                   <td><?php echo $list->useremail; ?></td>
-                  <td><?php echo $list->regdate; ?></td>
+                  <td><?= date('Y-m-d', strtotime($list -> regdate)) ;?></td>
                 </tr>
                 <?php
                       }

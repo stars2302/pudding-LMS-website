@@ -93,7 +93,7 @@ if ($mysqli->connect_error) {
             <!-- 작성자 -->            
             <td><?php echo $row['uid']; ?></td>
             <!-- 작성시간 -->
-            <td><?php echo $row['q_regdate']; ?></td>
+            <td><?= date('Y-m-d', strtotime($row['q_regdate'])) ;?></td>
             <!-- 조회수 -->
             <td><?php echo $row['q_hit']; ?></td>
           </tr>

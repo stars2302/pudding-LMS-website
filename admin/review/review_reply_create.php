@@ -72,27 +72,7 @@ $card = $result->fetch_assoc();
     </div>
     <!-- 카드 끝 -->
   
-    <!-- 페이지네이션 -->
-<nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&lsaquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&rsaquo;</span>
-      </a>
-    </li>
-    </ul>
-  </nav>
-  <!-- 페이지네이션 끝 -->
+
   </section>
   <script>
     $(document).ready(function() {
