@@ -29,17 +29,7 @@ $hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
               </p>
             <div class="content">
               <!-- 본문 -->    
-              <?php
-                if($sqlarr['filetype']==0) {
-              ?>
-                <a href="<?= $sqlarr['nt_filename'] ?>"><?= $sqlarr['nt_filename'] ?></a>
-              <?php
-                } else {
-                ?>                 
-              <img src="<?= $sqlarr['nt_filename'] ?>" alt="공지사항 이미지 ">             
-              <?php
-                }
-              ?> 
+              
               <?= $sqlarr['nt_content'] ?>
             </div>
           </div>   
