@@ -90,7 +90,7 @@
       <hr>
 
       <div class="info">
-        <p><span>제작기간</span> : 2023. 08. 14 - 08. 10</p>
+        <p><span>제작기간</span> : 2023. 08. 14 - 09. 08</p>
         <p><span>특징</span> : html, css, jQuery, <span class="bold">bootstrap, php, mySql</span></p>
         <p>초보 관리자도 사용할 수 있도록 깔끔하고 직관적인 UI를 활용한 <span class="bold">LMS 관리자 사이트</span></p>
         <p><span>기획</span> : <a href="#" target="_blank" class="figma"><span>기획/디자인 자료</span><i class="ti ti-brand-figma"></i></a>  |  <span>코드</span> : <a href="#" target="_blank" class="git"><span>깃허브</span><i class="ti ti-brand-github"></i></a></p>
