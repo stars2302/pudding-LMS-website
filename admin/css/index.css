@@ -53,6 +53,11 @@ ol, ul {
   color: #747880;
   font-size: 20px;
   margin-bottom: 6px;
+
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
  }
 .sales_lank p {
   font-size: 16px;

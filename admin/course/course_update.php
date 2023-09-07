@@ -28,17 +28,15 @@ while($is = $result -> fetch_object()){
     <h2 class="main_tt dark">강의 수정</h2>
   </div>
   <form action="update_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
-  <label for="image_table_id" class="hidden">이미지</label>
-  <label for="content" class="hidden">내용</label>
-  <label for="cid" class="hidden">강의 번호</label>
     <input type="hidden" name="image_table_id" id="image_table_id" value="">
     <input type="hidden" name="content" id="content" value="">
     <input type="hidden" name="cid" id="cid" value="<?= $rs->cid?>">
     <div class="categorywrap">
-      <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
+      <label class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
         <div class="category col">
           <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
+            <option value="" hidden>선택하세요</option>
           <?php
                  $cateString = $rs->cate;
                  $parts = explode('/', $cateString);
@@ -143,7 +141,7 @@ while($is = $result -> fetch_object()){
         </div>
         <div class="col period_select2">
           <select class="form-select" name="due" id="due" aria-label="Default select examh5le">
-            <option value="" selected disabled>기간선택</option>
+            <option value="" disabled>기간선택</option>
             <option value="무제한" <?php if($rs->due == "무제한") echo 'selected' ?>>무제한</option>
             <option value="3개월" <?php if($rs->due == "3개월") echo 'selected' ?>>3개월</option>
             <option value="6개월" <?php if($rs->due == "6개월") echo 'selected' ?>>6개월</option>
@@ -177,11 +175,11 @@ while($is = $result -> fetch_object()){
       class="form-control" 
       name="thumbnail" 
       id="thumbnail">
-      <img src="<?= $rs->thumbnail; ?>">
+      <img src="<?= $rs->thumbnail; ?>" alt="">
     </div>
 
     <div class="upload c_mt">
-      <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
+      <label class="form-label content_tt c_mb">강의영상 업로드</label>
 
       <div class="you_upload">
         <div class="you_upload_content">
