@@ -144,7 +144,7 @@ $js_route = "js/login.js";
               class="form-control"
               name="userid"
               id="userid"
-              placeholder="admin"
+              placeholder="ID : admin"
               aria-label="userid"
               required
             />
@@ -158,7 +158,7 @@ $js_route = "js/login.js";
               class="form-control"
               name="password"
               id="password"
-              placeholder="1111"
+              placeholder="PW : 1111"
               required
             />
           </div>
