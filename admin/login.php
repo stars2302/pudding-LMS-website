@@ -1,4 +1,5 @@
 <?php
+// session_start();
 if(isset($_SESSION['AUID'])){
   if($_SESSION['AUID'] == 'admin'){
     echo "<script>
