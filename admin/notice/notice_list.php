@@ -25,7 +25,7 @@ if(isset($_GET['keyword'])) {
   }
   $sales_page = $rscaa[0]->count;
 }
-var_dump($sales_page);
+
 
 $sql = "SELECT * from notice where 1=1";
 // $sql.= $search_where;
