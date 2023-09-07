@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
-/* 페이지 타이틀 및 CSS/JS 경로 설정 & 데이터 베이스 연결*/
+
 
 /* 제목, 내용, 파일, 날짜*/
 $nt_title = $_POST["nt_title"];
@@ -51,8 +51,8 @@ if(!isset($filetype)){
 }
 
 $sql = "INSERT INTO notice 
-(nt_title, nt_filename, nt_content, nt_regdate, filetype) VALUES 
-('{$nt_title}','{$upload_option_image}','{$nt_content}','{$nt_regdate}','{$filetype}')";
+(nt_title, nt_filename, nt_read_cnt, nt_content, nt_regdate, filetype) VALUES 
+('{$nt_title}','{$upload_option_image}',0,'{$nt_content}','{$nt_regdate}','{$filetype}')";
 $result = $mysqli->query($sql);
 $pid = $mysqli->insert_id;
 if($result === TRUE) {

@@ -72,14 +72,15 @@
         }
     }
 
-    $sql = "INSERT INTO courses (cate, name, price_status,price, level, due_status, due, act, content, thumbnail) 
+    $sql = "INSERT INTO courses (cate, name, price_status , price, level, due_status, due, act, content, thumbnail) 
     VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}')";
 
-
+var_dump($sql);
 
     $result = $mysqli->query($sql);
+    var_dump($result);
     $cid = $mysqli -> insert_id; //입력된 값의 pk가져오는 명령어
-
+var_dump($cid);
     if($result){
 
       if($youtube_name){
@@ -132,7 +133,7 @@
 
       echo "<script>
       alert('강의 등록 완료!');
-      location.href='course_list.php';</script>";
+      location.href='/pudding-LMS-website/admin/course/course_list.php';</script>";
       }
     } catch(Exception $e){
       $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.

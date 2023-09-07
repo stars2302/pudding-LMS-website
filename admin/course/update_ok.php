@@ -3,6 +3,7 @@
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
 
+
   $mysqli->autocommit(FALSE);//커밋이 안되도록 지정, 일단 바로 저장하지 못하도록
   try{
     
@@ -42,7 +43,20 @@
     $due = $_POST['due']??'무제한';
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
-    $youtube_name = $_POST['youtube_name']?? '';
+    $youtube_name = $_POST['youtube_name']?? [];
+    $youtube_url = $_POST['youtube_url']?? [];
+  
+
+$youtube_thumb_org = $_FILES['youtube_thumb']['name'];
+$youtube_thumb_arr = [];
+
+foreach($youtube_thumb_org as $ythumb){
+  if($ythumb != ''){
+    $youtube_thumb_arr[]=$ythumb;
+  }
+  
+}
+ 
 
     if($_FILES['thumbnail']['name']){
 
@@ -108,69 +122,83 @@
 
     $result = $mysqli->query($sql);
 
-      if($youtube_name){
 
-        $youtube_url = $_POST['youtube_url'];
+
+      if(isset($youtube_url)){
+
+
         $upload_youtube_thumb = [];
 
-        for($i = 0;$i<count($youtube_url) ; $i++){
+       
 
-          if(!empty($youtube_thumb[$i]) && !empty($youtube_name[$i]) && !empty($youtube_url[$i])){
+        for($i = 0;$i<count($youtube_thumb_arr) ; $i++){
+
+
 
             if($_FILES['youtube_thumb']['size'][$i]> 10240000){
               echo "<script>
                 alert('10MB 이하만 첨부할 수 있습니다.');    
-                history.back();      
+                //history.back();      
               </script>";
               exit;
             }
         
             if(strpos($_FILES['youtube_thumb']['type'][$i], 'image') === false){
               echo "<script>
-                alert('이미지만 첨부할 수 있습니다.');
-                history.back();            
+                //alert('이미지만 첨부할 수 있습니다.');
+                //history.back();            
               </script>";
               exit;
             }
         
             $save_dir = $_SERVER['DOCUMENT_ROOT']."/pudding-LMS-website/admin/images/course/";
-            $filename = $_FILES['youtube_thumb']['name'][$i]; 
-            $ext = pathinfo($filename, PATHINFO_EXTENSION); 
-            $newfilename = date("YmdHis").substr(rand(), 0,6); 
-            $youtube_thumb = $newfilename.".".$ext; 
 
-            if(move_uploaded_file($_FILES['youtube_thumb']['tmp_name'][$i], $save_dir.$youtube_thumb)){  
-              $upload_youtube_thumb[] = "/pudding-LMS-website/admin/images/course/".$youtube_thumb;
-            } else{
-              echo "<script>
-                alert('이미지등록 실패!');    
-                history.back();            
-              </script>";
-            }
-          };
+            if(strlen($_FILES['youtube_thumb']['name'][$i])>0){
+
+              $filename = $_FILES['youtube_thumb']['name'][$i]; 
+              $ext = pathinfo($filename, PATHINFO_EXTENSION); 
+              $newfilename = date("YmdHis").substr(rand(), 0,6); 
+              $youtube_thumb = $newfilename.".".$ext; 
+  
+              if(move_uploaded_file($_FILES['youtube_thumb']['tmp_name'][$i], $save_dir.$youtube_thumb)){  
+                $upload_youtube_thumb[] = "/pudding-LMS-website/admin/images/course/".$youtube_thumb;
+              } else{
+                echo "<script>
+                 // alert('이미지등록 실패!');    
+                  //history.back();            
+                </script>";
+              }
+            } 
+
+              $sql1 = "UPDATE lecture
+                      SET youtube_thumb = '{$upload_youtube_thumb[$i]}',
+                          youtube_name = '{$youtube_name[$i]}',
+                          youtube_url = '{$youtube_url[$i]}'
+                      WHERE cid ={$cid}
+                      AND l_idx = {$i}";
+           
+           echo 'thumb update'.$sql1.'<br>';
+           $result2 = $mysqli-> query($sql1);           
+        
         }
-      }
+        
+        for($i = 0;$i<count($youtube_url) ; $i++){
 
 
-
-      for($i = 0; $i<count($youtube_url); $i++){
-
-        if($_FILES['youtube_thumb']['name'][$i]){
-          $sql1 = "UPDATE lecture
-                  SET youtube_thumb = '$upload_youtube_thumb[$i]',
-                      youtube_name = '{$youtube_name[$i]}',
-                      youtube_url = '{$youtube_url[$i]}'
-                  WHERE cid ={$cid}
-                  AND l_idx = {$i}";
-        }else{
           $sql1 = "UPDATE lecture
                   SET youtube_name = '{$youtube_name[$i]}',
                       youtube_url = '{$youtube_url[$i]}'  
                   WHERE cid ={$cid}
                   AND l_idx = {$i}";
+        
+          $result2 = $mysqli-> query($sql1);
         }
-        $result2 = $mysqli-> query($sql1);
+
+        
       }
+
+
+
       if (isset($_POST['delete_youtube'])) {
         $deleteYouTubeIndexes = $_POST['delete_youtube'];
         foreach ($deleteYouTubeIndexes as $deleteIdx) {
@@ -183,9 +211,9 @@
 
       echo "<script>
       alert('강의 수정 완료!');
-      //location.href='course_list.php';</script>";
+      location.href='course_list.php';</script>";
     }
-    // } 
+
     catch(Exception $e){
       $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
       echo "<script>

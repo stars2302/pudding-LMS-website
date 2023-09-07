@@ -32,6 +32,7 @@ $last_month4_result = $mysqli->query($last_month4_sales_query);
 $last_month5_result = $mysqli->query($last_month5_sales_query);
 
 
+
 $current_month_sales = $current_month_result->fetch_assoc();
 $last_month_sales = $last_month_result->fetch_assoc();
 $last_month2_sales = $last_month2_result ->fetch_assoc();
@@ -90,13 +91,14 @@ $newusercount = $newurc->fetch_object();
 
 //월별 매출
 // 선택한 월에 해당하는 데이터를 가져오는 SQL 쿼리 작성
-$monthsql = "SELECT p.catename, c.name,c.thumbnail, SUM(p.total_price) AS total_price_sum
+$monthsql = "SELECT  c.name ,c.thumbnail, SUM(p.total_price) AS total_price_sum
         FROM payments p
         INNER JOIN courses c ON p.cid = c.cid
         WHERE DATE_FORMAT(p.buy_date, '%m') = DATE_FORMAT(NOW(), '%m')
-        GROUP BY p.catename
+        GROUP BY p.cid
         ORDER BY total_price_sum DESC
         limit 0,3;";
+
 $result = $mysqli->query($monthsql);
 while($rs = $result -> fetch_object()){
   $monthlate[] = $rs;
@@ -124,7 +126,7 @@ while($rs = $result -> fetch_object()){
                     <div class="d-flex flex-column">
                       <img src="<?= $late->thumbnail ?>" alt="<?= $late->name ?>">
                       <span class="badge rounded-pill <?= $colorarr[$i-1] ?> b-pd"><?= $i ?>위</span>
-                      <h3><a href="/pudding-LMS-website/admin/sales/sales_list.php" class="link"><?= $late->name ?></a></h3>
+                      <h3 title="<?= $late->name ?>"><a href="/pudding-LMS-website/admin/sales/sales_list.php" class="link"><?= $late->name ?></a></h3>
                       <p>매출액 : <span class="number"><?= $late->total_price_sum ?></span>원</p>
                     </div>
                   </li>
