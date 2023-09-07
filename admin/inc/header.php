@@ -189,7 +189,7 @@
                 ></path>
               </svg>
             </a>
-            <div class="red_bell d-flex justify-content-center align-items-center">1</div>
+            <div class="red_bell d-flex justify-content-center align-items-center">0</div>
           </div>
           <div class="profile d-flex align-items-center">
             <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />

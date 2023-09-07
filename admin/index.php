@@ -12,7 +12,7 @@ $last_month2 = date('Y-m', strtotime('-2 months'));
 $last_month3 = date('Y-m', strtotime('-3 months'));
 $last_month4 = date('Y-m', strtotime('-4 months'));
 $last_month5 = date('Y-m', strtotime('-5 months'));
-// var_dump($last_month2);
+
 
 // 현재 월과 전 월 sql
 $current_month_sales_query = "SELECT SUM(total_price) AS current_month_sales FROM payments WHERE DATE_FORMAT(regdate, '%Y-%m') = '$current_month'";
@@ -39,7 +39,7 @@ $last_month3_sales = $last_month3_result ->fetch_assoc();
 $last_month4_sales = $last_month4_result ->fetch_assoc();
 $last_month5_sales = $last_month5_result ->fetch_assoc();
 
-// var_dump($last_month2_sales);
+
 
 //json 형식으로 바꾸기
 $sales_data = array(
@@ -52,7 +52,7 @@ $sales_data = array(
 );
 $sales_data_json = json_encode($sales_data);
 
-// var_dump($sales_data_json);
+
 
 $sql ="SELECT * FROM notice order by ntid desc limit 0,6";
 $result = $mysqli-> query($sql);
