@@ -11,9 +11,6 @@
   $rs = $result->fetch_object();
 
   if($rs){
-    // $sql = "select * from admin where idx = {$rs->idx}";
-    // $sql = "UPDATE cart SET userid='{$userid}' where ssid='".session_id()."'";    
-    // $result = $mysqli->query($sql);
     $_SESSION['AUID'] = $rs->userid;
     $_SESSION['AUNAME'] = $rs->username;
 

@@ -1,11 +1,7 @@
 <?php
 $title="월별매출통계 관리";
 $css_route="sales/css/sales.css";
-// $js_route = "sales/js/sales.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
-
-
 
 
 // 월 옵션 생성 
@@ -41,8 +37,6 @@ if (isset($_GET['month'])) {
       
 
   $result = $mysqli->query($sql); //필터 없
-
-  // $rsc = array();
   $rsc = [];
   
   while ($rs = $result->fetch_object()) {
@@ -50,11 +44,7 @@ if (isset($_GET['month'])) {
 
   }
   $sales_page = $rsc[0]->count;
-  // var_dump($sales_page);
 }
-
-
-// var_dump($rsc);
 
 
 //----------------------------------------------pagenation 시작
@@ -80,7 +70,7 @@ $rscc = [];
 while ($rs = $result->fetch_object()) {
     $rscc[] = $rs;
 }
-// var_dump($rscc);
+
 
 
 //----------------------------------------------pagenation 끝
@@ -110,7 +100,7 @@ $sqlTopBuyers = "SELECT userid, SUM(total_price) AS total_price_sum
                 WHERE DATE_FORMAT(buy_date, '%m') = '07'
                 GROUP BY userid
                 ORDER BY total_price_sum DESC
-                LIMIT 5"; // 상위 5명만 가져오도록 제한
+                LIMIT 5"; 
 
 $resultTopBuyers = $mysqli->query($sqlTopBuyers);
 $topBuyersData = [];
@@ -161,7 +151,7 @@ function getMonthlyData($selected_month) {
         </div>
         <button type="submit" class="btn btn-primary search_btn">조회</button>
     </form>
-    <!-- 데이터 조회 및 차트 부분 -->
+    
 <?php
 
 if (isset($_GET['month']) || empty($_GET)) {
@@ -236,13 +226,10 @@ if (isset($_GET['month']) || empty($_GET)) {
             if($pageNumber == $i){
                 //필터 있
                 echo "<li class=\"page-item active\"><a href=\"?month=$selected_month&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
-                 //echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+
             }else{
                 //필터 있
                 echo "<li class=\"page-item\"><a href=\"?month=$selected_month&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
-                 //echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
 
@@ -268,12 +255,12 @@ if (isset($_GET['month']) || empty($_GET)) {
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 
 <script>
-// PHP데이터-> JavaScript
+
 var chartData = <?php echo json_encode($chartData); ?>;
 var chartLabels = chartData.map(item => item.name);
 var chartValues = chartData.map(item => item.total_price_sum);
 
-// 막대 그래프 생성
+
 var ctx = document.getElementById('bar_chart').getContext('2d');
 var barChart = new Chart(ctx, {
     type: 'bar',
@@ -297,11 +284,11 @@ var barChart = new Chart(ctx, {
 });
 
 
-// 파이 그래프 데이터 생성
+
 var pieChartLabels = <?php echo json_encode(array_column($topBuyersData, 'userid')); ?>;
 var pieChartValues = <?php echo json_encode(array_column($topBuyersData, 'total_price_sum')); ?>;
 
-// 파이 그래프 생성
+
 var ctxPie = document.getElementById('pie_chart').getContext('2d');
 var pieChart = new Chart(ctxPie, {
     type: 'pie',

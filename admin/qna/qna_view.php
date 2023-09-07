@@ -31,16 +31,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 				<!-- 작성 내용 -->
 				<div class="qna_content">
 					<p class="b_text02 "><?php echo $row['q_content']; ?></p>
-					<!-- <img src="image/hq720.jpg" alt="dummy image"> -->
+			
 				</div>
 
 
 				<!-- 추천 / 조회수 -->
 				<div class="wrap i_con">
-					<!-- <img src="image/Vest.svg" alt="Vest"> -->
-					<!-- <a href="" class="icon"><i class="ti ti-thumb-up"></i></a>
-					<p class="">25</p>            -->
-					<!-- <img src="image/Return.svg" alt="Return"> -->
+
 					<div class="sircle"><a href="" class="icon"> <i class="ti ti-arrow-back-up"></i></a></div>
 					<p class=""><?php echo $comment_count ?></p>
 				</div>
@@ -96,8 +93,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 							}
 						}
 					}
-
-					// post_id == $_GET['qid']
 					$post_id = $qid;
 					fetchComments($mysqli, $post_id);
 					?>
@@ -137,22 +132,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
       } else {
         echo '<a href="qna_change_ok.php?qid=' . $qid . '&state=0" class="btn btn-warning" >답변 대기</a>';
       }
-
       ?>
-
-  
-
-
             <button type="button" class="btn btn-dark" onclick="window.location.href='qna_list.php'">목록 보기</button>
   
         </div>
       </form>
-
-   
-
   </div>
-		
-
       </section>
     </div><!-- content_wrap -->
   </div><!-- wrap -->
@@ -302,9 +287,7 @@ $(document).on('click', '.saveButton', function() {
   let id = $(this).data('id');
   let updatedComment = $('.editComment[data-id="' + id + '"]').val();
   
-  $.ajax({
-		//test
-    // url: 'include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/qna/edit_comment_ajax.php';', 
+  $.ajax({ 
     url: 'qna_reply_update_ok.php',
     type: 'POST',
     data: {

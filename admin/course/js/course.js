@@ -6,7 +6,7 @@ let price = $("#price");
 
 $("#price_menu").change(function () {
   let option1 = $(this).val();
-  // console.log(option1)
+
 
   if (option1 == "무료") {
     price.prop("disabled", true);
@@ -32,7 +32,7 @@ $("#due_status").change(function () {
 
 $(".add_listBtn a").click(function (e) {
   e.preventDefault();
-  // let youtube = $(".youtube:last").clone();
+
   let youtube =
     '<div class="youtube c_mb mt-3"><div class="row justify-content-between">' +
     '<div class="col-2 youtube_thumb"><input type="file" class="form-control" name="youtube_thumb[]">' +
@@ -48,8 +48,7 @@ $(".add_listBtn a").click(function (e) {
     "</div>" +
     "</div>" +
     "</div>";
-  //youtube.find("input").val("");
-  //youtube.find("img").attr("src", "");
+
   $(".you_upload").append(youtube);
 });
 
@@ -68,10 +67,7 @@ $("#course_form").submit(function () {
   let content = encodeURIComponent(markupStr);
   $("#content").val(content);
 
-  // if (!$("#cate1").val()) {
-  //   alert("대분류를 선택해주세요");
-  //   return false;
-  // }
+
 
   if ($("#product_detail").summernote("isEmpty")) {
     alert("상세설명을 입력하세요");
@@ -79,9 +75,3 @@ $("#course_form").submit(function () {
   }
 });
 
-// $('.you_upload').change(function(){
-//   let target = $(this).find('.youtube label:checked');
-//   if(target.filter('checked')){
-//     console.log($(this));
-//   }
-// });

@@ -1,12 +1,11 @@
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
-// include_once $_SERVER['DOCUMENT_ROOT'].'/abcmall/admin/inc/admin_check.php';
+
 
 $cid = $_REQUEST['cid'];
 $act = $_REQUEST['act'] ?? [];
-var_dump($act);
-var_dump($cid);
+
 foreach ($cid as $c) {
   $act[$c] = $act[$c] ?? 0;
 

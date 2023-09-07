@@ -30,8 +30,6 @@ $("#datepicker").datepicker({
 //드롭다운
 $(".selected-option").click(function () {
   $(".options-list").toggle();
-  // $('.custom-dropdown').css({ 'border-bottom-left-radius': '0px;',
-  //   'border-bottom-right-radius': '0px;'})
 });
 
 

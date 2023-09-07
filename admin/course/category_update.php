@@ -4,7 +4,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
 $cateid = $_POST['cateid'] ?? '';
 $name = $_POST['catename'] ?? '';
 
-var_dump($cateid);
+
 $query = "UPDATE category SET name= '{$name}' WHERE cateid={$cateid}";
 $result = $mysqli->query($query);
 if ($result) {

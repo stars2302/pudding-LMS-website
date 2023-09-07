@@ -2,9 +2,9 @@
 $title = "공지사항";
 $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
-include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
+
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
-/* 필요 파일 및 라이브러리를 포함하고 초기설정*/
+
 /* 파라미터 로드 */
 $search_where = '';
 
@@ -45,7 +45,7 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 //최종 query문, 실행
 $sqlrc = $sql.$search_where.$order.$limit; //필터 있
-//$sqlrc = $sql.$limit; //필터 없
+
 
 
 $result = $mysqli -> query($sqlrc);

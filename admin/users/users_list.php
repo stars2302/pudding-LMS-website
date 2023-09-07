@@ -47,7 +47,7 @@ $total_block = ceil($total_page / $block_ct);
 
 $limit = " LIMIT $startLimit, $pageCount"; // select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
 $sqlrc = $sql . $sc_where . $order . $limit; // 필터 있음
-//$sqlrc = $sql.$limit; // 필터 없음
+
 //----------------------------------------------pagenation 끝
 
 $result = $mysqli->query($sqlrc); // 필터 없음
@@ -57,7 +57,7 @@ while ($rs = $result->fetch_object()) {
     $rsc[] = $rs;
 }
 
-  // var_dump($rsc);
+
 
 
 

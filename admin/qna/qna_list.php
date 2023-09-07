@@ -3,7 +3,6 @@ $title = "Q&A";
 $css_route = "qna/css/qna.css";
 $js_route = "qna/js/qna.js";
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
 //search
@@ -35,7 +34,7 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 
 //최종 query문, 실행
-// $sqlrc = $sql.$sc_where.$order.$limit; //필터 있
+
 $sql = "SELECT * FROM qna order by qid desc";
 $sqlrc = $sql.$limit; //필터 없
 //----------------------------------------------pagenation 끝
@@ -117,13 +116,9 @@ if ($mysqli->connect_error) {
 
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
-                //필터 있
-                // echo "<li class=\"page-item active\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
                 //필터 없
                 echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }else{
-                //필터 있
-                // echo "<li class=\"page-item\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
                 //필터 없
                 echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }

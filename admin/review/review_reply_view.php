@@ -8,16 +8,16 @@ $rid = $_GET['rid'];
 $uid = $_GET['uid'];
 $cid = $_GET['cid'];
 
-//수강평 받기
+
 $sql = "SELECT r.*, u.username, u.userimg, c.name FROM review r
         JOIN users u ON r.uid = u.uid
         JOIN courses c ON c.cid = r.cid
         WHERE r.rid = '{$rid}' AND r.uid = '{$uid}' AND r.cid = '{$cid}'";
-// var_dump($sql);
+
 
 $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
-// var_dump($card);
+
 
 
 
@@ -52,12 +52,10 @@ $card = $result->fetch_assoc();
               <p><?= $card["content"]; ?></p>
               <p><?= $card["regdate"]; ?></p>
             </div>
-            <!-- <div class="review_del">
-              <a href="" class="icon"> <i class="ti ti-trash bin_icon"></i></a>
-            </div> -->
+           
             
             <?php
-    // 댓글 받기
+   
     $rsql = "SELECT * FROM review_reply where rid={$rid}";
     $rresult = $mysqli->query($rsql);
 
@@ -85,7 +83,7 @@ $card = $result->fetch_assoc();
         echo '';
     }
     ?>
-          <!-- 카드 끝 -->
+        
           <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
               <a href="review_list.php" class="btn btn-dark b_text01 list_btn">목록보기</a>
 

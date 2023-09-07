@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
-/* 페이지 타이틀 및 CSS/JS 경로 설정 & 데이터 베이스 연결*/
+
 
 /* GET파라미터로 게시물 고유식별자 'ntid'가져오기 */ 
 $ntid = $_GET['ntid'];

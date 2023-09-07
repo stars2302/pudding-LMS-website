@@ -18,21 +18,6 @@ while ($is = $result->fetch_object()) {
   $addImgs[] = $is;
 }
 
-// $sql2 = "SELECT * FROM product_options where cid={$cid}";
-// $result2 = $mysqli -> query($sql2);
-//$rs2 = $result2 -> fetch_object();
-
-// while($rs2 = $result2 -> fetch_object()){
-//   $options[]=$rs2;
-// }
-
-// $sql3 = "SELECT * FROM product_image_table where cid={$cid}";
-// $result3 = $mysqli -> query($sql3);
-// //$rs2 = $result2 -> fetch_object();
-
-// while($rs3 = $result3 -> fetch_object()){
-//   $addImgs[]=$rs3;
-// }
 
 ?>
 
@@ -157,10 +142,7 @@ while ($is = $result->fetch_object()) {
 </div><!-- content_wrap -->
 </div><!-- wrap -->
 <script>
-  //강의 가격 천단위, 변환
-  // let str_price = $('.course_list .price').text();
-  // let course_price = ($.number(str_price));
-  // $('.course_list .price').text(course_price+' 원');
+
 
   let priceList = $('.price');
 

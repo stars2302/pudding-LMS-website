@@ -8,27 +8,25 @@ $rid = $_GET['rid'];
 $uid = $_GET['uid'];
 $cid = $_GET  ['cid'];
 
-//수강평 받기
+
 $sql = "SELECT r.*, u.username, u.userimg, c.name FROM review r
         JOIN users u ON r.uid = u.uid
         JOIN courses c ON c.cid = r.cid
         WHERE r.rid = '{$rid}' AND r.uid = '{$uid}' AND r.cid = '{$cid}'";
-// var_dump($sql);
+
 
 $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
-// var_dump($card);
 
-//댓글 받기
+
 $rsql = "SELECT * FROM review_reply where rid={$rid}";
 $rresult = $mysqli->query($rsql);
 $rp = $rresult->fetch_assoc();
-// var_dump($rp);
 
 
 
 ?>
-<!-- top_bar -->
+
 
 <section>
   <h2 class="main_tt dark title-mg">수강평 댓글 수정</h2>
@@ -58,16 +56,14 @@ $rp = $rresult->fetch_assoc();
         <p><?= $card["content"]; ?></p>
         <p><?= $card["regdate"]; ?></p>
       </div>
-      <!-- <div class="review_del">
-        <a href="" class="icon"> <i class="ti ti-trash bin_icon"></i></a>
-      </div> -->
+
       <form class="b_text02 review_c_content border" action="review_reply_update_ok.php?rid=<?= $rp["rid"]; ?>" method="POST">
         <input type="hidden" name="cid" value="<?= $card["cid"]; ?>">
         <input type="hidden" name="uid" value="<?= $card["uid"]; ?>">
         <div class="d-flex align-items-center">
           <img src="../images/profile_img.png" class="userImg shodow_box" alt="프로필 이미지">
           <h5 class="b_text01 primary review_user">프바오</h5>
-          <!-- <h5 class="b_text02 dark review_name"></h5> -->
+
         </div>
         <div class="b_text02 reply_content border">
           
@@ -81,7 +77,6 @@ $rp = $rresult->fetch_assoc();
       </form>
     
     </div>
-    <!-- 카드 끝 -->
     
   </section>
 </div>

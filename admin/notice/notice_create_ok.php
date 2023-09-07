@@ -22,11 +22,10 @@ if ($_FILES['nt_filename']['name']) {
     if (strpos($_FILES['nt_filename']['type'], 'image') === false) {
       $filetype = 0;
     } 
-    //"text/plain"
+ 
 
     //파일 업로드
     $save_dir = $_SERVER['DOCUMENT_ROOT'] . "/pudding-LMS-website/admin/images/notice/";
-    // $filename = $_FILES['nt_filename']['name']; //insta.jpg
     $ext = pathinfo($nt_filename, PATHINFO_EXTENSION); //jpg
     $upload_path = "/pudding-LMS-website/admin/images/notice/" . $nt_filename; //파일 경로
     $newfilename = date("YmdHis") . substr(rand(), 0, 6); //20238171184015

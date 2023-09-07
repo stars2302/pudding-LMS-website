@@ -14,7 +14,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
       if(isset($sqlarr->nt_filename)) {
         unlink($_SERVER['DOCUMENT_ROOT'] .$sqlarr->nt_filename);
       } 
-    //파일 사이즈 검사s
+    //파일 사이즈 검사
     if ($_FILES['nt_filename']['size'] > 10240000) {
       echo "<script>
       alert('10MB 이하만 첨부할 수 있습니다.');    

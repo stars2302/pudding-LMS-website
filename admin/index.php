@@ -60,33 +60,33 @@ while($rs = $result->fetch_object()){
   $rscn[]=$rs;
 }
 
-// var_dump($rscn);
+
 
 //총 수강생 수
 $userc = "SELECT COUNT(*) as cnt FROM users";
 $userrc = $mysqli -> query($userc);
 $usercount = $userrc->fetch_object();
-// var_dump($usercount->cnt);
+
 
 //활성화 쿠폰 수
 $cpc = "SELECT COUNT(*) as cnt FROM coupons where cp_status=1";
 $cprc = $mysqli -> query($cpc);
 $couponcount = $cprc->fetch_object();
-// var_dump($couponcount->cnt);
+
 
 //총 강의 수
 $csc = "SELECT COUNT(*) as cnt FROM courses";
 $csrc = $mysqli -> query($csc);
 $coursecount = $csrc->fetch_object();
-// var_dump($coursecount->cnt);
+
 
 //월별 신규 수강자
 $newuc = "SELECT COUNT(*) as cnt FROM users where DATE_FORMAT(now(), '%m')=DATE_FORMAT(regdate, '%m')";
 $newurc = $mysqli -> query($newuc);
 $newusercount = $newurc->fetch_object();
-// var_dump($newusercount->cnt);
 
-//"SELECT * FROM payments where  DATE_FORMAT(buy_date, '%m') = '$selected_month' ORDER BY payid ";
+
+
 
 //월별 매출
 // 선택한 월에 해당하는 데이터를 가져오는 SQL 쿼리 작성
@@ -102,7 +102,7 @@ while($rs = $result -> fetch_object()){
   $monthlate[] = $rs;
 }
 
-// var_dump($monthlate);
+
 
 ?>
    
@@ -228,7 +228,7 @@ var lineChart = new Chart(ctx, {
     }
 });
 
-//차트 1끝
+
 
 </script>
   

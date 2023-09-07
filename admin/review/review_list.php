@@ -28,13 +28,13 @@ $sql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
 //최종 query문, 실행
 $sqlrc = $sql.$limit; //필터 없
 
-// var_dump($sql);
+
 
 $result = $mysqli-> query($sqlrc);
 while($rs = $result->fetch_object()){
   $rsc[]=$rs;
 }
-//  var_dump($rsc);
+
 
 
 
@@ -46,7 +46,6 @@ while($rs = $result->fetch_object()){
 
           <?php
       foreach ($rsc as $card) {
-        // 리뷰댓글 개수 조회
         $replyCntSql = "SELECT COUNT(*) AS reply_cnt FROM review_reply WHERE rid = {$card->rid}";
         $replyCntResult = $mysqli->query($replyCntSql);
         $replyCnt = $replyCntResult->fetch_object()->reply_cnt;
@@ -117,14 +116,8 @@ while($rs = $result->fetch_object()){
 
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
-                //필터 있
-                //echo "<li class=\"page-item active\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
                  echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }else{
-                //필터 있
-                //echo "<li class=\"page-item\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
                  echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
@@ -163,7 +156,6 @@ while($rs = $result->fetch_object()){
                   success: function(data) {
                       if (data.result === 'ok') {
                           alert('리뷰가 삭제되었습니다.');
-                          // cardContainer.remove(); 
                       } else {
                           alert('리뷰 삭제 실패');
                       }

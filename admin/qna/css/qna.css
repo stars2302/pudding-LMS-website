@@ -61,7 +61,6 @@ nav .pagination{
   justify-content: center;
 }
 .page-link{
-  /* color: var(--font_gray); */
   color: #6C757D;
 }
 
@@ -139,8 +138,6 @@ nav .pagination{
   height: calc(var(--base_unit)*1.5);
 }
 
-
-/*  */
 
 .saveButton{
   display: none;

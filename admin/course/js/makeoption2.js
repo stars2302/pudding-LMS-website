@@ -39,7 +39,7 @@ function makeOption2(evt, step, target) {
       console.log(error);
     },
     success: function (result) {
-      //console.log(target)
+
       target.html(result);
     },
   }); //ajax

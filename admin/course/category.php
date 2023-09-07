@@ -1,17 +1,9 @@
 <?php
-// session_start();
-// if(!$_SESSION['AUID']){
-//   echo "<script>
-//           alert('접근 권한이 없습니다');
-//           history.back();
-//       </script>";
-// };
 
 $title = "카테고리";
 $css_route = "course/css/course.css";
 $js_route = "course/js/course.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
-//include_once $_SERVER['DOCUMENT_ROOT'].'/abcmall/admin/inc/admin_check.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 
 

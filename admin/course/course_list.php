@@ -233,7 +233,7 @@ while ($rs2 = $result2->fetch_object()) {
       if (isset($rsc2)) {
         foreach ($rsc2 as $item) {
           $cateString = $item->cate;
-          // var_dump($cateString);
+       
           $parts = explode('/', $cateString);
 
           $big_cate = $parts[0];
@@ -360,13 +360,9 @@ while ($rs2 = $result2->fetch_object()) {
             if($pageNumber == $i){
                 //필터 있
                 echo "<li class=\"page-item active\"><a href=\"?cate1=$cates11&cate2=$cate21&cate3=$cate31&level1=$level1&price_status=$price_status&name=$name&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
-                // echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }else{
                 //필터 있
                 echo "<li class=\"page-item\"><a href=\"?cate1=$cates11&cate2=$cate21&cate3=$cate31&level1=$level1&price_status=$price_status&name=$name&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
-                // echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
 

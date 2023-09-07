@@ -1,10 +1,5 @@
 <?php
-  // if(!$_SESSION['AUID']){
-  //   echo "<script>
-  //           alert('접근 권한이 없습니다');
-  //           history.back();
-  //       </script>";
-  // };
+
 
  $title="강의 수정";
  $css_route="course/css/course.css";
@@ -17,7 +12,6 @@ $cid = $_GET['cid'];
 $sql = "SELECT * FROM courses WHERE cid={$cid}";
 $result = $mysqli -> query($sql);
 $rs = $result -> fetch_object();
-// var_dump($rs);
 
 
 $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
@@ -25,14 +19,8 @@ $result = $mysqli -> query($imgsql);
 
 while($is = $result -> fetch_object()){
   $addImgs[]=$is;
-
-  // var_dump($addImgs);
 }
-// while($is = $result -> fetch_object()){
-//   $addImgs["youtube_thumb"]=$is;
 
-//   var_dump($addImgs);
-// }
 ?>
 
 <section>

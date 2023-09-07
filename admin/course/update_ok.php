@@ -2,12 +2,6 @@
   session_start();
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
-  // if(!isset($_SESSION['AUID'])){
-  //   echo "<script>
-  //   alert('권한이 없습니다');
-  //   history.back();
-  //   </script>";
-  // }
 
   $mysqli->autocommit(FALSE);//커밋이 안되도록 지정, 일단 바로 저장하지 못하도록
   try{
@@ -16,7 +10,7 @@
     $cate2 =  $_POST['cate2']??'' ;
     $cate3 =  $_POST['cate3']??'' ;
 
-    var_dump($cate1);
+
   
 
     $query11 = "SELECT name FROM category WHERE cateid='".$cate1." '";
@@ -38,7 +32,7 @@
 
     $cid=$_POST['cid'];
     $cate = $cate1.'/'.$cate2.'/'.$cate3;
-    var_dump($cate);
+ 
 
     $name = $_POST['name'];
     $price_status = $_POST['price_status'];
@@ -121,7 +115,6 @@
 
         for($i = 0;$i<count($youtube_url) ; $i++){
 
-          // if($_FILES['youtube_thumb']['name'][$i]){
           if(!empty($youtube_thumb[$i]) && !empty($youtube_name[$i]) && !empty($youtube_url[$i])){
 
             if($_FILES['youtube_thumb']['size'][$i]> 10240000){
@@ -158,7 +151,7 @@
         }
       }
 
-      // $youtube_url = $_POST['youtube_url'];
+
 
       for($i = 0; $i<count($youtube_url); $i++){
 

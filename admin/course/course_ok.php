@@ -1,14 +1,6 @@
 <?php
-  session_start();
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
-  //관리자 검사
-  // if(!isset($_SESSION['AUID'])){
-  //   echo "<script>
-  //   alert('권한이 없습니다');
-  //   history.back();
-  //   </script>";
-  // }
 
   $mysqli->autocommit(FALSE);//커밋이 안되도록 지정, 일단 바로 저장하지 못하도록
   try{
@@ -45,8 +37,6 @@
     $youtube_name = $_POST['youtube_name']?? '';
 
     
-
-    // 참고 유미네 https://github.com/HyeonJinSon/FastCode
     //파일업로드
     if($_FILES['thumbnail']['name']){
 
@@ -85,7 +75,7 @@
     $sql = "INSERT INTO courses (cate, name, price_status,price, level, due_status, due, act, content, thumbnail) 
     VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}')";
 
-    // var_dump($sql)
+
 
     $result = $mysqli->query($sql);
     $cid = $mysqli -> insert_id; //입력된 값의 pk가져오는 명령어
@@ -96,8 +86,7 @@
 
         $youtube_thumb = $_FILES['youtube_thumb']; //강의섬네일
         $youtube_url = $_REQUEST['youtube_url']; //강의url
-        // var_dump($youtube_url);
-        // print_r($youtube_thumb);
+   
 
         for($i = 0;$i<count($youtube_url) ; $i++){
 
