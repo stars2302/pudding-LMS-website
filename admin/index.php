@@ -164,7 +164,7 @@ while($rs = $result -> fetch_object()){
               <div class="col-md-8 content_box border shadow chart">
                 <h2 class="red_bg white"><i class="ti ti-coins icon_coin"></i>월별 수익 현황</h2>
                 <div class="monthly_wrap">
-                  <canvas id="monthly_chart" ></canvas>
+                  <canvas id="monthly_chart"></canvas>
                 </div>  
               </div>
             <div class="col-md-4">
@@ -178,7 +178,7 @@ while($rs = $result -> fetch_object()){
                 ?>
                 
                 <div class="noti_con">
-                  <p title="<?php echo $nlist->nt_title ?>"><a href="/pudding-LMS-website/admin/notice/notice_list.php?ntid=<?php echo $nlist->ntid ?>"><?php echo $nlist->nt_title ?></a></p>
+                  <p title="<?php echo $nlist->nt_title ?>"><a href="/pudding-LMS-website/admin/notice/notice_view.php?ntid=<?php echo $nlist->ntid ?>"><?php echo $nlist->nt_title ?></a></p>
 
                 </div>
                 <?php
@@ -222,11 +222,21 @@ var lineChart = new Chart(ctx, {
         }]
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+      maintainAspectRatio: false,
+  scales: {
+    y: {
+      stacked: true,
+      grid: {
+        display: true,
+        color: "rgba(255,99,132,0.2)"
+      }
+    },
+    x: {
+      grid: {
+        display: false
+      }
+    }
+  }
     }
 });
 
