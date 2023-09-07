@@ -136,7 +136,7 @@ function getMonthlyData($selected_month) {
       <section>
         <h2 class="main_tt dark">월별매출통계</h2>
     
-        <form action="" id="search_form" >
+        <form action="#" id="search_form" >
         <div >
             <div class>
                 <select class="form-select cate_select" aria-label="Default select example" id="month" name="month">
@@ -194,7 +194,7 @@ if (isset($_GET['month']) || empty($_GET)) {
             
                 ?>
                 <tr>
-                  <td scope="row"><?php echo $list->userid; ?></td>
+                  <td><?php echo $list->userid; ?></td>
                   <td><?php echo $list->name; ?></td>
                   <td><?php echo $list->total_price; ?> 원</td>
                   <td><?= date('Y-m-d', strtotime($list -> buy_date)) ;?></td>
@@ -208,7 +208,6 @@ if (isset($_GET['month']) || empty($_GET)) {
             </table>
             
           </div>
-        <!-- ***------------------------- pagination - 시작 -------------------------*** -->
     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination coupon_pager">
         <?php
@@ -246,7 +245,6 @@ if (isset($_GET['month']) || empty($_GET)) {
         ?>
       </ul>
     </nav>
-    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
         </div>
       </section>
     </div><!-- content_wrap -->

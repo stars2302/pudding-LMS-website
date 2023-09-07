@@ -35,60 +35,61 @@ $card = $result->fetch_assoc();
                 <h5 class="b_text01 dark review_name"><span>강의명: </span><?= $card["name"]; ?></h5>
               </div>
             
-                <div class="rating" data-rate="<?= $card["rating"]; ?>">
+							<div class="rating" data-rate="<?= $card["rating"]; ?>">
 
-                <?php
-                  for ($i = 1; $i <= 5; $i++) {
-                      if ($i <= $card["rating"]) {
-                          echo '<i class="ti ti-star-filled"></i>';
-                      } else {
-                          echo '<i class="ti ti-star-filled not_star"></i>';
-                      }
-                  }
-                  ?>
-                </div>
-            </div>
-            <div class=" b_text02 review_content border">
-              <p><?= $card["content"]; ?></p>
-              <p><?= $card["regdate"]; ?></p>
-            </div>
-           
-            
+									<?php
+										for ($i = 1; $i <= 5; $i++) {
+												if ($i <= $card["rating"]) {
+														echo '<i class="ti ti-star-filled"></i>';
+												} else {
+														echo '<i class="ti ti-star-filled not_star"></i>';
+												}
+										}
+										?>
+							</div>
+						</div>
+					
+
+					<div class=" b_text02 review_content border">
+						<p><?= $card["content"]; ?></p>
+						<p><?= $card["regdate"]; ?></p>
+					</div>
             <?php
    
-    $rsql = "SELECT * FROM review_reply where rid={$rid}";
-    $rresult = $mysqli->query($rsql);
+							$rsql = "SELECT * FROM review_reply where rid={$rid}";
+							$rresult = $mysqli->query($rsql);
 
-    if ($rresult->num_rows > 0) {
-        while ($rp = $rresult->fetch_assoc()) {
-            ?>
-            <div class="b_text02 review_c_content border" id="reply_container" data-rid="<?= $rp["rid"]; ?>">
-                <div class="d-flex align-items-center">
-                    <img src="../images/profile_img.png" class="userImg shodow_box" alt="프로필 이미지">
-                    <h5 class="b_text01 primary review_user">프바오</h5>
-                    <h5 class="b_text02 dark review_name"><?= $rp["r_regdate"]; ?></h5>
-                </div>
-                <div class="b_text02 reply_content_view border">
-                    <p name="r_content" id="reply_create"><?= $rp["r_content"]; ?></p>
-                </div>
+							if ($rresult->num_rows > 0) {
+									while ($rp = $rresult->fetch_assoc()) {
+						?>
+											<div class="b_text02 review_c_content border" id="reply_container" data-rid="<?= $rp["rid"]; ?>">
+													<div class="d-flex align-items-center">
+															<img src="../images/profile_img.png" class="userImg shodow_box" alt="프로필 이미지">
+															<h5 class="b_text01 primary review_user">프바오</h5>
+															<h5 class="b_text02 dark review_name"><?= $rp["r_regdate"]; ?></h5>
+													</div>
+													<div class="b_text02 reply_content_view border">
+															<p id="reply_create"><?= $rp["r_content"]; ?></p>
+													</div>
 
-                <div class="d-flex flex-row justify-content-end reply_btn">
-                <a href="review_reply_update.php?rid=<?= $rp["rid"]; ?>&uid=<?= $uid ?>&cid=<?= $cid ?>" class="btn btn-primary b_text01 reply_done">수정</a>
-                    <button class="btn btn-danger b_text01 reply" data-rid="<?= $rp["rid"]; ?>">삭제</button>
-                </div>
-            </div>
-            <?php
-        }
-    } else {
-        echo '';
-    }
-    ?>
+													<div class="d-flex flex-row justify-content-end reply_btn">
+														<a href="review_reply_update.php?rid=<?= $rp["rid"]; ?>&uid=<?= $uid ?>&cid=<?= $cid ?>" class="btn btn-primary b_text01 reply_done">수정</a>
+														<button class="btn btn-danger b_text01 reply" data-rid="<?= $rp["rid"]; ?>">삭제</button>
+													</div>
+											</div>
+						<?php
+									}
+							} else {
+									echo '';
+							}
+						?>
+						</div>
         
           <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
-              <a href="review_list.php" class="btn btn-dark b_text01 list_btn">목록보기</a>
-
-            </div>
+						<a href="review_list.php" class="btn btn-dark b_text01 list_btn">목록보기</a>
+					</div>
         </section>
+
       </div>
       <!-- content_wrap -->
     </div>
@@ -132,6 +133,5 @@ $card = $result->fetch_assoc();
   });
     </script>
 <?php
-
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>

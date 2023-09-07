@@ -41,7 +41,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
     } else {
       echo "<script> 
       alert('이미지 등록 실패!');
-          history.back();            
+          // history.back();            
         </script>";
         exit;
     }
@@ -67,7 +67,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
       echo "<script>
       alert('글수정 완료되었습니다.');
 
-      location.replace('notice_list.php');
+      // location.replace('notice_list.php');
       </script>";          
   }  else {
     echo "Error:".$sql . "<br>" . $mysqli -> error;  

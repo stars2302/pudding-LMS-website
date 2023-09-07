@@ -109,7 +109,7 @@ while($rs = $result -> fetch_object()){
 
     <div class="sub_header d-flex justify-content-between align-items-center">
       <h2 class="main_tt">쿠폰관리</h2>
-      <form action="" class="d-flex align-items-center coupon_keyword_search">
+      <form action="#" class="d-flex align-items-center coupon_keyword_search">
         <div class="input-group">
           <input
             type="text"
@@ -117,14 +117,14 @@ while($rs = $result -> fetch_object()){
             placeholder="쿠폰명을 입력하세요."
             aria-label="쿠폰명을 입력하세요."
             name="search"
-          />
+          >
         </div>
         <button class="btn btn-dark">검색</button>
       </form>
       <a href="coupon_create.php" class="btn btn-primary">쿠폰등록</a>
     </div><!-- //sub_header -->
   
-    <form action="" class="coupon_filter">
+    <form action="#" class="coupon_filter">
       <h2 class="hidden">클릭하여 진행중 또는 종료된 쿠폰을 확인하세요.</h2>
       <div class="coupon_status_search d-flex justify-content-betweenn white_bg align-items-center">
         <div class="filter_1">
@@ -183,16 +183,17 @@ while($rs = $result -> fetch_object()){
               class="form-check-input"
               type="checkbox"
               role="switch"
-              id="flexSwitchCheckDefault"
+              id="flexSwitchCheckDefault<?= $coupon->cpid ?>"
               <?php if($coupon->cp_status == 1){echo 'checked';} else{echo '';}?>
-            />
-            <label class="form-check-label" for="flexSwitchCheckDefault">
+            >
+            <label class="form-check-label" for="flexSwitchCheckDefault<?= $coupon->cpid ?>">
             </label>
           </div>
         </li>
 
         <?php
           }
+          $i++;
         }else {
         ?>
 
@@ -206,7 +207,6 @@ while($rs = $result -> fetch_object()){
     </div>
     
 
-    <!-- ***------------------------- pagination - 시작 -------------------------*** -->
     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination coupon_pager">
         <?php
@@ -246,7 +246,6 @@ while($rs = $result -> fetch_object()){
         ?>
       </ul>
     </nav>
-    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
   </div><!-- //content_wrap -->
 </div><!-- //wrap -->
 

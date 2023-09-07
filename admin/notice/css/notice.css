@@ -171,6 +171,10 @@ tbody {
 .notice_create_form_div  {
   margin-bottom: 30px;
 }
+
+.notice_create_form_div label {
+  margin-bottom: var(--base_unit);
+}
 .notice_create_input {
   width: 100%;
 }

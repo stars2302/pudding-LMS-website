@@ -9,6 +9,7 @@ try{
   $rsc = $cresult -> fetch_object();
 
   $cp_image = $_POST['imgSRC'];
+  
   //넘어온 img값이 빈값이면
   if($cp_image == ''){
     //기존 이미지로 업데이트
@@ -18,12 +19,13 @@ try{
   $cp_limit = $_POST['cp_limit']??'';
   $cp_status = $_POST['cp_status'];
   $cp_type = $_POST['cp_type'];
-  $cp_ratio = $_POST['cp_ratio']??'';
-  $cp_price = $_POST['cp_price']??'';
+  $cp_ratio = $_POST['cp_ratio']??0;
+  $cp_price = $_POST['cp_price']??0;
   $cp_date = $_POST['cp_date']??'';
 
-  $sql = "UPDATE coupons set cp_name='{$cp_name}', cp_image='{$cp_image}', cp_type='{$cp_type}', cp_price='{$cp_price}', cp_limit='{$cp_limit}', cp_ratio='{$cp_ratio}', cp_status='{$cp_status}', cp_date='{$cp_date}' where cpid={$cpid}";
+  $sql = "UPDATE coupons set cp_name='{$cp_name}', cp_image='{$cp_image}', cp_type='{$cp_type}', cp_price={$cp_price}, cp_limit='{$cp_limit}', cp_ratio={$cp_ratio}, cp_status='{$cp_status}', cp_date='{$cp_date}' where cpid={$cpid}";
   $result = $mysqli -> query($sql);
+  // var_dump($sql);
 
   if(isset($result)){
     $mysqli->commit();

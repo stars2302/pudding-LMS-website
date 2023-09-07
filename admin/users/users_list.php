@@ -70,7 +70,7 @@ while ($rs = $result->fetch_object()) {
         
         <h2 class="main_tt dark">회원관리</h2>
     
-        <form action="" class="d-flex align-items-center username_keyword_search">
+        <form action="#" class="d-flex align-items-center username_keyword_search">
         <div class="input-group">
           <input
             type="text"
@@ -78,7 +78,7 @@ while ($rs = $result->fetch_object()) {
             placeholder="회원이름을 입력하세요."
             aria-label="회원이름을 입력하세요."
             name="search"
-          />
+          >
         </div>
         <button class="btn btn-dark">검색</button>
         <button id="resetSearchButton" class="btn btn-primary">전체보기</button>
@@ -108,7 +108,7 @@ while ($rs = $result->fetch_object()) {
             
                 ?>
                 <tr>
-                  <td scope="row"><?php echo $list->userid; ?></td>
+                  <td><?php echo $list->userid; ?></td>
                   <td><?php echo $list->username; ?></td>
                   <td><?php echo $list->useremail; ?></td>
                   <td><?= date('Y-m-d', strtotime($list -> regdate)) ;?></td>
@@ -126,7 +126,6 @@ while ($rs = $result->fetch_object()) {
             </table>
             
           </div>
-      <!-- ***------------------------- pagination - 시작 -------------------------*** -->
       <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
             <ul class="pagination coupon_pager">
                 <?php
@@ -158,7 +157,6 @@ while ($rs = $result->fetch_object()) {
                 ?>
             </ul>
         </nav>
-    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
         </div>
       </section>
     </div><!-- content_wrap -->

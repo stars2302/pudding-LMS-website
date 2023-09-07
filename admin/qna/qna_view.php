@@ -136,7 +136,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
             <button type="button" class="btn btn-dark" onclick="window.location.href='qna_list.php'">목록 보기</button>
   
         </div>
-      </form>
   </div>
       </section>
     </div><!-- content_wrap -->

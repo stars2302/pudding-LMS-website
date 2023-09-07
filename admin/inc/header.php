@@ -1,14 +1,13 @@
 <?php
   session_start(); 
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
-  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/admin_check.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="apple-touch-icon" sizes="57x57" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-60x60.png">
@@ -39,7 +38,7 @@
       integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    >
     <!-- normalize css -->
     <link
       rel="stylesheet"
@@ -47,7 +46,7 @@
       integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    >
 
     <!--bootstrap css -->
     <link
@@ -56,12 +55,12 @@
       integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    >
     <!-- tabler-icons  -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
-    />
+    >
 
     <!-- jquery ui css -->
     <link
@@ -70,7 +69,7 @@
       integrity="sha512-+Z63RrG0zPf5kR9rHp9NlTMM29nxf02r1tkbfwTRGaHir2Bsh4u8A79PiUKkJq5V5QdugkL+KPfISvl67adC+Q=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    >
     <!-- summernote css -->
     <link
       rel="stylesheet"
@@ -78,17 +77,17 @@
       integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    >
     <!-- 스포카 -->
     <link
       href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
       rel="stylesheet"
       type="text/css"
-    />
+    >
 
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/jqueryui/jquery-ui.theme.min.css" />
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/common.css" />
-    <link rel="stylesheet" href="/pudding-LMS-website/admin/<?php if(isset($css_route)){echo $css_route;} else { echo 'css/index.css';}; ?>" />
+    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/jqueryui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/pudding-LMS-website/admin/css/common.css">
+    <link rel="stylesheet" href="/pudding-LMS-website/admin/<?php if(isset($css_route)){echo $css_route;} else { echo 'css/index.css';}; ?>">
         
     <!-- jquery js-->
     <script
@@ -100,7 +99,9 @@
     <!-- chart js -->
     
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
-  
+  <?php
+  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/admin_check.php';
+  ?>
 
 
     </head>
@@ -192,7 +193,7 @@
             <div class="red_bell d-flex justify-content-center align-items-center">0</div>
           </div>
           <div class="profile d-flex align-items-center">
-            <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="" />
+            <img src="/pudding-LMS-website/admin/images/profile_img.png" alt="">
             <h2 class="b_text02 bold">프바오<span>admins</span></h2>
           </div>
         </div>

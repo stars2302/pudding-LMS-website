@@ -14,21 +14,20 @@ $sqlarr = $result -> fetch_object();
 <form class="notice_create_form" action="notice_update_ok.php" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="ntid" value="<?= $sqlarr -> ntid; ?>">
   <div class="notice_create_form_div">
-    <h3 class="content_tt"><label for="title">제목</label></h3>
+  <label for="title"><span class="content_tt">제목</span></label>
     <input type="text" id="title" name="nt_title" class="notice_create_input form-control" placeholder="" aria-label="Username" 
     required 
     value="<?= $sqlarr -> nt_title; ?>">
   </div>
   <div class="notice_create_form_div">
-    <label for="summernote"><h3 class="content_tt">상세내용</h3></label>
+    <label for="summernote"><span class="content_tt">상세내용</span></label>
     <textarea id="summernote" name="nt_content" required>
       <?= $sqlarr -> nt_content; ?>
     </textarea>
   </div>  
   <div class="notice_create_form_div">
-  <label for="image"><h3 class="content_tt">파일첨부</h3></label>
-    <input type="file" id="image" name="nt_filename" class="notice_create_input form-control" aria-label="Username" 
-    value="">    
+    <label for="image"><span class="content_tt">파일첨부</span></label>
+    <input type="file" id="image" name="nt_filename" class="notice_create_input form-control" aria-label="Username">    
   </div>
   <div class="create_btns d-flex justify-content-end">
     <button class="btn btn-primary">수정 완료</button>     
@@ -36,6 +35,8 @@ $sqlarr = $result -> fetch_object();
 </div>
 </form> 
 </section>    
+</div><!-- //content_wrap -->
+</div><!-- //wrap -->
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
 ?>

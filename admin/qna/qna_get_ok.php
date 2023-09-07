@@ -32,3 +32,5 @@ if (isset($_GET['toggle'])) {
     $stmt->bind_param("ii", $newState, $qid);
     $stmt->execute();
 }
+
+?>

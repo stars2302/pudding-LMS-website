@@ -167,10 +167,10 @@ while ($rs2 = $result2->fetch_object()) {
     <a href="course_create.php" class="btn btn-dark">신규 강의 등록</a>
     <a href="category.php" class="btn btn-dark">카테고리 관리</a>
   </div>
-  <form action="" class="course_sort">
+  <form action="#" class="course_sort">
     <div class="row">
       <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example" id="cate1" name="cate1">
+        <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" >
           <option selected disabled>대분류</option>
 
           <?php
@@ -181,7 +181,7 @@ while ($rs2 = $result2->fetch_object()) {
         </select>
       </div>
       <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example" id="cate2" name="cate2">
+        <select class="form-select" aria-label="Default select example" id="cate2" name="cate2" >
           <option selected disabled>중분류</option>
         </select>
       </div>
@@ -286,7 +286,8 @@ while ($rs2 = $result2->fetch_object()) {
                       echo $item->due;
                     }
                     ; ?>
-                  </span></p>
+                  </span>
+                </p>
               </div>
             </div>
             <div class="col-md-4">
@@ -309,12 +310,12 @@ while ($rs2 = $result2->fetch_object()) {
 
               <div class="d-flex align-items-end status_box">
                 <span class="price content_stt">
-                  <?= $item->price ?><span> 원</span>
+                  <span class="number"><?= $item->price ?></span><span> 원</span>
                 </span>
                 <span class="d-flex flex-column align-items-end status_wrap">
                   <select name="act[<?= $item->cid ?>]" id="act[<?= $item->cid ?>]" class="form-select"
-                    aria-label="Default select example" id="selectmenu">
-                    <option selected disabled>상태</option>
+                    aria-label="Default select example">
+                    <option disabled>상태</option>
                     <option value="활성" <?php if ($item->act == "활성") {
                       echo "selected";
                     } ?>>활성</option>
@@ -334,7 +335,7 @@ while ($rs2 = $result2->fetch_object()) {
         }
       } else {
         ?>
-        <p colspan="10"> 검색 결과가 없습니다. </p>
+        <li> 검색 결과가 없습니다. </li>
         <?php
       }
       ?>
@@ -342,7 +343,6 @@ while ($rs2 = $result2->fetch_object()) {
     <button class="btn btn-primary btn_g all_modify_btn">변경 일괄 수정</button>
   </form>
 
-   <!-- ***------------------------- pagination - 시작 -------------------------*** -->
    <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination coupon_pager">
         <?php
@@ -379,7 +379,6 @@ while ($rs2 = $result2->fetch_object()) {
         ?>
       </ul>
     </nav>
-    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
 </section>
 </div><!-- content_wrap -->
 </div><!-- wrap -->

@@ -70,6 +70,8 @@ $card = $result->fetch_assoc();
   
 
   </section>
+  </div><!-- //content_wrap -->
+</div><!-- //wrap -->
   <script>
     $(document).ready(function() {
   $(".review_del a.icon").on("click", function(e) {
