@@ -57,10 +57,10 @@ while($rs = $result -> fetch_object()){
 <section>
     <h2 class="main_tt">공지사항</h2>
     <div class="notice_top shadow_box border d-flex justify-content-between">
-      <form class="notice_top_left d-flex align-items-center" action="" method="get">
+      <form class="notice_top_left d-flex align-items-center" action="#" method="get">
       <input type="text" class="input form-control" id="searchInput" placeholder="제목 + 내용 검색" aria-label="Search"
          name="keyword">
-        <button class="btn btn-dark" id="searchInput">검색</button>              
+        <button class="btn btn-dark" id="searchInput2">검색</button>              
       </form>
       <div class="d-flex align-items-center">
         <a class="btn btn-dark" href="notice_create.php">게시물 등록</a>              
@@ -109,7 +109,7 @@ while($rs = $result -> fetch_object()){
             <td>
               <div class="icon_group">
                 <a href="notice_update.php?ntid=<?=$item -> ntid;?>"><i class="ti ti-edit pen_icon"></i></a>
-                <a href="#"></a><i class="ti ti-trash bin_icon del_btn"></i></a>
+                <a href="#"><i class="ti ti-trash bin_icon del_btn"></i></a>
               </div>
             </td>
           </tr>                 
@@ -122,7 +122,6 @@ while($rs = $result -> fetch_object()){
         } ?>
         </tbody>
       </table>
- <!-- ***------------------------- pagination - 시작 -------------------------*** -->
  <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination coupon_pager">
         <?php
@@ -163,7 +162,6 @@ while($rs = $result -> fetch_object()){
         ?>
       </ul>
     </nav>
-    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
   </section>  
 </div>
 <!-- content_wrap -->

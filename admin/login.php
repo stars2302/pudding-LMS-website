@@ -1,17 +1,3 @@
-<?php
-session_start();
-if(isset($_SESSION['AUID'])){
-  if($_SESSION['AUID'] == 'admin'){
-    echo "<script>
-      alert('이미 로그인 하셨습니다.');
-      location.href = '/pudding-LMS-website/admin/index.php';
-    </script>";
-  }
-}
-
-$js_route = "js/login.js";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,6 +61,20 @@ $js_route = "js/login.js";
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <?php
+    session_start();
+    if(isset($_SESSION['AUID'])){
+      if($_SESSION['AUID'] == 'admin'){
+        echo "<script>
+          alert('이미 로그인 하셨습니다.');
+          location.href = '/pudding-LMS-website/admin/index.php';
+        </script>";
+      }
+    }
+
+    $js_route = "js/login.js";
+    ?>
   </head>
   <body>
     <!-- DIALOG POPUP -->

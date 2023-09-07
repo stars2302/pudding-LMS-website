@@ -8,17 +8,17 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
 
 <section>
   <div class="course_title tt_mb">
-    <h1>강의 등록</h1>
+    <h2 class="main_tt">강의 등록</h2>
   </div>
   <form action="course_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
     <input type="hidden" name="video_table_id" id="video_table_id" value="">
     <input type="hidden" name="content" id="content" value="">
     <div class="categorywrap">
-      <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
+      <label for="cate1" class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
         <div class="category col">
           <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
-            <option disabled selected>대분류 선택</option>
+            <option value="" disabled selected>대분류 선택</option>
             <?php
               foreach($cate1 as $c){            
             ?>
@@ -28,12 +28,12 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
         </div>
         <div class="category col">
           <select class="form-select" aria-label="Default select example" id="cate2" name="cate2">
-            <option disabled selected>중분류 선택</option>
+            <option value="" disabled selected>중분류 선택</option>
           </select>
         </div>
         <div class="category col">
           <select class="form-select" aria-label="Default select example" id="cate3" name="cate3">
-            <option disabled selected>소분류 선택</option>
+            <option value="" disabled selected>소분류 선택</option>
           </select>
         </div>
       </div>
@@ -41,34 +41,34 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
 
     <div class="course_name c_mt">
       <label for="name" class="form-label content_tt c_mb">강의명</label>
-      <input type="text" class="form-control" name="name" id="name" placeholder="강의명을 입력하세요." required/>
+      <input type="text" class="form-control" name="name" id="name" placeholder="강의명을 입력하세요." required>
     </div>
 
     <div class="section3 d-flex gap-5 c_mt">
         <div class="row price_select">
-          <label for="price_status" class="form-label content_tt c_mb">강의가격</label>
+          <label for="price_menu" class="form-label content_tt c_mb">강의가격</label>
           <div class="col">
             <select class="form-select" name="price_status" id="price_menu" aria-label="Default select example">
-              <option name="price" value="유료" selected>유료</option>
-              <option name="price" value="무료">무료</option>
+              <option value="유료" selected>유료</option>
+              <option value="무료">무료</option>
             </select>
           </div>
           <div class="col price">
-            <input type="number" class="form-control" name="price" id="price" min="0" max="1000000" step="10000" placeholder="금액"/>
+            <input type="number" class="form-control" name="price" id="price" min="0" max="1000000" step="10000" placeholder="금액">
           </div>
         </div>
         <div class="row level level_status">
           <label class="form-label content_tt c_mb">난이도</label>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="low" value="초급"/>
+            <input class="form-check-input" type="radio" name="level" id="low" value="초급">
             <label class="form-check-label" for="low">초급</label>
           </div>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="middle" value="중급"/>
+            <input class="form-check-input" type="radio" name="level" id="middle" value="중급">
             <label class="form-check-label" for="middle">중급</label>
           </div>
           <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="high" value="고급"/>
+            <input class="form-check-input" type="radio" name="level" id="high" value="고급">
             <label class="form-check-label" for="high">고급</label>
           </div>
         </div>
@@ -76,7 +76,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
 
     <div class="periodwrap d-flex gap-5 c_mt">
       <div class="row period mb-6">
-        <label class="form-label content_tt c_mb">수강기간</label>
+        <label for="due_status" class="form-label content_tt c_mb">수강기간</label>
         <div class="col period_select1">
           <select class="form-select" name="due_status" id="due_status" aria-label="Default select example">
             <option value="제한" selected>제한</option>
@@ -97,11 +97,11 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
       <div class="row act">
         <label class="form-check-label content_tt c_mb">상태</label>
         <div class="col-2 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="act" id="active" value="활성"/>
+          <input class="form-check-input" type="radio" name="act" id="active" value="활성">
           <label class="form-check-label" for="active">활성</label>
         </div>
         <div class="col-2 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="act" id="inactive" value="비활성"/>
+          <input class="form-check-input" type="radio" name="act" id="inactive" value="비활성">
           <label class="form-check-label" for="inactive">비활성</label>
         </div>
       </div>
@@ -114,11 +114,11 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
 
     <div class="file_input c_mt">
       <label for="thumbnail" class="form-label content_tt c_mb">썸네일</label>
-      <input type="file" class="form-control" name="thumbnail" id="thumbnail"/>
+      <input type="file" class="form-control" name="thumbnail" id="thumbnail">
     </div>
 
     <div class="upload c_mt">
-      <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
+      <label class="form-label content_tt c_mb">강의영상 업로드</label>
       <div class="you_upload">
         <div class="you_upload_content">
           <div class="row c_mb">
@@ -136,13 +136,13 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
         <div class="youtube c_mb">
           <div class="row justify-content-between">
             <div class="col-2 youtube_thumb">
-              <input type="file" class="form-control" name="youtube_thumb[]" id="youtube_thumb"/>
+              <input type="file" class="form-control" name="youtube_thumb[]" id="youtube_thumb">
             </div>
             <div class="col-3 youtube_name">
-              <input type="text" class="form-control" name="youtube_name[]" id="youtube_name" placeholder="강의명을 입력하세요"/>
+              <input type="text" class="form-control" name="youtube_name[]" id="youtube_name" placeholder="강의명을 입력하세요">
             </div>
             <div class="col-6 youtube_url">
-              <input type="url" class="form-control" name="youtube_url[]" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
+              <input type="url" class="form-control" name="youtube_url[]" id="youtube_url" placeholder="강의URL을 넣어주세요">
             </div>
             <div class="col-1 trash">
               <i class="ti ti-trash bin_icon"></i>
@@ -167,6 +167,8 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
     </div>
   </form>
 </section>
+</div><!-- content_wrap -->
+</div><!-- wrap -->
 <script>
   $(".you_upload").on("click", "#trash", function () {
     $(this).closest(".youtube").remove();

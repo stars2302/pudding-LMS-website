@@ -142,13 +142,6 @@ nav .pagination{
 .saveButton{
   display: none;
 }
-.waiting {
-  color: grey !important;
-}
-
-.completed {
-  color: blue !important;
-}
 
 .list_up form{
   margin-top: 100px;
@@ -165,4 +158,12 @@ nav .pagination{
   margin-top: calc(var(--base_unit)*2);
   margin-bottom: var(--base_unit);
   line-height: var(--base_unit);
+}
+
+.waiting {
+  color: var(--dark) !important;
+}
+
+.completed {
+  color: var(--point_primary) !important;
 }

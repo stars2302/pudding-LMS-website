@@ -3,7 +3,7 @@ $title = "Q&A";
 $css_route = "qna/css/qna.css";
 $js_route = "qna/js/qna.js";
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
 //search
 $search_list = isset($_GET['search']) ? $_GET['search'] : '';
@@ -48,23 +48,13 @@ if ($mysqli->connect_error) {
   die("연결 실패" . $mysqli->connect_error);
 }
 ?>
-
-<style>
-.waiting {
-  color: var(--dark) !important;
-}
-
-.completed {
-  color: var(--point_primary) !important;
-}
-</style>
 <section>
         <h2 class="main_tt"><?= $title ?> 게시판</h2>
         
         <div class="search_box shadow_box white_bg wrap align-items-center">
           <label for="search" class="hidden">검색</label>
           <input type="search" id="search" class="border form-control" value="" placeholder="질문을 검색해 주세요">
-          <button class="search_button btn btn-dark b_text01">검색</button>
+          <button class="search_button btn btn-dark b_text02">검색</button>
         </div>
 
         <table class="table shadow_box">
@@ -80,7 +70,7 @@ if ($mysqli->connect_error) {
             </tr>
           </thead>
 
-        <tbody class="b_text01">
+        <tbody class="b_text02">
         <?php while ($row = $result->fetch_assoc()): ?>
           <tr>
             <!-- 상태 -->
@@ -100,7 +90,6 @@ if ($mysqli->connect_error) {
         </tbody>
         </table>
 
- <!-- ***------------------------- pagination - 시작 -------------------------*** -->
  <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination">
         <?php
@@ -137,12 +126,12 @@ if ($mysqli->connect_error) {
         ?>
       </ul>
     </nav>
-    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
     
 
 
       </section>
-
+      </div><!-- //content_wrap -->
+</div><!-- //wrap -->
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
 ?>

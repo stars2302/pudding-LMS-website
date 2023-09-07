@@ -25,17 +25,18 @@ while($is = $result -> fetch_object()){
 
 <section>
   <div class="course_title tt_mb">
-    <h1>강의 수정</h1>
+    <h2 class="main_tt dark">강의 수정</h2>
   </div>
   <form action="update_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
     <input type="hidden" name="image_table_id" id="image_table_id" value="">
     <input type="hidden" name="content" id="content" value="">
     <input type="hidden" name="cid" id="cid" value="<?= $rs->cid?>">
     <div class="categorywrap">
-      <label for="formGroupExampleInput" class="form-label content_tt c_mb">카테고리</label>
+      <label class="form-label content_tt c_mb">카테고리</label>
       <div class="categorys row">
         <div class="category col">
           <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
+            <option value="" hidden>선택하세요</option>
           <?php
                  $cateString = $rs->cate;
                  $parts = explode('/', $cateString);
@@ -72,7 +73,7 @@ while($is = $result -> fetch_object()){
       name="name" id="name" 
       placeholder="강의명을 입력하세요." 
       required
-      value="<?= $rs->name; ?>"/>
+      value="<?= $rs->name; ?>">
     </div>
 
     <div class="section3 d-flex gap-5 c_mt">
@@ -94,7 +95,7 @@ while($is = $result -> fetch_object()){
             max="1000000" 
             step="10000" 
             value="<?= $rs->price; ?>"
-            placeholder="금액"/>
+            placeholder="금액">
           </div>
         </div>
         <div class="row level level_status">
@@ -105,7 +106,7 @@ while($is = $result -> fetch_object()){
             type="radio" 
             name="level" 
             id="low" 
-            value="초급" <?php if($rs->level == "초급") echo 'checked' ?>/>
+            value="초급" <?php if($rs->level == "초급") echo 'checked' ?>>
             <label class="form-check-label" for="low">초급</label>
           </div>
           <div class="col">
@@ -114,7 +115,7 @@ while($is = $result -> fetch_object()){
             type="radio" 
             name="level" 
             id="middle" 
-            value="중급" <?php if($rs->level == "중급") echo 'checked' ?>/>
+            value="중급" <?php if($rs->level == "중급") echo 'checked' ?>>
             <label class="form-check-label" for="middle">중급</label>
           </div>
           <div class="col">
@@ -123,7 +124,7 @@ while($is = $result -> fetch_object()){
             type="radio" 
             name="level" 
             id="high" 
-            value="고급" <?php if($rs->level == "고급") echo 'checked' ?>/>
+            value="고급" <?php if($rs->level == "고급") echo 'checked' ?>>
             <label class="form-check-label" for="high">고급</label>
           </div>
         </div>
@@ -140,7 +141,7 @@ while($is = $result -> fetch_object()){
         </div>
         <div class="col period_select2">
           <select class="form-select" name="due" id="due" aria-label="Default select examh5le">
-            <option value="" selected disabled>기간선택</option>
+            <option value="" disabled>기간선택</option>
             <option value="무제한" <?php if($rs->due == "무제한") echo 'selected' ?>>무제한</option>
             <option value="3개월" <?php if($rs->due == "3개월") echo 'selected' ?>>3개월</option>
             <option value="6개월" <?php if($rs->due == "6개월") echo 'selected' ?>>6개월</option>
@@ -152,11 +153,11 @@ while($is = $result -> fetch_object()){
       <div class="row act">
         <label class="form-check-label content_tt c_mb">상태</label>
         <div class="col-2 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="act" id="active" value="활성" <?php if($rs->act == "활성") echo 'checked' ?>/>
+          <input class="form-check-input" type="radio" name="act" id="active" value="활성" <?php if($rs->act == "활성") echo 'checked' ?>>
           <label class="form-check-label" for="active">활성</label>
         </div>
         <div class="col-2 d-flex align-items-center level_status">
-          <input class="form-check-input" type="radio" name="act" id="inactive" value="비활성" <?php if($rs->act == "비활성") echo 'checked' ?>/>
+          <input class="form-check-input" type="radio" name="act" id="inactive" value="비활성" <?php if($rs->act == "비활성") echo 'checked' ?>>
           <label class="form-check-label" for="inactive">비활성</label>
         </div>
       </div>
@@ -173,13 +174,12 @@ while($is = $result -> fetch_object()){
       type="file" 
       class="form-control" 
       name="thumbnail" 
-      id="thumbnail"
-      alt="">
+      id="thumbnail">
       <img src="<?= $rs->thumbnail; ?>" alt="">
     </div>
 
     <div class="upload c_mt">
-      <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
+      <label class="form-label content_tt c_mb">강의영상 업로드</label>
 
       <div class="you_upload">
         <div class="you_upload_content">
@@ -203,20 +203,20 @@ while($is = $result -> fetch_object()){
         <div class="youtube c_mb mt-3">
           <div class="row justify-content-between">
             <div class="col-2 youtube_thumb">
-              <input type="file" class="form-control" name="youtube_thumb[]"/>
+              <input type="file" class="form-control" name="youtube_thumb[]">
             </div>
             <div class="col-3 youtube_name">
-              <input type="text" class="form-control" name="youtube_name[]" value="<?= $ai -> youtube_name?>"/>
+              <input type="text" class="form-control" name="youtube_name[]" value="<?= $ai -> youtube_name?>">
             </div>
             <div class="col-6 youtube_url">
-              <input type="url" class="form-control" name="youtube_url[]" value="<?= $ai -> youtube_url?>"/>
+              <input type="url" class="form-control" name="youtube_url[]" value="<?= $ai -> youtube_url?>">
             </div>
             <div class="col-1 trash_icon">
               <label for="delete-youtube<?= $i; ?>"><i class="ti ti-trash bin_icon"></i></label>
-              <input type="checkbox" class="delete-youtube hidden" id="delete-youtube<?= $i; ?>" name="delete_youtube[]" value="<?= $ai->l_idx ?>" />
+              <input type="checkbox" class="delete-youtube hidden" id="delete-youtube<?= $i; ?>" name="delete_youtube[]" value="<?= $ai->l_idx ?>">
             </div>
             <div class="youtubeThumbBox">
-              <span>기존파일</span>
+              <span class="hidden">기존파일</span>
               <img src="<?= $ai -> youtube_thumb?>" alt="">
             </div>
           </div>
@@ -244,6 +244,10 @@ while($is = $result -> fetch_object()){
     </div>
   </form>
 </section>
+</div><!-- content_wrap -->
+</div><!-- wrap -->
+
+
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';

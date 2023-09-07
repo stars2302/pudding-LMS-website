@@ -36,7 +36,7 @@ $hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
               <?php
                 } else {
                 ?>                 
-              <img src="<?= $sqlarr['nt_filename'] ?>">             
+              <img src="<?= $sqlarr['nt_filename'] ?>" alt="공지사항 이미지 ">             
               <?php
                 }
               ?> 
@@ -45,12 +45,13 @@ $hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
           </div>   
           <div class="notice_view_btns d-flex justify-content-end prt" data-prt="<?= $sqlarr['ntid'] ?>">
             <a href="notice_update.php?ntid=<?= $ntid; ?>" class="btn_modify btn btn-primary">수정</a>
-            <a href="#" class="btn_delete btn btn-danger del_btn">삭제</button>     
+            <a href="#" class="btn_delete btn btn-danger del_btn">삭제</a>     
             <a href="notice_list.php" class="btn_cancel btn btn-dark">목록 보기</a>
           </div>
           </div>
         </section> 
-
+        </div><!-- //content_wrap -->
+</div><!-- //wrap -->
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>

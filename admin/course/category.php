@@ -36,9 +36,9 @@ while ($rs = $result->fetch_object()) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel1">
+          <h2 class="modal-title fs-5" id="exampleModalLabel1">
             대분류 등록
-          </h1>
+          </h2>
         </div>
         <div class="modal-body">
           <label for="name1">카테고리명</label>
@@ -57,13 +57,13 @@ while ($rs = $result->fetch_object()) {
   </div>
 
   <!-- Modal 2-->
-  <div class="modal cmodal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel2 aria-hidden=" true">
+  <div class="modal cmodal fade" id="cate2Modal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel2">
+          <h2 class="modal-title fs-5" id="exampleModalLabel2">
             중분류 등록
-          </h1>
+          </h2>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -105,9 +105,9 @@ while ($rs = $result->fetch_object()) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel3">
+          <h2 class="modal-title fs-5" id="exampleModalLabel3">
             소분류 등록
-          </h1>
+          </h2>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -155,7 +155,7 @@ while ($rs = $result->fetch_object()) {
             <?php
             foreach ($cate1 as $c) {
               ?>
-              <li class="list-group-item big d-flex justify-content-between align-items-center" value="<?= $c->cateid ?>"
+              <li class="list-group-item big d-flex justify-content-between align-items-center"
                 data-cate="<?= $c->cateid ?>">
                 <span class="cate_size"><?= $c->name; ?></span>
                 <div class="cate_edit_btns d-flex gap-2">
@@ -196,14 +196,14 @@ while ($rs = $result->fetch_object()) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel4">
+          <h2 class="modal-title fs-5" id="exampleModalLabel4">
             카테고리 수정
-          </h1>
+          </h2>
         </div>
         <form class="modal-body" action="category_update.php" method="POST">
           <input type="hidden" name="cateid" class="catename" value="<?= $c->cateid; ?>">
-          <label for="name1">카테고리명</label>
-          <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
+          <label for="name4">카테고리명</label>
+          <input type="text" class="form-control modal_cate_name" name="catename" id="name4" value="">
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="1"
               data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
@@ -223,14 +223,14 @@ while ($rs = $result->fetch_object()) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel5">
+          <h2 class="modal-title fs-5" id="exampleModalLabel5">
             카테고리 수정
-          </h1>
+          </h2>
         </div>
         <form class="modal-body" action="category_update.php?cateid=<?= $c->cateid; ?>" method="POST">
           <input type="hidden" name="cateid" class="catename" value="<?= $c->cateid; ?>">
-          <label for="name1">카테고리명</label>
-          <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
+          <label for="name5">카테고리명</label>
+          <input type="text" class="form-control modal_cate_name" name="catename" id="name5" value="">
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="2"
               data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">
@@ -250,14 +250,14 @@ while ($rs = $result->fetch_object()) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel6">
+          <h2 class="modal-title fs-5" id="exampleModalLabel6">
             카테고리 수정
-          </h1>
+          </h2>
         </div>
-        <form class="modal-body" action="category_update.php?cateid=<<?= $c->cateid ?>" method="POST">
+        <form class="modal-body" action="category_update.php?cateid=<?= $c->cateid ?>" method="POST">
           <input type="hidden" name="cateid" class="catename" value="<?= $c->cateid; ?>">
-          <label for="name1">카테고리명</label>
-          <input type="text" class="form-control modal_cate_name" name="catename" id="name1" value="">
+          <label for="name6">카테고리명</label>
+          <input type="text" class="form-control modal_cate_name" name="catename" id="name6" value="">
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary btn_g cate_modify" data-step="3"
               data-cateid="<?= $c->cateid ?>" data-bs-dismiss="modal">

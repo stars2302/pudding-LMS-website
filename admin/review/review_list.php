@@ -99,8 +99,7 @@ while($rs = $result->fetch_object()){
           </div>
           <?php } ?>   
           <!-- 카드 끝 -->
-        
-         <!-- ***------------------------- pagination - 시작 -------------------------*** -->
+    
     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
       <ul class="pagination coupon_pager">
         <?php
@@ -135,8 +134,9 @@ while($rs = $result->fetch_object()){
         ?>
       </ul>
     </nav>
-    <!-- ***------------------------- pagination - 끝 -------------------------*** -->
         </section>
+          </div><!-- //content_wrap -->
+</div><!-- //wrap -->
         <script>
          $(document).ready(function() {
         $(".review_del a.icon").on("click", function(e) {

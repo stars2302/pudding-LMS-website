@@ -19,7 +19,7 @@ $coupon = $result -> fetch_object();
       <fieldset class="coupon_info d-flex">
         <legend class="hidden">쿠폰정보</legend>
         <div class="thumbnail">
-          <input type="hidden" id="imgSRC" name="imgSRC" val="">
+          <input type="hidden" id="imgSRC" name="imgSRC" value="">
           <input type="file" class="hidden" name="cp_image" id="thumbnail">
           <div class="show_thumb border">
             <img src="<?= $coupon->cp_image?>" alt="<?= $coupon->cp_name?>">
