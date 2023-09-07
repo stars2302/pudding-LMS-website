@@ -233,6 +233,7 @@ while ($rs2 = $result2->fetch_object()) {
       if (isset($rsc2)) {
         foreach ($rsc2 as $item) {
           $cateString = $item->cate;
+          // var_dump($cateString);
           $parts = explode('/', $cateString);
 
           $big_cate = $parts[0];

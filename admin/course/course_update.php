@@ -216,7 +216,6 @@ while($is = $result -> fetch_object()){
           <div class="row justify-content-between">
             <div class="col-2 youtube_thumb">
               <input type="file" class="form-control" name="youtube_thumb[]"/>
-              <img src="<?= $ai -> youtube_thumb?>" alt="">
             </div>
             <div class="col-3 youtube_name">
               <input type="text" class="form-control" name="youtube_name[]" value="<?= $ai -> youtube_name?>"/>
@@ -227,6 +226,10 @@ while($is = $result -> fetch_object()){
             <div class="col-1 trash_icon">
               <label for="delete-youtube<?= $i; ?>"><i class="ti ti-trash bin_icon"></i></label>
               <input type="checkbox" class="delete-youtube hidden" id="delete-youtube<?= $i; ?>" name="delete_youtube[]" value="<?= $ai->l_idx ?>" />
+            </div>
+            <div class="youtubeThumbBox">
+              <span>기존파일</span>
+              <img src="<?= $ai -> youtube_thumb?>" alt="">
             </div>
           </div>
         </div>

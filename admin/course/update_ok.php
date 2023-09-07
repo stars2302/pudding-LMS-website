@@ -2,23 +2,44 @@
   session_start();
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
-  if(!isset($_SESSION['AUID'])){
-    echo "<script>
-    alert('권한이 없습니다');
-    history.back();
-    </script>";
-  }
+  // if(!isset($_SESSION['AUID'])){
+  //   echo "<script>
+  //   alert('권한이 없습니다');
+  //   history.back();
+  //   </script>";
+  // }
 
   $mysqli->autocommit(FALSE);//커밋이 안되도록 지정, 일단 바로 저장하지 못하도록
   try{
-
+    
     $cate1 =  $_POST['cate1']??'' ;
     $cate2 =  $_POST['cate2']??'' ;
     $cate3 =  $_POST['cate3']??'' ;
 
-    $cid = $_POST['cid'];
+    var_dump($cate1);
+  
 
+    $query11 = "SELECT name FROM category WHERE cateid='".$cate1." '";
+    $result11 = $mysqli->query($query11); //쿼리실행결과를 $result 할당
+    $rs11 = $result11->fetch_object();
+    $cate1 =  $rs11-> name;
+
+    $query22 = "SELECT name FROM category WHERE cateid='".$cate2." '";
+    $result22 = $mysqli->query($query22); //쿼리실행결과를 $result 할당
+    $rs22 = $result22->fetch_object();
+    $cate2 =  $rs22->name;
+
+    $query33 = "SELECT name FROM category WHERE cateid='".$cate3." '";
+    $result33 = $mysqli->query($query33); //쿼리실행결과를 $result 할당
+    $rs33 = $result33->fetch_object();
+    $cate3 =  $rs33->name;
+
+    
+
+    $cid=$_POST['cid'];
     $cate = $cate1.'/'.$cate2.'/'.$cate3;
+    var_dump($cate);
+
     $name = $_POST['name'];
     $price_status = $_POST['price_status'];
     $price = $_POST['price']??0;
@@ -27,9 +48,7 @@
     $due = $_POST['due']??'무제한';
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
-    $youtube_name = $_POST['youtube_name'];
-    $thumbnail = $_FILES['thumbnail'];
-    // var_dump($_FILES['thumbnail']);
+    $youtube_name = $_POST['youtube_name']?? '';
 
     if($_FILES['thumbnail']['name']){
 
@@ -68,7 +87,8 @@
     if(($_FILES['thumbnail']['name'])){
 
       $sql = "UPDATE courses
-              SET name='{$name}', 
+              SET cate='{$cate}',
+                  name='{$name}', 
                   price='{$price}', 
                   price_status='{$price_status}', 
                   level='{$level}',
@@ -80,7 +100,8 @@
               WHERE cid = {$cid}";
       }else{
       $sql = "UPDATE courses
-              SET name='{$name}', 
+              SET cate='{$cate}',
+                  name='{$name}', 
                   price='{$price}', 
                   price_status='{$price_status}', 
                   level='{$level}', 
@@ -139,7 +160,6 @@
 
       // $youtube_url = $_POST['youtube_url'];
 
-
       for($i = 0; $i<count($youtube_url); $i++){
 
         if($_FILES['youtube_thumb']['name'][$i]){
@@ -170,7 +190,7 @@
 
       echo "<script>
       alert('강의 수정 완료!');
-      location.href='course_list.php';</script>";
+      //location.href='course_list.php';</script>";
     }
     // } 
     catch(Exception $e){

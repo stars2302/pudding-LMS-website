@@ -54,7 +54,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
             </select>
           </div>
           <div class="col price">
-            <input type="number" class="form-control" name="price" id="price" min="10000" max="1000000" step="10000" value="0" placeholder="금액"/>
+            <input type="number" class="form-control" name="price" id="price" min="0" max="1000000" step="10000" placeholder="금액"/>
           </div>
         </div>
         <div class="row level level_status">
@@ -121,7 +121,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
       <label for="youtube" class="form-label content_tt c_mb">강의영상 업로드</label>
       <div class="you_upload">
         <div class="you_upload_content">
-          <div class="row">
+          <div class="row c_mb">
             <div class="col-2 youtube_thumb">
               <P>강의썸네일</P>
             </div>
@@ -144,7 +144,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
             <div class="col-6 youtube_url">
               <input type="url" class="form-control" name="youtube_url[]" id="youtube_url" placeholder="강의URL을 넣어주세요"/>
             </div>
-            <div class="col-1 trash_icon">
+            <div class="col-1 trash">
               <i class="ti ti-trash bin_icon"></i>
             </div>
           </div>
@@ -167,6 +167,11 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
     </div>
   </form>
 </section>
+<script>
+  $(".you_upload").on("click", "#trash", function () {
+    $(this).closest(".youtube").remove();
+  });
+</script>
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';

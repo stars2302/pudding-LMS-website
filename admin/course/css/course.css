@@ -40,7 +40,7 @@ select,
   display: flex;
   align-items: center;
 }
-.level_price div{
+.level_price div {
   align-items: center;
 }
 .level_price label {
@@ -51,7 +51,7 @@ select,
   vertical-align: text-bottom;
   margin-left: 8px;
 }
-.level_price h3{
+.level_price h3 {
   margin-right: calc(var(--base_unit) * 0.5);
 }
 .level_price h3.b_text01 {
@@ -108,7 +108,7 @@ select,
   flex-direction: column;
   justify-content: space-between;
 }
-.course_list select{
+.course_list select {
   margin-bottom: 5px;
 }
 .level_price span {
@@ -125,7 +125,7 @@ select,
   width: 200px;
   text-align: right;
 }
-.course_list .price{
+.course_list .price {
   font-weight: bold;
 }
 .price_btn_wrap {
@@ -137,8 +137,8 @@ select,
 .search_bar input {
   margin-right: 15px;
 }
-.duration *{
-  margin-right: calc(var(--base_unit)*.5);
+.duration * {
+  margin-right: calc(var(--base_unit) * 0.5);
 }
 .duration i {
   margin-right: calc(var(--base_unit) * 0.2);
@@ -159,7 +159,11 @@ a.btn {
 }
 /*카테고리*/
 
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
   border-color: #cdcdcd;
 }
 .tt_mb {
@@ -259,7 +263,7 @@ ul {
   padding-left: 0;
 }
 .course_view .course_list {
-  padding: 60px 30px 30px;
+  padding: 120px 100px;
   position: relative;
 }
 .course_list > div {
@@ -288,11 +292,15 @@ ul {
   font-size: 20px;
   margin-left: 10px;
 }
-.course_view, .course_list_wrap, .category_add{
+.course_view,
+.course_list_wrap,
+.category_add {
   position: relative;
   margin-bottom: 60px;
 }
-.course_view .back_btn, .course_list_wrap .all_modify_btn, .category_add .back_btn{
+.course_view .back_btn,
+.course_list_wrap .all_modify_btn,
+.category_add .back_btn {
   position: absolute;
   right: 0;
 }
@@ -316,6 +324,7 @@ h1 {
 }
 
 select,
+input[type="file"]::file-selector-button,
 input {
   height: 45px;
 }
@@ -327,6 +336,7 @@ input {
   width: 50%;
 }
 
+.trash i,
 .trash_icon i {
   font-size: 35px;
   align-items: center;
@@ -355,7 +365,7 @@ input {
 }
 
 .c_button {
-  margin-bottom: calc(var(--base_unit) * 2.5);
+  padding-bottom: calc(var(--base_unit) * 2.5);
 }
 
 .file_input > img {
@@ -368,9 +378,10 @@ input {
 }
 
 .you_upload_content p,
-.youtube p{
+.youtube p,
+.youtube_v p {
   text-align: center;
-  margin-bottom: 10px;
+  margin-top: 13px;
   font-weight: 600;
 }
 
@@ -378,16 +389,66 @@ input {
   width: 100%;
 }
 
+.youtube_thumb {
+  position: relative;
+}
+
 .youtube_link > div {
   text-align: center;
   align-items: center;
 }
 
-.youtube_link > div div {
-  padding-top: 50px;
+/* 강의수정 */
+
+.youtubeThumbBox {
+  margin: 20px auto;
+  width: 100%;
+  height: 150px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  /* position: absolute; */
 }
 
-.youtube_thumb img {
+.youtubeThumbBox img {
+  width: 150px;
+}
+
+/* 강의보기 */
+
+.youtubeNameBox,
+.youtubeUrlBox {
+  height: 50px;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+}
+
+.youtubeNameBox,
+.youtubeViewcon,
+.youtubeViewname {
+  width: 70%;
+}
+
+.youtubeUrlBox,
+.youtubeViewurl,
+.youtubeViewthumb {
+  width: 30%;
+}
+
+.youtubeNameBox p,
+.youtubeUrlBox p {
+  text-align: center;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.youtube_con {
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid #c2c4c7;
+}
+
+.youtube_con img {
   width: 150px;
   height: 90px;
   object-fit: contain;
@@ -396,11 +457,7 @@ input {
   border-radius: 6px;
 }
 
-.youtube_url a {
-  color: blue;
-  border-bottom: 1px solid blue;
+.youtubeViewcon,
+.youtubeViewcon img {
+  align-items: center;
 }
-
-/* .bin_icon input{
-  opacity: 0;
-} */
