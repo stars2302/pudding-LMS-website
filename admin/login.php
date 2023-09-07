@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 if(isset($_SESSION['AUID'])){
   if($_SESSION['AUID'] == 'admin'){
     echo "<script>
@@ -144,7 +144,7 @@ $js_route = "js/login.js";
               class="form-control"
               name="userid"
               id="userid"
-              placeholder="id"
+              placeholder="admin"
               aria-label="userid"
               required
             />
@@ -158,7 +158,7 @@ $js_route = "js/login.js";
               class="form-control"
               name="password"
               id="password"
-              placeholder="password"
+              placeholder="1111"
               required
             />
           </div>
