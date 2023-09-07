@@ -75,12 +75,10 @@
     $sql = "INSERT INTO courses (cate, name, price_status , price, level, due_status, due, act, content, thumbnail) 
     VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}')";
 
-var_dump($sql);
 
     $result = $mysqli->query($sql);
-    var_dump($result);
     $cid = $mysqli -> insert_id; //입력된 값의 pk가져오는 명령어
-var_dump($cid);
+
     if($result){
 
       if($youtube_name){

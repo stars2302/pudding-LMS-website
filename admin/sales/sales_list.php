@@ -196,7 +196,7 @@ if (isset($_GET['month']) || empty($_GET)) {
                 <tr>
                   <td><?php echo $list->userid; ?></td>
                   <td><?php echo $list->name; ?></td>
-                  <td><?php echo $list->total_price; ?> 원</td>
+                  <td><span class="number"><?php echo number_format($list->total_price); ?></span><span>원</span></td>
                   <td><?= date('Y-m-d', strtotime($list -> buy_date)) ;?></td>
                 </tr>
                 <?php
