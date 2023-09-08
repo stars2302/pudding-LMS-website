@@ -41,8 +41,6 @@ $last_month4_sales = $last_month4_result ->fetch_assoc();
 $last_month5_sales = $last_month5_result ->fetch_assoc();
 
 
-
-//json 형식으로 바꾸기
 $sales_data = array(
     'current_month_sales' => $current_month_sales['current_month_sales'],
     'last_month_sales' => $last_month_sales['last_month_sales'],

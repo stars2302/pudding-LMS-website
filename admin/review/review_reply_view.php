@@ -14,12 +14,8 @@ $sql = "SELECT r.*, u.username, u.userimg, c.name FROM review r
         JOIN courses c ON c.cid = r.cid
         WHERE r.rid = '{$rid}' AND r.uid = '{$uid}' AND r.cid = '{$cid}'";
 
-
 $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
-
-
-
 
 
 ?>

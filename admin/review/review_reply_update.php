@@ -80,9 +80,8 @@ $rp = $rresult->fetch_assoc();
     
   </section>
 </div>
-<!-- content_wrap -->
 </div>
-<!-- wrap -->
+
 
 <?php
 

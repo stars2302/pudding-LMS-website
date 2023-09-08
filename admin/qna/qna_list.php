@@ -5,39 +5,29 @@ $js_route = "qna/js/qna.js";
 
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
-//search
+
 $search_list = isset($_GET['search']) ? $_GET['search'] : '';
 
-
-// 현재 페이지 번호
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-// 페이지당 게시물 수
 $per_page = 10;
 
-// 총 게시물 수
-  $sql = "SELECT COUNT(*) FROM qna;";
-  $result = $mysqli->query($sql);
-  $row = $result->fetch_array();
-  $total_posts = $row[0];
+$sql = "SELECT COUNT(*) FROM qna;";
+$result = $mysqli->query($sql);
+$row = $result->fetch_array();
+$total_posts = $row[0];
 
-  
-//필터 없으면 여기서부터 복사! *******
-$pagenationTarget = 'qna'; //pagenation 테이블 명
-$pageContentcount = 10; //페이지 당 보여줄 list 개수
+$pagenationTarget = 'qna'; 
+$pageContentcount = 10; 
 
 if(!isset($pagerwhere)){
   $pagerwhere = ' 1=1';
 }
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
-$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
-
-
-//최종 query문, 실행
+$limit = " limit $startLimit, $pageCount"; 
 
 $sql = "SELECT * FROM qna order by qid desc";
-$sqlrc = $sql.$limit; //필터 없
-//----------------------------------------------pagenation 끝
+$sqlrc = $sql.$limit; 
 
 $result = $mysqli->query($sqlrc);
 ?>
@@ -73,17 +63,12 @@ if ($mysqli->connect_error) {
         <tbody class="b_text02">
         <?php while ($row = $result->fetch_assoc()): ?>
           <tr>
-            <!-- 상태 -->
             <th class="<?php echo $row['q_state'] == 0 ? 'waiting' : 'completed'; ?>">
                 <?php echo $row['q_state'] == 0 ? '답변대기' : '답변완료'; ?>
             </th>
-            <!-- 게시물 제목 -->
-            <td><a href="qna_view.php?qid=<?php echo $row['qid']; ?>"><?php echo $row['q_title']; ?></a></td>
-            <!-- 작성자 -->            
+            <td><a href="qna_view.php?qid=<?php echo $row['qid']; ?>"><?php echo $row['q_title']; ?></a></td>         
             <td><?php echo $row['uid']; ?></td>
-            <!-- 작성시간 -->
             <td><?= date('Y-m-d', strtotime($row['q_regdate'])) ;?></td>
-            <!-- 조회수 -->
             <td><?php echo $row['q_hit']; ?></td>
           </tr>
         <?php endwhile; ?>  

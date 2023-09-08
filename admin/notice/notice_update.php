@@ -25,10 +25,6 @@ $sqlarr = $result -> fetch_object();
       <?= $sqlarr -> nt_content; ?>
     </textarea>
   </div>  
-  <!-- <div class="notice_create_form_div">
-    <label for="image"><span class="content_tt">파일첨부</span></label>
-    <input type="file" id="image" name="nt_filename" class="notice_create_input form-control" aria-label="Username">    
-  </div> -->
   <div class="create_btns d-flex justify-content-end">
     <button class="btn btn-primary">수정 완료</button>     
     <a href="notice_list.php" class="btn_cancel btn btn-dark">수정 취소</a>

@@ -4,21 +4,19 @@ $css_route = "notice/css/notice.css";
 $js_route = "notice/js/notice.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
-/* GET파라미터로 게시물 고유식별자 'ntid'가져오기 */
 $ntid = $_GET['ntid'];
-// 조회수 증가
+
 $sql = "UPDATE notice SET nt_read_cnt = nt_read_cnt +1  WHERE ntid='{$ntid}'";
 $result = $mysqli -> query($sql);
-// 게시물 조회
+
 $sql2 = "SELECT * FROM notice WHERE ntid='{$ntid}'";
 $result2 = $mysqli->query($sql2);
 $sqlarr = $result2 -> fetch_assoc();
-$hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
+$hit = $sqlarr['nt_read_cnt'] +1 ;
 ?>
   <section>
           <div class="view_box">
             <h2 class="main_tt">공지사항</h2>
-              <!-- 글 제목 -->
             <div class="notice_view_notice_body shadow_box border justify-content-between">
               <h5 class="main_stt thead_tt"> <?= $sqlarr['nt_title'];?></h5>
               <p class="notice_info d-flex justify-content-end align-items-center">
@@ -28,7 +26,7 @@ $hit = $sqlarr['nt_read_cnt'] +1 ; //조회수 증가시키기
                 <span class="b_text02"> <?= $sqlarr['nt_read_cnt'] ?></span>
               </p>
             <div class="content">
-              <!-- 본문 -->    
+
               
               <?= $sqlarr['nt_content'] ?>
             </div>

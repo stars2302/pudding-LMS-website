@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $parent_comment_id = $_POST['parent_comment_id'];
   $depth = $_POST['depth'];
   $comment = $_POST['comment'];
-  $user_id = 'test'; // 로그인한 사용자 ID
+  $user_id = 'test'; 
   
   $sql = "INSERT INTO qna_comments (post_id, parent_comment_id, depth, user_id, comment) VALUES (?, ?, ?, ?, ?)";
   $stmt = $mysqli->prepare($sql);

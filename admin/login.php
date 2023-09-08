@@ -127,7 +127,6 @@
       </div>
     </dialog>
     <!-- // DIALOG POPUP -->
-
     <main>
       <div class="login_box">
         <h1 class="main_tt loginlogo loginpage_logo">

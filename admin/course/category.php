@@ -392,13 +392,9 @@ while ($rs = $result->fetch_object()) {
     $('.modal').find('.modal_cate_name').val(cateName);
     $('.catename').val(cateid);
   });
-
-
-
 </script>
 
 
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
-
 ?>

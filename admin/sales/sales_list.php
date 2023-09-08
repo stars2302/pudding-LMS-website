@@ -3,8 +3,6 @@ $title="월별매출통계 관리";
 $css_route="sales/css/sales.css";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
-
-// 월 옵션 생성 
 $months = [
   '01' => '1월',
   '02' => '2월',
@@ -20,50 +18,38 @@ $months = [
   '12' => '12월',
 ];
 
-
-
-// 선택된 월 (기본값은 현재 월)
 $selected_month = isset($_GET['month']) ? $_GET['month'] : date('m');
 
 $rsc = [];
 $sales_page;
 if (isset($_GET['month'])) {
-  // 폼에서 선택된 월을 처리
   $selected_month = $_GET['month'];
-
-  // SQL 쿼리 - 선택된 월에 해당하는 payments 데이터 검색
   $sql = "SELECT COUNT(*) as count FROM payments WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month'";
 
-      
-
-  $result = $mysqli->query($sql); //필터 없
+  $result = $mysqli->query($sql);
   $rsc = [];
   
   while ($rs = $result->fetch_object()) {
       $rsc[] = $rs;
-
   }
   $sales_page = $rsc[0]->count;
 }
 
 
-//----------------------------------------------pagenation 시작
-
 $sql = "SELECT payid, userid, name, total_price, buy_date FROM payments WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month' order by regdate desc";
 
-//필터 없으면 여기서부터 복사! *******
-$pagenationTarget = 'payments'; //pagenation 테이블 명
-$pageContentcount = 10; //페이지 당 보여줄 list 개수
 
-//필터 없는 경우 조건 복사해야됨!
+$pagenationTarget = 'payments'; 
+$pageContentcount = 10; 
+
 if (!isset($pagerwhere)) {
   $pagerwhere = ' DATE_FORMAT(buy_date, \'%m\') = \'' . $selected_month . '\'';
 }
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/pager.php';
-$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
+$limit = " limit $startLimit, $pageCount"; 
 
-$sqlrc = $sql . $limit; //필터 없
-$result = $mysqli->query($sqlrc); //필터 없
+$sqlrc = $sql . $limit; 
+$result = $mysqli->query($sqlrc); 
 
 $rscc = [];
 
@@ -72,11 +58,7 @@ while ($rs = $result->fetch_object()) {
 }
 
 
-
-//----------------------------------------------pagenation 끝
-
 //bar_chart
-// 선택한 월에 해당하는 데이터를 가져오는 SQL 쿼리 작성
 $sql = "SELECT name, SUM(total_price) AS total_price_sum
         FROM payments
         WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month'
@@ -93,8 +75,7 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-//pie
-// 선택한 7월에 가장 많은 금액을 구매한 사용자를 검색하는 SQL 쿼리
+//pie_chart
 $sqlTopBuyers = "SELECT userid, SUM(total_price) AS total_price_sum
                 FROM payments
                 WHERE DATE_FORMAT(buy_date, '%m') = '07'
@@ -114,30 +95,21 @@ while ($row = $resultTopBuyers->fetch_assoc()) {
 
 
 function getMonthlyData($selected_month) {
-  global $mysqli; // 데이터베이스 연결 객체를 함수 내에서 사용할 수 있게 함
-
-  $rsc = []; // 결과 데이터를 저장할 배열 초기화
-
-  //선택된 월에 해당하는 payments 데이터 검색
+  global $mysqli; 
+  $rsc = []; 
   $sql = "SELECT * FROM payments where  DATE_FORMAT(buy_date, '%m') = '$selected_month' ORDER BY payid ";
-
   $result = $mysqli->query($sql);
-  
   while ($rs = $result->fetch_object()) {
       $rsc[] = $rs;
   }
-
   return $rsc; 
 }
 
-?>
-<!-- top_bar -->
-      
-      <section>
-        <h2 class="main_tt dark">월별매출통계</h2>
-    
-        <form action="#" id="search_form" >
-        <div >
+?>      
+  <section>
+    <h2 class="main_tt dark">월별매출통계</h2>
+    <form action="#" id="search_form" >
+      <div >
             <div class>
                 <select class="form-select cate_select" aria-label="Default select example" id="month" name="month">
                     <?php
@@ -155,8 +127,6 @@ function getMonthlyData($selected_month) {
 <?php
 
 if (isset($_GET['month']) || empty($_GET)) {
-    // 폼에서 선택된 월을 처리하거나 페이지를 처음 로드할 때
-    // 선택된 월 또는 기본 월에 해당하는 데이터를 조회
     $rsc = getMonthlyData($selected_month);
 }
 ?>
@@ -190,8 +160,6 @@ if (isset($_GET['month']) || empty($_GET)) {
                 <?php
                 if(!empty($rscc)){
                   foreach($rscc as $list){
-
-            
                 ?>
                 <tr>
                   <td><?php echo $list->userid; ?></td>
@@ -212,33 +180,26 @@ if (isset($_GET['month']) || empty($_GET)) {
       <ul class="pagination coupon_pager">
         <?php
           if($pageNumber>1 && $block_num > 1 ){
-            //이전버튼 활성화
             $prev = ($block_num - 2) * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
           } else{
-            //이전버튼 비활성화
             echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
           }
 
 
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
-                //필터 있
                 echo "<li class=\"page-item active\"><a href=\"?month=$selected_month&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-
             }else{
-                //필터 있
                 echo "<li class=\"page-item\"><a href=\"?month=$selected_month&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
 
 
           if($pageNumber<$total_page && $block_num < $total_block){
-            //다음버튼 활성화
             $next = $block_num * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
           } else{
-            //다음버튼 비활성화
             echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
 
           }

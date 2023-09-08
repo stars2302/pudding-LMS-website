@@ -5,19 +5,17 @@ $js_route = "notice/js/notice.js";
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
 
-/* 파라미터 로드 */
 $search_where = '';
 
-
 $search_keyword = $_GET['keyword']??'';
-$sales_page='';//조건에맞는 page 수
+$sales_page='';
+
 if(isset($_GET['keyword'])) {
   //제목과 내용에 키워드가 포함된 상품 조회
   $keyword = $_GET['keyword'];
   $search_where = " and (nt_title like '%{$keyword}%' or 
   nt_content like '%{$keyword}%')";
 
-  //조건에맞는 page 수
   $sqlaa = "SELECT COUNT(*) as count FROM notice WHERE (nt_title like '%{$keyword}%' or nt_content like '%{$keyword}%')";
   $result = $mysqli->query($sqlaa);
   while ($rs = $result->fetch_object()) {
@@ -28,23 +26,18 @@ if(isset($_GET['keyword'])) {
 
 
 $sql = "SELECT * from notice where 1=1";
-// $sql.= $search_where;
 $order = " order by ntid desc";
 
-//필터 없는 경우 조건 복사해야됨!
 if(!isset($pagerwhere)){
   $pagerwhere = ' 1=1';
 }
 
-//필터 없으면 여기서부터 복사! *******
-$pagenationTarget = 'notice'; //pagenation 테이블 명
-$pageContentcount = 10; //페이지 당 보여줄 list 개수
+$pagenationTarget = 'notice';
+$pageContentcount = 10; 
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
-$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
+$limit = " limit $startLimit, $pageCount"; 
 
-
-//최종 query문, 실행
-$sqlrc = $sql.$search_where.$order.$limit; //필터 있
+$sqlrc = $sql.$search_where.$order.$limit; 
 
 
 
@@ -126,36 +119,26 @@ while($rs = $result -> fetch_object()){
       <ul class="pagination coupon_pager">
         <?php
           if($pageNumber>1 && $block_num > 1 ){
-            //이전버튼 활성화
             $prev = ($block_num - 2) * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
           } else{
-            //이전버튼 비활성화
             echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
           }
 
 
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
-                //필터 있
                 echo "<li class=\"page-item active\"><a href=\"?keyword=$search_keyword&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
-                // echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }else{
-                //필터 있
                 echo "<li class=\"page-item\"><a href=\"?keyword=$search_keyword&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
-                // echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }
           }
 
 
           if($pageNumber<$total_page && $block_num < $total_block){
-            //다음버튼 활성화
             $next = $block_num * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
           } else{
-            //다음버튼 비활성화
             echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
 
           }
@@ -164,7 +147,6 @@ while($rs = $result -> fetch_object()){
     </nav>
   </section>  
 </div>
-<!-- content_wrap -->
 </div>
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';

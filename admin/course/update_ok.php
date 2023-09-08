@@ -4,7 +4,7 @@
 
 
 
-  $mysqli->autocommit(FALSE);//커밋이 안되도록 지정, 일단 바로 저장하지 못하도록
+  $mysqli->autocommit(FALSE);
   try{
     
     $cate1 =  $_POST['cate1']??'' ;
@@ -15,17 +15,17 @@
   
 
     $query11 = "SELECT name FROM category WHERE cateid='".$cate1." '";
-    $result11 = $mysqli->query($query11); //쿼리실행결과를 $result 할당
+    $result11 = $mysqli->query($query11);
     $rs11 = $result11->fetch_object();
     $cate1 =  $rs11-> name;
 
     $query22 = "SELECT name FROM category WHERE cateid='".$cate2." '";
-    $result22 = $mysqli->query($query22); //쿼리실행결과를 $result 할당
+    $result22 = $mysqli->query($query22); 
     $rs22 = $result22->fetch_object();
     $cate2 =  $rs22->name;
 
     $query33 = "SELECT name FROM category WHERE cateid='".$cate3." '";
-    $result33 = $mysqli->query($query33); //쿼리실행결과를 $result 할당
+    $result33 = $mysqli->query($query33);
     $rs33 = $result33->fetch_object();
     $cate3 =  $rs33->name;
 
@@ -207,7 +207,7 @@ foreach($youtube_thumb_org as $ythumb){
         }
       }
 
-      $mysqli->commit();//디비에 커밋한다.
+      $mysqli->commit();
 
       echo "<script>
       alert('강의 수정 완료!');
@@ -215,7 +215,7 @@ foreach($youtube_thumb_org as $ythumb){
     }
 
     catch(Exception $e){
-      $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
+      $mysqli->rollback();
       echo "<script>
       alert('강의 수정 실패');
       history.back();

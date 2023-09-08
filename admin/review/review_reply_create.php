@@ -66,12 +66,9 @@ $card = $result->fetch_assoc();
               </form>
             </div>
     </div>
-    <!-- 카드 끝 -->
-  
-
   </section>
-  </div><!-- //content_wrap -->
-</div><!-- //wrap -->
+  </div>
+</div>
   <script>
     $(document).ready(function() {
   $(".review_del a.icon").on("click", function(e) {

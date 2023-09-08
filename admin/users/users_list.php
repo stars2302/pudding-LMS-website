@@ -7,11 +7,10 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 
 $sql = "SELECT * FROM users where 1=1";
 $order = ' ORDER BY uid DESC';
-$sc_where = ""; // 검색 조건을 담을 변수
+$sc_where = ""; 
 $search_where = '';
 $user_search = $_GET['search'] ?? '';
 
-// 검색어가 있으면 유저이름에서 찾아서 적용
 if ($user_search !=="") {
     $search_where .= " username LIKE '%{$user_search}%'";
     $sc_where = ' AND' . $search_where;
@@ -21,17 +20,13 @@ if ($user_search !=="") {
 
 $pagerwhere = $search_where;
 
-//----------------------------------------------pagenation 시작
-
-// 필터 없으면 여기서부터 복사!
-$pagenationTarget = 'users'; // pagenation 테이블 명
-$pageContentcount = 10; // 페이지 당 보여줄 list 개수
+$pagenationTarget = 'users';
+$pageContentcount = 10; 
 $pageNumber = $_GET['pageNumber'] ?? 1;
 $pageCount = $pageContentcount;
 
 $startLimit = ($pageNumber - 1) * $pageCount;
 
-// 전체 게시물 수 구하기
 $pagesql = "SELECT COUNT(*) as cnt FROM $pagenationTarget where $pagerwhere";
 $page_result = $mysqli->query($pagesql);
 $page_row = $page_result->fetch_object();
@@ -45,12 +40,10 @@ $block_end = min($block_start + $block_ct - 1, $total_page);
 
 $total_block = ceil($total_page / $block_ct);
 
-$limit = " LIMIT $startLimit, $pageCount"; // select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
-$sqlrc = $sql . $sc_where . $order . $limit; // 필터 있음
+$limit = " LIMIT $startLimit, $pageCount"; 
+$sqlrc = $sql . $sc_where . $order . $limit; 
 
-//----------------------------------------------pagenation 끝
-
-$result = $mysqli->query($sqlrc); // 필터 없음
+$result = $mysqli->query($sqlrc); 
 $rsc = [];
 
 while ($rs = $result->fetch_object()) {
@@ -58,37 +51,23 @@ while ($rs = $result->fetch_object()) {
 }
 
 
-
-
-
-
-
 ?>
-<!-- top_bar -->
-      
-      <section>
-        
-        <h2 class="main_tt dark">회원관리</h2>
-    
+
+    <section>
+      <h2 class="main_tt dark">회원관리</h2>
         <form action="#" class="d-flex align-items-center username_keyword_search">
-        <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="회원이름을 입력하세요."
-            aria-label="회원이름을 입력하세요."
-            name="search"
-          >
-        </div>
-        <button class="btn btn-dark">검색</button>
-        <button id="resetSearchButton" class="btn btn-primary">전체보기</button>
-
-      </form>
-
-
-    
-          
-         
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="회원이름을 입력하세요."
+              aria-label="회원이름을 입력하세요."
+              name="search"
+            >
+          </div>
+          <button class="btn btn-dark">검색</button>
+          <button id="resetSearchButton" class="btn btn-primary">전체보기</button>
+        </form>
           <div class="d-flex flex-column align-items-center">
           <div class="users_container shadow_box border">
             <table class="table users" id="payment_table">
@@ -130,11 +109,9 @@ while ($rs = $result->fetch_object()) {
             <ul class="pagination coupon_pager">
                 <?php
                 if ($pageNumber > 1 && $block_num > 1) {
-                    // 이전버튼 활성화
                     $prev = ($block_num - 2) * $block_ct + 1;
                     echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev&search=$user_search\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
                 } else {
-                    // 이전버튼 비활성화
                     echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
                 }
 
@@ -147,11 +124,9 @@ while ($rs = $result->fetch_object()) {
                 }
 
                 if ($pageNumber < $total_page && $block_num < $total_block) {
-                    // 다음버튼 활성화
                     $next = $block_num * $block_ct + 1;
                     echo "<li class=\"page-item\"><a href=\"?pageNumber=$next&search=$user_search\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
                 } else {
-                    // 다음버튼 비활성화
                     echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page&search=$user_search\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
                 }
                 ?>
@@ -159,20 +134,19 @@ while ($rs = $result->fetch_object()) {
         </nav>
         </div>
       </section>
-    </div><!-- content_wrap -->
-  </div><!-- wrap -->
-  <script>
-   $(document).ready(function () {
-    $("#resetSearchButton").on("click", function () {
-      var url = new URL(window.location.href);
-      url.searchParams.delete("search");
-      window.location.href = url.href;
-    });
-  });
-</script>
+    </div>
+  </div>
 
+  <script>
+    $(document).ready(function () {
+      $("#resetSearchButton").on("click", function () {
+        var url = new URL(window.location.href);
+        url.searchParams.delete("search");
+        window.location.href = url.href;
+      });
+    });
+  </script>
 
 <?php
-
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
 ?>
