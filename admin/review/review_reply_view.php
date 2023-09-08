@@ -117,7 +117,7 @@ $card = $result->fetch_assoc();
                       if (data.result === 'ok') {
                           alert('수강평 댓글이 삭제되었습니다.');
                           reviewContainer.hide(); 
-                          location.href="/pudding-LMS-website/admin/review/review_list.php"
+                          location.href="http://pudding0906.dothome.co.kr/pudding-LMS-website/admin/review/review_list.php"
                       } else {
                           alert('수강평 댓글 삭제 실패');
                       }

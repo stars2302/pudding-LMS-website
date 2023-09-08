@@ -38,13 +38,13 @@ while($rs = $result->fetch_object()){
 
 
 
-
 ?>
         <section>
         
           <h2 class="main_tt dark title-mg">수강평 관리</h2>
 
           <?php
+          if(isset($rsc)){
       foreach ($rsc as $card) {
         $replyCntSql = "SELECT COUNT(*) AS reply_cnt FROM review_reply WHERE rid = {$card->rid}";
         $replyCntResult = $mysqli->query($replyCntSql);
@@ -97,7 +97,10 @@ while($rs = $result->fetch_object()){
                 <?php } ?>
             </div>
           </div>
-          <?php } ?>   
+          <?php
+           }
+          }
+           ?>   
           <!-- 카드 끝 -->
     
     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
@@ -139,6 +142,7 @@ while($rs = $result->fetch_object()){
 </div><!-- //wrap -->
         <script>
          $(document).ready(function() {
+          let cardContainer = $(".card_container");
         $(".review_del a.icon").on("click", function(e) {
           e.preventDefault();
           let rId = $(this).closest(".card_container").attr("data-id");
@@ -156,6 +160,8 @@ while($rs = $result->fetch_object()){
                   success: function(data) {
                       if (data.result === 'ok') {
                           alert('리뷰가 삭제되었습니다.');
+                          location.href="http://pudding0906.dothome.co.kr/pudding-LMS-website/admin/review/review_list.php";
+                          
                       } else {
                           alert('리뷰 삭제 실패');
                       }

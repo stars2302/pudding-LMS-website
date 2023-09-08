@@ -7,6 +7,7 @@
   $sql = "DELETE from review where rid={$rid}";
 
   $result = $mysqli -> query($sql);
+  
   if($result){
     $data = array('result' => 'ok');
   } else{

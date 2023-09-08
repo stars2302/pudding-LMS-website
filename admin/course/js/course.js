@@ -17,6 +17,7 @@ $("#price_menu").change(function () {
 });
 
 let month = $("#due");
+month.find('option').eq(1).hide();
 
 $("#due_status").change(function () {
   let option2 = $(this).val();
@@ -27,6 +28,7 @@ $("#due_status").change(function () {
     month.val("무제한");
   } else {
     month.prop("disabled", false);
+    month.find('option').eq(1).hide();
   }
 });
 

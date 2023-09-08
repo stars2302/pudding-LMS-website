@@ -181,7 +181,7 @@ if (isset($_GET['month']) || empty($_GET)) {
               <thead>
                 <tr>
                   <th scope="col" class="col1">회원ID</th>
-                  <th scope="col" class="col2">강의명</th>
+                  <th scope="col" class="col2">강의소분류명</th>
                   <th scope="col" class="col3">가격</th>
                   <th scope="col" class="col4">구입날짜</th>
                 </tr>

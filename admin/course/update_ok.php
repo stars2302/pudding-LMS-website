@@ -116,7 +116,7 @@ foreach($youtube_thumb_org as $ythumb){
                   due='{$due}',
                   due_status='{$due_status}', 
                   act='{$act}', 
-                  content='{$content}'
+               content='{$content}'
               WHERE cid = {$cid} ";
   };
 
@@ -177,7 +177,7 @@ foreach($youtube_thumb_org as $ythumb){
                       WHERE cid ={$cid}
                       AND l_idx = {$i}";
            
-           echo 'thumb update'.$sql1.'<br>';
+        
            $result2 = $mysqli-> query($sql1);           
         
         }

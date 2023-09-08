@@ -137,7 +137,7 @@
               <li>
                 <a href="/pudding-LMS-website/admin/review/review_list.php" class="icon"
                   ><i class="ti ti-brand-hipchat"></i
-                  ><span>강의평 관리</span></a
+                  ><span>수강평 관리</span></a
                 >
               </li>
               <li>
