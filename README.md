@@ -96,14 +96,15 @@
 
   <br>
 
-| 이름                                    | 구현파트                                        | 완료                                   |
-| --------------------------------------- | ----------------------------------------------- | -------------------------------------- |
-| <div style="color:#4593fc">이현정</div> | 대시보드, 매출관리, 수강평관리, 회원관리        | <div style="color:#4593fc">100 %</div> |
-| <div style="color:#4593fc">김유림</div> | 대시보드, 강의관리(카테고리, 강의리스트)        | <div style="color:#4593fc">100 %</div> |
-| <div style="color:#4593fc">나서영</div> | 대시보드, 쿠폰관리, 공지사항 관리, 페이지네이션 | <div style="color:#4593fc">100 %</div> |
-| <div style="color:#4593fc">박혜인</div> | 대시보드, 강의관리(강의등록, 강의수정 & 삭제)   | <div style="color:#4593fc">100 %</div> |
-| <div style="color:#4593fc">성진영</div> | Q&A 관리                                        | <div style="color:#4593fc">90 %</div>  |
-| <div style="color:#4593fc">채정석</div> | 공지사항 관리                                   | <div style="color:#4593fc">60 %</div>  |
+| 이름                                    | 구현파트                                        | 완료                                                                                |
+| --------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------- |
+| <div style="color:#4593fc">이현정</div> | 대시보드, 매출관리, 수강평관리, 회원관리        | <div style="color:#4593fc">100 %</div>                                              |
+| <div style="color:#4593fc">김유림</div> | 대시보드, 강의관리(카테고리, 강의리스트)        | <div style="color:#4593fc">100 %</div>                                              |
+| <div style="color:#4593fc">나서영</div> | 대시보드, 쿠폰관리, 공지사항 관리, 페이지네이션 | <div style="color:#4593fc">100 %</div>                                              |
+| <div style="color:#4593fc">박혜인</div> | 대시보드, 강의관리(강의등록, 강의수정 & 삭제)   | <div style="color:#4593fc">100 %</div>                                              |
+| <div style="color:#4593fc">성진영</div> | Q&A 관리                                        | <div style="color:#4593fc">90 %</div>                                               |
+| <div style="color:#4593fc">채정석</div> | 공지사항 관리                                   | <div style="color:#4593fc">60 %</div><div style="color:#4593fc">40 % - 나서영</div> |
+
 
   <br>
 
