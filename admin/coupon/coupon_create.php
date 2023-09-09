@@ -8,7 +8,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.ph
 
     <div class="sub_header d-flex justify-content-between align-items-center">
       <h2 class="main_tt">쿠폰등록</h2>
-    </div><!-- //sub_header -->
+    </div>
 
     <form action="coupon_create_ok.php" class="coupon_create_form" method="POST" enctype="multipart/form-data">
       <fieldset class="coupon_info d-flex">

@@ -23,10 +23,10 @@
   $save_dir = $_SERVER['DOCUMENT_ROOT']."/pudding-LMS-website/admin/coupon/images/";//이미지저장할위치
 
   //파일이름
-  $filename = $_FILES['savefile']['name']; //파일이름
-  $ext = pathinfo($filename, PATHINFO_EXTENSION); //파일확장자
-  $newfilename = date("YmdHis").substr(rand(), 0,6); //20238171184015 <- 오늘날짜와 난수를 조합해 파일이름 변경
-  $savefile = $newfilename.".".$ext; //20238171184015.jpg
+  $filename = $_FILES['savefile']['name'];
+  $ext = pathinfo($filename, PATHINFO_EXTENSION); 
+  $newfilename = date("YmdHis").substr(rand(), 0,6); //오늘날짜와 난수를 조합해 파일이름 변경
+  $savefile = $newfilename.".".$ext; 
 
   //경로 + 이름
   $savefileSRC = '/pudding-LMS-website/admin/coupon/images/'.$savefile;

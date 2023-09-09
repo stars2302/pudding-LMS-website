@@ -211,36 +211,27 @@ while($rs = $result -> fetch_object()){
       <ul class="pagination coupon_pager">
         <?php
           if($pageNumber>1 && $block_num > 1 ){
-            //이전버튼 활성화
             $prev = ($block_num - 2) * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
           } else{
-            //이전버튼 비활성화
             echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
           }
 
 
           for($i=$block_start;$i<=$block_end;$i++){
             if($pageNumber == $i){
-                //필터 있
                 echo "<li class=\"page-item active\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
-                // echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
             }else{
-                //필터 있
                 echo "<li class=\"page-item\"><a href=\"?coupon_filter=$cp_filter&search=$cp_search&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
-                //필터 없
-                // echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+
             }
           }
 
 
           if($pageNumber<$total_page && $block_num < $total_block){
-            //다음버튼 활성화
             $next = $block_num * $block_ct + 1;
             echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
           } else{
-            //다음버튼 비활성화
             echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
           }
         ?>

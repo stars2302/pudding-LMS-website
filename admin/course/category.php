@@ -309,7 +309,7 @@ while ($rs = $result->fetch_object()) {
 
     if (step > 1 && !pcode) {
       alert('대분류를 먼저 선택하세요');
-      return; //아무것도 반환하지 않고 종료
+      return; 
     }
     if (!name) {
       alert('카테고리명을 입력하세요');
@@ -327,7 +327,7 @@ while ($rs = $result->fetch_object()) {
       type: 'post',
       data: data,
       url: "save_category.php",
-      dataType: 'json', //결과 json 객체형식
+      dataType: 'json', 
       error: function (error) {
         console.log('Error:', error);
       },
@@ -356,7 +356,7 @@ while ($rs = $result->fetch_object()) {
     let data = {
       cateid: cateid
     }
-    // console.log(data)
+
     if (confirm(`해당 카테고리를 삭제할까요?:\n카테고리명: ${cateName}`)) {
       $.ajax({
         type: 'post',
@@ -383,7 +383,6 @@ while ($rs = $result->fetch_object()) {
 
 
   // 카테고리 수정
-
   //리스트 내 수정버튼 클릭 시 할일
   $('.dropdown-menu').on('click', '.pen_icon', function () {
     let trElement = $(this).closest('li');

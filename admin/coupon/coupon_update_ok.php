@@ -25,7 +25,7 @@ try{
 
   $sql = "UPDATE coupons set cp_name='{$cp_name}', cp_image='{$cp_image}', cp_type='{$cp_type}', cp_price={$cp_price}, cp_limit='{$cp_limit}', cp_ratio={$cp_ratio}, cp_status='{$cp_status}', cp_date='{$cp_date}' where cpid={$cpid}";
   $result = $mysqli -> query($sql);
-  // var_dump($sql);
+
 
   if(isset($result)){
     $mysqli->commit();

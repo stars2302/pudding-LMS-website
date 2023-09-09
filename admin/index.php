@@ -88,7 +88,6 @@ $newusercount = $newurc->fetch_object();
 
 
 //월별 매출
-// 선택한 월에 해당하는 데이터를 가져오는 SQL 쿼리 작성
 $monthsql = "SELECT  c.name ,c.thumbnail, SUM(p.total_price) AS total_price_sum
         FROM payments p
         INNER JOIN courses c ON p.cid = c.cid
