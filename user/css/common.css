@@ -413,7 +413,7 @@ input.form-control::placeholder {
 /* LOGO */
 .adminlogo {margin-top: -10px; transform: scale(0.85);}
 .adminlogo > a {
-  background-image: url("../images/adminLogo.png");
+  background-image: url("../images/logo.png");
   width: 222px;
   height: 76px;
   background-size: 222px;
@@ -424,7 +424,7 @@ input.form-control::placeholder {
 }
 
 .colorlogo > a {
-  background-image: url("../images/colorLogo.png");
+  background-image: url("../images/logo_footer.png");
   width: 222px;
   height: 76px;
   background-size: 222px;
@@ -491,6 +491,34 @@ input.form-control::placeholder {
   color: var(--point_red_hover);
 }
 
+/* nice select custom */
+.selectmenu {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+}
+
+.nice-select.open {
+  border: 1px solid #d0d0d0;
+}
+
+.nice-select.open .list {
+  right: 0;
+  margin-top: 5px;
+  box-shadow: 0 0 0 1px #d0d0d0;
+}
+
+.nice-select .option.focus, .nice-select .option.selected.focus, .nice-select .option:hover {
+  background-color: rgba(255, 193, 7, .15);
+}
+
+.nice-select .current {
+  font-size: 16px;
+}
+.nice-select:after {
+  right: 17px;
+  width: 9px;
+  height: 9px;
+}
 /* header */
 header {
   height: 90px;
