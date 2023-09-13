@@ -59,14 +59,15 @@
     />
 
     <!-- <link rel="stylesheet" href="css/jqueryui/jquery-ui.theme.min.css" /> -->
-    <link rel="stylesheet" href="css/common.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+    <title>장바구니</title>
   </head>
   <body>
     <header class="shadow_box">
       <div class="container d-flex align-items-center">
         <h1>
-          <a href=""><img src="images/logo.png" alt="푸딩로고이미지" /></a>
+          <a href=""><img src="../images/logo.png" alt="푸딩로고이미지" /></a>
         </h1>
         <nav>
           <ul class="d-flex">
@@ -115,11 +116,43 @@
       </div>
     </header>
 
+    <div class="cart_container container">
+      <h2 class="jua main_tt">장바구니</h2>
+      
+      <div class="cartOpBtns d-flex">
+        <div class="form-check all_check d-flex align-items-center">
+          <input class="form-check-input" type="checkbox" value="" id="all_check" checked>
+          <label class="form-check-label" for="all_check">
+            전체선택
+          </label>
+        </div>
+        <button class="btn btn-primary dark select_del">선택삭제</button>
+      </div>
+
+      <ul class="cart_item_container">
+        <li>
+          <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
+          <label class="form-check-label" for="cart_item1"></label>
+          <div class="img_wrap">
+            <img src="" alt="">
+          </div>
+          <div class="text_box">
+            <h3>[Javascript] 입문 기초 문법</h3>
+            <span class="badge rounded-pill blue_bg b-pd">Badge</span>
+            <span class="badge rounded-pill green_bg b-pd">Badge</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+
+
     <footer>
       <div class="container d-flex align-items-center d-flex justify-content-between">
         <div class="">
           <h2>
-            <a href=""><img src="images/logo_footer.png" alt="푸딩로고이미지" /></a>
+            <a href=""><img src="../images/logo_footer.png" alt="푸딩로고이미지" /></a>
           </h2>
           <div>
             <p>해당 사이트는 구직용 포트폴리오 목적으로 만들어진 사이트입니다.<br>실제 운영되는 사이트가 아니오니 이 점 유의해주시기 바랍니다.</p>
@@ -130,13 +163,13 @@
         <div>
           <p>사용언어 : </p>
           <div>
-            <img src="images/html_icon.png" alt="HTML 아이콘">
-            <img src="images/css_icon.png" alt="HTML 아이콘">
-            <img src="images/js_icon.png" alt="HTML 아이콘">
-            <img src="images/jquery_icon.png" alt="HTML 아이콘">
-            <img src="images/php_icon.png" alt="HTML 아이콘">
-            <img src="images/jquery_icon.png" alt="HTML 아이콘">
-            <img src="images/bootstrap_icon.png" alt="HTML 아이콘">
+            <img src="../images/html_icon.png" alt="HTML 아이콘">
+            <img src="../images/css_icon.png" alt="HTML 아이콘">
+            <img src="../images/js_icon.png" alt="HTML 아이콘">
+            <img src="../images/jquery_icon.png" alt="HTML 아이콘">
+            <img src="../images/php_icon.png" alt="HTML 아이콘">
+            <img src="../images/jquery_icon.png" alt="HTML 아이콘">
+            <img src="../images/bootstrap_icon.png" alt="HTML 아이콘">
           </div>
         </div> 
       </div> 
