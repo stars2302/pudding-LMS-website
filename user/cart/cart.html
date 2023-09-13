@@ -6,57 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- reset css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
       integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- normalize css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
       integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      crossorigin="anonymous" referrerpolicy="no-referrer">
     <!--bootstrap css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
       integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- tabler-icons  -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <!-- jquery ui css -->
-    <link
-      rel="stylesheet"
+    <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/black-tie/jquery-ui.min.css"
       integrity="sha512-+Z63RrG0zPf5kR9rHp9NlTMM29nxf02r1tkbfwTRGaHir2Bsh4u8A79PiUKkJq5V5QdugkL+KPfISvl67adC+Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- nice select css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- Noto Sans KR -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- <link rel="stylesheet" href="css/jqueryui/jquery-ui.theme.min.css" /> -->
     <link rel="stylesheet" href="../css/common.css" />
@@ -129,20 +106,246 @@
         <button class="btn btn-primary dark select_del">선택삭제</button>
       </div>
 
-      <ul class="cart_item_container">
-        <li>
-          <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
-          <label class="form-check-label" for="cart_item1"></label>
-          <div class="img_wrap">
-            <img src="" alt="">
+      <div class="row">
+        <ul class="cart_item_container col-8 d-flex flex-column">
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
+            <label class="form-check-label" for="cart_item1"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item2" checked>
+            <label class="form-check-label" for="cart_item2"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item3" checked>
+            <label class="form-check-label" for="cart_item3"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item4" checked>
+            <label class="form-check-label" for="cart_item4"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item5" checked>
+            <label class="form-check-label" for="cart_item5"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item6" checked>
+            <label class="form-check-label" for="cart_item6"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item7" checked>
+            <label class="form-check-label" for="cart_item7"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item8">
+            <label class="form-check-label" for="cart_item8"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,100</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
+            <label class="form-check-label" for="cart_item1"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span class="number">10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item9" >
+            <label class="form-check-label" for="cart_item9"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span>10,000</span>원</span>
+          </li>
+          <li class="cart_item shadow_box">
+            <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
+            <label class="form-check-label" for="cart_item1"></label>
+            <img src="images/item1.png" alt="" class="radius_5">
+            <div class="text_box">
+              <div class="title">
+                <h3>[Javascript] 입문 기초 문법</h3>
+                <span class="badge rounded-pill blue_bg b-pd">입문</span>
+                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+              </div>
+              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+              <div class="date">
+                <i class="ti ti-calendar-event"></i>
+                수강기간 <span>12</span>개월
+              </div>
+            </div>
+            <i class="ti ti-x del_btn"></i>
+            <span class="price content_tt"><span>10,000</span>원</span>
+          </li>
+        </ul>
+
+        <form class="payment col radius_12 shadow_box">
+          <h3 class="content_stt">결제정보</h3>
+          <h4 class="demoHeaders style_pd b_text02">쿠폰선택</h4>
+          <select class="selectmenu coupon_select">
+            <option value="" disabled selected class="default">보유하고 있는 쿠폰</option>
+            <option value="1" data-discount="10000" data-type="정액" data-limit="100000">회원가입 쿠폰</option>
+            <option value="2" data-discount="10000" data-type="정액" data-limit="50000">추천인 할인 쿠폰</option>
+            <option value="3" data-discount="20" data-type="정률" data-limit="70000">★여름방학 맞이 푸딩과 함께★</option>
+            <option value="4" data-discount="10" data-type="정률" data-limit="100000">복귀 유저 쿠폰Wellcomeback! 돌아오신것을 환영합니다~</option>
+          </select>
+          <hr>
+          <div class="payment_info d-flex justify-content-between">
+            <p>상품 수 :</p><p><span class="cart_count number">2</span>개</p>
           </div>
-          <div class="text_box">
-            <h3>[Javascript] 입문 기초 문법</h3>
-            <span class="badge rounded-pill blue_bg b-pd">Badge</span>
-            <span class="badge rounded-pill green_bg b-pd">Badge</span>
+          <div class="payment_info d-flex justify-content-between">
+            <p>상품금액 :</p><p><span class="cart_total_price number">20,000</span>원</p>
           </div>
-        </li>
-      </ul>
+          <div class="payment_info d-flex justify-content-between">
+            <p>할인가 :</p><p>- <span class="cart_discount number">0원</span></p>
+          </div>
+          <hr>
+          <div class="payment_total d-flex justify-content-between align-items-center">
+            <p class="b_text01">총 결제금액</p><p class="content_tt"><span class="cart_pay_price number">20,000</span>원</p>
+          </div>
+          <button class="btn btn-primary dark submit_btn">구매하기</button>
+        </form>
+      </div>
     </div>
 
 
@@ -177,31 +380,22 @@
     </footer>
 
     <!-- jquery -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- jqueryui js -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
       integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- bootstrap js -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
       integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- modernizr js -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+      referrerpolicy="no-referrer"></script>
+    <!-- nice select js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../js/common.js"></script>
     <script src="js/cart.js"></script>
   </body>
