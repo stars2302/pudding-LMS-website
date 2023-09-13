@@ -32,6 +32,7 @@ body {
   --badge_green_BG: #a6e8dc;
   --badge_green: #229681;
   --font_gray: #747880;
+  --border_grey: #c2c4c7;
   --badge_padding: 4px 8px;
   --base_unit: 30px;
 }
@@ -394,7 +395,8 @@ input.form-control::placeholder {
 
 /* BOX SHADOW */
 .shadow_box {
-  box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.25);
+  /* box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.25); */
+  box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.15);
 }
 
 /* BORDER RADIUS */
@@ -497,6 +499,7 @@ header {
   background-color: var(--white_bg);
   display: flex;
   align-items: center;
+  box-shadow: 2px 2px 14px 0px rgba(116, 120, 128, 0.08);
 }
 
 header nav {

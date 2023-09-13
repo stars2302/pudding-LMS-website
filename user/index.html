@@ -1,174 +1,502 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- reset css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- normalize css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!--bootstrap css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
-      integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- tabler-icons  -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
-    />
-    <!-- jquery ui css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/black-tie/jquery-ui.min.css"
-      integrity="sha512-+Z63RrG0zPf5kR9rHp9NlTMM29nxf02r1tkbfwTRGaHir2Bsh4u8A79PiUKkJq5V5QdugkL+KPfISvl67adC+Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- Noto Sans KR -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="css/jqueryui/jquery-ui.theme.min.css" />
-    <link rel="stylesheet" href="css/common.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header class="shadow_box">
-      <div class="container d-flex align-items-center">
-        <h1>
-          <a href=""><img src="images/logo.png" alt="푸딩로고이미지" /></a>
-        </h1>
-        <nav>
-          <ul class="d-flex">
-            <li><a href="">강의 클래스</a></li>
-            <li><a href="">이벤트</a></li>
-            <li><a href="">커뮤니티</a></li>
-            <!-- <li><a href="">ABOUT US</a></li> -->
-          </ul>
-        </nav>
+  <!-- reset css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- normalize css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--bootstrap css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+    integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- tabler-icons  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <!-- jquery ui css -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/black-tie/jquery-ui.min.css"
+    integrity="sha512-+Z63RrG0zPf5kR9rHp9NlTMM29nxf02r1tkbfwTRGaHir2Bsh4u8A79PiUKkJq5V5QdugkL+KPfISvl67adC+Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+  <!-- swiper -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.2.0/swiper-bundle.css"
+    integrity="sha512-EDXaYrpumQKF+Ic8nuEsgJWBwMOhgwWvNINclFu91nx5VR4MeZ5xlUvyRaYQJTMImwbXSeDjtZMtTs8EB65Z0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="css/jqueryui/jquery-ui.theme.min.css" />
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="shadow_box">
+    <div class="container d-flex align-items-center">
+      <h1>
+        <a href=""><img src="images/logo.png" alt="푸딩로고이미지" /></a>
+      </h1>
+      <nav>
+        <ul class="d-flex">
+          <li><a href="">강의 클래스</a></li>
+          <li><a href="">이벤트</a></li>
+          <li><a href="">커뮤니티</a></li>
+          <!-- <li><a href="">ABOUT US</a></li> -->
+        </ul>
+      </nav>
+      <div>
+        <a href="" class="icon cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M0 5C0 4.73478 0.105357 4.48043 0.292893 4.29289C0.48043 4.10536 0.734784 4 1 4H4C4.22306 4.00006 4.4397 4.0747 4.61546 4.21205C4.79122 4.3494 4.91602 4.54157 4.97 4.758L5.78 8H29C29.1519 8.00004 29.3018 8.03469 29.4383 8.10131C29.5748 8.16792 29.6943 8.26477 29.7878 8.38448C29.8813 8.50419 29.9463 8.64363 29.9779 8.79222C30.0095 8.9408 30.0068 9.09462 29.97 9.242L26.97 21.242C26.916 21.4584 26.7912 21.6506 26.6155 21.788C26.4397 21.9253 26.2231 21.9999 26 22H8C7.77694 21.9999 7.5603 21.9253 7.38454 21.788C7.20878 21.6506 7.08398 21.4584 7.03 21.242L3.22 6H1C0.734784 6 0.48043 5.89464 0.292893 5.70711C0.105357 5.51957 0 5.26522 0 5ZM6.28 10L8.78 20H25.22L27.72 10H6.28ZM10 26C9.46957 26 8.96086 26.2107 8.58579 26.5858C8.21071 26.9609 8 27.4696 8 28C8 28.5304 8.21071 29.0391 8.58579 29.4142C8.96086 29.7893 9.46957 30 10 30C10.5304 30 11.0391 29.7893 11.4142 29.4142C11.7893 29.0391 12 28.5304 12 28C12 27.4696 11.7893 26.9609 11.4142 26.5858C11.0391 26.2107 10.5304 26 10 26ZM6 28C6 26.9391 6.42143 25.9217 7.17157 25.1716C7.92172 24.4214 8.93913 24 10 24C11.0609 24 12.0783 24.4214 12.8284 25.1716C13.5786 25.9217 14 26.9391 14 28C14 29.0609 13.5786 30.0783 12.8284 30.8284C12.0783 31.5786 11.0609 32 10 32C8.93913 32 7.92172 31.5786 7.17157 30.8284C6.42143 30.0783 6 29.0609 6 28ZM24 26C23.4696 26 22.9609 26.2107 22.5858 26.5858C22.2107 26.9609 22 27.4696 22 28C22 28.5304 22.2107 29.0391 22.5858 29.4142C22.9609 29.7893 23.4696 30 24 30C24.5304 30 25.0391 29.7893 25.4142 29.4142C25.7893 29.0391 26 28.5304 26 28C26 27.4696 25.7893 26.9609 25.4142 26.5858C25.0391 26.2107 24.5304 26 24 26ZM20 28C20 26.9391 20.4214 25.9217 21.1716 25.1716C21.9217 24.4214 22.9391 24 24 24C25.0609 24 26.0783 24.4214 26.8284 25.1716C27.5786 25.9217 28 26.9391 28 28C28 29.0609 27.5786 30.0783 26.8284 30.8284C26.0783 31.5786 25.0609 32 24 32C22.9391 32 21.9217 31.5786 21.1716 30.8284C20.4214 30.0783 20 29.0609 20 28Z"
+              fill="#1E2226" />
+          </svg>
+        </a>
+        <a href="" class="icon mypage">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M20 10C20 11.0609 19.5786 12.0783 18.8284 12.8284C18.0783 13.5786 17.0609 14 16 14C14.9391 14 13.9217 13.5786 13.1716 12.8284C12.4214 12.0783 12 11.0609 12 10C12 8.93913 12.4214 7.92172 13.1716 7.17157C13.9217 6.42143 14.9391 6 16 6C17.0609 6 18.0783 6.42143 18.8284 7.17157C19.5786 7.92172 20 8.93913 20 10ZM16 16C17.5913 16 19.1174 15.3679 20.2426 14.2426C21.3679 13.1174 22 11.5913 22 10C22 8.4087 21.3679 6.88258 20.2426 5.75736C19.1174 4.63214 17.5913 4 16 4C14.4087 4 12.8826 4.63214 11.7574 5.75736C10.6321 6.88258 10 8.4087 10 10C10 11.5913 10.6321 13.1174 11.7574 14.2426C12.8826 15.3679 14.4087 16 16 16ZM28 26C28 28 26 28 26 28H6C6 28 4 28 4 26C4 24 6 18 16 18C26 18 28 24 28 26ZM26 25.992C25.998 25.5 25.692 24.02 24.336 22.664C23.032 21.36 20.578 20 16 20C11.42 20 8.968 21.36 7.664 22.664C6.308 24.02 6.004 25.5 6 25.992H26Z"
+              fill="#1E2226" />
+          </svg>
+        </a>
+        <button class="btn btn-dark">로그인</button>
+        <button class="btn btn-primary dark">회원가입</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="sec1">
+      <!-- Swiper -->
+      <div class="swiper sec1_slide">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="images/main_slide_01.png" alt="슬라이드 이미지_01"></div>
+          <div class="swiper-slide"><img src="images/main_slide_02.png" alt="슬라이드 이미지_02"></div>
+          <div class="swiper-slide"><img src="images/main_slide_03.png" alt="슬라이드 이미지_03"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    <section class="sec2">
+      <h2 class="jua dark sec_tt">어떤 강의를 찾고 있나요?</h2>
+      <form action="" class="search">
+        <label for="course_search" type="hidden"></label>
+        <input type="text" id="course_search" placeholder="필요한 강의를 찾아보세요.">
+        <button><i class="ti ti-search"></i></button>
+      </form>
+      <div class="category_box radius_12">
+        <ul>
+          <li>
+            <a href="">
+              <img src="images/html.png" alt="HTML">
+              <p>HTML</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/css.png" alt="CSS">
+              <p>CSS</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/js.png" alt="Javascript">
+              <p>Javascript</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/php.png" alt="PHP">
+              <p>PHP</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/react.png" alt="React">
+              <p>React</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/mysql.png" alt="SQL">
+              <p>SQL</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/phython.png" alt="Python">
+              <p>Python</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/figma.png" alt="Figma">
+              <p>Figma</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/psd.png" alt="PS">
+              <p>PS</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/illust.png" alt="illustration">
+              <p>AI</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/ae.png" alt="After Effect">
+              <p>After Effect</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="images/indei.png" alt="InDesign">
+              <p>InDesign</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="sec3 container">
+      <h2 class="jua dark sec_tt">푸딩 인기 BEST!</h2>
+      <div class="card_wrap">
+        <ul class="d-flex">
+          <li>
+            <div class="card" style="width: 18rem;">
+              <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+              <div class="card-body">
+                <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
+                <div class="card-text">
+                  <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                  <p class=""><span class="price">10,000</span><span>원</span></p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card" style="width: 18rem;">
+              <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+              <div class="card-body">
+                <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
+                <div class="card-text">
+                  <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                  <p class=""><span class="price">10,000</span><span>원</span></p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card" style="width: 18rem;">
+              <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+              <div class="card-body">
+                <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
+                <div class="card-text">
+                  <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                  <p class=""><span class="price">10,000</span><span>원</span></p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card" style="width: 18rem;">
+              <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+              <div class="card-body">
+                <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
+                <div class="card-text">
+                  <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                  <p class=""><span class="price">10,000</span><span>원</span></p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card" style="width: 18rem;">
+              <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+              <div class="card-body">
+                <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
+                <div class="card-text">
+                  <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                  <p class=""><span class="price">10,000</span><span>원</span></p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="sec4 container">
+      <h2 class="jua dark sec_tt">푸딩 추천 강의</h2>
+      <!-- Swiper -->
+      <div class="page_wrap">
+        <div class="swiper recom_slide">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+                <div class="card-body">
+                  <div class="badge_wrap">
+                    <span class="badge rounded-pill blue_bg b-pd">고급</span>
+                    <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                  </div>
+                  <h5 class="card-title">실무 자바 개발을 위한 디자인1</h5>
+                  <div class="card-text">
+                    <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                    <p class=""><span class="price">10,000</span><span>원</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+                <div class="card-body">
+                  <div class="badge_wrap">
+                    <span class="badge rounded-pill blue_bg b-pd">고급</span>
+                    <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                  </div>
+                  <h5 class="card-title">실무 자바 개발을 위한 디자인2</h5>
+                  <div class="card-text">
+                    <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                    <p class=""><span class="price">10,000</span><span>원</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+                <div class="card-body">
+                  <div class="badge_wrap">
+                    <span class="badge rounded-pill blue_bg b-pd">고급</span>
+                    <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                  </div>
+                  <h5 class="card-title">실무 자바 개발을 위한 디자인3</h5>
+                  <div class="card-text">
+                    <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                    <p class=""><span class="price">10,000</span><span>원</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+                <div class="card-body">
+                  <div>
+                    <span class="badge rounded-pill blue_bg b-pd">고급</span>
+                    <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                  </div>
+                  <h5 class="card-title">실무 자바 개발을 위한 디자인4</h5>
+                  <div class="card-text">
+                    <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                    <p class=""><span class="price">10,000</span><span>원</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+    <section class="sec5 container">
+      <h2 class="jua dark sec_tt">푸딩 신규 강의</h2>
+      <!-- Swiper -->
+      <div class="page_wrap">
+        <div class="swiper new_slide">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+                <div class="card-body">
+                  <div class="badge_wrap">
+                    <span class="badge rounded-pill blue_bg b-pd">고급</span>
+                    <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                  </div>
+                  <h5 class="card-title">실무 자바 개발을 위한 디자인1</h5>
+                  <div class="card-text">
+                    <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                    <p class=""><span class="price">10,000</span><span>원</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+                <div class="card-body">
+                  <div class="badge_wrap">
+                    <span class="badge rounded-pill blue_bg b-pd">고급</span>
+                    <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                  </div>
+                  <h5 class="card-title">실무 자바 개발을 위한 디자인2</h5>
+                  <div class="card-text">
+                    <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                    <p class=""><span class="price">10,000</span><span>원</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+                <div class="card-body">
+                  <div class="badge_wrap">
+                    <span class="badge rounded-pill blue_bg b-pd">고급</span>
+                    <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                  </div>
+                  <h5 class="card-title">실무 자바 개발을 위한 디자인3</h5>
+                  <div class="card-text">
+                    <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                    <p class=""><span class="price">10,000</span><span>원</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+                <div class="card-body">
+                  <div>
+                    <span class="badge rounded-pill blue_bg b-pd">고급</span>
+                    <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                  </div>
+                  <h5 class="card-title">실무 자바 개발을 위한 디자인4</h5>
+                  <div class="card-text">
+                    <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+                    <p class=""><span class="price">10,000</span><span>원</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+    <section class="sec6">
+      <img src="images/coupon_banner.png" alt="쿠폰 배너">
+    </section>
+    <section class="sec7">
+      <h2 class="jua dark">Why the PUDDING?</h2>
+      <h2 class="jua dark">왜 푸딩을 선택할까?</h2>
+    </section>
+    <section class="sec8 pudding_bg dark">
+      <div class="container">
+        <h2><span>541,113</span> 명이</h2>
+        <h2>푸딩과 함께합니다</h2>
+        <p>
+          PUDDING은 강의평점과 후기를 투명하게 공개합니다.<br>
+          타 사이트들은 성과를 높이기 위해 특정 후기만 노출 하거나,<br>
+          아예 숨겨버리는 경우가 많습니다.<br>
+          그러나 PUDDING은 강의에 실 사용자들의 후기, 학생수 등 정보를<br>
+          투명하게 공개합니다.<br>
+          투명한 신뢰성이 여러분들에게 더 좋은 컨텐츠와 교육의 질을<br>
+          높여 드릴 것을 약속 드립니다.<br>
+        </p>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- <li>
+    <div class="card" style="width: 18rem;">
+      <img src="images/thumbnail.png" class="card-img-top" alt="강의 썸네일">
+      <div class="card-body">
         <div>
-          <a href="" class="icon cart">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M0 5C0 4.73478 0.105357 4.48043 0.292893 4.29289C0.48043 4.10536 0.734784 4 1 4H4C4.22306 4.00006 4.4397 4.0747 4.61546 4.21205C4.79122 4.3494 4.91602 4.54157 4.97 4.758L5.78 8H29C29.1519 8.00004 29.3018 8.03469 29.4383 8.10131C29.5748 8.16792 29.6943 8.26477 29.7878 8.38448C29.8813 8.50419 29.9463 8.64363 29.9779 8.79222C30.0095 8.9408 30.0068 9.09462 29.97 9.242L26.97 21.242C26.916 21.4584 26.7912 21.6506 26.6155 21.788C26.4397 21.9253 26.2231 21.9999 26 22H8C7.77694 21.9999 7.5603 21.9253 7.38454 21.788C7.20878 21.6506 7.08398 21.4584 7.03 21.242L3.22 6H1C0.734784 6 0.48043 5.89464 0.292893 5.70711C0.105357 5.51957 0 5.26522 0 5ZM6.28 10L8.78 20H25.22L27.72 10H6.28ZM10 26C9.46957 26 8.96086 26.2107 8.58579 26.5858C8.21071 26.9609 8 27.4696 8 28C8 28.5304 8.21071 29.0391 8.58579 29.4142C8.96086 29.7893 9.46957 30 10 30C10.5304 30 11.0391 29.7893 11.4142 29.4142C11.7893 29.0391 12 28.5304 12 28C12 27.4696 11.7893 26.9609 11.4142 26.5858C11.0391 26.2107 10.5304 26 10 26ZM6 28C6 26.9391 6.42143 25.9217 7.17157 25.1716C7.92172 24.4214 8.93913 24 10 24C11.0609 24 12.0783 24.4214 12.8284 25.1716C13.5786 25.9217 14 26.9391 14 28C14 29.0609 13.5786 30.0783 12.8284 30.8284C12.0783 31.5786 11.0609 32 10 32C8.93913 32 7.92172 31.5786 7.17157 30.8284C6.42143 30.0783 6 29.0609 6 28ZM24 26C23.4696 26 22.9609 26.2107 22.5858 26.5858C22.2107 26.9609 22 27.4696 22 28C22 28.5304 22.2107 29.0391 22.5858 29.4142C22.9609 29.7893 23.4696 30 24 30C24.5304 30 25.0391 29.7893 25.4142 29.4142C25.7893 29.0391 26 28.5304 26 28C26 27.4696 25.7893 26.9609 25.4142 26.5858C25.0391 26.2107 24.5304 26 24 26ZM20 28C20 26.9391 20.4214 25.9217 21.1716 25.1716C21.9217 24.4214 22.9391 24 24 24C25.0609 24 26.0783 24.4214 26.8284 25.1716C27.5786 25.9217 28 26.9391 28 28C28 29.0609 27.5786 30.0783 26.8284 30.8284C26.0783 31.5786 25.0609 32 24 32C22.9391 32 21.9217 31.5786 21.1716 30.8284C20.4214 30.0783 20 29.0609 20 28Z"
-                fill="#1E2226"
-              />
-            </svg>
-          </a>
-          <a href="" class="icon mypage">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M20 10C20 11.0609 19.5786 12.0783 18.8284 12.8284C18.0783 13.5786 17.0609 14 16 14C14.9391 14 13.9217 13.5786 13.1716 12.8284C12.4214 12.0783 12 11.0609 12 10C12 8.93913 12.4214 7.92172 13.1716 7.17157C13.9217 6.42143 14.9391 6 16 6C17.0609 6 18.0783 6.42143 18.8284 7.17157C19.5786 7.92172 20 8.93913 20 10ZM16 16C17.5913 16 19.1174 15.3679 20.2426 14.2426C21.3679 13.1174 22 11.5913 22 10C22 8.4087 21.3679 6.88258 20.2426 5.75736C19.1174 4.63214 17.5913 4 16 4C14.4087 4 12.8826 4.63214 11.7574 5.75736C10.6321 6.88258 10 8.4087 10 10C10 11.5913 10.6321 13.1174 11.7574 14.2426C12.8826 15.3679 14.4087 16 16 16ZM28 26C28 28 26 28 26 28H6C6 28 4 28 4 26C4 24 6 18 16 18C26 18 28 24 28 26ZM26 25.992C25.998 25.5 25.692 24.02 24.336 22.664C23.032 21.36 20.578 20 16 20C11.42 20 8.968 21.36 7.664 22.664C6.308 24.02 6.004 25.5 6 25.992H26Z"
-                fill="#1E2226"
-              />
-            </svg>
-          </a>
-          <button class="btn btn-dark">로그인</button>
-          <button class="btn btn-primary dark">회원가입</button>
+          <span class="badge rounded-pill blue_bg b-pd">고급</span>
+          <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+        </div>
+        <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
+        <div class="card-text">
+          <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
+          <p class=""><span class="price">10,000</span><span>원</span></p>
         </div>
       </div>
-    </header>
+    </div>
+  </li> -->
+  <aside>
+    <div class="history_btn">
+      <a href="">
+        <img src="images/clock-history.png" alt="">
+      </a>
+    </div>
+    <div class="top_btn">
+      <a href="">
+        <img src="images/top_btn.png" alt="">
+      </a>
+    </div>
+  </aside>
 
-    <footer>
-      <div class="container d-flex align-items-center d-flex justify-content-between">
-        <div class="">
-          <h2>
-            <a href=""><img src="images/logo_footer.png" alt="푸딩로고이미지" /></a>
-          </h2>
-          <div>
-            <p>해당 사이트는 구직용 포트폴리오 목적으로 만들어진 사이트입니다.<br>실제 운영되는 사이트가 아니오니 이 점 유의해주시기 바랍니다.</p>
-            <p>제작기간 : 2023.09.09 ~ 2023.09.25</p>
-            <p>Github :  <a href="">https://github.com/hazel305/pudding-LMS-website</a></p>
-          </div> 
-        </div>
+  <footer>
+    <div class="container d-flex align-items-center d-flex justify-content-between">
+      <div class="">
+        <h2>
+          <a href=""><img src="images/logo_footer.png" alt="푸딩로고이미지" /></a>
+        </h2>
         <div>
-          <p>사용언어 : </p>
-          <div>
-            <img src="images/html_icon.png" alt="HTML 아이콘">
-            <img src="images/css_icon.png" alt="HTML 아이콘">
-            <img src="images/js_icon.png" alt="HTML 아이콘">
-            <img src="images/jquery_icon.png" alt="HTML 아이콘">
-            <img src="images/php_icon.png" alt="HTML 아이콘">
-            <img src="images/jquery_icon.png" alt="HTML 아이콘">
-            <img src="images/bootstrap_icon.png" alt="HTML 아이콘">
-          </div>
-        </div> 
-      </div> 
-      
-    </footer>
+          <p>해당 사이트는 구직용 포트폴리오 목적으로 만들어진 사이트입니다.<br>실제 운영되는 사이트가 아니오니 이 점 유의해주시기 바랍니다.</p>
+          <p>제작기간 : 2023.09.09 ~ 2023.09.25</p>
+          <p>Github : <a href="">https://github.com/hazel305/pudding-LMS-website</a></p>
+        </div>
+      </div>
+      <div>
+        <p>사용언어 : </p>
+        <div>
+          <img src="images/html_icon.png" alt="HTML 아이콘">
+          <img src="images/css_icon.png" alt="HTML 아이콘">
+          <img src="images/js_icon.png" alt="HTML 아이콘">
+          <img src="images/jquery_icon.png" alt="HTML 아이콘">
+          <img src="images/php_icon.png" alt="HTML 아이콘">
+          <img src="images/jquery_icon.png" alt="HTML 아이콘">
+          <img src="images/bootstrap_icon.png" alt="HTML 아이콘">
+        </div>
+      </div>
+    </div>
 
-    <!-- jquery -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <!-- jqueryui js -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
-      integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <!-- bootstrap js -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
-      integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <!-- modernizr js -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="/admin/js/index.js"></script>
-  </body>
+  </footer>
+
+  <!-- jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- jqueryui js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+    integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- bootstrap js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+    integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- modernizr js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+    referrerpolicy="no-referrer"></script>
+  <!-- swiper js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.2.0/swiper-bundle.min.js"
+    integrity="sha512-QwpsxtdZRih55GaU/Ce2Baqoy2tEv9GltjAG8yuTy2k9lHqK7VHHp3wWWe+yITYKZlsT3AaCj49ZxMYPp46iJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/common.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
 </html>
