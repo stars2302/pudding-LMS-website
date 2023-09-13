@@ -276,6 +276,10 @@ body {
   gap: 100px;
 }
 
+.badge {
+  font-weight: 500;
+}
+
 /* ICONS */
 .icon {
   text-decoration: none;
