@@ -1,8 +1,4 @@
 /* section1 */
-.sec1 {
-  margin-bottom: 0;
-}
-
 .swiper {
   width: 100%;
   height: 520px;
@@ -37,7 +33,10 @@
   border: none;
 }
 
-section {
+.sec2,
+.sec3,
+.sec4,
+.sec5 {
   margin-bottom: calc(var(--base_unit)*3);
 }
 
@@ -106,6 +105,18 @@ ul {
   margin-bottom: 8px;
 }
 
+.category_box li img {
+  transition: 0.3s;
+}
+
+.category_box li:hover img {
+  transform: scale(1.05);
+}
+
+.category_box li:hover p {
+  font-weight: 500;
+}
+
 .sec_tt {
   font-size: 36px;
   margin-bottom: var(--base_unit);
@@ -121,6 +132,12 @@ p {
   box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.15);
   border: none;
   border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.3);
+  transform: translateY(-10px);
 }
 
 .card img {
@@ -186,12 +203,14 @@ p {
 .sec4 .swiper-wrapper,
 .sec5 .swiper-wrapper {
   width: 1100px;
+  height: 425px;
+  padding-top: 10px;
 }
 
 .sec4 .swiper,
 .sec5 .swiper {
   width: 1130px;
-  height: 400px;
+  height: 425px;
 }
 
 .swiper-button-prev,
@@ -218,12 +237,25 @@ p {
 }
 
 /* section6 */
-.sec6 img{
+.sec6 {
+  margin: 0;
+}
+
+.sec6 img {
   width: 100%;
   object-fit: cover;
 }
 
 /* section7 */
+.sec7 {
+  text-align: center;
+}
+
+.sec7_content {
+  gap: 60px;
+  margin-top: 84px;
+}
+
 .sec7 h2 {
   color: var(--dark, #1E2226);
   text-align: center;
@@ -239,10 +271,42 @@ p {
   line-height: 28px;
 }
 
+.sec7 h4 {
+  color: #5D87FF;
+  font-family: "Jua", sans-serif;
+  font-size: 36px;
+}
+
+.sec7 p {
+  color: var(--dark, #1E2226);
+  font-size: 18px;
+  line-height: normal;
+}
+
+.sec7 img {
+  width: 120px;
+  height: 120px;
+}
+
+.sec7_box {
+  padding: 40px;
+  width: 600px;
+  height: 440px;
+  background: #EFF3FF;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.15);
+
+}
+
 .sec7,
 .sec8 {
   padding: calc(var(--base_unit)*4) 0;
 }
+
 
 /* section8 */
 .sec8 h2 {
@@ -262,35 +326,32 @@ p {
 }
 
 
+/* section9 */
 
-/* aside */
-aside {
-  position: fixed;
-  right: 210px;
-  bottom: 160px;
+.sec9 {
+  height: calc(var(--base_unit)*3);
 }
 
-aside div {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: 0.3s;
+.notice_slide {
+  height: 38px;
+  width: 1050px;
 }
 
-.history_btn {
-  background: #fff;
-  margin-bottom: 20px;
+.sec9 .container {
+  height: 100%;
 }
 
-.top_btn {
-  background: #fff27e;
+.sec9 h2 {
+  color: var(--label_color, #343A40);
+  font-size: 20px;
+  font-weight: 500;
 }
 
-aside div.active {
-  opacity: 1;
+.notice_slide .swiper-slide {
+  border-radius: 5px;
+  background: #EFF3FF;
+}
+
+.sec9 a i {
+  margin-right: 6px;
 }
