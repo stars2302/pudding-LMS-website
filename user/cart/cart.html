@@ -95,22 +95,22 @@
 
     <div class="cart_container container">
       <h2 class="jua main_tt">장바구니</h2>
-      <div class="row">
+      <!-- <div class="row"> -->
 
       
-      <div class="cartOpBtns d-flex justify-content-between col-8">
-        <div class="form-check all_check d-flex align-items-center">
-          <input class="form-check-input" type="checkbox" value="" id="all_check" checked>
-          <label class="form-check-label" for="all_check">
-            전체선택
-          </label>
-          <span>|<span class="select_count">0</span>개 (총 <span class="all_count">0</span>개)</span>
+        <div class="cartOpBtns d-flex justify-content-between col-8">
+          <div class="form-check all_check d-flex align-items-center">
+            <input class="form-check-input" type="checkbox" value="" id="all_check" checked>
+            <label class="form-check-label" for="all_check">
+              전체선택
+            </label>
+            <span>|<span class="select_count">0</span>개 (총 <span class="all_count">0</span>개)</span>
+          </div>
+          <button class="btn btn-primary dark select_del">선택삭제</button>
         </div>
-        <button class="btn btn-primary dark select_del">선택삭제</button>
-      </div>
-    </div>
+      <!-- </div> -->
 
-      <div class="row">
+      <div class="d-flex justify-content-between">
         <ul class="cart_item_container col-8 d-flex flex-column">
           <li class="cart_item shadow_box">
             <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
@@ -322,33 +322,34 @@
             <span class="price content_tt"><span>10,000</span>원</span>
           </li>
         </ul>
-
-        <form class="payment col radius_12 shadow_box">
-          <h3 class="content_stt">결제정보</h3>
-          <h4 class="demoHeaders style_pd b_text02">쿠폰선택</h4>
-          <select class="selectmenu coupon_select">
-            <option value="" disabled selected class="default">보유하고 있는 쿠폰</option>
-            <option value="1" data-discount="10000" data-type="정액" data-limit="100000">회원가입 쿠폰</option>
-            <option value="2" data-discount="10000" data-type="정액" data-limit="50000">추천인 할인 쿠폰</option>
-            <option value="3" data-discount="20" data-type="정률" data-limit="70000">★여름방학 맞이 푸딩과 함께★</option>
-            <option value="4" data-discount="10" data-type="정률" data-limit="100000">복귀 유저 쿠폰Wellcomeback! 돌아오신것을 환영합니다~</option>
-          </select>
-          <hr>
-          <div class="payment_info d-flex justify-content-between">
-            <p>상품 수 :</p><p><span class="cart_count number">0</span>개</p>
-          </div>
-          <div class="payment_info d-flex justify-content-between">
-            <p>상품금액 :</p><p><span class="cart_total_price number">0</span>원</p>
-          </div>
-          <div class="payment_info d-flex justify-content-between">
-            <p>할인가 :</p><p>- <span class="cart_discount number">0원</span></p>
-          </div>
-          <hr>
-          <div class="payment_total d-flex justify-content-between align-items-center">
-            <p class="b_text01">총 결제금액</p><p class="content_tt"><span class="cart_pay_price number">0</span>원</p>
-          </div>
-          <button class="btn btn-primary dark submit_btn">구매하기</button>
-        </form>
+        <div class="form_container col-4">
+          <form class="payment radius_12 shadow_box">
+            <h3 class="content_stt">결제정보</h3>
+            <h4 class="demoHeaders style_pd b_text02">쿠폰선택</h4>
+            <select class="selectmenu coupon_select">
+              <option value="" disabled selected class="default">보유하고 있는 쿠폰</option>
+              <option value="1" data-discount="10000" data-type="정액" data-limit="100000">회원가입 쿠폰</option>
+              <option value="2" data-discount="10000" data-type="정액" data-limit="50000">추천인 할인 쿠폰</option>
+              <option value="3" data-discount="20" data-type="정률" data-limit="70000">★여름방학 맞이 푸딩과 함께★</option>
+              <option value="4" data-discount="10" data-type="정률" data-limit="100000">복귀 유저 쿠폰Wellcomeback! 돌아오신것을 환영합니다~</option>
+            </select>
+            <hr>
+            <div class="payment_info d-flex justify-content-between">
+              <p>상품 수 :</p><p><span class="cart_count number">0</span>개</p>
+            </div>
+            <div class="payment_info d-flex justify-content-between">
+              <p>상품금액 :</p><p><span class="cart_total_price number">0</span>원</p>
+            </div>
+            <div class="payment_info d-flex justify-content-between">
+              <p>할인가 :</p><p>- <span class="cart_discount number">0원</span></p>
+            </div>
+            <hr>
+            <div class="payment_total d-flex justify-content-between align-items-center">
+              <p class="b_text01">총 결제금액</p><p class="content_tt"><span class="cart_pay_price number">0</span>원</p>
+            </div>
+            <button class="btn btn-primary dark submit_btn">구매하기</button>
+          </form>
+        </div>
       </div>
     </div>
 

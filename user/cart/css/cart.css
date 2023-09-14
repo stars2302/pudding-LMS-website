@@ -22,8 +22,8 @@
 }
 
 .cart_item_container {
-  margin-right: 18px;
   gap: var(--base_unit) 0;
+  padding: 0;
 }
 
 .cart_item {
@@ -94,12 +94,24 @@
   cursor: pointer;
 }
 
+.form_container {
+  padding-left: var(--base_unit);
+}
+
 .payment {
   background-color: #fff;
   padding: 25px 20px;
   height: calc(var(--base_unit)*15);
   position: sticky;
   top: calc(var(--base_unit)*2);
+}
+
+.coupon_select .current {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  display: block;
 }
 
 .payment h3 {
