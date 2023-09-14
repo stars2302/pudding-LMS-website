@@ -76,6 +76,15 @@
 
 .cart_item .descript {
   flex: 1;
+  padding-right: var(--base_unit);
+}
+
+.cart_item .descript p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .cart_item .price {
