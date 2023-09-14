@@ -1,0 +1,17 @@
+.cart_container h2 {
+  margin-top: 130px;
+}
+
+.all_check {
+  gap: 0 15px;
+}
+
+.cartOpBtns {
+  gap: 0 var(--base_unit);
+}
+
+.select_del {
+  padding: 7px 16px;
+  font-weight: 500;
+  height: auto;
+}

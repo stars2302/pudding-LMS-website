@@ -1,0 +1,30 @@
+main {
+ height: calc(100vh - 90px);
+}
+
+.login_box{
+  width: 1184px;
+  height: 630px;
+  margin: 0 auto;
+  position: relative;
+  top:60px;
+}
+.login_box form{
+  width: 300px;
+}
+.login_box form{
+  display: flex;
+  flex-direction: column;
+  gap:15px;
+}
+.login_box h2,
+.login_box h3{
+  font-family: "Jua", sans-serif;
+  margin-bottom: 35px;
+}
+.login_check, .login_box label{
+  font-size: 14px;
+}
+.login_box .form-control{
+  height: 45px;
+}

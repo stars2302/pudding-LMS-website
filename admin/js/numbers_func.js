@@ -1,6 +1,5 @@
-$('.number').number(true);
 
-$('input.number').on('bulr', function() {
-  let value = $(this).val();
-  Number(value).toLocaleString();
-});
+let number = $('.number');
+if(number.length>0){
+  $('.number').number(true);
+}
