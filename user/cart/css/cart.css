@@ -11,14 +11,14 @@
   margin: var(--base_unit) 0;
 }
 
+.select_count {
+  margin-left: 15px;
+}
+
 .select_del {
   padding: 7px 16px;
   font-weight: 500;
   height: auto;
-}
-
-.row {
-  margin-bottom: calc(var(--base_unit)*3);
 }
 
 .cart_item_container {
@@ -127,4 +127,8 @@
 .submit_btn {
   width: 100%;
   font-weight: bold;
+}
+
+footer {
+  margin-top: calc(var(--base_unit)*3);
 }

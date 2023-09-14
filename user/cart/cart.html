@@ -95,16 +95,20 @@
 
     <div class="cart_container container">
       <h2 class="jua main_tt">장바구니</h2>
+      <div class="row">
+
       
-      <div class="cartOpBtns d-flex">
+      <div class="cartOpBtns d-flex justify-content-between col-8">
         <div class="form-check all_check d-flex align-items-center">
           <input class="form-check-input" type="checkbox" value="" id="all_check" checked>
           <label class="form-check-label" for="all_check">
             전체선택
           </label>
+          <span>|<span class="select_count">0</span>개 (총 <span class="all_count">0</span>개)</span>
         </div>
         <button class="btn btn-primary dark select_del">선택삭제</button>
       </div>
+    </div>
 
       <div class="row">
         <ul class="cart_item_container col-8 d-flex flex-column">
@@ -261,8 +265,8 @@
             <span class="price content_tt"><span class="number">10,100</span>원</span>
           </li>
           <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
-            <label class="form-check-label" for="cart_item1"></label>
+            <input class="form-check-input" type="checkbox" value="" id="cart_item10" checked>
+            <label class="form-check-label" for="cart_item10"></label>
             <img src="images/item1.png" alt="" class="radius_5">
             <div class="text_box">
               <div class="title">
@@ -299,8 +303,8 @@
             <span class="price content_tt"><span>10,000</span>원</span>
           </li>
           <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
-            <label class="form-check-label" for="cart_item1"></label>
+            <input class="form-check-input" type="checkbox" value="" id="cart_item11" checked>
+            <label class="form-check-label" for="cart_item11"></label>
             <img src="images/item1.png" alt="" class="radius_5">
             <div class="text_box">
               <div class="title">
@@ -331,17 +335,17 @@
           </select>
           <hr>
           <div class="payment_info d-flex justify-content-between">
-            <p>상품 수 :</p><p><span class="cart_count number">2</span>개</p>
+            <p>상품 수 :</p><p><span class="cart_count number">0</span>개</p>
           </div>
           <div class="payment_info d-flex justify-content-between">
-            <p>상품금액 :</p><p><span class="cart_total_price number">20,000</span>원</p>
+            <p>상품금액 :</p><p><span class="cart_total_price number">0</span>원</p>
           </div>
           <div class="payment_info d-flex justify-content-between">
             <p>할인가 :</p><p>- <span class="cart_discount number">0원</span></p>
           </div>
           <hr>
           <div class="payment_total d-flex justify-content-between align-items-center">
-            <p class="b_text01">총 결제금액</p><p class="content_tt"><span class="cart_pay_price number">20,000</span>원</p>
+            <p class="b_text01">총 결제금액</p><p class="content_tt"><span class="cart_pay_price number">0</span>원</p>
           </div>
           <button class="btn btn-primary dark submit_btn">구매하기</button>
         </form>
@@ -394,6 +398,8 @@
     <!-- modernizr js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
       referrerpolicy="no-referrer"></script>
+    <!-- Numbers js -->
+  <script src="js/jquery.number.min.js"></script>
     <!-- nice select js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../js/common.js"></script>
