@@ -60,7 +60,7 @@
 
     <link rel="stylesheet" href="css/jqueryui/jquery-ui.theme.min.css" />
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/user_course.css">
+    <link rel="stylesheet" href="css/user_course.css" />
     <title>강의리스트</title>
   </head>
   <body>
@@ -115,116 +115,171 @@
         </div>
       </div>
     </header>
-   
+
     <main>
       <div class="container">
-        <div class="section1 d-flex justify-content-between mt-5 mb-5">
+        <div class="section1 d-flex justify-content-between pd_2">
           <div class="courseBigTitle jua">
             <h1>강의리스트</h1>
           </div>
           <div class="d-flex gap-3">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="강의명으로 검색"/>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="강의명으로 검색"
+              />
             </div>
             <div class="searchBtn">
               <button class="btn btn-primary dark">검색</button>
             </div>
           </div>
         </div>
-        <div class="mainSection d-flex gap-4">
+        <div class="mainSection d-flex gap-5">
           <div class="courseCheckBox mb-5">
             <div class="checkBox_1 mb-3">
               <h6>전체선택</h6>
-              <hr class="mt-4">
+              <hr class="mt-4" />
               <div class="form-check mt-5">
-                <label class="form-check-label" for="total">
-                  전체선택
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="total" id="total" />
+                <label class="form-check-label" for="total"> 전체선택 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="total"
+                  id="total"
+                />
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="frondend">
                   프론트엔드
                 </label>
-                <input class="form-check-input" type="checkbox" value="" name="frondend" id="frondend"/>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="frondend"
+                  id="frondend"
+                />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="backend">
-                  백엔드
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="backend" id="backend" />
+                <label class="form-check-label" for="backend"> 백엔드 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="backend"
+                  id="backend"
+                />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="uxui">
-                  UX/UI
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="uxui" id="uxui"/>
+                <label class="form-check-label" for="uxui"> UX/UI </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="uxui"
+                  id="uxui"
+                />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="design">
-                  디자인
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="design" id="design" />
+                <label class="form-check-label" for="design"> 디자인 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="design"
+                  id="design"
+                />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="etc">
-                  기타
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="etc" id="etc" />
+                <label class="form-check-label" for="etc"> 기타 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="etc"
+                  id="etc"
+                />
               </div>
             </div>
             <div class="checkBox_2 mb-3">
               <h6>난이도</h6>
-              <hr class="mt-4">
+              <hr class="mt-4" />
               <div class="form-check mt-5">
-                <label class="form-check-label" for="level_1">
-                  초급
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="level_1" id="level_1" />
+                <label class="form-check-label" for="level_1"> 초급 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="level_1"
+                  id="level_1"
+                />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="level_2">
-                  중급
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="level_2" id="level_2"/>
+                <label class="form-check-label" for="level_2"> 중급 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="level_2"
+                  id="level_2"
+                />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="level_3">
-                  고급
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="level_3" id="level_3" />
+                <label class="form-check-label" for="level_3"> 고급 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="level_3"
+                  id="level_3"
+                />
               </div>
             </div>
             <div class="checkBox_3">
               <h6>가격</h6>
-              <hr class="mt-4">
+              <hr class="mt-4" />
               <div class="form-check mt-5">
-                <label class="form-check-label" for="free">
-                  무료
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="free" id="free" />
+                <label class="form-check-label" for="free"> 무료 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="free"
+                  id="free"
+                />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="pay">
-                  유료
-                </label>
-                <input class="form-check-input" type="checkbox" value="" name="pay" id="pay"/>
+                <label class="form-check-label" for="pay"> 유료 </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  name="pay"
+                  id="pay"
+                />
               </div>
             </div>
           </div>
           <div class="courseList">
-            <div class="row gap-3 mb-5">
+            <div class="row gap-4 mb-5">
               <div class="col courseBox shadow_box">
                 <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
                 </div>
                 <div class="contentBox">
                   <div class="d-flex gap-1">
                     <span class="badge rounded-pill blue_bg b-pd">Badge</span>
                     <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
                   </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
                   <div class="contentTM float-end">
                     <div>
                       <i class="ti ti-calendar-event"></i>
@@ -238,15 +293,20 @@
               </div>
               <div class="col courseBox shadow_box">
                 <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
                 </div>
                 <div class="contentBox">
                   <div class="d-flex gap-1">
                     <span class="badge rounded-pill blue_bg b-pd">Badge</span>
                     <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
                   </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
                   <div class="contentTM float-end">
                     <div>
                       <i class="ti ti-calendar-event"></i>
@@ -260,83 +320,20 @@
               </div>
               <div class="col courseBox shadow_box">
                 <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
                 </div>
                 <div class="contentBox">
                   <div class="d-flex gap-1">
                     <span class="badge rounded-pill blue_bg b-pd">Badge</span>
                     <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
                   </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
-                  <div class="contentTM float-end">
-                    <div>
-                      <i class="ti ti-calendar-event"></i>
-                      <span>수강기간 3개월</span>
-                    </div>
-                    <div class="float-end">
-                      <span class="main_stt">30000</span><span>원</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row gap-3 mb-5">
-              <div class="col courseBox shadow_box">
-                <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
-                </div>
-                <div class="contentBox">
-                  <div class="d-flex gap-1">
-                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
-                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
-                  </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
-                  <div class="contentTM float-end">
-                    <div>
-                      <i class="ti ti-calendar-event"></i>
-                      <span>수강기간 3개월</span>
-                    </div>
-                    <div class="float-end">
-                      <span class="main_stt">30000</span><span>원</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col courseBox shadow_box">
-                <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
-                </div>
-                <div class="contentBox">
-                  <div class="d-flex gap-1">
-                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
-                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
-                  </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
-                  <div class="contentTM float-end">
-                    <div>
-                      <i class="ti ti-calendar-event"></i>
-                      <span>수강기간 3개월</span>
-                    </div>
-                    <div class="float-end">
-                      <span class="main_stt">30000</span><span>원</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col courseBox shadow_box">
-                <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
-                </div>
-                <div class="contentBox">
-                  <div class="d-flex gap-1">
-                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
-                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
-                  </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
                   <div class="contentTM float-end">
                     <div>
                       <i class="ti ti-calendar-event"></i>
@@ -349,18 +346,23 @@
                 </div>
               </div>
             </div>
-            <div class="row gap-3 mb-5">
+            <div class="row gap-4 mb-5">
               <div class="col courseBox shadow_box">
                 <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
                 </div>
                 <div class="contentBox">
                   <div class="d-flex gap-1">
                     <span class="badge rounded-pill blue_bg b-pd">Badge</span>
                     <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
                   </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
                   <div class="contentTM float-end">
                     <div>
                       <i class="ti ti-calendar-event"></i>
@@ -374,15 +376,20 @@
               </div>
               <div class="col courseBox shadow_box">
                 <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
                 </div>
                 <div class="contentBox">
                   <div class="d-flex gap-1">
                     <span class="badge rounded-pill blue_bg b-pd">Badge</span>
                     <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
                   </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
                   <div class="contentTM float-end">
                     <div>
                       <i class="ti ti-calendar-event"></i>
@@ -396,15 +403,103 @@
               </div>
               <div class="col courseBox shadow_box">
                 <div class="imgBox">
-                  <img src="course_images/327610-eng.png" class="object-fit-cover" alt="강의섬네일">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
                 </div>
                 <div class="contentBox">
                   <div class="d-flex gap-1">
                     <span class="badge rounded-pill blue_bg b-pd">Badge</span>
                     <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
                   </div>
-                  <p class="fw-bold mt-2">자바스크립트(JavaScript)로 배우는 
-                    정규표현식</p>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
+                  <div class="contentTM float-end">
+                    <div>
+                      <i class="ti ti-calendar-event"></i>
+                      <span>수강기간 3개월</span>
+                    </div>
+                    <div class="float-end">
+                      <span class="main_stt">30000</span><span>원</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row gap-4 mb-5">
+              <div class="col courseBox shadow_box">
+                <div class="imgBox">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
+                </div>
+                <div class="contentBox">
+                  <div class="d-flex gap-1">
+                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
+                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
+                  </div>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
+                  <div class="contentTM float-end">
+                    <div>
+                      <i class="ti ti-calendar-event"></i>
+                      <span>수강기간 3개월</span>
+                    </div>
+                    <div class="float-end">
+                      <span class="main_stt">30000</span><span>원</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col courseBox shadow_box">
+                <div class="imgBox">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
+                </div>
+                <div class="contentBox">
+                  <div class="d-flex gap-1">
+                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
+                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
+                  </div>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
+                  <div class="contentTM float-end">
+                    <div>
+                      <i class="ti ti-calendar-event"></i>
+                      <span>수강기간 3개월</span>
+                    </div>
+                    <div class="float-end">
+                      <span class="main_stt">30000</span><span>원</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col courseBox shadow_box">
+                <div class="imgBox">
+                  <img
+                    src="course_images/327610-eng.png"
+                    class="object-fit-cover"
+                    alt="강의섬네일"
+                  />
+                </div>
+                <div class="contentBox">
+                  <div class="d-flex gap-1">
+                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
+                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
+                  </div>
+                  <p class="fw-bold mt-2">
+                    자바스크립트(JavaScript)로 배우는 정규표현식
+                  </p>
                   <div class="contentTM float-end">
                     <div>
                       <i class="ti ti-calendar-event"></i>
@@ -423,31 +518,40 @@
     </main>
 
     <footer>
-      <div class="container d-flex align-items-center d-flex justify-content-between">
+      <div
+        class="container d-flex align-items-center d-flex justify-content-between"
+      >
         <div class="">
           <h2>
-            <a href=""><img src="images/logo_footer.png" alt="푸딩로고이미지" /></a>
+            <a href=""
+              ><img src="images/logo_footer.png" alt="푸딩로고이미지"
+            /></a>
           </h2>
           <div>
-            <p>해당 사이트는 구직용 포트폴리오 목적으로 만들어진 사이트입니다.<br>실제 운영되는 사이트가 아니오니 이 점 유의해주시기 바랍니다.</p>
+            <p>
+              해당 사이트는 구직용 포트폴리오 목적으로 만들어진 사이트입니다.<br />실제
+              운영되는 사이트가 아니오니 이 점 유의해주시기 바랍니다.
+            </p>
             <p>제작기간 : 2023.09.09 ~ 2023.09.25</p>
-            <p>Github :  <a href="">https://github.com/hazel305/pudding-LMS-website</a></p>
-          </div> 
+            <p>
+              Github :
+              <a href="">https://github.com/hazel305/pudding-LMS-website</a>
+            </p>
+          </div>
         </div>
         <div>
-          <p>사용언어 : </p>
+          <p>사용언어 :</p>
           <div>
-            <img src="images/html_icon.png" alt="HTML 아이콘">
-            <img src="images/css_icon.png" alt="HTML 아이콘">
-            <img src="images/js_icon.png" alt="HTML 아이콘">
-            <img src="images/jquery_icon.png" alt="HTML 아이콘">
-            <img src="images/php_icon.png" alt="HTML 아이콘">
-            <img src="images/jquery_icon.png" alt="HTML 아이콘">
-            <img src="images/bootstrap_icon.png" alt="HTML 아이콘">
+            <img src="images/html_icon.png" alt="HTML 아이콘" />
+            <img src="images/css_icon.png" alt="HTML 아이콘" />
+            <img src="images/js_icon.png" alt="HTML 아이콘" />
+            <img src="images/jquery_icon.png" alt="HTML 아이콘" />
+            <img src="images/php_icon.png" alt="HTML 아이콘" />
+            <img src="images/jquery_icon.png" alt="HTML 아이콘" />
+            <img src="images/bootstrap_icon.png" alt="HTML 아이콘" />
           </div>
-        </div> 
-      </div> 
-      
+        </div>
+      </div>
     </footer>
 
     <!-- jquery -->
