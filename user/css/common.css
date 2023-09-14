@@ -569,6 +569,8 @@ header {
   background-color: var(--white_bg);
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 5;
   box-shadow: 2px 2px 14px 0px rgba(116, 120, 128, 0.08);
 }
 
@@ -688,14 +690,14 @@ footer span {
 }
 
 /* aside */
-aside {
+aside.main_btn {
   position: fixed;
   right: 10%;
   bottom: 150px;
   z-index: 100;
 }
 
-aside div {
+aside .history_btn, aside .top_btn {
   width: 65px;
   height: 65px;
   border-radius: 50%;
