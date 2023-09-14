@@ -52,6 +52,7 @@ aside {
     box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.15);
     margin-right: 43px;
     position: relative;
+    background-color: var(--white_bg);
   }
   
   .profile_box a i {
@@ -225,7 +226,7 @@ aside {
     box-sizing: border-box;
   }
   .rate_wrap {
-    margin-right: var(--base_unit);
+    margin-right: calc(var(--base_unit) * 1.3);
   }
   
   
@@ -244,21 +245,18 @@ aside {
   }
   
   .review_user {
-    margin: 0px var(--base_unit);
+    margin-right: var(--base_unit);
   }
   
   .review_name {
-    margin: 0;
     color: var(--dark);
     font-size: 16px;
     margin-right:var(--base_unit);
   }
 
-  .review_date{
-    margin:0;
-  }
   
-  .reply_content {
+  
+  .c_reply_content {
     width: 100%;
     box-sizing: border-box;
     border: none !important;
@@ -268,13 +266,19 @@ aside {
   .re_reply_content{
     box-sizing: border-box;
     margin:var(--base_unit);
-    background-color: var(--badge_blue);
+    background-color: #e8f7ff;
+  }
+
+  .re_reply_content p{
+    margin-left:var(--base_unit);
+    padding-bottom: var(--base_unit);
+    margin-bottom:var(--base_unit);
   }
   
   textarea {
     width: 95%;
     /* margin-left: 15px; */
-    padding: 10px;
+    padding: calc(var(--base_unit)* 0.5);
     border: 2px solid rgba(92, 135, 255, 0.5);
     background-color: var(--white_bg);
     border-radius: 5px;
@@ -289,7 +293,7 @@ aside {
   }
   
   .reply {
-    margin-right: var(--base_unit);
+    margin-right: calc(var(--base_unit) * 1.3);
     margin-bottom: var(--base_unit);
   }
 
@@ -297,6 +301,7 @@ aside {
     padding: var(--base_unit) calc(var(--base_unit) * 2 ) var(--base_unit) var(--base_unit);
     background-color: var(--pudding_bg);
     width: 95%;
+    margin-left: var(--base_unit);
   }
 
 
@@ -309,4 +314,8 @@ aside {
     color:var(--point_primary);
     margin-right: calc(var(--base_unit) * 1.3);
   }
-  
+
+  .list_btn{
+    margin-top:var(--base_unit);
+  }
+   
