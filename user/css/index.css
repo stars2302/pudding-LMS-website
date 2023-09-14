@@ -67,6 +67,7 @@ ul {
 .search input {
   flex: 1;
   border: none;
+  outline: none;
 }
 
 .search i {
@@ -214,6 +215,12 @@ p {
 .sec4 .swiper-button-next,
 .sec5 .swiper-button-next {
   right: 25px;
+}
+
+/* section6 */
+.sec6 img{
+  width: 100%;
+  object-fit: cover;
 }
 
 /* section7 */
