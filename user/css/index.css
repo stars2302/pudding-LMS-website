@@ -103,19 +103,21 @@ ul {
 
 .category_box ul img {
   margin-bottom: 8px;
-}
-
-.category_box li img {
   transition: 0.3s;
 }
-
+/* .category_box li {
+  box-sizing: border-box;
+  width: 65px;
+  height: 80px;
+} */
 .category_box li:hover img {
   transform: scale(1.05);
+  opacity: 0.7;
 }
 
-.category_box li:hover p {
+/* .category_box li:hover p {
   font-weight: 500;
-}
+}  */
 
 .sec_tt {
   font-size: 36px;
@@ -127,12 +129,59 @@ ul {
 p {
   margin-bottom: 0;
 }
-
+.card_wrap li{
+  position: relative;
+}
 .card {
   box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.15);
   border: none;
   border-radius: 12px;
   transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:after{
+  content: "";
+  display: block;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 2;
+  transition: 0.2s;
+}
+
+.view_wrap{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* transform: translateX(-50%) translateY(-50%); */
+  z-index: 10;
+  display: inline-block;
+  
+}
+.view_btn{
+  width: 87px;
+  height: 38px;
+  border: 1px solid #fff;
+  z-index: 10;
+  padding: 10px 20px;
+  height: 38px;
+  line-height: 38px;
+  font-size: 20x;
+  color:#fff;
+  border-radius: 5px;
+}
+
+.view_wrap a i{
+  color:#fff;
+  font-size: 30px;
+  font-weight: 300;
 }
 
 .card:hover {
@@ -153,6 +202,14 @@ p {
 
 .card-text {
   text-align: right;
+}
+
+.card-text i, .price{
+  margin-right: 3px;
+}
+
+.card-text i, .duration{
+  margin-left: 6px;
 }
 
 .price {
