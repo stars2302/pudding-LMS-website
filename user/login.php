@@ -5,7 +5,7 @@ $js_route = "js/login.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 ?>
     <main class="pudding_bg">
-      <div class="border_12 white_bg login_box d-flex">
+      <div class="radius_12 white_bg login_box d-flex">
         <div class="col-md-6 d-flex align-items-center">
           <img src="images/login/login.png" alt="" />
         </div>
@@ -35,7 +35,7 @@ $js_route = "js/login.js";
               placeholder="비밀번호"
               aria-label="Userpassword"
             />
-            <button class="btn btn-primary dark">회원가입</button>
+            <button class="btn btn-primary dark">로그인</button>
             <div
               class="form-check d-flex justify-content-end login_check gap-2"
             >
@@ -50,7 +50,7 @@ $js_route = "js/login.js";
               </label>
             </div>
             <div class="id_pw d-flex justify-content-center">
-              <a href="signup.html">회원가입</a>
+              <a href="signup.php">회원가입</a>
               <a href="#">아이디 찾기</a>
               <a href="#">비밀번호 찾기</a>
             </div>

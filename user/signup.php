@@ -5,7 +5,7 @@ $js_route = "js/login.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 ?>
     <main class="pudding_bg">
-      <div class="border_12 white_bg login_box d-flex">
+      <div class="radius_12 white_bg signup_box d-flex">
         <div class="col-md-6 d-flex align-items-center">
           <div class="swiper mySwiper">
             <div class="swiper-wrapper">

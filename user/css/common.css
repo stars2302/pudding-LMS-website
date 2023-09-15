@@ -575,7 +575,7 @@ header {
   align-items: center;
   position: relative;
   z-index: 5;
-  box-shadow: 2px 2px 14px 0px rgba(116, 120, 128, 0.08);
+  box-shadow: 2px 2px 4px 0px rgba(116, 120, 128, 0.02);
 }
 
 header nav {
@@ -600,6 +600,10 @@ header nav a {
   display: inline-block;
 }
 
+header a.btn {
+  line-height: 32px;
+}
+
 header .icon {
   margin-right: 20px;
 }
@@ -608,7 +612,7 @@ header .icon:hover path {
   fill: #ffc061;
 }
 
-header button:last-child {
+header a.btn:last-child {
   margin-left: 15px;
 }
 
@@ -623,9 +627,8 @@ header li:hover a {
 
 /* footer */
 footer {
-  padding: calc(var(--base_unit) * 1.5) 0;
+  padding: var(--base_unit) 0;
   background-color: #333f55;
-  /* height: 312px; */
   color: #cecdcd;
   font-size: 14px;
   position: relative;
@@ -655,7 +658,7 @@ footer h2 {
 }
 
 footer span {
-  font-weight: bold;
+  font-weight: 600;
   margin-right: 8px;
 }
 
@@ -664,7 +667,7 @@ footer span {
 }
 
 .f_list {
-  margin-bottom: calc(var(--base_unit) * 1.5);
+  margin-bottom: var(--base_unit);
 }
 
 .f_list li:hover {
@@ -673,6 +676,7 @@ footer span {
 }
 .f_tt {
   font-size: 13px;
+  line-height: 6px;
 }
 .tel_mail p,
 .f_list li {
