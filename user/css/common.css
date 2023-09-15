@@ -447,7 +447,7 @@ input.form-control::placeholder {
   transform: scale(0.85);
 }
 .adminlogo > a {
-  background-image: url("../images/logo.png");
+  background-image: url("/pudding-LMS-website/user/images/logo.png");
   width: 222px;
   height: 76px;
   background-size: 222px;
@@ -457,7 +457,7 @@ input.form-control::placeholder {
 }
 
 .adminlogo > a {
-  background-image: url("../images/adminLogo.png");
+  background-image: url("/pudding-LMS-website/user/images/logo.png");
   width: 222px;
   height: 76px;
   background-size: 222px;
@@ -583,7 +583,7 @@ header nav {
 }
 .logo {
   text-indent: -999em;
-  background: url(/user/images/logo.png) no-repeat;
+  background: url("/pudding-LMS-website/user/images/logo.png") no-repeat;
   width: 160px;
   height: 35px;
 }
