@@ -2,6 +2,7 @@ $(document).ready(function () {
 
   var swiper = new Swiper(".sec1_slide", {
     slidesPerView: 1,
+    speed: 1000,
     centeredSlides: true,
     loop: true,
     pagination: {
@@ -29,6 +30,7 @@ $(document).ready(function () {
     slidesPerView: 3,
     spaceBetween: 30,
     speed: 1000,
+    loop: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -46,6 +48,7 @@ $(document).ready(function () {
     slidesPerView: 3,
     spaceBetween: 30,
     speed: 1000,
+    loop: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
