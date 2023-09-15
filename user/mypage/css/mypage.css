@@ -392,3 +392,83 @@ textarea:focus {
   bottom: 15px;
   transform: scale(1.5);
 }
+/* 내강의실 */
+/* margin */
+.pd_1 {
+  margin: 90px 0;
+}
+.pd_2 {
+  margin-bottom: 45px;
+}
+.pd_3 {
+  margin: 30px 0;
+}
+.pd_4 {
+  margin-bottom: 30px;
+}
+
+.viewSetion_1 {
+  width: 100%;
+  height: 513px;
+  border-radius: 15px;
+  padding: 65px;
+  background-color: #fff;
+}
+
+.viewSetion_1 img {
+  width: 371px;
+  height: 240px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.viewCate {
+  font-size: 14px;
+}
+
+.viewTitleWrap {
+  width: 100%;
+  height: 240px;
+}
+
+.viewSection2,
+.viewSection3 {
+  width: 100%;
+  border-radius: 15px;
+  padding: 48px 63px;
+  background-color: #fff;
+}
+
+.viewSection2 {
+  margin-bottom: 130px;
+}
+
+.viewList {
+  width: 100%;
+  padding: 15px 75px;
+  border-bottom: 1px solid #1e2226;
+}
+
+.viewList:last-child {
+  border-bottom: none;
+}
+
+.viewList img {
+  width: 150px;
+  border-radius: 6px;
+}
+
+.viewImg {
+  padding-right: 100px;
+}
+
+.viewList i {
+  font-size: 40px;
+  color: #727272;
+}
+
+.viewList i:hover {
+  font-size: 40px;
+  color: var(--point_primary_hover);
+}
+/* 내강의실 끝 */
