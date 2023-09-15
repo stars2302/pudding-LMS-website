@@ -66,7 +66,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <link rel="stylesheet" href="css/jqueryui/jquery-ui.theme.min.css" />
-  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="/pudding-LMS-website/user/css/common.css" />
   <link rel="stylesheet" href="/pudding-LMS-website/user/<?php if(isset($css_route)){echo $css_route;} else { echo 'css/index.css';}; ?>">
 
   <title><?php if(isset($title)){echo $title;} else { echo 'home';}; ?> - PUDDING</title>

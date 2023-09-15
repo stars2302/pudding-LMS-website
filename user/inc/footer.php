@@ -1,12 +1,12 @@
 <aside class="main_btn">
     <div class="history_btn">
       <a href="">
-        <img src="images/clock-history.png" alt="">
+        <img src="/pudding-LMS-website/user/images/clock-history.png" alt="">
       </a>
     </div>
     <div class="top_btn">
       <a href="">
-        <img src="images/top_btn.png" alt="">
+        <img src="/pudding-LMS-website/user/images/top_btn.png" alt="">
       </a>
     </div>
   </aside>
@@ -133,7 +133,7 @@
     <!-- Numbers js -->
     <script src="/pudding-LMS-website/admin/js/jquery.number.min.js"></script>
   <script src="/pudding-LMS-website/admin/js/numbers_func.js"></script>
-  <script src="js/common.js"></script>
+  <script src="/pudding-LMS-website/user/js/common.js"></script>
   <script src="/pudding-LMS-website/user/<?php if(isset($js_route)){echo $js_route;} ?>"></script>
   
 </body>

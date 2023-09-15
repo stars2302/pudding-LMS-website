@@ -628,6 +628,8 @@ footer {
   /* height: 312px; */
   color: #cecdcd;
   font-size: 14px;
+  position: relative;
+  z-index: 5;
 }
 
 .sns ul {
