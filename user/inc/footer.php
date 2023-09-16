@@ -112,10 +112,6 @@
   </footer>
 
 
-  <!-- jqueryui js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
-    integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- bootstrap js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
     integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
@@ -129,9 +125,11 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- nice select js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Numbers js -->
-    <script src="/pudding-LMS-website/admin/js/jquery.number.min.js"></script>
+  <script src="/pudding-LMS-website/admin/js/jquery.number.min.js"></script>
   <script src="/pudding-LMS-website/admin/js/numbers_func.js"></script>
   <script src="/pudding-LMS-website/user/js/common.js"></script>
   <script src="/pudding-LMS-website/user/<?php if(isset($js_route)){echo $js_route;} ?>"></script>
