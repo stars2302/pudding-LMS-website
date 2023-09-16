@@ -3,6 +3,17 @@ $title="마이페이지 - 구매내역";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+
+$sql = "SELECT p.*, u.userid FROM payments p JOIN users u ON u.userid = p.userid ORDER BY p.payid DESC";
+
+$result = $mysqli->query($sql);
+while($rs = $result->fetch_object()){
+  $rsc[]=$rs;
+}
+
+var_dump($rsc);
+
+
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">
