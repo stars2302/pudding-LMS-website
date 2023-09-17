@@ -108,7 +108,7 @@
   padding-left: var(--base_unit);
 }
 
-.payment {
+.payment_form {
   background-color: #fff;
   padding: 25px 20px;
   height: calc(var(--base_unit)*15);
@@ -124,17 +124,17 @@
   display: block;
 }
 
-.payment h3 {
+.payment_form h3 {
   font-weight: bold;
   margin: 10px 0 15px;
 }
 
-.payment hr:nth-of-type(1){
+.payment_form hr:nth-of-type(1){
   margin-top: 70px;
 }
 
 
-.payment .payment_info p {
+.payment_form .payment_info p {
   margin-bottom: 0;
 }
 
