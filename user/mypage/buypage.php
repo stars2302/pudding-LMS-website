@@ -6,34 +6,18 @@ $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
-//   if(isset($_SESSION['UID'])){
-//     if($_SESSION['UID'] == TRUE){
-//       echo "<script>
-//         alert('권한이 없습니다.');
-//         location.href = '/pudding-LMS-website/uesr/index.php';
-//       </script>";
-//     }
-//   } else{
-//     echo "<script>
-//         alert('권한이 없습니다.');
-//         location.href = '/pudding-LMS-website/user/kakaologin.php';
-//       </script>";
-//   }
 
-// $current_userid =$_SESSION['UID'];
 
-$sql = "SELECT p.regdate, p.name,p.total_price,p.discount_price, u.userid FROM payments p JOIN users u ON u.userid = p.userid WHERE u.userid = 'kitty' ORDER BY p.payid DESC";
-// $purchase = array();
-//위에 로그인 연결되면 바꾸고 지우기
-// $sql = "SELECT p.*, u.userid FROM payments p JOIN users u ON u.userid = p.userid  ORDER BY p.regdate DESC";
+$userid =$_SESSION['UID'];
 
-var_dump($sql);
+$sql = "SELECT p.regdate, p.name,p.total_price,p.discount_price, u.userid FROM payments p JOIN users u ON u.userid = p.userid WHERE u.userid = '{$userid}' ORDER BY p.payid DESC";
+
 $result = $mysqli->query($sql);
 while($rs = $result->fetch_object()){
   $purchase[]=$rs;
 }
 
-var_dump($purchase);
+// var_dump($purchase);
 
 
 ?>
@@ -43,10 +27,10 @@ var_dump($purchase);
         <h4 class="jua main_tt my_title">마이페이지</h4>
         <nav>
           <ul>
-          <li class="content_stt link_tag"><a href="/pudding-LMS-website/user/mypage/mypage.php">내 강의실</a></li>
-            <li class="content_stt"><a href="/pudding-LMS-website/user/mypage/buypage.php">구매내역</a></li>
-            <li class="content_stt"><a href="/pudding-LMS-website/user/mypage/couponpage.php">쿠폰함</a></li>
-            <li class="content_stt"><a href="/pudding-LMS-website/user/mypage/review_list.php">수강평</a></li>
+          <li class="content_stt link_tag mypage_tag"><a href="/pudding-LMS-website/user/mypage/mypage.php">내 강의실</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/buypage.php">구매내역</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/couponpage.php">쿠폰함</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/review_list.php">수강평</a></li>
           </ul>
         </nav>
       </div>
