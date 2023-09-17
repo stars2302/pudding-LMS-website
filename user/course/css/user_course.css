@@ -65,6 +65,7 @@
   border-radius: 10px;
   cursor: pointer;
   background-color: #fff;
+  margin-left: 15px;
 }
 
 .imgBox img {
@@ -205,4 +206,8 @@
 }
 .reviewBox_2 {
   background-color: #e8f7ff;
+}
+
+.rating svg {
+  color: #ebebeb;
 }

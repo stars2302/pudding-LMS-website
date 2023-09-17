@@ -11,3 +11,10 @@ $(".viewB_2").click(function () {
   $(".viewB_2").addClass("active");
   $(".viewB_1").removeClass("active");
 });
+
+let rating = $(".rating");
+
+rating.each(function () {
+  let score = $(this).attr("data-rate");
+  $(this).find(`.fa-star:lt(${score})`).css({ color: "#F05522" });
+});
