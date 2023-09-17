@@ -575,7 +575,9 @@ header {
   align-items: center;
   position: relative;
   z-index: 5;
-  box-shadow: 2px 2px 4px 0px rgba(116, 120, 128, 0.02);
+  box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.95);
+  box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.15);
+  /* box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.2); */
 }
 
 header nav {
@@ -674,9 +676,9 @@ footer span {
   color: #fff;
   font-weight: 500;
 }
-.f_tt {
+.f_tt p{
   font-size: 13px;
-  line-height: 6px;
+  line-height: 20px;
 }
 .tel_mail p,
 .f_list li {
@@ -692,7 +694,7 @@ footer span {
 .f_list li:after {
   content: "";
   position: absolute;
-  top: 5px;
+  top: -10px;
   right: -16px;
   width: 2px;
   height: 12px;
