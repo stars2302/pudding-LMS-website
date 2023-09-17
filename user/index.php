@@ -4,11 +4,25 @@ $css_route = "css/index.css";
 $js_route = "js/index.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.php';
 
-// 강의
-$sql = "SELECT * FROM courses ORDER BY cid DESC LIMIT 2, 5";
+// 인기 강의
+$sql = "SELECT * FROM `courses` WHERE isbest = 1";
 $result = $mysqli->query($sql);
 while ($rs = $result->fetch_object()) {
   $rsc[] = $rs;
+}
+
+// 추천 강의
+$rc_sql = "SELECT * FROM `courses` WHERE isrecom = 1";
+$rc_result = $mysqli->query($rc_sql);
+while ($rc_rs = $rc_result->fetch_object()) {
+  $rc_rsc[] = $rc_rs;
+}
+
+// 신규 강의
+$new_sql = "SELECT * FROM `courses` WHERE isnew = 1";
+$new_result = $mysqli->query($new_sql);
+while ($new_rs = $new_result->fetch_object()) {
+  $new_rsc[] = $new_rs;
 }
 
 // 공지사항
@@ -130,12 +144,10 @@ while ($ntrs = $ntresult->fetch_object()) {
                 <div class="card-body">
                   <h5 class="card-title">
                     <?php
-                    // mb_strimwidth ( string $str , int $start , int $width [, string $trimmarker [, string $encoding ]] )
                     $strTitle = $item->name;
-                    $strTitle = mb_strimwidth($strTitle, 0, 20, "...", "utf-8");
+                    $strTitle = mb_strimwidth($strTitle, 0, 26, "...", "utf-8");
                     echo $strTitle;
                     ?>
-                    <!-- $item->name  -->
                   </h5>
                   <div class="card-text">
                     <p class="duration_wrap">
@@ -165,54 +177,6 @@ while ($ntrs = $ntresult->fetch_object()) {
           }
         }
         ?>
-        <!-- <li>
-          <div class="card" style="width: 18rem;">
-            <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-            <div class="card-body">
-              <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
-              <div class="card-text">
-                <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                <p class=""><span class="price">10,000</span><span>원</span></p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="card" style="width: 18rem;">
-            <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-            <div class="card-body">
-              <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
-              <div class="card-text">
-                <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                <p class=""><span class="price">10,000</span><span>원</span></p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="card" style="width: 18rem;">
-            <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-            <div class="card-body">
-              <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
-              <div class="card-text">
-                <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                <p class=""><span class="price">10,000</span><span>원</span></p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="card" style="width: 18rem;">
-            <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-            <div class="card-body">
-              <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
-              <div class="card-text">
-                <p class="duration_wrap"><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                <p class=""><span class="price">10,000</span><span>원</span></p>
-              </div>
-            </div>
-          </div>
-        </li> -->
       </ul>
     </div>
   </section>
@@ -222,70 +186,70 @@ while ($ntrs = $ntresult->fetch_object()) {
     <div class="page_wrap">
       <div class="swiper recom_slide">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="card">
-              <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-              <div class="card-body">
-                <div class="badge_wrap">
-                  <span class="badge rounded-pill blue_bg b-pd">고급</span>
-                  <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-                </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인1</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card">
-              <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-              <div class="card-body">
-                <div class="badge_wrap">
-                  <span class="badge rounded-pill blue_bg b-pd">고급</span>
-                  <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-                </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인2</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card">
-              <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-              <div class="card-body">
-                <div class="badge_wrap">
-                  <span class="badge rounded-pill blue_bg b-pd">고급</span>
-                  <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-                </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인3</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card">
-              <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-              <div class="card-body">
-                <div class="badge_wrap">
-                  <span class="badge rounded-pill blue_bg b-pd">고급</span>
-                  <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-                </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인3</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
+          <?php
+          if (isset($rc_rsc)) {
+            foreach ($rc_rsc as $item) {
+              ?>
+              <div class="swiper-slide">
+                <div class="card">
+                  <img src="<?= $item->thumbnail ?>" class="card-img-top" alt="강의 썸네일">
+                  <div class="card-body">
+                    <div class="badge_wrap">
+                      <span class="badge rounded-pill b-pd
+                      <?php
+                      // 뱃지컬러
+                      $levelBadge = $item->level;
+                      if ($levelBadge === '초급') {
+                        echo 'yellow_bg';
+                      } else if ($levelBadge === '중급') {
+                        echo 'green_bg';
+                      } else {
+                        echo 'red_bg';
+                      }
+                      ?>">
+                        <?= $item->level ?>
+                      </span>
+                      <span class="badge rounded-pill green_bg b-pd">
+                        <?php
+                        //뱃지 키워드 
+                        if (isset($item->cate)) {
+                          $categoryText = $item->cate;
+                          $parts = explode('/', $categoryText);
+                          $lastPart = end($parts);
+                          echo $lastPart;
+                        }
+                        ?>
+                      </span>
+                    </div>
+                    <h5 class="card-title">
+                      <?php
+                      $strTitle = $item->name;
+                      $strTitle = mb_strimwidth($strTitle, 0, 36, "...", "utf-8");
+                      echo $strTitle;
+                      ?>
+                    </h5>
+                    <div class="card-text">
+                      <p class=""><i class="ti ti-calendar-event"></i>수강기간
+                        <span class="duration">
+                          <?php if ($item->due == '') {
+                            echo '무제한';
+                          } else {
+                            echo $item->due;
+                          }
+                          ?>
+                        </span>
+                      </p>
+                      <p class=""><span class="price">
+                          <?= $item->price ?>
+                        </span><span>원</span></p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+              <?php
+            }
+          }
+          ?>
         </div>
       </div>
       <div class="swiper-button-next"></div>
@@ -298,70 +262,70 @@ while ($ntrs = $ntresult->fetch_object()) {
     <div class="page_wrap">
       <div class="swiper new_slide">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="card">
-              <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-              <div class="card-body">
-                <div class="badge_wrap">
-                  <span class="badge rounded-pill blue_bg b-pd">고급</span>
-                  <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-                </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인1</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card">
-              <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-              <div class="card-body">
-                <div class="badge_wrap">
-                  <span class="badge rounded-pill blue_bg b-pd">고급</span>
-                  <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-                </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인2</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card">
-              <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-              <div class="card-body">
-                <div class="badge_wrap">
-                  <span class="badge rounded-pill blue_bg b-pd">고급</span>
-                  <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-                </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인3</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card">
-              <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-              <div class="card-body">
-                <div class="badge_wrap">
-                  <span class="badge rounded-pill blue_bg b-pd">고급</span>
-                  <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-                </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인3</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
+        <?php
+          if (isset($new_rsc)) {
+            foreach ($new_rsc as $item) {
+              ?>
+              <div class="swiper-slide">
+                <div class="card">
+                  <img src="<?= $item->thumbnail ?>" class="card-img-top" alt="강의 썸네일">
+                  <div class="card-body">
+                    <div class="badge_wrap">
+                      <span class="badge rounded-pill b-pd
+                      <?php
+                      // 뱃지컬러
+                      $levelBadge = $item->level;
+                      if ($levelBadge === '초급') {
+                        echo 'yellow_bg';
+                      } else if ($levelBadge === '중급') {
+                        echo 'green_bg';
+                      } else {
+                        echo 'red_bg';
+                      }
+                      ?>">
+                        <?= $item->level ?>
+                      </span>
+                      <span class="badge rounded-pill green_bg b-pd">
+                        <?php
+                        //뱃지 키워드 
+                        if (isset($item->cate)) {
+                          $categoryText = $item->cate;
+                          $parts = explode('/', $categoryText);
+                          $lastPart = end($parts);
+                          echo $lastPart;
+                        }
+                        ?>
+                      </span>
+                    </div>
+                    <h5 class="card-title">
+                      <?php
+                      $strTitle = $item->name;
+                      $strTitle = mb_strimwidth($strTitle, 0, 36, "...", "utf-8");
+                      echo $strTitle;
+                      ?>
+                    </h5>
+                    <div class="card-text">
+                      <p class=""><i class="ti ti-calendar-event"></i>수강기간
+                        <span class="duration">
+                          <?php if ($item->due == '') {
+                            echo '무제한';
+                          } else {
+                            echo $item->due;
+                          }
+                          ?>
+                        </span>
+                      </p>
+                      <p class=""><span class="price">
+                          <?= $item->price ?>
+                        </span><span>원</span></p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+              <?php
+            }
+          }
+          ?>
         </div>
       </div>
       <div class="swiper-button-next"></div>
@@ -398,18 +362,58 @@ while ($ntrs = $ntresult->fetch_object()) {
   </section>
   <section class="sec8 pudding_bg dark">
     <div class="container">
-      <h2><span>541,113</span> 명이</h2>
-      <h2>푸딩과 함께합니다</h2>
-      <p>
-        PUDDING은 강의평점과 후기를 투명하게 공개합니다.<br>
-        타 사이트들은 성과를 높이기 위해 특정 후기만 노출 하거나,<br>
-        아예 숨겨버리는 경우가 많습니다.<br>
-        그러나 PUDDING은 강의에 실 사용자들의 후기, 학생수 등 정보를<br>
-        투명하게 공개합니다.<br>
-        투명한 신뢰성이 여러분들에게 더 좋은 컨텐츠와 교육의 질을<br>
-        높여 드릴 것을 약속 드립니다.<br>
-      </p>
-    </div>
+      <div class=col-6>
+        <h2><span>541,113</span> 명이</h2>
+        <h2>푸딩과 함께합니다</h2>
+        <p class="pudding_is">
+          PUDDING은 강의평점과 후기를 투명하게 공개합니다.<br>
+          타 사이트들은 성과를 높이기 위해 특정 후기만 노출 하거나,<br>
+          아예 숨겨버리는 경우가 많습니다.<br>
+          그러나 PUDDING은 강의에 실 사용자들의 후기, 학생수 등 정보를<br>
+          투명하게 공개합니다.<br>
+          투명한 신뢰성이 여러분들에게 더 좋은 컨텐츠와 교육의 질을<br>
+          높여 드릴 것을 약속 드립니다.<br>
+        </p>
+      </div>
+      <div class=col-6>
+        <div class="swiper review_slide">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide d-flex align-items-center justify-content-between">
+              <div class="card_container radius_5 white_bg">
+                <div class="b_text02">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <img src="../images/pdata/users/image1.jpg" class="userImg shodow_box" alt="프로필 이미지" />
+                      <h5 class="b_text01 review_user">김유림</h5>
+                      <h5 class="b_text02 dark review_name">REACT 쇼핑몰 만들기</h5>
+                      <h5 class="b_text02 dark review_date">2023-09-14</h5>
+                    </div>
+                    <div class="rating" data-rate="4">
+                      <i class="ti ti-star-filled"></i>
+                      <i class="ti ti-star-filled"></i>
+                      <i class="ti ti-star-filled"></i>
+                      <i class="ti ti-star-filled"></i>
+                      <i class="ti ti-star"></i>
+                    </div>
+                  </div>
+                  <div class="b_text02 reply_content radius_12">
+                    <p>REACT를 배우기 위해서 급하게 들은 강의였는데, 생각보다 너무 친절하게 많은 예시를 들어 설명해주셔서
+                      이해하기 쉬었습니다. 기본기를 정리하는데 아주 좋은 강의였습니다</p>
+                  </div>
+                  <div class="d-flex flex-row justify-content-end reply_btn_wrap">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="swiper-slide d-flex align-items-center justify-content-between">
+              dfdfdf
+            </div>
+          </div>
+
+        </div>
+
+      </div>
   </section>
   <section class="sec9 dark">
     <div class="container d-flex align-items-center justify-content-center">

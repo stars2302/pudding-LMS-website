@@ -322,7 +322,7 @@ p {
 .sec7 h2 {
   color: var(--dark, #1E2226);
   text-align: center;
-  font-size: 60px;
+  font-size: 52px;
   line-height: 60px;
   margin-bottom: var(--base_unit);
 }
@@ -382,10 +382,19 @@ p {
   color: #FF8744;
 }
 
-.sec8 p {
+.sec8 .pudding_is {
   font-size: 20px;
   line-height: 35px;
   margin-top: 50px;
+}
+
+.sec8 .review_slide p{
+  font-size: 12px;
+}
+
+.rating {
+  color: var(--point_primary);
+  margin-right: calc(var(--base_unit) * 1.3);
 }
 
 

@@ -1,9 +1,9 @@
 <?php
- $title="강의 등록";
- $css_route="course/css/course.css";
- $js_route = "course/js/course.js";
-include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
-include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_func.php';
+$title = "강의 등록";
+$css_route = "course/css/course.css";
+$js_route = "course/js/course.js";
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/category_func.php';
 ?>
 
 <section>
@@ -20,9 +20,11 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
           <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
             <option value="" disabled selected>대분류 선택</option>
             <?php
-              foreach($cate1 as $c){            
-            ?>
-              <option value="<?php echo $c->cateid ?>" data-name="<?php echo $c->name ?>"><?php echo $c->name ?></option>
+            foreach ($cate1 as $c) {
+              ?>
+              <option value="<?php echo $c->cateid ?>" data-name="<?php echo $c->name ?>">
+                <?php echo $c->name ?>
+              </option>
             <?php } ?>
           </select>
         </div>
@@ -45,33 +47,34 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
     </div>
 
     <div class="section3 d-flex gap-5 c_mt">
-        <div class="row price_select">
-          <label for="price_menu" class="form-label content_tt c_mb">강의가격</label>
-          <div class="col">
-            <select class="form-select" name="price_status" id="price_menu" aria-label="Default select example">
-              <option value="유료" selected>유료</option>
-              <option value="무료">무료</option>
-            </select>
-          </div>
-          <div class="col price">
-            <input type="number" class="form-control" name="price" id="price" min="0" max="1000000" step="10000" placeholder="금액">
-          </div>
+      <div class="row price_select">
+        <label for="price_menu" class="form-label content_tt c_mb">강의가격</label>
+        <div class="col">
+          <select class="form-select" name="price_status" id="price_menu" aria-label="Default select example">
+            <option value="유료" selected>유료</option>
+            <option value="무료">무료</option>
+          </select>
         </div>
-        <div class="row level level_status">
-          <label class="form-label content_tt c_mb">난이도</label>
-          <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="low" value="초급">
-            <label class="form-check-label" for="low">초급</label>
-          </div>
-          <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="middle" value="중급">
-            <label class="form-check-label" for="middle">중급</label>
-          </div>
-          <div class="col">
-            <input class="form-check-input" type="radio" name="level" id="high" value="고급">
-            <label class="form-check-label" for="high">고급</label>
-          </div>
+        <div class="col price">
+          <input type="number" class="form-control" name="price" id="price" min="0" max="1000000" step="10000"
+            placeholder="금액">
         </div>
+      </div>
+      <div class="row level level_status">
+        <label class="form-label content_tt c_mb">난이도</label>
+        <div class="col">
+          <input class="form-check-input" type="radio" name="level" id="low" value="초급">
+          <label class="form-check-label" for="low">초급</label>
+        </div>
+        <div class="col">
+          <input class="form-check-input" type="radio" name="level" id="middle" value="중급">
+          <label class="form-check-label" for="middle">중급</label>
+        </div>
+        <div class="col">
+          <input class="form-check-input" type="radio" name="level" id="high" value="고급">
+          <label class="form-check-label" for="high">고급</label>
+        </div>
+      </div>
     </div>
 
     <div class="periodwrap d-flex gap-5 c_mt">
@@ -105,8 +108,28 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
           <label class="form-check-label" for="inactive">비활성</label>
         </div>
       </div>
-    </div>  
+    </div>
 
+    <!-- 인기/신규/추천 -->
+    <div class="row level level_status c_mt">
+      <label class="form-label content_tt c_mb">전시 옵션</label>
+      <div class="d-flex course_option">
+        <div class="col-1">
+          <input class="form-check-input" type="checkbox" name="isnew" id="isnew" value="1">
+          <label class="form-check-label" for="isnew">신규</label>
+        </div>
+        <div class="col-1">
+          <input class="form-check-input" type="checkbox" name="isbest" id="isbest" value="1">
+          <label class="form-check-label" for="isbest">인기</label>
+        </div>
+        <div class="col-1">
+          <input class="form-check-input" type="checkbox" name="isrecom" id="isrecom" value="1">
+          <label class="form-check-label" for="isrecom">추천</label>
+        </div>
+      </div>
+
+    </div>
+    <!-- 인기/신규/추천 end -->
     <div class="content_detail c_mt">
       <h3 class="content_tt c_mb">상세내용</h3>
       <div id="product_detail"></div>
@@ -153,9 +176,13 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
       <div class="add_listBtn">
         <a href="">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M3.99951 15.9977C3.99951 17.5736 4.3099 19.134 4.91296 20.5899C5.51601 22.0458 6.39993 23.3687 7.51423 24.483C8.62853 25.5973 9.9514 26.4812 11.4073 27.0843C12.8632 27.6873 14.4236 27.9977 15.9995 27.9977C17.5754 27.9977 19.1358 27.6873 20.5917 27.0843C22.0476 26.4812 23.3705 25.5973 24.4848 24.483C25.5991 23.3687 26.483 22.0458 27.0861 20.5899C27.6891 19.134 27.9995 17.5736 27.9995 15.9977C27.9995 14.4218 27.6891 12.8614 27.0861 11.4055C26.483 9.9496 25.5991 8.62673 24.4848 7.51243C23.3705 6.39813 22.0476 5.51421 20.5917 4.91116C19.1358 4.3081 17.5754 3.99771 15.9995 3.99771C14.4236 3.99771 12.8632 4.3081 11.4073 4.91116C9.9514 5.51421 8.62853 6.39813 7.51423 7.51243C6.39993 8.62673 5.51601 9.9496 4.91296 11.4055C4.3099 12.8614 3.99951 14.4218 3.99951 15.9977Z" stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M11.9995 15.9998H19.9995" stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M15.9995 12.0002V20.0002" stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M3.99951 15.9977C3.99951 17.5736 4.3099 19.134 4.91296 20.5899C5.51601 22.0458 6.39993 23.3687 7.51423 24.483C8.62853 25.5973 9.9514 26.4812 11.4073 27.0843C12.8632 27.6873 14.4236 27.9977 15.9995 27.9977C17.5754 27.9977 19.1358 27.6873 20.5917 27.0843C22.0476 26.4812 23.3705 25.5973 24.4848 24.483C25.5991 23.3687 26.483 22.0458 27.0861 20.5899C27.6891 19.134 27.9995 17.5736 27.9995 15.9977C27.9995 14.4218 27.6891 12.8614 27.0861 11.4055C26.483 9.9496 25.5991 8.62673 24.4848 7.51243C23.3705 6.39813 22.0476 5.51421 20.5917 4.91116C19.1358 4.3081 17.5754 3.99771 15.9995 3.99771C14.4236 3.99771 12.8632 4.3081 11.4073 4.91116C9.9514 5.51421 8.62853 6.39813 7.51423 7.51243C6.39993 8.62673 5.51601 9.9496 4.91296 11.4055C4.3099 12.8614 3.99951 14.4218 3.99951 15.9977Z"
+              stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M11.9995 15.9998H19.9995" stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M15.9995 12.0002V20.0002" stroke="#6F6F6F" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
           리스트 추가
         </a>
@@ -176,5 +203,5 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/category_
 </script>
 <script src="/pudding-LMS-website/admin/course/js/makeoption.js"></script>
 <?php
- include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/footer.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/footer.php';
 ?>

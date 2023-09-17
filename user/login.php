@@ -28,7 +28,7 @@ userimg -->
     </div>
     <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
       <h2>
-        Welcome to <img src="images/logo.png" alt="푸딩로고이미지"/> !
+        Welcome to <img src="images/logo.png" alt="푸딩로고이미지" /> !
       </h2>
       <h3>LOGIN</h3>
       <form action="login_ok.php" method="POST">
@@ -46,13 +46,104 @@ userimg -->
         </div>
         <div class="id_pw d-flex justify-content-center">
           <a href="/pudding-LMS-website/user/signup.php">회원가입</a>
-          <a href="#">아이디 찾기</a>
-          <a href="#">비밀번호 찾기</a>
+          <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_id">아이디 찾기</button>
+          <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_pw">비밀번호 찾기</button>
         </div>
       </form>
+      <!-- 아이디 찾기 Modal -->
+      <div class="modal fade" id="find_id" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">아이디 찾기</h5>
+            </div>
+            <div class="modal-body">
+              <form action="find_id.php" method="POST" id="find_id_form">
+                <label for="username">이름</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="이름">
+                <label for="useremail">이메일</label>
+                <input type="email" class="form-control" name="useremail" id="useremail" placeholder="이메일">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+              <button type="button" class="btn btn-primary" id="find_id_confirm_btn">확인</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 비밀번호 찾기 Modal -->
+      <div class="modal fade" id="find_pw" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">비밀번호 찾기</h5>
+            </div>
+            <div class="modal-body">
+              <form action="find_pw.php" method="POST" id="find_pw_form">
+                <label for="username">이름</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="이름">
+                <label for="userid">아이디</label>
+                <input type="text" class="form-control" name="userid" id="userid" placeholder="아이디">
+                <label for="useremail">이메일</label>
+                <input type="email" class="form-control" name="useremail" id="useremail" placeholder="이메일">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+              <button type="button" class="btn btn-primary" id="find_pw_confirm_btn">확인</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 비밀번호 수정 Modal -->
+      <!-- <div class="modal fade" id="modify_pw" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">비밀번호 변경</h5>
+            </div>
+            <div class="modal-body">
+              <form action="find_pw.php" method="POST" id="find_pw_form">
+                <label for="userpasswd">새 비밀번호</label>
+                <input type="text" class="form-control" name="userpasswd" id="" placeholder="새 비밀번호를 입력하세요.">
+                <label for="userpasswd">새 비밀번호 확인</label>
+                <input type="text" class="form-control" name="userpasswd" placeholder="비밀번호 확인 ">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+              <button type="button" class="btn btn-primary" id="modify_pw_btn">확인</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
     </div>
   </div>
 </main>
+<script>
+  $(document).ready(function () {
+    // 확인 버튼을 클릭할 때 폼을 제출
+    $("#find_id_confirm_btn").click(function () {
+      $("#find_id_form").submit(); 
+    });
+    $("#find_pw_confirm_btn").click(function () {
+      $("#find_pw_form").submit(); 
+    });
+  });
+
+// 비밀번호 변경 확인 버튼 클릭 시 비밀번호 수정 모달 열림
+  // $("#modify_pw_btn").click(function() {
+  //     $("#modify_pw").modal("show"); // 비밀번호 수정 모달 열기
+  //   });
+  
+
+</script>
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/footer.php';
