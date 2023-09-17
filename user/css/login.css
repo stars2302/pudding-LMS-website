@@ -75,3 +75,12 @@ main {
   flex-direction: column;
   gap:6px;
 }
+
+.btn.duplication_btn {
+  padding-left: 15px !important;
+  padding-right:15px !important;
+  white-space: nowrap;
+}
+.btn.duplication_btn span {
+width: 100%;
+}

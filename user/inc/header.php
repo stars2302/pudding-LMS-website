@@ -1,5 +1,6 @@
 <?php
-  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
+session_start();
+include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,19 +11,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="apple-touch-icon" sizes="57x57" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="57x57"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-16x16.png">
   <link rel="manifest" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -47,7 +61,9 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- nice select css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+    integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
   <!-- Noto Sans KR -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,20 +77,35 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/pudding-LMS-website/user/css/common.css" />
-  <link rel="stylesheet" href="/pudding-LMS-website/user/<?php if(isset($css_route)){echo $css_route;} else { echo 'css/index.css';}; ?>">
+  <link rel="stylesheet" href="/pudding-LMS-website/user/<?php if (isset($css_route)) {
+    echo $css_route;
+  } else {
+    echo 'css/index.css';
+  }
+  ; ?>">
 
-  <title><?php if(isset($title)){echo $title;} else { echo 'home';}; ?> - PUDDING</title>
+  <title>
+    <?php if (isset($title)) {
+      echo $title;
+    } else {
+      echo 'home';
+    }
+    ; ?> - PUDDING
+  </title>
 
-    <!-- jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+  <!-- jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
     integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
-  <header class="shadow_box">
+  <header class="">
     <div class="container d-flex align-items-center">
-      <h1 class="logo"><a href="index.html">로고</a></h1>
+      <a href="/pudding-LMS-website/user/index.php">
+        <h1 class="logo">로고</h1>
+      </a>
+      <!-- <h1 class="logo"><a href="/pudding-LMS-website/user/index.php">로고</a></h1> -->
       <nav>
         <ul class="d-flex">
           <li><a href="/pudding-LMS-website/user/course/course_list.php">강의 클래스</a></li>
@@ -98,8 +129,25 @@
               fill="#1E2226" />
           </svg>
         </a>
-        <a href="/pudding-LMS-website/user/login.php" class="btn btn-dark">로그인</a>
-        <a href="/pudding-LMS-website/user/signup.php" class="btn btn-primary dark">회원가입</a>
+        <?php
+        //세션 있으면, 회원이름, 로그아웃 버튼
+        if (isset($_SESSION['UID'])) {
+          ?>
+          <span>
+            <?= $_SESSION['UNAME']; ?>님
+          </span>
+          <a href="/pudding-LMS-website/user/logout.php" class="btn btn-dark">로그아웃</a>
+          <!-- <p><a href="logout.php">Logout</a></p>     -->
+
+          <?php
+          //세션 없으면, 로그인, 회원가입 버튼
+        } else {
+          ?>
+          <a href="/pudding-LMS-website/user/login.php" class="btn btn-dark">로그인</a>
+          <a href="/pudding-LMS-website/user/signup.php" class="btn btn-primary dark">회원가입</a>
+          <?php
+        }
+        ?>
       </div>
     </div>
   </header>

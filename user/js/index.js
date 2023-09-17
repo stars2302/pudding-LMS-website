@@ -1,4 +1,12 @@
 $(document).ready(function () {
+  // 말줄임표
+  // let length = 13; // 표시할 글자수 기준
+  // let str = $('.card-title').text();
+  // if (str.length > length) {
+  //   strTitle = str.substr(0, length - 2) + "...";
+  //   str.text(strTitle);
+  // }
+  
 
   var swiper = new Swiper(".sec1_slide", {
     slidesPerView: 1,
@@ -14,9 +22,8 @@ $(document).ready(function () {
     },
   });
 
- // autoplayStart autoplayStop
+  // autoplayStart autoplayStop
   let slide = $(".swiper-slide");
-
 
   slide.on("mouseenter", function (e) {
     swiper.autoplay.stop();
@@ -24,7 +31,6 @@ $(document).ready(function () {
   slide.on("mouseleave", function (e) {
     swiper.autoplay.start();
   });
-
 
   var swiper = new Swiper(".recom_slide", {
     slidesPerView: 3,
@@ -39,9 +45,9 @@ $(document).ready(function () {
       delay: 3000,
     },
     navigation: {
-      prevEl: '.recom_slide .swiper-button-prev',
-      nextEl: '.recom_slide .swiper-button-next'
-    }
+      prevEl: ".recom_slide .swiper-button-prev",
+      nextEl: ".recom_slide .swiper-button-next",
+    },
   });
 
   var swiper = new Swiper(".new_slide", {
@@ -57,12 +63,10 @@ $(document).ready(function () {
       delay: 3000,
     },
     navigation: {
-      prevEl: '.new_slide .swiper-button-prev',
-      nextEl: '.new_slide .swiper-button-next'
-    }
+      prevEl: ".new_slide .swiper-button-prev",
+      nextEl: ".new_slide .swiper-button-next",
+    },
   });
-
-
 
   var swiper = new Swiper(".notice_slide", {
     direction: "vertical",
@@ -74,12 +78,4 @@ $(document).ready(function () {
 
   // AOS
   AOS.init();
-
-
-
-
-
-
-
-
 });

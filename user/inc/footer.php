@@ -1,12 +1,12 @@
 <aside class="main_btn">
     <div class="history_btn">
       <a href="">
-        <img src="/pudding-LMS-website/user/images/clock-history.png" alt="">
+        <img src="/pudding-LMS-website/user/images/clock-history.png" alt="최근 본 강의">
       </a>
     </div>
     <div class="top_btn">
       <a href="">
-        <img src="/pudding-LMS-website/user/images/top_btn.png" alt="">
+        <img src="/pudding-LMS-website/user/images/top_btn.png" alt="top">
       </a>
     </div>
   </aside>

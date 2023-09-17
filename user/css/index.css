@@ -46,9 +46,9 @@
   margin: calc(var(--base_unit)*3) 0 var(--base_unit);
 }
 
-ul {
+/* ul {
   padding-left: 0;
-}
+} */
 
 .search {
   width: 600px;
@@ -126,12 +126,25 @@ ul {
 
 
 /* section3 */
+.card h5 {
+  color: var(--dark, #1E2226);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.sec3 .card h5{
+  font-size: 16px;
+}
+
 p {
   margin-bottom: 0;
 }
+
 .card_wrap li{
   position: relative;
 }
+
 .card {
   box-shadow: 2px 5px 14px 0px rgba(116, 120, 128, 0.15);
   border: none;
@@ -191,13 +204,6 @@ p {
 
 .card img {
   border-radius: 12px 12px 0 0;
-}
-
-.card h5 {
-  color: var(--dark, #1E2226);
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 20px;
 }
 
 .card-text {
