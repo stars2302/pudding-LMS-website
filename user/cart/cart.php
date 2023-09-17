@@ -2,15 +2,47 @@
 $title="장바구니";
 $css_route="cart/css/cart.css";
 $js_route = "cart/js/cart.js";
-  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+
+
+//$username = $_SESSION['AUID'];//유저아이디?
+$userid = 'gangbao';
+
+
+//cart item 조회
+$sqlct = "SELECT c.*,ct.cartid FROM cart ct
+        JOIN users u ON ct.userid = u.uid
+        JOIN courses c ON c.cid = ct.cid
+        WHERE u.userid = '{$userid}'
+
+        ORDER BY ct.cartid DESC";
+
+
+$result = $mysqli-> query($sqlct);
+while($rs = $result->fetch_object()){
+  $rscct[]=$rs;
+}
+
+//coupon 조회
+$sqlcp = "SELECT c.* FROM user_coupon uc
+        JOIN users u ON uc.userid = u.userid
+        JOIN coupons c ON c.cpid = uc.cpid
+        WHERE u.userid = '{$userid}'
+
+        ORDER BY uc.ucid DESC";
+
+
+$result = $mysqli-> query($sqlcp);
+while($rs = $result->fetch_object()){
+  $rsccp[]=$rs;
+}
+var_dump($rsccp);
+
 ?>
 
 
     <div class="cart_container container">
       <h2 class="jua main_tt">장바구니</h2>
-      <!-- <div class="row"> -->
-
-      
         <div class="cartOpBtns d-flex justify-content-between col-8">
           <div class="form-check all_check d-flex align-items-center">
             <input class="form-check-input" type="checkbox" value="" id="all_check" checked>
@@ -21,232 +53,100 @@ $js_route = "cart/js/cart.js";
           </div>
           <button class="btn btn-primary dark select_del">선택삭제</button>
         </div>
-      <!-- </div> -->
 
       <div class="d-flex justify-content-between">
         <ul class="cart_item_container col-8 d-flex flex-column">
-          <li class="cart_item shadow_box">
+          <?php
+          if(isset($rscct)){
+            foreach($rscct as $cart){
+          ?>
+
+
+          <li class="cart_item shadow_box" data-cartid="<?= $cart->cartid ?>">
             <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
             <label class="form-check-label" for="cart_item1"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
+            <img src="<?= $cart->thumbnail ?>" alt="<?= $cart->name ?>" class="radius_5">
             <div class="text_box">
               <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
+                <h3 class="b_text01"><?= $cart->name ?></h3>
+                <span class="badge rounded-pill blue_bg b-pd">
+                  <?php
+                    //뱃지 키워드 
+                    if (isset($cart->cate)) {
+                      $categoryText = $cart->cate;
+                      $parts = explode('/', $categoryText);
+                      $lastPart = end($parts);
+
+                      echo $lastPart;
+                    }
+                  ?>
+                </span>
+                <span class="badge rounded-pill b-pd
+                  <?php
+                  // 뱃지컬러
+                  $levelBadge = $cart->level;
+                  if ($levelBadge === '초급') {
+                    echo 'yellow_bg';
+                  } else if ($levelBadge === '중급') {
+                    echo 'green_bg';
+                  } else {
+                    echo 'red_bg';
+                  }
+                  ?>
+                "><?= $cart->level ?></span>
               </div>
               <div class="descript">
-                <p>순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
+                <p><?= $cart->content ?></p>
               </div>
               <div class="date">
                 <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
+                수강기간 <span><?= $cart->due ?></span>
               </div>
             </div>
             <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,000</span>원</span>
+            <span class="price content_tt"><span class="number"><?= $cart->price ?></span>원</span>
           </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item2" checked>
-            <label class="form-check-label" for="cart_item2"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,000</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item3" checked>
-            <label class="form-check-label" for="cart_item3"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,000</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item4" checked>
-            <label class="form-check-label" for="cart_item4"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,000</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item5" checked>
-            <label class="form-check-label" for="cart_item5"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,000</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item6" checked>
-            <label class="form-check-label" for="cart_item6"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,000</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item7" checked>
-            <label class="form-check-label" for="cart_item7"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,000</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item8">
-            <label class="form-check-label" for="cart_item8"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,100</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item10" checked>
-            <label class="form-check-label" for="cart_item10"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number">10,000</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item9" >
-            <label class="form-check-label" for="cart_item9"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span>10,000</span>원</span>
-          </li>
-          <li class="cart_item shadow_box">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item11" checked>
-            <label class="form-check-label" for="cart_item11"></label>
-            <img src="images/item1.png" alt="" class="radius_5">
-            <div class="text_box">
-              <div class="title">
-                <h3>[Javascript] 입문 기초 문법</h3>
-                <span class="badge rounded-pill blue_bg b-pd">입문</span>
-                <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-              </div>
-              <p class="descript">순수 자바스크립트와 VueJS라는 UI Library를 이용하여 쇼핑몰 검색 페이지를 만들어 보며 VueJS 개발 학습을 진행합니다</p>
-              <div class="date">
-                <i class="ti ti-calendar-event"></i>
-                수강기간 <span>12</span>개월
-              </div>
-            </div>
-            <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span>10,000</span>원</span>
-          </li>
+
+
+          <?php
+            }
+          }else {
+            echo '장바구니에 담긴 강의가 없습니다.<a href="/pudding-LMS-website/user/index.php"><i class="ti ti-home"></i> 홈으로 이동</a>';
+          }
+          ?>
         </ul>
+
+
+
+
         <div class="form_container col-4">
-          <form class="payment radius_12 shadow_box">
+          <form action="" method="POST" class="payment_form radius_12 shadow_box">
+            <input type="hidden" value="<?= $userid ?>" class="userid">
+            <!-- <input type="hidden" value="" class="cartid">
+            <input type="hidden" value="" class="total_price">
+            <input type="hidden" value="" class="discount_price"> -->
+
             <h3 class="content_stt">결제정보</h3>
             <h4 class="demoHeaders style_pd b_text02">쿠폰선택</h4>
             <select class="selectmenu coupon_select">
               <option value="" disabled selected class="default">보유하고 있는 쿠폰</option>
-              <option value="1" data-discount="10000" data-type="정액" data-limit="100000">회원가입 쿠폰</option>
-              <option value="2" data-discount="10000" data-type="정액" data-limit="50000">추천인 할인 쿠폰</option>
-              <option value="3" data-discount="20" data-type="정률" data-limit="70000">★여름방학 맞이 푸딩과 함께★</option>
-              <option value="4" data-discount="10" data-type="정률" data-limit="100000">복귀 유저 쿠폰Wellcomeback! 돌아오신것을 환영합니다~</option>
+
+
+
+              <?php
+              if(isset($rsccp)){
+                foreach($rsccp as $coupon){
+              ?>
+
+              <option value="<?= $coupon->cpid ?>" data-discount="<?php if($coupon->cp_type == '정률'){echo $coupon->cp_ratio;} else{echo $coupon->cp_price;} ?>" data-type="<?= $coupon->cp_type ?>" data-limit="<?= $coupon->cp_limit ?>"><?= $coupon->cp_name ?></option>
+
+              <?php
+                }
+              }
+              ?>
+
+
+
             </select>
             <hr>
             <div class="payment_info d-flex justify-content-between">
@@ -256,7 +156,7 @@ $js_route = "cart/js/cart.js";
               <p>상품금액 :</p><p><span class="cart_total_price number">0</span>원</p>
             </div>
             <div class="payment_info d-flex justify-content-between">
-              <p>할인가 :</p><p>- <span class="cart_discount number">0원</span></p>
+              <p>할인가 :</p><p>- <span class="cart_discount number">0</span><span class="discount_unit">원</span></p>
             </div>
             <hr>
             <div class="payment_total d-flex justify-content-between align-items-center">
