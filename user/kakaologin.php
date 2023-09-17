@@ -180,7 +180,7 @@ $js_route = "js/login.js";
     </div>
   </footer>
   <script>
-  Kakao.init('');
+Kakao.init(''); 
 
   function loginWithKakao() {
       Kakao.Auth.authorize({

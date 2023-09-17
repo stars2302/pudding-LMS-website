@@ -1,5 +1,5 @@
 <?php
-$rest_api_key = "";//REST API 
+$rest_api_key = ""; 
 $redirect_uri = "http://localhost/pudding-LMS-website/user/kakao_oauth.php";  // Redirect URI
 $code = $_GET['code'];
 
@@ -61,8 +61,9 @@ $sql = "INSERT INTO users (userid, username, userimg) VALUES ('$userid', '$usern
 
 if ($mysqli->query($sql) === TRUE) {
     echo "<script>alert('사용자 정보가 성공적으로 저장되었습니다.');
+    // location.href = '/pudding-LMS-website/user/kakaologin_ok.php';
     location.href = '/pudding-LMS-website/user/index.php';
-    
+   
     </script>";
 
 

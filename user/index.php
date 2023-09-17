@@ -2,7 +2,10 @@
 $title="홈";
 $css_route="css/index.css";
 $js_route = "js/index.js";
+
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+
+
 ?>
   <main>
     <section class="sec1">
