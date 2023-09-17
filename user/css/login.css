@@ -3,27 +3,32 @@ main {
  height: calc(100vh - 90px);
 }
 
-.login_box{
+.login_box,
+.signup_box{
   width: 1184px;
   height: 630px;
   margin: 0 auto;
   position: relative;
   top:60px;
 }
-.login_box form{
+.login_box form,
+.signup_box form{
   width: 300px;
 }
 .login_box form{
   display: flex;
   flex-direction: column;
-  gap:6px;
+  gap:15px;
 }
+
 .login_box h2,
-.login_box h3{
+.login_box h3,
+.signup_box h3{
   font-family: "Jua", sans-serif;
   margin-bottom: 35px;
 }
-.login_check, .id_pw, .login_box label{
+.login_check, .id_pw, .login_box label,
+.signup_box label{
   font-size: 14px;
 }
 .id_pw{
@@ -49,7 +54,8 @@ main {
 .id_pw a:last-child::after{
   width: 0;
 }
-.login_box .form-control{
+.login_box .form-control,
+.signup_box .form-control{
   height: 45px;
 }
 
@@ -62,4 +68,19 @@ main {
 .swiper-slide img{
   width: 100%;
   object-fit: cover;
+}
+
+.signup_box form{
+  display: flex;
+  flex-direction: column;
+  gap:6px;
+}
+
+.btn.duplication_btn {
+  padding-left: 15px !important;
+  padding-right:15px !important;
+  white-space: nowrap;
+}
+.btn.duplication_btn span {
+width: 100%;
 }
