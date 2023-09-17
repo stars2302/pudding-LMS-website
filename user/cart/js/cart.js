@@ -107,7 +107,8 @@ function canUdel(target){
           console.log('Error:', error);
         },
         success: function(return_data){
-          location.reload();
+          // location.reload();
+          target.remove();
         }
       });//ajax
     } else{
@@ -159,6 +160,56 @@ $('.del_btn').click(function(){
 });
 
 
+
+//결제하기 클릭
+$('.payment_form').submit(function(e){
+  e.preventDefault();
+
+  if($('.cart_item_container .cart_item').find('input:checked').length>0){
+
+    let total_price = Number($('.cart_total_price').text().replace(',',''));
+  
+    let discount_price = Number($('.cart_pay_price').text().replace(',',''));
+    console.log(discount_price);
+  
+    let select_item = $('.cart_item_container .cart_item').find('input:checked').parent();
+    let cart_id = [];
+    select_item.each(function(){
+      cart_id.push(Number($(this).attr('data-cartid')));
+    });
+    console.log(cart_id);
+  
+    let userid = $(this).find('.userid').val();
+  
+  
+    let data = {
+      total_price : total_price,
+      discount_price : discount_price,
+      cartid : cart_id,
+      userid: userid
+    }
+  
+    $.ajax({
+      async : false, 
+      type: 'post',     
+      data: data, 
+      url: "payment_insert.php", 
+      dataType: 'json', //결과 json 객체형식
+      error: function(error){
+        console.log('Error:', error);
+      },
+      success: function(return_data){
+        location.reload();
+        // target.remove();
+        // console.log(return_data);
+        location.href = "/pudding-LMS-website/user/cart/cart_complete.php";
+      }
+    });//ajax
+  } else{
+    alert('상품을 선택해주세요');
+  }
+
+});
 
 
 
