@@ -17,9 +17,10 @@
     $addImgs[] = $is;
   }
 
-  $sql1 = "SELECT r.*, u.username, u.userimg, c.name FROM review r
+  $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
           JOIN users u ON r.uid = u.uid
           JOIN courses c ON c.cid = r.cid
+          JOIN review_reply w ON r.rid = w.rid
           WHERE r.cid = '{$cid}'";
 
   $result1 = $mysqli->query($sql1);
@@ -27,16 +28,14 @@
   while ($card = $result1->fetch_object()) {
     $re[] = $card;
   }
-  // $card = $result1->fetch_assoc();
 
-  // $sql2 = "SELECT * FROM review_reply WHERE rid={$rid}";
-  // $result2 = $mysqli -> query($sql2);
-  // $rr = $result2->fetch_object();
+  $cateString = $rs->cate;
+  $parts = explode('/', $cateString);
 ?>
 
     <main>
       <div class="container">
-        <div class="viewSetion_1 shadow_box">
+        <div class="viewSetion_1 shadow_box pd_5">
           <div class="d-flex gap-5">
             <div>
               <img src="<?= $rs->thumbnail; ?>" alt="" />
@@ -47,15 +46,40 @@
               <div>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
-                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
+                    <span class="badge rounded-pill blue_bg b-pd">
+                      <?php
+                        //뱃지 키워드 
+                        if (isset($rs->cate)) {
+                          $categoryText = $rs->cate;
+                          $parts = explode('/', $categoryText);
+                          $lastPart = end($parts);
+
+                          echo $lastPart;
+                        }
+                      ?>
+                    </span>
+                    <span class="badge rounded-pill b-pd
+                      <?php
+                        // 뱃지 컬러
+                        $levelBadge = $rs->level;
+                        if ($levelBadge === '초급') {
+                          echo 'yellow_bg';
+                        } else if ($levelBadge === '중급') {
+                          echo 'green_bg';
+                        } else {
+                          echo 'red_bg';
+                        }
+                      ?>
+                      ">
+                      <?= $rs->level; ?>
+                    </span>
                   </div>
                   <div class="viewCate d-flex gap-2">
-                    <p>프로그래밍</p>
+                    <p><?= $parts[0] ?></p>
                     <span>></span>
-                    <p>프론트엔드</p>
+                    <p><?= $parts[1] ?></p>
                     <span>></span>
-                    <p>Javascript</p>
+                    <p><?= $parts[2] ?></p>
                   </div>
                 </div>
                 <p class="content_tt"><?= $rs->name?></p>
@@ -96,7 +120,7 @@
             <button class="viewB_2">수강평</button>
           </div>
         </div>
-        <div class="viewWrap_1">
+        <div class="viewWrap_1 pd_6">
           <div class="pd_2">
             <h2 class="jua">강의목록</h2>
           </div>
@@ -123,16 +147,17 @@
           </div>
         </div>
 
-        <div class="viewWrap_2">
+        <div class="viewWrap_2 pd_6">
           <div class="pd_2">
-            <h2 class="jua">강의평</h2>
-          </div>
-          <div>
-            <p>전체 리뷰 <?= count($re)?>건</p>
+            <h2 class="jua">수강평</h2>
           </div>
             <?php
+            if(isset($re)){
               foreach($re as $view){
             ?>
+          <div>
+            <p>전체 리뷰 <?= count($re)??0 ?>건</p>
+          </div>
           <div class="viewSection3 shadow_box pd_2">
             <div class="review d-flex justify-content-between align-items-center">
               <div class="reviewProfile d-flex gap-3 align-items-center">
@@ -142,11 +167,11 @@
                 <span><?= $view->regdate; ?></span>
               </div>
               <div class="rating" data-rate="<?= $view->rating; ?>">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
               </div>
             </div>
             <div class="reviewBox_1 pd_3">
@@ -162,20 +187,30 @@
                 <div class="reviewProfile d-flex gap-3 align-items-center">
                   <img src="../course_images/327610-eng.png" alt="" />
                   <span class="fw-bold">프바오</span>
-                  <span><?= $rr->r_regdate; ?></span>
+                  <span><?= $view->r_regdate; ?></span>
                 </div>
               </div>
               <div>
-                <p><?= $rr->r_content; ?></p>
+                <p><?= $view->r_content; ?></p>
               </div>
             </div>
           </div>
           <?php
               }
-            ?>
-          <div class="viewSection3Btn">
-            <button class="btn btn-dark">더보기</button>
-          </div>
+          ?>         
+            <div class="viewSection3Btn">
+                  <button class="btn btn-dark">더보기</button>
+            </div>
+          <?php       
+            }else{
+          ?>
+            <div class="noview">
+              <img src="../images/course/noreview.png" alt="수강평없음">
+              <p>수강평이 없어요(ㅠ_ㅠ) 첫번째 수강평을 남겨주세요!</p> 
+            </div>     
+          <?php
+            }
+          ?>    
         </div>
       </div>
     </main>

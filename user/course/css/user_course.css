@@ -11,12 +11,15 @@
 .pd_4 {
   margin-bottom: 30px;
 }
+.pd_5 {
+  margin-top: 130px;
+}
+.pd_6 {
+  margin-bottom: 130px;
+}
 
 /* 강의리스트 */
-.container {
-  margin: 0 auto;
-  padding: 130px 0;
-}
+
 
 .section1 {
   width: 100%;
@@ -65,7 +68,7 @@
   border-radius: 10px;
   cursor: pointer;
   background-color: #fff;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 }
 
 .imgBox img {
@@ -81,9 +84,9 @@
   color: #ff8744;
 }
 
-.row > * {
+/* .row > * {
   padding: 0;
-}
+} */
 
 /* 강의상세보기 */
 .viewSetion_1 {
@@ -208,6 +211,16 @@
   background-color: #e8f7ff;
 }
 
-.rating svg {
-  color: #ebebeb;
+.noview{
+ text-align: center;
 }
+
+.noview img{
+  width: 289px;
+  height: 312px;
+  padding-bottom: 20px;
+}
+
+/* .rating svg {
+  color: #ffca2c;
+} */

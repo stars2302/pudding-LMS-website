@@ -62,7 +62,7 @@ while($rs = $result -> fetch_object()){
 
     <main>
       <div class="container">
-        <div class="section1 d-flex justify-content-between pd_2">
+        <div class="section1 d-flex justify-content-between pd_2 pd_5">
           <div class="courseBigTitle jua">
             <h1>강의리스트</h1>
           </div>
@@ -206,12 +206,11 @@ while($rs = $result -> fetch_object()){
               </div>
             </div>
           </div>
-          <div class="courseList">
+          <div class="courseList"> <div class="row mb-5">
             <?php
               foreach($rsc as $item){
-            ?>
-            <div class="row mb-5">
-              <div class="col-12 col-sm-6 col-md-4 courseBox shadow_box">
+            ?>        
+              <div class="col-12 col-sm-6 col-md-4 courseBox">
                 <div class="imgBox">
                   <img
                     src="<?= $item -> thumbnail?>"
@@ -221,8 +220,31 @@ while($rs = $result -> fetch_object()){
                 </div>
                 <div class="contentBox">
                   <div class="d-flex gap-1">
-                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
-                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
+                    <span class="badge rounded-pill blue_bg b-pd">
+                      <?php
+                        if (isset($item->cate)) {
+                          $categoryText = $item->cate;
+                          $parts = explode('/', $categoryText);
+                          $lastPart = end($parts);
+
+                          echo $lastPart;
+                        }
+                      ?>
+                    </span>
+                    <span class="badge rounded-pill b-pd
+                      <?php
+                        $levelBadge = $item->level;
+                        if ($levelBadge === '초급') {
+                          echo 'yellow_bg';
+                        } else if ($levelBadge === '중급') {
+                          echo 'green_bg';
+                        } else {
+                          echo 'red_bg';
+                        }
+                      ?>
+                      ">
+                      <?= $item->level; ?>
+                    </span>
                   </div>
                   <p class="fw-bold mt-2">
                   <a href="course_view.php?cid=<?= $item->cid ?>"><?= $item->name?></a>
@@ -238,10 +260,10 @@ while($rs = $result -> fetch_object()){
                   </div>
                 </div>
               </div>
-            </div>
+           
             <?php
               }
-            ?>
+            ?> </div>
           </div>
         </div>
       </div>
