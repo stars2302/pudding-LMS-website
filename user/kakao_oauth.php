@@ -1,5 +1,6 @@
 <?php
-$rest_api_key = "";  
+session_start();
+$rest_api_key = "";    
 $redirect_uri = "http://localhost/pudding-LMS-website/user/kakao_oauth.php";  // Redirect URI
 $code = $_GET['code'];
 
@@ -57,22 +58,29 @@ $existing_user_query = "SELECT userid FROM users WHERE userid = '$userid'";
 $existing_user_result = $mysqli->query($existing_user_query);
 
 if ($existing_user_result->num_rows > 0) {
-    // 이미 사용자가 존재하면 추가 INSERT를 수행하지 않습니다.
-    echo "<script>alert('로그인중입니다!');
-    location.href = '/pudding-LMS-website/user/kakaologin_ok.php';
-    </script>";
+        $_SESSION['UID'] = $userid;
+        $_SESSION['UNAME'] = $username;
+        echo "<script>alert('로그인성공!');
+         location.href = '/pudding-LMS-website/user/index.php';
+            
+            </script>";
+    
+
 } else {
     // 사용자 정보를 users 테이블에 저장
     $insert_query = "INSERT INTO users (userid, username, userimg) VALUES ('$userid', '$username','$userimg')";
     
     if ($mysqli->query($insert_query) === TRUE) {
-        echo "<script>alert('카카오 로그인 회원가입완료.');
-        // userid를 POST 방식으로 kakaologin_ok.php로 전송하는 폼
-        echo '<form id=\"kakao-login-form\" method=\"post\" action=\"/pudding-LMS-website/user/kakaologin_ok.php\">';
-        echo '<input type=\"hidden\" name=\"userid\" value=\"$userid\">';
-        echo '</form>';
-        echo '<script>document.getElementById(\"kakao-login-form\").submit();</script>';
+    $_SESSION['UID'] = $userid;
+    $_SESSION['UNAME'] = $username;
+    echo "<script>alert('로그인성공!');
+        location.href = '/pudding-LMS-website/user/index.php';
+        
         </script>";
+
+
+
+        
     } else {
         echo "오류: " . $insert_query . "<br>" . $mysqli->error;
     }

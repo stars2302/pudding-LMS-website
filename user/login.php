@@ -38,15 +38,16 @@ userimg -->
         <input type="text" class="form-control" id="userpasswd" name="userpasswd" placeholder="비밀번호"
           aria-label="Userpassword" />
         <button class="btn btn-primary dark">로그인</button>
-        <button type="button" onclick="loginWithKakao()">
-          <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg">
-        </button>
+       
         <div class="form-check d-flex justify-content-end login_check gap-2">
           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
           <label class="form-check-label" for="flexCheckDefault">
             아이디 저장
           </label>
         </div>
+        <button type="button" onclick="loginWithKakao()">
+          <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg">
+        </button>
         <div class="id_pw d-flex justify-content-center">
           <a href="/pudding-LMS-website/user/signup.php">회원가입</a>
           <a href="#">아이디 찾기</a>
@@ -57,11 +58,11 @@ userimg -->
   </div>
 </main>
 <script>
-Kakao.init('');
+Kakao.init(''); 
 
 function loginWithKakao() {
     Kakao.Auth.authorize({
-        redirectUri: 'http://localhost/pudding-LMS-website/user/kakao_oauth.php', // 앞서 등록한 Redirect URI
+        redirectUri: 'http://localhost/pudding-LMS-website/user/kakao_oauth.php', 
     });
 }
 

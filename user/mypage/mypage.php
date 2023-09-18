@@ -37,6 +37,8 @@ $js_route = "mypage/js/mypage.js";
 }
 
 // var_dump($courses);
+
+
 ?>
 
 <main class="d-flex">
@@ -115,7 +117,8 @@ $js_route = "mypage/js/mypage.js";
             </div>
           </div>
           <div class="col-md-3 d-flex justify-content-end align-items-end">
-            <a href="mycourse.php?cid='<?php echo $c->cid ?>'" class="btn btn-dark">강의보기</a>
+            <a href="/pudding-LMS-website/user/mypage/mycourse.php?cid=<?php echo $c->cid ?>" class="btn btn-dark">강의보기</a>
+            
           </div>
         </li>
         <?php
