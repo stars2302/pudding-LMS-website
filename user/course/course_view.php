@@ -1,15 +1,44 @@
 <?php
-$title="강의 상세";
-$css_route="course/css/user_course.css";
-$js_route = "course/js/user_course.js";
-  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+  $title="강의 상세";
+  $css_route="course/css/user_course.css";
+  $js_route = "course/js/user_course.js";
+    include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+
+  $cid = $_GET['cid'];
+
+  $sql = "SELECT * FROM courses where cid={$cid}";
+  $result = $mysqli->query($sql);
+  $rs = $result->fetch_object();
+
+  $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
+  $result = $mysqli->query($imgsql);
+
+  while ($is = $result->fetch_object()) {
+    $addImgs[] = $is;
+  }
+
+  $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
+          JOIN users u ON r.uid = u.uid
+          JOIN courses c ON c.cid = r.cid
+          JOIN review_reply w ON r.rid = w.rid
+          WHERE r.cid = '{$cid}'";
+
+  $result1 = $mysqli->query($sql1);
+
+  while ($card = $result1->fetch_object()) {
+    $re[] = $card;
+  }
+
+  $cateString = $rs->cate;
+  $parts = explode('/', $cateString);
 ?>
+
     <main>
       <div class="container">
-        <div class="viewSetion_1 shadow_box">
+        <div class="viewSetion_1 shadow_box pd_5">
           <div class="d-flex gap-5">
             <div>
-              <img src="../course_images/327610-eng.png" alt="" />
+              <img src="<?= $rs->thumbnail; ?>" alt="" />
             </div>
             <div
               class="viewTitleWrap d-flex flex-column justify-content-between"
@@ -17,18 +46,43 @@ $js_route = "course/js/user_course.js";
               <div>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <span class="badge rounded-pill blue_bg b-pd">Badge</span>
-                    <span class="badge rounded-pill yellow_bg b-pd">Badge</span>
+                    <span class="badge rounded-pill blue_bg b-pd">
+                      <?php
+                        //뱃지 키워드 
+                        if (isset($rs->cate)) {
+                          $categoryText = $rs->cate;
+                          $parts = explode('/', $categoryText);
+                          $lastPart = end($parts);
+
+                          echo $lastPart;
+                        }
+                      ?>
+                    </span>
+                    <span class="badge rounded-pill b-pd
+                      <?php
+                        // 뱃지 컬러
+                        $levelBadge = $rs->level;
+                        if ($levelBadge === '초급') {
+                          echo 'yellow_bg';
+                        } else if ($levelBadge === '중급') {
+                          echo 'green_bg';
+                        } else {
+                          echo 'red_bg';
+                        }
+                      ?>
+                      ">
+                      <?= $rs->level; ?>
+                    </span>
                   </div>
                   <div class="viewCate d-flex gap-2">
-                    <p>프로그래밍</p>
+                    <p><?= $parts[0] ?></p>
                     <span>></span>
-                    <p>프론트엔드</p>
+                    <p><?= $parts[1] ?></p>
                     <span>></span>
-                    <p>Javascript</p>
+                    <p><?= $parts[2] ?></p>
                   </div>
                 </div>
-                <p class="content_tt">테레비보다 재미있는 제이쿼리(jQuery)</p>
+                <p class="content_tt"><?= $rs->name?></p>
               </div>
               <div
                 class="viewPriceWrap d-flex justify-content-between align-items-end"
@@ -36,9 +90,9 @@ $js_route = "course/js/user_course.js";
                 <div>
                   <div>
                     <i class="ti ti-calendar-event"></i>
-                    <span>수강기간 3개월</span>
+                    <span>수강기간 <?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span>
                   </div>
-                  <div><span class="main_stt">30000</span><span>원</span></div>
+                  <div><span class="main_stt"><?= $rs->price?></span><span>원</span></div>
                 </div>
                 <div>
                   <div class="viewBtn mb-2">
@@ -54,10 +108,7 @@ $js_route = "course/js/user_course.js";
           <div class="pd_3">
             <p class="content_stt fw-bold">강의소개</p>
             <p>
-              제이쿼리(jQuery) 는 웹페이지에 역동적인 움직임이나 기능을 더해주는
-              자바스크립트(javascript) 라이브러리 입니다. 기존 자바스크립트에섬
-              몇줄에 걸쳐서 가능했던 기능들은 단지 한줄로도 가능하게 할수
-              있을만큼 쉽고, 빠르고, 간편합니다.
+            <?= $rs->content?>
             </p>
           </div>
         </div>
@@ -69,113 +120,66 @@ $js_route = "course/js/user_course.js";
             <button class="viewB_2">수강평</button>
           </div>
         </div>
-        <div class="viewWrap_1">
+        <div class="viewWrap_1 pd_6">
           <div class="pd_2">
             <h2 class="jua">강의목록</h2>
           </div>
           <div class="viewSection2 shadow_box">
-            <div
-              class="viewList d-flex justify-content-between align-items-center"
-            >
+            <?php
+              foreach($addImgs as $ai){
+            ?>
+            <div class="viewList d-flex justify-content-between align-items-center">
               <div class="d-flex align-items-center">
                 <div class="viewImg">
-                  <img src="../course_images/327610-eng.png" alt="" />
+                  <img src="<?= $ai->youtube_thumb?>" alt="" />
                 </div>
                 <div>
-                  <span>제이쿼리 문장 구성법과 선택자</span>
+                  <span><?= $ai->youtube_name?></span>
                 </div>
               </div>
               <div>
-                <a href=""><i class="fa-regular fa-circle-play"></i></a>
+                <a href="<?= $ai->youtube_url?>"><i class="fa-regular fa-circle-play"></i></a>
               </div>
             </div>
-            <div
-              class="viewList d-flex justify-content-between align-items-center"
-            >
-              <div class="d-flex align-items-center">
-                <div class="viewImg">
-                  <img src="../course_images/327610-eng.png" alt="" />
-                </div>
-                <div>
-                  <span>
-                    제이쿼리 문장 구성법과 선택자 제이쿼리 문장 구성법과 선택자
-                  </span>
-                </div>
-              </div>
-              <div>
-                <a href=""><i class="fa-regular fa-circle-play"></i></a>
-              </div>
-            </div>
-            <div
-              class="viewList d-flex justify-content-between align-items-center"
-            >
-              <div class="d-flex align-items-center">
-                <div class="viewImg">
-                  <img src="../course_images/327610-eng.png" alt="" />
-                </div>
-                <div>
-                  <span>
-                    제이쿼리 문장 구성법과 선택자 제이쿼리 문장 구성법과 선택자
-                    제이쿼리 문장
-                  </span>
-                </div>
-              </div>
-              <div>
-                <a href=""><i class="fa-regular fa-circle-play"></i></a>
-              </div>
-            </div>
-            <div
-              class="viewList d-flex justify-content-between align-items-center"
-            >
-              <div class="d-flex align-items-center">
-                <div class="viewImg">
-                  <img src="../course_images/327610-eng.png" alt="" />
-                </div>
-                <div>
-                  <span>
-                    제이쿼리 문장 구성법과 선택자 제이쿼리 문장 구성법과 선택자
-                  </span>
-                </div>
-              </div>
-              <div>
-                <a href=""><i class="fa-regular fa-circle-play"></i></a>
-              </div>
-            </div>
+            <?php           
+              }
+            ?>
           </div>
         </div>
 
-        <div class="viewWrap_2">
+        <div class="viewWrap_2 pd_6">
           <div class="pd_2">
-            <h2 class="jua">강의평</h2>
+            <h2 class="jua">수강평</h2>
           </div>
+            <?php
+            if(isset($re)){
+              foreach($re as $view){
+            ?>
           <div>
-            <p>전체 리뷰 90건</p>
+            <p>전체 리뷰 <?= count($re)??0 ?>건</p>
           </div>
           <div class="viewSection3 shadow_box pd_2">
-            <div
-              class="review d-flex justify-content-between align-items-center"
-            >
+            <div class="review d-flex justify-content-between align-items-center">
               <div class="reviewProfile d-flex gap-3 align-items-center">
-                <img src="../course_images/327610-eng.png" alt="" />
-                <span class="fw-bold">강바오</span>
-                <span>PHP BASIC 강의</span>
-                <span>2023-08-21</span>
+                <img src="<?= $view->userimg; ?>" alt="" />
+                <span class="fw-bold"><?= $view->username; ?></span>
+                <span><?= $view->name; ?></span>
+                <span><?= $view->regdate; ?></span>
               </div>
-              <div class="rating" data-rate="3">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+              <div class="rating" data-rate="<?= $view->rating; ?>">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
               </div>
             </div>
             <div class="reviewBox_1 pd_3">
               <p>
-                PHP를 배우기 위해서 급하게 들은 강의였는데, 생각보다 너무
-                친절하게 많은 예시를 들어 설명해주셔서 이해하기 쉬었습니다.
-                기본기를 정리하는데 아주 좋은 강의였습니다.
+              <?= $view->content; ?>
               </p>
             </div>
+
             <div class="reviewBox_2 pd_3">
               <div
                 class="review d-flex justify-content-between align-items-center pd_4"
@@ -183,67 +187,30 @@ $js_route = "course/js/user_course.js";
                 <div class="reviewProfile d-flex gap-3 align-items-center">
                   <img src="../course_images/327610-eng.png" alt="" />
                   <span class="fw-bold">프바오</span>
-                  <span>2023-08-21</span>
+                  <span><?= $view->r_regdate; ?></span>
                 </div>
               </div>
               <div>
-                <p>
-                  안녕하세요! 사이트 관리자 프바오입니다. 강바오님의 수강평으로
-                  인한 응원으로 많은 보람을 느낍니다. 앞으로도 게시판을 만드는
-                  중급 php를 들으셔도 많은도움을 받을수 있을것이라 생각됩니다!
-                  앞으로도 즐거운 코딩 함께해요!
-                </p>
+                <p><?= $view->r_content; ?></p>
               </div>
             </div>
           </div>
-          <div class="viewSection3 shadow_box">
-            <div
-              class="review d-flex justify-content-between align-items-center"
-            >
-              <div class="reviewProfile d-flex gap-3 align-items-center">
-                <img src="../course_images/327610-eng.png" alt="" />
-                <span class="fw-bold">강바오</span>
-                <span>PHP BASIC 강의</span>
-                <span>2023-08-21</span>
-              </div>
-              <div class="rating" data-rate="3">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
+          <?php
+              }
+          ?>         
+            <div class="viewSection3Btn">
+                  <button class="btn btn-dark">더보기</button>
             </div>
-            <div class="reviewBox_1 pd_3">
-              <p>
-                PHP를 배우기 위해서 급하게 들은 강의였는데, 생각보다 너무
-                친절하게 많은 예시를 들어 설명해주셔서 이해하기 쉬었습니다.
-                기본기를 정리하는데 아주 좋은 강의였습니다.
-              </p>
-            </div>
-            <div class="reviewBox_2 pd_3">
-              <div
-                class="review d-flex justify-content-between align-items-center pd_4"
-              >
-                <div class="reviewProfile d-flex gap-3 align-items-center">
-                  <img src="../course_images/327610-eng.png" alt="" />
-                  <span class="fw-bold">프바오</span>
-                  <span>2023-08-21</span>
-                </div>
-              </div>
-              <div>
-                <p>
-                  안녕하세요! 사이트 관리자 프바오입니다. 강바오님의 수강평으로
-                  인한 응원으로 많은 보람을 느낍니다. 앞으로도 게시판을 만드는
-                  중급 php를 들으셔도 많은도움을 받을수 있을것이라 생각됩니다!
-                  앞으로도 즐거운 코딩 함께해요!
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="viewSection3Btn">
-            <button class="btn btn-dark">더보기</button>
-          </div>
+          <?php       
+            }else{
+          ?>
+            <div class="noview">
+              <img src="../images/course/noreview.png" alt="수강평없음">
+              <p>수강평이 없어요(ㅠ_ㅠ) 첫번째 수강평을 남겨주세요!</p> 
+            </div>     
+          <?php
+            }
+          ?>    
         </div>
       </div>
     </main>
