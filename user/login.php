@@ -50,6 +50,7 @@ userimg -->
           <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_pw">비밀번호 찾기</button>
         </div>
       </form>
+      
       <!-- 아이디 찾기 Modal -->
       <div class="modal fade" id="find_id" tabindex="-1">
         <div class="modal-dialog">
@@ -97,31 +98,6 @@ userimg -->
           </div>
         </div>
       </div>
-
-
-      <!-- 비밀번호 수정 Modal -->
-      <!-- <div class="modal fade" id="modify_pw" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">비밀번호 변경</h5>
-            </div>
-            <div class="modal-body">
-              <form action="find_pw.php" method="POST" id="find_pw_form">
-                <label for="userpasswd">새 비밀번호</label>
-                <input type="text" class="form-control" name="userpasswd" id="" placeholder="새 비밀번호를 입력하세요.">
-                <label for="userpasswd">새 비밀번호 확인</label>
-                <input type="text" class="form-control" name="userpasswd" placeholder="비밀번호 확인 ">
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-              <button type="button" class="btn btn-primary" id="modify_pw_btn">확인</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
 
     </div>
   </div>
