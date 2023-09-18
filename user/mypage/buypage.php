@@ -1,8 +1,25 @@
 <?php
+// session_start();
+
 $title="마이페이지 - 구매내역";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+
+
+$userid =$_SESSION['UID'];
+
+$sql = "SELECT p.regdate, p.name,p.total_price,p.discount_price, u.userid FROM payments p JOIN users u ON u.userid = p.userid WHERE u.userid = '{$userid}' ORDER BY p.payid DESC";
+
+$result = $mysqli->query($sql);
+while($rs = $result->fetch_object()){
+  $purchase[]=$rs;
+}
+
+// var_dump($purchase);
+
+
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">
@@ -10,10 +27,10 @@ $js_route = "mypage/js/mypage.js";
         <h4 class="jua main_tt my_title">마이페이지</h4>
         <nav>
           <ul>
-            <li class="content_stt link_tag"><a href="#">내 강의실</a></li>
-            <li class="content_stt"><a href="#">구매내역</a></li>
-            <li class="content_stt"><a href="#">쿠폰함</a></li>
-            <li class="content_stt"><a href="#">수강평</a></li>
+          <li class="content_stt link_tag mypage_tag"><a href="/pudding-LMS-website/user/mypage/mypage.php">내 강의실</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/buypage.php">구매내역</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/couponpage.php">쿠폰함</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/review_list.php">수강평</a></li>
           </ul>
         </nav>
       </div>
@@ -33,36 +50,24 @@ $js_route = "mypage/js/mypage.js";
               </tr>
             </thead>
             <tbody>
+              <?php
+              if(isset($purchase)){
+                foreach($purchase as $p){
+
+              
+              ?>
               <tr>
-                <td>2023.09.11</td>
-                <td>React 공식문서 함께 공부하기</td>
-                <td><span class="number">100,000</span><span>원</span></td>
-                <td>90,000원</td>
+                <td><?= date('Y-m-d', strtotime($p->regdate)) ;?></td>
+                <td><?php echo $p->name ?></td>
+                <td><span class="number"><?php echo $p->total_price ?></span><span>원</span></td>
+                <td><?php echo $p->discount_price ?></td>
               </tr>
-              <tr>
-                <td>2023.09.11</td>
-                <td>React 공식문서 함께 공부하기</td>
-                <td><span class="number">100,000</span><span>원</span></td>
-                <td>90,000원</td>
-              </tr>
-              <tr>
-                <td>2023.09.11</td>
-                <td>React 공식문서 함께 공부하기</td>
-                <td><span class="number">100,000</span><span>원</span></td>
-                <td>90,000원</td>
-              </tr>
-              <tr>
-                <td>2023.09.11</td>
-                <td>React 공식문서 함께 공부하기</td>
-                <td><span class="number">100,000</span><span>원</span></td>
-                <td>90,000원</td>
-              </tr>
-              <tr>
-                <td>2023.09.11</td>
-                <td>React 공식문서 함께 공부하기</td>
-                <td><span class="number">100,000</span><span>원</span></td>
-                <td>90,000원</td>
-              </tr>
+
+              <?php
+                }
+              }
+              ?>
+            
             </tbody>
           </table>
         </div>
