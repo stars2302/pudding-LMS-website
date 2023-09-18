@@ -3,40 +3,48 @@ $title="장바구니";
 $css_route="cart/css/cart.css";
 $js_route = "cart/js/cart.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+// include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/login_ok.php';
 
 
-//$username = $_SESSION['AUID'];//유저아이디?
-$userid = 'gangbao';
 
+if(!isset($_SESSION['UID'])){
+  echo"<script>
+  alert('로그인 후 이용해주세요.');
+  history.back();
+  </script>";
+} else{
+  $userid = $_SESSION['UID'];//유저아이디
 
-//cart item 조회
-$sqlct = "SELECT c.*,ct.cartid FROM cart ct
-        JOIN users u ON ct.userid = u.uid
-        JOIN courses c ON c.cid = ct.cid
-        WHERE u.userid = '{$userid}'
-
-        ORDER BY ct.cartid DESC";
-
-
-$result = $mysqli-> query($sqlct);
-while($rs = $result->fetch_object()){
-  $rscct[]=$rs;
+  //cart item 조회
+  $sqlct = "SELECT c.*,ct.cartid FROM cart ct
+          JOIN users u ON ct.userid = u.uid
+          JOIN courses c ON c.cid = ct.cid
+          WHERE u.userid = '{$userid}'
+  
+          ORDER BY ct.cartid DESC";
+  
+  
+  $result = $mysqli-> query($sqlct);
+  while($rs = $result->fetch_object()){
+    $rscct[]=$rs;
+  }
+  
+  //coupon 조회
+  $sqlcp = "SELECT c.* FROM user_coupon uc
+          JOIN users u ON uc.userid = u.userid
+          JOIN coupons c ON c.cpid = uc.cpid
+          WHERE u.userid = '{$userid}'
+  
+          ORDER BY uc.ucid DESC";
+  
+  
+  $result = $mysqli-> query($sqlcp);
+  while($rs = $result->fetch_object()){
+    $rsccp[]=$rs;
+  }
+  // var_dump($rsccp);
 }
 
-//coupon 조회
-$sqlcp = "SELECT c.* FROM user_coupon uc
-        JOIN users u ON uc.userid = u.userid
-        JOIN coupons c ON c.cpid = uc.cpid
-        WHERE u.userid = '{$userid}'
-
-        ORDER BY uc.ucid DESC";
-
-
-$result = $mysqli-> query($sqlcp);
-while($rs = $result->fetch_object()){
-  $rsccp[]=$rs;
-}
-var_dump($rsccp);
 
 ?>
 
@@ -63,8 +71,8 @@ var_dump($rsccp);
 
 
           <li class="cart_item shadow_box" data-cartid="<?= $cart->cartid ?>">
-            <input class="form-check-input" type="checkbox" value="" id="cart_item1" checked>
-            <label class="form-check-label" for="cart_item1"></label>
+            <input class="form-check-input" type="checkbox" value="" id="cart_item<?= $cart->cartid ?>" checked>
+            <label class="form-check-label" for="cart_item<?= $cart->cartid ?>"></label>
             <img src="<?= $cart->thumbnail ?>" alt="<?= $cart->name ?>" class="radius_5">
             <div class="text_box">
               <div class="title">
@@ -111,7 +119,14 @@ var_dump($rsccp);
           <?php
             }
           }else {
-            echo '장바구니에 담긴 강의가 없습니다.<a href="/pudding-LMS-website/user/index.php"><i class="ti ti-home"></i> 홈으로 이동</a>';
+          ?>
+          <li class="no_cart_container">
+            <img src="images/cart_2.png" alt="장바구니가 비어있어서 슬픈 푸딩 이미지" class="no_cart_img">
+            <p class="content_stt">장바구니에 담긴 강의가 없습니다.</p>
+            <a href="/pudding-LMS-website/user/index.php" class="btn btn-primary dark">홈으로이동</a>
+          </li>
+            <!-- echo '장바구니에 담긴 강의가 없습니다.<a href="/pudding-LMS-website/user/index.php"><i class="ti ti-home"></i> 홈으로 이동</a>'; -->
+          <?php
           }
           ?>
         </ul>
