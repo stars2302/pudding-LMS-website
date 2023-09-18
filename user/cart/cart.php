@@ -14,6 +14,7 @@ if(!isset($_SESSION['UID'])){
   </script>";
 } else{
   $userid = $_SESSION['UID'];//유저아이디
+  // var_dump($userid); //gangbao
 
   //cart item 조회
   $sqlct = "SELECT c.*,ct.cartid FROM cart ct
