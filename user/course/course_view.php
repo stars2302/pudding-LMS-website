@@ -20,7 +20,7 @@
   $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
           JOIN users u ON r.uid = u.uid
           JOIN courses c ON c.cid = r.cid
-          JOIN review_reply w ON r.rid = w.rid
+          LEFT JOIN review_reply w ON r.rid = w.rid
           WHERE r.cid = '{$cid}'";
 
   $result1 = $mysqli->query($sql1);
@@ -92,7 +92,7 @@
                     <i class="ti ti-calendar-event"></i>
                     <span>수강기간 <?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span>
                   </div>
-                  <div><span class="main_stt"><?= $rs->price?></span><span>원</span></div>
+                  <div><span class="main_stt number"><?= $rs->price?></span><span>원</span></div>
                 </div>
                 <div>
                   <div class="viewBtn mb-2">
@@ -151,13 +151,17 @@
           <div class="pd_2">
             <h2 class="jua">수강평</h2>
           </div>
-            <?php
+          <?php
             if(isset($re)){
-              foreach($re as $view){
-            ?>
-          <div>
-            <p>전체 리뷰 <?= count($re)??0 ?>건</p>
-          </div>
+          ?>
+            <div>
+              <p>전체 리뷰 <?= count($re)??0 ?>건</p>
+            </div>
+          <?php } ?>
+          <?php
+          if(isset($re)){
+            foreach($re as $view){
+          ?>
           <div class="viewSection3 shadow_box pd_2">
             <div class="review d-flex justify-content-between align-items-center">
               <div class="reviewProfile d-flex gap-3 align-items-center">
