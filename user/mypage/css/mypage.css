@@ -476,3 +476,13 @@ textarea:focus {
   color: var(--point_primary_hover);
 }
 /* 내강의실 끝 */
+
+
+  .hide-usables {
+    display: none;
+}
+
+
+.hide-expirings {
+    display: block;
+}

@@ -9,7 +9,7 @@ $js_route = "mypage/js/mypage.js";
       <div class="">
         <h4 class="jua main_tt my_title">마이페이지</h4>
         <nav>
-          <ul>
+        <ul>
           <li class="content_stt link_tag"><a href="/pudding-LMS-website/user/mypage/mypage.php">내 강의실</a></li>
             <li class="content_stt"><a href="/pudding-LMS-website/user/mypage/buypage.php">구매내역</a></li>
             <li class="content_stt"><a href="/pudding-LMS-website/user/mypage/couponpage.php">쿠폰함</a></li>
