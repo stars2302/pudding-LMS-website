@@ -35,9 +35,7 @@
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
     $youtube_name = $_POST['youtube_name']?? '';
-    $isnew = $_POST['isnew']??0;
-    $isrecom = $_POST['isrecom']??0;
-    $isbest = $_POST['isbest']??0;
+  
 
     
     //파일업로드
@@ -75,8 +73,8 @@
         }
     }
 
-    $sql = "INSERT INTO courses (cate, name, price_status , price, level, due_status, due, act, content, thumbnail, isnew, isbest, isrecom) 
-    VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}','{$isnew}','{$isbest}','{$isrecom}')";
+    $sql = "INSERT INTO courses (cate, name, price_status , price, level, due_status, due, act, content, thumbnail) 
+    VALUES ('{$cate}','{$name}','{$price_status}','{$price}','{$level}','{$due_status}','{$due}','{$act}','{$content}','{$thumbnail}')";
 
 
     $result = $mysqli->query($sql);

@@ -17,7 +17,7 @@ $uid = $_GET['uid'];
 <main class="pudding_bg">
   <div class="radius_12 white_bg login_box d-flex">
     <div class="col-md-6 d-flex align-items-center">
-      <img src="images/login/login.png" alt="" />
+      <img src="/pudding-LMS-website/user/images/login/login.png" alt="로그인 이미지" />
     </div>
     <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
       <h3>비밀번호 변경</h3>

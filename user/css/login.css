@@ -2,14 +2,16 @@
 main {
  height: calc(100vh - 90px);
 }
-
+.login_box{
+  height: 630px;
+}
 .login_box,
 .signup_box{
   width: 1184px;
-  height: 630px;
   margin: 0 auto;
   position: relative;
   top:60px;
+  box-sizing: content-box;
 }
 .login_box form,
 .signup_box form{
@@ -42,7 +44,8 @@ main {
 .id_pw a:hover{
   font-weight: 500;
 }
-.id_pw a:after{
+.id_pw a:after,
+.id_pw button:after{
   content: "";
   position: absolute;
   top: 5px;
@@ -51,7 +54,7 @@ main {
   height: 12px;
   background: #aeaeae;
 }
-.id_pw a:last-child::after{
+.id_pw button:last-child::after{
   width: 0;
 }
 .login_box .form-control,
@@ -69,7 +72,10 @@ main {
   width: 100%;
   object-fit: cover;
 }
-
+.signup_box{
+  padding: 45px 0;
+  height: 100%;
+}
 .signup_box form{
   display: flex;
   flex-direction: column;
@@ -83,4 +89,27 @@ main {
 }
 .btn.duplication_btn span {
 width: 100%;
+}
+
+.form-control[type=file]{
+  height: 45px;
+  /* line-height: 45px; */
+}
+input[type="file"] {
+  writing-mode: horizontal-tb !important;
+}
+input[type="file"]::file-selector-button {
+  height: 45px;
+}
+.swiper-pagination-bullet {
+  background: none;
+  border: 2px solid var(--border_grey);
+  width: 10px;
+  height: 10px;
+  /* outline: 2px solid var(--border_grey); */
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--pudding_bg);
+  border: none;
 }

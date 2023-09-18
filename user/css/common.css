@@ -621,8 +621,13 @@ header a.btn:last-child {
 header li:hover a {
   font-weight: 500;
 }
-
-.cart {
+.user_profile{
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.cart_btn {
   position: relative;
   top: -3px;
 }
@@ -694,11 +699,12 @@ footer span {
 .f_list li:after {
   content: "";
   position: absolute;
-  top: -10px;
+  top: 50%;
   right: -16px;
   width: 2px;
   height: 12px;
   background: #aeaeae;
+  transform: translateY(-50%);
 }
 
 .tel_mail p:last-child:after,

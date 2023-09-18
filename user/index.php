@@ -5,7 +5,7 @@ $js_route = "js/index.js";
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.php';
 
 // 인기 강의
-$sql = "SELECT * FROM `courses` WHERE isbest = 1";
+$sql = "SELECT * FROM `courses` WHERE isbest = 1 LIMIT 0,5";
 $result = $mysqli->query($sql);
 while ($rs = $result->fetch_object()) {
   $rsc[] = $rs;
@@ -24,6 +24,22 @@ $new_result = $mysqli->query($new_sql);
 while ($new_rs = $new_result->fetch_object()) {
   $new_rsc[] = $new_rs;
 }
+
+// 수강평
+// $rvsql = "SELECT * FROM review ORDER BY rid DESC LIMIT 0, 8";
+$rvsql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
+        JOIN users u ON r.uid = u.uid
+        JOIN courses c ON c.cid = r.cid
+
+        ORDER BY r.rid DESC LIMIT 0, 6";
+
+$rvresult = $mysqli->query($rvsql);
+while ($rvrs = $rvresult->fetch_object()) {
+  $rvrsc[] = $rvrs;
+}
+
+
+
 
 // 공지사항
 $ntsql = "SELECT * FROM notice ORDER BY ntid DESC LIMIT 0, 10";
@@ -56,7 +72,7 @@ while ($ntrs = $ntresult->fetch_object()) {
     <div class="category_box radius_12">
       <ul>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_view.php?cate=<?= 'HTML'; ?>">
             <img src="images/main/html.png" alt="HTML">
             <p>HTML</p>
           </a>
@@ -139,7 +155,7 @@ while ($ntrs = $ntresult->fetch_object()) {
           foreach ($rsc as $item) {
             ?>
             <li>
-              <div class="card" style="width: 18rem;">
+              <div class="card">
                 <img src="<?= $item->thumbnail ?>" class="card-img-top" alt="강의 썸네일">
                 <div class="card-body">
                   <h5 class="card-title">
@@ -167,10 +183,32 @@ while ($ntrs = $ntresult->fetch_object()) {
                   </div>
                 </div>
               </div>
-              <div class="view_wrap">
-                <a href="#" class="view_btn">상세보기</button>
-                  <a href="#"><i class="ti ti-heart"></i></a>
-                  <a href="#"><i class="ti ti-basket"></i></a>
+              <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
+                <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
+                <span>
+                  <!-- <a href="#"><i class="ti ti-heart"></i></a> -->
+                  <a href="#" class="card_like">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
+                      height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                    </svg>
+                  </a>
+                  <!-- <a href="#"><i class="ti ti-basket"></i></a> -->
+                  <a href="#" class="card_cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
+                      height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                      <path
+                        d="M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z" />
+                      <path d="M17 10l-2 -6" />
+                      <path d="M7 10l2 -6" />
+                    </svg>
+                  </a>
+                </span>
               </div>
             </li>
             <?php
@@ -224,7 +262,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                     <h5 class="card-title">
                       <?php
                       $strTitle = $item->name;
-                      $strTitle = mb_strimwidth($strTitle, 0, 36, "...", "utf-8");
+                      $strTitle = mb_strimwidth($strTitle, 0, 32, "...", "utf-8");
                       echo $strTitle;
                       ?>
                     </h5>
@@ -245,6 +283,33 @@ while ($ntrs = $ntresult->fetch_object()) {
                     </div>
                   </div>
                 </div>
+                <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
+                  <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
+                  <span>
+                    <!-- <a href="#"><i class="ti ti-heart"></i></a> -->
+                    <a href="#" class="card_like">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
+                        height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                      </svg>
+                    </a>
+                    <!-- <a href="#"><i class="ti ti-basket"></i></a> -->
+                    <a href="#" class="card_cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
+                        height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                        <path
+                          d="M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z" />
+                        <path d="M17 10l-2 -6" />
+                        <path d="M7 10l2 -6" />
+                      </svg>
+                    </a>
+                  </span>
+                </div>
               </div>
               <?php
             }
@@ -262,7 +327,7 @@ while ($ntrs = $ntresult->fetch_object()) {
     <div class="page_wrap">
       <div class="swiper new_slide">
         <div class="swiper-wrapper">
-        <?php
+          <?php
           if (isset($new_rsc)) {
             foreach ($new_rsc as $item) {
               ?>
@@ -321,6 +386,31 @@ while ($ntrs = $ntresult->fetch_object()) {
                     </div>
                   </div>
                 </div>
+                <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
+                  <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
+                  <span>
+                    <a href="#" class="card_like">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
+                        height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                      </svg>
+                    </a>
+                    <a href="#" class="card_cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
+                        height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                        <path
+                          d="M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z" />
+                        <path d="M17 10l-2 -6" />
+                        <path d="M7 10l2 -6" />
+                      </svg>
+                    </a>
+                  </span>
+                </div>
               </div>
               <?php
             }
@@ -361,7 +451,7 @@ while ($ntrs = $ntresult->fetch_object()) {
     </div>
   </section>
   <section class="sec8 pudding_bg dark">
-    <div class="container">
+    <div class="container d-flex">
       <div class=col-6>
         <h2><span>541,113</span> 명이</h2>
         <h2>푸딩과 함께합니다</h2>
@@ -378,39 +468,54 @@ while ($ntrs = $ntresult->fetch_object()) {
       <div class=col-6>
         <div class="swiper review_slide">
           <div class="swiper-wrapper">
-            <div class="swiper-slide d-flex align-items-center justify-content-between">
-              <div class="card_container radius_5 white_bg">
-                <div class="b_text02">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                      <img src="../images/pdata/users/image1.jpg" class="userImg shodow_box" alt="프로필 이미지" />
-                      <h5 class="b_text01 review_user">김유림</h5>
-                      <h5 class="b_text02 dark review_name">REACT 쇼핑몰 만들기</h5>
-                      <h5 class="b_text02 dark review_date">2023-09-14</h5>
+            <?php
+            if (isset($rvrsc)) {
+              foreach ($rvrsc as $item) {
+                ?>
+                <div class="swiper-slide d-flex align-items-center justify-content-between">
+                  <div class="review_wrap radius_12 white_bg">
+                    <!-- <div> -->
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <img src="<?= $item->userimg ?>" class="userImg shodow_box" alt="프로필 이미지" />
+                        <p class="review_user">
+                          <?= $item->username ?>
+                        </p>
+                        <p class="review_name">
+                          <?php
+                          $strTitle = $item->name;
+                          $strTitle = mb_strimwidth($strTitle, 0, 36, "...", "utf-8");
+                          echo $strTitle;
+                          ?>
+
+                        </p>
+                        <p class="review_date">
+                          <?= $item->regdate ?>
+                        </p>
+                      </div>
+                      <div class="rating" data-rate="<?= $item->rating ?>">
+                        <i class="ti ti-star-filled"></i>
+                        <i class="ti ti-star-filled"></i>
+                        <i class="ti ti-star-filled"></i>
+                        <i class="ti ti-star-filled"></i>
+                        <i class="ti ti-star"></i>
+                      </div>
                     </div>
-                    <div class="rating" data-rate="4">
-                      <i class="ti ti-star-filled"></i>
-                      <i class="ti ti-star-filled"></i>
-                      <i class="ti ti-star-filled"></i>
-                      <i class="ti ti-star-filled"></i>
-                      <i class="ti ti-star"></i>
+                    <div class="b_text02 reply_content radius_5 light_blue_bg">
+                      <p>
+                        <?= $item->content ?>
+                      </p>
                     </div>
-                  </div>
-                  <div class="b_text02 reply_content radius_12">
-                    <p>REACT를 배우기 위해서 급하게 들은 강의였는데, 생각보다 너무 친절하게 많은 예시를 들어 설명해주셔서
-                      이해하기 쉬었습니다. 기본기를 정리하는데 아주 좋은 강의였습니다</p>
-                  </div>
-                  <div class="d-flex flex-row justify-content-end reply_btn_wrap">
+                    <div class="d-flex flex-row justify-content-end reply_btn_wrap">
+                    </div>
+                    <!-- </div> -->
                   </div>
                 </div>
-              </div>
-
-            </div>
-            <div class="swiper-slide d-flex align-items-center justify-content-between">
-              dfdfdf
-            </div>
+                <?php
+              }
+            }
+            ?>
           </div>
-
         </div>
 
       </div>

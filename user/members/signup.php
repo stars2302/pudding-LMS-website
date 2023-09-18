@@ -17,18 +17,23 @@ userimg -->
     <div class="col-md-6 d-flex align-items-center">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/login/signup_slide_01.png" alt="푸딩 프로모션"></div>
-          <div class="swiper-slide"><img src="images/login/signup_slide_02.png" alt="푸딩 프로모션"></div>
-          <div class="swiper-slide"><img src="images/login/signup_slide_03.png" alt="푸딩 프로모션"></div>
-          <div class="swiper-slide"><img src="images/login/signup_slide_04.png" alt="푸딩 프로모션"></div>
+          <div class="swiper-slide"><img src="/pudding-LMS-website/user/images/login/signup_slide_01.png" alt="푸딩 프로모션">
+          </div>
+          <div class="swiper-slide"><img src="/pudding-LMS-website/user/images/login/signup_slide_02.png" alt="푸딩 프로모션">
+          </div>
+          <div class="swiper-slide"><img src="/pudding-LMS-website/user/images/login/signup_slide_03.png" alt="푸딩 프로모션">
+          </div>
+          <div class="swiper-slide"><img src="/pudding-LMS-website/user/images/login/signup_slide_04.png" alt="푸딩 프로모션">
+          </div>
         </div>
         <div class="swiper-pagination"></div>
       </div>
     </div>
     <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
       <h3>SIGNUP</h3>
-      <form action="signup_ok.php" class="signup_form needs-validation" method="POST" novalidate enctype="multipart/form-data">
-      <!-- <form action="" class="signup_form needs-validation" method="POST" novalidate enctype="multipart/form-data"> -->
+      <form action="signup_ok.php" class="signup_form needs-validation" method="POST" novalidate
+        enctype="multipart/form-data">
+        <!-- <form action="" class="signup_form needs-validation" method="POST" novalidate enctype="multipart/form-data"> -->
         <!-- <input type="hidden" name="userid" class="userid"> -->
         <label for="userid">아이디</label>
         <div class="d-flex gap-2">
@@ -56,6 +61,11 @@ userimg -->
         <input type="email" class="form-control" id="useremail" name="useremail" placeholder="이메일"
           aria-label="Useremail" required />
         <div class="invalid-feedback">이메일을 올바르게 입력해주세요.</div>
+
+        <div class="file_input">
+          <label for="userimg" class="form-label">프로필 이미지</label>
+          <input type="file" class="form-control" name="userimg" id="userimg">
+        </div>
 
         <div class="form-check">
           <input id="email" name="email" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
@@ -142,7 +152,7 @@ userimg -->
     //       alert('입력한 아이디 또는 이메일은 이미 가입된 정보입니다.');
     //       return false;
     //     } else {
-          $('.signup_form').submit();
+    $('.signup_form').submit();
     //     }
     //   }
     // })

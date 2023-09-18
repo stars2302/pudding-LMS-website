@@ -109,27 +109,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
         </div>
       </div>
     </div>
-
-    <!-- 인기/신규/추천 -->
-    <div class="row level level_status c_mt">
-      <label class="form-label content_tt c_mb">전시 옵션</label>
-      <div class="d-flex course_option">
-        <div class="col-1">
-          <input class="form-check-input" type="checkbox" name="isnew" id="isnew" value="1">
-          <label class="form-check-label" for="isnew">신규</label>
-        </div>
-        <div class="col-1">
-          <input class="form-check-input" type="checkbox" name="isbest" id="isbest" value="1">
-          <label class="form-check-label" for="isbest">인기</label>
-        </div>
-        <div class="col-1">
-          <input class="form-check-input" type="checkbox" name="isrecom" id="isrecom" value="1">
-          <label class="form-check-label" for="isrecom">추천</label>
-        </div>
-      </div>
-
-    </div>
-    <!-- 인기/신규/추천 end -->
     <div class="content_detail c_mt">
       <h3 class="content_tt c_mb">상세내용</h3>
       <div id="product_detail"></div>

@@ -24,11 +24,11 @@ userimg -->
 <main class="pudding_bg">
   <div class="radius_12 white_bg login_box d-flex">
     <div class="col-md-6 d-flex align-items-center">
-      <img src="images/login/login.png" alt="" />
+      <img src="/pudding-LMS-website/user/images/login/login.png" alt="로그인 이미지" />
     </div>
     <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
       <h2>
-        Welcome to <img src="images/logo.png" alt="푸딩로고이미지" /> !
+        Welcome to <img src="/pudding-LMS-website/user/images/logo.png" alt="푸딩로고이미지" /> !
       </h2>
       <h3>LOGIN</h3>
       <form action="login_ok.php" method="POST">
@@ -45,7 +45,7 @@ userimg -->
           </label>
         </div>
         <div class="id_pw d-flex justify-content-center">
-          <a href="/pudding-LMS-website/user/signup.php">회원가입</a>
+          <a href="/pudding-LMS-website/user/members/signup.php">회원가입</a>
           <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_id">아이디 찾기</button>
           <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_pw">비밀번호 찾기</button>
         </div>
@@ -117,7 +117,28 @@ userimg -->
   // $("#modify_pw_btn").click(function() {
   //     $("#modify_pw").modal("show"); // 비밀번호 수정 모달 열기
   //   });
-  
+  var key = getCookie('idsave'); 
+  if(key!=""){
+    $("#userid").val(key); 
+  }
+   
+  if($("#userid").val() != ""){ 
+    $("#saveId").attr("checked", true); 
+  }
+   
+  $("#saveId").change(function(){ 
+    if($("#saveId").is(":checked")){ 
+      setCookie('admin', $("#userid").val(), 7); 
+    }else{ 
+      deleteCookie('admin');
+    }
+  });
+   
+  $("#userid").keyup(function(){ 
+    if($("#saveId").is(":checked")){
+      setCookie('admin', $("#userid").val(), 7); 
+    }
+  });
 
 </script>
 <?php
