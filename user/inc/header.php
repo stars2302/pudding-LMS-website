@@ -97,7 +97,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.p
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
     integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script><!-- SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/curl/0.8.13/curl-for-jQuery/curl.min.js" integrity="sha512-Ef/hRvQVEo7czs5Tgm36wg0ue2dx5QzSNERHZQKGvGQetQGzlH8czAk7hxvpxJrTYGlIAiazlQFFqeEoKuB4Iw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  </head>
 
 <body>
   <header class="">
