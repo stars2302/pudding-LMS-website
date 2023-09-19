@@ -19,9 +19,12 @@ $result = $mysqli->query($query);
 $rs = $result->fetch_object();
 
 if ($rs) {
+
   $_SESSION['UID'] = $rs->userid;
   $_SESSION['UNAME'] = $rs->username;
 
+  // $sql = "UPDATE cart SET userid='{$userid}' WHERE ssid='".session_id()."'";    
+  // $result = $mysqli->query($sql);
   echo "<script>
       alert('$rs->username 님 반갑습니다');
       location.href = '/pudding-LMS-website/user/index.php';
@@ -32,4 +35,5 @@ if ($rs) {
      history.back();
     </script>";
 }
+
 ?>
