@@ -1,6 +1,9 @@
 /* login */
-main {
+/* main {
  height: calc(100vh - 90px);
+} */
+main{
+  padding: 90px 0;
 }
 .login_box{
   height: 630px;
@@ -8,10 +11,9 @@ main {
 .login_box,
 .signup_box{
   width: 1184px;
-  margin: 0 auto;
+  margin: 0 auto ;
   position: relative;
-  top:60px;
-  box-sizing: content-box;
+  /* top:60px; */
 }
 .login_box form,
 .signup_box form{
@@ -38,7 +40,8 @@ main {
   margin-top: 90px;
   gap: 25px;
 }
-.id_pw a{
+.id_pw a,
+.id_pw button{
   position: relative;
 }
 .id_pw a:hover{
@@ -48,7 +51,9 @@ main {
 .id_pw button:after{
   content: "";
   position: absolute;
-  top: 5px;
+  /* top: 5px; */
+  top:50%;
+  transform: translateY(-50%);
   right: -13px;
   width: 2px;
   height: 12px;

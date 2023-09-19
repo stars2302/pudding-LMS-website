@@ -44,7 +44,7 @@ userimg -->
         <div class="invalid-feedback">사용불가한 아이디입니다. </div>
 
         <label for="userpasswd">비밀번호</label>
-        <input type="text" class="form-control" id="userpasswd" name="userpasswd" placeholder="비밀번호"
+        <input type="text" class="form-control is-valid" id="userpasswd" name="userpasswd" placeholder="비밀번호"
           aria-label="Userpassword" required />
         <div class="valid-feedback">사용 가능한 비밀번호입니다.</div>
 
@@ -85,6 +85,26 @@ userimg -->
 
 
 <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+
 
   //아이디 중복확인
   $('.signup_form .duplication_btn').click(function (e) {

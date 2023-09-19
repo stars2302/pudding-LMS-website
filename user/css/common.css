@@ -621,12 +621,16 @@ header a.btn:last-child {
 header li:hover a {
   font-weight: 500;
 }
-.user_profile{
+.user_profile {
   width: 35px;
   height: 35px;
   object-fit: cover;
   border-radius: 50%;
+  position: relative;
+  top: -5px;
+  left: -5px;
 }
+
 .cart_btn {
   position: relative;
   top: -3px;
@@ -681,7 +685,7 @@ footer span {
   color: #fff;
   font-weight: 500;
 }
-.f_tt p{
+.f_tt p {
   font-size: 13px;
   line-height: 20px;
 }

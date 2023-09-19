@@ -45,8 +45,8 @@ $(document).ready(function () {
       delay: 3000,
     },
     navigation: {
-      prevEl: ".recom_slide .swiper-button-prev",
-      nextEl: ".recom_slide .swiper-button-next",
+      prevEl: ".recom_prev",
+      nextEl: ".recom_next",
     },
   });
 
@@ -63,8 +63,8 @@ $(document).ready(function () {
       delay: 3000,
     },
     navigation: {
-      prevEl: ".new_slide .swiper-button-prev",
-      nextEl: ".new_slide .swiper-button-next",
+      prevEl: ".new_prev",
+      nextEl: ".new_next",
     },
   });
 

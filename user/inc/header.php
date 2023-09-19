@@ -140,14 +140,24 @@ if (isset($_SESSION['UID'])) {
         <?php
         //세션 있으면, 회원이름, 로그아웃 버튼
         if (isset($_SESSION['UID'])) {
-          // $uid = $_SESSION['UID'];
-          // $query = "SELECT * FROM users WHERE uid='{$uid}'";
-          // $result = $mysqli->query($query);
-          // $rs = $result->fetch_object();
-          // $userimg = $rs->userimg;
-          // var_dump($userimg)
           ?>
-          <img class="user_profile" src="<?=$rs->userimg?>" alt="프로필 이미지">
+          <img class="user_profile" 
+          src="
+          <?php 
+          // if(isset($rs->userimg)){
+          //   echo '{$rs->userimg}';
+          // }else{
+          //   echo "/pudding-LMS-website/user/images/profile/default_profile.png";
+          // }
+          if($rs->userimg == ''){
+            echo "/pudding-LMS-website/user/images/profile/default_profile.png";
+            // echo '{$rs->userimg}';
+          }else{
+            // echo "/pudding-LMS-website/user/images/profile/default_profile.png";
+            echo $rs->userimg;
+          }
+          ?>" 
+          alt="프로필 이미지">
           <span>
             <?= $_SESSION['UNAME']; ?>님
           </span>

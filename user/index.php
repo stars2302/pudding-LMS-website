@@ -25,6 +25,7 @@ while ($new_rs = $new_result->fetch_object()) {
   $new_rsc[] = $new_rs;
 }
 
+
 // 수강평
 // $rvsql = "SELECT * FROM review ORDER BY rid DESC LIMIT 0, 8";
 $rvsql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
@@ -37,9 +38,6 @@ $rvresult = $mysqli->query($rvsql);
 while ($rvrs = $rvresult->fetch_object()) {
   $rvrsc[] = $rvrs;
 }
-
-
-
 
 // 공지사항
 $ntsql = "SELECT * FROM notice ORDER BY ntid DESC LIMIT 0, 10";
@@ -187,7 +185,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                 <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
                 <span>
                   <!-- <a href="#"><i class="ti ti-heart"></i></a> -->
-                  <a href="#" class="card_like">
+                  <a href="/pudding-LMS-website/user/members/like_course.php?cid=<?= $item->cid ?>" class="card_like">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
                       height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
                       stroke-linejoin="round">
@@ -287,7 +285,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                   <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
                   <span>
                     <!-- <a href="#"><i class="ti ti-heart"></i></a> -->
-                    <a href="#" class="card_like">
+                    <a href="/pudding-LMS-website/user/members/like_course.php?cid=<?= $item->cid ?>" class="card_like">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
                         height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -317,8 +315,8 @@ while ($ntrs = $ntresult->fetch_object()) {
           ?>
         </div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next recom_next"></div>
+      <div class="swiper-button-prev recom_prev"></div>
     </div>
   </section>
   <section class="sec5 container">
@@ -389,7 +387,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                 <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
                   <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
                   <span>
-                    <a href="#" class="card_like">
+                    <a href="/pudding-LMS-website/user/members/like_course.php?cid=<?= $item->cid ?>" class="card_like">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
                         height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -418,8 +416,8 @@ while ($ntrs = $ntresult->fetch_object()) {
           ?>
         </div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next new_next"></div>
+      <div class="swiper-button-prev new_prev"></div>
     </div>
   </section>
   <section class="sec6">
@@ -547,34 +545,40 @@ while ($ntrs = $ntresult->fetch_object()) {
   </section>
 </main>
 
-<!-- <li>
-    <div class="card" style="width: 18rem;">
-      <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-      <div class="card-body">
-        <div>
-          <span class="badge rounded-pill blue_bg b-pd">고급</span>
-          <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-        </div>
-        <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
-        <div class="card-text">
-          <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-          <p class=""><span class="price">10,000</span><span>원</span></p>
-        </div>
-      </div>
-    </div>
-  </li> -->
-<aside class="main_btn">
-  <div class="history_btn">
-    <a href="">
-      <img src="images/clock-history.png" alt="">
-    </a>
-  </div>
-  <div class="top_btn">
-    <a href="">
-      <img src="images/top_btn.png" alt="">
-    </a>
-  </div>
-</aside>
+<script>
+
+  //강의 좋아요
+  $('.card_like').on('click',function(){
+    let data = {
+      cid: cid
+    }
+    $.ajax({
+        type: 'GET',
+        data: data,
+        url: "like_course.php",
+        dataType: 'json',
+        success: function (return_data) {
+          if (return_data.result === 'success') {
+            console.log('retun_data', return_data)
+            trElement.remove();
+            alert('좋아요좋아요.');
+            location.reload();
+          } else {
+            alert('좋아요 실패.');
+          }
+        },
+        error: function (error) {
+          console.log('Error:', error);
+          alert('좋아요중에 오류가 발생했습니다.');
+        }
+      });
+
+  });
+
+
+
+</script>
+
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/footer.php';
