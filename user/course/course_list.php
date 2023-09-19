@@ -211,7 +211,7 @@ while($rs = $result -> fetch_object()){
               <?php
                 foreach($rsc as $item){
               ?>        
-              <div class="col-12 col-sm-6 col-md-4 courseBox shadow_box">
+              <div class="col-12 col-sm-6 col-md-4 courseBox shadow_box"  onclick="location.href='course_view.php?cid=<?= $item->cid ?>'">
                 <div class="imgBox">
                   <img
                     src="<?= $item -> thumbnail?>"
@@ -248,7 +248,7 @@ while($rs = $result -> fetch_object()){
                     </span>
                   </div>
                   <div class="courseName fw-bold mt-2">
-                    <a href="course_view.php?cid=<?= $item->cid ?>"><?= $item->name?></a>
+                    <?= $item->name?>
                   </div>
                   <div class="contentTM float-end">
                     <div>
