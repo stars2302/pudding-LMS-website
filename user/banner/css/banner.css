@@ -1,0 +1,128 @@
+body {
+  background-color: #EFF3FF;
+
+}
+
+.game_start_container {
+  padding: 140px 0 100px;
+}
+
+.game_start {
+  padding: 40px 0 50px;
+  position: relative;
+}
+
+.game_start:before,
+.game_rule_content:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border: 20px solid var(--white_bg);
+  border-color: var(--white_bg) transparent transparent transparent;
+}
+
+.game_start  h2{
+  font-size: 36px;
+  color: var(--point_yellow);
+}
+
+.game_start a {
+  text-transform: uppercase;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  line-height: var(--base_unit);
+}
+
+.game_start p {
+  font-weight: 400;
+}
+
+.game_start *+*{
+  margin-top: calc(var(--base_unit) + 6px);
+}
+
+.game_start + img {
+  margin-top: calc(var(--base_unit)*2 + 10px);
+}
+
+
+
+/* game_board */
+
+.game_board_container {
+  padding: calc(var(--base_unit)*4.5) 0 130px;
+  gap: calc(var(--base_unit)*2);
+}
+
+.game_board {
+  display: grid;
+}
+
+.game_board_container h2 {
+  font-size: 48px;
+  color: #5D87FF;
+  margin-bottom: var(--base_unit);
+}
+
+.game_board .word {
+  height: 90px;
+  background-color: #fbfbfb;
+  border: 1.6px solid var(--border_grey);
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.game_board .word.o {
+  background-color: #C2EAFF;
+  animation: open .5s ease-in-out;
+}
+
+.game_board .word.v {
+  background-color: var(--pudding_bg);
+  animation: open .5s ease-in;
+}
+
+.game_board .word.x {
+  background-color: #E0E0E0;
+  animation: open .5s ease-in;
+}
+
+@keyframes open {
+  0%{transform: scaleY(1);}
+  50%{transform: scaleY(0);}
+  100%{transform: scaleY(1);}
+}
+
+.game_board .word span {
+  margin-top: 5px;
+}
+
+.game_rule {
+  gap:var(--base_unit);
+}
+
+.game_rule_content {
+  padding: var(--base_unit);
+  position: relative;
+}
+
+.game_rule_content h3 {
+  color: var(--point_yellow);
+}
+.game_rule_content .description {
+  margin: 20px 0 30px;
+}
+.game_rule_content .description p {
+  margin-bottom: 0;
+}
+.game_rule_content .hint * {
+  text-transform: uppercase;
+}
