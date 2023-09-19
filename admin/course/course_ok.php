@@ -35,7 +35,7 @@
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
     $youtube_name = $_POST['youtube_name']?? '';
-  
+    $progress = $_POST['progress']??0;
 
     
     //파일업로드
@@ -122,7 +122,8 @@
               </script>";
             }
           }
-          $sql1 = "INSERT INTO lecture (cid, l_idx, youtube_thumb, youtube_name, youtube_url) VALUES ({$cid}, {$i}, '{$upload_youtube_thumb[$i]}', '{$youtube_name[$i]}', '{$youtube_url[$i]}')";
+          $sql1 = "INSERT INTO lecture (cid, l_idx, youtube_thumb, youtube_name, youtube_url, progress) VALUES ({$cid}, {$i}, '{$upload_youtube_thumb[$i]}', '{$youtube_name[$i]}', '{$youtube_url[$i]}', {$progress[$i]})";
+          var_dump($sql1);
           $result2 = $mysqli-> query($sql1);
           }
 
@@ -132,13 +133,13 @@
 
       echo "<script>
       alert('강의 등록 완료!');
-      location.href='/pudding-LMS-website/admin/course/course_list.php';</script>";
+      //location.href='/pudding-LMS-website/admin/course/course_list.php';</script>";
       }
     } catch(Exception $e){
       $mysqli->rollback();//저장한 테이블이 있다면 롤백한다.
       echo "<script>
       alert('강의 등록 실패');
-      history.back();
+      //history.back();
       </script>";
       exit;
     }

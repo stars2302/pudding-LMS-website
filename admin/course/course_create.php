@@ -11,7 +11,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/categor
     <h2 class="main_tt">강의 등록</h2>
   </div>
   <form action="course_ok.php" method="POST" id="course_form" enctype="multipart/form-data">
-    <input type="hidden" name="video_table_id" id="video_table_id" value="">
+    <input type="hidden" name="progress[]" id="progress" value="1">
     <input type="hidden" name="content" id="content" value="">
     <div class="categorywrap">
       <label for="cate1" class="form-label content_tt c_mb">카테고리</label>

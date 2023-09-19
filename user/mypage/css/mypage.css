@@ -25,11 +25,11 @@ aside nav {
   margin: 130px 0px 33px 0px;
 }
 
-nav ul li {
+.mypage_tag{
   margin-bottom: calc(var(--base_unit) / 2);
 }
 
-nav ul li:hover a {
+.mypage_tag:hover a {
   font-weight: 500;
 }
 

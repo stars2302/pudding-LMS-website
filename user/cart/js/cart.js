@@ -62,14 +62,17 @@ function couponPrice(total_price){
       let type = target.attr('data-type');
       //쿠폰타입
       if(type == '정액'){
-        $('.cart_discount').text(target.attr('data-discount')+'원');
+        $('.cart_discount').text(target.attr('data-discount'));
+        $('.discount_unit').text("원");
         discount = Number(target.attr('data-discount'));
       }
       if(type == '정률'){
         let perc = target.attr('data-discount');
-        $('.cart_discount').text(`${perc/100*total_price}원(${perc}%)`);
+        $('.cart_discount').text(perc/100*total_price);
+        $('.discount_unit').text(`원(${perc}%)`);
         discount = perc/100*total_price;
       }
+      $('.cart_discount').number(true);
     } else{
       alert('쿠폰 최소사용금액을 확인해주세요.');
       location.reload();
@@ -83,14 +86,36 @@ function couponPrice(total_price){
 } //couponPrice function
 
 function canUdel(target){
-  if(confirm('정말로 삭제하시겠습니까?')){
-    if(target.length == 0){
-      alert('삭제할 상품을 선택해주세요');
+  if(target.length > 0){
+    if(confirm('정말로 삭제하시겠습니까?')){
+      // target.remove();
+      let cartid = [];
+      //target 여러개일 경우, carid를 배열에 담기
+      target.each(function(){
+        cartid.push($(this).attr('data-cartid'));
+      });
+      let data = {
+        cartid : cartid
+      }
+      $.ajax({
+        async : false, 
+        type: 'post',     
+        data: data, 
+        url: "cart_del.php", 
+        dataType: 'json', //결과 json 객체형식
+        error: function(error){
+          console.log('Error:', error);
+        },
+        success: function(return_data){
+          // location.reload();
+          target.remove();
+        }
+      });//ajax
     } else{
-      target.remove();
+      alert('취소되었습니다');
     }
   } else{
-    alert('취소되었습니다');
+    alert('삭제할 상품을 선택해주세요');
   }
 } //canUdel function
 
@@ -135,6 +160,56 @@ $('.del_btn').click(function(){
 });
 
 
+
+//결제하기 클릭
+$('.payment_form').submit(function(e){
+  e.preventDefault();
+
+  if($('.cart_item_container .cart_item').find('input:checked').length>0){
+
+    let total_price = Number($('.cart_total_price').text().replace(',',''));
+  
+    let discount_price = Number($('.cart_pay_price').text().replace(',',''));
+    console.log(discount_price);
+  
+    let select_item = $('.cart_item_container .cart_item').find('input:checked').parent();
+    let cart_id = [];
+    select_item.each(function(){
+      cart_id.push(Number($(this).attr('data-cartid')));
+    });
+    console.log(cart_id);
+  
+    let userid = $(this).find('.userid').val();
+  
+  
+    let data = {
+      total_price : total_price,
+      discount_price : discount_price,
+      cartid : cart_id,
+      userid: userid
+    }
+  
+    $.ajax({
+      async : false, 
+      type: 'post',     
+      data: data, 
+      url: "payment_insert.php", 
+      dataType: 'json', //결과 json 객체형식
+      error: function(error){
+        console.log('Error:', error);
+      },
+      success: function(return_data){
+        location.reload();
+        // target.remove();
+        // console.log(return_data);
+        location.href = "/pudding-LMS-website/user/cart/cart_complete.php";
+      }
+    });//ajax
+  } else{
+    alert('상품을 선택해주세요');
+  }
+
+});
 
 
 
