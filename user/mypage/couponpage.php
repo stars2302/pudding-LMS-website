@@ -8,9 +8,7 @@ $js_route = "mypage/js/mypage.js";
 $userid =$_SESSION['UID'];
 $sql ="SELECT uc.*, cp.* FROM user_coupon uc 
 JOIN coupons cp ON uc.cpid = cp.cpid Where uc.userid='{$userid}'";
-
-$sql ="SELECT uc.*, cp.* FROM user_coupon uc 
-JOIN coupons cp ON uc.cpid = cp.cpid Where uc.userid='{$userid}'";
+$sc_where="";
 
 $result = $mysqli->query($sql);
 while($rs = $result->fetch_object()){
@@ -35,16 +33,22 @@ foreach ($cps as $cp) {
 // 만료쿠폰 수
 $expirecouponcount = count($expirecps);
 
-//7일이하
-$filteredCps = [];
-$now = time();
-foreach ($cps as $cp) {
-    $useMaxDate = strtotime($cp->use_max_date);
-    if ($useMaxDate - $now <= 7 * 24 * 60 * 60) { 
-        $filteredCps[] = $cp;
-    }
+$a = [];
+
+$filter_where="";
+$cp_filter = $_GET['coupon_filter']??'';
+
+var_dump($cp_filter);
+
+if($cp_filter=='1'){
+  //모든 쿠폰 보여주기
+  $a = $expirecps;
+}else {
+  //해당하는 타입의 쿠폰 보여주도록
+  $a =$cps;
 }
-var_dump($filteredCps);
+
+
 
 ?>
 <main class="d-flex">
@@ -64,37 +68,41 @@ var_dump($filteredCps);
     <div class="section_wrap">
     <section class="content_wrap">
       <h1 class="jua main_tt">쿠폰함</h1>
-      <div class="d-flex justify-content-between conpon_box">
-    <div class="d-flex flex-column coupon_box_able radius_5">
-        <div class="able d-flex">
-            <i class="ti ti-circle-check"></i>
-            <h6>사용가능한 쿠폰</h6>
+      
+      <form action="#" class="d-flex justify-content-between conpon_box coupon_filter">
+        <div class="d-flex flex-column coupon_box_able radius_5">
+            <div class="able d-flex">
+                <i class="ti ti-circle-check"></i>
+                <h6>사용가능한 쿠폰</h6>
+            </div>
+            <div class="able d-flex justify-content-end align-items-center">
+              
+                <label for="all" class="d-flex align-items-center"><h1><?= $couponCount ?></h1> <span>개</span></label>
+                <input type="radio" value="0" class="hidden" id="all" name="coupon_filter">
+            </div>
         </div>
-        <div class="able d-flex justify-content-end align-items-center">
-            <h1><a href="#" ><?= $couponCount ?></a></h1>
-            <span>개</span>
-        </div>
-    </div>
 
-    <div class="d-flex flex-column coupon_box_able radius_5">
-        <div class="able d-flex">
-            <i class="ti ti-alarm"></i>
-            <h6>만료임박 쿠폰</h6>
+        <div class="d-flex flex-column coupon_box_able radius_5">
+            <div class="able d-flex">
+                <i class="ti ti-alarm"></i>
+                <h6>만료임박 쿠폰</h6>
+            </div>
+            <div class="able d-flex justify-content-end align-items-center">
+
+                <label for="end" class="d-flex align-items-center"><h1><?= $expirecouponcount ?></h1> <span>개</span></label>
+                <input type="radio" value="1" class="hidden" id="end" name="coupon_filter">
+            </div>
         </div>
-        <div class="able d-flex justify-content-end align-items-center">
-            <h1><a href="#"><?= $expirecouponcount ?></a></h1>
-            <span>개</span>
-        </div>
-    </div>
-</div>
+        <button  class="hidden">
+      </form><!--coupon_filter-->
     </section>
     <section class="content_wrap_cp">
       <div class="coupons">
         <h2 class="hidden">쿠폰리스트</h2>
         <ul class="d-flex flex-wrap justify-content-between g-5">
         <?php
-        if(isset($cps)){
-          foreach($cps as $cp){
+        if(isset($a)){
+          foreach($a as $cp){
 
         ?> 
         
@@ -131,7 +139,11 @@ var_dump($filteredCps);
     </div>
     </main>
 
-  
+  <script>
+    $("form").change(function(){
+      $(this).find('button').trigger("click");
+    });
+  </script>
 
     <?php
 
