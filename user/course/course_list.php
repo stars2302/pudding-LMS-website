@@ -75,7 +75,7 @@ while($rs = $result -> fetch_object()){
               />
             </div>
             <div class="searchBtn">
-              <button class="btn btn-primary dark">검색</button>
+              <button class="btn btn-primary dark test">검색</button>
             </div>
           </div>
         </div>
@@ -255,9 +255,24 @@ while($rs = $result -> fetch_object()){
                       <i class="ti ti-calendar-event"></i>
                       <span>수강기간 <?= $item->due?></span>
                     </div>
-                    <div class="float-end">
-                      <span class="main_stt number"><?= $item->price?></span><span>원</span>
-                    </div>
+
+                    <!-- 무료표시하기 -->
+                    <?php
+                    if($item->price != 0){
+                    ?>
+                      <div class="float-end">
+                        <span class="main_stt number"><?= $item->price?></span><span>원</span>
+                      </div>
+                    <?php
+                    }else{
+                    ?>
+                      <div class="float-end">
+                        <span class="main_stt">무료</span>
+                      </div>
+                    <?php 
+                    } 
+                    ?>
+                    <!-- 무료표시 끝 -->
                   </div>
                 </div>
               </div>

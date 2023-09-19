@@ -33,6 +33,7 @@
   $parts = explode('/', $cateString);
 ?>
     <main>
+      <input type="hidden" id="cid" value="<?= $cid; ?>"/>
       <div class="container">
         <div class="modalBackground">
           <div class="modalBox d-flex flex-column justify-content-between">
@@ -103,9 +104,25 @@
                     <i class="ti ti-calendar-event"></i>
                     <span>수강기간 <?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span>
                   </div>
-                  <div>
-                    <span class="main_stt number"><?=$rs->price?></span>
-                  </div>
+
+                  <!-- 무료표시하기 -->
+                  <?php
+                    if($rs->price != 0){
+                  ?>
+                    <div>
+                      <span class="main_stt number"><?= $rs->price?></span><span>원</span>
+                    </div>
+                  <?php
+                    }else{
+                  ?>
+                    <div>
+                      <span class="main_stt">무료</span>
+                    </div>
+                    <?php 
+                    } 
+                  ?>
+                  <!-- 무료표시 끝 -->
+
                 </div>
                 <div>
                   <div class="viewBtn mb-2">
@@ -223,7 +240,7 @@
               }
           ?>         
             <div class="viewSection3Btn">
-              <button class="btn btn-dark">더보기</button>
+              <button class="moreviewBtn btn btn-dark">더보기</button>
             </div>
           <?php       
             }else{

@@ -95,19 +95,28 @@
 }
 
 /* 모달 */
-.modalBackground{
+.modalBackground {
   position: fixed;
-  top:0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background: rgba(0, 0, 0, 0.8);
   z-index: 10;
   display: none;
 }
- 
-.modalBox{
+
+.modalBackground.active {
+  display: block;
+}
+
+.modalBox {
   position: relative;
-  top: calc(50vh - 250px); left: calc(50vw - 300px);
+  top: calc(50vh - 250px);
+  left: calc(50vw - 300px);
   background-color: #333f55;
-  display: flex; justify-content: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
   border-radius: 10px;
   width: 600px;
@@ -115,34 +124,34 @@
   padding: 45px;
 }
 
-.modalVideo{
+.modalVideo {
   width: 510px;
   height: 287px;
   background-color: #e8f7ff;
   border-radius: 10px;
 }
 
-.modalVideo object{
+.modalVideo object {
   border-radius: 10px;
 }
 
-.modalBox i{
+.modalBox i {
   position: absolute;
-  right:15px;
-  top:15px;
+  right: 15px;
+  top: 15px;
   font-size: 30px;
   color: #fff;
   cursor: pointer;
 }
 
 .modalBox h4,
-.modalBox p{
-  color:#fff;
+.modalBox p {
+  color: #fff;
   font-weight: 400;
 }
-.modalTitle{
+.modalTitle {
   padding: 30px 15px 0;
-  width:100%;
+  width: 100%;
 }
 
 /* 강의상세보기 */
@@ -276,6 +285,10 @@
   width: 289px;
   height: 312px;
   padding-bottom: 20px;
+}
+
+.viewSection3 {
+  display: none;
 }
 
 /* .rating svg {

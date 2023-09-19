@@ -12,29 +12,35 @@ $(".viewB_2").click(function () {
   $(".viewB_1").removeClass("active");
 });
 
-
 let rating = $(".rating");
 
 rating.each(function () {
   let score = $(this).attr("data-rate");
-  $(this).find(`.fa-star:lt(${score})`).css({color: "#ffca2c"});
+  $(this).find(`.fa-star:lt(${score})`).css({ color: "#ffca2c" });
 });
 
-
-$('.modalBackground').hide();
-$('.preview').click(function(e){
+$(".preview").click(function (e) {
   e.preventDefault();
-  $('.modalBackground').show();
-})
-$('.modalBox i').click(function(e){
+  $(".modalBackground").addClass("active");
+});
+$(".modalBox i").click(function (e) {
   e.preventDefault();
-  $('.modalBackground').hide();
-})
+  $(".modalBackground").removeClass("active");
+  $(".object").trigger("pause");
+});
 
-
-$('.viewCart').click(function(e){
+$(".viewCart").click(function (e) {
   e.preventDefault();
-  if(confirm('장바구니 담기 완료! 장바구니로 이동하시겠습니까?')){
-    location.href = 'http://localhost/pudding-LMS-website/user/cart/cart.php'
+  if (confirm("장바구니 담기 완료! 장바구니로 이동하시겠습니까?")) {
+    location.href = "http://localhost/pudding-LMS-website/user/cart/cart.php";
+  }
+});
+
+$(".viewSection3").slice(0, 2).show();
+$(".moreviewBtn").click(function (e) {
+  e.preventDefault();
+  $(".viewSection3:hidden").slice(0, 2).show();
+  if ($(".viewSection3:hidden").length == 0) {
+    $(".moreviewBtn").hide();
   }
 });
