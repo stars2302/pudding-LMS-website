@@ -31,11 +31,11 @@ userimg -->
         Welcome to <img src="/pudding-LMS-website/user/images/logo.png" alt="푸딩로고이미지" /> !
       </h2>
       <h3>LOGIN</h3>
-      <form action="login_ok.php" method="POST">
+      <form action="login_ok.php" method="POST" class="login_form">
         <label for="userid" class="hidden"></label>
         <input type="text" class="form-control" id="userid" name="userid" placeholder="아이디" aria-label="Userid" />
         <label for="userpasswd" class="hidden"></label>
-        <input type="text" class="form-control" id="userpasswd" name="userpasswd" placeholder="비밀번호"
+        <input type="password" class="form-control" id="userpasswd" name="userpasswd" placeholder="비밀번호"
           aria-label="Userpassword" />
         <button class="btn btn-primary dark">로그인</button>
         <div class="form-check d-flex justify-content-end login_check gap-2">
@@ -50,7 +50,7 @@ userimg -->
           <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_pw">비밀번호 찾기</button>
         </div>
       </form>
-      
+
       <!-- 아이디 찾기 Modal -->
       <div class="modal fade" id="find_id" tabindex="-1">
         <div class="modal-dialog">
@@ -106,26 +106,28 @@ userimg -->
   $(document).ready(function () {
     // 확인 버튼을 클릭할 때 폼을 제출
     $("#find_id_confirm_btn").click(function () {
-      $("#find_id_form").submit(); 
+      $("#find_id_form").submit();
     });
     $("#find_pw_confirm_btn").click(function () {
-      $("#find_pw_form").submit(); 
+      $("#find_pw_form").submit();
     });
   });
 
-// 비밀번호 변경 확인 버튼 클릭 시 비밀번호 수정 모달 열림
+  // 비밀번호 변경 확인 버튼 클릭 시 비밀번호 수정 모달 열림
   // $("#modify_pw_btn").click(function() {
   //     $("#modify_pw").modal("show"); // 비밀번호 수정 모달 열기
   //   });
+
+
   // var key = getCookie('idsave'); 
   // if(key!=""){
   //   $("#userid").val(key); 
   // }
-   
+
   // if($("#userid").val() != ""){ 
   //   $("#saveId").attr("checked", true); 
   // }
-   
+
   // $("#saveId").change(function(){ 
   //   if($("#saveId").is(":checked")){ 
   //     setCookie('admin', $("#userid").val(), 7); 
@@ -133,13 +135,122 @@ userimg -->
   //     deleteCookie('admin');
   //   }
   // });
-   
+
   // $("#userid").keyup(function(){ 
   //   if($("#saveId").is(":checked")){
   //     setCookie('admin', $("#userid").val(), 7); 
   //   }
   // });
 
+
+  $(".login_form").submit(function (e) {
+    if ($("#flexCheckDefault").is(":checked")) {
+      var userId = $("#userId").val();
+      setCookie("userid", userId, 2); // Save username for 30 days
+    } else {
+      // Clear the username cookie
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+  });
+  var savedUsername = getCookie("username");
+  if (savedUsername) {
+    $("#username").val(savedUsername);
+  }
+
+  function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        // Function to get a cookie by name
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                while (cookie.charAt(0) === ' ') {
+                    cookie = cookie.substring(1, cookie.length);
+                }
+                if (cookie.indexOf(nameEQ) === 0) {
+                    return cookie.substring(nameEQ.length, cookie.length);
+                }
+            }
+            return null;
+        }
+
+        // Handle the form submission
+        $("form").submit(function(e) {
+            if ($("#saveUsername").is(":checked")) {
+                var username = $("#username").val();
+                setCookie("username", username, 30); // Save username for 30 days
+            } else {
+                // Clear the username cookie
+                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+        });
+
+
+
+
+
+
+
+  //저장된 쿠기값을 가져와서 id 칸에 넣어준다 없으면 공백으로 처리
+  var key = getCookie('idsave');
+  $('#userid').val(key);
+
+
+  if ($('#userid').val() != "") {               // 페이지 로딩시 입력 칸에 저장된 id가 표시된 상태라면 id저장하기를 체크 상태로 둔다
+    $('#flexCheckDefault').attr("checked", true); //id저장하기를 체크 상태로 둔다 (.attr()은 요소(element)의 속성(attribute)의 값을 가져오거나 속성을 추가합니다.)
+  }
+  $('#flexCheckDefault').change(function () { // 체크박스에 변화가 있다면,
+    if ($('#flexCheckDefault').is(":checked")) { // ID 저장하기 체크했을 때,
+      setCookie("key", $("#userid").val(), 2); // 하루 동안 쿠키 보관
+    } else { // ID 저장하기 체크 해제 시,
+      deleteCookie("key");
+    }
+  });
+
+  // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+  $("#id").keyup(function () { // ID 입력 칸에 ID를 입력할 때,
+    if ($("#idsave").is(":checked")) { // ID 저장하기를 체크한 상태라면,
+      setCookie("key", $("#userid").val(), 2); // 7일 동안 쿠키 보관
+    }
+  });
+
+
+  //쿠키 함수 
+  function setCookie(cookieName, value, exdays) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var cookieValue = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toGMTString());
+    document.cookie = cookieName + "=" + cookieValue;
+  }
+
+  function deleteCookie(cookieName) {
+    var expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() - 1);
+    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+  }
+
+  function getCookie(cookieName) {
+    cookieName = cookieName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cookieName);
+    var cookieValue = '';
+    if (start != -1) {
+      start += cookieName.length;
+      var end = cookieData.indexOf(';', start);
+      if (end == -1) end = cookieData.length;
+      cookieValue = cookieData.substring(start, end);
+    }
+    return unescape(cookieValue);
+  }
 </script>
 <?php
 

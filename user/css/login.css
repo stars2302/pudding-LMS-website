@@ -86,7 +86,9 @@ main{
   flex-direction: column;
   gap:6px;
 }
-
+.signup_box .id_valid_wrap{
+  flex: 1;
+}
 .btn.duplication_btn {
   padding-left: 15px !important;
   padding-right:15px !important;
