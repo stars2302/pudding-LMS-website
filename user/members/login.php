@@ -117,28 +117,28 @@ userimg -->
   // $("#modify_pw_btn").click(function() {
   //     $("#modify_pw").modal("show"); // 비밀번호 수정 모달 열기
   //   });
-  var key = getCookie('idsave'); 
-  if(key!=""){
-    $("#userid").val(key); 
-  }
+  // var key = getCookie('idsave'); 
+  // if(key!=""){
+  //   $("#userid").val(key); 
+  // }
    
-  if($("#userid").val() != ""){ 
-    $("#saveId").attr("checked", true); 
-  }
+  // if($("#userid").val() != ""){ 
+  //   $("#saveId").attr("checked", true); 
+  // }
    
-  $("#saveId").change(function(){ 
-    if($("#saveId").is(":checked")){ 
-      setCookie('admin', $("#userid").val(), 7); 
-    }else{ 
-      deleteCookie('admin');
-    }
-  });
+  // $("#saveId").change(function(){ 
+  //   if($("#saveId").is(":checked")){ 
+  //     setCookie('admin', $("#userid").val(), 7); 
+  //   }else{ 
+  //     deleteCookie('admin');
+  //   }
+  // });
    
-  $("#userid").keyup(function(){ 
-    if($("#saveId").is(":checked")){
-      setCookie('admin', $("#userid").val(), 7); 
-    }
-  });
+  // $("#userid").keyup(function(){ 
+  //   if($("#saveId").is(":checked")){
+  //     setCookie('admin', $("#userid").val(), 7); 
+  //   }
+  // });
 
 </script>
 <?php
