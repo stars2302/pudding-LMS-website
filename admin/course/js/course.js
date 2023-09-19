@@ -10,7 +10,7 @@ $("#price_menu").change(function () {
 
   if (option1 == "무료") {
     price.prop("disabled", true);
-    price.val(null);
+    price.val("무료");
   } else {
     price.prop("disabled", false);
   }

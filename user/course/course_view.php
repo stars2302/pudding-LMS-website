@@ -103,7 +103,9 @@
                     <i class="ti ti-calendar-event"></i>
                     <span>수강기간 <?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span>
                   </div>
-                  <div><span class="main_stt number"><?= $rs->price?></span><span>원</span></div>
+                  <div>
+                    <span class="main_stt number"><?=$rs->price?></span>
+                  </div>
                 </div>
                 <div>
                   <div class="viewBtn mb-2">
@@ -197,10 +199,8 @@
 
             <!-- 답글시작 -->
             <?php
-                if(isset($re['r_content'])){
-                  foreach($re as $view){   
+              if(isset($view->r_content)){
             ?>
-
             <div class="reviewBox_2 pd_3">
               <div class="review d-flex justify-content-between align-items-center pd_4">
                 <div class="reviewProfile d-flex gap-3 align-items-center">
@@ -213,9 +213,8 @@
                 <p><?= $view->r_content; ?></p>
               </div>
             </div>
-
             <?php
-              }}
+              }
             ?>
             <!-- 답글 끝 -->
 
