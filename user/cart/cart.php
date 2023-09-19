@@ -18,7 +18,7 @@ if(!isset($_SESSION['UID'])){
 
   //cart item 조회
   $sqlct = "SELECT c.*,ct.cartid FROM cart ct
-          JOIN users u ON ct.userid = u.uid
+          JOIN users u ON ct.userid = u.userid
           JOIN courses c ON c.cid = ct.cid
           WHERE u.userid = '{$userid}'
   
