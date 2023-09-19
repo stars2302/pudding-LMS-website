@@ -38,7 +38,7 @@ $a = [];
 $filter_where="";
 $cp_filter = $_GET['coupon_filter']??'';
 
-var_dump($cp_filter);
+// var_dump($cp_filter);
 
 if($cp_filter=='1'){
   //모든 쿠폰 보여주기
