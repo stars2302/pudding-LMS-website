@@ -25,18 +25,18 @@ $js_route = "mypage/js/mypage.js";
   // var_dump($dateDiff);
 
   //내강의실
-  $useridlec =$rs->userid;
-  $sqllec = "SELECT courses.* 
-              FROM payments 
-              INNER JOIN courses ON payments.cid = courses.cid 
-              WHERE payments.userid='{$useridlec}'";
+  $useridlec = $rs->userid;
+$sqllec = "SELECT c.*, p.*
+              FROM payments p 
+              INNER JOIN courses c ON p.cid = c.cid 
+              WHERE p.userid='{$useridlec}'";
 
   $resultlec = $mysqli->query($sqllec);
   while ($row = $resultlec->fetch_object()) {
     $courses[] = $row;
 }
 
-// var_dump($courses);
+var_dump($courses);
 
 
 ?>
@@ -85,6 +85,7 @@ $js_route = "mypage/js/mypage.js";
       <h1 class="jua main_tt">내 강의실</h1>
       <ul>
         <?php
+               if (!empty($courses)) {
         foreach($courses as $c){
         ?>
         <li class="course_list row shadow_box">
@@ -123,6 +124,11 @@ $js_route = "mypage/js/mypage.js";
         </li>
         <?php
         }
+        }else {
+          echo '<p>강의실에 등록된 강의가 없습니다.</p>';
+      }
+    
+        
         ?>
       
       </ul>

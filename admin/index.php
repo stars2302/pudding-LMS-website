@@ -91,7 +91,7 @@ $newusercount = $newurc->fetch_object();
 $monthsql = "SELECT  c.name ,c.thumbnail, SUM(p.total_price) AS total_price_sum
         FROM payments p
         INNER JOIN courses c ON p.cid = c.cid
-        WHERE DATE_FORMAT(p.buy_date, '%m') = DATE_FORMAT(NOW(), '%m')
+        WHERE DATE_FORMAT(p.regdate, '%m') = DATE_FORMAT(NOW(), '%m')
         GROUP BY p.cid
         ORDER BY total_price_sum DESC
         limit 0,3;";

@@ -5,14 +5,14 @@ $js_route = "review/js/review.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
 $rid = $_GET['rid'];
-$uid = $_GET['uid'];
+$userid = $_GET['userid'];
 $cid = $_GET  ['cid'];
 
 
 $sql = "SELECT r.*, u.username, u.userimg, c.name FROM review r
-        JOIN users u ON r.uid = u.uid
+        JOIN users u ON r.userid = u.userid
         JOIN courses c ON c.cid = r.cid
-        WHERE r.rid = '{$rid}' AND r.uid = '{$uid}' AND r.cid = '{$cid}'";
+        WHERE r.rid = '{$rid}' AND r.userid = '{$userid}' AND r.cid = '{$cid}'";
 
 
 $result = $mysqli->query($sql);
@@ -59,7 +59,7 @@ $rp = $rresult->fetch_assoc();
 
       <form class="b_text02 review_c_content border" action="review_reply_update_ok.php?rid=<?= $rp["rid"]; ?>" method="POST">
         <input type="hidden" name="cid" value="<?= $card["cid"]; ?>">
-        <input type="hidden" name="uid" value="<?= $card["uid"]; ?>">
+        <input type="hidden" name="userid" value="<?= $card["userid"]; ?>">
         <div class="d-flex align-items-center">
           <img src="../images/profile_img.png" class="userImg shodow_box" alt="프로필 이미지">
           <h5 class="b_text01 primary review_user">프바오</h5>
@@ -72,7 +72,7 @@ $rp = $rresult->fetch_assoc();
     
         <div class="d-flex flex-row justify-content-end reply_btn">
           <button  class="btn btn-primary b_text01 reply_done">수정 완료</button>
-          <a href="review_reply_view.php?rid=<?= $rp["rid"]; ?>&uid=<?= $card["uid"]; ?>&cid=<?= $card["cid"]; ?>" class="btn btn-dark b_text01 reply">수정 취소</a>
+          <a href="review_reply_view.php?rid=<?= $rp["rid"]; ?>&userid=<?= $card["userid"]; ?>&cid=<?= $card["cid"]; ?>" class="btn btn-dark b_text01 reply">수정 취소</a>
         </div>
       </form>
     

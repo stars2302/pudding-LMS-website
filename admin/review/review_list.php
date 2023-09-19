@@ -14,7 +14,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php
 $limit = " limit $startLimit, $pageCount"; 
 
 $sql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
-        JOIN users u ON r.uid = u.uid
+        JOIN users u ON r.userid = u.userid
         JOIN courses c ON c.cid = r.cid
 
         ORDER BY r.rid DESC";
@@ -66,9 +66,9 @@ while($rs = $result->fetch_object()){
             </div>
             <div class="d-flex flex-row justify-content-end align-items-center reply_btn">
             <?php if ($replyCnt > 0) { ?>
-                    <a href="review_reply_view.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 ">댓글 보기</a>
+                    <a href="review_reply_view.php?rid=<?= $card->rid; ?>&userid=<?= $card->userid; ?>&cid=<?= $card->cid; ?>" class="btn btn-dark b_text01 ">댓글 보기</a>
                 <?php } else { ?>
-                    <a href="review_reply_create.php?rid=<?= $card->rid; ?>&uid=<?= $card->uid; ?>&cid=<?= $card->cid; ?>" class="btn btn-primary b_text01 ">댓글 달기</a>
+                    <a href="review_reply_create.php?rid=<?= $card->rid; ?>&userid=<?= $card->userid; ?>&cid=<?= $card->cid; ?>" class="btn btn-primary b_text01 ">댓글 달기</a>
                 <?php } ?>
             </div>
           </div>
