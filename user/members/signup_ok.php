@@ -2,7 +2,6 @@
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 // include_once $_SERVER['DOCUMENT_ROOT'].'/abcmall/inc/coupon_function.php';
 
-
 // uid	
 // userid
 // useremail
