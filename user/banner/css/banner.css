@@ -13,7 +13,9 @@ body {
 }
 
 .game_start:before,
-.game_rule_content:before {
+.game_rule_content:before,
+.game_winner:before,
+.game_over:before {
   content: '';
   position: absolute;
   left: 50%;
@@ -125,4 +127,62 @@ body {
 }
 .game_rule_content .hint * {
   text-transform: uppercase;
+}
+
+.game_rule_content .hint button {
+  font-size: 16px;
+}
+
+.game_rule_content .hint button.active + span {
+  display: inline;
+}
+.game_rule_content .hint button+span {
+  display: none;
+}
+
+
+/* game_winner */
+.game_winner_container {
+  padding: 170px 0 130px;
+}
+
+.game_winner {
+  padding: var(--base_unit) 0;
+  position: relative;
+  margin-bottom: var(--base_unit);
+}
+
+.game_winner h2 {
+  color: var(--point_yellow);
+  margin-bottom: calc(var(--base_unit)/2);
+}
+
+.game_winner p {
+  margin: calc(var(--base_unit)/2) 0 20px;
+}
+
+.game_winner_container > img {
+  margin-left: calc(var(--base_unit)*2);
+}
+
+
+/* game_over */
+.game_over_container {
+  padding: calc(var(--base_unit)*8) 0 130px;
+}
+
+.game_over {
+  padding: var(--base_unit) 0;
+  position: relative;
+  margin-bottom: calc(var(--base_unit)*2);
+}
+
+.game_over h2 {
+  color: var(--point_yellow);
+}
+
+.game_over a {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  line-height: var(--base_unit);
 }
