@@ -1,12 +1,11 @@
 <?php
 session_start();
-$rest_api_key = "";    
-$redirect_uri = "http://localhost/pudding-LMS-website/user/kakao_oauth.php";  // Redirect URI
+$rest_api_key = "";     
+$redirect_uri = "http://localhost/pudding-LMS-website/user/members/kakao_oauth.php";  // Redirect URI
 $code = $_GET['code'];
 
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
 
-// var_dump($code);
 
 // 사용자 토큰 받기
 $token_data = array(
@@ -47,6 +46,7 @@ $user_info_options = array(
 $user_info_context = stream_context_create($user_info_options);
 $user_info_json = file_get_contents($user_info_url, false, $user_info_context);
 $user_info = json_decode($user_info_json, true);
+var_dump($user_info);
 
 // 카카오 API로부터 가져온 사용자 정보
 $userid = $user_info['id'];

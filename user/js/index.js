@@ -45,8 +45,8 @@ $(document).ready(function () {
       delay: 3000,
     },
     navigation: {
-      prevEl: ".recom_prev",
-      nextEl: ".recom_next",
+      prevEl: ".recom_slide .swiper-button-prev",
+      nextEl: ".recom_slide .swiper-button-next",
     },
   });
 
@@ -63,22 +63,10 @@ $(document).ready(function () {
       delay: 3000,
     },
     navigation: {
-      prevEl: ".new_prev",
-      nextEl: ".new_next",
+      prevEl: ".new_slide .swiper-button-prev",
+      nextEl: ".new_slide .swiper-button-next",
     },
   });
-
-
-  var swiper = new Swiper(".review_slide", {
-    slidesPerView: 3,
-    spaceBetween: 15,
-    direction: "vertical",
-    speed: 1000,
-    // autoplay: {
-    //   delay: 3000,
-    // },
-  });
-
 
   var swiper = new Swiper(".notice_slide", {
     direction: "vertical",

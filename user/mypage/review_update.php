@@ -9,11 +9,11 @@ $js_route = "mypage/js/mypage.js";
       <div class="">
         <h4 class="jua main_tt my_title">마이페이지</h4>
         <nav>
-          <ul>
-          <li class="content_stt link_tag"><a href="/pudding-LMS-website/user/mypage/mypage.php">내 강의실</a></li>
-            <li class="content_stt"><a href="/pudding-LMS-website/user/mypage/buypage.php">구매내역</a></li>
-            <li class="content_stt"><a href="/pudding-LMS-website/user/mypage/couponpage.php">쿠폰함</a></li>
-            <li class="content_stt"><a href="/pudding-LMS-website/user/mypage/review_list.php">수강평</a></li>
+        <ul>
+          <li class="content_stt link_tag mypage_tag"><a href="/pudding-LMS-website/user/mypage/mypage.php">내 강의실</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/buypage.php">구매내역</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/couponpage.php">쿠폰함</a></li>
+            <li class="content_stt mypage_tag"><a href="/pudding-LMS-website/user/mypage/review_list.php">수강평</a></li>
           </ul>
         </nav>
       </div>
@@ -34,7 +34,7 @@ $js_route = "mypage/js/mypage.js";
               <h5 class="b_text02 dark review_name">REACT 쇼핑몰 만들기</h5>
             </div>
             <div class="rate_wrap">
-              <select class="form-control" id="rate" name="rate[]">
+              <select class="form-control" id="rate" name="rating">
                 <option value="1">
                   &#xf005; &#xf006; &#xf006; &#xf006; &#xf006;
                 </option>

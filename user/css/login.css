@@ -86,7 +86,9 @@ main{
   flex-direction: column;
   gap:6px;
 }
-
+.signup_box .id_valid_wrap{
+  flex: 1;
+}
 .btn.duplication_btn {
   padding-left: 15px !important;
   padding-right:15px !important;
@@ -117,4 +119,11 @@ input[type="file"]::file-selector-button {
 .swiper-pagination-bullet-active {
   background: var(--pudding_bg);
   border: none;
+}
+
+.is-invalid~.invalid-feedback, .is-invalid~.invalid-tooltip, .was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {
+  display: none;
+}
+.is-invalid+.invalid-feedback, .is-invalid+.invalid-tooltip, .was-validated :invalid+.invalid-feedback, .was-validated :invalid+.invalid-tooltip {
+  display: block !important;
 }

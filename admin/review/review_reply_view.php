@@ -5,14 +5,14 @@ $js_route = "review/js/review.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/header.php';
 
 $rid = $_GET['rid'];
-$uid = $_GET['uid'];
+$userid = $_GET['userid'];
 $cid = $_GET['cid'];
 
 
 $sql = "SELECT r.*, u.username, u.userimg, c.name FROM review r
-        JOIN users u ON r.uid = u.uid
+        JOIN users u ON r.userid = u.userid
         JOIN courses c ON c.cid = r.cid
-        WHERE r.rid = '{$rid}' AND r.uid = '{$uid}' AND r.cid = '{$cid}'";
+        WHERE r.rid = '{$rid}' AND r.userid = '{$userid}' AND r.cid = '{$cid}'";
 
 $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
@@ -69,7 +69,7 @@ $card = $result->fetch_assoc();
 													</div>
 
 													<div class="d-flex flex-row justify-content-end reply_btn">
-														<a href="review_reply_update.php?rid=<?= $rp["rid"]; ?>&uid=<?= $uid ?>&cid=<?= $cid ?>" class="btn btn-primary b_text01 reply_done">수정</a>
+														<a href="review_reply_update.php?rid=<?= $rp["rid"]; ?>&userid=<?= $userid ?>&cid=<?= $cid ?>" class="btn btn-primary b_text01 reply_done">수정</a>
 														<button class="btn btn-danger b_text01 reply" data-rid="<?= $rp["rid"]; ?>">삭제</button>
 													</div>
 											</div>

@@ -19,7 +19,6 @@ $useremail = $_POST['useremail'];
     
     //파일업로드
     if($_FILES['userimg']['name']){
-
       if($_FILES['userimg']['size']> 10240000){
         echo "<script>
           alert('10MB 이하만 첨부할 수 있습니다.');    
@@ -27,7 +26,6 @@ $useremail = $_POST['useremail'];
         </script>";
         exit;
       }
-
       if(strpos($_FILES['userimg']['type'], 'image') === false){
         echo "<script>
           alert('이미지만 첨부할 수 있습니다.');    
@@ -60,10 +58,10 @@ $result = $mysqli -> query($sql) or die($mysql->error);
 
 //회원가입 성공 시. 쿠폰 발행 
 if($result){
-  // user_coupon($mysqli, $userid, 1,'회원가입');
   echo "<script>
   alert('회원가입 성공');
-  location.href='login.php';
+  //location.href='login.php';
+  location.href='signup_coupon.php?userid=$userid';
   </script>";
 }else{
   echo "<script>

@@ -24,7 +24,7 @@ $rsc = [];
 $sales_page;
 if (isset($_GET['month'])) {
   $selected_month = $_GET['month'];
-  $sql = "SELECT COUNT(*) as count FROM payments WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month'";
+  $sql = "SELECT COUNT(*) as count FROM payments WHERE DATE_FORMAT(regdate, '%m') = '$selected_month'";
 
   $result = $mysqli->query($sql);
   $rsc = [];
@@ -36,14 +36,14 @@ if (isset($_GET['month'])) {
 }
 
 
-$sql = "SELECT payid, userid, name, total_price, buy_date FROM payments WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month' order by regdate desc";
+$sql = "SELECT payid, userid, name, total_price, regdate FROM payments WHERE DATE_FORMAT(regdate, '%m') = '$selected_month' order by regdate desc";
 
 
 $pagenationTarget = 'payments'; 
 $pageContentcount = 10; 
 
 if (!isset($pagerwhere)) {
-  $pagerwhere = ' DATE_FORMAT(buy_date, \'%m\') = \'' . $selected_month . '\'';
+  $pagerwhere = ' DATE_FORMAT(regdate, \'%m\') = \'' . $selected_month . '\'';
 }
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/pager.php';
 $limit = " limit $startLimit, $pageCount"; 
@@ -61,7 +61,7 @@ while ($rs = $result->fetch_object()) {
 //bar_chart
 $sql = "SELECT name, SUM(total_price) AS total_price_sum
         FROM payments
-        WHERE DATE_FORMAT(buy_date, '%m') = '$selected_month'
+        WHERE DATE_FORMAT(regdate, '%m') = '$selected_month'
         GROUP BY name
         ORDER BY total_price_sum DESC";
 
@@ -78,7 +78,7 @@ while ($row = $result->fetch_assoc()) {
 //pie_chart
 $sqlTopBuyers = "SELECT userid, SUM(total_price) AS total_price_sum
                 FROM payments
-                WHERE DATE_FORMAT(buy_date, '%m') = '07'
+                WHERE DATE_FORMAT(regdate, '%m') = '07'
                 GROUP BY userid
                 ORDER BY total_price_sum DESC
                 LIMIT 5"; 
@@ -97,7 +97,7 @@ while ($row = $resultTopBuyers->fetch_assoc()) {
 function getMonthlyData($selected_month) {
   global $mysqli; 
   $rsc = []; 
-  $sql = "SELECT * FROM payments where  DATE_FORMAT(buy_date, '%m') = '$selected_month' ORDER BY payid ";
+  $sql = "SELECT * FROM payments where  DATE_FORMAT(regdate, '%m') = '$selected_month' ORDER BY payid ";
   $result = $mysqli->query($sql);
   while ($rs = $result->fetch_object()) {
       $rsc[] = $rs;
@@ -165,7 +165,7 @@ if (isset($_GET['month']) || empty($_GET)) {
                   <td><?php echo $list->userid; ?></td>
                   <td><?php echo $list->name; ?></td>
                   <td><span class="number"><?php echo number_format($list->total_price); ?></span><span>원</span></td>
-                  <td><?= date('Y-m-d', strtotime($list -> buy_date)) ;?></td>
+                  <td><?= date('Y-m-d', strtotime($list -> regdate)) ;?></td>
                 </tr>
                 <?php
                       }

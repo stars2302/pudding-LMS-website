@@ -7,17 +7,15 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php
 
 
 
-if(!isset($_SESSION['UID'])){
-  echo"<script>
-  alert('로그인 후 이용해주세요.');
-  history.back();
-  </script>";
-} else{
+if(isset($_SESSION['UID'])){
+
+
   $userid = $_SESSION['UID'];//유저아이디
+  // var_dump($userid); //gangbao
 
   //cart item 조회
   $sqlct = "SELECT c.*,ct.cartid FROM cart ct
-          JOIN users u ON ct.userid = u.uid
+          JOIN users u ON ct.userid = u.userid
           JOIN courses c ON c.cid = ct.cid
           WHERE u.userid = '{$userid}'
   
@@ -33,7 +31,7 @@ if(!isset($_SESSION['UID'])){
   $sqlcp = "SELECT c.* FROM user_coupon uc
           JOIN users u ON uc.userid = u.userid
           JOIN coupons c ON c.cpid = uc.cpid
-          WHERE u.userid = '{$userid}'
+          WHERE u.userid = '{$userid}' AND (uc.use_max_date > NOW() OR uc.use_max_date = '')
   
           ORDER BY uc.ucid DESC";
   
@@ -43,6 +41,12 @@ if(!isset($_SESSION['UID'])){
     $rsccp[]=$rs;
   }
   // var_dump($rsccp);
+}
+else{
+    echo"<script>
+  alert('로그인 후 이용해주세요.');
+  history.back();
+  </script>";
 }
 
 
