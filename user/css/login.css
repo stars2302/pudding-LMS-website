@@ -120,3 +120,11 @@ input[type="file"]::file-selector-button {
   background: var(--pudding_bg);
   border: none;
 }
+
+.is-invalid~.invalid-feedback, .is-invalid~.invalid-tooltip, .was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {
+  display: none;
+}
+.is-invalid+.invalid-feedback, .is-invalid+.invalid-tooltip, .was-validated :invalid+.invalid-feedback, .was-validated :invalid+.invalid-tooltip {
+  display: block !important;
+}
+

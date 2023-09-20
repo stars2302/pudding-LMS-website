@@ -52,7 +52,7 @@ userimg -->
       </form>
 
       <!-- 아이디 찾기 Modal -->
-      <div class="modal fade" id="find_id" tabindex="-1">
+      <div class="modal fade" id="find_id" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -75,7 +75,7 @@ userimg -->
       </div>
 
       <!-- 비밀번호 찾기 Modal -->
-      <div class="modal fade" id="find_pw" tabindex="-1">
+      <div class="modal fade" id="find_pw" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -113,11 +113,38 @@ userimg -->
     });
   });
 
+
   // 비밀번호 변경 확인 버튼 클릭 시 비밀번호 수정 모달 열림
   // $("#modify_pw_btn").click(function() {
   //     $("#modify_pw").modal("show"); // 비밀번호 수정 모달 열기
   //   });
 
+
+  
+  // var key = getCookie('idSave'); 
+  // if(key!=""){
+  //   $("#userid").val(key); 
+  // }
+   
+  // if($("#userid").val() != ""){ 
+  //   $("#flexCheckDefault").attr("checked", true); 
+  // }
+   
+  // $("#flexCheckDefault").change(function(){ 
+  //   if($("#flexCheckDefault").is(":checked")){ 
+  //     setCookie('idSave', $("#userid").val(), 7); 
+  //   }else{ 
+  //     deleteCookie('idSave');
+  //   }
+  // });
+   
+  // $("#userid").keyup(function(){ 
+  //   if($("#flexCheckDefault").is(":checked")){
+  //     setCookie('idSave', $("#userid").val(), 7); 
+  //   }
+  // });
+
+//킵시작
 
   // var key = getCookie('idsave'); 
   // if(key!=""){
@@ -141,116 +168,63 @@ userimg -->
   //     setCookie('admin', $("#userid").val(), 7); 
   //   }
   // });
+//킵 엔드
 
-
-  $(".login_form").submit(function (e) {
-    if ($("#flexCheckDefault").is(":checked")) {
-      var userId = $("#userId").val();
-      setCookie("userid", userId, 2); // Save username for 30 days
-    } else {
-      // Clear the username cookie
-      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    }
-  });
-  var savedUsername = getCookie("username");
-  if (savedUsername) {
-    $("#username").val(savedUsername);
-  }
-
-  function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + value + expires + "; path=/";
-        }
-
-        // Function to get a cookie by name
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i];
-                while (cookie.charAt(0) === ' ') {
-                    cookie = cookie.substring(1, cookie.length);
-                }
-                if (cookie.indexOf(nameEQ) === 0) {
-                    return cookie.substring(nameEQ.length, cookie.length);
-                }
-            }
-            return null;
-        }
-
-        // Handle the form submission
-        $("form").submit(function(e) {
-            if ($("#saveUsername").is(":checked")) {
-                var username = $("#username").val();
-                setCookie("username", username, 30); // Save username for 30 days
-            } else {
-                // Clear the username cookie
-                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            }
-        });
+ 
 
 
 
+  // //저장된 쿠기값을 가져와서 id 칸에 넣어준다 없으면 공백으로 처리
+  // var key = getCookie('idsave');
+  // $('#userid').val(key);
 
 
+  // if ($('#userid').val() != "") {               // 페이지 로딩시 입력 칸에 저장된 id가 표시된 상태라면 id저장하기를 체크 상태로 둔다
+  //   $('#flexCheckDefault').attr("checked", true); //id저장하기를 체크 상태로 둔다 (.attr()은 요소(element)의 속성(attribute)의 값을 가져오거나 속성을 추가합니다.)
+  // }
+  // $('#flexCheckDefault').change(function () { // 체크박스에 변화가 있다면,
+  //   if ($('#flexCheckDefault').is(":checked")) { // ID 저장하기 체크했을 때,
+  //     setCookie("key", $("#userid").val(), 2); // 하루 동안 쿠키 보관
+  //   } else { // ID 저장하기 체크 해제 시,
+  //     deleteCookie("key");
+  //   }
+  // });
+
+  // // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+  // $("#id").keyup(function () { // ID 입력 칸에 ID를 입력할 때,
+  //   if ($("#idsave").is(":checked")) { // ID 저장하기를 체크한 상태라면,
+  //     setCookie("key", $("#userid").val(), 2); // 7일 동안 쿠키 보관
+  //   }
+  // });
 
 
-  //저장된 쿠기값을 가져와서 id 칸에 넣어준다 없으면 공백으로 처리
-  var key = getCookie('idsave');
-  $('#userid').val(key);
+  // //쿠키 함수 
+  // function setCookie(cookieName, value, exdays) {
+  //   var exdate = new Date();
+  //   exdate.setDate(exdate.getDate() + exdays);
+  //   var cookieValue = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toGMTString());
+  //   document.cookie = cookieName + "=" + cookieValue;
+  // }
 
+  // function deleteCookie(cookieName) {
+  //   var expireDate = new Date();
+  //   expireDate.setDate(expireDate.getDate() - 1);
+  //   document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+  // }
 
-  if ($('#userid').val() != "") {               // 페이지 로딩시 입력 칸에 저장된 id가 표시된 상태라면 id저장하기를 체크 상태로 둔다
-    $('#flexCheckDefault').attr("checked", true); //id저장하기를 체크 상태로 둔다 (.attr()은 요소(element)의 속성(attribute)의 값을 가져오거나 속성을 추가합니다.)
-  }
-  $('#flexCheckDefault').change(function () { // 체크박스에 변화가 있다면,
-    if ($('#flexCheckDefault').is(":checked")) { // ID 저장하기 체크했을 때,
-      setCookie("key", $("#userid").val(), 2); // 하루 동안 쿠키 보관
-    } else { // ID 저장하기 체크 해제 시,
-      deleteCookie("key");
-    }
-  });
-
-  // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
-  $("#id").keyup(function () { // ID 입력 칸에 ID를 입력할 때,
-    if ($("#idsave").is(":checked")) { // ID 저장하기를 체크한 상태라면,
-      setCookie("key", $("#userid").val(), 2); // 7일 동안 쿠키 보관
-    }
-  });
-
-
-  //쿠키 함수 
-  function setCookie(cookieName, value, exdays) {
-    var exdate = new Date();
-    exdate.setDate(exdate.getDate() + exdays);
-    var cookieValue = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toGMTString());
-    document.cookie = cookieName + "=" + cookieValue;
-  }
-
-  function deleteCookie(cookieName) {
-    var expireDate = new Date();
-    expireDate.setDate(expireDate.getDate() - 1);
-    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
-  }
-
-  function getCookie(cookieName) {
-    cookieName = cookieName + '=';
-    var cookieData = document.cookie;
-    var start = cookieData.indexOf(cookieName);
-    var cookieValue = '';
-    if (start != -1) {
-      start += cookieName.length;
-      var end = cookieData.indexOf(';', start);
-      if (end == -1) end = cookieData.length;
-      cookieValue = cookieData.substring(start, end);
-    }
-    return unescape(cookieValue);
-  }
+  // function getCookie(cookieName) {
+  //   cookieName = cookieName + '=';
+  //   var cookieData = document.cookie;
+  //   var start = cookieData.indexOf(cookieName);
+  //   var cookieValue = '';
+  //   if (start != -1) {
+  //     start += cookieName.length;
+  //     var end = cookieData.indexOf(';', start);
+  //     if (end == -1) end = cookieData.length;
+  //     cookieValue = cookieData.substring(start, end);
+  //   }
+  //   return unescape(cookieValue);
+  // }
 </script>
 <?php
 

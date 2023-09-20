@@ -92,25 +92,7 @@ userimg -->
 
 
 <script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (() => {
-    'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
 
 
   //아이디 중복확인
@@ -179,56 +161,22 @@ userimg -->
   // let pwcheck = $('#userpasswd_check');
   pwValue = userpw.val();
 
-
-  //케이스1
-  // pwcheck.on('input', function () {
-  //   let pwValueCheck = $(this).val();
-  //   pwValue = userpw.val();
-
-  //   // var pwValue = $('#userpasswd').val();
-  //   //         var pwValueCheck = $('#userpasswd_check').val();
-
-  //   if (pwValueCheck === pwValue) {
-  //     pwcheck.removeClass('is-invalid');
-  //     pwcheck.addClass('is-valid');
-
-  //   } else {
-  //     pwcheck.removeClass('is-valid');
-  //     pwcheck.addClass('is-invalid');
-  //   }
-  // });
-
-  //케이스2
-  // $('#userpasswd_check').on('input', function () {
-  //   let password = $('.userpasswd').val();
-  //   let confirmPassword = $('#userpasswd_check').val();
-
-  //   if (password === confirmPassword) {
-  //     pwcheck.removeClass('is-invalid');
-  //     pwcheck.addClass('is-valid');
-  //   } else {
-  //     pwcheck.removeClass('is-valid');
-  //     pwcheck.addClass('is-invalid');
-  //   }
-  // });
-
-  //지피티
   $('#userpasswd_check').on('input', function () {
-  let password = $('.userpasswd').val();
-  let confirmPassword = $(this).val();
+    let password = $('.userpasswd').val();
+    let confirmPassword = $(this).val();
 
-  if (password === confirmPassword) {
-    $(this).removeClass('is-invalid');
-    // $(this).addClass('is-valid');
-    $(this).siblings('.valid-feedback').text(`비밀번호 일치`);
-    $(this).addClass('is-valid');
+    if (password === confirmPassword) {
+      $(this).removeClass('is-invalid');
+      $(this).addClass('is-valid');
+      // $(this).siblings('.valid-feedback').text(`비밀번호 일치`);
+      $(this).addClass('is-valid');
 
-   
-  } else {
-    $(this).removeClass('is-valid');
-    $(this).addClass('is-invalid');
-  }
-});
+
+    } else {
+      $(this).removeClass('is-valid');
+      $(this).addClass('is-invalid');
+    }
+  });
 
   //이름 입력 여부 확인
   // let username = $('#username');
@@ -240,17 +188,13 @@ userimg -->
   });
 
 
-//이메일 
-// '^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-// var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+  //이메일 
 
-let useremail =$('#useremail');
-useremail.on('input', function () {
+  let useremail = $('#useremail');
+  useremail.on('input', function () {
     let emailValue = $(this).val();
-    // let pwValue = userpw.val();
 
-
-    // 정규식 패턴: 6글자 이상 20글자 미만, 영문자, 숫자, 특수문자 조합
+    // 정규식 패턴: 이메일 형식
     var emailRule = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     if (emailRule.test(emailValue)) {
       useremail.removeClass('is-invalid');

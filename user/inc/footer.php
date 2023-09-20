@@ -113,9 +113,10 @@
 
 
 <!-- bootstrap js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
   integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- modernizr js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
   referrerpolicy="no-referrer"></script>
@@ -129,6 +130,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"
   integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+      <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <!-- SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/curl/0.8.13/curl-for-jQuery/curl.min.js" integrity="sha512-Ef/hRvQVEo7czs5Tgm36wg0ue2dx5QzSNERHZQKGvGQetQGzlH8czAk7hxvpxJrTYGlIAiazlQFFqeEoKuB4Iw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Numbers js -->
 <script src="/pudding-LMS-website/admin/js/jquery.number.min.js"></script>
