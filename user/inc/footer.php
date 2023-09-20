@@ -112,32 +112,28 @@
 </footer>
 
 
-<!-- bootstrap js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
-  integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- modernizr js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
-  referrerpolicy="no-referrer"></script>
-<!-- swiper js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.2.0/swiper-bundle.min.js"
-  integrity="sha512-QwpsxtdZRih55GaU/Ce2Baqoy2tEv9GltjAG8yuTy2k9lHqK7VHHp3wWWe+yITYKZlsT3AaCj49ZxMYPp46iJQ=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- AOS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!-- nice select js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"
-  integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<!-- Numbers js -->
-<script src="/pudding-LMS-website/admin/js/jquery.number.min.js"></script>
-<script src="/pudding-LMS-website/admin/js/numbers_func.js"></script>
-<script src="/pudding-LMS-website/user/js/common.js"></script>
-<script src="/pudding-LMS-website/user/<?php if (isset($js_route)) {
-  echo $js_route;
-} ?>"></script>
-
+  <!-- bootstrap js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+    integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- modernizr js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+    referrerpolicy="no-referrer"></script>
+  <!-- swiper js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.2.0/swiper-bundle.min.js"
+    integrity="sha512-QwpsxtdZRih55GaU/Ce2Baqoy2tEv9GltjAG8yuTy2k9lHqK7VHHp3wWWe+yITYKZlsT3AaCj49ZxMYPp46iJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- nice select js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+    <!-- Numbers js -->
+  <script src="/pudding-LMS-website/admin/js/jquery.number.min.js"></script>
+  <script src="/pudding-LMS-website/admin/js/numbers_func.js"></script>
+  <script src="/pudding-LMS-website/user/js/common.js"></script>
+  <script src="/pudding-LMS-website/user/<?php if(isset($js_route)){echo $js_route;} ?>"></script>
+  
 </body>
 
 </html>
