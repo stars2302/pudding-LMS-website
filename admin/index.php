@@ -78,13 +78,13 @@ $csc = "SELECT COUNT(*) as cnt FROM courses";
 $csrc = $mysqli -> query($csc);
 $coursecount = $csrc->fetch_object();
 
-
+// var_dump($coursecount);
 //월별 신규 수강자
 $newuc = "SELECT COUNT(*) as cnt FROM users where DATE_FORMAT(now(), '%m')=DATE_FORMAT(regdate, '%m')";
 $newurc = $mysqli -> query($newuc);
 $newusercount = $newurc->fetch_object();
 
-
+// var_dump($newusercount);
 
 
 //월별 매출

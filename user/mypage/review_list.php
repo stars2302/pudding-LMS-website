@@ -5,7 +5,7 @@ $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
   $userid = $_SESSION['UID'];
-  $sql = "SELECT p.regdate, c.name, c.cid, r.userid AS review_userid FROM payments p 
+  $sql = "SELECT p.regdate, c.name, c.cid,r.rid, r.userid AS review_userid FROM payments p 
           JOIN courses c ON c.cid = p.cid 
           LEFT JOIN review r ON r.cid = c.cid AND r.userid = '{$userid}'
           WHERE p.userid = '{$userid}'";
@@ -15,7 +15,7 @@ $js_route = "mypage/js/mypage.js";
     $rs[] = $row;
   }
 
-  var_dump($rs);
+  // var_dump($rs);
   
 ?>
 <main class="d-flex">
@@ -58,7 +58,7 @@ $js_route = "mypage/js/mypage.js";
                     <a href="#" class="btn btn-dark">수정</a>
                     <a href="#" class="btn btn-danger d_btn">삭제</a>
                   <?php } else { ?>
-                      <a href="#" class="btn btn-warning">작성하기</a>
+                      <a href="review_create.php?cid=<?= $list->cid; ?>" class="btn btn-warning">작성하기</a>
                   <?php } ?>
                 </td>
               </tr>

@@ -57,6 +57,7 @@ userimg -->
     </div>
   </div>
 </main>
+
 <script>
 Kakao.init(''); 
 
@@ -67,6 +68,7 @@ function loginWithKakao() {
 }
 
 </script>
+
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/footer.php';

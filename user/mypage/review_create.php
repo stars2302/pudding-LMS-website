@@ -3,6 +3,15 @@ $title="마이페이지 - 내 수강평 작성";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+  $userid = $_SESSION['UID'];
+
+  $cid = $_GET['cid'];
+
+  $sql = "SELECT p.*, u.userimg, u.username FROM payments p
+  JOIN users u on p.userid= u.userid where cid={$cid}";
+  $result = $mysqli->query($sql);
+$card = $result->fetch_assoc();
+var_dump($card);
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">
@@ -26,15 +35,17 @@ $js_route = "mypage/js/mypage.js";
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
               <img
-                src="../images/pdata/users/image1.jpg"
+                src="<?= $card["userimg"]; ?>"
                 class="userImg shodow_box"
                 alt="프로필 이미지"
               />
-              <h5 class="b_text01 review_user">김유림</h5>
-              <h5 class="b_text02 dark review_name">REACT 쇼핑몰 만들기</h5>
+              <h5 class="b_text01 review_user"><?= $card["username"]; ?></h5>
+              <h5 class="b_text02 dark review_name"><?= $card["name"]; ?></h5>
             </div>
+            <form action="review_create_ok.php?cid=<?=$cid?>" method="POST">
+            <input type="hidden" name="userid" value="<?=$userid?>">
             <div class="rate_wrap">
-              <select class="form-control" id="rate" name="rate[]">
+              <select class="form-control" id="rate" name="rating">
                 <option value="1">
                   &#xf005; &#xf006; &#xf006; &#xf006; &#xf006;
                 </option>
@@ -57,15 +68,16 @@ $js_route = "mypage/js/mypage.js";
             <!-- <p>PHP를 배우기 위해서 급하게 들은 강의였는데, 생각보다 너무 친절하게 많은 예시를 들어 설명해주셔서
               이해하기 쉬었습니다.  기본기를 정리하는데 아주 좋은 강의였습니다</p> -->
             <textarea
-              name="reply_create"
-              id="reply_create" 
+              name="review_create"
+              id="review_create" 
               rows="10"
             ></textarea>
           </div>
           <div class="d-flex flex-row justify-content-end reply_btn_wrap">
-            <button class="btn btn-primary dark b_text01 reply_done">등록</button>
-            <button class="btn btn-dark b_text01 reply">취소</button>
+            <button type="submit" class="btn btn-primary dark b_text01 reply_done">등록</button>
+            <a href="/pudding-LMS-website/user/mypage/review_list.php" class="btn btn-dark b_text01 reply">취소</a>
           </div>
+          </form>
         </div>
       </div>
       <!-- 카드 끝 -->

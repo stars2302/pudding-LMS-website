@@ -20,23 +20,30 @@ $js_route = "mypage/js/mypage.js";
     //현재날짜 - 가입날짜
     $dateDiff = $currentDate->diff($regDate);
     $daysSinceRegistration = $dateDiff->days;
-  }
-  // var_dump($rs);
+
+    // var_dump($rs);
   // var_dump($dateDiff);
 
   //내강의실
   $useridlec = $rs->userid;
-$sqllec = "SELECT c.*, p.*
-              FROM payments p 
-              INNER JOIN courses c ON p.cid = c.cid 
-              WHERE p.userid='{$useridlec}'";
+  $sqllec = "SELECT c.*, p.*
+                FROM payments p 
+                INNER JOIN courses c ON p.cid = c.cid 
+                WHERE p.userid='{$useridlec}'";
+  
+    $resultlec = $mysqli->query($sqllec);
+    while ($row = $resultlec->fetch_object()) {
+      $courses[] = $row;
+    }
 
-  $resultlec = $mysqli->query($sqllec);
-  while ($row = $resultlec->fetch_object()) {
-    $courses[] = $row;
-}
+    // var_dump($courses);
+  }else{
+    echo "<script>alert('로그인후 이후 이용해주세요!');
+    history.back();</script>";
+  }
+  
 
-var_dump($courses);
+
 
 
 ?>

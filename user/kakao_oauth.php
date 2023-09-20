@@ -1,6 +1,6 @@
 <?php
 session_start();
-$rest_api_key = "";     
+$rest_api_key = "";   
 $redirect_uri = "http://localhost/pudding-LMS-website/user/kakao_oauth.php";  // Redirect URI
 $code = $_GET['code'];
 

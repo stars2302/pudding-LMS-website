@@ -34,7 +34,7 @@ $js_route = "mypage/js/mypage.js";
               <h5 class="b_text02 dark review_name">REACT 쇼핑몰 만들기</h5>
             </div>
             <div class="rate_wrap">
-              <select class="form-control" id="rate" name="rate[]">
+              <select class="form-control" id="rate" name="rating">
                 <option value="1">
                   &#xf005; &#xf006; &#xf006; &#xf006; &#xf006;
                 </option>

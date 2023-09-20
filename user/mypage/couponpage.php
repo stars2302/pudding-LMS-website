@@ -4,49 +4,55 @@ $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
-
-$userid =$_SESSION['UID'];
-$sql ="SELECT uc.*, cp.* FROM user_coupon uc 
-JOIN coupons cp ON uc.cpid = cp.cpid Where uc.userid='{$userid}' and uc.use_max_date > NOW() ORDER BY uc.ucid DESC";
-$sc_where="";
-
-$result = $mysqli->query($sql);
-while($rs = $result->fetch_object()){
-  $cps[]=$rs;
-}
-
-// var_dump($cps);
-
-// 사용가능한 쿠폰수
-$couponCount = count($cps);
-
-// 만료임박 쿠폰
-$expirecps = [];
-$expirecpsdate = strtotime('+7 days');
-foreach ($cps as $cp) {
-    $useMaxDatecp = strtotime($cp->use_max_date);
-    if ($useMaxDatecp <= $expirecpsdate) {
-        $expirecps[] = $cp;
+  if(isset($_SESSION['UID'])){
+    $userid =$_SESSION['UID'];
+    $sql ="SELECT uc.*, cp.* FROM user_coupon uc 
+    JOIN coupons cp ON uc.cpid = cp.cpid Where uc.userid='{$userid}' and uc.use_max_date > NOW() ORDER BY uc.ucid DESC";
+    $sc_where="";
+    
+    $result = $mysqli->query($sql);
+    while($rs = $result->fetch_object()){
+      $cps[]=$rs;
     }
-}
+    
+    // var_dump($cps);
+    
+    // 사용가능한 쿠폰수
+    $couponCount = count($cps);
+    
+    // 만료임박 쿠폰
+    $expirecps = [];
+    $expirecpsdate = strtotime('+7 days');
+    foreach ($cps as $cp) {
+        $useMaxDatecp = strtotime($cp->use_max_date);
+        if ($useMaxDatecp <= $expirecpsdate) {
+            $expirecps[] = $cp;
+        }
+    }
+    
+    // 만료쿠폰 수
+    $expirecouponcount = count($expirecps);
+    
+    $a = [];
+    
+    $filter_where="";
+    $cp_filter = $_GET['coupon_filter']??'';
+    
+    // var_dump($cp_filter);
+    
+    if($cp_filter=='1'){
+      //모든 쿠폰 보여주기
+      $a = $expirecps;
+    }else {
+      //해당하는 타입의 쿠폰 보여주도록
+      $a =$cps;
+    }
+    
+  }else{
+    echo "<script>alert('로그인후 이후 이용해주세요!');
+    history.back();</script>";
+  }
 
-// 만료쿠폰 수
-$expirecouponcount = count($expirecps);
-
-$a = [];
-
-$filter_where="";
-$cp_filter = $_GET['coupon_filter']??'';
-
-// var_dump($cp_filter);
-
-if($cp_filter=='1'){
-  //모든 쿠폰 보여주기
-  $a = $expirecps;
-}else {
-  //해당하는 타입의 쿠폰 보여주도록
-  $a =$cps;
-}
 
 
 
