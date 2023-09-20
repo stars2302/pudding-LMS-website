@@ -6,11 +6,11 @@ $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
   $userid = $_SESSION['UID'];
-  $sql = "SELECT p.regdate, c.name, c.cid, r.userid AS review_userid FROM payments p 
+  $sql = "SELECT p.regdate, c.name, c.cid,r.rid, r.userid AS review_userid FROM payments p 
           JOIN courses c ON c.cid = p.cid 
           LEFT JOIN review r ON r.cid = c.cid AND r.userid = '{$userid}'
           WHERE p.userid = '{$userid}'";
-// var_dump($sql);
+var_dump($sql);
 
   $result = $mysqli->query($sql);
 
@@ -25,7 +25,7 @@ $js_route = "mypage/js/mypage.js";
 <main class="d-flex">
     <aside class="mypage_wrap">
       <div class="">
-        <h4 class="jua main_tt my_title">마이페이지</h4>
+        <h4 class="jua main_tt my_title">마이페이지2</h4>
         <nav>
         <ul>
           <li class="content_stt link_tag mypage_tag"><a href="/pudding-LMS-website/user/mypage/mypage.php">내 강의실</a></li>
@@ -59,18 +59,29 @@ $js_route = "mypage/js/mypage.js";
                 <td><?php echo $list->name ?></td>
                 <td>
                   <?php if ($list->review_userid == $userid) { ?>
-                    <a href="#" class="btn btn-primary">보기</a>
-                    <a href="#" class="btn btn-dark">수정</a>
-                    <a href="#" class="btn btn-danger d_btn">삭제</a>
-                  <?php } else { ?>
-                      <a href="review_create.php?cid=<?= $list->cid; ?>" class="btn btn-warning">작성하기</a>
-                  <?php } ?>
+                    <a href="/pudding-LMS-website/user/mypage/review_view.php?rid=<?= $list->rid; ?>" class="btn btn-primary">보기</a>
+                    <!-- <a href="#" class="btn btn-dark">수정</a>
+                    <a href="#" class="btn btn-danger d_btn">삭제</a> -->
+                  <?php 
+                } else { 
+                  ?>
+                <a href="/pudding-LMS-website/user/mypage/review_create.php?cid=<?= $list->cid; ?>" class="btn btn-warning">작성하기</a>
+               <?php
+                  }
+                ?>
                 </td>
               </tr>
               <?php
                 }
+              }else{
+
+                ?>
+                <p>강의가 없습니다!</p>
+              <?php
               }
               ?>
+
+              
               <!-- <tr>
                 <td>2023.09.11</td>
                 <td>지금 NOW!! 바로 React 시작하기</td>

@@ -7,7 +7,7 @@ $js_route = "mypage/js/mypage.js";
   if(isset($_SESSION['UID'])){
     $userid =$_SESSION['UID'];
     $sql ="SELECT uc.*, cp.* FROM user_coupon uc 
-    JOIN coupons cp ON uc.cpid = cp.cpid Where uc.userid='{$userid}' and uc.use_max_date > NOW() ORDER BY uc.ucid DESC";
+    JOIN coupons cp ON uc.cpid = cp.cpid Where uc.userid='{$userid}' and ( uc.use_max_date > NOW() OR uc.use_max_date ='') ORDER BY uc.ucid DESC";
     $sc_where="";
     
     $result = $mysqli->query($sql);

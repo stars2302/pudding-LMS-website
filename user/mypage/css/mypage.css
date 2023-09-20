@@ -225,11 +225,11 @@ a.btn {
 }
 
 .review .col_2 {
-  width: 50%;
+  width: 60%;
 }
 
 .review .col_3 {
-  width: 35;
+  width: 25%;
 }
 
 /* 수강평 리스트 end */
@@ -350,6 +350,11 @@ textarea:focus {
   display: block;
   padding-right: calc(var(--base_unit) * 0.5);
   color: var(--dark);
+  cursor: pointer;
+}
+
+.coupon_box_able .able h1:hover {
+ text-decoration: underline;
 }
 
 .coupon_box_able i {
