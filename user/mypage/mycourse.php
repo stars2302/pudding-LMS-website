@@ -12,6 +12,7 @@ $js_route = "mypage/js/mypage.js";
 
 $result = $mysqli->query($sql);
 $rowcourse = $result->fetch_assoc();
+ $rs = array();
 while ($row = $result->fetch_object()) {
   $rs[] = $row;
 }

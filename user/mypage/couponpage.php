@@ -135,6 +135,8 @@ $js_route = "mypage/js/mypage.js";
 
           <?php
               }
+             }else{
+              echo '<p>쿠폰이 없습니다.</p>';
              }
           ?>
          

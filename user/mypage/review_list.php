@@ -1,21 +1,25 @@
 <?php
+
 $title="마이페이지 - 내 수강평";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
   $userid = $_SESSION['UID'];
-  $sql = "SELECT p.regdate, c.name, c.cid,r.rid, r.userid AS review_userid FROM payments p 
+  $sql = "SELECT p.regdate, c.name, c.cid, r.userid AS review_userid FROM payments p 
           JOIN courses c ON c.cid = p.cid 
           LEFT JOIN review r ON r.cid = c.cid AND r.userid = '{$userid}'
           WHERE p.userid = '{$userid}'";
+// var_dump($sql);
 
   $result = $mysqli->query($sql);
+
+  $rs = array();
   while ($row = $result->fetch_object()) {
     $rs[] = $row;
   }
 
-  // var_dump($rs);
+  var_dump($rs);
   
 ?>
 <main class="d-flex">
@@ -37,12 +41,12 @@ $js_route = "mypage/js/mypage.js";
       <h1 class="jua main_tt">수강평</h1>
       <div class="d-flex flex-column align-items-center">
         <div class="sales_container shadow_box border">
-          <table class="table sales" id="payment_table">
+          <table class="table sales review" id="payment_table">
             <thead>
               <tr>
-                <th scope="col" class="col1">구매날짜</th>
-                <th scope="col" class="col2">강의명</th>
-                <th scope="col" class="col3">수강평</th>
+                <th scope="col" class="col_1">구매날짜</th>
+                <th scope="col" class="col_2">강의명</th>
+                <th scope="col" class="col_3">수강평</th>
               </tr>
             </thead>
             <tbody>
@@ -55,6 +59,7 @@ $js_route = "mypage/js/mypage.js";
                 <td><?php echo $list->name ?></td>
                 <td>
                   <?php if ($list->review_userid == $userid) { ?>
+                    <a href="#" class="btn btn-primary">보기</a>
                     <a href="#" class="btn btn-dark">수정</a>
                     <a href="#" class="btn btn-danger d_btn">삭제</a>
                   <?php } else { ?>

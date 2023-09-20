@@ -29,7 +29,7 @@ while ($new_rs = $new_result->fetch_object()) {
 // 수강평
 // $rvsql = "SELECT * FROM review ORDER BY rid DESC LIMIT 0, 8";
 $rvsql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
-        JOIN users u ON r.uid = u.uid
+        JOIN users u ON r.userid = u.userid
         JOIN courses c ON c.cid = r.cid
 
         ORDER BY r.rid DESC LIMIT 0, 6";
