@@ -5,7 +5,7 @@
   
 
   //지급 할 쿠폰을 유저가 가지고 있는지 조회
-  $sqluc = "SELECT * FROM user_coupon where cpid=$cpid";
+  $sqluc = "SELECT * FROM user_coupon where cpid=$cpid and userid='$userid'";
   $result3 = $mysqli -> query($sqluc);
   while($rs = $result3->fetch_object()){
     $rscuc[]=$rs;

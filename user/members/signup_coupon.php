@@ -18,6 +18,7 @@ $userid = $_GET['userid'];
     uid : '<?=$userid ?>',
     cpid: 1
   }
+  console.log(data);
   $.ajax({
     async : false, 
     type: 'post',     
@@ -28,6 +29,7 @@ $userid = $_GET['userid'];
       console.log('Error:', error);
     },
     success: function(return_data){
+      console.log(return_data.result);
       if(return_data.result == "ok"){
         alert('쿠폰이 지급되었습니다.');
         location.href = "/pudding-LMS-website/user/index.php";
