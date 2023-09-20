@@ -6,7 +6,7 @@
   $total_price = $_POST['total_price'];
   $discount_price = $_POST['discount_price'];
   $userid = $_POST['userid'];
-  $cpid = $_POST['cpid'];
+  $cpid = $_POST['cpid']??'';
 
   if($total_price == $discount_price){
     $discount_status = 0;
@@ -45,11 +45,13 @@
     $sql3 = "DELETE from cart where cartid=$ctid";
     $result3 = $mysqli->query($sql3);
 
-    //사용 쿠폰 삭제
-    $sql4 = "DELETE from user_coupon where cpid=$cpid and userid='{$userid}'";
-    $result4 = $mysqli -> query($sql4);
+    if($cpid !== ''){
+      //사용 쿠폰 삭제
+      $sql4 = "DELETE from user_coupon where cpid=$cpid and userid='{$userid}'";
+      $result4 = $mysqli -> query($sql4);
+    }
 }
-  echo json_encode($result4);
+  echo json_encode($result);
   exit;
 
 ?>
