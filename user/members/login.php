@@ -44,6 +44,9 @@ userimg -->
             아이디 저장
           </label>
         </div>
+        <button type="button" onclick="loginWithKakao()">
+          <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg">
+        </button>
         <div class="id_pw d-flex justify-content-center">
           <a href="/pudding-LMS-website/user/members/signup.php">회원가입</a>
           <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_id">아이디 찾기</button>
@@ -102,6 +105,8 @@ userimg -->
     </div>
   </div>
 </main>
+
+
 <script>
   $(document).ready(function () {
     // 확인 버튼을 클릭할 때 폼을 제출
@@ -225,6 +230,17 @@ userimg -->
   //   }
   //   return unescape(cookieValue);
   // }
+</script>
+
+<script>
+Kakao.init(''); 
+
+function loginWithKakao() {
+    Kakao.Auth.authorize({
+        redirectUri: 'http://localhost/pudding-LMS-website/user/members/kakao_oauth.php', 
+    });
+}
+
 </script>
 <?php
 
