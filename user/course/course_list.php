@@ -206,11 +206,12 @@ while($rs = $result -> fetch_object()){
               </div>
             </div>
           </div>
-          <div class="courseList"> <div class="row mb-5">
-            <?php
-              foreach($rsc as $item){
-            ?>        
-              <div class="col-12 col-sm-6 col-md-4 courseBox">
+          <div class="courseList">
+            <div class="row mb-5">
+              <?php
+                foreach($rsc as $item){
+              ?>        
+              <div class="col-12 col-sm-6 col-md-4 courseBox shadow_box"  onclick="location.href='course_view.php?cid=<?= $item->cid ?>'">
                 <div class="imgBox">
                   <img
                     src="<?= $item -> thumbnail?>"
@@ -246,24 +247,24 @@ while($rs = $result -> fetch_object()){
                       <?= $item->level; ?>
                     </span>
                   </div>
-                  <p class="fw-bold mt-2">
-                  <a href="course_view.php?cid=<?= $item->cid ?>"><?= $item->name?></a>
-                  </p>
+                  <div class="courseName fw-bold mt-2">
+                    <?= $item->name?>
+                  </div>
                   <div class="contentTM float-end">
                     <div>
                       <i class="ti ti-calendar-event"></i>
                       <span>수강기간 <?= $item->due?></span>
                     </div>
                     <div class="float-end">
-                      <span class="main_stt"><?= $item->price?></span><span>원</span>
+                      <span class="main_stt number"><?= $item->price?></span><span>원</span>
                     </div>
                   </div>
                 </div>
               </div>
-           
-            <?php
-              }
-            ?> </div>
+              <?php
+                }
+              ?> 
+            </div>
           </div>
         </div>
       </div>

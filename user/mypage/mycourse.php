@@ -15,11 +15,11 @@ $rowcourse = $result->fetch_assoc();
 while ($row = $result->fetch_object()) {
   $rs[] = $row;
 }
-var_dump($rowcourse);
+// var_dump($rowcourse);
 // var_dump($rs);
 
 $cateArray = explode('/', $rowcourse['cate']);
-var_dump($cateArray);
+// var_dump($cateArray);
 
 ?>
 <main class="d-flex">
@@ -95,11 +95,12 @@ var_dump($cateArray);
             <div class="d-flex gap-5 align-items-center">
               <div class="d-flex gap-1">
                 <span>진행률: </span>
-                <span>100%</span>
+                <!-- php progress 출력하기 -->
+                <span>100 %</span>
                 <span>/</span>
                 <span>강의 완료</span>
               </div>
-              <a href=""><i class="fa-regular fa-circle-play"></i></a>
+              <a href="<?php echo $list->youtube_url ?>"><i class="fa-regular fa-circle-play"></i></a>
             </div>
           </div>
 

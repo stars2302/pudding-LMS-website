@@ -155,10 +155,32 @@ while ($ntrs = $ntresult->fetch_object()) {
                   </div>
                 </div>
               </div>
-              <div class="view_wrap">
-                <a href="#" class="view_btn">상세보기</button>
-                  <a href="#"><i class="ti ti-heart"></i></a>
-                  <a href="#"><i class="ti ti-basket"></i></a>
+              <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
+                <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
+                <span>
+                  <!-- <a href="#"><i class="ti ti-heart"></i></a> -->
+                  <a href="/pudding-LMS-website/user/members/like_course.php?cid=<?= $item->cid ?>" class="card_like">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
+                      height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                    </svg>
+                  </a>
+                  <!-- <a href="#"><i class="ti ti-basket"></i></a> -->
+                  <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $item->cid ?>" class="card_cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
+                      height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                      <path
+                        d="M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z" />
+                      <path d="M17 10l-2 -6" />
+                      <path d="M7 10l2 -6" />
+                    </svg>
+                  </a>
+                </span>
               </div>
             </li>
             <?php
@@ -230,10 +252,32 @@ while ($ntrs = $ntresult->fetch_object()) {
                   <span class="badge rounded-pill blue_bg b-pd">고급</span>
                   <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
                 </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인1</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
+                <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
+                  <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
+                  <span>
+                    <!-- <a href="#"><i class="ti ti-heart"></i></a> -->
+                    <a href="/pudding-LMS-website/user/members/like_course.php?cid=<?= $item->cid ?>" class="card_like">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
+                        height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                      </svg>
+                    </a>
+                    <!-- <a href="#"><i class="ti ti-basket"></i></a> -->
+                    <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $item->cid ?>" class="card_cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
+                        height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                        <path
+                          d="M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z" />
+                        <path d="M17 10l-2 -6" />
+                        <path d="M7 10l2 -6" />
+                      </svg>
+                    </a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -306,10 +350,30 @@ while ($ntrs = $ntresult->fetch_object()) {
                   <span class="badge rounded-pill blue_bg b-pd">고급</span>
                   <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
                 </div>
-                <h5 class="card-title">실무 자바 개발을 위한 디자인1</h5>
-                <div class="card-text">
-                  <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-                  <p class=""><span class="price">10,000</span><span>원</span></p>
+                <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
+                  <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
+                  <span>
+                    <a href="/pudding-LMS-website/user/members/like_course.php?cid=<?= $item->cid ?>" class="card_like">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
+                        height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                      </svg>
+                    </a>
+                    <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $item->cid ?>" class="card_cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
+                        height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                        <path
+                          d="M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z" />
+                        <path d="M17 10l-2 -6" />
+                        <path d="M7 10l2 -6" />
+                      </svg>
+                    </a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -438,34 +502,68 @@ while ($ntrs = $ntresult->fetch_object()) {
   </section>
 </main>
 
-<!-- <li>
-    <div class="card" style="width: 18rem;">
-      <img src="images/main/thumbnail.png" class="card-img-top" alt="강의 썸네일">
-      <div class="card-body">
-        <div>
-          <span class="badge rounded-pill blue_bg b-pd">고급</span>
-          <span class="badge rounded-pill green_bg b-pd">프론트엔드</span>
-        </div>
-        <h5 class="card-title">실무 자바 개발을 위한 디자인</h5>
-        <div class="card-text">
-          <p class=""><i class="ti ti-calendar-event"></i>수강기간<span class="duration">3개월</span></p>
-          <p class=""><span class="price">10,000</span><span>원</span></p>
-        </div>
-      </div>
-    </div>
-  </li> -->
-<aside class="main_btn">
-  <div class="history_btn">
-    <a href="">
-      <img src="images/clock-history.png" alt="">
-    </a>
-  </div>
-  <div class="top_btn">
-    <a href="">
-      <img src="images/top_btn.png" alt="">
-    </a>
-  </div>
-</aside>
+<script>
+
+  //강의 좋아요
+  $('.card_like').on('click',function(){
+    let data = {
+      cid: cid
+    }
+    $.ajax({
+        type: 'GET',
+        data: data,
+        url: "like_course.php",
+        dataType: 'json',
+        success: function (return_data) {
+          if (return_data.result === 'success') {
+            console.log('retun_data', return_data)
+            trElement.remove();
+            alert('좋아요좋아요.');
+            location.reload();
+          } else {
+            alert('좋아요 실패.');
+          }
+        },
+        error: function (error) {
+          console.log('Error:', error);
+          alert('좋아요중에 오류가 발생했습니다.');
+        }
+      });
+
+  });
+
+
+    //장바구니
+    $('.card_cart').on('click',function(){
+    let data = {
+      cid: cid
+    }
+    $.ajax({
+        type: 'GET',
+        data: data,
+        url: "add_cart.php",
+        dataType: 'json',
+        success: function (return_data) {
+          if (return_data.result === 'success') {
+            console.log('retun_data', return_data)
+            trElement.remove();
+            alert('장바구니 담기 성공');
+            location.reload();
+          } else {
+            alert('장바구니 담기 실패');
+          }
+        },
+        error: function (error) {
+          console.log('Error:', error);
+          alert('장바구니 담기 중에 오류가 발생했습니다.');
+        }
+      });
+
+  });
+
+
+</script>
+
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/footer.php';

@@ -75,7 +75,9 @@ main {
   flex-direction: column;
   gap:6px;
 }
-
+.signup_box .id_valid_wrap{
+  flex: 1;
+}
 .btn.duplication_btn {
   padding-left: 15px !important;
   padding-right:15px !important;
@@ -84,3 +86,34 @@ main {
 .btn.duplication_btn span {
 width: 100%;
 }
+
+.form-control[type=file]{
+  height: 45px;
+  /* line-height: 45px; */
+}
+input[type="file"] {
+  writing-mode: horizontal-tb !important;
+}
+input[type="file"]::file-selector-button {
+  height: 45px;
+}
+.swiper-pagination-bullet {
+  background: none;
+  border: 2px solid var(--border_grey);
+  width: 10px;
+  height: 10px;
+  /* outline: 2px solid var(--border_grey); */
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--pudding_bg);
+  border: none;
+}
+
+.is-invalid~.invalid-feedback, .is-invalid~.invalid-tooltip, .was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {
+  display: none;
+}
+.is-invalid+.invalid-feedback, .is-invalid+.invalid-tooltip, .was-validated :invalid+.invalid-feedback, .was-validated :invalid+.invalid-tooltip {
+  display: block !important;
+}
+

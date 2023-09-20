@@ -141,7 +141,7 @@
             <input
               type="text"
               class="form-control"
-              name="userid"
+              name="auserid"
               id="userid"
               placeholder="ID : admin"
               aria-label="userid"
@@ -155,7 +155,7 @@
             <input
               type="password"
               class="form-control"
-              name="password"
+              name="apassword"
               id="password"
               placeholder="PW : 1111"
               required

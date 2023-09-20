@@ -20,7 +20,7 @@
   $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
           JOIN users u ON r.uid = u.uid
           JOIN courses c ON c.cid = r.cid
-          JOIN review_reply w ON r.rid = w.rid
+          LEFT JOIN review_reply w ON r.rid = w.rid
           WHERE r.cid = '{$cid}'";
 
   $result1 = $mysqli->query($sql1);
@@ -32,9 +32,20 @@
   $cateString = $rs->cate;
   $parts = explode('/', $cateString);
 ?>
-
     <main>
       <div class="container">
+        <div class="modalBackground">
+          <div class="modalBox d-flex flex-column justify-content-between">
+            <i class="fa-regular fa-circle-xmark"></i>
+            <!-- modalVideo-->
+            <div class=modalVideo style="TEXT-ALIGN: center"><object type="text/html" width="100%" height="100%" data="<?= $addImgs[0]->youtube_url?>" allowFullScreen></object></div>
+            <!-- modalVideo 끝-->
+            <div class="modalTitle">
+              <h4><?= $addImgs[0]->youtube_name?></h4>
+              <p>*구매 전 미리보기로 볼수 있는 강의입니다.</p>
+            </div>
+          </div>
+        </div>
         <div class="viewSetion_1 shadow_box pd_5">
           <div class="d-flex gap-5">
             <div>
@@ -92,14 +103,14 @@
                     <i class="ti ti-calendar-event"></i>
                     <span>수강기간 <?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span>
                   </div>
-                  <div><span class="main_stt"><?= $rs->price?></span><span>원</span></div>
+                  <div><span class="main_stt number"><?= $rs->price?></span><span>원</span></div>
                 </div>
                 <div>
                   <div class="viewBtn mb-2">
                     <button class="btn preview btn-dark">미리보기</button>
                   </div>
                   <div class="viewBtn">
-                    <button class="btn btn-primary dark">장바구니 담기</button>
+                    <button class="btn viewCart btn-primary dark">장바구니 담기</button>
                   </div>
                 </div>
               </div>
@@ -138,7 +149,7 @@
                 </div>
               </div>
               <div>
-                <a href="<?= $ai->youtube_url?>"><i class="fa-regular fa-circle-play"></i></a>
+                <a href="<?= $ai->youtube_url?>" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
               </div>
             </div>
             <?php           
@@ -151,13 +162,17 @@
           <div class="pd_2">
             <h2 class="jua">수강평</h2>
           </div>
-            <?php
+          <?php
             if(isset($re)){
-              foreach($re as $view){
-            ?>
-          <div>
-            <p>전체 리뷰 <?= count($re)??0 ?>건</p>
-          </div>
+          ?>
+            <div>
+              <p>전체 리뷰 <?= count($re)??0 ?>건</p>
+            </div>
+          <?php } ?>
+          <?php
+          if(isset($re)){
+            foreach($re as $view){
+          ?>
           <div class="viewSection3 shadow_box pd_2">
             <div class="review d-flex justify-content-between align-items-center">
               <div class="reviewProfile d-flex gap-3 align-items-center">
@@ -180,10 +195,14 @@
               </p>
             </div>
 
+            <!-- 답글시작 -->
+            <?php
+                if(isset($re['r_content'])){
+                  foreach($re as $view){   
+            ?>
+
             <div class="reviewBox_2 pd_3">
-              <div
-                class="review d-flex justify-content-between align-items-center pd_4"
-              >
+              <div class="review d-flex justify-content-between align-items-center pd_4">
                 <div class="reviewProfile d-flex gap-3 align-items-center">
                   <img src="../course_images/327610-eng.png" alt="" />
                   <span class="fw-bold">프바오</span>
@@ -194,12 +213,18 @@
                 <p><?= $view->r_content; ?></p>
               </div>
             </div>
+
+            <?php
+              }}
+            ?>
+            <!-- 답글 끝 -->
+
           </div>
           <?php
               }
           ?>         
             <div class="viewSection3Btn">
-                  <button class="btn btn-dark">더보기</button>
+              <button class="btn btn-dark">더보기</button>
             </div>
           <?php       
             }else{

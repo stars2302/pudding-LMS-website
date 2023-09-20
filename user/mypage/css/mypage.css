@@ -352,9 +352,8 @@ textarea:focus {
 
 /* coupon */
 .content_wrap_cp {
-
-
   padding: var(--base_unit) calc(var(--base_unit) * 1.5);
+  margin-bottom: calc(var(--base_unit) * 3);
 }
 .coupons .coupon {
   width: 49%;
@@ -476,3 +475,13 @@ textarea:focus {
   color: var(--point_primary_hover);
 }
 /* 내강의실 끝 */
+
+
+  .hide-usables {
+    display: none;
+}
+
+
+.hide-expirings {
+    display: block;
+}
