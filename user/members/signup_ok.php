@@ -58,7 +58,7 @@ $result = $mysqli -> query($sql) or die($mysql->error);
 
 //회원가입 성공 시. 쿠폰 발행 
 if($result){
-  user_coupon($mysqli, $userid, 1,'회원가입');
+  // user_coupon($mysqli, $userid, 1,'회원가입');
   echo "<script>
   alert('회원가입 성공');
   location.href='login.php';
