@@ -29,12 +29,12 @@ $(".modalBox i").click(function (e) {
   $(".modalBackground").removeClass("active");
 });
 
-$(".viewCart").click(function (e) {
-  e.preventDefault();
-  if (confirm("장바구니 담기 완료! 장바구니로 이동하시겠습니까?")) {
-    location.href = "http://localhost/pudding-LMS-website/user/cart/cart.php";
-  }
-});
+// $(".viewCart").click(function (e) {
+//   e.preventDefault();
+//   if (confirm("장바구니 담기 완료! 장바구니로 이동하시겠습니까?")) {
+//     location.href = "http://localhost/pudding-LMS-website/user/cart/cart.php";
+//   }
+// });
 
 $(".viewSection3").slice(0, 2).show();
 $(".moreviewBtn").click(function (e) {
@@ -44,3 +44,31 @@ $(".moreviewBtn").click(function (e) {
     $(".moreviewBtn").hide();
   }
 });
+
+
+//장바구니
+$('.viewCart').on('click',function(){
+  let data = {
+    cid: cid
+  }
+  $.ajax({
+      type: 'GET',
+      data: data,
+      url: "add_cart.php",
+      dataType: 'json',
+      success: function (return_data) {
+        if (return_data.result === 'success') {
+          console.log('retun_data', return_data)
+          trElement.remove();
+          alert('장바구니 담기 성공');
+          location.reload();
+        } else {
+          alert('장바구니 담기 실패');
+        }
+      },
+      error: function (error) {
+        console.log('Error:', error);
+        alert('장바구니 담기 중에 오류가 발생했습니다.');
+      }
+    });
+})    

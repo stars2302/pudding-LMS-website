@@ -18,7 +18,7 @@
   }
 
   $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
-          JOIN users u ON r.uid = u.uid
+          JOIN users u ON r.userid = u.uid
           JOIN courses c ON c.cid = r.cid
           LEFT JOIN review_reply w ON r.rid = w.rid
           WHERE r.cid = '{$cid}'";
@@ -131,7 +131,9 @@
                     <button class="btn preview btn-dark">미리보기</button>
                   </div>
                   <div class="viewBtn">
-                    <button class="btn viewCart btn-primary dark">장바구니 담기</button>
+                    <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $rs->cid ?>" class="viewCart">
+                    <button class="btn btn-primary dark">장바구니 담기</button>
+                    </a>
                   </div>
                 </div>
               </div>
