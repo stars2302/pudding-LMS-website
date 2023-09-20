@@ -182,7 +182,7 @@ $('.payment_form').submit(function(e){
     let userid = $(this).find('.userid').val();
 
     let cpid = $(this).find('.coupon_select').val();
-    console.log(cpid);
+    console.log('cpid'+cpid);
   
   
     let data = {
@@ -192,7 +192,7 @@ $('.payment_form').submit(function(e){
       userid: userid,
       cpid: cpid
     }
-  
+  console.log(data);
     $.ajax({
       async : false, 
       type: 'post',     
@@ -214,7 +214,3 @@ $('.payment_form').submit(function(e){
   }
 
 });
-
-
-
-
