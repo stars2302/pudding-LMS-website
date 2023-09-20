@@ -25,8 +25,8 @@ $(".preview").click(function (e) {
 });
 $(".modalBox i").click(function (e) {
   e.preventDefault();
+  $(".modalVideo object").remove();
   $(".modalBackground").removeClass("active");
-  $(".object").trigger("pause");
 });
 
 $(".viewCart").click(function (e) {

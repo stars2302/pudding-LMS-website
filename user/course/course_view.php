@@ -39,7 +39,9 @@
           <div class="modalBox d-flex flex-column justify-content-between">
             <i class="fa-regular fa-circle-xmark"></i>
             <!-- modalVideo-->
-            <div class=modalVideo style="TEXT-ALIGN: center"><object type="text/html" width="100%" height="100%" data="<?= $addImgs[0]->youtube_url?>" allowFullScreen></object></div>
+            <div class=modalVideo style="TEXT-ALIGN: center">
+              <object type="text/html" width="100%" height="100%" data="<?= $addImgs[0]->youtube_url?>" allowFullScreen></object>
+            </div>
             <!-- modalVideo 끝-->
             <div class="modalTitle">
               <h4><?= $addImgs[0]->youtube_name?></h4>
