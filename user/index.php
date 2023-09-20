@@ -194,7 +194,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                     </svg>
                   </a>
                   <!-- <a href="#"><i class="ti ti-basket"></i></a> -->
-                  <a href="#" class="card_cart">
+                  <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $item->cid ?>" class="card_cart">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
                       height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
                       stroke-linejoin="round">
@@ -294,7 +294,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                       </svg>
                     </a>
                     <!-- <a href="#"><i class="ti ti-basket"></i></a> -->
-                    <a href="#" class="card_cart">
+                    <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $item->cid ?>" class="card_cart">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
                         height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -395,7 +395,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                         <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                       </svg>
                     </a>
-                    <a href="#" class="card_cart">
+                    <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $item->cid ?>" class="card_cart">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
                         height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -575,6 +575,34 @@ while ($ntrs = $ntresult->fetch_object()) {
 
   });
 
+
+    //장바구니
+    $('.card_cart').on('click',function(){
+    let data = {
+      cid: cid
+    }
+    $.ajax({
+        type: 'GET',
+        data: data,
+        url: "add_cart.php",
+        dataType: 'json',
+        success: function (return_data) {
+          if (return_data.result === 'success') {
+            console.log('retun_data', return_data)
+            trElement.remove();
+            alert('장바구니 담기 성공');
+            location.reload();
+          } else {
+            alert('장바구니 담기 실패');
+          }
+        },
+        error: function (error) {
+          console.log('Error:', error);
+          alert('장바구니 담기 중에 오류가 발생했습니다.');
+        }
+      });
+
+  });
 
 
 </script>
