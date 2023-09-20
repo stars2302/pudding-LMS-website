@@ -1,94 +1,32 @@
-let keyidx = 0;
-    let col = 1;
-    let answear = 'iloveu'.toLowerCase(); //정답!!
-    let gameCount = 6; //게임 횟수
-    let wordDOM ='';
+//hint toggle
+$('.game_rule_content .hint button').click(function(){
+  $(this).toggleClass('active');
+});
 
-    // console.log(answear.length*gameCount)
-
-
-    //정답 길이에 따라 바둑판 만들기
-    for(let i = 1; i <= answear.length*gameCount; i++){
-      wordDOM += `<div class="word word${i}"><span></span></div>`;
+//winner coupon 지급
+$('.game_winner .coupon').click(function(){ 
+  let uid = $(this).attr('data-user');
+  let data = {
+    uid : uid,
+    cpid: 51
+  }
+  $.ajax({
+    async : false, 
+    type: 'post',     
+    data: data, 
+    url: "/pudding-LMS-website/user/inc/coupon_insert.php", 
+    dataType: 'json', //결과 json 객체형식
+    error: function(error){
+      console.log('Error:', error);
+    },
+    success: function(return_data){
+      if(return_data.result == "ok"){
+        alert('쿠폰이 지급되었습니다.');
+        location.href = "/pudding-LMS-website/user/index.php";
+      } else{
+        alert('이미 발급받은 쿠폰입니다.');
+        location.href = "/pudding-LMS-website/user/index.php";
+      }
     }
-    $('.game_board').append(wordDOM).css({gridTemplateColumns: `repeat(${answear.length},100px)`});
-
-
-
-
-    let pushtext = [];
-    let pushIDX = [];
-    $('body').keydown(function(e){
-      // console.log(e.key);
-      if(col <= gameCount){
-
-        let key = e.key; //입력한 문자열
-        if (key.match(/^[a-zA-Z]$/)) {
-          // console.log('영어');
-          $('.word').eq(keyidx).find('span').text(key);
-          keyidx++;
-
-
-
-          if (keyidx % answear.length == 0) {
-            pushtext = [];
-            pushIDX = [];
-            $('.word').each(function(){
-              let idx = $(this).index();
-              if($(this).index() < col*answear.length && $(this).index() >= (col-1)*answear.length){
-                pushtext.push($('.word').eq(idx).text());
-                pushIDX.push(idx);
-              }
-            });
-            
-  
-            
-            //입력한 값 모두 소문자
-            $.each(pushtext,function(idx,val){
-              var $this = $(this);
-              pushtext[idx] = val.toLowerCase();
-  
-  
-              if(pushtext[idx] == answear.charAt(idx)){
-                $('.word').eq(pushIDX[idx]).addClass('o');
-              } else if(answear.includes(pushtext[idx])){
-                $('.word').eq(pushIDX[idx]).addClass('v');
-                // console.log('문자만');
-              } else{
-                $('.word').eq(pushIDX[idx]).addClass('x');
-                // console.log('틀렸워');
-              }
-            });
-  
-            setTimeout(() => {
-            if(pushtext.join('') == answear){
-                alert('정답입니다!');
-                location.reload();
-              }
-            }, 100);
-  
-            col++;
-          }
-        }
-        
-        //backspace
-        if(key =='Backspace'){
-          // console.log('back');
-          
-          
-          if(keyidx > 0){
-            if (keyidx % answear.length !== 0) {
-              $('.word').eq(keyidx - 1).text('');
-              keyidx--;
-            }
-          }
-        }
-        console.log(keyidx);
-        console.log(col*answear.length);
-
-
-    } else{
-      alert('GAME OVER');
-      location.reload();
-    }
-    });
+  });//ajax
+});
