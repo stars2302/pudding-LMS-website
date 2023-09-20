@@ -331,6 +331,14 @@ textarea:focus {
   margin-top: var(--base_unit);
 }
 
+.reply_btn_wrap{
+  margin:calc(var(--base_unit) * 0.5) var(--base_unit);
+}
+
+.d_btn{
+  margin-left:5px;
+}
+
 /* 쿠폰함 */
 .coupon_box {
   width: 100%;
@@ -502,3 +510,6 @@ textarea:focus {
 .hide-expirings {
     display: block;
 }
+
+
+

@@ -68,11 +68,10 @@ $js_route = "mypage/js/mypage.js";
           </div>
           <div class="b_text02 reply_content radius_12">
             <p><?= $card["content"]; ?></p>
-            <!-- <textarea
-              name="reply_create"
-              id="reply_create"
-              rows="10"
-            ></textarea> -->
+          </div>
+          <div class="d-flex flex-row justify-content-end reply_btn_wrap">
+            <a href="/pudding-LMS-website/user/mypage/review_update.php?rid=<?= $card["rid"]; ?>" class="btn btn-dark">수정</a>
+            <button class="btn btn-danger d_btn" data-rid="<?= $card["rid"]; ?>">삭제</button>
           </div>
 
           <div class="b_text02 re_reply_content radius_12">
@@ -88,8 +87,8 @@ $js_route = "mypage/js/mypage.js";
             <p><?= $rcard["r_content"]; ?></p>
             
           </div>
-          <div class="d-flex flex-row justify-content-end reply_btn_wrap">
-          </div>
+         
+         
         </div>
       </div>
     <a href="/pudding-LMS-website/user/mypage/review_list.php" class="btn btn-dark list_btn">목록보기</a>
