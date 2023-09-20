@@ -133,7 +133,6 @@
 
       <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <!-- SDK -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/curl/0.8.13/curl-for-jQuery/curl.min.js" integrity="sha512-Ef/hRvQVEo7czs5Tgm36wg0ue2dx5QzSNERHZQKGvGQetQGzlH8czAk7hxvpxJrTYGlIAiazlQFFqeEoKuB4Iw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Numbers js -->
 <script src="/pudding-LMS-website/admin/js/jquery.number.min.js"></script>
