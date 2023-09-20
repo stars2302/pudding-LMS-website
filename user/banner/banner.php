@@ -3,6 +3,13 @@ $title="오늘의쿠폰";
 $css_route="banner/css/banner.css";
 $js_route = "banner/js/banner.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+
+if(!isset($_SESSION['UID'])){
+  echo"<script>
+  alert('로그인 후 이용해주세요.');
+  history.back();
+  </script>";
+}
 ?>
 
 

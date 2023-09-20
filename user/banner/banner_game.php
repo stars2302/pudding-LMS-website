@@ -1,12 +1,19 @@
 <?php
 $title="오늘의쿠폰";
 $css_route="banner/css/banner.css";
-$js_route = "banner/js/banner.js";
+$js_route = "banner/js/banner_game.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+
+if(!isset($_SESSION['UID'])){
+  echo"<script>
+  alert('로그인 후 이용해주세요.');
+  history.back();
+  </script>";
+}
 ?>
 
 <div class="container d-flex justify-content-center align-items-end game_board_container jua">
-  <div class="game_board_content col-7">
+  <div class="game_board_content">
     <h2 class="text-center">단어를 맞춰보세요!</h2>
     <div class="game_board">
     </div>
