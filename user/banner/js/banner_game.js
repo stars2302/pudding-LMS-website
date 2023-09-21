@@ -19,22 +19,27 @@ let keyidx = 0;
     let pushtext = [];
     let pushIDX = [];
     $('body').keydown(function(e){
-      // console.log(e.key);
-      if(col <= gameCount){
 
-        let key = e.key; //입력한 문자열
+      let key = e.key; //입력한 문자열
+      // console.log(e.key);
+
+      if(col <= gameCount){
         if (key.match(/^[a-zA-Z]$/)) {
           // console.log('영어');
           $('.word').eq(keyidx).find('span').text(key);
           keyidx++;
+          console.log('press');
 
 
-
+          //1row 구분
           if (keyidx % answear.length == 0) {
-            pushtext = [];
-            pushIDX = [];
+            pushtext = [];//사용자가 입력한 1row 단어
+            pushIDX = [];//사용자가 입력한 1row의 keyidx 배열
+
             $('.word').each(function(){
               let idx = $(this).index();
+
+              //1row에 해당하는것들을 각 배열에 push
               if($(this).index() < col*answear.length && $(this).index() >= (col-1)*answear.length){
                 pushtext.push($('.word').eq(idx).text());
                 pushIDX.push(idx);
@@ -48,7 +53,7 @@ let keyidx = 0;
               var $this = $(this);
               pushtext[idx] = val.toLowerCase();
   
-  
+              
               if(pushtext[idx] == answear.charAt(idx)){
                 $('.word').eq(pushIDX[idx]).addClass('o');
               } else if(answear.includes(pushtext[idx])){
@@ -69,8 +74,16 @@ let keyidx = 0;
   
             col++;
           }
-        }
+        }//if (key.match(/^[a-zA-Z]$/))
         
+
+
+
+
+
+
+
+
         //backspace
         if(key =='Backspace'){
           // console.log('back');
@@ -78,24 +91,22 @@ let keyidx = 0;
           
           if(keyidx > 0){
             if (keyidx % answear.length !== 0) {
-              $('.word').eq(keyidx - 1).text('');
+              $('.word').eq(keyidx-1).find('span').text('');
               keyidx--;
             }
           }
         }
         console.log(keyidx);
-        console.log(col*answear.length);
+        // console.log(col*answear.length);
         if(keyidx == answear.length*gameCount){
           setTimeout(() => {
             alert('GAME OVER');
             location.href = '/pudding-LMS-website/user/banner/game_over.php';
           }, 800);
-        }
+        }//if(key =='Backspace')
 
 
 
-    } 
-    });
+      } //if(col <= gameCount)
 
-
-    
+    });//$('body').keydown
