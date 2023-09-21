@@ -21,7 +21,7 @@
   }
 
   $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
-          JOIN users u ON r.userid = u.userid
+          JOIN users u ON r.userid = u.uid
           JOIN courses c ON c.cid = r.cid
           LEFT JOIN review_reply w ON r.rid = w.rid
           WHERE r.cid = '{$cid}'";
