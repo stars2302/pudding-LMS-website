@@ -31,7 +31,7 @@ if(isset($_SESSION['UID'])){
   $sqlcp = "SELECT c.* FROM user_coupon uc
           JOIN users u ON uc.userid = u.userid
           JOIN coupons c ON c.cpid = uc.cpid
-          WHERE u.userid = '{$userid}' AND (uc.use_max_date > NOW() OR uc.use_max_date = '')
+          WHERE u.userid = '{$userid}' AND (uc.use_max_date > NOW() OR uc.use_max_date IS NULL)
   
           ORDER BY uc.ucid DESC";
   
