@@ -3,15 +3,11 @@ $title="장바구니";
 $css_route="cart/css/cart.css";
 $js_route = "cart/js/cart.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
-// include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/login_ok.php';
 
 
 
 if(isset($_SESSION['UID'])){
-
-
   $userid = $_SESSION['UID'];//유저아이디
-  // var_dump($userid); //gangbao
 
   //cart item 조회
   $sqlct = "SELECT c.*,ct.cartid FROM cart ct
@@ -32,15 +28,12 @@ if(isset($_SESSION['UID'])){
           JOIN users u ON uc.userid = u.userid
           JOIN coupons c ON c.cpid = uc.cpid
           WHERE u.userid = '{$userid}' AND (uc.use_max_date > NOW() OR uc.use_max_date IS NULL)
-  
           ORDER BY uc.ucid DESC";
-  
   
   $result = $mysqli-> query($sqlcp);
   while($rs = $result->fetch_object()){
     $rsccp[]=$rs;
   }
-  // var_dump($rsccp);
 }
 else{
     echo"<script>
@@ -48,10 +41,7 @@ else{
   history.back();
   </script>";
 }
-
-
 ?>
-
 
     <div class="cart_container container">
       <h2 class="jua main_tt">장바구니</h2>
@@ -72,8 +62,6 @@ else{
           if(isset($rscct)){
             foreach($rscct as $cart){
           ?>
-
-
           <li class="cart_item shadow_box" data-cartid="<?= $cart->cartid ?>">
             <input class="form-check-input" type="checkbox" value="" id="cart_item<?= $cart->cartid ?>" checked>
             <label class="form-check-label" for="cart_item<?= $cart->cartid ?>"></label>
@@ -83,19 +71,16 @@ else{
                 <h3 class="b_text01"><?= $cart->name ?></h3>
                 <span class="badge rounded-pill blue_bg b-pd">
                   <?php
-                    //뱃지 키워드 
                     if (isset($cart->cate)) {
                       $categoryText = $cart->cate;
                       $parts = explode('/', $categoryText);
                       $lastPart = end($parts);
-
                       echo $lastPart;
                     }
                   ?>
                 </span>
                 <span class="badge rounded-pill b-pd
                   <?php
-                  // 뱃지컬러
                   $levelBadge = $cart->level;
                   if ($levelBadge === '초급') {
                     echo 'yellow_bg';
@@ -116,8 +101,6 @@ else{
               </div>
             </div>
             <i class="ti ti-x del_btn"></i>
-            <!-- <span class="price content_tt"><span class="number"><?= $cart->price ?></span>원</span> -->
-            <!-- 무료표시하기 -->
             <?php
             if($cart->price_status != "무료"){
             ?>
@@ -129,10 +112,7 @@ else{
             <?php 
             } 
             ?>
-            <!-- 무료표시 끝 -->
           </li>
-
-
           <?php
             }
           }else {
@@ -142,43 +122,28 @@ else{
             <p class="content_stt">장바구니에 담긴 강의가 없습니다.</p>
             <a href="/pudding-LMS-website/user/index.php" class="btn btn-primary dark">홈으로이동</a>
           </li>
-            <!-- echo '장바구니에 담긴 강의가 없습니다.<a href="/pudding-LMS-website/user/index.php"><i class="ti ti-home"></i> 홈으로 이동</a>'; -->
           <?php
           }
           ?>
         </ul>
 
-
-
-
         <div class="form_container col-4">
-          <form action="" method="POST" class="payment_form radius_12 shadow_box">
+          <form action="#" method="POST" class="payment_form radius_12 shadow_box">
             <input type="hidden" value="<?= $userid ?>" class="userid">
-            <!-- <input type="hidden" value="" class="cartid">
-            <input type="hidden" value="" class="total_price">
-            <input type="hidden" value="" class="discount_price"> -->
 
             <h3 class="content_stt">결제정보</h3>
             <h4 class="demoHeaders style_pd b_text02">쿠폰선택</h4>
             <select class="selectmenu coupon_select">
               <option value="" disabled selected class="default">보유하고 있는 쿠폰</option>
-
-
-
               <?php
               if(isset($rsccp)){
                 foreach($rsccp as $coupon){
               ?>
-
               <option value="<?= $coupon->cpid ?>" data-discount="<?php if($coupon->cp_type == '정률'){echo $coupon->cp_ratio;} else{echo $coupon->cp_price;} ?>" data-type="<?= $coupon->cp_type ?>" data-limit="<?= $coupon->cp_limit ?>"><?= $coupon->cp_name ?></option>
-
               <?php
                 }
               }
               ?>
-
-
-
             </select>
             <hr>
             <div class="payment_info d-flex justify-content-between">
