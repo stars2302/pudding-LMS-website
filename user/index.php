@@ -25,13 +25,10 @@ while ($new_rs = $new_result->fetch_object()) {
   $new_rsc[] = $new_rs;
 }
 
-
 // 수강평
-// $rvsql = "SELECT * FROM review ORDER BY rid DESC LIMIT 0, 8";
 $rvsql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
         JOIN users u ON r.userid = u.userid
         JOIN courses c ON c.cid = r.cid
-
         ORDER BY r.rid DESC LIMIT 0, 6";
 
 $rvresult = $mysqli->query($rvsql);
@@ -62,81 +59,81 @@ while ($ntrs = $ntresult->fetch_object()) {
   </section>
   <section class="sec2">
     <h2 class="jua dark sec_tt">어떤 강의를 찾고 있나요?</h2>
-    <form action="" class="search">
+    <form action="/pudding-LMS-website/user/members/search_course_list.php" method="get" class="search">
       <label for="course_search" type="hidden"></label>
-      <input type="text" id="course_search" placeholder="필요한 강의를 찾아보세요.">
-      <button><i class="ti ti-search"></i></button>
+      <input type="text" id="course_search" name="course_search" placeholder="필요한 강의를 찾아보세요.">
+      <button type="submit"><i class="ti ti-search"></i></button>
     </form>
     <div class="category_box radius_12">
       <ul>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_view.php?cate=<?= 'HTML'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'HTML'; ?>">
             <img src="images/main/html.png" alt="HTML">
             <p>HTML</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'CSS'; ?>">
             <img src="images/main/css.png" alt="CSS">
             <p>CSS</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'Javascript'; ?>">
             <img src="images/main/js.png" alt="Javascript">
             <p>Javascript</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'PHP'; ?>">
             <img src="images/main/php.png" alt="PHP">
             <p>PHP</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'React'; ?>">
             <img src="images/main/react.png" alt="React">
             <p>React</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'SQL'; ?>">
             <img src="images/main/mysql.png" alt="SQL">
             <p>SQL</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'Python'; ?>">
             <img src="images/main/phython.png" alt="Python">
             <p>Python</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'Figma'; ?>">
             <img src="images/main/figma.png" alt="Figma">
             <p>Figma</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'PS'; ?>">
             <img src="images/main/psd.png" alt="PS">
             <p>PS</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'fter Effect'; ?>">
             <img src="images/main/illust.png" alt="illustration">
             <p>AI</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'After Effect'; ?>">
             <img src="images/main/ae.png" alt="After Effect">
             <p>After Effect</p>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'InDesign'; ?>">
             <img src="images/main/indei.png" alt="InDesign">
             <p>InDesign</p>
           </a>
@@ -175,7 +172,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                         ?>
                       </span>
                     </p>
-                    <p class=""><span class="price">
+                    <p class=""><span class="price number">
                         <?= $item->price ?>
                       </span><span>원</span></p>
                   </div>
@@ -275,7 +272,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                           ?>
                         </span>
                       </p>
-                      <p class=""><span class="price">
+                      <p class=""><span class="price number">
                           <?= $item->price ?>
                         </span><span>원</span></p>
                     </div>
@@ -284,7 +281,6 @@ while ($ntrs = $ntresult->fetch_object()) {
                 <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
                   <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
                   <span>
-                    <!-- <a href="#"><i class="ti ti-heart"></i></a> -->
                     <a href="/pudding-LMS-website/user/members/like_course.php?cid=<?= $item->cid ?>" class="card_like">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
                         height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
@@ -293,7 +289,6 @@ while ($ntrs = $ntresult->fetch_object()) {
                         <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                       </svg>
                     </a>
-                    <!-- <a href="#"><i class="ti ti-basket"></i></a> -->
                     <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $item->cid ?>" class="card_cart">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
                         height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
@@ -378,7 +373,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                           ?>
                         </span>
                       </p>
-                      <p class=""><span class="price">
+                      <p class=""><span class="price number">
                           <?= $item->price ?>
                         </span><span>원</span></p>
                     </div>
@@ -544,68 +539,6 @@ while ($ntrs = $ntresult->fetch_object()) {
 
   </section>
 </main>
-
-<script>
-
-  //강의 좋아요
-  $('.card_like').on('click',function(){
-    let data = {
-      cid: cid
-    }
-    $.ajax({
-        type: 'GET',
-        data: data,
-        url: "like_course.php",
-        dataType: 'json',
-        success: function (return_data) {
-          if (return_data.result === 'success') {
-            console.log('retun_data', return_data)
-            trElement.remove();
-            alert('좋아요좋아요.');
-            location.reload();
-          } else {
-            alert('좋아요 실패.');
-          }
-        },
-        error: function (error) {
-          console.log('Error:', error);
-          alert('좋아요중에 오류가 발생했습니다.');
-        }
-      });
-
-  });
-
-
-    //장바구니
-    $('.card_cart').on('click',function(){
-    let data = {
-      cid: cid
-    }
-    $.ajax({
-        type: 'GET',
-        data: data,
-        url: "add_cart.php",
-        dataType: 'json',
-        success: function (return_data) {
-          if (return_data.result === 'success') {
-            console.log('retun_data', return_data)
-            trElement.remove();
-            alert('장바구니 담기 성공');
-            location.reload();
-          } else {
-            alert('장바구니 담기 실패');
-          }
-        },
-        error: function (error) {
-          console.log('Error:', error);
-          alert('장바구니 담기 중에 오류가 발생했습니다.');
-        }
-      });
-
-  });
-
-
-</script>
 
 <?php
 

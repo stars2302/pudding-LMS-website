@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start(); //최근 본 강의
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
 
 if (isset($_SESSION['UID'])) {

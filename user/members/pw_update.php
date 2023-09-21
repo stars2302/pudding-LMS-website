@@ -23,17 +23,17 @@ $uid = $_GET['uid'];
       <h3>비밀번호 변경</h3>
       <form action="pw_update_ok.php?uid=<?= $uid ?>" method="POST">
         <label for="userpasswd" class="hidden"></label>
-        <input type="text" class="form-control" id="userpasswd" name="userpasswd" placeholder="새 비밀번호"
+        <input type="password" class="form-control" id="userpasswd" name="userpasswd" placeholder="새 비밀번호"
           aria-label="Userid" />
+        <div class="invalid-feedback">6~20글자, 영문자, 숫자, 특수문자 조합 필수입니다.</div>
+        <div class="valid-feedback">사용가능한 비밀번호입니다.</div>
+
+
         <label for="userpasswdcheck" class="hidden"></label>
-        <input type="text" class="form-control" id="userpasswdcheck" name="userpasswdcheck" placeholder="새 비밀번호 변경"
+        <input type="password" class="form-control" id="userpasswdcheck" name="userpasswdcheck" placeholder="새 비밀번호 변경"
           aria-label="Userpassword" />
-        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-          비밀번호 불일치
-        </div>
-        <div class="valid-feedback">
-          비밀번호 일치
-        </div>
+        <div class="invalid-feedback">비밀번호가 일치하지 않습니다.</div>
+        <!-- <div class="valid-feedback">비밀번호 일치</div> -->
 
         <button class="btn btn-primary dark">확인</button>
       </form>
@@ -42,32 +42,70 @@ $uid = $_GET['uid'];
 </main>
 
 <script>
-  // 비밀번호 확인
-  function isSame() {
 
-    let pw = $('#userpasswd');
-    let pwCheck = $('#userpasswdcheck');
+  
+  //비밀번호 규칙 확인
+  //input 요소의 값이 변경될 때 실행
+  let userpw = $('#userpasswd');
 
-    // if (pw.length < 6 || pw.length > 16) {
-    //   window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
-    //   document.getElementById('pw').value = document.getElementById('pwCheck').value = '';
-    //   document.getElementById('same').innerHTML = '';
-    // }
-    if (pw.value != '' && pwCheck.value != '') {
-      if (pw.value == pwCheck.value) {
-        // document.getElementById('same').innerHTML = '비밀번호가 일치합니다.';
-        // document.getElementById('same').style.color = 'blue';
-        $('#userpasswdcheck').classList.remove('is-invalid');
-        $('#userpasswdcheck').classList.add('is-valid');
+  userpw.on('input', function () {
+    let pwValue = $(this).val();
 
-      } else {
-        $('#userpasswdcheck').classList.remove('is-valid');
-        $('#userpasswdcheck').classList.add('is-invalid');
-      }
+    // 정규식 패턴 : 6글자 이상 20글자 미만, 영문자, 숫자, 특수문자 조합
+    var pwRule = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/;
+    if (pwRule.test(pwValue)) {
+      userpw.removeClass('is-invalid');
+      userpw.addClass('is-valid');
+    } else {
+      userpw.removeClass('is-valid');
+      userpw.addClass('is-invalid');
     }
+  });
 
-  }
-  isSame();
+
+  //비밀번호 일치 여부 확인
+  let pwcheck = $('#userpasswdcheck');
+  pwValue = userpw.val();
+
+  pwcheck.on('input', function () {
+    let password = $('#userpasswd').val();
+    let confirmPassword = $(this).val();
+
+    if (password === confirmPassword) {
+      pwcheck.removeClass('is-invalid');
+      pwcheck.addClass('is-valid');
+    } else {
+      pwcheck.removeClass('is-valid');
+      pwcheck.addClass('is-invalid');
+    }
+  });
+
+  // 비밀번호 확인
+  // function isSame() {
+
+  //   let pw = $('#userpasswd');
+  //   let pwCheck = $('#userpasswdcheck');
+
+  //   // if (pw.length < 6 || pw.length > 16) {
+  //   //   window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+  //   //   document.getElementById('pw').value = document.getElementById('pwCheck').value = '';
+  //   //   document.getElementById('same').innerHTML = '';
+  //   // }
+  //   if (pw.value != '' && pwCheck.value != '') {
+  //     if (pw.value == pwCheck.value) {
+  //       // document.getElementById('same').innerHTML = '비밀번호가 일치합니다.';
+  //       // document.getElementById('same').style.color = 'blue';
+  //       $('#userpasswdcheck').classList.remove('is-invalid');
+  //       $('#userpasswdcheck').classList.add('is-valid');
+
+  //     } else {
+  //       $('#userpasswdcheck').classList.remove('is-valid');
+  //       $('#userpasswdcheck').classList.add('is-invalid');
+  //     }
+  //   }
+
+  // }
+  // isSame();
 </script>
 
 <?php

@@ -9,7 +9,10 @@ $result = $mysqli->query($sql);
 $rs = $result->fetch_object();
 
 if (!isset($rs)) {
-  echo '<script>alert("가입 이력이 없습니다.");</script>';
+  echo '<script>
+        alert("가입 이력이 없습니다.");
+        location.href="login.php";
+        </script>';
 } else {
   echo "<script>
         alert('고객님의 아이디는 " . $rs->userid . "입니다.');

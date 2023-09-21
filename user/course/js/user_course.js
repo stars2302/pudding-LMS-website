@@ -72,3 +72,9 @@ $('.viewCart').on('click',function(){
       }
     });
 })    
+
+
+$('.courseCheckBox').change(function(){
+  $(this).find('button').trigger('click');
+});
+

@@ -48,7 +48,7 @@ userimg -->
           <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg">
         </button>
         <div class="id_pw d-flex justify-content-center">
-          <a href="/pudding-LMS-website/user/members/signup.php">회원가입</a>
+          <a href="/pudding-LMS-website/user/members/signup.php">회원가입 </a>
           <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_id">아이디 찾기</button>
           <button type="button" class="" data-bs-toggle="modal" data-bs-target="#find_pw">비밀번호 찾기</button>
         </div>
@@ -116,16 +116,42 @@ userimg -->
     $("#find_pw_confirm_btn").click(function () {
       $("#find_pw_form").submit();
     });
+
+
+  var key = getCookie('idsave');
+  $('#userid').val(key);
+
+
+  // if ($('#userid').val() != "") {               // 페이지 로딩시 입력 칸에 저장된 id가 표시된 상태라면 id저장하기를 체크 상태로 둔다
+  //   $('#flexCheckDefault').attr("checked", true); //id저장하기를 체크 상태로 둔다 (.attr()은 요소(element)의 속성(attribute)의 값을 가져오거나 속성을 추가합니다.)
+  // }
+  // $('#flexCheckDefault').change(function () { // 체크박스에 변화가 있다면,
+  //   if ($('#flexCheckDefault').is(":checked")) { // ID 저장하기 체크했을 때,
+  //     setCookie("key", $("#userid").val(), 2); // 하루 동안 쿠키 보관
+  //   } else { // ID 저장하기 체크 해제 시,
+  //     deleteCookie("key");
+  //   }
+  // });
+
+    $('.login_form button').click(function () {
+      if ($('#flexCheckDefault').checked) {
+        let saveIdValue = $('#userid').val();
+      setCookie('idSave', saveIdValue, 7);
+      } else {
+        setCookie('idSave', saveIdValue, 7);
+      }
+
+
+    }); //로그인 폼 클릭시 할일 end
+
+    
+
+
   });
 
 
-  // 비밀번호 변경 확인 버튼 클릭 시 비밀번호 수정 모달 열림
-  // $("#modify_pw_btn").click(function() {
-  //     $("#modify_pw").modal("show"); // 비밀번호 수정 모달 열기
-  //   });
 
 
-  
   // var key = getCookie('idSave'); 
   // if(key!=""){
   //   $("#userid").val(key); 
