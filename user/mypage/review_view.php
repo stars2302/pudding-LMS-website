@@ -74,7 +74,7 @@ $js_route = "mypage/js/mypage.js";
           <div class="b_text02 reply_content radius_12">
             <p><?= $card["content"]; ?></p>
           </div>
-          <div class="d-flex flex-row justify-content-end reply_btn_wrap">
+          <div class="d-flex flex-row justify-content-end reply_btn_wrap_view">
             <a href="/pudding-LMS-website/user/mypage/review_update.php?rid=<?= $card["rid"]; ?>" class="btn btn-dark">수정</a>
             <button class="btn btn-danger d_btn" data-rid="<?= $card["rid"]; ?>">삭제</button>
           </div>

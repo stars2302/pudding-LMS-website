@@ -331,10 +331,12 @@ textarea:focus {
 .list_btn {
   margin-top: var(--base_unit);
 }
-
-.reply_btn_wrap{
-  margin:calc(var(--base_unit) * 0.5) var(--base_unit);
+.reply_btn_wrap_view{
+  margin: 15px 30px 30px 30px;
 }
+/* .reply_btn_wrap{
+  margin:calc(var(--base_unit) * 0.5) var(--base_unit);
+} */
 
 .d_btn{
   margin-left:5px;

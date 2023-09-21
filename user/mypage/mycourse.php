@@ -51,7 +51,7 @@ $cateArray = explode('/', $rowcourse['cate']);
              
                 <div>
                 
-                  <span class="badge rounded-pill blue_bg b-pd"><?php echo $cateArray[1] ?></span>
+                  <span class="badge rounded-pill blue_bg b-pd"><?php echo $cateArray[2] ?></span>
                   <span class="badge rounded-pill yellow_bg b-pd"><?php echo $rowcourse['level'] ?></span>
                 </div>
                 <div class="viewCate d-flex gap-2">
@@ -83,6 +83,7 @@ $cateArray = explode('/', $rowcourse['cate']);
         <div class="viewSection2 shadow_box">
           <?php
           foreach($rs as $list){
+            $progressText = ($list->progress == 0) ? '강의시작' : (($list->progress == 100) ? '강의완료' : '강의중');
           ?>
           <div
             class="viewList d-flex justify-content-between align-items-center"
@@ -96,10 +97,9 @@ $cateArray = explode('/', $rowcourse['cate']);
             <div class="d-flex gap-5 align-items-center">
               <div class="d-flex gap-1">
                 <span>진행률: </span>
-                <!-- php progress 출력하기 -->
-                <span>100 %</span>
+                <span><?php echo $list->progress ?> %</span>
                 <span>/</span>
-                <span>강의 완료</span>
+                <span><?php echo $progressText; ?></span>
               </div>
               <a href="<?php echo $list->youtube_url ?>"><i class="fa-regular fa-circle-play"></i></a>
             </div>
