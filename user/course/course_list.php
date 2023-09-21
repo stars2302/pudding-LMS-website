@@ -10,10 +10,40 @@ $sql = "SELECT * from courses where 1=1 " ;
 $order = ' order by cid desc';
 $c_where = '';
 
+$total = $_GET['total']??'';
+$frondend = $_GET['frondend']??'';
+$backend = $_GET['backend']??'';
+$uxui = $_GET['uxui']??'';
+$design = $_GET['design']??'';
+$etc = $_GET['etc']??'';
+$level1 = $_GET['level1']??'';
+$level2 = $_GET['level2']??'';
+$level3 = $_GET['level3']??'';
+$free = $_GET['free']??'';
+$pay = $_GET['pay']??'';
+$price_status = $_GET['price_status']??'';
+$filter_where = '';
+
+
+
+//난이도 조회
+if($level1 == '초급'){
+  $filter_where .= " level='{$level1}'";
+  $c_where .= ' and'.$filter_where;
+}else if($level2 == '중급'){
+  $filter_where .= " level='{$level2}'";
+  $c_where .= ' and'.$filter_where;
+}else if($level3 == '고급'){
+  $filter_where .= " level='{$level3}'";
+  $c_where .= ' and'.$filter_where;
+}else{
+  $filter_where .= " 1=1";
+  $c_where .= '';
+}
+
 
 $search_where = '';
 $search = $_GET['search']??'';
-
 
 if($search){
   $search_where .= " name like '%{$search}%'";
@@ -51,7 +81,7 @@ while($rs = $result -> fetch_object()){
           </form>
         </div>
         <div class="mainSection d-flex gap-5">
-          <div class="courseCheckBox mb-5">
+          <form action="#" class="courseCheckBox mb-5">
             <div class="checkBox_1 mb-3">
               <h6>전체선택</h6>
               <hr class="mt-4" />
@@ -60,7 +90,7 @@ while($rs = $result -> fetch_object()){
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="전체선택"
                   name="total"
                   id="total"
                 />
@@ -72,7 +102,7 @@ while($rs = $result -> fetch_object()){
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="프론트엔드"
                   name="frondend"
                   id="frondend"
                 />
@@ -82,7 +112,7 @@ while($rs = $result -> fetch_object()){
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="백엔드"
                   name="backend"
                   id="backend"
                 />
@@ -92,7 +122,7 @@ while($rs = $result -> fetch_object()){
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="UX/UI"
                   name="uxui"
                   id="uxui"
                 />
@@ -102,7 +132,7 @@ while($rs = $result -> fetch_object()){
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="디자인"
                   name="design"
                   id="design"
                 />
@@ -112,7 +142,7 @@ while($rs = $result -> fetch_object()){
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="기타"
                   name="etc"
                   id="etc"
                 />
@@ -122,33 +152,33 @@ while($rs = $result -> fetch_object()){
               <h6>난이도</h6>
               <hr class="mt-4" />
               <div class="form-check mt-5">
-                <label class="form-check-label" for="level_1"> 초급 </label>
+                <label class="form-check-label" for="level1"> 초급 </label>
                 <input
                   class="form-check-input"
                   type="checkbox"
                   value="초급"
-                  name="level_1"
-                  id="level_1"
+                  name="level1"
+                  id="level1"
                 />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="level_2"> 중급 </label>
+                <label class="form-check-label" for="level2"> 중급 </label>
                 <input
                   class="form-check-input"
                   type="checkbox"
                   value="중급"
-                  name="level_2"
-                  id="level_2"
+                  name="level2"
+                  id="level2"
                 />
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="level_3"> 고급 </label>
+                <label class="form-check-label" for="level3"> 고급 </label>
                 <input
                   class="form-check-input"
                   type="checkbox"
                   value="고급"
-                  name="level_3"
-                  id="level_3"
+                  name="level3"
+                  id="level3"
                 />
               </div>
             </div>
@@ -160,7 +190,7 @@ while($rs = $result -> fetch_object()){
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="무료"
                   name="free"
                   id="free"
                 />
@@ -170,13 +200,14 @@ while($rs = $result -> fetch_object()){
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="유료"
                   name="pay"
                   id="pay"
                 />
               </div>
             </div>
-          </div>
+            <button class="hidden">필터실행</button>
+          </form>
           <div class="courseList">
             <div class="row mb-5">
               <?php
@@ -232,7 +263,7 @@ while($rs = $result -> fetch_object()){
 
                     <!-- 무료표시하기 -->
                     <?php
-                    if($item->price != 0){
+                    if($item->price_status != "무료"){
                     ?>
                       <div>
                         <span class="content_tt number"><?= $item->price?></span><span>원</span>
