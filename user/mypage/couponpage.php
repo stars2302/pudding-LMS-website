@@ -2,24 +2,31 @@
 $title="마이페이지 - 쿠폰함";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
-  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
-  $cps = [];
-  if(isset($_SESSION['UID'])){
-    $userid =$_SESSION['UID'];
-    $sql ="SELECT uc.*, cp.* FROM user_coupon uc 
-    JOIN coupons cp ON uc.cpid = cp.cpid Where uc.userid='{$userid}' and ( uc.use_max_date > NOW() OR uc.use_max_date ='') ORDER BY uc.ucid DESC";
-    $sc_where="";
-    
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
+
+$cps = [];
+
+if(isset($_SESSION['UID'])){
+    $userid = $_SESSION['UID'];
+    $sql = "SELECT uc.*, cp.* FROM user_coupon uc 
+    JOIN coupons cp ON uc.cpid = cp.cpid 
+    WHERE uc.userid = '{$userid}' AND (uc.use_max_date > NOW() OR uc.use_max_date) 
+    ORDER BY uc.ucid DESC";
+    $sc_where = "";
+
     $result = $mysqli->query($sql);
-    while($rs = $result->fetch_object()){
-      $cps[]=$rs;
+    
+    if ($result) {
+        while($rs = $result->fetch_object()){
+            $cps[] = $rs;
+        }
+    } else {
+        die("SQL 오류: " . $mysqli->error);
     }
-    
-    // var_dump($cps);
-    
+
     // 사용가능한 쿠폰수
     $couponCount = count($cps);
-    
+
     // 만료임박 쿠폰
     $expirecps = [];
     $expirecpsdate = strtotime('+7 days');
@@ -29,33 +36,26 @@ $js_route = "mypage/js/mypage.js";
             $expirecps[] = $cp;
         }
     }
-    
+
     // 만료쿠폰 수
     $expirecouponcount = count($expirecps);
-    
+
     $a = [];
-    
-    $filter_where="";
-    $cp_filter = $_GET['coupon_filter']??'';
-    
-    // var_dump($cp_filter);
-    
-    if($cp_filter=='1'){
-      //모든 쿠폰 보여주기
-      $a = $expirecps;
-    }else {
-      //해당하는 타입의 쿠폰 보여주도록
-      $a =$cps;
+
+    $filter_where = "";
+    $cp_filter = $_GET['coupon_filter'] ?? '';
+
+    if($cp_filter == '1'){
+        // 모든 쿠폰 보여주기
+        $a = $expirecps;
+    } else {
+        // 해당하는 타입의 쿠폰 보여주도록
+        $a = $cps;
     }
-    
-  }else{
-    echo "<script>alert('로그인후 이후 이용해주세요!');
-    history.back();</script>";
-  }
 
-
-
-
+} else {
+    echo "<script>alert('로그인후 이후 이용해주세요!'); history.back();</script>";
+}
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">
@@ -107,7 +107,7 @@ $js_route = "mypage/js/mypage.js";
         <h2 class="hidden">쿠폰리스트</h2>
         <ul class="d-flex flex-wrap justify-content-between g-5">
         <?php
-        if(isset($a) && count($a) > 0){
+        if(isset($a) &&(count($a) > 0)){
           foreach($a as $cp){
 
         ?> 
@@ -120,7 +120,7 @@ $js_route = "mypage/js/mypage.js";
             />
             <div class="text_box">
               <h3 class="b_text01"><?php echo $cp->cp_name ?></h3>
-              <p>사용기한 : <?= date('Y-m-d', strtotime($cp->use_max_date)) ;?></p>
+              <p>사용기한 : <?php echo date('Y-m-d', strtotime($cp->use_max_date)); ?></p>
               <p >최소사용금액 : <span class="number"> <?php echo $cp->cp_limit ?></span> 원</p>
               <?php
                 if ($cp->cp_type === '정률') {

@@ -30,7 +30,9 @@ $rvsql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
         JOIN users u ON r.userid = u.userid
         JOIN courses c ON c.cid = r.cid
         ORDER BY r.rid DESC LIMIT 0, 6";
-
+  
+$rvrsc = array();
+$ntrsc = array();
 $rvresult = $mysqli->query($rvsql);
 while ($rvrs = $rvresult->fetch_object()) {
   $rvrsc[] = $rvrs;
