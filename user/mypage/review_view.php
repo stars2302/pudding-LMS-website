@@ -6,7 +6,6 @@ $js_route = "mypage/js/mypage.js";
 
   $rid = $_GET['rid'];
 
-
   $sql = "SELECT r.*, u.username, u.userid, u.userimg, c.name FROM review r 
   JOIN users u ON r.userid=u.userid 
   JOIN courses c ON c.cid = r.cid
@@ -41,7 +40,7 @@ $js_route = "mypage/js/mypage.js";
     <section class="content_wrap">
       <h1 class="jua main_tt">내 수강평</h1>
       <div class="d-flex flex-column align-items-end">
-      <div class="card_container radius_5">
+      <div class="card_container radius_5" id="review_container" data-rid="<?= $card["rid"]; ?>">
         <div class="b_text02">
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
@@ -99,6 +98,44 @@ $js_route = "mypage/js/mypage.js";
    
     </div>
     </main>
+    <script>
+      $(document).ready(function() {
+        let reviewContainer = $("#review_container");
+
+        $("button.d_btn").on("click", function(e) {
+          e.preventDefault();
+          let rId = $(this).closest(".card_container").attr("data-rid");
+
+          let data ={
+            rid: rId
+          }
+          
+          if (confirm("삭제하시겠습니까?")) {
+            $.ajax({
+              type: 'POST',
+              url: 'review_delete_ok.php',
+              data: data,
+              dataType: 'json',
+              success: function(data) {
+                if (data.result === 'ok') {
+                    alert('수강평 댓글이 삭제되었습니다.');
+                    reviewContainer.hide(); 
+                    location.href= "/pudding-LMS-website/user/mypage/review_list.php";
+                    // location.href="http://pudding0906.dothome.co.kr/pudding-LMS-website/user/mypage/review_list.php";
+                } else {
+                    alert('수강평 댓글 삭제 실패');
+                }
+              },
+              error: function(error) {
+                  console.log(error);
+              }
+            });
+          } else {
+              alert("삭제를 취소했습니다.");
+          }
+        });
+      }); 
+    </script>
     <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/footer.php';

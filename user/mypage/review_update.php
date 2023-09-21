@@ -84,6 +84,7 @@ $card = $result->fetch_assoc();
    
     </div>
     </main>
+
     <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/footer.php';
