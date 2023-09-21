@@ -3,7 +3,7 @@ $title="마이페이지 - 쿠폰함";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
-
+  $cps = [];
   if(isset($_SESSION['UID'])){
     $userid =$_SESSION['UID'];
     $sql ="SELECT uc.*, cp.* FROM user_coupon uc 
@@ -107,7 +107,7 @@ $js_route = "mypage/js/mypage.js";
         <h2 class="hidden">쿠폰리스트</h2>
         <ul class="d-flex flex-wrap justify-content-between g-5">
         <?php
-        if(isset($a)){
+        if(isset($a) && count($a) > 0){
           foreach($a as $cp){
 
         ?> 
