@@ -11,7 +11,7 @@ $js_route = "mypage/js/mypage.js";
   JOIN users u on p.userid= u.userid where cid={$cid}";
   $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
-var_dump($card);
+// var_dump($card);
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">

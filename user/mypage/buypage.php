@@ -60,7 +60,7 @@ while($rs = $result->fetch_object()){
                 <td><?= date('Y-m-d', strtotime($p->regdate)) ;?></td>
                 <td><?php echo $p->name ?></td>
                 <td><span class="number"><?php echo $p->total_price ?></span><span>원</span></td>
-                <td><?php echo $p->discount_price ?></td>
+                <td><span class="number"><?php echo $p->discount_price ?></span><span>원</span></td>
               </tr>
 
               <?php

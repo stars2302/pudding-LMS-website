@@ -10,7 +10,7 @@ $js_route = "mypage/js/mypage.js";
           JOIN courses c ON c.cid = p.cid 
           LEFT JOIN review r ON r.cid = c.cid AND r.userid = '{$userid}'
           WHERE p.userid = '{$userid}'";
-var_dump($sql);
+// var_dump($sql);
 
   $result = $mysqli->query($sql);
 
@@ -19,13 +19,13 @@ var_dump($sql);
     $rs[] = $row;
   }
 
-  var_dump($rs);
+  // var_dump($rs);
   
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">
       <div class="">
-        <h4 class="jua main_tt my_title">마이페이지2</h4>
+        <h4 class="jua main_tt my_title">마이페이지</h4>
         <nav>
         <ul>
           <li class="content_stt link_tag mypage_tag"><a href="/pudding-LMS-website/user/mypage/mypage.php">내 강의실</a></li>
@@ -59,7 +59,7 @@ var_dump($sql);
                 <td><?php echo $list->name ?></td>
                 <td>
                   <?php if ($list->review_userid == $userid) { ?>
-                    <a href="/pudding-LMS-website/user/mypage/review_view.php?rid=<?= $list->rid; ?>" class="btn btn-primary">보기</a>
+                    <a href="/pudding-LMS-website/user/mypage/review_view.php?rid=<?= $list->rid; ?>" class="btn btn-warning">보기</a>
                     <!-- <a href="#" class="btn btn-dark">수정</a>
                     <a href="#" class="btn btn-danger d_btn">삭제</a> -->
                   <?php 
