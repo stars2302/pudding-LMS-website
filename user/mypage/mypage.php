@@ -65,10 +65,10 @@ $js_route = "mypage/js/mypage.js";
     <div class="section_wrap">
     <section class="content_wrap">
      
-      <h1 class="jua main_tt"><?php echo $rs->username ?>님 안녕하세요!</h1>
+      <h2 class="jua main_tt"><?php echo $rs->username ?>님 안녕하세요!</h2>
       <div class="d-flex">
         <div class="d-flex profile_box radius_5">
-          <img src="<?php echo $rs->userimg ?>" alt="프로필이미지" />
+          <img src="<?php echo $rs->userimg ?>" alt="프로필이미지">
           <div>
             <h6 class="b_text02"><?php echo $rs->username ?></h6>
             <h6 class="b_text02"><?php echo $rs->useremail ?></h6>
@@ -89,7 +89,7 @@ $js_route = "mypage/js/mypage.js";
      
     </section>
     <section class="course_wrap">
-      <h1 class="jua main_tt">내 강의실</h1>
+      <h2 class="jua main_tt">내 강의실</h2>
       <ul>
         <?php
                if (!empty($courses)) {
@@ -132,7 +132,7 @@ $js_route = "mypage/js/mypage.js";
         <?php
         }
         }else {
-          echo '<p>강의실에 등록된 강의가 없습니다.</p>';
+          echo '<li><p>강의실에 등록된 강의가 없습니다.</p></li>';
       }
     
         
