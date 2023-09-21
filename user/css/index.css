@@ -21,14 +21,14 @@
 }
 
 .swiper-pagination-bullet {
-  background: none;
+  background:  #fff;
   border: 2px solid var(--border_grey);
   width: 10px;
   height: 10px;
 }
 
 .swiper-pagination-bullet-active {
-  background: var(--pudding_bg);
+  background: var(--point_primary);
   border: none;
 }
 
