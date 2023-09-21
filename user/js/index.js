@@ -68,6 +68,18 @@ $(document).ready(function () {
     },
   });
 
+  var swiper = new Swiper(".review_slide", {
+    slidesPerView: 3,
+    spaceBetween: 15,
+    direction: "vertical",
+    speed: 1000,
+    // autoplay: {
+    //   delay: 3000,
+    // },
+  });
+
+  
+
   var swiper = new Swiper(".notice_slide", {
     direction: "vertical",
     speed: 1000,

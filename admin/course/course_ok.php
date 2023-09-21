@@ -35,7 +35,7 @@
     $act = $_POST['act'];
     $content = rawurldecode($_POST['content']);
     $youtube_name = $_POST['youtube_name']?? '';
-    $progress = $_POST['progress']??0;
+    // $progress = $_POST['progress']??0;
 
     
     //파일업로드
@@ -122,7 +122,7 @@
               </script>";
             }
           }
-          $sql1 = "INSERT INTO lecture (cid, l_idx, youtube_thumb, youtube_name, youtube_url, progress) VALUES ({$cid}, {$i}, '{$upload_youtube_thumb[$i]}', '{$youtube_name[$i]}', '{$youtube_url[$i]}', {$progress[$i]})";
+          $sql1 = "INSERT INTO lecture (cid, l_idx, youtube_thumb, youtube_name, youtube_url) VALUES ({$cid}, {$i}, '{$upload_youtube_thumb[$i]}', '{$youtube_name[$i]}', '{$youtube_url[$i]}'";
           var_dump($sql1);
           $result2 = $mysqli-> query($sql1);
           }

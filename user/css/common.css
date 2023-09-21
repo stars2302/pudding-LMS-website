@@ -720,8 +720,13 @@ footer span {
 aside.main_btn {
   position: fixed;
   right: 10%;
-  bottom: 150px;
+  /* bottom: 150px; */
+  top:0;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 aside .history_btn,
@@ -739,7 +744,7 @@ aside .top_btn {
 
 .history_btn {
   background: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .top_btn {
@@ -748,4 +753,39 @@ aside .top_btn {
 
 aside div.active {
   opacity: 1;
+}
+
+.recent_list {
+  width: 100px;
+  height: 225px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(74, 74, 74, 0.5);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* opacity: 0; */
+}
+
+.recent_list p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.recent_list li {
+  width: 80px;
+  height: 52px;
+}
+.recent_list img {
+ object-fit: cover;
+ width: 100%;
+ border-radius: 3px;
+}
+
+.recent_list ul {
+  padding-left: 0;
+}
+.recent_list ul li {
+  margin-top: 8px;
 }
