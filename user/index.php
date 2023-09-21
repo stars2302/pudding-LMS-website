@@ -172,7 +172,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                         ?>
                       </span>
                     </p>
-                    <p class=""><span class="price">
+                    <p class=""><span class="price number">
                         <?= $item->price ?>
                       </span><span>원</span></p>
                   </div>
@@ -272,7 +272,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                           ?>
                         </span>
                       </p>
-                      <p class=""><span class="price">
+                      <p class=""><span class="price number">
                           <?= $item->price ?>
                         </span><span>원</span></p>
                     </div>
@@ -373,7 +373,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                           ?>
                         </span>
                       </p>
-                      <p class=""><span class="price">
+                      <p class=""><span class="price number">
                           <?= $item->price ?>
                         </span><span>원</span></p>
                     </div>

@@ -14,17 +14,18 @@ if (isset($_GET['course_search'])) {
 
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-      echo "Course Name: " . $row['name'] . "<br>";
-      echo "Category: " . $row['cate'] . "<br>";
-      echo "Content: " . $row['content'] . "<br>";
-      // You can display other course information as needed
-      echo "<br>";
+      // echo "Course Name: " . $row['name'] . "<br>";
+      // echo "Category: " . $row['cate'] . "<br>";
+      // echo "Content: " . $row['content'] . "<br>";
+      // // You can display other course information as needed
+      // echo "<br>";
     }
-  } else {
-    echo "No matching courses found.";
-  }
+  // } else {
+  //   echo "No matching courses found.";
+  // }
 //sql where로 연결...
   // $mysqli->close();
+}
 }
 
 

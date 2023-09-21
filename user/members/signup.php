@@ -881,16 +881,28 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
     }
   });
 
-  //모든 체크박스 체크여부 확인
+  //모든 체크박스 체크여부 확인 및 인풋 빈값 확인 
   $(".signup_form").submit(function (e) {
     let checkboxes = $("input[type='checkbox']");
     let checkedCheckboxes = checkboxes.filter(":checked");
 
 
     if (checkboxes.length !== checkedCheckboxes.length) {
-      alert("동의함에 체크하세요.");
+      alert("모든 약관에 동의해주세요!");
       e.preventDefault(); // 회원가입 전송 불가
     }
+
+    let emptyFields = [];
+    $(this).find("input").each(function () {
+      if ($(this).val() === "") {
+        emptyFields.push($(this).attr("placeholder"));
+      }
+    //   if (emptyFields.length > 0) {
+    //   e.preventDefault();
+    //   alert("모든 정보를 입력하셔야합니다.");
+    // }
+    });
+    
   });
 
 
