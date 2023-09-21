@@ -45,35 +45,47 @@ $(".moreviewBtn").click(function (e) {
   }
 });
 
-//장바구니
-$('.viewCart').on('click',function(){
-  let data = {
-    cid: cid
-  }
-  $.ajax({
-      type: 'GET',
-      data: data,
-      url: "add_cart.php",
-      dataType: 'json',
-      success: function (return_data) {
-        if (return_data.result === 'success') {
-          console.log('retun_data', return_data)
-          trElement.remove();
-          alert('장바구니 담기 성공');
-          location.reload();
-        } else {
-          alert('장바구니 담기 실패');
-        }
-      },
-      error: function (error) {
-        console.log('Error:', error);
-        alert('장바구니 담기 중에 오류가 발생했습니다.');
-      }
-    });
-})    
-
-
-// $('.courseCheckBox').change(function(){
-//   $(this).find('button').trigger('click');
+// $(".courseBox").slice(0, 9).show();
+// $(window).scroll(function () {
+//   let scrollTop = $(this).scrollTop();
+//   if (scrollTop > 800) {
+//     $(".courseBox:hidden").slice(0, 9).show();
+//   }
 // });
 
+//장바구니
+$(".viewCart").on("click", function () {
+  let data = {
+    cid: cid,
+  };
+  $.ajax({
+    type: "GET",
+    data: data,
+    url: "add_cart.php",
+    dataType: "json",
+    success: function (return_data) {
+      if (return_data.result === "success") {
+        console.log("retun_data", return_data);
+        trElement.remove();
+        alert("장바구니 담기 성공");
+        location.reload();
+      } else {
+        alert("장바구니 담기 실패");
+      }
+    },
+    error: function (error) {
+      console.log("Error:", error);
+      alert("장바구니 담기 중에 오류가 발생했습니다.");
+    },
+  });
+});
+
+$("#filter-submit-btn").click(function (e) {
+  e.preventDefault();
+  var cateArr = [];
+  $('input:checkbox[name="cate"]:checked').each(function () {
+    cateArr.push($(this).val());
+  });
+  $("#cate-array").val(cateArr.join());
+  $("#filter-form").submit();
+});

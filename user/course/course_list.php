@@ -10,12 +10,15 @@ $sql = "SELECT * from courses where 1=1 " ;
 $order = ' order by cid desc';
 $c_where = '';
 
-$cate = $_GET['cate']??'';
+$cbox = $_GET['courseCheckBox']??'';
+$cate = $_GET['cate-array']??'';
 $level1 = $_GET['level1']??'';
 $level2 = $_GET['level2']??'';
 $level3 = $_GET['level3']??'';
 $pay = $_GET['pay']??'';
 $param = '';
+
+$cate_arr=explode(",",$cate);
 
 $cate_where = '';
 $filter_where = '';
@@ -26,9 +29,10 @@ $fil_where = '';
 if($cate == '전체선택'){
   $c_where .= '';
 }
-else if($cate != ''){
-  $c_where .= " and cate LIKE '%{$cate}%'";
-  $param .="&cate='{$cate}'";
+else if(sizeof($cate_arr) > 0){
+  $c_where .= " and (cate like '%";
+  $c_where .= implode("%' or cate like '%", $cate_arr);
+  $c_where .= "%') ";
 }else{
   $c_where .= "";
 }
@@ -58,6 +62,8 @@ if($pay != ''){
   $c_where .= "";
 }
 
+
+//검색
 $search_where = '';
 $search = $_GET['search']??'';
 
@@ -67,9 +73,35 @@ if($search){
   $search_where = '';
 }
 $c_where .= $search_where;
-var_dump($c_where);
 
-$sqlrc = $sql.$c_where.$order; 
+// $sqlrc = $sql.$c_where.$order; 
+if(!isset($pagerwhere)){
+  $pagerwhere = " 1=1";
+}
+
+//----------------------------------------------pagenation 시작
+//pagenation 필터 조건문 (필터 없으면 필요없음)
+if($cbox !== '' && $c_where === ''){
+  $pagerwhere = $c_where;
+} else if($search !== '' && $cbox === ''){
+  $pagerwhere = $c_where;
+} else{
+  $pagerwhere = ' 1=1';
+}
+
+
+//필터 없으면 여기서부터 복사! *******
+$pagenationTarget = 'courses'; //pagenation 테이블 명
+$pageContentcount = 9; //페이지 당 보여줄 list 개수
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
+
+
+//최종 query문, 실행
+$sqlrc = $sql.$c_where.$order.$limit; //필터 있
+//$sqlrc = $sql.$limit; //필터 없
+//----------------------------------------------pagenation 끝
+
 
 // var_dump($sqlrc);
 $result = $mysqli -> query($sqlrc);
@@ -99,9 +131,10 @@ while($rs = $result -> fetch_object()){
           </form>
         </div>
         <div class="mainSection d-flex gap-5">
-          <form action="#" class="courseCheckBox mb-5" method="GET">
+          <form action="#" id="filter-form" class="courseCheckBox mb-5" method="GET">
+            <input type="hidden" name="cate-array" id="cate-array" value="">
             <div class="checkBox_1 mb-3">
-              <h6>전체선택</h6>
+              <h6>카테고리</h6>
               <hr class="mt-4" />
               <div class="form-check mt-5">
                 <label class="form-check-label" for="total"> 전체선택 </label>
@@ -133,16 +166,6 @@ while($rs = $result -> fetch_object()){
                   value="백엔드"
                   name="cate"
                   id="backend"
-                />
-              </div>
-              <div class="form-check">
-                <label class="form-check-label" for="uxui"> UX/UI </label>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="UX/UI"
-                  name="cate"
-                  id="uxui"
                 />
               </div>
               <div class="form-check">
@@ -214,7 +237,7 @@ while($rs = $result -> fetch_object()){
                 />
               </div>
             </div>
-            <button class="">필터실행</button>
+            <button id="filter-submit-btn" class="btn btn-primary dark">필터실행</button>
           </form>
           <div class="courseList">
             <div class="row mb-5">
@@ -237,11 +260,13 @@ while($rs = $result -> fetch_object()){
                         <?php
                           if (isset($item->cate)) {
                             $categoryText = $item->cate;
+                            
                             $parts = explode('/', $categoryText);
-                            $lastPart = end($parts);
+                            $lastPart = $parts[1];
   
                             echo $lastPart;
                           }
+                          // var_dump($parts);
                         ?>
                       </span>
                       <span class="badge rounded-pill b-pd
@@ -298,6 +323,36 @@ while($rs = $result -> fetch_object()){
               }
               ?>
             </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+              <ul class="pagination coupon_pager">
+                <?php
+                  if($pageNumber>1 && $block_num > 1 ){
+                    $prev = ($block_num - 2) * $block_ct + 1;
+                    echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+                  } else{
+                    echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+                  }
+    
+    
+                  for($i=$block_start;$i<=$block_end;$i++){
+                    if($pageNumber == $i){
+                        echo "<li class=\"page-item active\"><a href=\"?cate-array=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                    }else{
+                        echo "<li class=\"page-item\"><a href=\"?cate-array=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+    
+                    }
+                  }
+    
+    
+                  if($pageNumber<$total_page && $block_num < $total_block){
+                    $next = $block_num * $block_ct + 1;
+                    echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+                  } else{
+                    echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+                  }
+                ?>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
