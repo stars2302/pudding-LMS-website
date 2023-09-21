@@ -22,6 +22,7 @@ history.back();
     <p class="b_text01">
     축하합니다! 오늘의 푸딩 게임에서 승리하셨습니다 💛
     </p>
+    <p class="small">**아래 이미지 클릭 시 쿠폰이 지급됩니다.</p>
     <button>
       <img src="images/coupon.png" alt="" class="coupon" data-user="<?= $userid ?>">
     </button>

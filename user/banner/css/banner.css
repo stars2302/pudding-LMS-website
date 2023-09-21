@@ -158,7 +158,12 @@ body {
 }
 
 .game_winner p {
-  margin: calc(var(--base_unit)/2) 0 20px;
+  margin: 0;
+}
+
+.game_winner .small {
+  margin: 7px 0 10px;
+  color: red;
 }
 
 .game_winner_container > img {
