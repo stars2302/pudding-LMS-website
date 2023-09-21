@@ -45,7 +45,6 @@ $(".moreviewBtn").click(function (e) {
   }
 });
 
-
 //장바구니
 $('.viewCart').on('click',function(){
   let data = {
@@ -74,7 +73,7 @@ $('.viewCart').on('click',function(){
 })    
 
 
-$('.courseCheckBox').change(function(){
-  $(this).find('button').trigger('click');
-});
+// $('.courseCheckBox').change(function(){
+//   $(this).find('button').trigger('click');
+// });
 
