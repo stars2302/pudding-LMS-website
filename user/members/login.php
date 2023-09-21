@@ -15,28 +15,28 @@ if (isset($_SESSION['UID'])) {
 <main class="pudding_bg">
   <div class="radius_12 white_bg login_box d-flex">
     <div class="col-md-6 d-flex align-items-center">
-      <img src="/pudding-LMS-website/user/images/login/login.png" alt="로그인 이미지" />
+      <img src="/pudding-LMS-website/user/images/login/login.png" alt="로그인 이미지">
     </div>
     <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
       <h2>
-        Welcome to <img src="/pudding-LMS-website/user/images/logo.png" alt="푸딩로고이미지" /> !
+        Welcome to <img src="/pudding-LMS-website/user/images/logo.png" alt="푸딩로고이미지"> !
       </h2>
       <h3>LOGIN</h3>
       <form action="login_ok.php" method="POST" class="login_form">
         <label for="userid" class="hidden"></label>
-        <input type="text" class="form-control" id="userid" name="userid" placeholder="아이디" aria-label="Userid" />
+        <input type="text" class="form-control" id="userid" name="userid" placeholder="아이디" aria-label="Userid">
         <label for="userpasswd" class="hidden"></label>
         <input type="password" class="form-control" id="userpasswd" name="userpasswd" placeholder="비밀번호"
-          aria-label="Userpassword" />
+          aria-label="Userpassword">
         <button class="btn btn-primary dark">로그인</button>
         <div class="form-check d-flex justify-content-end login_check gap-2">
-          <input class="form-check-input" type="checkbox" value="" id="idsave" name="idsave" />
-          <label class="form-check-label" for="flexCheckDefault">
+          <input class="form-check-input" type="checkbox" value="" id="idsave" name="idsave">
+          <label class="form-check-label" for="idsave">
             아이디 저장
           </label>
         </div>
         <button type="button" onclick="loginWithKakao()">
-          <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg">
+          <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" alt="카카오 로그인">
         </button>
         <div class="id_pw d-flex justify-content-center">
           <a href="/pudding-LMS-website/user/members/signup.php">회원가입 </a>
