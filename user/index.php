@@ -30,7 +30,7 @@ $rvsql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
         JOIN users u ON r.userid = u.userid
         JOIN courses c ON c.cid = r.cid
         ORDER BY r.rid DESC LIMIT 0, 6";
-  
+
 $rvrsc = array();
 $ntrsc = array();
 $rvresult = $mysqli->query($rvsql);
@@ -49,6 +49,7 @@ while ($ntrs = $ntresult->fetch_object()) {
 ?>
 <main>
   <section class="sec1">
+    <h2 class="hidden">메인 슬라이드</h2>
     <!-- Swiper -->
     <div class="swiper sec1_slide">
       <div class="swiper-wrapper">
@@ -62,7 +63,7 @@ while ($ntrs = $ntresult->fetch_object()) {
   <section class="sec2">
     <h2 class="jua dark sec_tt">어떤 강의를 찾고 있나요?</h2>
     <form action="/pudding-LMS-website/user/course/course_list.php" method="get" class="search">
-      <label for="course_search" type="hidden"></label>
+      <label for="course_search" class="hidden"></label>
       <input type="text" id="course_search" name="course_search" placeholder="필요한 강의를 찾아보세요.">
       <button type="submit"><i class="ti ti-search"></i></button>
     </form>
@@ -123,13 +124,13 @@ while ($ntrs = $ntresult->fetch_object()) {
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'fter Effect'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'AI'; ?>">
             <img src="images/main/illust.png" alt="illustration">
             <p>AI</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'After Effect'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'AfterEffect'; ?>">
             <img src="images/main/ae.png" alt="After Effect">
             <p>After Effect</p>
           </a>
@@ -458,12 +459,13 @@ while ($ntrs = $ntresult->fetch_object()) {
     </div>
   </section>
   <section class="sec6">
+    <h2 class="hidden">이벤트 배너</h2>
     <img src="images/main/coupon_banner.png" alt="쿠폰 배너">
   </section>
   <section class="sec7 container">
     <h2 class="jua dark">Why the PUDDING?</h2>
     <h3 class="jua">왜 푸딩을 선택할까?</h3>
-    <div class="d-flex sec7_content" data-aos="fade-up" data-aos-offset="200" data-aos-duration="1500">
+    <div class="d-flex sec7_content" data-aos="fade-up" data-aos-offset="200" data-aos-duration="700">
       <div class="sec7_box">
         <h4>쉽게 떠 먹는 코딩</h4>
         <p>
@@ -510,39 +512,39 @@ while ($ntrs = $ntresult->fetch_object()) {
                 <div class="swiper-slide d-flex align-items-center justify-content-between">
                   <div class="review_wrap radius_12 white_bg">
                     <div>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-flex align-items-center">
-                        <img src="<?= $item->userimg ?>" class="userImg shodow_box" alt="프로필 이미지" />
-                        <p class="review_user">
-                          <?= $item->username ?>
-                        </p>
-                        <p class="review_name">
-                          <?php
-                          $strTitle = $item->name;
-                          $strTitle = mb_strimwidth($strTitle, 0, 36, "...", "utf-8");
-                          echo $strTitle;
-                          ?>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                          <img src="<?= $item->userimg ?>" class="userImg shodow_box" alt="프로필 이미지">
+                          <p class="review_user">
+                            <?= $item->username ?>
+                          </p>
+                          <p class="review_name">
+                            <?php
+                            $strTitle = $item->name;
+                            $strTitle = mb_strimwidth($strTitle, 0, 36, "...", "utf-8");
+                            echo $strTitle;
+                            ?>
 
-                        </p>
-                        <p class="review_date">
-                          <?= $item->regdate ?>
+                          </p>
+                          <p class="review_date">
+                            <?= $item->regdate ?>
+                          </p>
+                        </div>
+                        <div class="rating" data-rate="<?= $item->rating ?>">
+                          <i class="ti ti-star-filled"></i>
+                          <i class="ti ti-star-filled"></i>
+                          <i class="ti ti-star-filled"></i>
+                          <i class="ti ti-star-filled"></i>
+                          <i class="ti ti-star"></i>
+                        </div>
+                      </div>
+                      <div class="b_text02 reply_content radius_5 light_blue_bg">
+                        <p>
+                          <?= $item->content ?>
                         </p>
                       </div>
-                      <div class="rating" data-rate="<?= $item->rating ?>">
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star"></i>
+                      <div class="d-flex flex-row justify-content-end reply_btn_wrap">
                       </div>
-                    </div>
-                    <div class="b_text02 reply_content radius_5 light_blue_bg">
-                      <p>
-                        <?= $item->content ?>
-                      </p>
-                    </div>
-                    <div class="d-flex flex-row justify-content-end reply_btn_wrap">
-                    </div>
                     </div>
                   </div>
                 </div>
@@ -552,8 +554,8 @@ while ($ntrs = $ntresult->fetch_object()) {
             ?>
           </div>
         </div>
-
       </div>
+    </div>
   </section>
   <section class="sec9 dark">
     <div class="container d-flex align-items-center justify-content-center">
