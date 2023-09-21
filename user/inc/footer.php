@@ -46,7 +46,7 @@
     <div class="d-flex justify-content-between align-items-end">
       <div class="f_tt">
         <h2>
-          <a href=""><img src="/pudding-LMS-website/user/images/logo_footer.png" alt="푸딩로고이미지" /></a>
+          <a href=""><img src="/pudding-LMS-website/user/images/logo_footer.png" alt="푸딩로고이미지"></a>
         </h2>
         <p><span>(주) PUDDING</span><span>대표</span>프바오</p>
         <div class="tel_mail">
