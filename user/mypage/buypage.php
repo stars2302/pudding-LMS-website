@@ -7,15 +7,28 @@ $js_route = "mypage/js/mypage.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
+  $pagenationTarget = 'payments'; 
+  $pageContentcount = 2; 
 
-$userid =$_SESSION['UID'];
+  if(!isset($pagerwhere)){
+    $pagerwhere = ' 1=1';
+  }
 
-$sql = "SELECT p.regdate, p.name,p.total_price,p.discount_price, u.userid FROM payments p JOIN users u ON u.userid = p.userid WHERE u.userid = '{$userid}' ORDER BY p.payid DESC";
+  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+  $limit = " limit $startLimit, $pageCount"; 
 
-$result = $mysqli->query($sql);
-while($rs = $result->fetch_object()){
-  $purchase[]=$rs;
-}
+
+  $userid =$_SESSION['UID'];
+
+  $sql = "SELECT p.regdate, p.name,p.total_price,p.discount_price, u.userid FROM payments p JOIN users u ON u.userid = p.userid WHERE u.userid = '{$userid}' ORDER BY p.payid DESC";
+
+  $sqlrc = $sql.$limit; 
+
+  $result = $mysqli->query($sqlrc);
+  while($rs = $result->fetch_object()){
+    $purchase[]=$rs;
+  }
+
 
 // var_dump($purchase);
 
@@ -52,9 +65,7 @@ while($rs = $result->fetch_object()){
             <tbody>
               <?php
               if(isset($purchase)){
-                foreach($purchase as $p){
-
-              
+                foreach($purchase as $p){  
               ?>
               <tr>
                 <td><?= date('Y-m-d', strtotime($p->regdate)) ;?></td>
@@ -62,7 +73,6 @@ while($rs = $result->fetch_object()){
                 <td><span class="number"><?php echo $p->total_price ?></span><span>원</span></td>
                 <td><span class="number"><?php echo $p->discount_price ?></span><span>원</span></td>
               </tr>
-
               <?php
                 }
               }
@@ -73,26 +83,31 @@ while($rs = $result->fetch_object()){
         </div>
       </div>
     </section>
-    <nav
-      aria-label="Page navigation example"
-      class="d-flex justify-content-center pager user_pager"
-    >
-      <ul class="pagination">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&lsaquo;</span>
-          </a>
-        </li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
+     <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+      <ul class="pagination coupon_pager">
+        <?php
+          if($pageNumber>1 && $block_num > 1 ){
+            $prev = ($block_num - 2) * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          } else{
+            echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+          }
+
+          for($i=$block_start;$i<=$block_end;$i++){
+            if($pageNumber == $i){
+                 echo "<li class=\"page-item active\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }else{
+                 echo "<li class=\"page-item\"><a href=\"?pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+            }
+          }
+
+          if($pageNumber<$total_page && $block_num < $total_block){
+            $next = $block_num * $block_ct + 1;
+            echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+          } else{
+            echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+          }
+        ?>
       </ul>
     </nav>
     </div>

@@ -19,7 +19,7 @@ $sql = "SELECT r.*, u.username, u.userimg ,c.name FROM review r
 
         ORDER BY r.rid DESC";
 
-$sqlrc = $sql.$limit; 
+$sqlrc = $sql.$limit;
 
 $result = $mysqli-> query($sqlrc);
 while($rs = $result->fetch_object()){
