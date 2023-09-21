@@ -17,20 +17,20 @@ $uid = $_GET['uid'];
 <main class="pudding_bg">
   <div class="radius_12 white_bg login_box d-flex">
     <div class="col-md-6 d-flex align-items-center">
-      <img src="/pudding-LMS-website/user/images/login/login.png" alt="로그인 이미지" />
+      <img src="/pudding-LMS-website/user/images/login/login.png" alt="로그인 이미지">
     </div>
     <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
       <h3>비밀번호 변경</h3>
       <form action="pw_update_ok.php?uid=<?= $uid ?>" method="POST">
         <label for="userpasswd" class="hidden"></label>
         <input type="password" class="form-control" id="userpasswd" name="userpasswd" placeholder="새 비밀번호"
-          aria-label="Userid" />
+          aria-label="Userid">
         <div class="invalid-feedback">6~20글자, 영문자, 숫자, 특수문자 조합 필수입니다.</div>
         <div class="valid-feedback">사용가능한 비밀번호입니다.</div>
 
         <label for="userpasswdcheck" class="hidden"></label>
         <input type="password" class="form-control" id="userpasswdcheck" name="userpasswdcheck" placeholder="새 비밀번호 변경"
-          aria-label="Userpassword" />
+          aria-label="Userpassword">
         <div class="invalid-feedback">비밀번호가 일치하지 않습니다.</div>
 
         <button class="btn btn-primary dark">확인</button>
