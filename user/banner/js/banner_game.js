@@ -85,12 +85,16 @@ let keyidx = 0;
         }
         console.log(keyidx);
         console.log(col*answear.length);
+        if(keyidx == answear.length*gameCount){
+          setTimeout(() => {
+            alert('GAME OVER');
+            location.href = '/pudding-LMS-website/user/banner/game_over.php';
+          }, 800);
+        }
 
 
-    } else{
-      alert('GAME OVER');
-      location.href = '/pudding-LMS-website/user/banner/game_over.php';
-    }
+
+    } 
     });
 
 
