@@ -418,7 +418,9 @@ while ($ntrs = $ntresult->fetch_object()) {
     </div>
   </section>
   <section class="sec6">
-    <img src="images/main/coupon_banner.png" alt="쿠폰 배너">
+    <a href="/pudding-LMS-website/user/banner/banner.php">
+      <img src="images/main/coupon_banner.png" alt="쿠폰 배너">
+    </a>
   </section>
   <section class="sec7 container">
     <h2 class="jua dark">Why the PUDDING?</h2>
