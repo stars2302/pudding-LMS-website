@@ -4,6 +4,18 @@ $css_route="course/css/user_course.css";
 $js_route = "course/js/user_course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
+//main페이지 검색 
+$course_keyword = '';
+if (isset($_GET['course_search'])) {
+  $key = $_GET['course_search'];
+  $course_keyword = " and name LIKE '%$key%' OR cate LIKE '%$key%' OR content LIKE '%$key%' OR level LIKE '%$key%'";
+};
+$cate_keyword = '';
+if (isset($_GET['cate'])) {
+  $keycate = $_GET['cate'];
+  $cate_keyword = " and cate LIKE '%$keycate'";
+};
+
 // desc limit 0, 9
 
 $sql = "SELECT * from courses where 1=1 " ;
@@ -52,8 +64,7 @@ if($search){
   $search_where = '';
 }
 
-$sqlrc = $sql.$c_where.$order;
-
+$sqlrc = $sql.$c_where.$course_keyword.$cate_keyword.$order;
 $result = $mysqli -> query($sqlrc);
 while($rs = $result -> fetch_object()){
   $rsc[] = $rs;

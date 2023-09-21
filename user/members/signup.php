@@ -745,9 +745,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
 </div>
 
 
-
-
-
 <script>
 
   // // 프로모션 슬라이드

@@ -17,7 +17,6 @@ if (!isset($rs)) {
   echo "<script>
         alert('고객님의 아이디는 " . $rs->userid . "입니다.');
         location.href='login.php';
-        </script>
-      ";
+        </script>";
 }
 ?>

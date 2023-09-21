@@ -1,12 +1,4 @@
 $(document).ready(function () {
-  // 말줄임표
-  // let length = 13; // 표시할 글자수 기준
-  // let str = $('.card-title').text();
-  // if (str.length > length) {
-  //   strTitle = str.substr(0, length - 2) + "...";
-  //   str.text(strTitle);
-  // }
-  
 
   var swiper = new Swiper(".sec1_slide", {
     slidesPerView: 1,
@@ -78,8 +70,6 @@ $(document).ready(function () {
     // },
   });
 
-  
-
   var swiper = new Swiper(".notice_slide", {
     direction: "vertical",
     speed: 1000,
@@ -90,4 +80,12 @@ $(document).ready(function () {
 
   // AOS
   AOS.init();
+
+  $("#course_search").focus(function () {
+    $(this).closest("form").addClass("active");
+  });
+
+  $("#course_search").blur(function () {
+    $(this).closest("form").removeClass("active");
+  });
 });
