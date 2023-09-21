@@ -7,17 +7,16 @@ let price = $("#price");
 $("#price_menu").change(function () {
   let option1 = $(this).val();
 
-
   if (option1 == "무료") {
     price.prop("disabled", true);
-    price.val(null);
+    price.val("0");
   } else {
     price.prop("disabled", false);
   }
 });
 
 let month = $("#due");
-month.find('option').eq(1).hide();
+month.find("option").eq(1).hide();
 
 $("#due_status").change(function () {
   let option2 = $(this).val();
@@ -28,7 +27,7 @@ $("#due_status").change(function () {
     month.val("무제한");
   } else {
     month.prop("disabled", false);
-    month.find('option').eq(1).hide();
+    month.find("option").eq(1).hide();
   }
 });
 
@@ -69,11 +68,8 @@ $("#course_form").submit(function () {
   let content = encodeURIComponent(markupStr);
   $("#content").val(content);
 
-
-
   if ($("#product_detail").summernote("isEmpty")) {
     alert("상세설명을 입력하세요");
     return false;
   }
 });
-

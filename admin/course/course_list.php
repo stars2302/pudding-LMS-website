@@ -310,7 +310,7 @@ while ($rs2 = $result2->fetch_object()) {
 
               <div class="d-flex align-items-end status_box">
                 <span class="price content_stt">
-                  <span class="number"><?= $item->price ?></span><span> 원</span>
+                  <span class="number"><?=$item->price; ?></span><span> 원</span>
                 </span>
                 <span class="d-flex flex-column align-items-end status_wrap">
                   <select name="act[<?= $item->cid ?>]" id="act[<?= $item->cid ?>]" class="form-select"

@@ -18,7 +18,7 @@
   }
 
   $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
-          JOIN users u ON r.uid = u.uid
+          JOIN users u ON r.userid = u.uid
           JOIN courses c ON c.cid = r.cid
           LEFT JOIN review_reply w ON r.rid = w.rid
           WHERE r.cid = '{$cid}'";
@@ -33,12 +33,15 @@
   $parts = explode('/', $cateString);
 ?>
     <main>
+      <input type="hidden" id="cid" value="<?= $cid; ?>"/>
       <div class="container">
         <div class="modalBackground">
           <div class="modalBox d-flex flex-column justify-content-between">
             <i class="fa-regular fa-circle-xmark"></i>
             <!-- modalVideo-->
-            <div class=modalVideo style="TEXT-ALIGN: center"><object type="text/html" width="100%" height="100%" data="<?= $addImgs[0]->youtube_url?>" allowFullScreen></object></div>
+            <div class=modalVideo style="TEXT-ALIGN: center">
+              <object type="text/html" width="100%" height="100%" data="<?= $addImgs[0]->youtube_url?>" allowFullScreen></object>
+            </div>
             <!-- modalVideo 끝-->
             <div class="modalTitle">
               <h4><?= $addImgs[0]->youtube_name?></h4>
@@ -103,14 +106,34 @@
                     <i class="ti ti-calendar-event"></i>
                     <span>수강기간 <?php if($rs->due == ''){echo '무제한';} else{echo $rs->due;}; ?></span>
                   </div>
-                  <div><span class="main_stt number"><?= $rs->price?></span><span>원</span></div>
+
+                  <!-- 무료표시하기 -->
+                  <?php
+                    if($rs->price != 0){
+                  ?>
+                    <div>
+                      <span class="main_stt number"><?= $rs->price?></span><span>원</span>
+                    </div>
+                  <?php
+                    }else{
+                  ?>
+                    <div>
+                      <span class="main_stt">무료</span>
+                    </div>
+                    <?php 
+                    } 
+                  ?>
+                  <!-- 무료표시 끝 -->
+
                 </div>
                 <div>
                   <div class="viewBtn mb-2">
                     <button class="btn preview btn-dark">미리보기</button>
                   </div>
                   <div class="viewBtn">
-                    <button class="btn viewCart btn-primary dark">장바구니 담기</button>
+                    <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $rs->cid ?>" class="viewCart">
+                    <button class="btn btn-primary dark">장바구니 담기</button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -197,10 +220,8 @@
 
             <!-- 답글시작 -->
             <?php
-                if(isset($re['r_content'])){
-                  foreach($re as $view){   
+              if(isset($view->r_content)){
             ?>
-
             <div class="reviewBox_2 pd_3">
               <div class="review d-flex justify-content-between align-items-center pd_4">
                 <div class="reviewProfile d-flex gap-3 align-items-center">
@@ -213,9 +234,8 @@
                 <p><?= $view->r_content; ?></p>
               </div>
             </div>
-
             <?php
-              }}
+              }
             ?>
             <!-- 답글 끝 -->
 
@@ -224,7 +244,7 @@
               }
           ?>         
             <div class="viewSection3Btn">
-              <button class="btn btn-dark">더보기</button>
+              <button class="moreviewBtn btn btn-dark">더보기</button>
             </div>
           <?php       
             }else{

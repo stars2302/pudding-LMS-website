@@ -180,13 +180,17 @@ $('.payment_form').submit(function(e){
     console.log(cart_id);
   
     let userid = $(this).find('.userid').val();
+
+    let cpid = $(this).find('.coupon_select').val();
+    console.log(cpid);
   
   
     let data = {
       total_price : total_price,
       discount_price : discount_price,
       cartid : cart_id,
-      userid: userid
+      userid: userid,
+      cpid: cpid
     }
   
     $.ajax({
