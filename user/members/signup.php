@@ -32,7 +32,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
         <div class="d-flex gap-2 justify-content-between">
           <div class="id_valid_wrap">
             <input type="text" class="form-control userid " id="userid" name="userid" placeholder="아이디"
-              aria-label="Userid" required />
+              aria-label="Userid" required>
             <div class="invalid-feedback">사용불가한 아이디입니다. </div>
             <div class="valid-feedback">사용가능한 아이디입니다.</div>
           </div>
@@ -42,24 +42,24 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
 
         <label for="userpasswd">비밀번호</label>
         <input type="password" class="form-control userpasswd" id="userpasswd" name="userpasswd" placeholder="비밀번호"
-          aria-label="Userpassword" required />
+          aria-label="Userpassword" required>
         <div class="invalid-feedback">6~20글자, 영문자, 숫자, 특수문자 조합 필수입니다.</div>
         <div class="valid-feedback">사용가능한 비밀번호입니다.</div>
 
         <label for="userpasswd_check">비밀번호 확인</label>
         <input type="password" class="form-control" id="userpasswd_check" name="userpasswd_check" placeholder="비밀번호 확인"
-          aria-label="Userpassword" required />
+          aria-label="Userpassword" required>
         <div class="invalid-feedback">비밀번호가 일치하지 않습니다.</div>
         <!-- <div class="valid-feedback">비밀번호 일치</div> -->
         <div class="valid-feedback"></div>
 
         <label for="username">이름</label>
         <input type="text" class="form-control" id="username" name="username" placeholder="이름" aria-label="Username"
-          required />
+          required>
 
         <label for="useremail">이메일</label>
         <input type="email" class="form-control" id="useremail" name="useremail" placeholder="이메일"
-          aria-label="Useremail" required />
+          aria-label="Useremail" required>
         <div class="invalid-feedback">이메일을 올바르게 입력해주세요.</div>
 
         <div class="file_input">
@@ -70,21 +70,18 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
         <div class="checkBox">
           <p>푸딩 서비스약관에 동의해주세요</p>
           <div class="service_terms">
-            <input id="all_agree" name="all_agree" class="form-check-input" type="checkbox" value=""
-              id="flexCheckDefault" />
+            <input id="all_agree" name="all_agree" class="form-check-input" type="checkbox" value="">
             <label class="form-check-label" for="all_agree">모두 동의합니다.</label>
           </div>
           <div class="check_list radius_5">
             <div class="service_terms">
-              <input id="check_age" name="agree" class="form-check-input" type="checkbox" value=""
-                id="flexCheckDefault" />
+              <input id="check_age" name="agree" class="form-check-input" type="checkbox" value="" >
               <label class="form-check-label" for="check_age">[필수] 만 14세 이상입니다</label>
             </div>
 
             <div class="sub_check">
               <div class="service_terms">
-                <input id="agree_one" name="agree" class="form-check-input" type="checkbox" value=""
-                  id="flexCheckDefault" />
+                <input id="agree_one" name="agree" class="form-check-input" type="checkbox" value="">
                 <label class="form-check-label" for="agree_one">[필수] 푸딩 이용약관 동의</label>
                 <button type="button" id="agreeOne" class="arrow-icon" data-bs-toggle="modal"
                   data-bs-target="#agree_one_modal">
@@ -93,8 +90,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
               </div>
 
               <div class="service_terms">
-                <input id="agree_two" name="agree" class="form-check-input" type="checkbox" value=""
-                  id="flexCheckDefault" />
+                <input id="agree_two" name="agree" class="form-check-input" type="checkbox" value="">
                 <label class="form-check-label" for="agree_two">[필수] 전자금융거래 이용약관 동의</label>
                 <button type="button" id="agreeTwo" class="arrow-icon" data-bs-toggle="modal"
                   data-bs-target="#agree_two_modal">
@@ -103,8 +99,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
               </div>
 
               <div class="service_terms">
-                <input id="agree_three" name="agree" class="form-check-input" type="checkbox" value=""
-                  id="flexCheckDefault" />
+                <input id="agree_three" name="agree" class="form-check-input" type="checkbox" value="">
                 <label class="form-check-label" for="agree_three">[필수] 개인정보 수집 및 이용 동의</label>
                 <button type="button" id="agreeThree" class="arrow-icon" data-bs-toggle="modal"
                   data-bs-target="#agree_three_modal">
@@ -113,10 +108,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
               </div>
 
               <div class="service_terms">
-                <input id="agree_four" name="agree" class="form-check-input" type="checkbox" value=""
-                  id="flexCheckDefault" />
+                <input id="agree_four" name="agree" class="form-check-input" type="checkbox" value="">
                 <label class="form-check-label" for="agree_four">[필수] 개인정보 제공 동의</label>
-                <button type="button" id="agreeThree" class="arrow-icon" data-bs-toggle="modal"
+                <button type="button" id="agreeFour" class="arrow-icon" data-bs-toggle="modal"
                   data-bs-target="#agree_four_modal">
                   <i class="ti ti-chevron-right"></i>
                 </button>
@@ -143,11 +137,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
 
 <!-- agree_one Modal -->
 <div class="modal fade" id="agree_one_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  aria-labelledby="staticBackdropLabel1" aria-hidden="true">
   <div class="modal-dialog modal_agree">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">[ 푸딩 이용 약관 ]</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel1">[ 푸딩 이용 약관 ]</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -474,11 +468,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
 </div>
 <!-- agree_two Modal -->
 <div class="modal fade" id="agree_two_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  aria-labelledby="staticBackdropLabel2" aria-hidden="true">
   <div class="modal-dialog modal_agree">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">[ 전자금융거래 이용약관 동의 ]</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel2">[ 전자금융거래 이용약관 동의 ]</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -651,11 +645,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
 
 <!-- agree_three Modal -->
 <div class="modal fade" id="agree_three_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  aria-labelledby="staticBackdropLabel3" aria-hidden="true">
   <div class="modal-dialog modal_agree">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">[ 개인정보 수집 및 이용 동의 ]</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel3">[ 개인정보 수집 및 이용 동의 ]</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -703,11 +697,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
 
 <!-- agree_four Modal -->
 <div class="modal fade" id="agree_four_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  aria-labelledby="staticBackdropLabel4" aria-hidden="true">
   <div class="modal-dialog modal_agree">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">[ 개인정보 제공 동의 ]</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel4">[ 개인정보 제공 동의 ]</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -894,12 +888,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
       if ($(this).val() === "") {
         emptyFields.push($(this).attr("placeholder"));
       }
-    //   if (emptyFields.length > 0) {
-    //   e.preventDefault();
-    //   alert("모든 정보를 입력하셔야합니다.");
-    // }
+      //   if (emptyFields.length > 0) {
+      //   e.preventDefault();
+      //   alert("모든 정보를 입력하셔야합니다.");
+      // }
     });
-    
+
   });
 
 

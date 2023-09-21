@@ -7,18 +7,18 @@ $js_route = "mypage/js/mypage.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php';
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
+
+  $userid =$_SESSION['UID'];
   $pagenationTarget = 'payments'; 
-  $pageContentcount = 2; 
+  $pageContentcount = 5; 
 
-  if(!isset($pagerwhere)){
-    $pagerwhere = ' 1=1';
-  }
 
+  $pagerwhere = "userid='{$userid}'";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
   $limit = " limit $startLimit, $pageCount"; 
 
 
-  $userid =$_SESSION['UID'];
+
 
   $sql = "SELECT p.regdate, p.name,p.total_price,p.discount_price, u.userid FROM payments p JOIN users u ON u.userid = p.userid WHERE u.userid = '{$userid}' ORDER BY p.payid DESC";
 
