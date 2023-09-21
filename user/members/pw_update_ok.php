@@ -11,11 +11,9 @@ $result = $mysqli->query($sql);
 if (!isset($result)) {
   echo '<script>alert("비밀번호 변경에 실패했습니다.");</script>';
 } else {
-  echo "
-  <script>
-  alert('비밀번호 변경 완료되었습니다.');
-  location.href='login.php';
-  </script>
-";
+  echo "<script>
+        alert('비밀번호 변경 완료되었습니다.');
+        location.href='login.php';
+        </script>";
 }
 ?>

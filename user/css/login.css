@@ -1,7 +1,4 @@
 /* login */
-/* main {
- height: calc(100vh - 90px);
-} */
 main {
   padding: 90px 0;
 }
@@ -13,7 +10,6 @@ main {
   width: 1184px;
   margin: 0 auto;
   position: relative;
-  /* top:60px; */
 }
 .login_box form,
 .signup_box form {
@@ -69,10 +65,10 @@ main {
   height: 45px;
 }
 
-.modal-body form{
+.modal-body form {
   width: 100%;
   padding: 0 30px;
-} 
+}
 
 /* signup */
 .swiper,
@@ -108,7 +104,6 @@ main {
 
 .form-control[type="file"] {
   height: 45px;
-  /* line-height: 45px; */
 }
 input[type="file"] {
   writing-mode: horizontal-tb !important;
@@ -116,16 +111,16 @@ input[type="file"] {
 input[type="file"]::file-selector-button {
   height: 45px;
 }
+
 .swiper-pagination-bullet {
-  background: none;
+  background:  #fff;
   border: 2px solid var(--border_grey);
   width: 10px;
   height: 10px;
-  /* outline: 2px solid var(--border_grey); */
 }
 
 .swiper-pagination-bullet-active {
-  background: var(--pudding_bg);
+  background: var(--point_primary);
   border: none;
 }
 
@@ -144,25 +139,23 @@ input[type="file"]::file-selector-button {
 
 .signup_box .checkBox p {
   font-size: 13px;
-  color: 5D87FF;
-  /* margin-top: 20px;
-  margin-bottom: 0; */
+  color: #5D87FF;
   margin: 20px 0 10px;
 }
 .check_list {
   border: 1px solid #dbdbdb;
   padding: 10px;
-  margin: 10px 0 15px; 
+  margin: 10px 0 15px;
 }
 
-.service_terms{
+.service_terms {
   display: flex;
   align-items: center;
-  gap : 8px;
+  gap: 8px;
   color: #676666;
 }
 
-.modal_agree{
+.modal_agree {
   width: 800px;
-  color:#000;
+  color: #000;
 }

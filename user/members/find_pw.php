@@ -15,12 +15,10 @@ if (!isset($rs)) {
         location.href="login.php";
         </script>';
 } else {
-  echo "
-  <script>
-  alert('인증되었습니다. 지금 비밀번호를 변경하시겠습니까?');
-   location.href='pw_update.php?uid=$rs->uid';
-  </script>
-";
+  echo "<script>
+        alert('인증되었습니다. 지금 비밀번호를 변경하시겠습니까?');
+        location.href='pw_update.php?uid=$rs->uid';
+        </script>";
 }
 
 ?>

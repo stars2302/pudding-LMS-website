@@ -23,9 +23,9 @@
     </ul>
   </div>
   <div class="history_btn">
-    <a href="">
+    <!-- <a href=""> -->
       <img src="/pudding-LMS-website/user/images/clock-history.png" alt="최근 본 강의">
-    </a>
+    <!-- </a> -->
   </div>
   <div class="top_btn">
     <a href="">
@@ -34,9 +34,6 @@
   </div>
 </aside>
 <footer>
-  <?php if (isset($prc)) {
-    var_dump($prc);
-  } ?>
   <div class="container">
     <ul class="d-flex f_list justify-content-center">
       <li><a href="#">푸딩 소개</a></li>
@@ -136,7 +133,6 @@
     </div>
   </div>
 </footer>
-
 
 <!-- bootstrap js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
