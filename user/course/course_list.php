@@ -7,12 +7,8 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php
 // desc limit 0, 9
 
 $sql = "SELECT * from courses where 1=1 " ;
-// $result = $mysqli -> query($sql);
-// while($rs = $result -> fetch_object()){
-//   $rsc[] = $rs;
-// }
 $order = ' order by cid desc';
-$c_where = '';//필터, 검색 조건담을 변수
+$c_where = '';
 
 
 $search_where = '';
@@ -26,7 +22,7 @@ if($search){
   $search_where = '';
 }
 
-$sqlrc = $sql.$c_where;
+$sqlrc = $sql.$c_where.$order;
 
 $result = $mysqli -> query($sqlrc);
 while($rs = $result -> fetch_object()){

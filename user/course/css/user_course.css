@@ -69,6 +69,8 @@
   cursor: pointer;
   background-color: #fff;
   margin: 0 30px 30px 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .courseBox:nth-child(3n + 0) {
