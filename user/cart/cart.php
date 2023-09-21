@@ -116,7 +116,20 @@ else{
               </div>
             </div>
             <i class="ti ti-x del_btn"></i>
-            <span class="price content_tt"><span class="number"><?= $cart->price ?></span>원</span>
+            <!-- <span class="price content_tt"><span class="number"><?= $cart->price ?></span>원</span> -->
+            <!-- 무료표시하기 -->
+            <?php
+            if($cart->price_status != "무료"){
+            ?>
+              <span class="price content_tt"><span class="number"><?= $cart->price ?></span>원</span>
+            <?php
+            }else{
+            ?>
+              <span class="price content_tt">무료</span>
+            <?php 
+            } 
+            ?>
+            <!-- 무료표시 끝 -->
           </li>
 
 
