@@ -15,9 +15,10 @@ $sql = "INSERT INTO review (userid ,cid, content, regdate, rating) VALUES
 
 
 if ($mysqli->query($sql) === TRUE) {
+    $rid = $mysqli->insert_id; 
     echo "<script>
     alert('댓글쓰기 완료되었습니다.');
-    location.href='/pudding-LMS-website/user/mypage/review_view.php?cid={$cid}';</script>";
+    location.href='/pudding-LMS-website/user/mypage/review_view.php?rid={$rid}';</script>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

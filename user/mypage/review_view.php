@@ -18,7 +18,13 @@ $js_route = "mypage/js/mypage.js";
   JOIN review_reply rr ON rr.rid = r.rid
   WHERE rr.rid = {$rid}";
   $rresult = $mysqli->query($rsql);
-  $rcard = $rresult->fetch_assoc();
+  // $rcard = $rresult->fetch_object();
+  $rs = array();
+  while ($row = $rresult->fetch_object()) {
+    $rs[] = $row;
+  }
+
+
 
 // var_dump($rcard);
 ?>
@@ -72,7 +78,10 @@ $js_route = "mypage/js/mypage.js";
             <a href="/pudding-LMS-website/user/mypage/review_update.php?rid=<?= $card["rid"]; ?>" class="btn btn-dark">수정</a>
             <button class="btn btn-danger d_btn" data-rid="<?= $card["rid"]; ?>">삭제</button>
           </div>
-
+          <?php
+       if(isset($rs)){
+        foreach($rs as $list){
+       ?>
           <div class="b_text02 re_reply_content radius_12">
             <div class="d-flex align-items-center">
                 <img
@@ -81,11 +90,17 @@ $js_route = "mypage/js/mypage.js";
                   alt="프로필 이미지"
                 />
                 <h5 class="b_text01 review_user">프바오</h5>
-                <h5 class="b_text02 dark review_name"><?= date('Y-m-d', strtotime($rcard["r_regdate"])) ;?></h5>
+                <h5 class="b_text02 dark review_name"><?= date('Y-m-d', strtotime($list->r_regdate)) ;?></h5>
               </div>
-            <p><?= $rcard["r_content"]; ?></p>
+            <p><?= $list->r_content;?></p>
             
           </div>
+          <?php
+          
+        }
+      }
+      
+          ?>
          
          
         </div>
@@ -120,10 +135,15 @@ $js_route = "mypage/js/mypage.js";
                 if (data.result === 'ok') {
                     alert('수강평 댓글이 삭제되었습니다.');
                     reviewContainer.hide(); 
-                    location.href= "/pudding-LMS-website/user/mypage/review_list.php";
+                    // location.href= "/pudding-LMS-website/user/mypage/review_list.php";
                     // location.href="http://pudding0906.dothome.co.kr/pudding-LMS-website/user/mypage/review_list.php";
-                } else {
-                    alert('수강평 댓글 삭제 실패');
+                    console.log(data.result);
+                } else if(data.result ==='rfail') {
+                    alert('이미 댓글이 있는 수강평은 삭제할수 없습니다.');
+                    console.log(data.result);
+                }else if(data.result ==='fail'){
+                  alert('삭제 실패!');
+                    console.log(data.result);
                 }
               },
               error: function(error) {

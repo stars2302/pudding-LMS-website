@@ -4,22 +4,35 @@
 
   $rid = $_POST['rid'];
  
-  $sql = "DELETE from review where rid={$rid}";
-  $rsql = "DELETE FROM review_reply where rid={$rid}";
-
-  $result = $mysqli -> query($sql);
-  $rresult = $mysqli -> query($rsql);
+  $rsql = "SELECT COUNT(*) AS cnt FROM review_reply where rid={$rid}";
+  $rresult =$mysqli->query($rsql);
+  $card = $rresult->fetch_object();
 
   
-  if($result && $rresult){
-    $data = array('result' => 'ok');
-    $data = array('rresult' => 'ok');
-  } else{
-    $data = array('result' => 'fail');
-    $data = array('rresult' => 'fail');
-  }
 
-  echo json_encode($data);
+  if($card->cnt > 0){
+
+    $data = array('result' => 'rfail');
+    echo json_encode($data);
+  }else{
+    $sql = "DELETE from review where rid={$rid}";
+    $result = $mysqli -> query($sql);
+    if($result && $rresult){
+        $data = array('result' => 'ok'); 
+      } else{
+        $data = array('result' => 'fail');
+      }
+    
+      echo json_encode($data);
+  }
+ 
+
+
+
+
+
+  
+
 
 
 ?>
