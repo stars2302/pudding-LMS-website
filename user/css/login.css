@@ -2,103 +2,111 @@
 /* main {
  height: calc(100vh - 90px);
 } */
-main{
+main {
   padding: 90px 0;
 }
-.login_box{
+.login_box {
   height: 630px;
 }
 .login_box,
-.signup_box{
+.signup_box {
   width: 1184px;
-  margin: 0 auto ;
+  margin: 0 auto;
   position: relative;
   /* top:60px; */
 }
 .login_box form,
-.signup_box form{
+.signup_box form {
   width: 300px;
 }
-.login_box form{
+.login_box form {
   display: flex;
   flex-direction: column;
-  gap:15px;
+  gap: 15px;
 }
 
 .login_box h2,
 .login_box h3,
-.signup_box h3{
+.signup_box h3 {
   font-family: "Jua", sans-serif;
   margin-bottom: 35px;
 }
-.login_check, .id_pw, .login_box label,
-.signup_box label{
+.login_check,
+.id_pw,
+.login_box label,
+.signup_box label {
   font-size: 14px;
 }
-.id_pw{
+.id_pw {
   font-size: 14px;
   margin-top: 90px;
   gap: 25px;
 }
 .id_pw a,
-.id_pw button{
+.id_pw button {
   position: relative;
 }
-.id_pw a:hover{
+.id_pw a:hover {
   font-weight: 500;
 }
 .id_pw a:after,
-.id_pw button:after{
+.id_pw button:after {
   content: "";
   position: absolute;
-  /* top: 5px; */
-  top:50%;
+  top: 50%;
   transform: translateY(-50%);
-  right: -13px;
+  right: -16px;
   width: 2px;
   height: 12px;
   background: #aeaeae;
 }
-.id_pw button:last-child::after{
+
+.id_pw button:last-child::after {
   width: 0;
 }
 .login_box .form-control,
-.signup_box .form-control{
+.signup_box .form-control {
   height: 45px;
 }
 
+.modal-body form{
+  width: 100%;
+  padding: 0 30px;
+} 
+
 /* signup */
-.swiper, .swiper-slide{
+.swiper,
+.swiper-slide {
   width: 530px;
   height: 568px;
   border-radius: 12px;
 }
-.swiper-slide img{
+.swiper-slide img {
   width: 100%;
   object-fit: cover;
 }
-.signup_box{
+.signup_box {
   padding: 45px 0;
   height: 100%;
 }
-.signup_box form{
+.signup_box form {
   display: flex;
   flex-direction: column;
-  gap:6px;
+  gap: 6px;
 }
-.signup_box .id_valid_wrap{
+.signup_box .id_valid_wrap {
   flex: 1;
 }
 .btn.duplication_btn {
   padding-left: 15px !important;
-  padding-right:15px !important;
+  padding-right: 15px !important;
   white-space: nowrap;
 }
 .btn.duplication_btn span {
-width: 100%;
+  width: 100%;
 }
 
-.form-control[type=file]{
+.form-control[type="file"] {
   height: 45px;
   /* line-height: 45px; */
 }
@@ -121,9 +129,40 @@ input[type="file"]::file-selector-button {
   border: none;
 }
 
-.is-invalid~.invalid-feedback, .is-invalid~.invalid-tooltip, .was-validated :invalid~.invalid-feedback, .was-validated :invalid~.invalid-tooltip {
+.is-invalid ~ .invalid-feedback,
+.is-invalid ~ .invalid-tooltip,
+.was-validated :invalid ~ .invalid-feedback,
+.was-validated :invalid ~ .invalid-tooltip {
   display: none;
 }
-.is-invalid+.invalid-feedback, .is-invalid+.invalid-tooltip, .was-validated :invalid+.invalid-feedback, .was-validated :invalid+.invalid-tooltip {
+.is-invalid + .invalid-feedback,
+.is-invalid + .invalid-tooltip,
+.was-validated :invalid + .invalid-feedback,
+.was-validated :invalid + .invalid-tooltip {
   display: block !important;
+}
+
+.signup_box .checkBox p {
+  font-size: 13px;
+  color: 5D87FF;
+  /* margin-top: 20px;
+  margin-bottom: 0; */
+  margin: 20px 0 10px;
+}
+.check_list {
+  border: 1px solid #dbdbdb;
+  padding: 10px;
+  margin: 10px 0 15px; 
+}
+
+.service_terms{
+  display: flex;
+  align-items: center;
+  gap : 8px;
+  color: #676666;
+}
+
+.modal_agree{
+  width: 800px;
+  color:#000;
 }

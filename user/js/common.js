@@ -1,3 +1,4 @@
+$(document).ready(function () {
 //nice select 적용
 let selectMenu = $('.selectmenu');
 if(selectMenu.length > 0){
@@ -25,4 +26,14 @@ $(window).on("scroll", function(e) {
       scrollTop: 0
     }, "easeInCubic");
   });
+});
+
+
+let recentList = $('.recent_list');
+historyBtn.on("click", function(e) {
+  e.preventDefault();
+  recentList.css('opacity', 1);  
+});
+
+
 });
