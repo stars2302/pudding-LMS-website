@@ -1,11 +1,6 @@
 <?php
 session_start();
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/dbcon.php';
-// var_dump($_SESSION['UID']);
-// if (isset($_SESSION['UID'])) {
-// $userid = $_SESSION['UID'];
-// var_dump($userid);
-// }
 
 $userid = $_GET['userid'];
 ?>

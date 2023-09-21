@@ -61,7 +61,7 @@ while ($ntrs = $ntresult->fetch_object()) {
   </section>
   <section class="sec2">
     <h2 class="jua dark sec_tt">어떤 강의를 찾고 있나요?</h2>
-    <form action="/pudding-LMS-website/user/members/search_course_list.php" method="get" class="search">
+    <form action="/pudding-LMS-website/user/course/course_list.php" method="get" class="search">
       <label for="course_search" type="hidden"></label>
       <input type="text" id="course_search" name="course_search" placeholder="필요한 강의를 찾아보세요.">
       <button type="submit"><i class="ti ti-search"></i></button>
@@ -174,16 +174,29 @@ while ($ntrs = $ntresult->fetch_object()) {
                         ?>
                       </span>
                     </p>
-                    <p class=""><span class="price number">
-                        <?= $item->price ?>
-                      </span><span>원</span></p>
+                    <?php
+                    if ($item->price_status != "무료") {
+                      ?>
+                      <div>
+                        <span class="content_tt number red">
+                          <?= $item->price ?>
+                        </span><span>원</span>
+                      </div>
+                      <?php
+                    } else {
+                      ?>
+                      <div>
+                        <span class="content_tt red">무료</span>
+                      </div>
+                      <?php
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
               <div class="view_wrap d-flex align-items-center justify-content-center flex-column">
                 <a href="/pudding-LMS-website/user/course/course_view.php?cid=<?= $item->cid ?>" class="view_btn">상세보기</a>
                 <span>
-                  <!-- <a href="#"><i class="ti ti-heart"></i></a> -->
                   <a href="/pudding-LMS-website/user/members/like_course.php?cid=<?= $item->cid ?>" class="card_like">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32"
                       height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
@@ -192,7 +205,6 @@ while ($ntrs = $ntresult->fetch_object()) {
                       <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                     </svg>
                   </a>
-                  <!-- <a href="#"><i class="ti ti-basket"></i></a> -->
                   <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $item->cid ?>" class="card_cart">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="32"
                       height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
@@ -274,9 +286,23 @@ while ($ntrs = $ntresult->fetch_object()) {
                           ?>
                         </span>
                       </p>
-                      <p class=""><span class="price number">
-                          <?= $item->price ?>
-                        </span><span>원</span></p>
+                      <?php
+                      if ($item->price_status != "무료") {
+                        ?>
+                        <div>
+                          <span class="content_tt number red">
+                            <?= $item->price ?>
+                          </span><span>원</span>
+                        </div>
+                        <?php
+                      } else {
+                        ?>
+                        <div>
+                          <span class="content_tt red">무료</span>
+                        </div>
+                        <?php
+                      }
+                      ?>
                     </div>
                   </div>
                 </div>
@@ -375,9 +401,23 @@ while ($ntrs = $ntresult->fetch_object()) {
                           ?>
                         </span>
                       </p>
-                      <p class=""><span class="price number">
-                          <?= $item->price ?>
-                        </span><span>원</span></p>
+                      <?php
+                      if ($item->price_status != "무료") {
+                        ?>
+                        <div>
+                          <span class="content_tt number red">
+                            <?= $item->price ?>
+                          </span><span>원</span>
+                        </div>
+                        <?php
+                      } else {
+                        ?>
+                        <div>
+                          <span class="content_tt red">무료</span>
+                        </div>
+                        <?php
+                      }
+                      ?>
                     </div>
                   </div>
                 </div>
@@ -469,7 +509,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                 ?>
                 <div class="swiper-slide d-flex align-items-center justify-content-between">
                   <div class="review_wrap radius_12 white_bg">
-                    <!-- <div> -->
+                    <div>
                     <div class="d-flex align-items-center justify-content-between">
                       <div class="d-flex align-items-center">
                         <img src="<?= $item->userimg ?>" class="userImg shodow_box" alt="프로필 이미지" />
@@ -503,7 +543,7 @@ while ($ntrs = $ntresult->fetch_object()) {
                     </div>
                     <div class="d-flex flex-row justify-content-end reply_btn_wrap">
                     </div>
-                    <!-- </div> -->
+                    </div>
                   </div>
                 </div>
                 <?php
@@ -537,11 +577,8 @@ while ($ntrs = $ntresult->fetch_object()) {
       </div>
       <a href="#"><i class="ti ti-circle-plus"></i>더보기</a>
     </div>
-
-
   </section>
 </main>
-
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/footer.php';
