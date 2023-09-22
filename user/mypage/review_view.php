@@ -13,20 +13,17 @@ $js_route = "mypage/js/mypage.js";
   $result = $mysqli->query($sql);
   $card = $result->fetch_assoc();
 
-  // var_dump($card);
+ 
   $rsql = "SELECT rr.* FROM review r
   JOIN review_reply rr ON rr.rid = r.rid
   WHERE rr.rid = {$rid}";
   $rresult = $mysqli->query($rsql);
-  // $rcard = $rresult->fetch_object();
+
   $rs = array();
   while ($row = $rresult->fetch_object()) {
     $rs[] = $row;
   }
 
-
-
-// var_dump($rcard);
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">
@@ -44,7 +41,7 @@ $js_route = "mypage/js/mypage.js";
     </aside>
     <div class="section_wrap">
     <section class="content_wrap">
-      <h1 class="jua main_tt">내 수강평</h1>
+      <h2 class="jua main_tt">내 수강평</h2>
       <div class="d-flex flex-column align-items-end">
       <div class="card_container radius_5" id="review_container" data-rid="<?= $card["rid"]; ?>">
         <div class="b_text02">
@@ -54,7 +51,7 @@ $js_route = "mypage/js/mypage.js";
                 src="<?= $card["userimg"]; ?>"
                 class="userImg shodow_box"
                 alt="프로필 이미지"
-              />
+              >
               <h5 class="b_text01 review_user"><?= $card["username"]; ?></h5>
               <h5 class="b_text02 dark review_name"><?= $card["name"]; ?></h5>
               <h5 class="b_text02 dark review_date"><?= date('Y-m-d', strtotime($card["regdate"])) ;?></h5>
@@ -74,7 +71,7 @@ $js_route = "mypage/js/mypage.js";
           <div class="b_text02 reply_content radius_12">
             <p><?= $card["content"]; ?></p>
           </div>
-          <div class="d-flex flex-row justify-content-end reply_btn_wrap">
+          <div class="d-flex flex-row justify-content-end reply_btn_wrap_view">
             <a href="/pudding-LMS-website/user/mypage/review_update.php?rid=<?= $card["rid"]; ?>" class="btn btn-dark">수정</a>
             <button class="btn btn-danger d_btn" data-rid="<?= $card["rid"]; ?>">삭제</button>
           </div>
@@ -135,8 +132,7 @@ $js_route = "mypage/js/mypage.js";
                 if (data.result === 'ok') {
                     alert('수강평 댓글이 삭제되었습니다.');
                     reviewContainer.hide(); 
-                    // location.href= "/pudding-LMS-website/user/mypage/review_list.php";
-                    // location.href="http://pudding0906.dothome.co.kr/pudding-LMS-website/user/mypage/review_list.php";
+                    location.href= "/pudding-LMS-website/user/mypage/review_list.php";
                     console.log(data.result);
                 } else if(data.result ==='rfail') {
                     alert('이미 댓글이 있는 수강평은 삭제할수 없습니다.');

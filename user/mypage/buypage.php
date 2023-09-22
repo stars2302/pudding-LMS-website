@@ -1,6 +1,4 @@
 <?php
-// session_start();
-
 $title="마이페이지 - 구매내역";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
@@ -30,7 +28,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php
   }
 
 
-// var_dump($purchase);
+
 
 
 ?>
@@ -50,7 +48,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php
     </aside>
     <div class="section_wrap">
     <section class="content_wrap">
-      <h1 class="jua main_tt">구매내역</h1>
+      <h2 class="jua main_tt">구매내역</h2>
       <div class="d-flex flex-column align-items-center">
         <div class="sales_container shadow_box border">
           <table class="table sales" id="payment_table">

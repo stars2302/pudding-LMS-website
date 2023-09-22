@@ -4,9 +4,6 @@
   $js_route = "course/js/user_course.js";
     include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
-
-
-
   $cid = $_GET['cid'];
 
   $sql = "SELECT * FROM courses where cid={$cid}";

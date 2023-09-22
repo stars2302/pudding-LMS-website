@@ -1,36 +1,38 @@
 <?php
-
 $title="마이페이지 - 내 수강평";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
+  $userid = $_SESSION['UID'];
   $pagenationTarget = 'payments'; 
-  $pageContentcount = 2; 
+  $pageContentcount = 7; 
 
-  if(!isset($pagerwhere)){
-    $pagerwhere = ' 1=1';
-  }
 
+  $pagerwhere = "userid='{$userid}'";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
   $limit = " limit $startLimit, $pageCount"; 
 
+ 
 
-  $userid = $_SESSION['UID'];
+  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+ 
+
+
   $sql = "SELECT p.regdate, c.name, c.cid,r.rid, r.userid AS review_userid FROM payments p 
           JOIN courses c ON c.cid = p.cid 
           LEFT JOIN review r ON r.cid = c.cid AND r.userid = '{$userid}'
           WHERE p.userid = '{$userid}' ORDER BY r.cid DESC";
-// var_dump($sql);
+
 $sqlrc = $sql.$limit; 
-  $result = $mysqli->query($sqlrc);
+$result = $mysqli->query($sqlrc);
 
-  $rs = array();
-  while ($row = $result->fetch_object()) {
-    $rs[] = $row;
-  }
+$rs = array();
+while ($row = $result->fetch_object()) {
+  $rs[] = $row;
+}
 
-  // var_dump($rs);
+
   
 ?>
 <main class="d-flex">
@@ -49,7 +51,7 @@ $sqlrc = $sql.$limit;
     </aside>
     <div class="section_wrap">
     <section class="content_wrap">
-      <h1 class="jua main_tt">수강평</h1>
+      <h2 class="jua main_tt">수강평</h2>
       <div class="d-flex flex-column align-items-center">
         <div class="sales_container shadow_box border">
           <table class="table sales review" id="payment_table">
@@ -71,8 +73,6 @@ $sqlrc = $sql.$limit;
                 <td>
                   <?php if ($list->review_userid == $userid) { ?>
                     <a href="/pudding-LMS-website/user/mypage/review_view.php?rid=<?= $list->rid; ?>" class="btn btn-warning">보기</a>
-                    <!-- <a href="#" class="btn btn-dark">수정</a>
-                    <a href="#" class="btn btn-danger d_btn">삭제</a> -->
                   <?php 
                 } else { 
                   ?>

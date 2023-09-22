@@ -49,7 +49,7 @@ if(isset($_SESSION['UID'])){
         // 모든 쿠폰 보여주기
         $a = $expirecps;
     } else {
-        // 해당하는 타입의 쿠폰 보여주도록
+        
         $a = $cps;
     }
 
@@ -73,7 +73,7 @@ if(isset($_SESSION['UID'])){
     </aside>
     <div class="section_wrap">
     <section class="content_wrap">
-      <h1 class="jua main_tt">쿠폰함</h1>
+      <h2 class="jua main_tt">쿠폰함</h2>
       
       <form action="#" class="d-flex justify-content-between conpon_box coupon_filter">
         <div class="d-flex flex-column coupon_box_able radius_5">
@@ -83,7 +83,7 @@ if(isset($_SESSION['UID'])){
             </div>
             <div class="able d-flex justify-content-end align-items-center">
               
-                <label for="all" class="d-flex align-items-center"><h1><?= $couponCount ?></h1> <span>개</span></label>
+                <label for="all" class="d-flex align-items-center c_count"><span><?= $couponCount ?></span> <span>개</span></label>
                 <input type="radio" value="0" class="hidden" id="all" name="coupon_filter">
             </div>
         </div>
@@ -95,11 +95,11 @@ if(isset($_SESSION['UID'])){
             </div>
             <div class="able d-flex justify-content-end align-items-center">
 
-                <label for="end" class="d-flex align-items-center"><h1><?= $expirecouponcount ?></h1> <span>개</span></label>
+                <label for="end" class="d-flex align-items-center c_count"><span><?= $expirecouponcount ?></span> <span>개</span></label>
                 <input type="radio" value="1" class="hidden" id="end" name="coupon_filter">
             </div>
         </div>
-        <button  class="hidden">
+        <button  class="hidden">쿠폰</button>
       </form><!--coupon_filter-->
     </section>
     <section class="content_wrap_cp">
@@ -136,7 +136,7 @@ if(isset($_SESSION['UID'])){
           <?php
               }
              }else{
-              echo '<p>쿠폰이 없습니다.</p>';
+              echo '<li><p>쿠폰이 없습니다.</p></li>';
              }
           ?>
          
