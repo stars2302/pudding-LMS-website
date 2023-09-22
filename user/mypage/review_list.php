@@ -1,34 +1,36 @@
 <?php
-
 $title="마이페이지 - 내 수강평";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
+  $userid = $_SESSION['UID'];
   $pagenationTarget = 'payments'; 
   $pageContentcount = 7; 
 
-  if(!isset($pagerwhere)){
-    $pagerwhere = ' 1=1';
-  }
 
+  $pagerwhere = "userid='{$userid}'";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
   $limit = " limit $startLimit, $pageCount"; 
 
+ 
 
-  $userid = $_SESSION['UID'];
+  include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+ 
+
+
   $sql = "SELECT p.regdate, c.name, c.cid,r.rid, r.userid AS review_userid FROM payments p 
           JOIN courses c ON c.cid = p.cid 
           LEFT JOIN review r ON r.cid = c.cid AND r.userid = '{$userid}'
           WHERE p.userid = '{$userid}' ORDER BY r.cid DESC";
 
 $sqlrc = $sql.$limit; 
-  $result = $mysqli->query($sqlrc);
+$result = $mysqli->query($sqlrc);
 
-  $rs = array();
-  while ($row = $result->fetch_object()) {
-    $rs[] = $row;
-  }
+$rs = array();
+while ($row = $result->fetch_object()) {
+  $rs[] = $row;
+}
 
 
   

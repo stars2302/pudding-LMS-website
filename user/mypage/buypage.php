@@ -1,6 +1,4 @@
 <?php
-// session_start();
-
 $title="마이페이지 - 구매내역";
 $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
