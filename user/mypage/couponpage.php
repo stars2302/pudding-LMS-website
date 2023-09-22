@@ -74,7 +74,7 @@ if(isset($_SESSION['UID'])){
     <div class="section_wrap">
     <section class="content_wrap">
       <h2 class="jua main_tt">쿠폰함</h2>
-      
+      <span class="coupon_sub"> * 구매시 쿠폰을 사용할 수 있습니다.</span>
       <form action="#" class="d-flex justify-content-between conpon_box coupon_filter">
         <div class="d-flex flex-column coupon_box_able radius_5">
             <div class="able d-flex">

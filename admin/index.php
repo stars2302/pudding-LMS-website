@@ -52,12 +52,12 @@ $sales_data = array(
 $sales_data_json = json_encode($sales_data);
 
 
-
 $sql ="SELECT * FROM notice order by ntid desc limit 0,6";
 $result = $mysqli-> query($sql);
 while($rs = $result->fetch_object()){
   $rscn[]=$rs;
 }
+
 
 
 
@@ -84,7 +84,7 @@ $newuc = "SELECT COUNT(*) as cnt FROM users where DATE_FORMAT(now(), '%m')=DATE_
 $newurc = $mysqli -> query($newuc);
 $newusercount = $newurc->fetch_object();
 
-// var_dump($newusercount);
+
 
 
 //월별 매출
@@ -100,6 +100,7 @@ $result = $mysqli->query($monthsql);
 while($rs = $result -> fetch_object()){
   $monthlate[] = $rs;
 }
+
 
 
 

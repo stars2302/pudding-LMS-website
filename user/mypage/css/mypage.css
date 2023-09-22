@@ -362,6 +362,11 @@ textarea:focus {
 }
 
 /* 쿠폰함 */
+.coupon_sub{
+  color:red;
+  display: block;
+  padding-bottom: calc(var(--base_unit) * 0.5);
+}
 .coupon_box {
   width: 100%;
 }

@@ -57,6 +57,8 @@ while ($rs = $result->fetch_object()) {
     $rscc[] = $rs;
 }
 
+// var_dump($rscc);
+
 
 //bar_chart
 $sql = "SELECT name, SUM(total_price) AS total_price_sum
@@ -78,10 +80,11 @@ while ($row = $result->fetch_assoc()) {
 //pie_chart
 $sqlTopBuyers = "SELECT userid, SUM(total_price) AS total_price_sum
                 FROM payments
-                WHERE DATE_FORMAT(regdate, '%m') = '07'
+                WHERE DATE_FORMAT(regdate, '%m') = '$selected_month'
                 GROUP BY userid
                 ORDER BY total_price_sum DESC
                 LIMIT 5"; 
+
 
 $resultTopBuyers = $mysqli->query($sqlTopBuyers);
 $topBuyersData = [];
@@ -97,7 +100,7 @@ while ($row = $resultTopBuyers->fetch_assoc()) {
 function getMonthlyData($selected_month) {
   global $mysqli; 
   $rsc = []; 
-  $sql = "SELECT * FROM payments where  DATE_FORMAT(regdate, '%m') = '$selected_month' ORDER BY payid ";
+  $sql = "SELECT * FROM payments where DATE_FORMAT(regdate, '%m') = '$selected_month' ORDER BY payid ";
   $result = $mysqli->query($sql);
   while ($rs = $result->fetch_object()) {
       $rsc[] = $rs;
@@ -151,7 +154,7 @@ if (isset($_GET['month']) || empty($_GET)) {
               <thead>
                 <tr>
                   <th scope="col" class="col1">회원ID</th>
-                  <th scope="col" class="col2">강의소분류명</th>
+                  <th scope="col" class="col2">강의명</th>
                   <th scope="col" class="col3">가격</th>
                   <th scope="col" class="col4">구입날짜</th>
                 </tr>
