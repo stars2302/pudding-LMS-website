@@ -18,7 +18,11 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php
 
 
 
-  $sql = "SELECT p.regdate, p.name,p.total_price,p.discount_price, u.userid FROM payments p JOIN users u ON u.userid = p.userid WHERE u.userid = '{$userid}' ORDER BY p.payid DESC";
+  $sql = "SELECT p.regdate, p.name,p.total_price,p.discount_price, u.userid,c.name,c.price,c.cid  FROM payments p 
+  JOIN users u ON u.userid = p.userid 
+  JOIN courses c ON c.cid = p.cid
+  WHERE u.userid = '{$userid}' 
+  ORDER BY p.payid DESC";
 
   $sqlrc = $sql.$limit; 
 
@@ -28,7 +32,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php
   }
 
 
-
+// var_dump($purchase);
 
 
 ?>
@@ -68,7 +72,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/dbcon.php
               <tr>
                 <td><?= date('Y-m-d', strtotime($p->regdate)) ;?></td>
                 <td><?php echo $p->name ?></td>
-                <td><span class="number"><?php echo $p->total_price ?></span><span>원</span></td>
+                <td><span class="number"><?php echo $p->price ?></span><span>원</span></td>
                 <td><span class="number"><?php echo $p->discount_price ?></span><span>원</span></td>
               </tr>
               <?php
