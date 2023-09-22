@@ -31,40 +31,41 @@ $card = $result->fetch_assoc();
     </aside>
     <div class="section_wrap">
     <section class="content_wrap">
-      <h1 class="jua main_tt">수강평 수정</h1>
+      <h2 class="jua main_tt">수강평 수정</h2>
       <div class="card_container radius_5">
         <div class="b_text02">
           <div class="d-flex align-items-center justify-content-between">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center review_profile">
               <img
                 src="<?= $card["userimg"]; ?>"
                 class="userImg shodow_box"
                 alt="프로필 이미지"
-              />
+              >
               <h5 class="b_text01 review_user"><?= $card["username"]; ?></h5>
               <h5 class="b_text02 dark review_name"><?= $card["name"]; ?></h5>
             </div>
+          </div>
             <form action="review_update_ok.php?rid=<?=$rid?>" method="POST">
-            <div class="rate_wrap">
+            <div class="rate_wrap d-flex justify-content-end">
               <select class="form-control" id="rate" name="rating">
-                <option value="1">
-                  &#xf005; &#xf006; &#xf006; &#xf006; &#xf006;
-                </option>
-                <option value="2">
-                  &#xf005; &#xf005; &#xf006; &#xf006; &#xf006;
-                </option>
-                <option value="3">
-                  &#xf005; &#xf005; &#xf005; &#xf006; &#xf006;
-                </option>
-                <option value="4">
-                  &#xf005; &#xf005; &#xf005; &#xf005; &#xf006;
-                </option>
-                <option value="5">
-                  &#xf005; &#xf005; &#xf005; &#xf005; &#xf005;
-                </option>
+              <option value="1">
+                &#9733; &#9734; &#9734; &#9734; &#9734;
+              </option>
+              <option value="2">
+                &#9733; &#9733; &#9734; &#9734; &#9734;
+              </option>
+              <option value="3">
+                &#9733; &#9733; &#9733; &#9734; &#9734;
+              </option>
+              <option value="4">
+                &#9733; &#9733; &#9733; &#9733; &#9734;
+              </option>
+              <option value="5">
+                &#9733; &#9733; &#9733; &#9733; &#9733;
+              </option>
               </select>
             </div>
-          </div>
+          
           <div class="b_text02 c_reply_content border">
             <textarea
               name="review_update"

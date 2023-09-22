@@ -8,7 +8,7 @@ $js_route = "mypage/js/mypage.js";
   $cid = $_GET['cid'];
 
   $sql = "SELECT p.*, u.userimg, u.username FROM payments p
-  JOIN users u on p.userid= u.userid where cid={$cid}";
+  JOIN users u on p.userid= u.userid where p.cid={$cid} and u.userid='{$userid}'";
   $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
 // var_dump($card);

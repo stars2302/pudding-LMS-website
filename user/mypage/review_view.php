@@ -44,7 +44,7 @@ $js_route = "mypage/js/mypage.js";
     </aside>
     <div class="section_wrap">
     <section class="content_wrap">
-      <h1 class="jua main_tt">내 수강평</h1>
+      <h2 class="jua main_tt">내 수강평</h2>
       <div class="d-flex flex-column align-items-end">
       <div class="card_container radius_5" id="review_container" data-rid="<?= $card["rid"]; ?>">
         <div class="b_text02">
@@ -54,7 +54,7 @@ $js_route = "mypage/js/mypage.js";
                 src="<?= $card["userimg"]; ?>"
                 class="userImg shodow_box"
                 alt="프로필 이미지"
-              />
+              >
               <h5 class="b_text01 review_user"><?= $card["username"]; ?></h5>
               <h5 class="b_text02 dark review_name"><?= $card["name"]; ?></h5>
               <h5 class="b_text02 dark review_date"><?= date('Y-m-d', strtotime($card["regdate"])) ;?></h5>
