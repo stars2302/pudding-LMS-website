@@ -29,10 +29,6 @@ $(document).ready(function () {
     spaceBetween: 30,
     speed: 1000,
     loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
     autoplay: {
       delay: 3000,
     },
@@ -47,10 +43,6 @@ $(document).ready(function () {
     spaceBetween: 30,
     speed: 1000,
     loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
     autoplay: {
       delay: 3000,
     },
@@ -65,9 +57,6 @@ $(document).ready(function () {
     spaceBetween: 15,
     direction: "vertical",
     speed: 1000,
-    // autoplay: {
-    //   delay: 3000,
-    // },
   });
 
   var swiper = new Swiper(".notice_slide", {

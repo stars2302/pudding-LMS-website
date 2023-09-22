@@ -726,6 +726,7 @@ aside.main_btn {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  visibility: hidden;
 }
 
 aside .history_btn,
@@ -738,12 +739,14 @@ aside .top_btn {
   align-items: center;
   justify-content: center;
   opacity: 0;
+  visibility: hidden;
   transition: 0.3s;
 }
 
 .history_btn {
   background: #fff;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .top_btn {
@@ -752,6 +755,7 @@ aside .top_btn {
 
 aside div.active {
   opacity: 1;
+  visibility: visible;
 }
 
 .recent_list {
@@ -763,10 +767,12 @@ aside div.active {
   display: flex;
   flex-direction: column;
   text-align: center;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 .recent_list.active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 .recent_list p {
   color: #fff;
