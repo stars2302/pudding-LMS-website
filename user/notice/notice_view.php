@@ -20,7 +20,7 @@ $sqlarr = $result2 -> fetch_assoc();
   <section>
     <div class="notice_view shadow_box justify-content-between radius_5 white_bg">
       <div class="notice_title_box d-flex justify-content-between align-items-center">
-        <h2 class="main_stt thead_tt"> <?= $sqlarr['nt_title'];?></h2>
+        <h2 class="content_tt thead_tt"> <?= $sqlarr['nt_title'];?></h2>
         <div class="notice_info d-flex">
           <span>작성일</span>
           <span><?= $sqlarr['nt_regdate']?></span>
@@ -31,6 +31,9 @@ $sqlarr = $result2 -> fetch_assoc();
       <div class="content">
         <?= $sqlarr['nt_content'] ?>
       </div>
+    </div>
+    <div class="notice_button d-flex justify-content-end">
+      <a href="/pudding-LMS-website/user/notice/notice.php" class="btn btn-dark">목록가기</a>
     </div>
   </section> 
 </div>

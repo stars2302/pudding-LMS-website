@@ -53,7 +53,7 @@ h2 {
 /* notice view */
 .notice_view {
   padding: var(--base_unit);
-  margin: calc(var(--base_unit)*2) 0;
+  margin: calc(var(--base_unit)*2) 0 var(--base_unit);
 }
 
 .notice_view .notice_title_box {
@@ -71,4 +71,12 @@ h2 {
 
 .notice_view .content {
   margin-top: var(--base_unit);
+}
+
+.notice_button {
+  margin-bottom: calc(var(--base_unit)*2);
+}
+
+.notice_button a {
+  line-height: var(--base_unit);
 }
