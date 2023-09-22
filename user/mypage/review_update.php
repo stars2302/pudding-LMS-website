@@ -37,7 +37,13 @@ $card = $result->fetch_assoc();
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center review_profile">
               <img
-                src="<?= $card["userimg"]; ?>"
+                src="<?php
+                if ($card["userimg"] == '') {
+                  echo "/pudding-LMS-website/user/images/profile/default_profile.png";
+                } else {
+                  echo $card["userimg"];
+                }
+                ?>"
                 class="userImg shodow_box"
                 alt="프로필 이미지"
               >
