@@ -627,11 +627,10 @@ while ($ntrs = $ntresult->fetch_object()) {
   <hr>
 
   <div class="close_wrap d-flex justify-content-between">
-    <div class="checkbox d-flex align-items-center">
-      <input type="checkbox" id="daycheck" class="hidden">
-      <label for="daycheck">
-        <i class="fa-solid fa-check"></i>
-        오늘 하루 안보기
+    <div class="form-check checkboxv">
+      <input class="form-check-input" type="checkbox" value="" id="daycheck">
+      <label class="form-check-label" for="daycheck">
+      오늘 하루 안보기
       </label>
     </div>
     <button type="button" id="close" class="border">닫기</button>
