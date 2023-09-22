@@ -159,3 +159,8 @@ input[type="file"]::file-selector-button {
   width: 800px;
   color: #000;
 }
+
+
+.sign_up_page .col-md-6{
+  padding-left: 30px;
+}
