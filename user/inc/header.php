@@ -46,7 +46,7 @@ if (isset($_SESSION['UID'])) {
     href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16"
     href="/pudding-LMS-website/admin/images/pudding_favicon.ico/favicon-16x16.png">
-  <link rel="manifest" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/manifest.json">
+  <!-- <link rel="manifest" href="/pudding-LMS-website/admin/images/pudding_favicon.ico/manifest.json"> -->
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
@@ -117,8 +117,8 @@ if (isset($_SESSION['UID'])) {
       <nav>
         <ul class="d-flex">
           <li><a href="/pudding-LMS-website/user/course/course_list.php">강의 클래스</a></li>
-          <li><a href="">이벤트</a></li>
-          <li><a href="">커뮤니티</a></li>
+          <li><a href="/pudding-LMS-website/user/banner/banner.php">이벤트</a></li>
+          <li><a href="/pudding-LMS-website/user/notice/notice.php">커뮤니티</a></li>
           <!-- <li><a href="">ABOUT US</a></li> -->
         </ul>
       </nav>
