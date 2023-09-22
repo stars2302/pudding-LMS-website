@@ -135,8 +135,7 @@ $js_route = "mypage/js/mypage.js";
                 if (data.result === 'ok') {
                     alert('수강평 댓글이 삭제되었습니다.');
                     reviewContainer.hide(); 
-                    // location.href= "/pudding-LMS-website/user/mypage/review_list.php";
-                    // location.href="http://pudding0906.dothome.co.kr/pudding-LMS-website/user/mypage/review_list.php";
+                    location.href= "/pudding-LMS-website/user/mypage/review_list.php";
                     console.log(data.result);
                 } else if(data.result ==='rfail') {
                     alert('이미 댓글이 있는 수강평은 삭제할수 없습니다.');

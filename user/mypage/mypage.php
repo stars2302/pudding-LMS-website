@@ -9,20 +9,11 @@ $js_route = "mypage/js/mypage.js";
     $userid = $_SESSION['UID'];
 
     $sql = "SELECT * FROM users WHERE userid='{$userid}'";
+
     $result = $mysqli->query($sql);
-    
-    $rs = $result->fetch_object();
-
-    $currentDate= new DateTime();
-
-    $regDate = new DateTime($rs->regdate);
-
-    //현재날짜 - 가입날짜
-    $dateDiff = $currentDate->diff($regDate);
-    $daysSinceRegistration = $dateDiff->days;
-
-    // var_dump($rs);
-  // var_dump($dateDiff);
+    while ($rrow = $result->fetch_object()) {
+      $user[] = $rrow;
+    }
 
   //내강의실
   $useridlec = $rs->userid;
@@ -36,7 +27,6 @@ $js_route = "mypage/js/mypage.js";
       $courses[] = $row;
     }
 
-    // var_dump($courses);
   }else{
     echo "<script>alert('로그인후 이후 이용해주세요!');
     history.back();</script>";
@@ -64,14 +54,27 @@ $js_route = "mypage/js/mypage.js";
     </aside>
     <div class="section_wrap">
     <section class="content_wrap">
-     
-      <h2 class="jua main_tt"><?php echo $rs->username ?>님 안녕하세요!</h2>
+      <h2 class="hidden">내 프로필</h2>
+      <?php
+      if(isset($user)){
+        foreach($user as $u){
+
+          $currentDate= new DateTime();
+
+          $regDate = new DateTime($u->regdate);
+      
+          //현재날짜 - 가입날짜
+          $dateDiff = $currentDate->diff($regDate);
+          $daysSinceRegistration = $dateDiff->days;
+      
+      ?>
+      <h2 class="jua main_tt"><?php echo $u->username ?>님 안녕하세요!</h2>
       <div class="d-flex">
         <div class="d-flex profile_box radius_5">
-          <img src="<?php echo $rs->userimg ?>" alt="프로필이미지">
+          <img src="<?php echo $u->userimg ?>" alt="프로필이미지">
           <div>
-            <h6 class="b_text02"><?php echo $rs->username ?></h6>
-            <h6 class="b_text02"><?php echo $rs->useremail ?></h6>
+            <h6 class="b_text02"><?php echo $u->username ?></h6>
+            <h6 class="b_text02"><?php echo $u->useremail ?></h6>
           </div>
           <a href="#"><i class="ti ti-settings"></i></a>
         </div>
@@ -86,6 +89,10 @@ $js_route = "mypage/js/mypage.js";
           </h6>
         </div>
       </div>
+      <?php    
+        }
+      }
+      ?>
      
     </section>
     <section class="course_wrap">

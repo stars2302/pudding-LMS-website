@@ -39,7 +39,10 @@ $cateArray = explode('/', $rowcourse['cate']);
     </aside>
     <div class="section_wrap">
     <section class="content_wrap_course">
-      <h2 class="jua pd_2">내강의실</h2>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="jua pd_2">내강의실</h2>
+        <a href="/pudding-LMS-website/user/mypage/mypage.php" class="btn btn-dark">목록가기</a>
+      </div>
       <div class="viewSetion_1 shadow_box pd_2">
         <div class="d-flex gap-5">
           <div>

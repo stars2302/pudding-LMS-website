@@ -243,14 +243,17 @@ a.btn {
   box-sizing: border-box;
 }
 .rate_wrap {
+  margin-top: calc(var(--base_unit) * 1) ;
   margin-right: calc(var(--base_unit) * 1.3);
+  margin-bottom: calc(var(--base_unit) * 1);
 }
 
 select#rate {
   font-family: "FontAwesome";
-  /*content: '&#xf006;';*/
   font-weight: 900;
   color: var(--point_primary);
+  width: 10%;
+  
 }
 
 .userImg {
@@ -268,6 +271,11 @@ select#rate {
   color: var(--dark);
   font-size: 16px;
   margin-right: var(--base_unit);
+}
+
+.review_profile{
+  position: absolute;
+  top:0;
 }
 
 .c_reply_content {
@@ -423,6 +431,18 @@ textarea:focus {
   bottom: 15px;
   transform: scale(1.5);
 }
+
+.c_count span:first-child{
+  font-size:30px;
+  font-weight: 600;
+  color:var(--dark);
+  cursor: pointer;
+}
+
+.c_count span:hover:first-child{
+ text-decoration: underline;
+}
+
 /* 내강의실 */
 /* margin */
 .pd_1 {

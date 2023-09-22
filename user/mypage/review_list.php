@@ -21,7 +21,7 @@ $js_route = "mypage/js/mypage.js";
           JOIN courses c ON c.cid = p.cid 
           LEFT JOIN review r ON r.cid = c.cid AND r.userid = '{$userid}'
           WHERE p.userid = '{$userid}' ORDER BY r.cid DESC";
-// var_dump($sql);
+
 $sqlrc = $sql.$limit; 
   $result = $mysqli->query($sqlrc);
 
@@ -30,7 +30,7 @@ $sqlrc = $sql.$limit;
     $rs[] = $row;
   }
 
-  // var_dump($rs);
+
   
 ?>
 <main class="d-flex">
@@ -49,7 +49,7 @@ $sqlrc = $sql.$limit;
     </aside>
     <div class="section_wrap">
     <section class="content_wrap">
-      <h1 class="jua main_tt">수강평</h1>
+      <h2 class="jua main_tt">수강평</h2>
       <div class="d-flex flex-column align-items-center">
         <div class="sales_container shadow_box border">
           <table class="table sales review" id="payment_table">
