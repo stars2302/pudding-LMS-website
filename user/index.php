@@ -567,18 +567,22 @@ while ($ntrs = $ntresult->fetch_object()) {
           if (isset($ntrsc)) {
             foreach ($ntrsc as $item) {
               ?>
-              <div class="swiper-slide d-flex align-items-center justify-content-between"><span>
+              <div class="swiper-slide d-flex align-items-center justify-content-between">
+                <a href="/pudding-LMS-website/user/notice/notice_view.php?ntid=<?= $item->ntid ?>">
+                <span>
                   <?= $item->nt_title ?>
                 </span><span>
                   <?= $item->nt_regdate ?>
-                </span></div>
+                </span>
+                </a>
+              </div>
               <?php
             }
           }
           ?>
         </div>
       </div>
-      <a href="#"><i class="ti ti-circle-plus"></i>더보기</a>
+      <a href="/pudding-LMS-website/user/notice/notice.php"><i class="ti ti-circle-plus"></i>더보기</a>
     </div>
   </section>
 </main>
