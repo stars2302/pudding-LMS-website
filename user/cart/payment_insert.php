@@ -47,7 +47,7 @@
 
     if($cpid !== ''){
       //사용 쿠폰 삭제
-      $sql4 = "DELETE from user_coupon where cpid=$cpid and userid='{$userid}'";
+      $sql4 = "UPDATE user_coupon SET uc_status = 0 where cpid=$cpid and userid='{$userid}'";
       $result4 = $mysqli -> query($sql4);
     }
 }
