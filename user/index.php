@@ -567,21 +567,75 @@ while ($ntrs = $ntresult->fetch_object()) {
           if (isset($ntrsc)) {
             foreach ($ntrsc as $item) {
               ?>
-              <div class="swiper-slide d-flex align-items-center justify-content-between"><span>
+              <div class="swiper-slide d-flex align-items-center justify-content-between">
+                <a href="/pudding-LMS-website/user/notice/notice_view.php?ntid=<?= $item->ntid ?>">
+                <span>
                   <?= $item->nt_title ?>
                 </span><span>
                   <?= $item->nt_regdate ?>
-                </span></div>
+                </span>
+                </a>
+              </div>
               <?php
             }
           }
           ?>
         </div>
       </div>
-      <a href="#"><i class="ti ti-circle-plus"></i>더보기</a>
+      <a href="/pudding-LMS-website/user/notice/notice.php"><i class="ti ti-circle-plus"></i>더보기</a>
     </div>
   </section>
 </main>
+
+<!-- DIALOG POPUP -->
+<dialog class="popup">
+  <h2 class="content_stt bold">PUDDING - LMS 포트폴리오 사이트(4차 - 유저페이지)</h2>
+  <p>
+    본 사이트는 구직용 포트폴리오 사이트이며, 실제로 운영되는 사이트가 아닙니다.
+  </p>
+  <p>
+    프로젝트 주요 내용 : <span class="bold">프론트와 백엔드(php, mysql)를 연동</span>하여 페이지 구현
+  </p>
+
+  <hr>
+
+  <div class="info">
+    <p><span>제작기간</span> : 2023. 09. 08 - 09. 25</p>
+    <p><span>특징</span> : html, css, jQuery, <span class="bold">bootstrap, php, mySql</span></p>
+    <p>코딩 입문자를 위한 쉽게 떠먹는 <span class="bold">유저 웹 사이트</span></p>
+    <p><span>기획</span> : <a href="#" target="_blank" class="figma"><span>기획/디자인 자료</span><i class="ti ti-brand-figma"></i></a>  |  <span>코드</span> : <a href="#" target="_blank" class="git"><span>깃허브</span><i class="ti ti-brand-github"></i></a></p>
+    <p><span>구현 완료 페이지</span> : 메인, 강의 클래스, 이벤트(쿠폰게임), 장바구니, 로그인, 회원가입, 마이페이지</p>
+  </div>
+
+  <hr>
+
+  <div class="work">
+    <p><span>팀원</span> : 이*정, 김*림, 나*영, 박*인, 성*영</p>
+    <p><span>기획</span> : 이*정, 김*림, 나*영, 박*인</p>
+    <dl>
+      <dt><span>- 디자인 및 구현 -</span></dt>
+      <dd><span>이*정</span> : 마이페이지(내 강의실, 구매내역, 쿠폰함, 수강평), 카카오 로그인</dd>
+      <dd><span>김*림</span> : 메인페이지, 로그인, 회원가입</dd>
+      <dd><span>나*영</span> : 장바구니, 이벤트(쿠폰게임)</dd>
+      <dd><span>박*인</span> : 강의 클래스</dd>
+      <dd><span>성*영 : 기초 틀 디자인, 와이어프레임(구현X)</span></dd>
+    </dl>
+  </div>
+
+  <hr>
+
+  <div class="close_wrap d-flex justify-content-between">
+    <div class="checkbox d-flex align-items-center">
+      <input type="checkbox" id="daycheck" class="hidden">
+      <label for="daycheck">
+        <i class="fa-solid fa-check"></i>
+        오늘 하루 안보기
+      </label>
+    </div>
+    <button type="button" id="close" class="border">닫기</button>
+  </div>
+</dialog>
+<!-- // DIALOG POPUP -->
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/footer.php';

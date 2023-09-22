@@ -6,13 +6,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 
 $ntid = $_GET['ntid'];
 
-$sql = "UPDATE notice SET nt_read_cnt = nt_read_cnt +1  WHERE ntid='{$ntid}'";
-$result = $mysqli -> query($sql);
+// $sql = "UPDATE notice SET nt_read_cnt = nt_read_cnt +1  WHERE ntid='{$ntid}'";
+// $result = $mysqli -> query($sql);
 
 $sql2 = "SELECT * FROM notice WHERE ntid='{$ntid}'";
 $result2 = $mysqli->query($sql2);
 $sqlarr = $result2 -> fetch_assoc();
-$hit = $sqlarr['nt_read_cnt'] +1 ;
+// $hit = $sqlarr['nt_read_cnt'] +1 ;
 ?>
   <section>
           <div class="view_box">

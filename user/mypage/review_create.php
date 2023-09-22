@@ -4,6 +4,7 @@ $css_route="mypage/css/mypage.css";
 $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
   $userid = $_SESSION['UID'];
+  var_dump($userid);
 
   $cid = $_GET['cid'];
 
@@ -11,7 +12,7 @@ $js_route = "mypage/js/mypage.js";
   JOIN users u on p.userid= u.userid where p.cid={$cid} and u.userid='{$userid}'";
   $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
-// var_dump($card);
+var_dump($card);
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">

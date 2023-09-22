@@ -6,8 +6,7 @@
       <?php
       if (isset($_COOKIE['recent_view_course'])) {
         $cvc = json_decode($_COOKIE['recent_view_course']);
-        krsort($cvc); //최근 상품 위로 올라오도록 key값을 기준으로 역순으로 정렬.
-        // var_dump($cvc);
+        krsort($cvc); 
         foreach ($cvc as $cc) {
           ?>
           <li>

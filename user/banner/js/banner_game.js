@@ -4,9 +4,6 @@ let keyidx = 0;
     let gameCount = 6; //게임 횟수
     let wordDOM ='';
 
-    // console.log(answear.length*gameCount)
-
-
     //정답 길이에 따라 바둑판 만들기
     for(let i = 1; i <= answear.length*gameCount; i++){
       wordDOM += `<div class="word word${i}"><span></span></div>`;
@@ -21,14 +18,12 @@ let keyidx = 0;
     $('body').keydown(function(e){
 
       let key = e.key; //입력한 문자열
-      // console.log(e.key);
 
       if(col <= gameCount){
         if (key.match(/^[a-zA-Z]$/)) {
           // console.log('영어');
           $('.word').eq(keyidx).find('span').text(key);
           keyidx++;
-          console.log('press');
 
 
           //1row 구분
@@ -86,9 +81,7 @@ let keyidx = 0;
 
         //backspace
         if(key =='Backspace'){
-          // console.log('back');
-          
-          
+
           if(keyidx > 0){
             if (keyidx % answear.length !== 0) {
               $('.word').eq(keyidx-1).find('span').text('');
@@ -96,8 +89,6 @@ let keyidx = 0;
             }
           }
         }
-        console.log(keyidx);
-        // console.log(col*answear.length);
         if(keyidx == answear.length*gameCount){
           setTimeout(() => {
             alert('GAME OVER');
