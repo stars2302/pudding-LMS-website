@@ -1,6 +1,6 @@
 <?php
 session_start();
-$rest_api_key = "";     
+$rest_api_key = "";       
 $redirect_uri = "http://localhost/pudding-LMS-website/user/members/kakao_oauth.php";  // Redirect URI
 $code = $_GET['code'];
 
@@ -46,7 +46,7 @@ $user_info_options = array(
 $user_info_context = stream_context_create($user_info_options);
 $user_info_json = file_get_contents($user_info_url, false, $user_info_context);
 $user_info = json_decode($user_info_json, true);
-var_dump($user_info);
+
 
 // 카카오 API로부터 가져온 사용자 정보
 $userid = $user_info['id'];
