@@ -5,32 +5,28 @@ $js_route = "course/js/user_course.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
 //main페이지 검색 
-$course_keyword = '';
+$c_where = '';
 if (isset($_GET['course_search'])) {
   $key = $_GET['course_search'];
-  $course_keyword = " and name LIKE '%$key%' OR cate LIKE '%$key%' OR content LIKE '%$key%' OR level LIKE '%$key%'";
+  $c_where = " and name LIKE '%$key%' OR cate LIKE '%$key%' OR level LIKE '%$key%'";
 };
-$cate_keyword = '';
-if (isset($_GET['cate'])) {
-  $keycate = $_GET['cate'];
-  $cate_keyword = " and cate LIKE '%$keycate'";
+if (isset($_GET['catename'])) {
+  $keycate = $_GET['catename'];
+  $c_where = " and cate LIKE '%$keycate'";
 };
 
-// desc limit 0, 9
 
 $sql = "SELECT * from courses where 1=1 " ;
 $order = ' order by cid desc';
-$c_where = '';
+
 
 $cbox = $_GET['courseCheckBox']??'';
-$cate = $_GET['cate-array']??'';
+$cate = $_GET['cate']??'';
 $level1 = $_GET['level1']??'';
 $level2 = $_GET['level2']??'';
 $level3 = $_GET['level3']??'';
 $pay = $_GET['pay']??'';
 $param = '';
-
-$cate_arr=explode(",",$cate);
 
 $cate_where = '';
 $filter_where = '';
@@ -38,15 +34,18 @@ $fil_where = '';
 
 
 //카테고리 조회
-if($cate == '전체선택'){
-  $c_where .= '';
-}
-else if(sizeof($cate_arr) > 0){
-  $c_where .= " and (cate like '%";
-  $c_where .= implode("%' or cate like '%", $cate_arr);
-  $c_where .= "%') ";
-}else{
-  $c_where .= "";
+if($cate != ''){
+  for($i=0;$i < sizeof($cate); $i++){
+    if($cate[$i] == '전체선택'){
+      $c_where .= "";
+    }else{
+      if($i==0){
+        $c_where .= " and cate like '%{$cate[$i]}%'";
+      }else{
+        $c_where .= " or cate like '%{$cate[$i]}%'";
+      }
+    }
+  }
 }
 
 //난이도 조회
@@ -86,25 +85,18 @@ if($search){
 }
 $c_where .= $search_where;
 
-$sqlrc = $sql.$c_where.$course_keyword.$cate_keyword.$order;
+
 // $sqlrc = $sql.$c_where.$order; 
 if(!isset($pagerwhere)){
   $pagerwhere = " 1=1";
 }
 
-
-
 $sql2 = "SELECT COUNT(*) as count from courses where 1=1 ".$c_where;
 
 $result4 = $mysqli->query($sql2);
-$rsc1 = [];
 
-while ($rs = $result4->fetch_object()) {
-    $rsc1[] = $rs;
-}
-$sales_page = $rsc1[0]->count;
-// var_dump($sales_page);
-
+$rs = $result4->fetch_object();
+$sales_page = $rs->count;
 
 
 //필터 없으면 여기서부터 복사! *******
@@ -118,6 +110,8 @@ $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이�
 
 //최종 query문, 실행
 $sqlrc = $sql.$c_where.$order.$limit; //필터 있
+
+// $sqlrc = $sql.$c_where.$course_keyword.$cate_keyword.$order.$limit;
 //----------------------------------------------pagenation 끝
 
 
@@ -150,7 +144,7 @@ while($rs = $result -> fetch_object()){
         </div>
         <div class="mainSection d-flex gap-5">
           <form action="#" id="filter-form" class="courseCheckBox mb-5" method="GET">
-            <input type="hidden" name="cate-array" id="cate-array" value="">
+            <!-- <input type="hidden" name="cate-array" id="cate-array" value=""> -->
             <div class="checkBox_1 mb-3">
               <h6>카테고리</h6>
               <hr class="mt-4">
@@ -160,7 +154,7 @@ while($rs = $result -> fetch_object()){
                   class="form-check-input"
                   type="checkbox"
                   value="전체선택"
-                  name="cate"
+                  name="cate[]"
                   id="total"
                 >
               </div>
@@ -172,7 +166,7 @@ while($rs = $result -> fetch_object()){
                   class="form-check-input"
                   type="checkbox"
                   value="프론트엔드"
-                  name="cate"
+                  name="cate[]"
                   id="frontend"
                 >
               </div>
@@ -182,7 +176,7 @@ while($rs = $result -> fetch_object()){
                   class="form-check-input"
                   type="checkbox"
                   value="백엔드"
-                  name="cate"
+                  name="cate[]"
                   id="backend"
                 >
               </div>
@@ -192,7 +186,7 @@ while($rs = $result -> fetch_object()){
                   class="form-check-input"
                   type="checkbox"
                   value="디자인"
-                  name="cate"
+                  name="cate[]"
                   id="design"
                 >
               </div>
@@ -341,6 +335,14 @@ while($rs = $result -> fetch_object()){
               }
               ?>
             </div>
+            <script>
+              let currentUrl = window.location.href;
+              let url = currentUrl.replace('#', '');
+            </script>
+            <?php
+              $url = "<script>document.write(currentUrl);</script>" ;
+            ?>
+
             <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
               <ul class="pagination coupon_pager">
                 <?php
@@ -354,13 +356,12 @@ while($rs = $result -> fetch_object()){
     
                   for($i=$block_start;$i<=$block_end;$i++){
                     if($pageNumber == $i){
-                        echo "<li class=\"page-item active\"><a href=\"?cate-array=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                        echo "<li class=\"page-item active\"><a href=\"?cate=$cate[0]&cate=$cate[1]&cate=$cate[2]&cate=$cate[3]&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
                     }else{
-                        echo "<li class=\"page-item\"><a href=\"?cate-array=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                        echo "<li class=\"page-item\"><a href=\"?cate=$cate[0]&cate=$cate[1]&cate=$cate[2]&cate=$cate[3]&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
     
                     }
                   }
-    
     
                   if($pageNumber<$total_page && $block_num < $total_block){
                     $next = $block_num * $block_ct + 1;

@@ -69,9 +69,6 @@
  //유림 최근 본 강의 끝
 
 
-
-
-
 ?>
     <main>
       <input type="hidden" id="cid" value="<?= $cid; ?>">

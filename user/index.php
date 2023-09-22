@@ -71,73 +71,73 @@ while ($ntrs = $ntresult->fetch_object()) {
     <div class="category_box radius_12">
       <ul>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'HTML'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'HTML'; ?>">
             <img src="images/main/html.png" alt="HTML">
             <p>HTML</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'CSS'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'CSS'; ?>">
             <img src="images/main/css.png" alt="CSS">
             <p>CSS</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'Javascript'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'Javascript'; ?>">
             <img src="images/main/js.png" alt="Javascript">
             <p>Javascript</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'PHP'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'PHP'; ?>">
             <img src="images/main/php.png" alt="PHP">
             <p>PHP</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'React'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'React'; ?>">
             <img src="images/main/react.png" alt="React">
             <p>React</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'SQL'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'SQL'; ?>">
             <img src="images/main/mysql.png" alt="SQL">
             <p>SQL</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'Python'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'Python'; ?>">
             <img src="images/main/phython.png" alt="Python">
             <p>Python</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'Figma'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'Figma'; ?>">
             <img src="images/main/figma.png" alt="Figma">
             <p>Figma</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'PS'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'PS'; ?>">
             <img src="images/main/psd.png" alt="PS">
             <p>PS</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'AI'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'AI'; ?>">
             <img src="images/main/illust.png" alt="illustration">
             <p>AI</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'AfterEffect'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'AfterEffect'; ?>">
             <img src="images/main/ae.png" alt="After Effect">
             <p>After Effect</p>
           </a>
         </li>
         <li>
-          <a href="/pudding-LMS-website/user/course/course_list.php?cate=<?= 'InDesign'; ?>">
+          <a href="/pudding-LMS-website/user/course/course_list.php?catename=<?= 'InDesign'; ?>">
             <img src="images/main/indei.png" alt="InDesign">
             <p>InDesign</p>
           </a>
