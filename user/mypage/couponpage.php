@@ -10,7 +10,7 @@ if(isset($_SESSION['UID'])){
     $userid = $_SESSION['UID'];
     $sql = "SELECT uc.*, cp.* FROM user_coupon uc 
     JOIN coupons cp ON uc.cpid = cp.cpid 
-    WHERE uc.userid = '{$userid}' AND (uc.use_max_date > NOW() OR uc.use_max_date) 
+    WHERE uc.userid = '{$userid}' AND (uc.use_max_date > NOW() OR uc.use_max_date) AND uc.uc_status = 1
     ORDER BY uc.ucid DESC";
     $sc_where = "";
 

@@ -1,6 +1,6 @@
 let keyidx = 0;
     let col = 1;
-    let answear = 'iloveu'.toLowerCase(); //정답!!
+    let answear = 'welcome'.toLowerCase(); //정답!!
     let gameCount = 6; //게임 횟수
     let wordDOM ='';
 
@@ -93,7 +93,7 @@ let keyidx = 0;
           setTimeout(() => {
             alert('GAME OVER');
             location.href = '/pudding-LMS-website/user/banner/game_over.php';
-          }, 800);
+          }, 500);
         }//if(key =='Backspace')
 
 

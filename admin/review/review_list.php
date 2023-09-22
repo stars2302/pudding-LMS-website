@@ -39,7 +39,13 @@ while($rs = $result->fetch_object()){
         <div class="card_container shadow_box border" data-id="<?= $card -> rid; ?>">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-              <img src="<?php echo $card->userimg ?>" class="userImg shodow_box" alt="프로필 이미지">
+              <img src="<?php
+                if ($card->userimg == '') {
+                  echo "/pudding-LMS-website/user/images/profile/default_profile.png";
+                } else {
+                  echo $card->userimg;
+                }
+                ?>" class="userImg shodow_box" alt="프로필 이미지">
               <h5 class="b_text01 dark review_user"><?php echo $card->username ?></h5>
               <h5 class="b_text01 dark review_name"><span>강의명: </span><?php echo $card->name ?></h5>
             </div>
