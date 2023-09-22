@@ -19,6 +19,7 @@ $(document).ready(function () {
     } else {
       topBtn.removeClass("active");
       historyBtn.removeClass("active");
+      recentList.removeClass("active");
     }
     topBtn.on("click", function (e) {
       e.preventDefault();
@@ -34,7 +35,6 @@ $(document).ready(function () {
   // 최근 본 강의 btn
   let recentList = $(".recent_list");
   historyBtn.on("click", function () {
-    // location.reload();
     recentList.toggleClass("active");
   });
 });

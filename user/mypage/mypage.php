@@ -72,7 +72,13 @@ $js_route = "mypage/js/mypage.js";
       <h2 class="jua main_tt"><?php echo $u->username ?>님 안녕하세요!</h2>
       <div class="d-flex">
         <div class="d-flex profile_box radius_5">
-          <img src="<?php echo $u->userimg ?>" alt="프로필이미지">
+          <img src="<?php 
+          if($u->userimg == ''){
+            echo "/pudding-LMS-website/user/images/profile/default_profile.png";
+          }else{
+            echo $u->userimg;
+          }
+          ?>" alt="프로필이미지">
           <div>
             <h6 class="b_text02"><?php echo $u->username ?></h6>
             <h6 class="b_text02"><?php echo $u->useremail ?></h6>
