@@ -79,27 +79,32 @@ if(!isset($pagerwhere)){
   $pagerwhere = " 1=1";
 }
 
-//----------------------------------------------pagenation 시작
-//pagenation 필터 조건문 (필터 없으면 필요없음)
-if($cbox !== '' && $c_where === ''){
-  $pagerwhere = $c_where;
-} else if($search !== '' && $cbox === ''){
-  $pagerwhere = $c_where;
-} else{
-  $pagerwhere = ' 1=1';
+
+
+$sql2 = "SELECT COUNT(*) as count from courses where 1=1 ".$c_where;
+
+$result4 = $mysqli->query($sql2);
+$rsc1 = [];
+
+while ($rs = $result4->fetch_object()) {
+    $rsc1[] = $rs;
 }
+$sales_page = $rsc1[0]->count;
+// var_dump($sales_page);
+
 
 
 //필터 없으면 여기서부터 복사! *******
 $pagenationTarget = 'courses'; //pagenation 테이블 명
 $pageContentcount = 9; //페이지 당 보여줄 list 개수
+
+
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
 $limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
 
 
 //최종 query문, 실행
 $sqlrc = $sql.$c_where.$order.$limit; //필터 있
-//$sqlrc = $sql.$limit; //필터 없
 //----------------------------------------------pagenation 끝
 
 
@@ -123,7 +128,7 @@ while($rs = $result -> fetch_object()){
                 class="form-control"
                 placeholder="강의명으로 검색"
                 name="search"
-              />
+              >
             </div>
             <div class="searchBtn">
               <button class="btn btn-primary dark">검색</button>
@@ -135,7 +140,7 @@ while($rs = $result -> fetch_object()){
             <input type="hidden" name="cate-array" id="cate-array" value="">
             <div class="checkBox_1 mb-3">
               <h6>카테고리</h6>
-              <hr class="mt-4" />
+              <hr class="mt-4">
               <div class="form-check mt-5">
                 <label class="form-check-label" for="total"> 전체선택 </label>
                 <input
@@ -144,7 +149,7 @@ while($rs = $result -> fetch_object()){
                   value="전체선택"
                   name="cate"
                   id="total"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="frontend">
@@ -156,7 +161,7 @@ while($rs = $result -> fetch_object()){
                   value="프론트엔드"
                   name="cate"
                   id="frontend"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="backend"> 백엔드 </label>
@@ -166,7 +171,7 @@ while($rs = $result -> fetch_object()){
                   value="백엔드"
                   name="cate"
                   id="backend"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="design"> 디자인 </label>
@@ -176,12 +181,12 @@ while($rs = $result -> fetch_object()){
                   value="디자인"
                   name="cate"
                   id="design"
-                />
+                >
               </div>
             </div>
             <div class="checkBox_2 mb-3">
               <h6>난이도</h6>
-              <hr class="mt-4" />
+              <hr class="mt-4">
               <div class="form-check mt-5">
                 <label class="form-check-label" for="level1"> 초급 </label>
                 <input
@@ -190,7 +195,7 @@ while($rs = $result -> fetch_object()){
                   value="초급"
                   name="level1"
                   id="level1"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="level2"> 중급 </label>
@@ -200,7 +205,7 @@ while($rs = $result -> fetch_object()){
                   value="중급"
                   name="level2"
                   id="level2"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="level3"> 고급 </label>
@@ -210,31 +215,31 @@ while($rs = $result -> fetch_object()){
                   value="고급"
                   name="level3"
                   id="level3"
-                />
+                >
               </div>
             </div>
             <div class="checkBox_3">
               <h6>가격</h6>
-              <hr class="mt-4" />
+              <hr class="mt-4">
               <div class="form-check mt-5">
                 <label class="form-check-label" for="free"> 무료 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="무료"
                   name="pay"
                   id="free"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="pay"> 유료 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="유료"
                   name="pay"
                   id="pay"
-                />
+                >
               </div>
             </div>
             <button id="filter-submit-btn" class="btn btn-primary dark">필터실행</button>
@@ -251,7 +256,7 @@ while($rs = $result -> fetch_object()){
                     src="<?= $item -> thumbnail?>"
                     class="object-fit-cover"
                     alt="강의섬네일"
-                  />
+                  >
                 </div>
                 <div class="contentBox d-flex flex-column justify-content-between">
                   <div>
@@ -357,9 +362,7 @@ while($rs = $result -> fetch_object()){
         </div>
       </div>
     </main>
-
-    <?php
-
+<?php
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/footer.php';
 ?>
 

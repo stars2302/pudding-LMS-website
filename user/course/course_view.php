@@ -18,7 +18,7 @@
   }
 
   $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
-          JOIN users u ON r.userid = u.uid
+          JOIN users u ON r.userid = u.userid
           JOIN courses c ON c.cid = r.cid
           LEFT JOIN review_reply w ON r.rid = w.rid
           WHERE r.cid = '{$cid}'";
@@ -33,26 +33,28 @@
   $parts = explode('/', $cateString);
 ?>
     <main>
-      <input type="hidden" id="cid" value="<?= $cid; ?>"/>
+      <input type="hidden" id="cid" value="<?= $cid; ?>">
       <div class="container">
         <div class="modalBackground">
           <div class="modalBox d-flex flex-column justify-content-between">
             <i class="fa-regular fa-circle-xmark"></i>
             <!-- modalVideo-->
-            <div class=modalVideo style="TEXT-ALIGN: center">
-              <object type="text/html" width="100%" height="100%" data="<?= $addImgs[0]->youtube_url?>" allowFullScreen></object>
+            <div id=player style="TEXT-ALIGN: center">
+              <object type="text/html" data="<?= $addImgs[0]->youtube_url?>"></object>
             </div>
-            <!-- modalVideo 끝-->
             <div class="modalTitle">
               <h4><?= $addImgs[0]->youtube_name?></h4>
               <p>*구매 전 미리보기로 볼수 있는 강의입니다.</p>
             </div>
           </div>
         </div>
-        <div class="viewSetion_1 shadow_box pd_5">
+        <div class="view-list d-flex justify-content-end pd_5 pd_4">
+          <a href="/pudding-LMS-website/user/course/course_list.php" class="btn btn-dark">목록</a>
+        </div>
+        <div class="viewSetion_1 shadow_box">
           <div class="d-flex gap-5">
             <div>
-              <img src="<?= $rs->thumbnail; ?>" alt="" />
+              <img src="<?= $rs->thumbnail; ?>" alt="">
             </div>
             <div
               class="viewTitleWrap d-flex flex-column justify-content-between"
@@ -131,8 +133,8 @@
                     <button class="btn preview btn-dark">미리보기</button>
                   </div>
                   <div class="viewBtn">
-                    <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $rs->cid ?>" class="viewCart">
-                    <button class="btn btn-primary dark">장바구니 담기</button>
+                    <a href="/pudding-LMS-website/user/members/add_cart.php?cid=<?= $rs->cid ?>" class="viewCart btn btn-primary dark">
+                    장바구니 담기
                     </a>
                   </div>
                 </div>
@@ -171,9 +173,9 @@
                   <span><?= $ai->youtube_name?></span>
                 </div>
               </div>
-              <div>
+              <!-- <div>
                 <a href="<?= $ai->youtube_url?>" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
-              </div>
+              </div> -->
             </div>
             <?php           
               }
@@ -199,10 +201,10 @@
           <div class="viewSection3 shadow_box pd_2">
             <div class="review d-flex justify-content-between align-items-center">
               <div class="reviewProfile d-flex gap-3 align-items-center">
-                <img src="<?= $view->userimg; ?>" alt="" />
+                <img src="<?= $view->userimg; ?>" alt="">
                 <span class="fw-bold"><?= $view->username; ?></span>
                 <span><?= $view->name; ?></span>
-                <span><?= $view->regdate; ?></span>
+                <span><?= date("Y-m-d",strtotime($view->regdate)); ?></span>
               </div>
               <div class="rating" data-rate="<?= $view->rating; ?>">
                 <i class="fa fa-star"></i>
@@ -225,9 +227,9 @@
             <div class="reviewBox_2 pd_3">
               <div class="review d-flex justify-content-between align-items-center pd_4">
                 <div class="reviewProfile d-flex gap-3 align-items-center">
-                  <img src="../course_images/327610-eng.png" alt="" />
+                  <img src="../course_images/327610-eng.png" alt="">
                   <span class="fw-bold">프바오</span>
-                  <span><?= $view->r_regdate; ?></span>
+                  <span><?= date("Y-m-d",strtotime($view->r_regdate)); ?></span>
                 </div>
               </div>
               <div>
@@ -260,8 +262,6 @@
       </div>
     </main>
 
-
-    <?php
-
+<?php
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/footer.php';
 ?>

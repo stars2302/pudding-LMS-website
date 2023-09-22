@@ -25,18 +25,16 @@ $(".preview").click(function (e) {
 });
 $(".modalBox i").click(function (e) {
   e.preventDefault();
-  $(".modalVideo object").remove();
+  // $(".modalVideo object").remove();
   $(".modalBackground").removeClass("active");
 });
 
-// $(".viewCart").click(function (e) {
-//   e.preventDefault();
-//   if (confirm("장바구니 담기 완료! 장바구니로 이동하시겠습니까?")) {
-//     location.href = "http://localhost/pudding-LMS-website/user/cart/cart.php";
-//   }
-// });
-
 $(".viewSection3").slice(0, 2).show();
+
+if ($(".viewSection3").length <= 2) {
+  $(".moreviewBtn").hide();
+}
+
 $(".moreviewBtn").click(function (e) {
   e.preventDefault();
   $(".viewSection3:hidden").slice(0, 2).show();
@@ -45,13 +43,6 @@ $(".moreviewBtn").click(function (e) {
   }
 });
 
-// $(".courseBox").slice(0, 9).show();
-// $(window).scroll(function () {
-//   let scrollTop = $(this).scrollTop();
-//   if (scrollTop > 800) {
-//     $(".courseBox:hidden").slice(0, 9).show();
-//   }
-// });
 
 //장바구니
 $(".viewCart").on("click", function () {
