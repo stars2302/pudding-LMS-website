@@ -7,6 +7,7 @@
   //전체 게시물 수 구하기  
 
   $pagesql = "SELECT COUNT(*) as cnt from $pagenationTarget where $pagerwhere";//where $pagerwhere : 조건이 필요할 경우..
+  // var_dump($pagesql);
 
   $page_result = $mysqli->query($pagesql);
   $page_row = $page_result->fetch_object();
@@ -15,6 +16,7 @@
     $sales_page = $row_num;
   }
   $row_num = $sales_page;
+  // var_dump($row_num);
 
   $block_ct = 5; // 1,2,3,4,5  / 5,6,7,8,9 
   $block_num = ceil($pageNumber/$block_ct);//pageNumber 1,  9/5 1.2 2
