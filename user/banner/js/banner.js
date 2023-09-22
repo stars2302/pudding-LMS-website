@@ -3,7 +3,7 @@ $('.game_winner .coupon').click(function(){
   let uid = $(this).attr('data-user');
   let data = {
     uid : uid,
-    cpid: 51
+    cpid: 2
   }
   $.ajax({
     async : false, 

@@ -27,7 +27,7 @@ $userid = $_GET['userid'];
       console.log(return_data.result);
       if(return_data.result == "ok"){
         alert('쿠폰이 지급되었습니다.');
-        location.href = "/pudding-LMS-website/user/index.php";
+        location.href = "/pudding-LMS-website/user/members/login.php";
       } else{
         alert('이미 발급받은 쿠폰입니다.');
         location.href = "/pudding-LMS-website/user/index.php";
