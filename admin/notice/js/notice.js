@@ -5,28 +5,48 @@ $('[data-toggle="tooltip"]').tooltip();
 
 
 /* notice_create.js */
-$('#summernote').summernote({
-  placeholder: '공지사항 내용을 입력해 주세요',
-  tabsize: 2,
+// $('#summernote').summernote({
+//   placeholder: '공지사항 내용을 입력해 주세요',
+//   tabsize: 2,
+//   height: 150,
+//   resize: false,
+//   lang: "ko-KR",
+//   disableResizeEditor: true,
+  // toolbar: [
+  //     ['fontsize', ['fontsize']],
+  //     ['style', ['bold', 'italic', 'underline', 'clear']],
+  //     ['color', ['color']],
+  //     ['table', ['table']],
+  //     ['para', ['paragraph']],
+  //     ['insert', ['link', 'picture']],
+  //     ['view', []]
+  // ],
+  // callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+  //     onImageUpload: function (files) {
+  //         RealTimeImageUpdate(files, this);
+  //     }
+  // }
+// })
+$("#summernote").summernote({
   height: 150,
+  placeholder: '공지사항 내용을 입력해 주세요',
   resize: false,
   lang: "ko-KR",
   disableResizeEditor: true,
-  toolbar: [
-      ['fontsize', ['fontsize']],
-      ['style', ['bold', 'italic', 'underline', 'clear']],
-      ['color', ['color']],
-      ['table', ['table']],
-      ['para', ['paragraph']],
-      ['insert', ['link', 'picture']],
-      ['view', []]
-  ],
-  callbacks: {	//여기 부분이 이미지를 첨부하는 부분
-      onImageUpload: function (files) {
-          RealTimeImageUpdate(files, this);
-      }
+});
+
+
+$(".notice_create_form").submit(function () {
+  let markupStr = $("#summernote").summernote("code");
+  let content = encodeURIComponent(markupStr);
+  $(".content").val(content);
+
+  if ($("#summernote").summernote("isEmpty")) {
+    alert("상세설명을 입력하세요");
+    return false;
   }
-})
+});
+
 
   //취소 버튼 클릭 시 입력 필드 초기화
   $('.btn_cancel').click(function(){

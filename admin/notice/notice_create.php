@@ -10,13 +10,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/admin/inc/header.
 <section>
   <h2 class="main_tt">공지사항 등록</h2>
   <form class="notice_create_form" action="notice_create_ok.php" method="POST" enctype="multipart/form-data">
+    <input type="hidden" class="content" name="nt_content">
     <div class="notice_create_form_div">
       <label for="title"><span class="content_tt">제목</span></label>
       <input type="text" id="title" name="nt_title" class="notice_create_input form-control" placeholder="" aria-label="Username" required>  
     </div>
     <div class="notice_create_form_div">
       <label for="summernote"><span class="content_tt">상세내용</span></label>
-      <textarea id="summernote" name="nt_content" required></textarea>
+      <!-- <textarea id="summernote" name="nt_content" required></textarea> -->
+      <div id="summernote"></div>
     </div>
     <div class="create_btns d-flex justify-content-end">
       <button type="submit" class="btn btn-primary">등록 완료</button>     
