@@ -56,6 +56,7 @@ while ($ntrs = $ntresult->fetch_object()) {
         <div class="swiper-slide"><img src="images/main/main_slide_01.png" alt="슬라이드 이미지_01"></div>
         <div class="swiper-slide"><img src="images/main/main_slide_02.png" alt="슬라이드 이미지_02"></div>
         <div class="swiper-slide"><img src="images/main/main_slide_03.png" alt="슬라이드 이미지_03"></div>
+        <div class="swiper-slide"><img src="images/main/main_slide_04.png" alt="슬라이드 이미지_04"></div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
