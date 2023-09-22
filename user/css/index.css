@@ -41,7 +41,7 @@
 
 /* section2 */
 .sec2 h2 {
-  margin: calc(var(--base_unit) * 3) 0 var(--base_unit);
+  margin: calc(var(--base_unit) * 2.5) 0 var(--base_unit);
 }
 
 .sec2 ul {
