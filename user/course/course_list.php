@@ -22,49 +22,106 @@ $sql = "SELECT * from courses where 1=1 " ;
 $order = ' order by cid desc';
 $c_where = '';
 
-$total = $_GET['total']??'';
-$frondend = $_GET['frondend']??'';
-$backend = $_GET['backend']??'';
-$uxui = $_GET['uxui']??'';
-$design = $_GET['design']??'';
-$etc = $_GET['etc']??'';
+$cbox = $_GET['courseCheckBox']??'';
+$cate = $_GET['cate-array']??'';
 $level1 = $_GET['level1']??'';
 $level2 = $_GET['level2']??'';
 $level3 = $_GET['level3']??'';
-$free = $_GET['free']??'';
 $pay = $_GET['pay']??'';
-$price_status = $_GET['price_status']??'';
+$param = '';
+
+$cate_arr=explode(",",$cate);
+
+$cate_where = '';
 $filter_where = '';
+$fil_where = '';
 
 
+//카테고리 조회
+if($cate == '전체선택'){
+  $c_where .= '';
+}
+else if(sizeof($cate_arr) > 0){
+  $c_where .= " and (cate like '%";
+  $c_where .= implode("%' or cate like '%", $cate_arr);
+  $c_where .= "%') ";
+}else{
+  $c_where .= "";
+}
 
 //난이도 조회
 if($level1 == '초급'){
   $filter_where .= " level='{$level1}'";
   $c_where .= ' and'.$filter_where;
+  $param .="&level1='{$level1}'";
 }else if($level2 == '중급'){
   $filter_where .= " level='{$level2}'";
   $c_where .= ' and'.$filter_where;
+  $param .="&level2='{$level2}'";
 }else if($level3 == '고급'){
   $filter_where .= " level='{$level3}'";
   $c_where .= ' and'.$filter_where;
+  $param .="&leve3='{$level3}'";
 }else{
-  $filter_where .= " 1=1";
-  $c_where .= '';
+  $filter_where .= "";
+}
+
+//가격 조회
+if($pay != ''){
+  $c_where .= " and price_status='{$pay}'";
+  $param .="&price_status='{$pay}'";
+}else{
+  $c_where .= "";
 }
 
 
+//검색
 $search_where = '';
 $search = $_GET['search']??'';
 
 if($search){
-  $search_where .= " name like '%{$search}%'";
-  $c_where = ' and'.$search_where;
+  $search_where .= "and name like '%{$search}%'";
 } else{
   $search_where = '';
 }
+$c_where .= $search_where;
 
 $sqlrc = $sql.$c_where.$course_keyword.$cate_keyword.$order;
+// $sqlrc = $sql.$c_where.$order; 
+if(!isset($pagerwhere)){
+  $pagerwhere = " 1=1";
+}
+
+
+
+$sql2 = "SELECT COUNT(*) as count from courses where 1=1 ".$c_where;
+
+$result4 = $mysqli->query($sql2);
+$rsc1 = [];
+
+while ($rs = $result4->fetch_object()) {
+    $rsc1[] = $rs;
+}
+$sales_page = $rsc1[0]->count;
+// var_dump($sales_page);
+
+
+
+//필터 없으면 여기서부터 복사! *******
+$pagenationTarget = 'courses'; //pagenation 테이블 명
+$pageContentcount = 9; //페이지 당 보여줄 list 개수
+
+
+include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
+$limit = " limit $startLimit, $pageCount"; //select sql문에 .limit 해서 이어 붙이고 결과값 도출하기!
+
+
+//최종 query문, 실행
+$sqlrc = $sql.$c_where.$order.$limit; //필터 있
+//----------------------------------------------pagenation 끝
+
+
+// var_dump($sqlrc);
 $result = $mysqli -> query($sqlrc);
 while($rs = $result -> fetch_object()){
   $rsc[] = $rs;
@@ -84,7 +141,7 @@ while($rs = $result -> fetch_object()){
                 class="form-control"
                 placeholder="강의명으로 검색"
                 name="search"
-              />
+              >
             </div>
             <div class="searchBtn">
               <button class="btn btn-primary dark">검색</button>
@@ -92,31 +149,32 @@ while($rs = $result -> fetch_object()){
           </form>
         </div>
         <div class="mainSection d-flex gap-5">
-          <form action="#" class="courseCheckBox mb-5">
+          <form action="#" id="filter-form" class="courseCheckBox mb-5" method="GET">
+            <input type="hidden" name="cate-array" id="cate-array" value="">
             <div class="checkBox_1 mb-3">
-              <h6>전체선택</h6>
-              <hr class="mt-4" />
+              <h6>카테고리</h6>
+              <hr class="mt-4">
               <div class="form-check mt-5">
                 <label class="form-check-label" for="total"> 전체선택 </label>
                 <input
                   class="form-check-input"
                   type="checkbox"
                   value="전체선택"
-                  name="total"
+                  name="cate"
                   id="total"
-                />
+                >
               </div>
               <div class="form-check">
-                <label class="form-check-label" for="frondend">
+                <label class="form-check-label" for="frontend">
                   프론트엔드
                 </label>
                 <input
                   class="form-check-input"
                   type="checkbox"
                   value="프론트엔드"
-                  name="frondend"
-                  id="frondend"
-                />
+                  name="cate"
+                  id="frontend"
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="backend"> 백엔드 </label>
@@ -124,19 +182,9 @@ while($rs = $result -> fetch_object()){
                   class="form-check-input"
                   type="checkbox"
                   value="백엔드"
-                  name="backend"
+                  name="cate"
                   id="backend"
-                />
-              </div>
-              <div class="form-check">
-                <label class="form-check-label" for="uxui"> UX/UI </label>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="UX/UI"
-                  name="uxui"
-                  id="uxui"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="design"> 디자인 </label>
@@ -144,24 +192,14 @@ while($rs = $result -> fetch_object()){
                   class="form-check-input"
                   type="checkbox"
                   value="디자인"
-                  name="design"
+                  name="cate"
                   id="design"
-                />
-              </div>
-              <div class="form-check">
-                <label class="form-check-label" for="etc"> 기타 </label>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="기타"
-                  name="etc"
-                  id="etc"
-                />
+                >
               </div>
             </div>
             <div class="checkBox_2 mb-3">
               <h6>난이도</h6>
-              <hr class="mt-4" />
+              <hr class="mt-4">
               <div class="form-check mt-5">
                 <label class="form-check-label" for="level1"> 초급 </label>
                 <input
@@ -170,7 +208,7 @@ while($rs = $result -> fetch_object()){
                   value="초급"
                   name="level1"
                   id="level1"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="level2"> 중급 </label>
@@ -180,7 +218,7 @@ while($rs = $result -> fetch_object()){
                   value="중급"
                   name="level2"
                   id="level2"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="level3"> 고급 </label>
@@ -190,34 +228,34 @@ while($rs = $result -> fetch_object()){
                   value="고급"
                   name="level3"
                   id="level3"
-                />
+                >
               </div>
             </div>
             <div class="checkBox_3">
               <h6>가격</h6>
-              <hr class="mt-4" />
+              <hr class="mt-4">
               <div class="form-check mt-5">
                 <label class="form-check-label" for="free"> 무료 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="무료"
-                  name="free"
+                  name="pay"
                   id="free"
-                />
+                >
               </div>
               <div class="form-check">
                 <label class="form-check-label" for="pay"> 유료 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="유료"
                   name="pay"
                   id="pay"
-                />
+                >
               </div>
             </div>
-            <button class="hidden">필터실행</button>
+            <button id="filter-submit-btn" class="btn btn-primary dark">필터실행</button>
           </form>
           <div class="courseList">
             <div class="row mb-5">
@@ -231,7 +269,7 @@ while($rs = $result -> fetch_object()){
                     src="<?= $item -> thumbnail?>"
                     class="object-fit-cover"
                     alt="강의섬네일"
-                  />
+                  >
                 </div>
                 <div class="contentBox d-flex flex-column justify-content-between">
                   <div>
@@ -240,11 +278,13 @@ while($rs = $result -> fetch_object()){
                         <?php
                           if (isset($item->cate)) {
                             $categoryText = $item->cate;
+                            
                             $parts = explode('/', $categoryText);
-                            $lastPart = end($parts);
+                            $lastPart = $parts[1];
   
                             echo $lastPart;
                           }
+                          // var_dump($parts);
                         ?>
                       </span>
                       <span class="badge rounded-pill b-pd
@@ -301,13 +341,41 @@ while($rs = $result -> fetch_object()){
               }
               ?>
             </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center pager">
+              <ul class="pagination coupon_pager">
+                <?php
+                  if($pageNumber>1 && $block_num > 1 ){
+                    $prev = ($block_num - 2) * $block_ct + 1;
+                    echo "<li class=\"page-item\"><a href=\"?pageNumber=$prev\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+                  } else{
+                    echo "<li class=\"page-item disabled\"><a href=\"\" class=\"page-link\" aria-label=\"Previous\"><span aria-hidden=\"true\">&lsaquo;</span></a></li>";
+                  }
+    
+    
+                  for($i=$block_start;$i<=$block_end;$i++){
+                    if($pageNumber == $i){
+                        echo "<li class=\"page-item active\"><a href=\"?cate-array=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                    }else{
+                        echo "<li class=\"page-item\"><a href=\"?cate-array=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+    
+                    }
+                  }
+    
+    
+                  if($pageNumber<$total_page && $block_num < $total_block){
+                    $next = $block_num * $block_ct + 1;
+                    echo "<li class=\"page-item\"><a href=\"?pageNumber=$next\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+                  } else{
+                    echo "<li class=\"page-item disabled\"><a href=\"?pageNumber=$total_page\" class=\"page-link\" aria-label=\"Next\"><span aria-hidden=\"true\">&rsaquo;</span></a></li>";
+                  }
+                ?>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
     </main>
-
-    <?php
-
+<?php
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/footer.php';
 ?>
 
