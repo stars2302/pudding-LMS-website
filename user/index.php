@@ -517,7 +517,13 @@ while ($ntrs = $ntresult->fetch_object()) {
                     <div>
                       <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
-                          <img src="<?= $item->userimg ?>" class="userImg shodow_box" alt="프로필 이미지">
+                          <img src="<?php 
+                          if($item->userimg == ''){
+                            echo "/pudding-LMS-website/user/images/profile/default_profile.png";
+                          }else{
+                            echo $item->userimg;
+                          }
+                          ?>" class="userImg shodow_box" alt="프로필 이미지">
                           <p class="review_user">
                             <?= $item->username ?>
                           </p>
