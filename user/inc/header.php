@@ -118,7 +118,7 @@ if (isset($_SESSION['UID'])) {
         <ul class="d-flex">
           <li><a href="/pudding-LMS-website/user/course/course_list.php">강의 클래스</a></li>
           <li><a href="/pudding-LMS-website/user/banner/banner.php">이벤트</a></li>
-          <li><a href="/pudding-LMS-website/user/notice/notice.php">커뮤니티</a></li>
+          <li><a href="/pudding-LMS-website/user/notice/notice.php">공지사항</a></li>
           <!-- <li><a href="">ABOUT US</a></li> -->
         </ul>
       </nav>
