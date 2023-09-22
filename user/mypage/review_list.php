@@ -6,7 +6,7 @@ $js_route = "mypage/js/mypage.js";
   include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 
   $pagenationTarget = 'payments'; 
-  $pageContentcount = 2; 
+  $pageContentcount = 7; 
 
   if(!isset($pagerwhere)){
     $pagerwhere = ' 1=1';
@@ -71,8 +71,6 @@ $sqlrc = $sql.$limit;
                 <td>
                   <?php if ($list->review_userid == $userid) { ?>
                     <a href="/pudding-LMS-website/user/mypage/review_view.php?rid=<?= $list->rid; ?>" class="btn btn-warning">보기</a>
-                    <!-- <a href="#" class="btn btn-dark">수정</a>
-                    <a href="#" class="btn btn-danger d_btn">삭제</a> -->
                   <?php 
                 } else { 
                   ?>

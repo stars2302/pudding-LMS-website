@@ -13,20 +13,17 @@ $js_route = "mypage/js/mypage.js";
   $result = $mysqli->query($sql);
   $card = $result->fetch_assoc();
 
-  // var_dump($card);
+ 
   $rsql = "SELECT rr.* FROM review r
   JOIN review_reply rr ON rr.rid = r.rid
   WHERE rr.rid = {$rid}";
   $rresult = $mysqli->query($rsql);
-  // $rcard = $rresult->fetch_object();
+
   $rs = array();
   while ($row = $rresult->fetch_object()) {
     $rs[] = $row;
   }
 
-
-
-// var_dump($rcard);
 ?>
 <main class="d-flex">
     <aside class="mypage_wrap">

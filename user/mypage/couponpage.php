@@ -49,7 +49,7 @@ if(isset($_SESSION['UID'])){
         // 모든 쿠폰 보여주기
         $a = $expirecps;
     } else {
-        // 해당하는 타입의 쿠폰 보여주도록
+        
         $a = $cps;
     }
 

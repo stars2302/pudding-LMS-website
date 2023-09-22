@@ -12,7 +12,7 @@ $js_route = "mypage/js/mypage.js";
 
 $result = $mysqli->query($sql);
 $card = $result->fetch_assoc();
-// var_dump($card);
+
 
 ?>
 <main class="d-flex">

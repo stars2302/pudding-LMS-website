@@ -16,11 +16,10 @@ $rowcourse = $result->fetch_assoc();
 while ($row = $result->fetch_object()) {
   $rs[] = $row;
 }
-// var_dump($rowcourse);
-// var_dump($rs);
+
 
 $cateArray = explode('/', $rowcourse['cate']);
-// var_dump($cateArray);
+
 
 ?>
 <main class="d-flex">
