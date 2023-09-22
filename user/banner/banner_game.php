@@ -30,11 +30,11 @@ if(!isset($_SESSION['UID'])){
         <p>문자와 위치가 모두 맞으면 파란색 💙</p>
         <p>문자만 맞았다면 노란색 💛 </p>
         <p>모두 틀렸다면 회색 🤣</p>
-        <p>기회는 N번 제공!</p>
+        <p>기회는 6번 제공!</p>
       </div>
       <div class="hint">
         <button class="badge rounded-pill badge_yellow b-pd">hint</button>
-        <span>hint내용</span>
+        <span>어서와~</span>
       </div>
     </div>
     <img src="images/pudding_2.png" alt="">
