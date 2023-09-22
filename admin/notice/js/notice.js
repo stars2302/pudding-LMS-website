@@ -38,14 +38,21 @@ $("#summernote").summernote({
 
 $(".notice_create_form").submit(function () {
   let markupStr = $("#summernote").summernote("code");
-  let content = encodeURIComponent(markupStr);
+  // let content1 = stripHtml(markupStr);
+  let content1 = markupStr.replace('<p>','').replace('</p>','');
+  let content = encodeURIComponent(content1);
   $(".content").val(content);
+  console.log(content);
 
   if ($("#summernote").summernote("isEmpty")) {
     alert("상세설명을 입력하세요");
     return false;
   }
 });
+
+function stripHtml(html) {
+  return $("<div>").html(html).text();
+}
 
 
   //취소 버튼 클릭 시 입력 필드 초기화
