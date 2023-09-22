@@ -1,8 +1,3 @@
-//hint toggle
-$('.game_rule_content .hint button').click(function(){
-  $(this).toggleClass('active');
-});
-
 //winner coupon 지급
 $('.game_winner .coupon').click(function(){ 
   let uid = $(this).attr('data-user');

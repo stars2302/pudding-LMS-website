@@ -41,6 +41,14 @@ if(!isset($_SESSION['UID'])){
   </div>
 </div>
 
+<script>
+  //hint toggle
+  $('.game_rule_content .hint button').click(function(){
+    $(this).toggleClass('active');
+  });
+
+</script>
+
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/footer.php';
 ?>
