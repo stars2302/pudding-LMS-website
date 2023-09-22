@@ -356,9 +356,9 @@ while($rs = $result -> fetch_object()){
     
                   for($i=$block_start;$i<=$block_end;$i++){
                     if($pageNumber == $i){
-                        echo "<li class=\"page-item active\"><a href=\"?cate=$cate[0]&cate=$cate[1]&cate=$cate[2]&cate=$cate[3]&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                        echo "<li class=\"page-item active\"><a href=\"?cate=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
                     }else{
-                        echo "<li class=\"page-item\"><a href=\"?cate=$cate[0]&cate=$cate[1]&cate=$cate[2]&cate=$cate[3]&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                        echo "<li class=\"page-item\"><a href=\"?cate=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
     
                     }
                   }
