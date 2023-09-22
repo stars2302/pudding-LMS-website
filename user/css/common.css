@@ -636,6 +636,17 @@ header li:hover a {
   top: -3px;
 }
 
+.cart_btn span {
+  position: absolute;
+  right: -4px;
+  top: -7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--point_red);
+  color: var(--white_bg);
+}
+
 /* footer */
 footer {
   padding: var(--base_unit) 0;
