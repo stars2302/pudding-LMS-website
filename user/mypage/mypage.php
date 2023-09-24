@@ -28,7 +28,7 @@ $js_route = "mypage/js/mypage.js";
     }
 
   }else{
-    echo "<script>alert('로그인후 이후 이용해주세요!');
+    echo "<script>alert('로그인후 이후 이용해주세요');
     location.href = '/pudding-LMS-website/user/members/login.php';
     </script>";
   }

@@ -71,12 +71,12 @@ $(".viewCart").on("click", function () {
   });
 });
 
-$("#filter-submit-btn").click(function (e) {
-  e.preventDefault();
-  var cateArr = [];
-  $('input:checkbox[name="cate"]:checked').each(function () {
-    cateArr.push($(this).val());
-  });
-  $("#cate-array").val(cateArr.join());
-  $("#filter-form").submit();
-});
+// $("#filter-submit-btn").click(function (e) {
+//   e.preventDefault();
+//   var cateArr = [];
+//   $('input:checkbox[name="cate"]:checked').each(function () {
+//   cateArr.push($(this).val());
+//   });
+//   $("#cate-array").val(cateArr.join());
+//   $("#filter-form").submit();
+//   });
