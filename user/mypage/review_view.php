@@ -142,7 +142,7 @@ while ($row = $rresult->fetch_object()) {
           dataType: 'json',
           success: function (data) {
             if (data.result === 'ok') {
-              alert('수강평 댓글이 삭제되었습니다.');
+              alert('삭제되었습니다.');
               reviewContainer.hide();
               location.href = "/pudding-LMS-website/user/mypage/review_list.php";
               console.log(data.result);
@@ -150,7 +150,7 @@ while ($row = $rresult->fetch_object()) {
               alert('이미 댓글이 있는 수강평은 삭제할수 없습니다.');
               console.log(data.result);
             } else if (data.result === 'fail') {
-              alert('삭제 실패!');
+              alert('삭제 실패하였습니다.');
               console.log(data.result);
             }
           },
@@ -159,7 +159,7 @@ while ($row = $rresult->fetch_object()) {
           }
         });
       } else {
-        alert("삭제를 취소했습니다.");
+        alert("삭제를 취소하였습니다.");
       }
     });
   }); 

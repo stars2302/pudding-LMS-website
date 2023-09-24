@@ -54,7 +54,7 @@ if(isset($_SESSION['UID'])){
     }
 
 } else {
-    echo "<script>alert('로그인후 이후 이용해주세요!'); history.back();</script>";
+    echo "<script>alert('로그인이 필요합니다.'); history.back();</script>";
 }
 ?>
 <main class="d-flex">
