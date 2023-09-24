@@ -109,10 +109,11 @@ function canUdel(target){
         success: function(return_data){
           // location.reload();
           target.remove();
+          alert('삭제되었습니다.')
         }
       });//ajax
     } else{
-      alert('취소되었습니다');
+      alert('삭제를 취소하였습니다.');
     }
   } else{
     alert('삭제할 상품을 선택해주세요');

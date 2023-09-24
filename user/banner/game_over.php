@@ -5,7 +5,7 @@ $js_route = "banner/js/banner.js";
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/user/inc/header.php';
 if(!isset($_SESSION['UID'])){
   echo"<script>
-  alert('로그인 후 이용해주세요.');
+  alert('로그인이 필요합니다.');
   location.href = '/pudding-LMS-website/user/members/login.php';
   </script>";
 }

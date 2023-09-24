@@ -14,7 +14,7 @@ $pagenationTarget = 'notice';
 $pageContentcount = 10; 
 include_once $_SERVER['DOCUMENT_ROOT'].'/pudding-LMS-website/admin/inc/pager.php';
 $limit = " limit $startLimit, $pageCount"; 
-$order = " order by ntid desc";
+$order = " order by nt_regdate desc";
 
 $sqlrc = $sql.$order.$limit; 
 
