@@ -801,7 +801,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/pudding-LMS-website/user/inc/header.p
     let pwValue = $(this).val();
 
     // 정규식 패턴 : 6글자 이상 20글자 미만, 영문자, 숫자, 특수문자 조합
-    var pwRule = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/;
+    var pwRule = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$#^!%*?&])[A-Za-z\d@$#^!%*?&]{6,20}$/;
     if (pwRule.test(pwValue)) {
       userpw.removeClass('is-invalid');
       userpw.addClass('is-valid');

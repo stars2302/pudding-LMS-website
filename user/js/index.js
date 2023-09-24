@@ -2,16 +2,18 @@ $(document).ready(function () {
 
   var swiper = new Swiper(".sec1_slide", {
     slidesPerView: 1,
-    speed: 1000,
+    speed: 2000,
     centeredSlides: true,
     loop: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
     },
-    autoplay: {
-      delay: 3000,
+    autoplay : {  
+      delay : 2500,  
+      disableOnInteraction : false, 
     },
+    // loopAdditionalSlides: 1
   });
 
   // autoplayStart autoplayStop
@@ -27,10 +29,11 @@ $(document).ready(function () {
   var swiper = new Swiper(".recom_slide", {
     slidesPerView: 3,
     spaceBetween: 30,
-    speed: 1000,
+    speed: 2000,
     loop: true,
     autoplay: {
       delay: 3000,
+      disableOnInteraction : false, 
     },
     navigation: {
       prevEl: ".recom_prev",
@@ -41,10 +44,11 @@ $(document).ready(function () {
   var swiper = new Swiper(".new_slide", {
     slidesPerView: 3,
     spaceBetween: 30,
-    speed: 1000,
+    speed: 2000,
     loop: true,
     autoplay: {
       delay: 3000,
+      disableOnInteraction : false, 
     },
     navigation: {
        prevEl: ".new_prev",
