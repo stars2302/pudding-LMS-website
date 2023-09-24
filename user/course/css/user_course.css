@@ -254,10 +254,10 @@
   color: #727272;
 }
 
-.viewList i:hover {
+/* .viewList i:hover {
   font-size: 40px;
   color: var(--point_primary_hover);
-}
+} */
 
 /* 강의상세보기 강의평 */
 .reviewProfile {

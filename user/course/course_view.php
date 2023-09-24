@@ -10,6 +10,10 @@
   $result = $mysqli->query($sql);
   $rs = $result->fetch_object();
 
+  $paysql = "SELECT * FROM payments where cid={$cid}";
+  $presult = $mysqli->query($paysql);
+  $payrs = $presult->fetch_object();
+
   $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
   $result = $mysqli->query($imgsql);
 
@@ -221,9 +225,9 @@
                   <span><?= $ai->youtube_name?></span>
                 </div>
               </div>
-              <!-- <div>
-                <a href="<?= $ai->youtube_url?>" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
-              </div> -->
+              <div>
+                <a href="<?= $ai->youtube_url?>" onclick="return false" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
+              </div>
             </div>
             <?php           
               }

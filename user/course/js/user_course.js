@@ -28,23 +28,8 @@ $(".preview").click(function (e) {
 });
 $(".modalBox i").click(function (e) {
   e.preventDefault();
-  // $(".modalVideo object").remove();
   $(".modalBackground").removeClass("active");
 });
-
-// $(".viewSection3").slice(0, 2).show();
-
-// if ($(".viewSection3").length <= 2) {
-//   $(".moreviewBtn").hide();
-// }
-
-// $(".moreviewBtn").click(function (e) {
-//   e.preventDefault();
-//   $(".viewSection3:hidden").slice(0, 2).show();
-//   if ($(".viewSection3:hidden").length == 0) {
-//     $(".moreviewBtn").hide();
-//   }
-// });
 
 //장바구니
 $(".viewCart").on("click", function () {
@@ -72,16 +57,6 @@ $(".viewCart").on("click", function () {
     },
   });
 });
-
-// $("#filter-submit-btn").click(function (e) {
-//   e.preventDefault();
-//   var cateArr = [];
-//   $('input:checkbox[name="cate"]:checked').each(function () {
-//     cateArr.push($(this).val());
-//   });
-//   $("#cate-array").val(cateArr.join());
-//   $("#filter-form").submit();
-// });
 
 let r_idx = 1,
   r_page = 2;
