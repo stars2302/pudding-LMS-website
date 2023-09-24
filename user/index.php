@@ -536,7 +536,7 @@ while ($ntrs = $ntresult->fetch_object()) {
 
                           </p>
                           <p class="review_date">
-                            <?= $item->regdate ?>
+                            <?= date('Y-m-d', strtotime($item->regdate)) ?>
                           </p>
                         </div>
                         <div class="rating" data-rate="<?= $item->rating ?>">
