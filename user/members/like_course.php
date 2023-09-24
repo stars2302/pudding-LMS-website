@@ -11,7 +11,7 @@ if (isset($_SESSION['UID'])) {
   $result = $mysqli->query($sql);
 
   if (isset($result)) {
-    echo '<script>alert("강의 좋아요");
+    echo '<script>alert("강의 좋아요.");
           history.back();
           </script>';
   } else {

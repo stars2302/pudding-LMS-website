@@ -48,12 +48,12 @@ $result = $mysqli->query($sql) or die($mysql->error);
 //회원가입 성공 시. 쿠폰 발행 
 if ($result) {
   echo "<script>
-  alert('회원가입 성공');
+  alert('회원가입이 완료 되었습니다.');
   location.href='signup_coupon.php?userid=$userid';
   </script>";
 } else {
   echo "<script>
-  alert('회원가입 실패');
+  alert('회원가입에 실패했습니다.');
   history.back();
   </script>";
 }

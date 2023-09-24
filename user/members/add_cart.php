@@ -19,7 +19,7 @@ if (isset($_SESSION['UID'])) {
     $result = $mysqli->query($sql);
   
     if (isset($result)) {
-      echo '<script>alert("장바구니 담기 성공");
+      echo '<script>alert("강의가 장바구니에 담겼습니다.");
             history.back();
             </script>';
     } else {
