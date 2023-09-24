@@ -37,7 +37,7 @@ if(isset($_SESSION['UID'])){
 }
 else{
     echo"<script>
-  alert('로그인 후 이용해주세요.');
+  alert('로그인이 필요합니다.');
   location.href = '/pudding-LMS-website/user/members/login.php';
   </script>";
 }
