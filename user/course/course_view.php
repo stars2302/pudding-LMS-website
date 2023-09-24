@@ -10,6 +10,10 @@
   $result = $mysqli->query($sql);
   $rs = $result->fetch_object();
 
+  $paysql = "SELECT * FROM payments where cid={$cid}";
+  $presult = $mysqli->query($paysql);
+  $payrs = $presult->fetch_object();
+
   $imgsql = "SELECT * FROM lecture WHERE cid={$cid}";
   $result = $mysqli->query($imgsql);
 
@@ -17,11 +21,20 @@
     $addImgs[] = $is;
   }
 
+  $c_sql = "SELECT count(r.rid) as cnt FROM review r
+          JOIN users u ON r.userid = u.userid
+          JOIN courses c ON c.cid = r.cid
+          LEFT JOIN review_reply w ON r.rid = w.rid
+          WHERE r.cid = {$cid}";
+
+  $re_cnt = $mysqli->query($c_sql);
+  $cnt = $re_cnt->fetch_object();
+
   $sql1 = "SELECT r.*, u.username, u.userimg, c.name, w.* FROM review r
           JOIN users u ON r.userid = u.userid
           JOIN courses c ON c.cid = r.cid
           LEFT JOIN review_reply w ON r.rid = w.rid
-          WHERE r.cid = '{$cid}'";
+          WHERE r.cid = '{$cid}' limit 0,2";
 
   $result1 = $mysqli->query($sql1);
 
@@ -31,7 +44,6 @@
 
   $cateString = $rs->cate;
   $parts = explode('/', $cateString);
-  
   
 
  // 유림 최근 본 강의
@@ -71,7 +83,9 @@
 
 ?>
     <main>
+    
       <input type="hidden" id="cid" value="<?= $cid; ?>">
+      <input type="hidden" id="cnt" value=<?= $cnt->cnt??0 ?>>
       <div class="container">
         <div class="modalBackground">
           <div class="modalBox d-flex flex-column justify-content-between">
@@ -106,7 +120,7 @@
                         if (isset($rs->cate)) {
                           $categoryText = $rs->cate;
                           $parts = explode('/', $categoryText);
-                          $lastPart = end($parts);
+                          $lastPart = $parts[1];
 
                           echo $lastPart;
                         }
@@ -211,9 +225,9 @@
                   <span><?= $ai->youtube_name?></span>
                 </div>
               </div>
-              <!-- <div>
-                <a href="<?= $ai->youtube_url?>" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
-              </div> -->
+              <div>
+                <a href="<?= $ai->youtube_url?>" onclick="return false" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
+              </div>
             </div>
             <?php           
               }
@@ -226,63 +240,65 @@
             <h2 class="jua">수강평</h2>
           </div>
           <?php
-            if(isset($re)){
+            if(isset($cnt)){
           ?>
             <div>
-              <p>전체 리뷰 <?= count($re)??0 ?>건</p>
+              <p>전체 리뷰 <?= $cnt->cnt??0 ?>건</p>
             </div>
           <?php } ?>
-          <?php
-          if(isset($re)){
-            foreach($re as $view){
-          ?>
-          <div class="viewSection3 shadow_box pd_2">
-            <div class="review d-flex justify-content-between align-items-center">
-              <div class="reviewProfile d-flex gap-3 align-items-center">
-                <img src="<?= $view->userimg; ?>" alt="">
-                <span class="fw-bold"><?= $view->username; ?></span>
-                <span><?= $view->name; ?></span>
-                <span><?= date("Y-m-d",strtotime($view->regdate)); ?></span>
-              </div>
-              <div class="rating" data-rate="<?= $view->rating; ?>">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-            </div>
-            <div class="reviewBox_1 pd_3">
-              <p>
-              <?= $view->content; ?>
-              </p>
-            </div>
-
-            <!-- 답글시작 -->
+          <div id="review-wrap">
             <?php
-              if(isset($view->r_content)){
+            if(isset($re)){
+              foreach($re as $view){
             ?>
-            <div class="reviewBox_2 pd_3">
-              <div class="review d-flex justify-content-between align-items-center pd_4">
+            <div class="viewSection3 shadow_box pd_2">
+              <div class="review d-flex justify-content-between align-items-center">
                 <div class="reviewProfile d-flex gap-3 align-items-center">
-                  <img src="../course_images/327610-eng.png" alt="">
-                  <span class="fw-bold">프바오</span>
-                  <span><?= date("Y-m-d",strtotime($view->r_regdate)); ?></span>
+                  <img src="<?= $view->userimg; ?>" alt="">
+                  <span class="fw-bold"><?= $view->username; ?></span>
+                  <span><?= $view->name; ?></span>
+                  <span><?= date("Y-m-d",strtotime($view->regdate)); ?></span>
+                </div>
+                <div class="rating" data-rate="<?= $view->rating; ?>">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
                 </div>
               </div>
-              <div>
-                <p><?= $view->r_content; ?></p>
+              <div class="reviewBox_1 pd_3">
+                <p>
+                <?= $view->content; ?>
+                </p>
               </div>
+  
+              <!-- 답글시작 -->
+              <?php
+                if(isset($view->r_content)){
+              ?>
+              <div class="reviewBox_2 pd_3">
+                <div class="review d-flex justify-content-between align-items-center pd_4">
+                  <div class="reviewProfile d-flex gap-3 align-items-center">
+                    <img src="../course_images/327610-eng.png" alt="">
+                    <span class="fw-bold">프바오</span>
+                    <span><?= date("Y-m-d",strtotime($view->r_regdate)); ?></span>
+                  </div>
+                </div>
+                <div>
+                  <p><?= $view->r_content; ?></p>
+                </div>
+              </div>
+              <?php
+                }
+              ?>
+              <!-- 답글 끝 -->
+  
             </div>
             <?php
-              }
-            ?>
-            <!-- 답글 끝 -->
-
+                }
+            ?>         
           </div>
-          <?php
-              }
-          ?>         
             <div class="viewSection3Btn">
               <button class="moreviewBtn btn btn-dark">더보기</button>
             </div>
