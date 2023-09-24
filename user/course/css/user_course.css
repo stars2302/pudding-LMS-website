@@ -134,7 +134,7 @@
   object-fit: cover;
 }
 
-#player object{
+#player object {
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -160,10 +160,10 @@
 }
 
 /* 강의상세보기 */
-.view-list{
+.view-list {
   width: 100%;
 }
-.view-list a{
+.view-list a {
   padding-top: 10px;
 }
 
@@ -212,7 +212,7 @@
   height: 240px;
 }
 
-.viewCart{
+.viewCart {
   padding-top: 10px;
 }
 
@@ -303,9 +303,9 @@
   padding-bottom: 20px;
 }
 
-.viewSection3 {
+/* .viewSection3 {
   display: none;
-}
+} */
 
 #filter-submit-btn {
   margin-top: 20px;
