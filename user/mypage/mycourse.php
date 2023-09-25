@@ -103,7 +103,7 @@ $cateArray = explode('/', $rowcourse['cate']);
                 <span>/</span>
                 <span><?php echo $progressText; ?></span>
               </div>
-              <a href="<?php echo $list->youtube_url ?>"><i class="fa-regular fa-circle-play"></i></a>
+              <a target="_blank" href="<?php echo $list->youtube_url ?>"><i class="fa-regular fa-circle-play"></i></a>
             </div>
           </div>
 
