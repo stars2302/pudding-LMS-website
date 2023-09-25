@@ -12,12 +12,15 @@ $(".viewB_2").click(function () {
   $(".viewB_1").removeClass("active");
 });
 
-let rating = $(".rating");
+function setRatingStar() {
+  let rating = $(".rating");
 
-rating.each(function () {
-  let score = $(this).attr("data-rate");
-  $(this).find(`.fa-star:lt(${score})`).css({ color: "#ffca2c" });
-});
+  rating.each(function () {
+    let score = $(this).attr("data-rate");
+    $(this).find(`.fa-star:lt(${score})`).css({ color: "#ffca2c" });
+  });
+}
+setRatingStar();
 
 $(".preview").click(function (e) {
   e.preventDefault();
@@ -25,24 +28,8 @@ $(".preview").click(function (e) {
 });
 $(".modalBox i").click(function (e) {
   e.preventDefault();
-  // $(".modalVideo object").remove();
   $(".modalBackground").removeClass("active");
 });
-
-$(".viewSection3").slice(0, 2).show();
-
-if ($(".viewSection3").length <= 2) {
-  $(".moreviewBtn").hide();
-}
-
-$(".moreviewBtn").click(function (e) {
-  e.preventDefault();
-  $(".viewSection3:hidden").slice(0, 2).show();
-  if ($(".viewSection3:hidden").length == 0) {
-    $(".moreviewBtn").hide();
-  }
-});
-
 
 //장바구니
 $(".viewCart").on("click", function () {
@@ -71,12 +58,31 @@ $(".viewCart").on("click", function () {
   });
 });
 
-// $("#filter-submit-btn").click(function (e) {
-//   e.preventDefault();
-//   var cateArr = [];
-//   $('input:checkbox[name="cate"]:checked').each(function () {
-//   cateArr.push($(this).val());
-//   });
-//   $("#cate-array").val(cateArr.join());
-//   $("#filter-form").submit();
-//   });
+let r_idx = 1,
+  r_page = 2;
+
+$(".moreviewBtn").on("click", function () {
+  let data = {
+    cid: $("#cid").val(),
+    r_idx: r_idx, // 리뷰 가져온 횟수
+    r_page: r_page, // 리뷰 가져올 댓글 수
+  };
+  $.ajax({
+    type: "GET",
+    data: data,
+    url: "review_ok.php",
+    dataType: "html",
+    success: function (return_data) {
+      r_idx++;
+      // 전체리뷰갯수(5) < 가져온 리뷰갯수(가져온횟수*가져온댓글수)
+      if ($("#cnt").val() < r_idx * r_page) {
+        $(".moreviewBtn").hide();
+      }
+      $("#review-wrap").append(return_data);
+      setRatingStar();
+    },
+    error: function (error) {
+      console.log(error.responseText);
+    },
+  });
+});

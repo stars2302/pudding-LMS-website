@@ -19,12 +19,8 @@ if (isset($_GET['catename'])) {
 $sql = "SELECT * from courses where 1=1 " ;
 $order = ' order by cid desc';
 
-
-$cbox = $_GET['courseCheckBox']??'';
 $cate = $_GET['cate']??'';
-$level1 = $_GET['level1']??'';
-$level2 = $_GET['level2']??'';
-$level3 = $_GET['level3']??'';
+$level = $_GET['level']??'';
 $pay = $_GET['pay']??'';
 $param = '';
 
@@ -35,40 +31,36 @@ $fil_where = '';
 
 //카테고리 조회
 if($cate != ''){
-  for($i=0;$i < sizeof($cate); $i++){
-    if($cate[$i] == '전체선택'){
-      $c_where .= "";
-    }else{
-      if($i==0){
-        $c_where .= " and cate like '%{$cate[$i]}%'";
-      }else{
-        $c_where .= " or cate like '%{$cate[$i]}%'";
-      }
-    }
+  if($cate == '프론트엔드'){
+    $c_where .= " and cate LIKE '%{$cate}%'";
+  }else if($cate == '백엔드'){
+    $c_where .= " and cate LIKE '%{$cate}%'";
+  }else if($cate == '디자인'){
+    $c_where .= " and cate LIKE '%{$cate}%'";
+  }else{
+    $c_where .= "";
   }
+}else{
+  $c_where .= "";
 }
 
 //난이도 조회
-if($level1 == '초급'){
-  $filter_where .= " level='{$level1}'";
-  $c_where .= ' and'.$filter_where;
-  $param .="&level1='{$level1}'";
-}else if($level2 == '중급'){
-  $filter_where .= " level='{$level2}'";
-  $c_where .= ' and'.$filter_where;
-  $param .="&level2='{$level2}'";
-}else if($level3 == '고급'){
-  $filter_where .= " level='{$level3}'";
-  $c_where .= ' and'.$filter_where;
-  $param .="&leve3='{$level3}'";
+if($level != ''){
+  if($level == '초급'){
+    $c_where .= " and level LIKE '%{$level}%'";
+  }else if($level == '중급'){
+    $c_where .= " and level LIKE '%{$level}%'";
+  }else if($level == '고급'){
+    $c_where .= " and level LIKE '%{$level}%'";
+  }
 }else{
-  $filter_where .= "";
+  $c_where .= "";
 }
 
 //가격 조회
 if($pay != ''){
   $c_where .= " and price_status='{$pay}'";
-  $param .="&price_status='{$pay}'";
+  // $param .="&price_status='{$pay}'";
 }else{
   $c_where .= "";
 }
@@ -152,9 +144,9 @@ while($rs = $result -> fetch_object()){
                 <label class="form-check-label" for="total"> 전체선택 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="전체선택"
-                  name="cate[]"
+                  name="cate"
                   id="total"
                 >
               </div>
@@ -164,9 +156,9 @@ while($rs = $result -> fetch_object()){
                 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="프론트엔드"
-                  name="cate[]"
+                  name="cate"
                   id="frontend"
                 >
               </div>
@@ -174,9 +166,9 @@ while($rs = $result -> fetch_object()){
                 <label class="form-check-label" for="backend"> 백엔드 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="백엔드"
-                  name="cate[]"
+                  name="cate"
                   id="backend"
                 >
               </div>
@@ -184,9 +176,9 @@ while($rs = $result -> fetch_object()){
                 <label class="form-check-label" for="design"> 디자인 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="디자인"
-                  name="cate[]"
+                  name="cate"
                   id="design"
                 >
               </div>
@@ -198,9 +190,9 @@ while($rs = $result -> fetch_object()){
                 <label class="form-check-label" for="level1"> 초급 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="초급"
-                  name="level1"
+                  name="level"
                   id="level1"
                 >
               </div>
@@ -208,9 +200,9 @@ while($rs = $result -> fetch_object()){
                 <label class="form-check-label" for="level2"> 중급 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="중급"
-                  name="level2"
+                  name="level"
                   id="level2"
                 >
               </div>
@@ -218,9 +210,9 @@ while($rs = $result -> fetch_object()){
                 <label class="form-check-label" for="level3"> 고급 </label>
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value="고급"
-                  name="level3"
+                  name="level"
                   id="level3"
                 >
               </div>
@@ -356,9 +348,9 @@ while($rs = $result -> fetch_object()){
     
                   for($i=$block_start;$i<=$block_end;$i++){
                     if($pageNumber == $i){
-                        echo "<li class=\"page-item active\"><a href=\"?cate=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                        echo "<li class=\"page-item active\"><a href=\"?cate=$cate&level=$level&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
                     }else{
-                        echo "<li class=\"page-item\"><a href=\"?cate=$cate&level1=$level1&level2=$level2&level3=$level3&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
+                        echo "<li class=\"page-item\"><a href=\"?cate=$cate&level=$level&pay=$pay&pageNumber=$i\" class=\"page-link\" data-page=\"$i\">$i</a></li>";
     
                     }
                   }

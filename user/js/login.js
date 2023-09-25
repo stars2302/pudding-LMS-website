@@ -8,6 +8,7 @@ $(document).ready(function () {
     },
     autoplay: {
       delay: 3000,
+      disableOnInteraction: false,
     },
     loop: true,
     pagination: {
