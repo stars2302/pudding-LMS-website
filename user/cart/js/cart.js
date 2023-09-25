@@ -50,12 +50,15 @@ function couponPrice(total_price){
   //쿠폰선택
     let target = $('.coupon_select').find('option:selected');
     let limit;
-    if(!target.hasClass('default')){
-      limit = Number(target.attr('data-limit'));
-    } else {
-      return;
-    }
+    // if(!target.hasClass('default')){
+    //   limit = Number(target.attr('data-limit'));
+    // } else {
+      //   return;
+      // }
+        limit = Number(target.attr('data-limit'));
+    console.log(target);
     console.log(limit);
+    // limit = Number(target.attr('data-limit'));
 
     //쿠폰의 최소사용금액
     if(Number(total_price) > limit){
@@ -109,7 +112,20 @@ function canUdel(target){
         success: function(return_data){
           // location.reload();
           target.remove();
-          alert('삭제되었습니다.')
+          alert('삭제되었습니다.');
+          let cnt = $('.cart_item_container .cart_item').length;
+          if(cnt == 0){
+            $('.cart_item_container').html(
+              `<li class="no_cart_container">
+                <img src="images/cart_2.png" alt="장바구니가 비어있어서 슬픈 푸딩 이미지" class="no_cart_img">
+                <p class="content_stt">장바구니에 담긴 강의가 없습니다.</p>
+                <a href="/pudding-LMS-website/user/index.php" class="btn btn-primary dark">홈으로이동</a>
+              </li>`
+            );
+            $('.cart_btn span').text(cnt);
+          } else{
+            $('.cart_btn span').text(cnt);
+          }
         }
       });//ajax
     } else{

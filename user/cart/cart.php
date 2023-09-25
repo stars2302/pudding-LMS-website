@@ -134,7 +134,7 @@ else{
             <h3 class="content_stt">결제정보</h3>
             <h4 class="demoHeaders style_pd b_text02">쿠폰선택</h4>
             <select class="selectmenu coupon_select">
-              <option value="" disabled selected class="default">보유하고 있는 쿠폰</option>
+              <option value="" selected class="default" data-discount="0" data-type="정액" data-limit="-1">보유하고 있는 쿠폰</option>
               <?php
               if(isset($rsccp)){
                 foreach($rsccp as $coupon){
