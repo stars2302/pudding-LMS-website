@@ -38,7 +38,7 @@ aside nav {
   padding: 130px calc(var(--base_unit) * 2) calc(var(--base_unit) * 1.5);
 }
 
-.content_wrap > h1 {
+.content_wrap > h2 {
   margin-bottom: calc(var(--base_unit) * 1.5);
   color: var(--dark);
   font-weight: 400;
@@ -381,14 +381,14 @@ textarea:focus {
   color: #7e7e7e;
 }
 
-.coupon_box_able .able h1 {
+.coupon_box_able .able h2 {
   display: block;
   padding-right: calc(var(--base_unit) * 0.5);
   color: var(--dark);
   cursor: pointer;
 }
 
-.coupon_box_able .able h1:hover {
+.coupon_box_able .able h2:hover {
  text-decoration: underline;
 }
 
@@ -453,6 +453,7 @@ textarea:focus {
   font-weight: 600;
   color:var(--dark);
   cursor: pointer;
+  margin-right:calc(var(--base_unit) * 0.3);
 }
 
 .c_count span:hover:first-child{

@@ -70,7 +70,7 @@ $js_route = "mypage/js/mypage.js";
       
       ?>
       <h2 class="jua main_tt"><?php echo $u->username ?>님 안녕하세요!</h2>
-      <div class="d-flex">
+      <div class="d-flex profile_box_wrap">
         <div class="d-flex profile_box radius_5">
           <img src="<?php 
           if($u->userimg == ''){
