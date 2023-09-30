@@ -1,14 +1,20 @@
 let keyidx = 0;
     let col = 1;
-    let answear = 'welcome'.toLowerCase(); //정답!!
+    let answear = 'algorithm'.toLowerCase(); //정답!!
     let gameCount = 6; //게임 횟수
     let wordDOM ='';
 
     //정답 길이에 따라 바둑판 만들기
-    for(let i = 1; i <= answear.length*gameCount; i++){
-      wordDOM += `<div class="word word${i}"><span></span></div>`;
+    function addgame(){
+      wordDOM='';
+      for(let i = 1; i <= answear.length; i++){
+        wordDOM += `<div class="word word${i}"><span></span></div>`;
+      }
+      $('.game_board').append(wordDOM);
     }
-    $('.game_board').append(wordDOM).css({gridTemplateColumns: `repeat(${answear.length},100px)`});
+    addgame();
+    $('.game_board').css({gridTemplateColumns: `repeat(${answear.length},100px)`});
+    $('.game_count').text(gameCount);
 
 
 
@@ -20,6 +26,7 @@ let keyidx = 0;
       let key = e.key; //입력한 문자열
 
       if(col <= gameCount){
+        
         if (key.match(/^[a-zA-Z]$/)) {
           // console.log('영어');
           $('.word').eq(keyidx).find('span').text(key);
@@ -28,6 +35,11 @@ let keyidx = 0;
 
           //1row 구분
           if (keyidx % answear.length == 0) {
+            if(col < gameCount){
+              addgame();
+            }
+
+
             pushtext = [];//사용자가 입력한 1row 단어
             pushIDX = [];//사용자가 입력한 1row의 keyidx 배열
 
@@ -58,6 +70,7 @@ let keyidx = 0;
                 $('.word').eq(pushIDX[idx]).addClass('x');
                 // console.log('틀렸워');
               }
+              
             });
   
             setTimeout(() => {
@@ -68,6 +81,7 @@ let keyidx = 0;
             }, 100);
   
             col++;
+            $('.game_title .game_col').text(col);
           }
         }//if (key.match(/^[a-zA-Z]$/))
         

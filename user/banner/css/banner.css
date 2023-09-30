@@ -68,6 +68,14 @@ body {
   margin-bottom: var(--base_unit);
 }
 
+.game_board_content {
+  align-self: flex-start;
+}
+
+.game_title {
+  text-align: end;
+}
+
 .game_board .word {
   height: 90px;
   background-color: #fbfbfb;
