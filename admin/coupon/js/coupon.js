@@ -10,7 +10,7 @@ $('#thumbnail').change(function(){
   let file = $(this).prop('files');
     
     let formData = new FormData(); //페이지 전환없이 이페이지 바로 이미지 등록
-    formData.append('savefile', file[0]); //<input type="file" name="cp_image" value="파일명">
+    formData.append('savefile', file[0]); //<input type="file" name="savefile" value="파일명">
     //ajax 활용해 이미지 폴더에 추가. 이미지 이름 변환. validate
     $.ajax({
       url: 'coupon_image_save.php',
