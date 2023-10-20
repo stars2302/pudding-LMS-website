@@ -72,15 +72,34 @@ let keyidx = 0;
               }
               
             });
+
+            function yesOrNo (){
+              if(pushtext.join('') == answear){
+                return true;
+              } else{
+                return false;
+              }
+            }
   
             setTimeout(() => {
-            if(pushtext.join('') == answear){
+            if(yesOrNo()){
                 alert('정답입니다!');
                 location.href = '/pudding-LMS-website/user/banner/game_winner.php';
               }
             }, 100);
-  
-            col++;
+
+            if(keyidx == answear.length*gameCount){
+              if(!yesOrNo()){
+                setTimeout(() => {
+                  alert('GAME OVER');
+                  location.href = '/pudding-LMS-website/user/banner/game_over.php';
+                }, 500);
+              }
+            }
+            
+            if(col < gameCount){
+              col++;
+            }
             $('.game_title .game_col').text(col);
           }
         }//if (key.match(/^[a-zA-Z]$/))
@@ -91,7 +110,7 @@ let keyidx = 0;
 
 
 
-
+        console.log(keyidx);
 
         //backspace
         if(key =='Backspace'){
@@ -102,16 +121,12 @@ let keyidx = 0;
               keyidx--;
             }
           }
-        }
-        if(keyidx == answear.length*gameCount){
-          setTimeout(() => {
-            alert('GAME OVER');
-            location.href = '/pudding-LMS-website/user/banner/game_over.php';
-          }, 500);
         }//if(key =='Backspace')
 
+        
 
-
+        
+        
       } //if(col <= gameCount)
 
     });//$('body').keydown
